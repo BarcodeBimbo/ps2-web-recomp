@@ -1,106 +1,79 @@
 {
-  "updated": "2026-11-06T21:41:00-05:00",
+  "updated": "2026-11-06T21:48:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 2,
-  "phase": "matrix_verdict",
-  "prior_cycle": {
-    "step": 1,
-    "proposed": "R3_generic_complete_path",
-    "verdict": "fail",
-    "why": "Prove-before-swap blocked R3 while R1/R2 locked; proposal also bundled R4 sceCdSync wake. No code applied."
-  },
+  "step": 3,
+  "phase": "awaiting_matrix",
+  "prior_cycles": [
+    {
+      "step": 1,
+      "id": "R3_generic_complete_path",
+      "verdict": "fail",
+      "why": "R1/R2 locked; bundled R4"
+    },
+    {
+      "step": 2,
+      "id": "R1_clear_with_evidence",
+      "verdict": "pass",
+      "why": "SIF drains to 0; R1 cleared_with_evidence"
+    }
+  ],
   "discfix": {
     "status": "proposed",
     "proposed_change": {
-      "id": "R1_clear_with_evidence",
-      "summary": "Clear R1 (SIF end) with evidence only — no SIF rewrite, no code change. End-of-run SIF queue is drained on both games; no held RPC replies left. Unlocks prove-before-swap so a later unbundled R3 can be considered.",
-      "files": [],
-      "code_change": false,
+      "id": "R3_readee_length_harden",
+      "summary": "Unbundled R3 only: harden eeaddr1 readee length fields in read_to_ee so AlignReadBuffer sees counts when dest1/dest2 are fed; keep payload→readee→curReadPos→complete_call order; keep evidence logs. No sceCdSync wake (R4). No WaitSema rewrite (R2). No CNK hacks.",
+      "files": ["runtime/src/iop/cdvdfsv.cpp"],
+      "code_change": true,
       "details": [
-        "Do NOT rewrite sif.cpp / complete_call / reply_call / end_function.",
-        "Do NOT touch WaitSema/iSignalSema (R2 stays observe-only; sema 2 is durable libcdvd parking — never host_signal(2)).",
-        "Do NOT land R3 or R4 in this step.",
-        "Ask matrix to mark R1_SIF_end cleared/not-needed based on drain evidence below.",
-        "After R1 clear pass, disc-fix will post a separate unbundled R3 (readee+curReadPos only, no sceCdSync wake)."
+        "When read_to_ee copies a sector into dest1 (or dest2), also write the matching length at readee+0 / +4 (today dests are restored after memset but lengths stay 0).",
+        "For unaligned dst (Hitman example 0x52C098), populate readee head/tail length+payload the Sony way so AlignReadBuffer can finish copy-out.",
+        "Keep existing curReadPos write before complete_call (already proven correct).",
+        "Keep g_trace_hle complete_after_read / eeaddr lines for matrix.",
+        "Do NOT call cdvd.cpp finish_read / sceCdSync waiter wake (that is R4).",
+        "Do NOT change WaitSema/iSignalSema or host_signal(2).",
+        "Do NOT touch CNK virt-LBA / host_signal 16/54/55 / soft-arm / FCE0 / +24008."
       ],
-      "success_bar": "Matrix sets allow or clears R1 lock; no binary change this cycle."
+      "success_bar": "Both games still reach frame limit with prims moving; no Alchemy; graphics/settings menu untouched; leftover WaitSema 2 may remain (R2 ownership)."
     },
     "evidence": {
-      "matrix_smokes": {
-        "hitman": {
-          "log": "logs/matrix-hitman-600.log",
-          "frames": 600,
-          "prims": 78118,
-          "phases": "all five pass",
-          "sif_end": "[sif] 0 packets wait for the EE (processed 0)",
-          "held_rpc_dump": "none (no 'call to 0x... waiting for its reply')",
-          "alchemy": "none"
-        },
-        "nfs": {
-          "log": "logs/matrix-nfs-600.log",
-          "frames": 600,
-          "prims": 49750,
-          "phases": "all five pass",
-          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
-          "held_rpc_dump": "none",
-          "alchemy": "none"
-        }
+      "curReadPos_proven": {
+        "hitman_log": "logs/discfix-hitman-curpos-300.log",
+        "nfs_log": "logs/discfix-nfs-curpos-300.log",
+        "hitman": "35/35 complete_after_read lines: curReadPos equals expect (e.g. @0x54E480=2048 expect 2048)",
+        "nfs": "60 completes; sampled matches @0x5A9C40 (2048/1024000/206848 expect same)",
+        "order": "payload+readee+curReadPos happen inside read_to_ee BEFORE sif::complete_call"
       },
-      "discfix_hle": {
-        "hitman_log": "logs/discfix-hitman-bm-600-hle.log",
-        "nfs_log": "logs/discfix-nfs-mw-600-hle.log",
-        "note": "Same pair: draws, CDVD N+stream, shared leftover WaitSema 2 is R2/ownership not R1"
+      "remaining_gap": {
+        "readee_lengths": "After memset, dest1/dest2 restored but b1len/b2len left 0 even when dest1 is fed — AlignReadBuffer can see dest with zero length",
+        "unaligned": "Hitman complete_after_read dst=0x52C098 (unaligned) — needs readee head/tail fields",
+        "huge_N_0xE": "Not a read bug: N 0xE is DiskReady (immediate ret 2); garbage sector/count args are probes, not 322609-sector reads"
       },
-      "waitsema_ownership": "verification/recovery/waitsema-createsema-trace-live-report.md — sema 2 durable parking; do not pulse",
-      "argument": "If SIF outgoing is 0 and no held calls remain after sustained_run, a full SIF-end rewrite is not the active Hitman/NFS blocker. Clear R1 so disc-fix can propose unbundled R3 next."
+      "r1_status": "cleared_with_evidence",
+      "r2_note": "Leftover WaitSema 2 stays ownership/observe — not claimed fixed by R3",
+      "r4_note": "Explicitly NOT bundled"
     },
-    "files_touched": []
+    "files_touched": ["runtime/src/iop/cdvdfsv.cpp"],
+    "files_touched_note": "Diagnostic-only fprintf under g_trace_hle already landed for evidence; behavioral R3 patch waits for matrix pass"
   },
   "matrix": {
-    "status": "complete",
-    "current_phase": "sustained_run",
-    "verdict": "pass",
-    "notes": "PASS R1_clear_with_evidence. Verified matrix + HLE logs for both games: end-of-run SIF is 0 packets wait; no held RPC waiting for reply; no Alchemy pulses; frames/prims match board. Mid-run 1-packet waits drain to 0 — SIF-end rewrite is not the active Hitman/NFS blocker. R1_SIF_end cleared_with_evidence / not-needed. R2 still gated (leftover WaitSema 2 is ownership/observe). R3/R4/R5 still gated — next may be unbundled R3 only (readee+curReadPos, no sceCdSync wake, no code this cycle). allow_discfix_apply true for this no-code clear only. CNK Alchemy reports noted; quarantine holds. No commit.",
+    "status": "pending",
+    "current_phase": null,
+    "verdict": null,
+    "notes": "Disc-fix cycle 3: unbundled R3_readee_length_harden. R1 cleared. No R4. Waiting for matrix.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
-    "phase_results": {
-      "hitman_bm": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/matrix-hitman-600.log",
-        "frames": 600,
-        "prims": 78118,
-        "sif_end_verified": "[sif] 0 packets wait for the EE (processed 0)",
-        "held_rpc": 0
-      },
-      "nfs_mw": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/matrix-nfs-600.log",
-        "frames": 600,
-        "prims": 49750,
-        "sif_end_verified": "[sif] 0 packets wait for the EE (processed 1)",
-        "held_rpc": 0
-      }
-    },
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "still_gated",
-      "R3_readee": "still_gated",
+      "R3_readee": "proposed",
       "R4_CdSync": "still_gated",
       "R5_pad_sound": "still_gated"
     },
-    "allow_discfix_apply": true
+    "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": ["R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
   "ranked_rewrites_cleared": ["R1_SIF_end"],

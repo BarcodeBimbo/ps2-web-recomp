@@ -4,7 +4,7 @@ Updated: 2026-11-06 ~21:42 local
 
 ## Status
 
-**Waiting on matrix** after cycle-1 fail. No CDVD code applied yet.
+**Waiting on matrix** for cycle-3 unbundled R3. R1 cleared. Behavioral CDVD fix not applied yet (diag logs only).
 
 ## What we confirmed (parallel)
 

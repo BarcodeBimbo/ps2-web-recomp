@@ -1,0 +1,53 @@
+﻿cdrom0:\SCUS_971.98;1
+cdrom0:
+Paris, France
+The Hideout
+The Dread Swamp Path
+A Hazardous Path
+padman.irx
+Return to this level at any time
+View Map
+Restart Level
+Exit Level
+Exit to Hideout
+sceGsPutDrawEnv: DMA Ch.2 does not terminate
+libdma: sync timeout
+libpad: sceSifSetDma faild
+libpad: tPadDma Structure Invalid
+[libpad.a = %d.%d, padman.irx = %d.%d]
+Unsupported profile/level
+PsIIlibdma  2400
+cdrom0:\989SND.IRX;1
+rom0:UDNL cdrom0:\IOPRP243.IMG;1
+aFD&VifH
+zz!pMapz
+zz!!N$1aMap#(
+zs$Map
+G&gvif
+(M<uuW_&$
+UW_______
+we[r iis skill. It's increFantastic! It's Hokyo Coo-poh's BIZARRE SPATIAL RELOCATOR! This move allows you to teleport between a level's checkpoints. Press &2T&. to return to your last checkpoint, and keep teleporting near checkpoints to move forward and backward through their order. You can move throughout a level in no time with this skill. It's incredibly useful for hunting down those few missing clues.
+odsor a few seconds! I Amazing! Colonel Reid Cooper's TIME STOPPER TECHNIQUE! Press &2T&. and execute a flash bang that will stun all guards in the world for a few seconds! I can see how this might be useful... and entertaining too!
+Ah! A more modern entry - Bruce O'Coop's COMPUTER HACKING TECHNIQUE! Using the data on this page, I should be able to tap the duty roster in each hideout and project guard information into your Binoc-u-com!
+"920"/ !H6I92!#!92"12"92"101"0/#JHK#$JK$%'.(+)&)+&L+L&MK'NO'NKPN'O.'ONQ*()+:+R(+R:SR:+T:T+L.UOQO.UMRS:3?785568VHI6W6WVXV6WIYWI678?V8?7>X>?78V?XT:ZG:AGDAG:Z;>=E@<ADA<DB<DAG<BD[XE>=\GDA]D[BC^B[GD\_D\G`_D][D]_a]_D\F][DD_\aFEbcd]eF]FebG\`a\`GZG`ZTPfHgghHIHghYigfHYIhHjWYIgYhIKNPkUMlLMLlmLmlQlLmnLTnkLnmQMlUQTPkNPNkQUQONOQNkNQknlQUOofTPnTkPTknQmnQknQmlmQlUZ`ToT`op`oTfTofqcXWVYjWcrsYjYrstYgifgiYrYirutjsYp`a\`\a_\_a]va]_u]dewpa`ap`oqop`pawvawpqxeybebycbcyjzyjcudr{d{rtrd{ede{xzxyeyxe{z{xegfi|vi|foqfwv|wf|fwqfqwp|viuxyzjjstr{ztjtzjyopqwxz{tyzx{
+dmacman
+thsemap
+padman
+padman: DMA Busy ID = %08x ret = %d
+padman: sceSifSetDma faild
+padman: *** VBLANK OVERLAP ***
+padman: Over Consumpt Max [%d][%d]
+PADMAN : invalid priority %d
+PADMAN : high prio thread must be higher than low prio thread
+padman: thread priority: high=%d, low=%d
+padman: RegisterLibraryEntries Faild
+padman: sif_init Faild
+PsIIpadman  2410
+cdvdman
+stream_priority
+                          Streaming = %d, %d, %d, %d
+snd_StopAllStreams: ERROR! tried 5 times to stopp all streams!
+snd_CloseVAGStreaming starting.
+snd_CloseVAGStreaming not initied!
+Stopping all streams...
+snd_CloseVAGStreaming done.
