@@ -1,14 +1,15 @@
 # CORTANA Theme Master — Cold Reopen
 
-> ## REBUILD LIVE — God ordered full rebuild (Nov 7 ~1:42 AM)
+> ## CORTANA WORKSTATION 0.5.5 — cold reopen (Nov 7 ~4:22 AM)
 >
-> **Status:** Pause lifted. Four workers running: **A** splash PNG + animated progress/bg · **B** one-to-one HUD vs `reference-command-center-2.png` · **C** full IDE theming unison · **D** fail-safes + package. Injection only; overlays out; fail-safes 1–3 preserved.
->
-> See **§ Session log (tonight)** below. Pristine workbench bak still available if Disable/restore is needed.
+> **Branding:** Cortana Workstation (renamed from Jarvis). **Physical folder** still `jarvis-cursor-ui`; **junction** `C:\PS2Recomp\cortana-cursor-ui` → same tree (physical rename skipped per God; Cursor file lock).  
+> **Package:** `cortana-cursor-ui-0.5.5.vsix` built + installed to `~\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.5`.  
+> **Admin Enable:** elevated run **failed** — crash guard false-positive on Cursor’s post-`</body>` `workbench.js`. Source fixed; **installed 0.5.5 still stale**. Program Files `workbench.html` still pristine (~1824 B) — not patched.  
+> **Splash:** deprioritized (God has a later plan). Fail-safes 1–3 preserved.
 
 **Authority:** God (team) · **Operator:** Joshua · **Date locked:** Nov 7, 2026  
 **Canonical plan:** `cortana_pro_recreation_a1985356` (plan wins on lock conflicts).  
-**Extension root:** `C:\PS2Recomp\cortana-cursor-ui` · **v0.5.1** · workbench inject markers may be present under Program Files (see session log) · **Admin Enable = Joshua only**
+**Extension root:** `C:\PS2Recomp\cortana-cursor-ui` (junction) / physical `jarvis-cursor-ui` · **v0.5.5** · **Admin Enable = Joshua / elevated script**
 
 ### Workers (God rebuild NOW)
 
@@ -23,7 +24,35 @@
 
 ## Session log (tonight) — Nov 6–7, 2026
 
-**Written into this file for cold reopen.** Chronological record; **pause lifted** — God ordered rebuild resume (~1:42 AM).
+**Written into this file for cold reopen.** Earlier rebuild (~1:42 AM) + late-night Cortana Workstation ship attempt (~3–4 AM).
+
+### A) Late session — Cortana Workstation 0.5.5 (before Josh restart)
+
+1. **Brand:** JARVIS → **Cortana Workstation** throughout (`package.json` displayName/name, inject IDs `cortana-*`, commands, themes). Jarvis marketplace display leaks cleaned.
+2. **Legacy installs deleted:** `~\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0` and `…-0.5.2` removed.
+3. **Junction:** `C:\PS2Recomp\cortana-cursor-ui` → `jarvis-cursor-ui`. Physical rename **skipped per God** (Cursor locks tree).
+4. **Docs:** `GOD-ADMIN-ENABLE.md`, crash-window notes → Cortana 0.5.4/0.5.5; `SPLICE-ELEMENT-INVENTORY-CC2.md` + `SPLICE-THEMING-CC2.md` written; `PIXEL-CROSSCHECK.md` written.
+5. **Font pass:** one geometric UI sans (**Segoe UI** stack) — not Orbitron.
+6. **Palette / chrome:** dual cyan-green accent; amber legal **outside** top bar; glass = opacity+glow not heavy blur; void `#030D19`–`#020817`, panels `#091A2B`–`#0E2538`, cyan `#00D4FF`/`#4AD1F1`, OK `#3DD68C`, warn `#FFAB00`.
+7. **Parallelograms:** brand skew **−22°**, status **−14°**. Panel **L-brackets all 4 corners**.
+8. **Eleven visual fixes:** (1) search expand-corners icon (2) operator chip text-left + avatar-right (3) header order apps→bell→gear (4) LLM provider logos (5) Agents View All footer (6) Quick Command SVG icons (7) footer meta pin/sun/wifi (8) panel glass (9) header/voice scanline surface (10) feed/agent glyph weights (11) captions hover-reveal on min/max/close + related chrome polish.
+9. **Icon rebuild (God: no AI slop):** clean hairline SVG stroke **1.25** — nav, overview, agents, feed severity (no unicode i/!/✦/◉), LLM **brand marks not letter wells**, footer meta, Quick Command, header tools. PNG mush wells removed from overview.
+10. **Stroke weights (photo → tokens):** panel/rail/bracket/divider **1px**; gauge rings **4**; wave bars **2**; para-foot **4**; grid gutter **10**.
+11. **Pixel measurements @ reference-command-center-2.png 1024×573:** rail **157**, header **46**, panel boxes logged in `media/inject/PIXEL-CROSSCHECK.md`; radii ~6; skews as above.
+12. **Animations kept:** globe orbits/live layers; scanline; mic ripple bottom-left; middle audio wave + animated dots; footer Talk bead strip; nebula glows; LIVE pulse; L-bracket breathe; neuron/constellation pulse; gauge glow.
+13. **Wake:** Hey Cortana / Hey Cortana Workstation via `buildHudWakeScript()` + SpeechRecognition (in inject when Enable succeeds).
+14. **Data rules:** only hardcode **Manhattan, New York** (`HUD_FOOTER_LOCATION`); all else live Cursor (models, feed, agents, gauges, git, problems).
+15. **Integrated Cortana window controls** with hover-reveal captions; Executive Briefing wired; Manage Providers; timeline leading trails; nav badges; voice header chevron; real Cursor LLM grid + panels.
+16. **Package 0.5.5:** `npx @vscode/vsce package` → `cortana-cursor-ui-0.5.5.vsix` (~10.19 MB) → `cursor --install-extension … --force` → `ps2recomp-local.cortana-cursor-ui-0.5.5`.
+17. **Admin Enable elevated** (`scripts/admin-enable-elevated.js` + UAC): **FAILED** with  
+    `Inject block would sit outside </body> (scripts/HUD after body)`.  
+    Cause: `validateHudPatchPlacement` treated **Cursor’s own** `<script src="./workbench.js">` after `</body>` as illegal. Modern Cursor workbench is ~**1824 B** pristine shell (body empty; startup script after body).
+18. **“Feature flags” HUD/Wake/Manhattan/wbBytes = false:** **not** `package.json` toggles. They are **post-Enable probes** in `scripts/admin-enable-elevated.js` reading Program Files `workbench.html`. Because Enable refused write, probes stay false / wbBytes=1824. They **should all be true** after a successful Enable (HUD root + wake script + Manhattan stamp in patched HTML; wbBytes ≫ 1824).
+19. **Crash-guard repair (source only):** `workbenchInject.js` now strips Cursor `workbench.js` from the post-body tail before refusing. **Installed 0.5.5 copy still has old guard** — must sync/repackage/re-Enable before probes flip true.
+20. **Splash:** deprioritized for now (God later plan). Boot still stages calibrating/CC assets when Enable runs.
+21. **To-do rollup (~41 items):** nearly all complete (globe/overview/feed/agents/talk/header/sidebar/memory/LLM/interact/theme/font/audit/11 fixes/legacy cleanup/captions/L-brackets/agent SVG/LLM marks/icons/pixel/stroke). **Open/blocked:** package+Admin Enable clean success; live visual confirm by God vs `reference-command-center-2.png`. Rename physical folder **cancelled**.
+
+### B) Earlier same night — Phase 6 rebuild start
 
 ### 1) Phase 6 injection build started
 - Work began on Custom CSS / workbench injection per this master and plan `cortana_pro_recreation_a1985356`.
@@ -80,18 +109,17 @@
 - Hardened CSS health probe (`CORTANA-HEALTH` needles), splash PNG required on Enable, ~60s soft re-probe.
 - Boot stage source locked to **`reference-command-center-2.png`** (real PNG; not CSS-only fallback).
 
-### Current state snapshot
+### Current state snapshot (as of ~4:22 AM)
 
 | Piece | State |
 |-------|--------|
-| Phase 6 build (engine/tokens/boot/hud/commands) | On disk; A–C polishing CSS/themes; D packaging |
-| Program Files inject | May still be patched from earlier Admin Enable — Joshua owns Disable/re-Enable |
-| EACCES | Fixed via full quit + Run as administrator when writing Program Files |
-| Corrupt warning | Expected / accepted |
-| Dual-window / workspace load | Prefer Recomp folder only (`STARTUP-IDE-ONLY.md`) |
-| Delivery folder | Abandoned / gone |
-| Agents | **Rebuild LIVE** (A–D) |
-| Package | Target **0.5.1** VSIX (Joshua Admin install) |
+| Brand / version | **Cortana Workstation 0.5.5** |
+| Source tree | Junction `cortana-cursor-ui` → physical `jarvis-cursor-ui`; crash-guard **fixed in source** |
+| Installed extension | `ps2recomp-local.cortana-cursor-ui-0.5.5` — **stale** (pre crash-guard fix) |
+| Program Files `workbench.html` | Pristine ~1824 B — **not patched** (Enable refused) |
+| Probes HUD / Wake / Manhattan | **false** (no inject written yet) |
+| VSIX | `cortana-cursor-ui-0.5.5.vsix` on disk |
+| Next gate | Sync fix into install → elevated Enable → God live visual confirm |
 
 ### If Josh needs emergency restore
 Admin Cursor → **CORTANA: Disable Workbench Injection**, or copy `workbench.CORTANA.*.bak.html` over `workbench.html` in the workbench folder, then restart Cursor.
@@ -111,6 +139,9 @@ Admin Cursor → **CORTANA: Disable Workbench Injection**, or copy `workbench.CO
 | [`PALETTE-MARKETPLACE-VS-REFERENCE.md`](./PALETTE-MARKETPLACE-VS-REFERENCE.md) | Hybrid palette (PNG boot vs marketplace brand) |
 | [`MARKETPLACE-CORTANA-3D-EXTRACT.md`](./MARKETPLACE-CORTANA-3D-EXTRACT.md) | Pattern map + Studio matrix; copy patterns only |
 | [`REBUILD-STATUS.md`](./REBUILD-STATUS.md) | Worker A–D QA checklist for Joshua Admin Enable |
+| [`SPLICE-ELEMENT-INVENTORY-CC2.md`](./SPLICE-ELEMENT-INVENTORY-CC2.md) | CC-2 element inventory |
+| [`SPLICE-THEMING-CC2.md`](./SPLICE-THEMING-CC2.md) | CC-2 theming splice notes |
+| [`../media/inject/PIXEL-CROSSCHECK.md`](../media/inject/PIXEL-CROSSCHECK.md) | Photo vs inject pixel + stroke audit |
 | [`../README.md`](../README.md) | User-facing install, fail-safes, commands |
 
 ---
@@ -364,12 +395,14 @@ Core idea: IDE launch → Command Center PNG via inject (animated progress/bg) �
 - [ ] Boot splash = **real CC-2 PNG** full-bleed (QA after Admin Enable / Reload)  
 - [ ] HUD one-to-one vs CC-2 (Worker B) + theme unison (Worker C)  
 - [ ] Fail-safes 1–2 behave on fake update / broken markers (manual QA)  
-- [ ] Install **0.5.1** VSIX / sync extension → Admin Enable per [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md)  
+- [x] Package **0.5.5** VSIX + install to `~\.cursor\extensions\…-0.5.5`  
+- [ ] Sync crash-guard fix into installed copy → elevated Admin Enable until probes true  
+- [ ] God live visual confirm vs `reference-command-center-2.png`  
 - [ ] Leave taskbar `.ico` alone until 6.I reopened  
 - [ ] Keep Active support OUT; keep hybrid palette; keep Recomp IDE as verify scope  
 
-See also: [`REBUILD-STATUS.md`](./REBUILD-STATUS.md).
+See also: [`REBUILD-STATUS.md`](./REBUILD-STATUS.md), [`PIXEL-CROSSCHECK.md`](../media/inject/PIXEL-CROSSCHECK.md).
 
 ---
 
-*Master consolidate for cold reopen. Sibling docs remain authoritative detail; plan wins on lock conflicts. **REBUILD LIVE** — Workers A–D; fail-safes locked; Joshua owns Admin Enable.*
+*Master consolidate for cold reopen. Sibling docs remain authoritative detail; plan wins on lock conflicts. **Cortana Workstation 0.5.5** — Enable blocked on stale install / crash-guard; Joshua owns elevated re-Enable after sync.*
