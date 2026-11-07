@@ -162,6 +162,22 @@ body.CORTANA-inject {
   --cortana-radius-sm: 6px;
   --cortana-radius-lg: 12px;
   --cortana-radius-pill: 999px;
+  /* HUD chrome vs reference-command-center-2.png (panels, chips, commands) */
+  --cortana-hud-panel-radius: 6px;
+  --cortana-hud-panel-chamfer: 7px;
+  --cortana-hud-panel-glass-inset: inset 0 1px 0 rgba(0, 212, 255, 0.08);
+  --cortana-hud-feed-radius: 6px;
+  --cortana-hud-agent-radius: 7px;
+  --cortana-hud-agent-ico-radius: 6px;
+  --cortana-hud-cmd-radius: 8px;
+  --cortana-hud-cmd-ico-radius: 6px;
+  --cortana-hud-talk-radius: var(--cortana-radius-pill);
+  --cortana-hud-search-radius: var(--cortana-radius-pill);
+  --cortana-hud-pill-radius: var(--cortana-radius-pill);
+  --cortana-hud-meta-radius: var(--cortana-radius-pill);
+  --cortana-hud-icon-btn-radius: 8px;
+  --cortana-constellation-h: 76px;
+  --cortana-constellation-max-w: 178px;
   --cortana-line: 1px;
   --cortana-boot-ms: 1800ms;
   --cortana-boot-hold: 70%;
@@ -184,10 +200,10 @@ body.CORTANA-inject {
   --cortana-header-icon-hover: #4ad1f1;
   --cortana-badge-size: 17px;
   --cortana-footer-h: 72px;
-  /* Windows/Cursor REAL caption cluster (min/max/close) — functional skin only */
-  --cortana-caption-btn: 46px;
-  --cortana-caption-w: 138px;
-  --cortana-caption-reserve: var(--cortana-caption-w);
+  /* Caption cluster hidden (God: match reference-command-center-2 — no min/max/close) */
+  --cortana-caption-btn: 0px;
+  --cortana-caption-w: 0px;
+  --cortana-caption-reserve: 0px;
   --cortana-titlebar-h: 30px;
   --cortana-z-hud: 99990;
   --cortana-z-titlebar: 99999;

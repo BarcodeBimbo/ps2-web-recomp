@@ -740,47 +740,195 @@ async function loadCursorModelCatalog(context) {
   }
 }
 
-async function countWorkspaceAgentTranscripts() {
+/** Max transcript files scanned at Enable (honest cap — avoids multi-minute Enable on huge trees). */
+const TRANSCRIPT_SCAN_MAX_FILES = 600;
+
+async function walkTranscriptJsonl(dir, out, seenDirs, depth = 0) {
+  if (depth > 12 || out.length >= TRANSCRIPT_SCAN_MAX_FILES) {
+    return;
+  }
+  const norm = path.normalize(dir).toLowerCase();
+  if (seenDirs.has(norm)) {
+    return;
+  }
+  seenDirs.add(norm);
+  if (!(await pathExists(dir))) {
+    return;
+  }
+  let names;
+  try {
+    names = await fsp.readdir(dir);
+  } catch {
+    return;
+  }
+  for (const name of names) {
+    if (out.length >= TRANSCRIPT_SCAN_MAX_FILES) {
+      break;
+    }
+    const full = path.join(dir, name);
+    let st;
+    try {
+      st = await fsp.stat(full);
+    } catch {
+      continue;
+    }
+    if (st.isDirectory()) {
+      await walkTranscriptJsonl(full, out, seenDirs, depth + 1);
+    } else if (/\.jsonl$/i.test(name)) {
+      out.push(full);
+    }
+  }
+}
+
+/**
+ * Locate Cursor agent-transcript .jsonl files under workspace + .cursor/projects (recursive).
+ * @returns {Promise<string[]>}
+ */
+async function listWorkspaceTranscriptFiles() {
   const folders = vscode.workspace.workspaceFolders || [];
-  let count = 0;
-  const seen = new Set();
+  const files = [];
+  const seenDirs = new Set();
+  const transcriptRoots = [];
+
   for (const folder of folders) {
-    const roots = [folder.uri.fsPath];
+    transcriptRoots.push(path.join(folder.uri.fsPath, "agent-transcripts"));
     const projectsDir = path.join(folder.uri.fsPath, ".cursor", "projects");
     try {
       if (await pathExists(projectsDir)) {
         const subs = await fsp.readdir(projectsDir);
         for (const sub of subs) {
-          roots.push(path.join(projectsDir, sub));
+          transcriptRoots.push(path.join(projectsDir, sub, "agent-transcripts"));
         }
       }
     } catch {
       /* ignore */
     }
-    for (const root of roots) {
-      const dirs = [
-        path.join(root, "agent-transcripts"),
-        path.join(root, ".cursor", "agent-transcripts"),
-      ];
-      for (const dir of dirs) {
-        const norm = path.normalize(dir).toLowerCase();
-        if (seen.has(norm)) {
-          continue;
+    transcriptRoots.push(path.join(folder.uri.fsPath, ".cursor", "agent-transcripts"));
+  }
+
+  try {
+    const appData = process.env.APPDATA || "";
+    if (appData) {
+      const globalProjects = path.join(appData, "Cursor", "projects");
+      if (await pathExists(globalProjects)) {
+        const subs = await fsp.readdir(globalProjects);
+        for (const sub of subs) {
+          transcriptRoots.push(path.join(globalProjects, sub, "agent-transcripts"));
         }
-        seen.add(norm);
-        if (!(await pathExists(dir))) {
-          continue;
-        }
-        try {
-          const names = await fsp.readdir(dir);
-          count += names.filter((n) => /\.jsonl$/i.test(n)).length;
-        } catch {
-          /* ignore */
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
+  for (const root of transcriptRoots) {
+    await walkTranscriptJsonl(root, files, seenDirs);
+  }
+  return files;
+}
+
+/**
+ * Memory Insights: Memories = transcript file count; Session Turns = user|assistant lines;
+ * Tool Calls = tool_use parts in transcript JSONL (Cursor agent store).
+ */
+async function collectHudMemoryInsightFacts() {
+  const files = await listWorkspaceTranscriptFiles();
+  let sessionTurns = 0;
+  let toolCalls = 0;
+  for (const file of files) {
+    let raw;
+    try {
+      raw = await fsp.readFile(file, "utf8");
+    } catch {
+      continue;
+    }
+    const lines = raw.split("\n");
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t) {
+        continue;
+      }
+      let row;
+      try {
+        row = JSON.parse(t);
+      } catch {
+        continue;
+      }
+      const role = row && row.role;
+      if (role === "user" || role === "assistant") {
+        sessionTurns += 1;
+      }
+      const parts = row && row.message && row.message.content;
+      if (!Array.isArray(parts)) {
+        continue;
+      }
+      for (const part of parts) {
+        if (part && part.type === "tool_use") {
+          toolCalls += 1;
         }
       }
     }
   }
-  return count;
+  return {
+    memories: files.length,
+    sessionTurns,
+    toolCalls,
+    filesScanned: files.length,
+    capped: files.length >= TRANSCRIPT_SCAN_MAX_FILES,
+  };
+}
+
+async function countWorkspaceAgentTranscripts() {
+  const files = await listWorkspaceTranscriptFiles();
+  return files.length;
+}
+
+/**
+ * Stamp Memory Insights panel (#cortana-mem-stats) — real counts or honest "—".
+ * @param {string} markup
+ * @param {{ memories: number, sessionTurns: number, toolCalls: number, filesScanned: number }} stats
+ */
+function stampHudMemoryInsights(markup, stats) {
+  const scanned = (stats && stats.filesScanned) || 0;
+  const fmt = (n) => {
+    if (!scanned) {
+      return "—";
+    }
+    if (typeof n !== "number" || !Number.isFinite(n)) {
+      return "—";
+    }
+    return String(Math.max(0, Math.round(n)));
+  };
+  const memories = fmt(stats?.memories);
+  const turns = fmt(stats?.sessionTurns);
+  const tools = fmt(stats?.toolCalls);
+  const live = scanned > 0 ? "1" : "0";
+  let out = markup.replace(
+    /<div class="jcc-mem-stats" id="cortana-mem-stats"[^>]*>/i,
+    `<div class="jcc-mem-stats" id="cortana-mem-stats" data-live="${live}"` +
+      ` data-memories="${escapeHudText(memories)}"` +
+      ` data-session-turns="${escapeHudText(turns)}"` +
+      ` data-tool-calls="${escapeHudText(tools)}"` +
+      ` title="From Cursor agent-transcripts .jsonl at inject">`
+  );
+  const labs = [
+    ["Memories", memories],
+    ["Session Turns", turns],
+    ["Tool Calls", tools],
+  ];
+  for (const [lab, val] of labs) {
+    const re = new RegExp(
+      `<div class="jcc-mem-stat" data-lab="${lab.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}" data-value="[^"]*"`,
+      "i"
+    );
+    if (re.test(out)) {
+      out = out.replace(
+        re,
+        `<div class="jcc-mem-stat" data-lab="${lab}" data-value="${escapeHudText(val)}"`
+      );
+    }
+  }
+  return out;
 }
 
 /**
@@ -1008,6 +1156,7 @@ async function readHudMarkup(context) {
   const loc = await locateWorkbench();
   const fp = loc ? await readProductFingerprint(loc.appRoot) : { version: "", commit: "" };
   const catalog = await loadCursorModelCatalog(context);
+  const memoryInsights = await collectHudMemoryInsightFacts();
   const overview = await collectHudOverviewFacts(context, catalog, fp);
   markup = markup
     .replace(/id="cortana-hud-date">[^<]*</, `id="cortana-hud-date">${escapeHudText(date)}<`)
@@ -1024,6 +1173,7 @@ async function readHudMarkup(context) {
       `id="cortana-system-status-text">SYSTEM STATUS · INJECT ON<`
     );
   markup = stampHudOverviewPanel(markup, overview, catalog);
+  markup = stampHudMemoryInsights(markup, memoryInsights);
   markup = stampHudLlmGrid(markup, catalog);
   markup = stampHudGauge(
     markup,
@@ -1811,14 +1961,25 @@ function buildChromePaletteBindCss() {
     ".monaco-workbench .part.editor {",
     "  background-color: var(--cortana-bg-editor, #050d16) !important;",
     "}",
-    "body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked))",
-    "  .monaco-workbench .part.titlebar .window-controls-container {",
-    "  background: linear-gradient(180deg, var(--cortana-glass-strong, rgba(0,10,28,0.94)) 0%, var(--cortana-bg-panel, #000f24) 100%) !important;",
-    "  border-left: 1px solid var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
-    "}",
+    "/* Cortana Workstation: hide min/max/close (reference-command-center-2) */",
+    ".monaco-workbench .window-controls-container,",
+    ".monaco-workbench .part.titlebar .window-controls-container,",
     ".monaco-workbench .window-controls-container > .window-icon,",
-    ".monaco-workbench .window-controls-container .codicon {",
-    "  color: var(--cortana-cyan-soft, #4ad1f1) !important;",
+    ".monaco-workbench .window-controls-container .codicon-chrome-minimize,",
+    ".monaco-workbench .window-controls-container .codicon-chrome-maximize,",
+    ".monaco-workbench .window-controls-container .codicon-chrome-restore,",
+    ".monaco-workbench .window-controls-container .codicon-chrome-close {",
+    "  display: none !important;",
+    "  visibility: hidden !important;",
+    "  opacity: 0 !important;",
+    "  pointer-events: none !important;",
+    "  width: 0 !important;",
+    "  min-width: 0 !important;",
+    "  max-width: 0 !important;",
+    "  height: 0 !important;",
+    "  margin: 0 !important;",
+    "  padding: 0 !important;",
+    "  overflow: hidden !important;",
     "}",
   ].join("\n");
 }
