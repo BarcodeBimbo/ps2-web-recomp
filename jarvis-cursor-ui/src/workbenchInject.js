@@ -828,11 +828,12 @@ async function listWorkspaceTranscriptFiles() {
 }
 
 /**
- * Memory Insights: Memories = transcript file count; Session Turns = user|assistant lines;
- * Tool Calls = tool_use parts in transcript JSONL (Cursor agent store).
+ * Memory Insights: Memories = transcript JSONL event lines; Session Turns = user-role lines;
+ * Tool Calls = tool_use parts in agent-transcript JSONL (workspace + Cursor projects dirs).
  */
 async function collectHudMemoryInsightFacts() {
   const files = await listWorkspaceTranscriptFiles();
+  let memories = 0;
   let sessionTurns = 0;
   let toolCalls = 0;
   for (const file of files) {
@@ -848,6 +849,7 @@ async function collectHudMemoryInsightFacts() {
       if (!t) {
         continue;
       }
+      memories += 1;
       let row;
       try {
         row = JSON.parse(t);
@@ -855,7 +857,7 @@ async function collectHudMemoryInsightFacts() {
         continue;
       }
       const role = row && row.role;
-      if (role === "user" || role === "assistant") {
+      if (role === "user") {
         sessionTurns += 1;
       }
       const parts = row && row.message && row.message.content;
@@ -870,7 +872,7 @@ async function collectHudMemoryInsightFacts() {
     }
   }
   return {
-    memories: files.length,
+    memories,
     sessionTurns,
     toolCalls,
     filesScanned: files.length,
@@ -897,7 +899,7 @@ function stampHudMemoryInsights(markup, stats) {
     if (typeof n !== "number" || !Number.isFinite(n)) {
       return "—";
     }
-    return String(Math.max(0, Math.round(n)));
+    return Math.max(0, Math.round(n)).toLocaleString("en-US");
   };
   const memories = fmt(stats?.memories);
   const turns = fmt(stats?.sessionTurns);
@@ -911,22 +913,34 @@ function stampHudMemoryInsights(markup, stats) {
       ` data-tool-calls="${escapeHudText(tools)}"` +
       ` title="From Cursor agent-transcripts .jsonl at inject">`
   );
-  const labs = [
-    ["Memories", memories],
-    ["Session Turns", turns],
-    ["Tool Calls", tools],
+  const rows = [
+    ["cortana-mem-stat-memories", "Memories", memories],
+    ["cortana-mem-stat-turns", "Session Turns", turns],
+    ["cortana-mem-stat-tools", "Tool Calls", tools],
   ];
-  for (const [lab, val] of labs) {
-    const re = new RegExp(
-      `<div class="jcc-mem-stat" data-lab="${lab.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}" data-value="[^"]*"`,
+  for (const [id, lab, val] of rows) {
+    const v = escapeHudText(val);
+    const byId = new RegExp(`id="${id}"([^>]*)\\sdata-value="[^"]*"`, "i");
+    if (byId.test(out)) {
+      out = out.replace(byId, `id="${id}"$1 data-value="${v}"`);
+    }
+    const labRe = new RegExp(
+      `<div class="jcc-mem-stat" data-lab="${lab.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"[^>]*>`,
       "i"
     );
-    if (re.test(out)) {
+    if (labRe.test(out)) {
       out = out.replace(
-        re,
-        `<div class="jcc-mem-stat" data-lab="${lab}" data-value="${escapeHudText(val)}"`
+        labRe,
+        `<div class="jcc-mem-stat" data-lab="${lab}" data-value="${v}" id="${id}">`
       );
     }
+    out = out.replace(
+      new RegExp(
+        `(id="${id}"[^>]*>\\s*<span><\\/span>\\s*<strong>)([^<]*)(<\\/strong>)`,
+        "i"
+      ),
+      `$1${v}$3`
+    );
   }
   return out;
 }
@@ -1156,8 +1170,8 @@ async function readHudMarkup(context) {
   const loc = await locateWorkbench();
   const fp = loc ? await readProductFingerprint(loc.appRoot) : { version: "", commit: "" };
   const catalog = await loadCursorModelCatalog(context);
-  const memoryInsights = await collectHudMemoryInsightFacts();
   const overview = await collectHudOverviewFacts(context, catalog, fp);
+  const memoryInsights = await collectHudMemoryInsightFacts();
   markup = markup
     .replace(/id="cortana-hud-date">[^<]*</, `id="cortana-hud-date">${escapeHudText(date)}<`)
     .replace(/id="cortana-hud-clock">[^<]*</, `id="cortana-hud-clock">${escapeHudText(clock)}<`)
@@ -1702,10 +1716,10 @@ function buildHudInteractStyle() {
     "#cortana-cc-hud .jcc-talk-wrap,",
     "#cortana-cc-hud .jcc-cmd,",
     "#cortana-cc-hud .jcc-briefing,",
-    "#cortana-cc-hud .jcc-memory-map,",
     "#cortana-cc-hud .jcc-operator,",
     "#cortana-cc-hud .jcc-status-pill,",
     "#cortana-cc-hud .jcc-clock-wrap,",
+    "#cortana-cc-hud .jcc-corner-close-zone,",
     "#cortana-cc-hud .jcc-brand { pointer-events: auto !important; }",
     "#cortana-cc-hud button, #cortana-cc-hud .jcc-nav-item, #cortana-cc-hud .jcc-focus { cursor: pointer; }",
     "</style>",
@@ -1752,6 +1766,13 @@ function buildHudInteractScript() {
     "var cmdEl=t.closest('[data-cortana-cmd]');",
     "if(cmdEl){",
     "var cmd=(cmdEl.getAttribute('data-cortana-cmd')||'').toLowerCase();",
+    "if(cmd==='close'){",
+    "e.preventDefault();e.stopPropagation();",
+    "var stock=document.querySelector('.monaco-workbench .codicon-chrome-close,.monaco-workbench .window-icon.window-close,.window-controls-container .window-close');",
+    "if(stock){try{stock.click();}catch(err){}}",
+    "else{runExtCommand('workbench.action.closeWindow');}",
+    "return;",
+    "}",
     "if(cmd==='task'){e.preventDefault();runExtCommand('workbench.action.tasks.runTask');return;}",
     "if(cmd==='calendar'){e.preventDefault();return;}",
     "if(cmd==='workflow'){e.preventDefault();runExtCommand('workbench.action.showCommands');return;}",

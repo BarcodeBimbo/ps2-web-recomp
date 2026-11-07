@@ -200,10 +200,12 @@ body.CORTANA-inject {
   --cortana-header-icon-hover: #4ad1f1;
   --cortana-badge-size: 17px;
   --cortana-footer-h: 72px;
-  /* Caption cluster hidden (God: match reference-command-center-2 — no min/max/close) */
+  /* Caption cluster hidden; hover-reveal close uses corner zone (not stock Win chrome) */
   --cortana-caption-btn: 0px;
   --cortana-caption-w: 0px;
   --cortana-caption-reserve: 0px;
+  --cortana-corner-close-zone-w: 52px;
+  --cortana-corner-close-zone-h: 36px;
   --cortana-titlebar-h: 30px;
   --cortana-z-hud: 99990;
   --cortana-z-titlebar: 99999;

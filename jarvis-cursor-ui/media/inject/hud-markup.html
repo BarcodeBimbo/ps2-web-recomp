@@ -3,6 +3,10 @@
 <input type="checkbox" id="cortana-focus-toggle" class="jcc-focus-check" aria-hidden="true"/>
 <label for="cortana-focus-toggle" class="jcc-focus-fab" title="Restore Cortana Workstation">◈ CORTANA WORKSTATION</label>
 <div id="cortana-cc-hud" class="cortana-cc-hud" data-cortana-hud="1" data-cortana-wake="on" aria-label="Cortana Workstation">
+  <!-- God: no always-visible close — hover top-right corner reveals Cortana close (stock Win captions stay hidden) -->
+  <div class="jcc-corner-close-zone" id="cortana-corner-close-zone">
+    <button type="button" class="jcc-corner-close" id="cortana-corner-close" data-cortana-cmd="close" title="Close" aria-label="Close window">×</button>
+  </div>
   <div class="jcc-nebula" aria-hidden="true"></div>
   <div class="jcc-particles" aria-hidden="true">
     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
