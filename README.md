@@ -13,7 +13,7 @@ PlayStation 2 games running in the browser through static recompilation. The gam
 <p align="center">
   <img src="docs/media/demo.webp" alt="Gran Turismo 4 running in a browser" width="720">
   <br>
-  <a href="docs/media/demo.mp4">Watch the full recording (1:24)</a>
+  <a href="https://github.com/BarcodeBimbo/PS2WebRecomp/blob/main/docs/media/demo.mp4">Watch the full recording (1:24)</a>
 </p>
 
 This is the sibling of [psp-web-recomp](https://github.com/snuri00/psp-web-recomp) and follows the same method. The first title brought up this way is Gran Turismo 4, chosen because it is one of the most demanding games on the system: it leans on both vector units, on exact floating point behaviour for its replays and license tests, and on graphics tricks that read rendered images back as palettes. It plays from boot through the opening movie, the menus and races, with music and sound effects, and saves to a memory card kept in the browser. A race runs at full speed, 50 frames per second for this PAL release, in Chrome on a laptop's integrated GPU at twice the PS2's resolution, which is how the recording above was made.
