@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~06:25 local)  
+**Updated:** 2026-11-07 (~06:32 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -342,16 +342,16 @@ Rules: `.cursor/rules/ps2-disc-dumper-toolkit.mdc`, `.cursor/rules/redumper-deri
 Local tools already at `E:\AI games\mkps2iso-win64\` (reference only — not the product core).  
 Scratch refs only: `tools/_refs/` (not product).
 
-### Status (2026-11-07 ~06:25) — **Phase 1–3 DONE (ISO + GOB/IGB)**
+### Status (2026-11-07 ~06:30) — **Phase 1–3 VERIFIED (ISO + GOB/IGB + class map)**
 
 | Item | Value |
 |------|--------|
-| Path | **`tools/ps2-alchemy-dumper/`** |
+| Path | **`tools/ps2-alchemy-dumper/`** (v0.2.0) |
 | Docs | `README.md` (credits/GPL/divergences/Windows), `LICENSE` (GPL-3.0), `DESIGN.md`, `docs/SCHEMA.md`, `docs/RESEARCH.md` |
-| CLI | `python -m ps2_alchemy_dumper map\|list-iso\|optical` — own ISO9660 + GFC + GOB STBL + ELF scanners |
-| Schema | `alchemy-map.json` v1.0 + `disc-toc.tsv` / `gfc-files.tsv` + optional `igb_samples/*.head.bin` |
-| CNK smoke | `games/b49f2e…/disc.iso` → GFC **1830** (520 `.igb`); GOB verify **11/11** STBL (`STBLz`×10 + `STBL0`×1); IGB inflate **16/16** with `DA FA` @+0x28; ELF **595** `ig*` / 47 `.igb` paths; MODULES **12** IRX, **no** `igFileIO` on disc |
-| Artifact | `tools/ps2-alchemy-dumper/out/cnk-phase3/` — `verify` **20/20** PASS (schema 1.1) |
+| CLI | `map` / `list-iso` / **`verify`** / `optical` — own disc + ISO9660 + GFC + GOB STBL inflate + ELF class map |
+| Schema | `alchemy-map.json` **v1.1** + `disc-toc.tsv` / `gfc-files.tsv` / `igb-samples.tsv` / `class-map.tsv` + optional `igb_heads/*.bin` |
+| CNK gate | `verify` on `games/b49f2e…/disc.iso` → **20/20 PASS** (exit 0): GFC 1830/4327; GOB STBL verify; IGB `DA FA` incl. butanim; ELF 595 `ig*` + 47 raw `.igb`; no igFileIO on MODULES |
+| Artifact | `tools/ps2-alchemy-dumper/out-cnk/` (also `out/cnk-phase3/`) |
 | Optical | **Stub only** (`optical` subcommand) — redumper-inspired SPTI plan; no drive I/O yet |
 | Constraints | Own Windows code; **no** upstream binary wrap; **no** `runtime/` / disc-fix / R5 / CNK game-file edits |
 
