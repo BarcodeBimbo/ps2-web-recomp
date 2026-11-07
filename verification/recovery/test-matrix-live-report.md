@@ -1,46 +1,52 @@
 # Test-matrix live report
 
-Updated: 2026-11-06 ~21:32 local
+Updated: 2026-11-06 ~21:37 local
 
-## Status
+## Gate cycle 1 — FAIL
 
-**Blocked on disc-fix proposal.** Matrix is watching the shared board. No `proposed_change` yet, so no gate cycle has run.
+Disc-fix proposed `R3_generic_complete_path` (cdvdfsv/cdvd complete path + optional sceCdSync wake). Matrix **rejects apply**.
 
-## Games
+### Why fail
 
-| Game | ID | Runner | Boot |
-|------|-----|--------|------|
-| Hitman Blood Money | `a2116d2ac08a7be4db4e8455ad58d2e5` | ready | `cdrom0:\SLUS_211.08;1` |
-| NFS Most Wanted | `60c82f4a111da300ac23bbec85272788` | ready | `cdrom0:\SLUS_212.67;1` |
+1. **Prove-before-swap:** R1 (SIF end) and R2 (WaitSema fidelity) are still gated. R3 must not land first.
+2. **Bundled R4:** the same proposal also wants IOP `sceCdSync` waiter wake — that is R4, also locked.
+3. **No patch yet:** `files_touched` is empty; matrix did not ask disc-fix to land anything.
 
-## Five phases (Sony-tied)
+### What evidence got right (real)
 
-1. **boot** — EE frames; SIF IOP reboot + LOADFILE; no hard halt
-2. **menu** — prims climb; menu assets load; pad still works
-3. **first_disc_read** — CDVD complete; `curReadPos` / `readee` behavior; WaitSema not falsely pulsed (no Alchemy 16/54/55)
-4. **streaming** — more disc reads; SIF queue drains
-5. **sustained_run** — frame limit; prims keep moving; ~60-class draw
+| Check | Hitman | NFS |
+|-------|--------|-----|
+| Draws / frame limit | 600f, ~128k prims (evidence) / ~78k (matrix smoke) | 600f, ~208k / ~50k |
+| Menu / assets | BOOTMENU / ERRORMES searches | IOPRP + stream reads |
+| CDVD complete path | N-cmd + stream writes | N-cmd + stream writes |
+| WaitSema false Alchemy pulse | none | none |
+| Shared leftover | sema **2** (+7) | sema **2** (+17/23/29/30/32) |
+| Hitman sceCdSync/Status spam | ~1.8k each | little/none |
 
-## Prove-before-swap gate
+Independent smokes: `logs/matrix-hitman-600.log`, `logs/matrix-nfs-600.log`.
 
-Ranked rewrites stay locked until earlier phases pass with real evidence:
+### Sony-tied gaps still open
 
-- R1 SIF end → after boot + menu pass
-- R2 WaitSema fidelity → after R1 + first disc read
-- R3 readee → after R2 + streaming evidence
-- R4 CdSync → after R3
-- R5 pad/sound → after sustained run
+- Logs do **not** show `curReadPos` / `readee` write-back (gap is claimed, not proven).
+- Weird huge N-cmd counts still appear (contract smell).
+- Leftover WaitSema piles remain after 600f.
 
-## Quarantine
+### Phase score (current tree, both games)
 
-No CNK Alchemy contamination on Hitman/NFS (host_signal 16/54/55, soft-arm, FCE0, virt-LBA, +24008).
+boot → menu → first_disc_read → streaming → sustained_run: **pass** on smoke behavior (prims move, disc reads complete, no Alchemy). That does **not** unlock ranked rewrites out of order.
 
-## Baseline (pre-proposal, prior logs only)
+### Ranked rewrite locks
 
-- Hitman explore: 3600 frames, ~148k prims, searches BOOTMENU / ERRORMES / HITMANBL; leftover WaitSema **2** and **7**
-- NFS smoke: 500 frames, ~135k prims; leftover WaitSema **2, 17, 23, 29, 30, 32**
-- These are observations, not a pass on a disc-fix patch
+- R1 SIF end — still gated  
+- R2 WaitSema fidelity — still gated  
+- R3 readee — **blocked** (this proposal)  
+- R4 CdSync — **blocked** (bundled)  
+- R5 pad/sound — still gated  
 
-## Next
+### Next for disc-fix
 
-When disc-fix posts `proposed_change` + evidence, matrix will smoke both games across all five phases and write `pass` or `fail` + plain notes to `board.matrix`.
+Post **R1 SIF-end** (or clear R1 with real evidence) before any cdvdfsv readee/curReadPos rewrite. Do not touch CNK Alchemy paths. No commit.
+
+### Matrix posture
+
+Watching board again for the next `proposed_change`.

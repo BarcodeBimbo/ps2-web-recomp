@@ -107,6 +107,18 @@
     "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
-  "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.",
-  "commit_policy": "No commits until stable build; then commit freely."
+  "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
+  "commit_policy": "No commits until stable build; then commit freely.",
+  "waitsema_ownership": {
+    "report": "verification/recovery/waitsema-createsema-trace-live-report.md",
+    "source": "986fc073-e50c-4ede-a4ee-07cd89edd931",
+    "sema_2": "Durable libcdvd-class parking (init=0,max=255, create once, never deleted). Hitman create_ra 0x001038CC / NFS 0x00495EA8 — ID coincidence, not temp RPC. Do NOT host_signal(2).",
+    "hitman_private": {"7": "init=0 max=1 create_ra 0x001008FC"},
+    "nfs_private": {
+      "17_23_32": "factory create_ra 0x00490224 init=0 max=1",
+      "29": "create_ra 0x0046A208 max=3",
+      "30": "final create_ra 0x0046B748 max=253"
+    },
+    "trace": "PS2_TRACE_SEMA=1 observe-only in runtime/src/kernel.cpp"
+  }
 }
