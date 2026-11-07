@@ -1,0 +1,119 @@
+{
+  "name": "jarvis-cursor-ui",
+  "displayName": "Cursor Command Center UI",
+  "description": "Command Center–style dark cyan HUD + large project File Map for Cursor. Visual structure inspired by jarvis.institute; voice and copy are Cursor’s coding agent — not JARVIS persona.",
+  "version": "0.2.0",
+  "publisher": "ps2recomp-local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "cursor",
+    "command center",
+    "hud",
+    "cyan",
+    "dark",
+    "file map",
+    "theme"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "themes": [
+      {
+        "label": "JARVIS Command",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jarvis-command-color-theme.json"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "jarvisCommand",
+          "title": "Command Center",
+          "icon": "media/jarvis-activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "jarvisCommand": [
+        {
+          "type": "webview",
+          "id": "jarvis.commandCenter",
+          "name": "Command Center",
+          "icon": "media/jarvis-activity.svg"
+        },
+        {
+          "type": "webview",
+          "id": "jarvis.fileMap",
+          "name": "File Map",
+          "icon": "media/jarvis-activity.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "jarvis.fileMap.refresh",
+        "title": "Command Center: Refresh File Map",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "jarvis.fileMap.focus",
+        "title": "Command Center: Focus File Map"
+      },
+      {
+        "command": "jarvis.commandCenter.focus",
+        "title": "Command Center: Focus Overview"
+      },
+      {
+        "command": "jarvis.theme.applyHints",
+        "title": "Command Center: Apply Recommended Theme"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "jarvis.fileMap.refresh",
+          "when": "view == jarvis.fileMap || view == jarvis.commandCenter",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Cursor Command Center UI",
+      "properties": {
+        "jarvis.fileMap.maxEntries": {
+          "type": "number",
+          "default": 4000,
+          "minimum": 200,
+          "maximum": 20000,
+          "description": "Max files/folders to scan into the File Map."
+        },
+        "jarvis.fileMap.ignore": {
+          "type": "array",
+          "default": [
+            ".git",
+            "node_modules",
+            ".next",
+            "dist",
+            "out",
+            "build",
+            ".cursor",
+            "agent-transcripts",
+            "terminals"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Directory names skipped while building the File Map."
+        }
+      }
+    }
+  }
+}
