@@ -1,8 +1,8 @@
 {
   "name": "jarvis-cursor-ui",
-  "displayName": "Cursor Command Center UI",
-  "description": "Command Center–style dark cyan HUD + large project File Map for Cursor. Visual structure inspired by jarvis.institute; voice and copy are Cursor’s coding agent — not JARVIS persona.",
-  "version": "0.3.0",
+  "displayName": "JARVIS Command Center UI",
+  "description": "Full JARVIS Command Center HUD for Cursor: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
+  "version": "0.4.0",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"
@@ -12,9 +12,11 @@
     "Other"
   ],
   "keywords": [
-    "cursor",
+    "jarvis",
     "command center",
     "hud",
+    "iron man",
+    "suit modes",
     "cyan",
     "dark",
     "file map",
@@ -30,13 +32,33 @@
         "label": "JARVIS Command",
         "uiTheme": "vs-dark",
         "path": "./themes/jarvis-command-color-theme.json"
+      },
+      {
+        "label": "JARVIS Mark I",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jarvis-mark1-color-theme.json"
+      },
+      {
+        "label": "JARVIS Mark 50",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jarvis-mark50-color-theme.json"
+      },
+      {
+        "label": "JARVIS Endgame",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jarvis-endgame-color-theme.json"
+      },
+      {
+        "label": "JARVIS Stealth",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jarvis-stealth-color-theme.json"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
           "id": "jarvisCommand",
-          "title": "Command Center",
+          "title": "JARVIS",
           "icon": "media/jarvis-activity.svg"
         }
       ]
@@ -60,20 +82,60 @@
     "commands": [
       {
         "command": "jarvis.fileMap.refresh",
-        "title": "Command Center: Refresh File Map",
+        "title": "JARVIS: Refresh File Map",
         "icon": "$(refresh)"
       },
       {
         "command": "jarvis.fileMap.focus",
-        "title": "Command Center: Focus File Map"
+        "title": "JARVIS: Focus File Map"
       },
       {
         "command": "jarvis.commandCenter.focus",
-        "title": "Command Center: Focus Overview"
+        "title": "JARVIS: Focus Command Center"
       },
       {
         "command": "jarvis.theme.applyHints",
-        "title": "Command Center: Apply Recommended Theme"
+        "title": "JARVIS: Apply Active Suit Theme"
+      },
+      {
+        "command": "jarvis.suit.pick",
+        "title": "JARVIS: Suit Mode…"
+      },
+      {
+        "command": "jarvis.voice.talk",
+        "title": "JARVIS: Talk / Start Voice"
+      },
+      {
+        "command": "jarvis.voice.chat",
+        "title": "JARVIS: Open Chat"
+      },
+      {
+        "command": "jarvis.toggle.focusFortress",
+        "title": "JARVIS: Toggle Focus Fortress"
+      },
+      {
+        "command": "jarvis.toggle.cinema",
+        "title": "JARVIS: Toggle Session Cinema"
+      },
+      {
+        "command": "jarvis.toggle.streamPack",
+        "title": "JARVIS: Toggle Stream Pack"
+      },
+      {
+        "command": "jarvis.toggle.friday",
+        "title": "JARVIS: Toggle F.R.I.D.A.Y. Mode"
+      },
+      {
+        "command": "jarvis.preset.save",
+        "title": "JARVIS: Save Workspace Preset"
+      },
+      {
+        "command": "jarvis.preset.apply",
+        "title": "JARVIS: Apply Workspace Preset"
+      },
+      {
+        "command": "jarvis.hud.refresh",
+        "title": "JARVIS: Refresh HUD"
       }
     ],
     "menus": {
@@ -83,10 +145,24 @@
           "when": "view == jarvis.fileMap || view == jarvis.commandCenter",
           "group": "navigation"
         }
+      ],
+      "commandPalette": [
+        {
+          "command": "jarvis.suit.pick"
+        },
+        {
+          "command": "jarvis.voice.talk"
+        },
+        {
+          "command": "jarvis.preset.save"
+        },
+        {
+          "command": "jarvis.preset.apply"
+        }
       ]
     },
     "configuration": {
-      "title": "Cursor Command Center UI",
+      "title": "JARVIS Command Center",
       "properties": {
         "jarvis.fileMap.maxEntries": {
           "type": "number",
@@ -112,6 +188,13 @@
             "type": "string"
           },
           "description": "Directory names skipped while building the File Map."
+        },
+        "jarvis.hud.glowDefault": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.4,
+          "maximum": 2,
+          "description": "Default glow intensity for HUD FX."
         }
       }
     }

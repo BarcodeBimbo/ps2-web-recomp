@@ -3,6 +3,10 @@
 const vscode = require("vscode");
 const { FileMapProvider } = require("./fileMapProvider");
 const { CommandCenterViewProvider } = require("./commandCenterView");
+const { getSuit, setSuit, pickSuit } = require("./suitModes");
+const { toggle, bumpKeystroke, getState } = require("./sessionCinema");
+const { savePreset, applyPreset } = require("./workspacePresets");
+const voice = require("./voiceBridge");
 
 /** @param {vscode.ExtensionContext} context */
 function activate(context) {
@@ -20,14 +24,57 @@ function activate(context) {
       fileMap.refresh();
       commandCenter.refresh();
     }),
+    vscode.commands.registerCommand("jarvis.fileMap.focus", () => {
+      vscode.commands.executeCommand("jarvis.fileMap.focus");
+    }),
+    vscode.commands.registerCommand("jarvis.commandCenter.focus", () => {
+      vscode.commands.executeCommand("jarvis.commandCenter.focus");
+    }),
     vscode.commands.registerCommand("jarvis.theme.applyHints", async () => {
+      const suit = getSuit(context);
       const cfg = vscode.workspace.getConfiguration();
-      await cfg.update("workbench.colorTheme", "JARVIS Command", vscode.ConfigurationTarget.Global);
+      await cfg.update("workbench.colorTheme", suit.theme, vscode.ConfigurationTarget.Global);
       await cfg.update("workbench.sideBar.location", "left", vscode.ConfigurationTarget.Global);
       vscode.window.showInformationMessage(
-        "Command theme applied. Open the Command Center activity icon for overview + File Map."
+        `${suit.theme} applied. Open Command Center for JARVIS HUD + File Map.`
       );
-    })
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.suit.pick", async () => {
+      await pickSuit(context);
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.suit.set", async (id) => {
+      await setSuit(context, id || "mark1");
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.voice.talk", () => voice.startVoice()),
+    vscode.commands.registerCommand("jarvis.voice.chat", () => voice.openChat()),
+    vscode.commands.registerCommand("jarvis.toggle.focusFortress", async () => {
+      await toggle(context, "focusFortress");
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.toggle.cinema", async () => {
+      await toggle(context, "cinema");
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.toggle.streamPack", async () => {
+      await toggle(context, "streamPack");
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.toggle.friday", async () => {
+      await toggle(context, "friday");
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.preset.save", async () => {
+      await savePreset(context);
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.preset.apply", async () => {
+      await applyPreset(context);
+      commandCenter.refresh();
+    }),
+    vscode.commands.registerCommand("jarvis.hud.refresh", () => commandCenter.refresh())
   );
 
   const watcher = vscode.workspace.createFileSystemWatcher("**/*");
@@ -39,6 +86,25 @@ function activate(context) {
   watcher.onDidDelete(bounce);
   watcher.onDidChange(bounce);
   context.subscriptions.push(watcher);
+
+  context.subscriptions.push(
+    vscode.languages.onDidChangeDiagnostics(() => commandCenter.refresh())
+  );
+
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeTextDocument(() => {
+      bumpKeystroke(context);
+      const st = getState(context);
+      commandCenter.post({
+        type: "energy",
+        keystrokes: st.keystrokes,
+      });
+    })
+  );
+
+  // Periodic GitHUD refresh
+  const gitTimer = setInterval(() => commandCenter.refresh(), 15000);
+  context.subscriptions.push({ dispose: () => clearInterval(gitTimer) });
 }
 
 function debounce(fn, ms) {
