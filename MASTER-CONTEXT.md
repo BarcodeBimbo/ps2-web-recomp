@@ -64,8 +64,8 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 | R1 | SIF end | **cleared_with_evidence** (queue drains to 0) |
 | R2 | WaitSema fidelity | **cleared_with_evidence** (sema 2 = observe parking; never pulse) |
 | R3 | readee lengths / AlignReadBuffer | **verified_apply** in `runtime/src/iop/cdvdfsv.cpp` |
-| R4 | sceCdSync / finish_read wake | **proposed** cycle 7: `R4_clear_with_evidence` (no code) — awaiting matrix |
-| R5 | pad / sound | **still gated** |
+| R4 | sceCdSync / finish_read wake | **cleared_with_evidence** (cycle 7 — no wake code needed) |
+| R5 | pad / sound | **still gated** (separate from CDVD) |
 
 ### Matrix protocol
 
@@ -82,10 +82,11 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 4. PASS — `R2_clear_with_evidence`  
 5. PASS — allow R3 apply  
 6. PASS — `R3_post_apply_verify` (Hitman unaligned `dst=0x52C098 head=8 tail=8`; both games 600f green)
+7. PASS — `R4_clear_with_evidence` (no CdSync wake code; mode=1 polls ≠ missing wake)
 
-**R3 landed:** set `b1len`/`b2len` when dest1/dest2 fed; unaligned head/tail staging (+16/+80). Did **not** touch CdSync wake, WaitSema, or CNK.
+**R3 landed (only behavioral CDVD code so far):** set `b1len`/`b2len` when dest1/dest2 fed; unaligned head/tail staging (+16/+80). Did **not** touch CdSync wake, WaitSema, or CNK.
 
-**Next disc-fix:** separate, unbundled **R4** research/proposal only when evidence is ready. No commit yet (joint OK when team agrees stable).
+**CDVD ranked path R1–R4 is done.** Next options: parent **joint-stable commit** when asked; optional separate **R5 pad/sound** track; longer soak. Disc-fix will not auto-commit.
 
 **Quarantine:** Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.
 
