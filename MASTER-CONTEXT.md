@@ -77,11 +77,13 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | Item | Value |
 |------|--------|
 | Folder | `C:\PS2Recomp\jarvis-cursor-ui\` |
-| VSIX | `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.2.0.vsix` |
-| Install | **Succeeded** via `cursor --install-extension` on the VSIX (folder path install **fails** — CLI wants ID or `.vsix`) |
-| Design | Command Center look (dark navy, cyan) from jarvis.institute layout patterns |
-| Voice | **Cursor coding-agent voice** — not JARVIS persona |
-| Activate | **Reload Cursor window**, then activity bar **Command Center** + theme **JARVIS Command** |
+| VSIX | Latest under folder (was 0.2–0.4; injection rebuild in progress) |
+| Install | Prefer `cursor --install-extension` on the `.vsix` (folder path install **fails** — CLI wants ID or `.vsix`) |
+| Visual target | **`media/reference-command-center.png`** — exact match; also used as **Cursor boot/loading screen** |
+| Mechanism | **Custom CSS / workbench injection required**; overlays **out** |
+| Branding | Full JARVIS UI copy; spoken channel = **Cursor** voice (not JARVIS TTS persona) |
+| Plan | `C:\Users\joshy\.cursor\plans\jarvis_pro_recreation_a1985356.plan.md` |
+| Activate | Reload after install; select suit theme + injection boot path per plan |
 
 ### E) In-flight terminals / installs
 
@@ -351,11 +353,12 @@ Org: [github.com/orgs/ps2dev/repositories](https://github.com/orgs/ps2dev/reposi
 | Item | Detail |
 |------|--------|
 | Folder | `C:\PS2Recomp\jarvis-cursor-ui\` |
-| VSIX | `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.2.0.vsix` (**installed**) |
-| Blueprint site | **`https://jarvis.institute/`** (not `jarvis.institution` — that host fails) |
-| Look | Dark navy + cyan Command Center panels; large File Map webview |
-| Voice | **Cursor coding agent** — not JARVIS persona / “Talk to Jarvis” |
-| Activate | **Reload Cursor window** |
+| Authoritative imagery | **`jarvis-cursor-ui/media/reference-command-center.png`** (boot splash **and** full UI target — exact match, no approximation). Cross-check: `reference-command-center-2.png`. `reference-calibrating-splash.png` is **not** the boot screen under current lock. |
+| Mechanism | **Injection** (Custom CSS / workbench DOM) **required**. Overlays definitively out. |
+| Blueprint site | **`https://jarvis.institute/`** (not `jarvis.institution`) — pattern source; local PNG wins for pixel target |
+| Branding | Full JARVIS UI (“Talk to Jarvis”, Suit Modes, F.R.I.D.A.Y. chrome); voice channel = **Cursor** coding agent |
+| Plan | `jarvis_pro_recreation_a1985356.plan.md` |
+| Activate | Reload after install |
 
 Does not modify PS2 recomp runtime sources.
 
