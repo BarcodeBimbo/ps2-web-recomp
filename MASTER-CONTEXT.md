@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:27 local)  
+**Updated:** 2026-11-07 (~07:30 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -32,10 +32,11 @@ Five-todo Ghidra/Alchemy chain **closed** (MCP dual-ELF, ISO, VA 6/6, verify **2
 
 | Track | Status | Exact next |
 |-------|--------|------------|
-| **CNK prims=2** | **IN PROGRESS** observe | Soft-arm no host FCE0 → 2 prims; forced FCE0 → `ra=0x51ACEC` tid-map miss. Diagnose bind install / `*0x725F50` stall; no Alchemy host patches. Worker: `cnk-2prims-gate-diagnose`. |
-| **Disc-fix Hitman/NFS** | **IN PROGRESS** observe | Board step 8 `R5_pad_sound_observe`; `allow_discfix_apply=false`. Matrix observe cycle + short smokes. No R5 apply. |
-| **GoW DLL PATH smoke** | **IN PROGRESS** | Re-smoke with `runtime-deps` PATH after DLL restore. |
-| Prior §G todos p0-mcp / p0-iso / p1-ghidra-vas / p1-plan / p1-docs | **DONE** | Evidence above; alchemy verify 28/28. |
+| **CNK prims=2** | **IN PROGRESS** observe | Soft-arm 20k reconfirm **prims=2** (`logs/cnk-2prims-observe-2026-11-07/`); diagnose note `cnk-2prims-gate-diagnose-2026-11-07.md`. Tid-map / FCE0 stall still open. |
+| **Disc-fix Hitman/NFS** | **IN PROGRESS** observe | Board step 8 `R5_pad_sound_observe`; matrix observe in flight. No R5 apply. |
+| **GoW DLL PATH smoke** | **DONE ~07:30** | 600f exit 0; **6,964,754** prims; ~122 host f/s; no DLL miss. `gow-dll-path-smoke-2026-11-07.md`. |
+| **Ghidra MCP** | **UP** | `http://127.0.0.1:8089` PID 3152; `gow_boot.elf`+`cnk_boot.elf`; `ghidra-mcp-restart-2026-11-07.md`. |
+| Prior §G todos p0–p1 | **DONE** | Alchemy verify 28/28. |
 
 **DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).
 
