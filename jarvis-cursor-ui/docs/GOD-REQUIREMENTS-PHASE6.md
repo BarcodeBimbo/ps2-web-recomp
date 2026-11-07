@@ -3,7 +3,8 @@
 **Authority:** God (Nov 7, 2026). All items below must be **YES** on God's theme — Studio-tier completeness, unlocked locally, **no Gumroad**.
 
 **Canonical plan:** `jarvis_pro_recreation_a1985356`  
-**Build mirror:** [`phase6-injection-build.md`](./phase6-injection-build.md)
+**Build mirror:** [`phase6-injection-build.md`](./phase6-injection-build.md)  
+**Marketplace extract / Studio→module map:** [`MARKETPLACE-JARVIS-3D-EXTRACT.md`](./MARKETPLACE-JARVIS-3D-EXTRACT.md) (§ GOD LOCKS)
 
 If docs disagree, **the plan wins**; this file is the explicit God feature checklist for Phase 6.
 
@@ -100,6 +101,43 @@ Documented goals for cutting-edge parity (in-repo, God-owned):
 | Window / app **icon** in title bar / taskbar | **Not CSS-alone** | Needs resource/icon patch or shortcut `.ico` |
 
 → Optional sub-phase **6.J** for title-bar chrome (CSS) + optional icon resource patch under same Admin + fail-safe rules.
+
+### Concrete Windows Cursor methods (marketplace-mapping append)
+
+| Goal | Method | Fits inject fail-safes? |
+|------|--------|-------------------------|
+| Title bar HUD look | `"window.titleBarStyle": "custom"` + CSS on `.monaco-workbench .part.titlebar` / custom-titlebar nodes via `media/inject/hud.css` | **YES** — same workbench patch |
+| In-window appicon tint/size | CSS on `.window-appicon` (custom title bar only) | **YES** for style; bitmap swap still needs `.ico` |
+| Taskbar / pinned icon | Replace install icons under `C:\Program Files\cursor\resources\app\resources\win32\` (e.g. `code.ico`) and/or set shortcut `.ico`; `Cursor.exe` embeds the process icon | **Optional 6.I** — Admin, backup, restore on disable/update; **not** pure CSS |
+| Marketplace Custom CSS parallel | Their FAQ: `jarvis-3d-effects.css` + Loader + corrupt warning | Ours: extension-owned inject; accept corrupt warning; no third-party Loader |
+
+Cross-ref detail: [`MARKETPLACE-JARVIS-3D-EXTRACT.md`](./MARKETPLACE-JARVIS-3D-EXTRACT.md) § GOD LOCKS.
+
+---
+
+## Studio row → module / inject CSS deliverable (checklist)
+
+| Studio / marketplace row | Local | Module / surface | Inject / CSS deliverable |
+|--------------------------|-------|------------------|--------------------------|
+| Classic theme + icons | **YES** | `themes/*`, icon/activity assets | Theme JSON + `media/inject/tokens.css` |
+| Basic HUD / arc / energy | **YES** | CC shell, `media/arc-reactor.svg` | `media/inject/hud.css` + `boot.css` |
+| Standard performance | **YES** | Default FX budget | Inject perf / pause-unfocused |
+| Suit Modes | **YES** | `src/suitModes.js` | Suit vars → inject tokens |
+| Particles / arc / streams / glow | **YES** | Phase-2 FX | `hud.css` depth + motion (no overlays) |
+| F.R.I.D.A.Y. / TTS / sound | **YES** | `src/voiceBridge.js` | Chrome rename + mute hooks |
+| Session Cinema / Stream / Focus | **YES** | `src/sessionCinema.js` | Density / dim / watermark classes |
+| Threat / GitHUD / Dashboard | **YES** | `threatHints.js`, `gitHud.js`, CC | Injected HUD panels |
+| AI Companion / presets | **YES** | Voice/chat + `workspacePresets.js` | Preset → inject class apply |
+| Multi-device | **N/A local** | — | No cloud device product |
+| Stream watermark | **Optional local** | Stream Pack | Optional watermark CSS |
+| Seasonal suits | **YES** | Suit variants | Theme + token packs |
+| **Active support** | **EXCLUDED** | — | God-as-builder only |
+
+---
+
+## Marketplace Custom CSS (their product) — short lock
+
+Jarvis 3D marketplace FAQ admits **Custom CSS** (`custom-styles/jarvis-3d-effects.css`, absolute paths, Enable Custom CSS and JS, restart) and treats the **corrupt-install warning** as expected. Marketing “no plugins” conflicts with troubleshooting. We mirror the **pattern** with first-party inject — we do **not** depend on their Loader or VSIX.
 
 ---
 

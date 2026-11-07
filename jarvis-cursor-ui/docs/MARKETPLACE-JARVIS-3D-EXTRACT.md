@@ -2,13 +2,13 @@
 
 **Source:** [VS Marketplace — Jarvis 3D - Iron Man Theme](https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme) (NextGenCode / Mattzey jarvis-3d-vscode-theme lineage)  
 **Purpose:** Phase-6 injection **pattern mapping only**. Do not steal VSIX, Gumroad keys, or their assets.  
-**Our locks win:** injection required · **no overlays** · calibrating splash from **our** PNGs · God fail-safes.
+**Our locks win:** injection required · **no overlays** · calibrating splash from **our** PNGs · God fail-safes · **every Studio option YES locally** · **Active support EXCLUDED**.
 
 ---
 
 ## Speakable summary (parent / God)
 
-Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no plugins,” but FAQ/troubleshooting admit **Custom CSS** — file `custom-styles/jarvis-3d-effects.css`, absolute paths, enable Custom CSS and JS, restart — and the **corrupt-install warning** is expected. Stack claim: CSS3 + extension JS listeners + Canvas particles + SVG Arc Reactor. Free = classic theme/icons/basic HUD; PRO $4.99/2 devices; Studio $24.99/5 + stream white-label; Gumroad live keys + 7-day trial. **Copy patterns only** (workbench CSS inject, glow tokens, settings polish, command taxonomy ideas). **Do not copy** their VSIX, Gumroad, overlay HUD/Konami overlays, or their boot art. **Diff vs us:** we own inject (no third-party loader dependency), forbid overlays, boot from **our** calibrating PNG, and ship three God fail-safes they don’t document.
+Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no plugins,” but FAQ/troubleshooting admit **Custom CSS** — file `custom-styles/jarvis-3d-effects.css`, absolute paths, enable Custom CSS and JS, restart — and the **corrupt-install warning** is expected. Stack claim: CSS3 + extension JS listeners + Canvas particles + SVG Arc Reactor. Free = classic theme/icons/basic HUD; PRO $4.99/2 devices; Studio $24.99/5 + stream white-label; Gumroad live keys + 7-day trial. **Copy patterns only** (workbench CSS inject, glow tokens, settings polish, command taxonomy ideas). **Do not copy** their VSIX, Gumroad, overlay HUD/Konami overlays, or their boot art. **Diff vs us:** we own inject (no third-party loader dependency), forbid overlays, boot from **our** calibrating PNG, and ship three God fail-safes they don’t document. **God lock:** every Studio marketplace option = **YES** on the local theme (unlocked); **Active support = NO** (excluded — God-as-builder only). Title-bar chrome via `titleBarStyle: custom` + inject CSS; taskbar icon needs `.ico`/shortcut replace — **not** pure CSS.
 
 ---
 
@@ -225,4 +225,69 @@ Also claims: “CSS3 + GPU transforms + **WebGL shaders**” (FAQ) — stack dia
 
 ---
 
-*Extracted for parent agent marketplace→build mapping. Parallel siblings may cover injection audit / visual spec — this file is competitor-page only.*
+## GOD LOCKS (Nov 7, 2026) — Studio = YES / Active support = NO
+
+**Authority:** God. Full checklist also in [`GOD-REQUIREMENTS-PHASE6.md`](./GOD-REQUIREMENTS-PHASE6.md). Do not delete sibling marketplace / palette extract content above — this section **adds** locks.
+
+### Policy
+
+| Lock | Value |
+|------|--------|
+| Studio marketplace options on **local** theme | **EVERY option = YES** (unlocked; no Gumroad) |
+| **Active support** / community / vendor support row | **NO — EXCLUDED** (God was only reading the list) |
+| Fail-safe 3 | **God-as-builder / local-owner** — never rename or sell as “Active support” |
+| Overlays | Still **forbidden**; Studio HUD via **inject**, not floating overlays |
+
+### 1) How marketplace Jarvis 3D itself uses Custom CSS (corrupt FAQ) — confirmed
+
+Their public product path (despite “no plugins / auto effects” marketing):
+
+1. Ship / edit `custom-styles/jarvis-3d-effects.css` (glow, scan-line, primary `#00d9ff`).
+2. Point settings at that file with an **absolute** path (Windows: forward slashes).
+3. Command Palette → **Enable Custom CSS and JS** → **full restart**.
+4. Cursor/VS Code may show a **corrupt / integrity** warning — FAQ says editor is **not** corrupted; dismiss / Don’t show again.
+5. Optional quieting: install third-party **Custom CSS and JS Loader** (we do **not** require this — Rank-1 extension-owned inject).
+
+**Our parity:** Same *mechanism class* (workbench Custom CSS), owned by `workbenchInject.js` + `media/inject/*.css`. Accept corrupt warning; no Fix Checksums.
+
+### 2) Taskbar icon + title bar — Windows Cursor feasibility
+
+| Target | Verdict | Method |
+|--------|---------|--------|
+| **Title bar chrome** (colors, glow, layout, window controls styling) | **YES** | Set `"window.titleBarStyle": "custom"` + inject CSS targeting `.monaco-workbench .part.titlebar` (and related custom-titlebar selectors). Fits phase-6 inject + fail-safes. |
+| **Title-bar corner / window app icon** (in-window) | **PARTIAL** | Custom titleBarStyle exposes `.window-appicon` for CSS size/filter/hide; **replacing the bitmap** still needs an `.ico`/resource swap (not pure CSS). |
+| **Windows taskbar icon** | **NO via CSS alone** | OS taskbar uses Electron/`Cursor.exe` icon + pinned **shortcut** `.ico`. Pure workbench CSS cannot reliably change it. |
+
+**Feasible non-CSS methods (optional Phase 6.I / 6.J — Admin + same fail-safes):**
+
+- Replace / patch icons under Cursor install, e.g. `C:\Program Files\cursor\resources\app\resources\win32\code.ico` (and related win32 icons); `Cursor.exe` resource icon may also drive the running app — update wipe risk.
+- Point Start Menu / Desktop / pinned taskbar **shortcut** at a custom `.ico` (safest for shortcut-only branding; may not change an already-running process icon until relaunch / re-pin).
+- Document restore-on-disable / restore-on-update alongside workbench.html backup.
+
+**Do not** claim taskbar branding as a Custom CSS deliverable.
+
+### 3) Feature checklist — Studio row → our module / inject CSS deliverable
+
+Every Studio row = **YES** on God's local theme except Active support = **EXCLUDED**.
+
+| Studio / marketplace row | Local = | Our module / surface | Inject / CSS deliverable |
+|--------------------------|---------|----------------------|---------------------------|
+| Classic Jarvis theme + icon theme | **YES** | `themes/jarvis-*-color-theme.json` + activity/icon assets | Theme JSON + optional icon theme; chrome tokens in `media/inject/tokens.css` |
+| Basic HUD / Arc Reactor / energy | **YES** | Command Center shell + `media/arc-reactor.svg` | `media/inject/hud.css` (+ boot settle via `boot.css`) |
+| Standard performance mode | **YES** | Default FX budget / pause-when-unfocused | Perf flags in inject HUD; no paid tier |
+| Suit Modes (Mark I / 50 / Endgame / Stealth) | **YES** | `src/suitModes.js` + 4 themes | Suit CSS variables bridged into inject tokens |
+| Particles, Arc pulse, Data Streams, full glow | **YES** | Phase-2 FX (canvas/CSS streams) | `hud.css` animations + depth layers (not overlays) |
+| F.R.I.D.A.Y., Voice TTS, Sound Design | **YES** | `src/voiceBridge.js` + CC toggles | Injected chrome rename / mute hooks; Cursor Voice/Chat channel |
+| Session Cinema, Stream Pack, Focus Fortress | **YES** | `src/sessionCinema.js` + toggles | Inject HUD density / dim / watermark classes |
+| Threat Fix Hints, GitHUD, Dashboard | **YES** | `src/threatHints.js`, `src/gitHud.js`, CC dashboard | Live panels in injected HUD regions |
+| AI Companion hooks, Workspace Presets | **YES** | Voice/chat commands + `src/workspacePresets.js` | Preset → suit/theme/inject class apply |
+| Devices (5) | **N/A local** | Single-machine install | No cloud device product |
+| Stream white-label watermark | **YES (optional local)** | Stream Pack toggle | Optional watermark CSS in inject HUD |
+| Seasonal Suit Pack | **YES** | Suit variants / seasonal packs | Theme + inject token packs |
+| **Active support** | **NO — EXCLUDE** | — | Do **not** ship Discord/Ko-fi/vendor SLA; God-as-builder only |
+
+God marketing bullets that must also be YES (see GOD-REQUIREMENTS): 3D depth, real-time animation, active responses, arc pulses, first-party innovation (not peer support), real-time tracking, 30% optimized colors, built-in HUD.
+
+---
+
+*Extracted for parent agent marketplace→build mapping. Parallel siblings may cover injection audit / visual spec / plan — this file remains competitor-page extract **plus** God locks above.*
