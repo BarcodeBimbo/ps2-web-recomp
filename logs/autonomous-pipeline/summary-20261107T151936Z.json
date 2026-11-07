@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "title": "Hitman Blood Money",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\a2116d2ac08a7be4db4e8455ad58d2e5-200f-20261107T151934Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 29100,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "error": "Traceback (most recent call last):\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 137, in <module>\n    raise SystemExit(main(sys.argv))\n                     ~~~~^^^^^^^^^^\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 131, in main\n    text = read_log_text(Path(argv[2]))\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 115, in read_log_text\n    raw = path.read_bytes()\n  File \"c:\\PS2Recomp\\tools\\msys64\\clang64\\lib\\python3.14\\pathlib\\__init__.py\", line 777, in read_bytes\n    with self.open(mode='rb', buffering=0) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\PS2Recomp\\tools\\msys64\\clang64\\lib\\python3.14\\pathlib\\__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '-'"
+      }
+    }
+  ]
+}

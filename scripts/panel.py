@@ -339,6 +339,11 @@ def build(game, source, frames, rounds, slot, password=None):
             raise RuntimeError('The browser build is missing.')
         from install_health import write_health, gate_ready
         health = write_health(GAMES / game_id)
+        try:
+            from self_heal import heal_game
+            heal_game(game_id, dry_run=False, auto=True)
+        except Exception as heal_err:
+            game['self_heal_error'] = str(heal_err)[:240]
         game['health'] = health.get('status')
         if health.get('warnings'):
             game['health_warnings'] = health.get('warnings')

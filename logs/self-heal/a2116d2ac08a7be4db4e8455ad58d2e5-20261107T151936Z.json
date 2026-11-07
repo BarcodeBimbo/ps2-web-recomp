@@ -1,0 +1,66 @@
+{
+  "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+  "updated": "2026-11-07T15:19:36Z",
+  "symptoms": [
+    "gs_negative_draw_boxes"
+  ],
+  "features": [
+    "high_prim_throughput",
+    "track:gs_black_canvas",
+    "track:disc_fix_stable"
+  ],
+  "actions_planned": [
+    {
+      "fix": "global_gs_xyoffset_11bit",
+      "note": "runtime patch; rebuild native if stale"
+    },
+    {
+      "fix": "web_rebuild_and_acl"
+    }
+  ],
+  "actions_taken": [
+    {
+      "action": "web_rebuild",
+      "queued": true
+    },
+    {
+      "action": "web_acl",
+      "ok": true,
+      "path": "C:\\PS2Recomp\\build\\web-a2116d2ac08a7be4db4e8455ad58d2e5"
+    },
+    {
+      "action": "web_rebuild",
+      "skipped": true,
+      "reason": "busy"
+    },
+    {
+      "action": "smoke",
+      "exit_code": 0,
+      "result": {
+        "results": [
+          {
+            "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+            "title": "Hitman Blood Money",
+            "status": "pass",
+            "exit_code": 0,
+            "log": "logs\\autonomous-pipeline\\a2116d2ac08a7be4db4e8455ad58d2e5-200f-20261107T151934Z.log",
+            "health": {
+              "status": "ok",
+              "reasons": [],
+              "warnings": [],
+              "primitives": 29100,
+              "frames": 200,
+              "missing_code": [],
+              "reached_frame_limit": true
+            },
+            "matrix": {
+              "error": "Traceback (most recent call last):\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 137, in <module>\n    raise SystemExit(main(sys.argv))\n                     ~~~~^^^^^^^^^^\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 131, in main\n    text = read_log_text(Path(argv[2]))\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 115, in read_log_text\n    raw = path.read_bytes()\n  File \"c:\\PS2Recomp\\tools\\msys64\\clang64\\lib\\python3.14\\pathlib\\__init__.py\", line 777, in read_bytes\n    with self.open(mode='rb', buffering=0) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\PS2Recomp\\tools\\msys64\\clang64\\lib\\python3.14\\pathlib\\__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '-'"
+            }
+          }
+        ],
+        "summary": "logs\\autonomous-pipeline\\summary-20261107T151936Z.json"
+      }
+    }
+  ],
+  "dry_run": false
+}

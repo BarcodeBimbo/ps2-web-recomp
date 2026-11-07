@@ -31,18 +31,16 @@ def run_smoke(game_id: str, frames: int, env: dict | None) -> tuple[int, Path]:
     exe = native_exe(game_id)
     if exe is None:
         raise FileNotFoundError(f"No native build: build/native-{game_id}/ps2run.exe")
-    disc = GAMES / game_id / "disc" / "boot.elf"
+    boot = GAMES / game_id / "disc" / "boot.elf"
     iso = GAMES / game_id / "disc.iso"
-    if not disc.is_file() and not iso.is_file():
-        raise FileNotFoundError(f"Missing disc for {game_id}")
+    if not boot.is_file():
+        raise FileNotFoundError(f"Missing boot.elf for {game_id}")
+    if not iso.is_file():
+        raise FileNotFoundError(f"Missing disc.iso for {game_id}")
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     stamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
     log_path = LOG_DIR / f"{game_id}-{frames}f-{stamp}.log"
-    cmd = [str(exe)]
-    if iso.is_file():
-        cmd += [str(iso), "--disc", str(iso.parent if (GAMES / game_id / "disc").is_dir() else GAMES / game_id)]
-    else:
-        cmd += [str(disc), "--disc", str(disc.parent.parent)]
+    cmd = [str(exe), str(boot), "--disc", str(iso)]
     cmd += ["--frames", str(frames)]
     merged_env = {**dict(**{k: v for k, v in __import__("os").environ.items()}), **(env or {})}
     with log_path.open("w", encoding="utf-8", errors="replace") as log:

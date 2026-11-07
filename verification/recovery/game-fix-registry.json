@@ -6,7 +6,12 @@
     "disc_fix_quarantine": ["CNK_Alchemy_host_hacks", "R5_padman_libsd_HLE_rewrite"],
     "min_fps_default": 60,
     "min_fps_exceptions": {},
-    "install_gates": ["install_health.py", "matrix_phase_check.py", "autonomous_verify.py"]
+    "install_gates": ["install_health.py", "matrix_phase_check.py", "autonomous_verify.py", "self_heal.py"],
+    "self_heal": {
+      "orchestrator": "scripts/self_heal.py",
+      "per_install_report": "games/<id>/install_issues.json",
+      "auto_tiers": ["T0_global_runtime", "T1_web_acl_rebuild", "T1_post_smoke", "T2_registry_quarantine"]
+    }
   },
   "per_game": {
     "a2116d2ac08a7be4db4e8455ad58d2e5": {

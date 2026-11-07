@@ -556,3 +556,10 @@ C:/PS2Recomp/host/web.cpp:41:72: warning: empty character constant [-Winvalid-pp
 1 warning generated.
 [263/264] Linking CXX executable ps2web.html
 em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]
+
+== Rebuilding browser player ==
+== [1/1] Building browser player
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/PS2Recomp/build/tools-windows
+ninja: no work to do.
