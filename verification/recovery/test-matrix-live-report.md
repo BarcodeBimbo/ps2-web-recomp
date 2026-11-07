@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~22:12 local
+Updated: 2026-11-06 ~22:25 local
 
 ## Gate cycle 1 — FAIL
 
@@ -249,4 +249,7 @@ Post-R3 five-phase still green (Hitman 600f/127974; NFS 600f/208253; SIF 0). Hit
 `allow_discfix_apply`: true for this no-code clear only. Matrix did not unlock R4 preemptively — gated the clear proposal on evidence.
 
 **Alive:** watching for next `proposed_change` (R5 / soak / commit note).
+
+
+**Alive ~22:25:** Cycle 6+7 PASS confirmed; disc-fix idle (4_pass_acknowledged); R5 still gated; no new proposed_change yet — still watching.
 

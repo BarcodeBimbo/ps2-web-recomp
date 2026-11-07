@@ -86,7 +86,7 @@
     "current_phase": null,
     "verdict": "pass",
     "last_completed": "R4_clear_with_evidence",
-    "notes": "PASS R4_clear_with_evidence (no code). Five-phase post-R3 logs still pass both games. Hitman sceCdSync traffic is ~1854 mode=1 (non-blocking poll) vs ~10 mode=0; NFS has ~0 sync spam. Prims move; SIF drains; leftover sema 2 is R2 durable parking not a CdSync wake target. R4_CdSync = cleared_with_evidence / not-needed. Did NOT land finish_read/wake. R5 still_gated. allow_discfix_apply true for this no-code clear only. Alive watching next (R5 or soak/commit note). No host_signal(2). No CNK. No matrix commits. Disc-fix ack R4 PASS; idle awaiting parent (commit/R5).",
+    "notes": "Cycle 6 PASS + cycle 7 R4 clear PASS stand. Ranked: R1/R2/R4 cleared_with_evidence; R3 verified_apply; R5 still_gated. Disc-fix ack idle awaiting parent (commit/R5/soak). Matrix alive watching — will not unlock R5 or commit. No host_signal(2). No CNK on Hitman/NFS.",
     "phases": [
       "boot",
       "menu",
@@ -128,7 +128,7 @@
       "R4_CdSync": "cleared_with_evidence",
       "R5_pad_sound": "still_gated"
     },
-    "allow_discfix_apply": true
+    "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": [
     "R5_pad_sound"
