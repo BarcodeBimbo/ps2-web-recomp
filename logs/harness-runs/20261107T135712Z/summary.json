@@ -1,0 +1,375 @@
+{
+  "summary": {
+    "run_id": "20261107T135712Z",
+    "harness": "cyberarcade_live",
+    "screenshot_to_file_to_analysis": true,
+    "fps_overlay_graph_reading": true,
+    "console_to_logs": true,
+    "muted_chrome": true,
+    "no_visible_mouse": true,
+    "direct_input_pad_wake": true,
+    "no_bootmash": true,
+    "observe_s": 45,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T135712Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\SHOT_MANIFEST.md",
+    "games": [
+      {
+        "name": "Hitman_BM",
+        "label": "Hitman",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=menu booted=False max_prims=0 end_lum=9.189174551794766 software=False abort=True",
+        "booted": false,
+        "max_prims": 0,
+        "software": false,
+        "abort_seen": true,
+        "fps": null,
+        "fps_overlay": {
+          "samples": 0,
+          "avg": null,
+          "min": null,
+          "max": null,
+          "maxMs_peak": null,
+          "graph_trend_avg": 0.0,
+          "graph_trend_last": 0.0
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+          "halt_or_abort during boot",
+          "abort_ui 00_halt: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "abort_ui 01_boot: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "halt_or_abort t=0.0",
+          "abort_ui issue_halt_0: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "abort_ui 04_observe_end: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
+        ]
+      }
+    ],
+    "all_ok": false
+  },
+  "results": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "expect": "menu",
+      "booted": false,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=False max_prims=0 end_lum=9.189174551794766 software=False abort=True",
+      "boot_snap": {
+        "frames": null,
+        "prims": null,
+        "presentCopy": false,
+        "gpu": null,
+        "renderer": "gpu",
+        "running": false,
+        "halted": true,
+        "boot": "Game stopped \u2014 crash log saved",
+        "help": "The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "",
+          "fps": null,
+          "frameMs": null,
+          "maxMs": null,
+          "fpsText": "\u2014",
+          "msText": "\u2014",
+          "maxText": "\u2014",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 0,
+            "series": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "trend": 0,
+            "peak": 0,
+            "mean": 0
+          }
+        }
+      },
+      "max_prims": 0,
+      "fps": null,
+      "fps_overlay": {
+        "samples": 0,
+        "avg": null,
+        "min": null,
+        "max": null,
+        "maxMs_peak": null,
+        "graph_trend_avg": 0.0,
+        "graph_trend_last": 0.0
+      },
+      "software": false,
+      "abort_seen": true,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+        "halt_or_abort during boot",
+        "abort_ui 00_halt: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 01_boot: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "halt_or_abort t=0.0",
+        "abort_ui issue_halt_0: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 04_observe_end: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "error: Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+        "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      ],
+      "shots": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "lum": 8.392947050051303
+        },
+        {
+          "tag": "00_halt",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "lum": 8.392947050051303
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "lum": 8.392947050051303
+        },
+        {
+          "tag": "issue_halt_0",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "lum": 8.392947050051303
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png",
+          "lum": 8.392947050051303
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "lum": 7.7309352589661255,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Preparing game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png"
+        },
+        {
+          "tag": "00_halt",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png"
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png"
+        },
+        {
+          "tag": "issue_halt_0",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm",
+      "rows_n": 1
+    }
+  ]
+}

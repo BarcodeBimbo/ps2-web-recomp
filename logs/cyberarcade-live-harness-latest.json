@@ -1,6 +1,6 @@
 {
   "summary": {
-    "run_id": "20261107T131504Z",
+    "run_id": "20261107T135712Z",
     "harness": "cyberarcade_live",
     "screenshot_to_file_to_analysis": true,
     "fps_overlay_graph_reading": true,
@@ -9,48 +9,48 @@
     "no_visible_mouse": true,
     "direct_input_pad_wake": true,
     "no_bootmash": true,
-    "observe_s": 35,
-    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T131504Z",
-    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z",
-    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\SHOT_MANIFEST.md",
+    "observe_s": 45,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T135712Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\SHOT_MANIFEST.md",
     "games": [
       {
         "name": "Hitman_BM",
         "label": "Hitman",
         "ok": false,
         "goal_ok": false,
-        "goal_note": "expect=menu booted=True max_prims=675671 end_lum=2.8778535856573115 software=False abort=False",
-        "booted": true,
-        "max_prims": 675671,
+        "goal_note": "expect=menu booted=False max_prims=0 end_lum=9.189174551794766 software=False abort=True",
+        "booted": false,
+        "max_prims": 0,
         "software": false,
-        "abort_seen": false,
-        "fps": {
-          "avg": 58.7876923076923,
-          "min": 25.0,
-          "max": 62.0
-        },
+        "abort_seen": true,
+        "fps": null,
         "fps_overlay": {
-          "samples": 21,
-          "avg": 54.42857142857143,
-          "min": 15.0,
-          "max": 60.0,
-          "maxMs_peak": 674.0,
-          "graph_trend_avg": -0.046000000000000006,
-          "graph_trend_last": 0.002
+          "samples": 0,
+          "avg": null,
+          "min": null,
+          "max": null,
+          "maxMs_peak": null,
+          "graph_trend_avg": 0.0,
+          "graph_trend_last": 0.0
         },
         "errors": [
           "Failed to load resource: the server responded with a status of 404 (Not Found)",
-          "black_screen 01_boot canvas_lum=0.15656090487238983 lum=2.951406623505921",
-          "black_screen 02_observe_start canvas_lum=0.22474784554192948 lum=3.1135498007967533",
-          "black_screen 03_observe_mid canvas_lum=0.13816357308584695 lum=2.8889226427622257",
-          "black_screen 04_observe_end canvas_lum=0.13936194895591655 lum=2.8778535856573115"
+          "Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+          "halt_or_abort during boot",
+          "abort_ui 00_halt: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "abort_ui 01_boot: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "halt_or_abort t=0.0",
+          "abort_ui issue_halt_0: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "abort_ui 04_observe_end: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
         ],
-        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm",
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm",
         "agent_shots": [
-          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png",
-          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png",
-          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png",
-          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png"
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
         ]
       }
     ],
@@ -62,227 +62,142 @@
       "label": "Hitman",
       "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
       "expect": "menu",
-      "booted": true,
+      "booted": false,
       "ok": false,
       "goal_ok": false,
-      "goal_note": "expect=menu booted=True max_prims=675671 end_lum=2.8778535856573115 software=False abort=False",
+      "goal_note": "expect=menu booted=False max_prims=0 end_lum=9.189174551794766 software=False abort=True",
       "boot_snap": {
-        "frames": 83,
-        "prims": 1161,
+        "frames": null,
+        "prims": null,
         "presentCopy": false,
-        "gpu": "GPU nvidia ampere (high performance)",
+        "gpu": null,
         "renderer": "gpu",
-        "running": true,
-        "halted": false,
-        "boot": "",
-        "help": "",
+        "running": false,
+        "halted": true,
+        "boot": "Game stopped \u2014 crash log saved",
+        "help": "The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
         "fpsOverlay": {
           "visible": true,
-          "className": "bad",
-          "fps": 25,
-          "frameMs": 40.1,
-          "maxMs": 314,
-          "fpsText": "25",
-          "msText": "40.1 ms",
-          "maxText": "314 ms",
+          "className": "",
+          "fps": null,
+          "frameMs": null,
+          "maxMs": null,
+          "fpsText": "\u2014",
+          "msText": "\u2014",
+          "maxText": "\u2014",
           "graph": {
             "w": 156,
             "h": 40,
-            "ink": 4226,
+            "ink": 0,
             "series": [
-              1,
-              0.949,
-              1,
-              1,
-              0.949,
-              0.667,
-              1,
-              0.923,
-              1,
-              1,
-              0.59,
-              0.744,
-              0.692,
-              0.718,
-              0.744,
-              0.769,
-              1,
-              0.923,
-              0.974,
-              1,
-              0.59,
-              0.718,
-              1,
-              0.718,
-              0.897,
-              0.795
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
             ],
-            "trend": -0.051,
-            "peak": 1,
-            "mean": 0.86
+            "trend": 0,
+            "peak": 0,
+            "mean": 0
           }
         }
       },
-      "max_prims": 675671,
-      "fps": {
-        "avg": 58.7876923076923,
-        "min": 25.0,
-        "max": 62.0
-      },
+      "max_prims": 0,
+      "fps": null,
       "fps_overlay": {
-        "samples": 21,
-        "avg": 54.42857142857143,
-        "min": 15.0,
-        "max": 60.0,
-        "maxMs_peak": 674.0,
-        "graph_trend_avg": -0.046000000000000006,
-        "graph_trend_last": 0.002
+        "samples": 0,
+        "avg": null,
+        "min": null,
+        "max": null,
+        "maxMs_peak": null,
+        "graph_trend_avg": 0.0,
+        "graph_trend_last": 0.0
       },
       "software": false,
-      "abort_seen": false,
+      "abort_seen": true,
       "errors": [
         "Failed to load resource: the server responded with a status of 404 (Not Found)",
-        "black_screen 01_boot canvas_lum=0.15656090487238983 lum=2.951406623505921",
-        "black_screen 02_observe_start canvas_lum=0.22474784554192948 lum=3.1135498007967533",
-        "black_screen 03_observe_mid canvas_lum=0.13816357308584695 lum=2.8889226427622257",
-        "black_screen 04_observe_end canvas_lum=0.13936194895591655 lum=2.8778535856573115"
+        "Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+        "halt_or_abort during boot",
+        "abort_ui 00_halt: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 01_boot: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "halt_or_abort t=0.0",
+        "abort_ui issue_halt_0: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 04_observe_end: The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
       ],
       "page_errors": [],
       "console_tail": [
-        "log: [stats] frame 986 60.0 fps (60 on screen) GPU 26% idle emu 44% vu 97% gs 92% heap 384 MB audio 112 ms hitch 17.8 ms x0",
-        "log: [stats] frame 1046 60.0 fps (60 on screen) GPU 21% idle emu 45% vu 97% gs 92% heap 384 MB audio 99 ms hitch 17.3 ms x0",
-        "log: [stats] frame 1107 60.0 fps (60 on screen) GPU 25% idle emu 46% vu 98% gs 93% heap 384 MB audio 117 ms hitch 17.2 ms x0",
-        "log: [stats] frame 1168 60.0 fps (60 on screen) GPU 20% idle emu 45% vu 97% gs 92% heap 384 MB audio 92 ms hitch 17.4 ms x0",
-        "log: [stats] frame 1228 60.0 fps (60 on screen) GPU 24% idle emu 45% vu 98% gs 92% heap 384 MB audio 103 ms hitch 17.3 ms x0",
-        "log: [stats] frame 1288 60.0 fps (60 on screen) GPU 18% idle emu 47% vu 99% gs 92% heap 384 MB audio 93 ms hitch 17.4 ms x0",
-        "log: [stats] frame 1349 60.0 fps (60 on screen) GPU 24% idle emu 46% vu 97% gs 93% heap 384 MB audio 107 ms hitch 17.2 ms x0",
-        "log: [stats] frame 1409 60.0 fps (60 on screen) GPU 19% idle emu 44% vu 96% gs 92% heap 384 MB audio 98 ms hitch 17.5 ms x0",
-        "log: [stats] frame 1470 60.0 fps (60 on screen) GPU 23% idle emu 47% vu 99% gs 92% heap 384 MB audio 113 ms hitch 17.2 ms x0",
-        "log: [stats] frame 1530 60.0 fps (60 on screen) GPU 20% idle emu 45% vu 97% gs 92% heap 384 MB audio 116 ms hitch 17.5 ms x0",
-        "log: [stats] frame 1591 60.0 fps (60 on screen) GPU 23% idle emu 45% vu 97% gs 92% heap 384 MB audio 108 ms hitch 17.5 ms x0",
-        "log: [stats] frame 1652 60.0 fps (60 on screen) GPU 18% idle emu 45% vu 99% gs 92% heap 384 MB audio 108 ms hitch 17.3 ms x0",
-        "log: [stats] frame 1712 60.0 fps (60 on screen) GPU 24% idle emu 37% vu 96% gs 91% heap 384 MB audio 113 ms hitch 21.3 ms x0",
-        "log: [stats] frame 1773 60.0 fps (60 on screen) GPU 20% idle emu 46% vu 98% gs 92% heap 384 MB audio 112 ms hitch 17.2 ms x0",
-        "log: [stats] frame 1833 60.0 fps (60 on screen) GPU 23% idle emu 47% vu 98% gs 93% heap 384 MB audio 111 ms hitch 17.5 ms x0",
-        "log: [stats] frame 1895 60.0 fps (60 on screen) GPU 18% idle emu 47% vu 99% gs 92% heap 384 MB audio 107 ms hitch 17.4 ms x0",
-        "log: [stats] frame 1955 60.0 fps (60 on screen) GPU 22% idle emu 47% vu 97% gs 92% heap 384 MB audio 116 ms hitch 17.6 ms x0",
-        "log: [stats] frame 2015 60.0 fps (60 on screen) GPU 17% idle emu 44% vu 98% gs 92% heap 384 MB audio 116 ms hitch 17.6 ms x0",
-        "log: [stats] frame 2077 60.0 fps (60 on screen) GPU 21% idle emu 43% vu 98% gs 91% heap 384 MB audio 111 ms hitch 17.4 ms x0",
-        "log: [stats] frame 2137 60.0 fps (60 on screen) GPU 18% idle emu 44% vu 97% gs 92% heap 384 MB audio 108 ms hitch 17.7 ms x0"
+        "error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "error: Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH",
+        "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
       ],
       "shots": [
         {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "lum": 8.392947050051303
+        },
+        {
+          "tag": "00_halt",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "lum": 8.392947050051303
+        },
+        {
           "tag": "01_boot",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png",
-          "lum": 0.15656090487238983
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "lum": 8.392947050051303
         },
         {
-          "tag": "02_observe_start",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png",
-          "lum": 0.22474784554192948
-        },
-        {
-          "tag": "03_observe_mid",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png",
-          "lum": 0.13816357308584695
+          "tag": "issue_halt_0",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "lum": 8.392947050051303
         },
         {
           "tag": "04_observe_end",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png",
-          "lum": 0.13936194895591655
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png",
+          "lum": 8.392947050051303
         }
       ],
       "analyses": [
         {
-          "tag": "01_boot",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png",
-          "lum": 2.951406623505921,
-          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot_canvas.png",
-          "canvas_lum": 0.15656090487238983,
-          "black": true,
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+          "lum": 7.7309352589661255,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
           "abort_ui": false,
           "fps_overlay_dom": {
-            "fps": 15,
-            "frameMs": 68.5,
-            "maxMs": 674,
-            "className": "bad",
-            "visible": true,
-            "graph_trend": -0.856,
-            "graph_peak": 1,
-            "graph_mean": 0.428,
-            "graph_ink": 1706
-          },
-          "fps_overlay_shot": {
-            "crop_box": [
-              8,
-              56,
-              220,
-              200
-            ],
-            "ink_frac": 0.1054,
-            "upper_ink": 0.0671,
-            "graph_ink": 0.1437,
-            "tint": "warn_bad",
-            "overlay_present": true
-          },
-          "verdict": "black_screen",
-          "note": "canvas_lum=0.16; overlay_fps=15; overlay_maxMs=674; graph_trend=-0.856; shot_fps_tint=warn_bad graph_ink=0.1437",
-          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png"
-        },
-        {
-          "tag": "02_observe_start",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png",
-          "lum": 3.1135498007967533,
-          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start_canvas.png",
-          "canvas_lum": 0.22474784554192948,
-          "black": true,
-          "abort_ui": false,
-          "fps_overlay_dom": {
-            "fps": 25,
-            "frameMs": 40.1,
-            "maxMs": 314,
-            "className": "bad",
-            "visible": true,
-            "graph_trend": -0.051,
-            "graph_peak": 1,
-            "graph_mean": 0.86,
-            "graph_ink": 4226
-          },
-          "fps_overlay_shot": {
-            "crop_box": [
-              8,
-              56,
-              220,
-              200
-            ],
-            "ink_frac": 0.1919,
-            "upper_ink": 0.0704,
-            "graph_ink": 0.3133,
-            "tint": "warn_bad",
-            "overlay_present": true
-          },
-          "verdict": "black_screen",
-          "note": "canvas_lum=0.22; overlay_fps=25; overlay_maxMs=314; graph_trend=-0.051; shot_fps_tint=warn_bad graph_ink=0.3133",
-          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png"
-        },
-        {
-          "tag": "03_observe_mid",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png",
-          "lum": 2.8889226427622257,
-          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid_canvas.png",
-          "canvas_lum": 0.13816357308584695,
-          "black": true,
-          "abort_ui": false,
-          "fps_overlay_dom": {
-            "fps": 60,
-            "frameMs": 16.7,
-            "maxMs": 18,
-            "className": "ok",
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
             "visible": true,
             "graph_trend": 0,
-            "graph_peak": 0.359,
-            "graph_mean": 0.359,
-            "graph_ink": 2327
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
           },
           "fps_overlay_shot": {
             "crop_box": [
@@ -291,34 +206,142 @@
               220,
               200
             ],
-            "ink_frac": 0.1284,
-            "upper_ink": 0.075,
-            "graph_ink": 0.1819,
-            "tint": "ok",
-            "overlay_present": true
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
           },
-          "verdict": "black_screen",
-          "note": "canvas_lum=0.14; overlay_fps=60; overlay_maxMs=18; graph_trend=0; shot_fps_tint=ok graph_ink=0.1819",
-          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png"
+          "verdict": "ok",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Preparing game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png"
+        },
+        {
+          "tag": "00_halt",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png"
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png"
+        },
+        {
+          "tag": "issue_halt_0",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png"
         },
         {
           "tag": "04_observe_end",
-          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png",
-          "lum": 2.8778535856573115,
-          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end_canvas.png",
-          "canvas_lum": 0.13936194895591655,
-          "black": true,
-          "abort_ui": false,
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png",
+          "lum": 9.189174551794766,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end_canvas.png",
+          "canvas_lum": 8.392947050051303,
+          "black": false,
+          "abort_ui": true,
           "fps_overlay_dom": {
-            "fps": 60,
-            "frameMs": 16.7,
-            "maxMs": 17,
-            "className": "ok",
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
             "visible": true,
-            "graph_trend": 0.002,
-            "graph_peak": 0.385,
-            "graph_mean": 0.36,
-            "graph_ink": 2326
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
           },
           "fps_overlay_shot": {
             "crop_box": [
@@ -327,25 +350,26 @@
               220,
               200
             ],
-            "ink_frac": 0.1284,
-            "upper_ink": 0.075,
-            "graph_ink": 0.1817,
-            "tint": "ok",
-            "overlay_present": true
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
           },
-          "verdict": "black_screen",
-          "note": "canvas_lum=0.14; overlay_fps=60; overlay_maxMs=17; graph_trend=0.002; shot_fps_tint=ok graph_ink=0.1817",
-          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png"
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.39; graph_trend=0; boot=Game stopped \u2014 crash log saved; help=The browser engine script could not load. Rebuild this game or check the server. A crash log was saved automatically. The runtime cannot safely restart in this ",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
         }
       ],
       "agent_shots": [
-        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png",
-        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png",
-        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png",
-        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png"
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\00_halt.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\issue_halt_0.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm\\04_observe_end.png"
       ],
-      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm",
-      "rows_n": 65
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T135712Z\\hitman_bm",
+      "rows_n": 1
     }
   ]
 }
