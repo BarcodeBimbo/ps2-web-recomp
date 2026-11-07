@@ -5,7 +5,7 @@
 
 **Execution mandate (God ~10:28):** This plan runs **without user input, call, or wait** — full agent control. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  
-**Companion handoff:** `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`, `MASTER-CONTEXT.md`
+**Companion handoff:** `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`, `MASTER-CONTEXT.md`, **`logs/call-log-2026-11-07.md`** (standing orders verbatim)
 
 **Checkbox legend (hard rule for autonomous loop)**
 
