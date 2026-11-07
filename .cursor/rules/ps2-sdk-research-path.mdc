@@ -1,11 +1,11 @@
 ---
-description: PS2 SDK 3.0.3 research uses E:\PS2_SDK with AI-games fallback
+description: PS2 SDK 3.0.3 research uses E:\usr\local\sce only
 alwaysApply: true
 ---
 
 # PS2 SDK 3.0.3 research path
 
-- **Primary:** `E:\PS2_SDK`
-- **Fallback** if primary is missing or incomplete: `E:\AI games\PS2_SDK` (AI Browser Games / AI games folder)
-- Use **whichever tree is the complete Runtime Library Release 3.0.3** install (headers like `libcdvd.h`, modules like `padman.irx` / `libsd.irx`, readme/version markers).
-- Do **not** use `C:\usr\local\sce` for new SDK research.
+- **Only:** `E:\usr\local\sce` — full manual Runtime Library Release 3.0.3 install (June 2005), including Docs&Training, Extra Libraries, and SCEE Tools.
+- Confirm with markers such as `readme-3.0.3.txt`, `common\include\libver.h` (`SCE_LIBRARY_VERSION 0x3030`), `ee\lib\libcdvd.a`, `iop\modules\padman.irx`, `iop\modules\libsd.irx`.
+- Do **not** use `C:\usr\local\sce`, `C:\usr`, `E:\PS2_SDK`, or `E:\AI games\PS2_SDK` for SDK research.
+- Never recreate or install into `C:\usr\local\sce`.
