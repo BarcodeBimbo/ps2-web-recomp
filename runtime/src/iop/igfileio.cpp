@@ -42,12 +42,20 @@ bool g_ui_igb_parse_attempted = false;
 // restore the slot if the fail path cleared it.
 std::uint32_t g_butanim_soft_obj = 0;
 std::uint32_t g_butanim_plant_size = 0;
+// Captured obj+0x20 at soft-arm time. vt+108 (0x5032E0) only runs the full
+// 0x51C100 ingest path when *(obj+0x20)+0x24≠0. Something clears +0x20 between
+// soft-arm and vt+108; restore it so the ingest path sticks and prims >> 2.
+std::uint32_t g_butanim_soft_o20 = 0;
+// Captured obj+0x14 at soft-arm (stream pointer) for completeness.
+std::uint32_t g_butanim_soft_o14 = 0;
 // Require +0xFF to rise after soft-arm; recycled heap objs may already have
 // stale +0xFF=1 which previously released the intro hold before guest FCE0.
 bool g_butanim_saw_ff_clear = false;
 // Latch only when vt+108 ran while shared scratch still held butanim bytes
 // (vt+108 sets +0xFF even when obj+0x20==0 and no real ingest happened).
 bool g_butanim_parsed_ok = false;
+// Track how many times we restored +20 to avoid infinite loops.
+int g_butanim_o20_restore_count = 0;
 
 struct Block {
     std::uint32_t compressed = 0;
