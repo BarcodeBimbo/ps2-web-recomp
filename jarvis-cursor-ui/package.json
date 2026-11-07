@@ -1,8 +1,8 @@
 {
   "name": "jarvis-cursor-ui",
   "displayName": "JARVIS Command Center UI",
-  "description": "Full JARVIS Command Center HUD for Cursor: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
-  "version": "0.4.0",
+  "description": "Full JARVIS Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
+  "version": "0.5.0",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"
@@ -20,7 +20,9 @@
     "cyan",
     "dark",
     "file map",
-    "theme"
+    "theme",
+    "custom css",
+    "injection"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -136,6 +138,26 @@
       {
         "command": "jarvis.hud.refresh",
         "title": "JARVIS: Refresh HUD"
+      },
+      {
+        "command": "jarvis.injection.enable",
+        "title": "JARVIS: Enable Workbench Injection"
+      },
+      {
+        "command": "jarvis.injection.disable",
+        "title": "JARVIS: Disable Workbench Injection"
+      },
+      {
+        "command": "jarvis.injection.reenableAfterUpdate",
+        "title": "JARVIS: Re-enable Injection After Update"
+      },
+      {
+        "command": "jarvis.injection.healthCheck",
+        "title": "JARVIS: Injection Health Check"
+      },
+      {
+        "command": "jarvis.injection.status",
+        "title": "JARVIS: Injection Status"
       }
     ],
     "menus": {
@@ -158,6 +180,21 @@
         },
         {
           "command": "jarvis.preset.apply"
+        },
+        {
+          "command": "jarvis.injection.enable"
+        },
+        {
+          "command": "jarvis.injection.disable"
+        },
+        {
+          "command": "jarvis.injection.reenableAfterUpdate"
+        },
+        {
+          "command": "jarvis.injection.healthCheck"
+        },
+        {
+          "command": "jarvis.injection.status"
         }
       ]
     },
@@ -195,6 +232,23 @@
           "minimum": 0.4,
           "maximum": 2,
           "description": "Default glow intensity for HUD FX."
+        },
+        "jarvis.injection.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Custom CSS workbench injection (primary HUD). Requires Admin once to write under Program Files."
+        },
+        "jarvis.injection.bootMs": {
+          "type": "number",
+          "default": 1200,
+          "minimum": 0,
+          "maximum": 10000,
+          "description": "Boot / calibrating splash duration in milliseconds before injected chrome settles."
+        },
+        "jarvis.injection.fallbackWebview": {
+          "type": "boolean",
+          "default": false,
+          "description": "When false and injection is active, Command Center webview is demoted (injection is primary). When true, keep webview as optional fallback HUD."
         }
       }
     }

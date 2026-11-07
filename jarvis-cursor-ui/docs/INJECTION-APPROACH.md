@@ -225,27 +225,21 @@ reconcileOnActivate():
 
 ---
 
-## 6) IMPORTANT decisions needing God
+## 6) IMPORTANT decisions (God)
 
-1. **Corrupt-installation warning**  
-   - **A)** Accept warning (simplest; Cursor forum notes no reliable “Don’t show again”).  
-   - **B)** Also patch checksums (Fix VSCode Checksums–style) — quieter UI, **more** core mutation + restore complexity.  
-   - **Recommend asking God:** A for phase 6 unless warning is unacceptable.
+1. **Corrupt-installation warning** — **LOCKED (God Nov 7):** Accept warning / reinstall-re-enable. Do **not** implement Fix Checksums. Do **not** block phase 6 on this.
 
-2. **Admin elevation**  
-   Program Files is RX for Users. Enable/Disable needs Admin Cursor session **or** one-time ACL grant on `resources\app\out`. Confirm preferred path.
+2. **Inject host standard** — **LOCKED:** Rank 1 Custom CSS Loader / CSS Injector / Custom UI Style pattern (extension-owned `workbench.html` inline CSS). No third-party loader runtime dependency.
 
-3. **Default `jarvis.injection.enabled`**  
-   Recommend **`false`** until God runs Enable once (avoids surprising patch on install).
+3. **Default `jarvis.injection.enabled`** — **`false`** until God runs Enable once.
 
-4. **CSP stripping**  
-   Recommend **do not strip** Cursor CSP for CSS-only phase 6. Revisit only if boot/HUD JS cannot run otherwise.
+4. **CSP stripping** — Do **not** strip Cursor CSP for CSS-only phase 6.
 
-5. **Command Center webview**  
-   Demote vs delete for phase 6: keep as debug/dev panel vs remove overlay path entirely?
+5. **Command Center webview** — Demote to optional fallback (`jarvis.injection.fallbackWebview` default false).
 
-6. **Boot splash timing**  
-   Injected CSS can style empty `<body>` early; true “before chrome” boot may need brief JS or CSS covering `.monaco-workbench` until ready. Confirm acceptable flicker vs deeper JS inject.
+6. **Admin elevation** — Soft-fail with clear message; God runs Enable as Admin once if Program Files ACL blocks.
+
+7. **Boot splash** — `reference-calibrating-splash.png` is boot **and** overall UI visual target (God).
 
 ---
 
