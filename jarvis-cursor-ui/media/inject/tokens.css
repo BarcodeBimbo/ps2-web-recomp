@@ -176,8 +176,10 @@ body.CORTANA-inject {
   --cortana-rail-w-narrow: 180px;
   --cortana-header-h: 52px;
   --cortana-footer-h: 72px;
-  /* Windows custom-titlebar caption cluster (min/max/close) — keep OC clear */
+  /* Windows/Cursor REAL caption cluster (min/max/close) — functional skin only */
+  --cortana-caption-btn: 46px;
   --cortana-caption-w: 138px;
+  --cortana-caption-reserve: var(--cortana-caption-w);
   --cortana-titlebar-h: 30px;
   --cortana-z-hud: 99990;
   --cortana-z-titlebar: 99999;
@@ -198,7 +200,7 @@ body.CORTANA-inject {
   --cortana-iris-size: 36px;
   --cortana-mic-size: 56px;
   --cortana-mic-core: 34px;
-  --cortana-gauge-size: 56px;
+  --cortana-gauge-size: 70px;
   --cortana-status-dot-size: 7px;
   --cortana-icon-btn-size: 30px;
   /* Header tool icons — cyan/glass only (never warn/amber) */
@@ -207,7 +209,7 @@ body.CORTANA-inject {
   --cortana-header-icon-border: rgba(0, 212, 255, 0.14);
   --cortana-header-icon-bg: rgba(0, 20, 40, 0.45);
   --cortana-wave-h: 22px;
-  --cortana-constellation-h: 70px;
+  --cortana-constellation-h: 48px;
   --cortana-focus-fab-right: 16px;
   --cortana-focus-fab-bottom: 48px;
   --cortana-cc-reveal-ms: 0.7s;
@@ -412,6 +414,9 @@ body.CORTANA-inject {
   --CORTANA-rail-w: var(--cortana-rail-w);
   --CORTANA-header-h: var(--cortana-header-h);
   --CORTANA-footer-h: var(--cortana-footer-h);
+  --CORTANA-caption-w: var(--cortana-caption-w);
+  --CORTANA-caption-reserve: var(--cortana-caption-reserve);
+  --CORTANA-titlebar-h: var(--cortana-titlebar-h);
   --CORTANA-font-ui: var(--cortana-font-ui);
   --CORTANA-font-display: var(--cortana-font-display);
   --CORTANA-font-mono: var(--cortana-font-mono);
@@ -594,12 +599,26 @@ body.CORTANA-inject {
 @keyframes cortana-globe-breathe {
   0%,
   100% {
-    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22));
-    opacity: 0.92;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22)) brightness(0.97);
+    opacity: 0.94;
   }
   50% {
-    filter: drop-shadow(0 0 18px rgba(74, 209, 241, 0.4));
+    filter: drop-shadow(0 0 22px rgba(74, 209, 241, 0.48)) brightness(1.06);
     opacity: 1;
+  }
+}
+
+/* Subtle yaw + drift on photo cutout (baked JARVIS type stays readable — no full spin) */
+@keyframes cortana-globe-parallax {
+  0%,
+  100% {
+    transform: rotate(-1.6deg) translate3d(-2px, 1px, 0) scale(1);
+  }
+  33% {
+    transform: rotate(0.8deg) translate3d(2px, -2px, 0) scale(1.015);
+  }
+  66% {
+    transform: rotate(1.8deg) translate3d(1px, 2px, 0) scale(1.008);
   }
 }
 
@@ -646,12 +665,10 @@ body.CORTANA-inject {
 @keyframes cortana-gauge-glow {
   0%,
   100% {
-    filter: brightness(1);
-    box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+    filter: drop-shadow(0 0 3px rgba(0, 229, 255, 0.4)) brightness(1);
   }
   50% {
-    filter: brightness(1.12);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.42);
+    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7)) brightness(1.08);
   }
 }
 
@@ -716,8 +733,13 @@ body.CORTANA-inject {
 @keyframes CORTANA-orbit-spin { to { transform: rotate(360deg); } }
 @keyframes CORTANA-orbit-spin-rev { to { transform: rotate(-360deg); } }
 @keyframes CORTANA-globe-breathe {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22)); opacity: 0.92; }
-  50% { filter: drop-shadow(0 0 18px rgba(74, 209, 241, 0.4)); opacity: 1; }
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22)) brightness(0.97); opacity: 0.94; }
+  50% { filter: drop-shadow(0 0 22px rgba(74, 209, 241, 0.48)) brightness(1.06); opacity: 1; }
+}
+@keyframes CORTANA-globe-parallax {
+  0%, 100% { transform: rotate(-1.6deg) translate3d(-2px, 1px, 0) scale(1); }
+  33% { transform: rotate(0.8deg) translate3d(2px, -2px, 0) scale(1.015); }
+  66% { transform: rotate(1.8deg) translate3d(1px, 2px, 0) scale(1.008); }
 }
 @keyframes CORTANA-particle-drift {
   0% { transform: translate3d(0, 0, 0); opacity: 0.12; }

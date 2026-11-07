@@ -2,12 +2,19 @@
 
 const vscode = require("vscode");
 const os = require("os");
+const fs = require("fs");
 const { getSuit } = require("./suitModes");
 const { getState, sessionMinutes } = require("./sessionCinema");
 const { getGitStatus } = require("./gitHud");
 const { getThreats } = require("./threatHints");
 const { listPresets } = require("./workspacePresets");
 const voice = require("./voiceBridge");
+
+/** @param {unknown} n */
+function clampPct(n) {
+  if (typeof n !== "number" || !Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
+}
 
 /**
  * CORTANA Command Center — jarvis.institute layout + PRO feature modules (unlocked).
@@ -54,6 +61,13 @@ class CommandCenterViewProvider {
     } catch {
       this._threats = null;
     }
+    try {
+      this._cpuPct = await this._cpuPctSample();
+    } catch {
+      this._cpuPct = null;
+    }
+    this._ramPct = this._memPct();
+    this._diskPct = this._diskPctSample();
     const full = opts.full || !this._booted;
     if (full) {
       this.view.webview.html = this._html(this.view.webview);
@@ -152,11 +166,61 @@ class CommandCenterViewProvider {
     };
   }
 
+  /** System RAM used % from os.totalmem/freemem, or null if unavailable. */
   _memPct() {
     const total = os.totalmem();
     const free = os.freemem();
-    if (!total) return 54;
-    return Math.round(((total - free) / total) * 100);
+    if (!total || !Number.isFinite(total) || !Number.isFinite(free)) return null;
+    return clampPct(((total - free) / total) * 100);
+  }
+
+  /**
+   * Instantaneous CPU % via two os.cpus() samples (~120ms apart).
+   * Returns null on first failure / empty sample — never a dummy.
+   */
+  async _cpuPctSample() {
+    const snap = () => {
+      const cpus = os.cpus();
+      if (!cpus || !cpus.length) return null;
+      let idle = 0;
+      let total = 0;
+      for (const c of cpus) {
+        const t = c.times;
+        idle += t.idle;
+        total += t.user + t.nice + t.sys + t.idle + t.irq;
+      }
+      return { idle, total };
+    };
+    const a = snap();
+    if (!a) return null;
+    await new Promise((r) => setTimeout(r, 120));
+    const b = snap();
+    if (!b) return null;
+    const dTotal = b.total - a.total;
+    const dIdle = b.idle - a.idle;
+    if (dTotal <= 0) return null;
+    return clampPct(100 * (1 - dIdle / dTotal));
+  }
+
+  /** Workspace-volume disk used % via fs.statfsSync, or null if unavailable. */
+  _diskPctSample() {
+    try {
+      if (typeof fs.statfsSync !== "function") return null;
+      const root =
+        vscode.workspace.workspaceFolders?.[0]?.uri.fsPath ||
+        (typeof process !== "undefined" ? process.cwd() : null);
+      if (!root) return null;
+      const s = fs.statfsSync(root);
+      const bsize = Number(s.bsize) || Number(s.frsize) || 0;
+      const blocks = Number(s.blocks) || 0;
+      const avail = Number(s.bavail != null ? s.bavail : s.bfree) || 0;
+      const total = blocks * bsize;
+      if (!total) return null;
+      const free = avail * bsize;
+      return clampPct(((total - free) / total) * 100);
+    } catch {
+      return null;
+    }
   }
 
   _uptime() {
@@ -164,6 +228,19 @@ class CommandCenterViewProvider {
     const h = Math.floor(s / 3600);
     const m = Math.floor((s % 3600) / 60);
     return `${h}h ${m}m`;
+  }
+
+  /**
+   * Gauge cell: real percent or blank em dash (no hardcoded dummies).
+   * @param {string} lab
+   * @param {number | null | undefined} pct
+   */
+  _gaugeHtml(lab, pct) {
+    const p = clampPct(pct);
+    if (p == null) {
+      return `<div class="g"><div class="ring2" style="--p:0"></div><div class="val">—</div><div class="lab">${lab}</div></div>`;
+    }
+    return `<div class="g"><div class="ring2" style="--p:${p}"></div><div class="val">${p}%</div><div class="lab">${lab}</div></div>`;
   }
 
   _injectionPrimary() {
@@ -192,10 +269,9 @@ class CommandCenterViewProvider {
     const threats = data.threats || { total: 0, errors: 0, warnings: 0, hints: 0, items: [] };
     const folders = vscode.workspace.workspaceFolders || [];
     const ws = folders.length ? folders.map((f) => f.name).join(", ") : "No folder open";
-    const editors = vscode.window.visibleTextEditors.length;
-    const ram = this._memPct();
-    const cpu = Math.min(95, 12 + editors * 3 + Math.floor(Math.random() * 8));
-    const disk = 40;
+    const ram = this._ramPct ?? this._memPct();
+    const cpu = this._cpuPct ?? null;
+    const disk = this._diskPct ?? null;
     const host = os.hostname();
     const platform = `${os.type()} ${os.release()}`;
     const ver = this.context.extension.packageJSON.version || "1.0.0";
@@ -733,9 +809,9 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card keep">
         <h2>System monitor</h2>
         <div class="gauges">
-          <div class="g"><div class="ring2" style="--p:${cpu}"></div><div class="val">${cpu}%</div><div class="lab">CPU*</div></div>
-          <div class="g"><div class="ring2" style="--p:${ram}"></div><div class="val">${ram}%</div><div class="lab">RAM</div></div>
-          <div class="g"><div class="ring2" style="--p:${disk}"></div><div class="val">${disk}%</div><div class="lab">Disk*</div></div>
+          ${this._gaugeHtml("CPU", cpu)}
+          ${this._gaugeHtml("RAM", ram)}
+          ${this._gaugeHtml("Disk", disk)}
         </div>
         <div class="row" style="margin-top:6px"><span class="k">${cores} cores · ${memGb} GB · up ${escapeHtml(uptime)}</span><span class="v"></span></div>
       </div>
@@ -743,12 +819,14 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card">
         <h2>LLM / agent status</h2>
         <div class="llm">
-          <div class="chip on"><span>Cursor</span><span class="st">Connected</span></div>
-          <div class="chip on"><span>Composer</span><span class="st">Active</span></div>
-          <div class="chip on"><span>Voice</span><span class="st">Online</span></div>
-          <div class="chip"><span>Claude</span><span class="st">Via Cursor</span></div>
-          <div class="chip"><span>GPT</span><span class="st">Via Cursor</span></div>
-          <div class="chip"><span>Local</span><span class="st">Not linked</span></div>
+          <div class="chip on"><span>Auto</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Composer 2.5</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Grok 4.7</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Grok 4.6</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Claude Opus 5.5</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Claude Sonnet 5.5</span><span class="st">Available</span></div>
+          <div class="chip on"><span>GPT-5.6 Sol</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Gemini 4 Argon</span><span class="st">Available</span></div>
         </div>
       </div>
     </div>

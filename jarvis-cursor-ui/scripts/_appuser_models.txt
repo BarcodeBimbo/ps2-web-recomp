@@ -1,0 +1,206 @@
+﻿
+==== cursor/initialModelState len 7
+applied
+
+==== cursor/seenNewModelBadgeModelNames len 85
+["[\"grok-4.5\",\"[1,\\\"New\\\",true]\"]","[\"grok-4.7\",\"[1,\\\"New\\\",true]\"]"]
+
+==== cursor/selectedDismissibleModelBadgeKeys len 43
+["[\"grok-4.5\",\"[1,\\\"New\\\",true]\"]"]
+
+==== cursor/modelNudgesEnabled len 5
+false
+
+==== src.vs.platform.reactivestorage.browser.reactiveStorageServiceImpl.persistentStorage.applicationUser len 510527
+{"cursorCreds":{"cppBackendUrl":"https://api3.cursor.sh","websiteUrl":"https://cursor.com","backendUrl":"https://api2.cursor.sh","authClientId":"KbZUR41cY7W6zRSdpSUJ7I7mLYBKOCmB","authDomain":"prod.authentication.cursor.sh","repoBackendUrl":"https://repo42.cursor.sh","telemBackendUrl":"https://api3.cursor.sh","cmdkBackendUrl":"https://api3.cursor.sh","geoCppBackendUrl":"https://api4.cursor.sh","cppConfigBackendUrl":"https://api4.cursor.sh","bcProxyUrl":"https://api2.cursor.sh","agentBackendUrlPrivacy":{"default":"https://agent.api5.cursor.sh"},"agentBackendUrlNonPrivacy":{"default":"https://agentn.global.api5.cursor.sh"},"credentialsDisplayName":"Prod","originBackendUrl":"https://api.origin.cursor.com","localLoopInferenceUrl":"https://agentn.global.api5.cursor.sh"},"cppEnabled":true,"composerState":{"maxOpenTabsMode":"custom","alwaysKeepComposerInBound":true,"location2":"pane","hasMigratedChatLocation":false,"hasMigratedComposerGlobalConfigsToModeSpecificConfigs":true,"hasMigratedToAgentIsCmdI":true,"hasMigratedToBgIsCmdE2":false,"hasMigratedToDefaultAutoRun":false,"defaultCapabilities":[],"autoApplyFilesOutsideContext":true,"defaultMode2":"agent","useCliAgentBackendDev":false,"useYoloMode":false,"yoloPrompt":"","yoloCommandAllowlist":[".\\Build.bat","Get-ChildItem","Select-Object","Copy-Item","Where-Object"],"yoloCommandDenylist":[],"yoloMcpToolsDisabled":false,"doNotShowYoloModeWarningAgain":false,"doNotShowFullYoloModeWarningAgain":true,"selectedFakeStreamerId":null,"yoloDeleteFileDisabled":false,"yoloDotFilesDisabled":true,"yoloOutsideWorkspaceDisabled":true,"yoloEnableRunEverything":false,"isWebSearchToolEnabled":true,"isWebSearchToolEnabled2":false,"isWebSearchToolEnabled3":null,"autoAcceptWebSearchTool":false,"autoApprovedModeTransitions":[],"autoRejectedModeTransitions":[],"backgroundComposerEnv":"dev","useLegacyTerminalTool":false,"modes4":[{"id":"agent","name":"Agent","actionId":"composerMode.agent","icon":"infinity","description":"Plan, search, make edits, run commands","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":true,"autoFix":true,"autoRun":true,"fullAutoRun":true,"enabledTools":[],"enabledMcpServers":[],"smartModeAutoRun":false},{"id":"plan","name":"Plan","actionId":"composerMode.plan","icon":"todos","description":"Create detailed plans for accomplishing tasks","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":false,"autoFix":false,"autoRun":false,"enabledTools":[],"enabledMcpServers":[]},{"id":"chat","name":"Ask","actionId":"composerMode.chat","icon":"chat","description":"Ask Cursor questions about your codebase","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":false,"autoFix":true,"autoRun":false,"enabledTools":[],"enabledMcpServers":[]},{"id":"triage","name":"Triage","actionId":"composerMode.triage","icon":"rocket","description":"Coordinate long-horizon tasks with delegated subagents","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":false,"autoFix":false,"autoRun":true,"fullAutoRun":false,"enabledTools":[48,50],"enabledMcpServers":[]},{"id":"spec","name":"Spec","actionId":"composerMode.spec","icon":"checklist","description":"Create structured plans with implementation steps","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":false,"autoFix":false,"autoRun":false,"enabledTools":[],"enabledMcpServers":[]},{"id":"debug","name":"Debug","actionId":"composerMode.debug","icon":"bug","description":"Systematically diagnose and fix bugs using runtime traces","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":true,"autoFix":false,"autoRun":false,"enabledTools":[],"enabledMcpServers":[]},{"id":"multitask","name":"Multitask","actionId":"composerMode.multitask","icon":"circles","description":"Run and coordinate multiple tasks in parallel","thinkingLevel":"none","shouldAutoApplyIfNoEditTool":true,"autoFix":false,"autoRun":true,"fullAutoRun":false,"enabledTools":[],"enabledMcpServers":[]}],"codeBlockDisplayPreference":"collapsed","thinkingLevel":"none","composerMigrationVersion":123,"playwrightProtection":false,"maxOpenTabsCustomValue":5,"smartAllowlistDenylist":[],"enableSmartAuto":false,"isWebFetchToolEnabled":null,"webFetchDomainAllowlist":[],"autoApproveModeTransitions":false,"mcpAuthBlocking":true},"systemNotificationsEnabled":true,"mcpServers":[],"mcpDisabledTools":[],"availableDefaultModels2":[{"name":"default","defaultOn":true,"supportsAgent":true,"degradationStatus":0,"tooltipData":{"primaryText":"","secondaryText":"","secondaryWarningText":false,"icon":"","tertiaryText":"","tertiaryTextUrl":"","markdownContent":"**Auto**<br />Good default for everyday tasks, balanced for quality and speed."},"tooltipDataForMaxMode":{"primaryText":"","secondaryText":"","secondaryWarningText":false,"icon":"","tertiaryText":"","tertiaryTextUrl":"","markdownContent":"**Auto**<br />Good default for everyday tasks, balanced for quality and speed."},"supportsThinking":false,"supportsImages":true,"supportsMaxMode":true,"supportsNonMaxMode":true,"clientDisplayName":"Auto","serverModelName":"default","isRecommendedForBackgroundComposer":false,"supportsPlanMode":true,"supportsSandboxing":true,"inputboxShortModelName":"Auto","parameterDefinitions":[],"variants":[{"parameterValues":[],"displayName":"Auto","displayNameOutsidePicker":"Auto","isMaxMode":false,"isDefaultMaxConfig":true,"isDefaultNonMaxConfig":true,"tooltipData":{"primaryText":"","secondaryText":"","secondaryWarningText":false,"icon":"","tertiaryText":"","tertiaryTextUrl":"","markdownContent":"**Auto**<br />Good default for everyday tasks, balanced for quality and speed."},"variantStringRepresentation":"default[]","legacySlug":"default"}],"legacySlugs":[],"idAliases":["auto"],"tagline":"Balanced quality and speed, recommended for most tasks","cloudAgentEffortModes":[],"supportsSmartModeClassifier":true,"modelPickerBadges":[]},{"name":"grok-4.7","defaultOn":true,"supportsAgent":true,"degradationStatus":0,"supportsThinking":true,"supportsImages":false,"supportsMaxMode":true,"supportsNonMaxMode":true,"contextTokenLimit":256000,"contextTokenLimitForMaxMode":500000,"clientDisplayName":"Grok 4.7","serverModelName":"grok-4.7","isRecommendedForBackgroundComposer":false,"supportsPlanMode":true,"supportsSandboxing":true,"inputboxShortModelName":"Grok 4.7","supportsCmdK":false,"parameterDefinitions":[{"id":"context","name":"Context","markdownTooltip":"Context size the model has available.","parameterType":{"enumParameter":{"values":[{"value":"256k","displayName":"256K","modelPickerBadges":[]},{"value":"500k","displayName":"500K","increasesModelCost":true,"modelPickerBadges":[]}]}}},{"id":"reasoning_effort","name":"Effort","markdownTooltip":"Controls how much reasoning effort the model uses before responding.","parameterType":{"enumParameter":{"values":[{"value":"low","displayName":"Low","modelPickerBadges":[]},{"value":"medium","displayName":"Medium","modelPickerBadges":[]},{"value":"high","displayName":"High","modelPickerBadges":[]},{"value":"xhigh","displayName":"Extra High","modelPickerBadges":[]}]}},"isCycleableByHotkey":true},{"id":"fast","name":"Fast","markdownTooltip":"Significantly faster but consumes more usage","parameterType":{"booleanParameter":{"values":[{"value":"false"},{"value":"true","displayName":"Fast​​","increasesModelCost":true}]}},"isCycleableByHotkey":false}],"variants":[{"parameterValues":[{"id":"context","value":"256k"},{"id":"reasoning_effort","value":"low"},{"id":"fast","value":"false"}],"displayName":"Grok 4.7 <span style=\"color: var(--cursor-text-tertiary);\"> Low</span>","displayNameOutsidePicker":"Grok 4.7 <span style=\"color: var(--cursor-text-tertiary);\"> Low</span>","isMaxMode":false,"tooltipData":{"primaryText":"","secondaryText":"","secondaryWarningText":false,"icon":"","tertiaryText":"","tertiaryTextUrl":"","markdownContent":"**Grok 4.7**<br />SpaceXAI's most powerful model, built for complex coding and knowledge work.<br /><br />256k context window<br /><br />*Version: low effort*"},"variantStringRepresentation":"grok-4.7[context=256k,reasoning_effort=l
+...[truncated]...
+
+==== cursorDiskKV keys sample ====
+model-nudge.startup-session
+model-nudge.startup-trigger-session
+ofsContent:51e11ba2-da10-4287-8ad6-814dfc7503f8:file:///c%3A/PS2Recomp/tests/store_catalog.py
+ofsContent:51e11ba2-da10-4287-8ad6-814dfc7503f8:file:///c%3A/PS2Recomp/tools/_probe_catalog.py
+ofsContent:6a53ee0b-7ff6-4557-b922-2741a43ad132:file:///c%3A/PS2Recomp/logs/_gfc_catalog.py
+ofsContent:8bb7ab64-bdc3-4793-8206-4ce137fac77d:file:///c%3A/Games/ShadowRBX/src/utils/brickcolor_catalog.h
+ofsContent:cd0b3fd7-4732-4e93-b375-7eb36e5f70fa:file:///c%3A/PS2Recomp/jarvis-cursor-ui/media/_tmp_models.py
+ofsContent:cd0b3fd7-4732-4e93-b375-7eb36e5f70fa:file:///c%3A/PS2Recomp/jarvis-cursor-ui/media/_tmp_models2.py
+ofsContent:cd0b3fd7-4732-4e93-b375-7eb36e5f70fa:file:///c%3A/PS2Recomp/jarvis-cursor-ui/media/_tmp_models3.py
+ofsContent:cd0b3fd7-4732-4e93-b375-7eb36e5f70fa:file:///c%3A/PS2Recomp/jarvis-cursor-ui/scripts/_extract_models.py
+ofsContent:cd0b3fd7-4732-4e93-b375-7eb36e5f70fa:file:///c%3A/PS2Recomp/jarvis-cursor-ui/scripts/_scan_cursor_models.py
+
+==== applicationUser top keys ====
+SPECIAL_KEY_id
+aiSettings
+authenticationSettings
+autoCreateNewChatAfterTimeout
+availableDefaultModels2
+azureState
+backendHasDisabledCppAutoImport
+backgroundComposerEnv
+backgroundComposerState
+cliDetectionStatus
+cmdLineHookState
+composerState
+cppAutoImportDecorationStyle
+cppAutoImportEnabled
+cppConfig
+cppEnabled
+cppHasLoadedConfigFromCopilot
+cppInCmdF
+cppModelsState
+cppShowWhitespaceOnlyChanges
+cppTriggerInComments
+cursorCreds
+cursorIgnore
+dashboardUserId
+dialogDontAskAgainPreferences
+eligibleForSnippetLearning
+enoughTimeElapsedSinceOnboarding
+explicitlyEnableSemanticSearch
+fastApplyModelType
+featureModelConfigs
+goneThroughCodeSnippetChangeManagement
+goneThroughCodeSnippetOnboarding
+hasAutoSpillover
+hasBedrockIamRole
+hasResetModelOnce
+hasSentMarkPrivacyAfterWaitingPeriod
+hasTieredSelfServeTeamSpillover
+hasTokenBasedPricing
+haveNotImportedFromVSC
+havePerformedSettingsServiceMigration
+indexRepository
+isEnterprise
+isFileSyncClientEnabled
+lastComposerOpenTime
+mcpDisabledTools
+mcpServers
+membershipType
+modelPickerDisplayConfiguration
+newUserData
+noStorageMode
+onboardingDataPrivacyVersion
+oneTimeSettings
+openAIBaseUrl
+personalDocs
+preferredEmbeddingModel
+privacyModeVersionToggle
+rpcFileLoggerEnabled
+rpcFileLoggerFolder
+serverPrivacyMode
+shouldAutoParseCmdKLinks
+shouldOnlyImportOnAccept
+shouldShowViewZoneWhenPreviewBoxIsClipped6
+subscriptionStatus
+systemNotificationsEnabled
+teamAdminSettings
+teamBlockRepos
+teamBlocklist
+useOpenAIKey
+
+FOUND featureModelConfigs len=1173
+{"composer": {"defaultModel": "default", "fallbackModels": ["claude-sonnet-4-6", "gpt-5.3-codex"], "bestOfNDefaultModels": ["gpt-5.3-codex"]}, "cmdK": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["muse-wonder-1.0", "claude-sonnet-5-5", "claude-haiku-5-5"], "bestOfNDefaultModels": []}, "backgroundComposer": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["gpt-5.3-codex", "gpt-5.4", "claude-opus-4-6", "gpt-5.2", "gpt-5.3-codex"], "bestOfNDefaultModels": ["gpt-5.3-codex", "claude-sonnet-4-6", "gpt-5.3-codex", "gpt-5.4", "claude-opus-4-6", "gpt-5.2"]}, "planExecution": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["grok-4.7", "grok-4.6", "composer-2.5", "claude-opus-5-5", "claude-opus-5"], "bestOfNDefaultModels": []}, "spec": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": [], "bestOfNDefaultModels": []}, "deepSearch": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": [], "bestOfNDefaultModels": []}, "quickAgent": {"defaultModel": "default", "fallbackModels": [], "bestOfNDefaultModels": []}, "subagentModels": {"explore": {"defaultModel": "grok-4.5", "fallbackModels": ["composer-2.5"], "bestOfNDefaultModels": []}}}
+
+FOUND availableDefaultModels2 len=511982
+[{"name": "default", "defaultOn": true, "supportsAgent": true, "degradationStatus": 0, "tooltipData": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "tooltipDataForMaxMode": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "supportsThinking": false, "supportsImages": true, "supportsMaxMode": true, "supportsNonMaxMode": true, "clientDisplayName": "Auto", "serverModelName": "default", "isRecommendedForBackgroundComposer": false, "supportsPlanMode": true, "supportsSandboxing": true, "inputboxShortModelName": "Auto", "parameterDefinitions": [], "variants": [{"parameterValues": [], "displayName": "Auto", "displayNameOutsidePicker": "Auto", "isMaxMode": false, "isDefaultMaxConfig": true, "isDefaultNonMaxConfig": true, "tooltipData": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "variantStringRepresentation": "default[]", "legacySlug": "default"}], "legacySlugs": [], "idAliases": ["auto"], "tagline": "Balanced quality and speed, recommended for most tasks", "cloudAgentEffortModes": [], "supportsSmartModeClassifier": true, "modelPickerBadges": []}, {"name": "grok-4.7", "defaultOn": true, "supportsAgent": true, "degradationStatus": 0, "supportsThinking": true, "supportsImages": false, "supportsMaxMode": true, "supportsNonMaxMode": true, "contextTokenLimit": 256000, "contextTokenLimitForMaxMode": 500000, "clientDisplayName": "Grok 4.7", "serverModelName": "grok-4.7", "isRecommendedForBackgroundComposer": false, "supportsPlanMode": true, "supportsSandboxing": true, "inputboxShortModelName": "Grok 4.7", "supportsCmdK": false, "parameterDefinitions": [{"id": "context", "name": "Context", "markdownTooltip": "Context size the model has available.", "parameterType": {"enumParameter": {"values": [{"value": "256k", "displayName": "256K", "modelPickerBadges": []}, {"value": "500k", "displayName": "500K", "increasesModelCost": true, "modelPickerBadges": []}]}}}, {"id": "reasoning_effort", "name": "Effort", "markdownTooltip": "Controls how much reasoning effort the model uses before responding.", "parameterType": {"enumParameter": {"values": [{"value": "low", "displayName": "Low", "modelPickerBadges": []}, {"value": "medium", "displayName": "Medium", "modelPickerBadges": []}, {"value": "high", "displayName": "High", "modelPickerBadges": []}, {"value": "xhigh", "displayName": "Extra High", "modelPickerBadges": []}]}}, "isCycleableByHotkey": true}, {"id": "fast", "name": "Fast", "markdownTooltip": "Significantly faster but consumes mo
+
+FOUND cppModelsState len=23
+{"cppModels": ["fast"]}
+
+FOUND aiSettings len=13434
+{"modelConfig": {"cmd-k": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "composer": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "background-composer": {"modelName": "default", "maxMode": true, "selectedModels": [{"modelId": "default", "parameters": []}]}, "plan-execution": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "spec": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "deep-search": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "quick-agent": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}, "composer-ensemble": {"modelName": "default", "maxMode": false, "selectedModels": [{"modelId": "default", "parameters": []}]}}, "modelConfigMigrated": true, "cmdKModel": "default", "composerModel": "default", "backgroundComposerModel": "default", "modelsWithNoDefaultSwitch": ["code-supernova-1-million", "grok-code-fast-1", "claude-4-5-sonnet-20250929-thinking", "claude-4.5-sonnet-thinking", "claude-4.5-sonnet", "claude-4-5-sonnet-20250929", "gpt-5", "gpt-5-high", "gpt-5-low", "gpt-5-fast", "gpt-5-high-fast", "gpt-5-low-fast", "gpt-5-codex", "gemini-2-5-pro", "gpt-5-mini", "gpt-5-nano"], "modelDefaultSwitchOnNewChat": false, "completedModelMigrations": ["sonnet-4-to-4-5-2025-01-composer-claude-4-sonnet", "sonnet-4-to-4-5-2025-01-background-composer-claude-4-sonnet", "sonnet-4-to-4-5-2025-01-plan-execution-claude-4-sonnet", "sonnet-4-thinking-to-4-5-thinking-2025-01-composer-claude-4-sonnet-thinking", "sonnet-4-thinking-to-4-5-thinking-2025-01-background-composer-claude-4-sonnet-thinking", "sonnet-4-thinking-to-4-5-thinking-2025-01-plan-execution-claude-4-sonnet-thinking", "sonnet-4-to-4-5-2025-nov-8-composer-claude-4-sonnet", "sonnet-4-to-4-5-2025-nov-8-background-composer-claude-4-sonnet", "sonnet-4-to-4-5-2025-nov-8-plan-execution-claude-4-sonnet", "sonnet-4-thinking-to-4-5-thinking-2025-nov-8-composer-claude-4-sonnet-thinking", "sonnet-4-thinking-to-4-5-thinking-2025-nov-8-background-composer-claude-4-sonnet-thinking", "sonnet-4-thinking-to-4-5-thinking-2025-nov-8-plan-execution-claude-4-sonnet-thinking", "codex-max-2025-12-05-composer-gpt-5.1-codex", "codex-max-2025-12-05-background-composer-gpt-5.1-codex", "codex-max-2025-12-05-plan-execution-gpt-5.1-codex", "codex-max-low-2025-12-05-composer-gpt-5.1-codex-low", "codex-max-low-2025-12-05-background-composer-gpt-5.1-codex-low", "codex-max-low-2025-12-05-plan-execution-gpt-5.1-codex-low", "codex-max-high-2025-12-05-composer-gpt-5.1-codex-high", "codex-max-high-2025-12-05-background-composer-gpt-5.1-codex-high", "codex-max-high-2025-12-05-plan-execution-gpt-5.1-codex-high", "codex-max-fast-2025-12-05-composer-gpt-5.1-codex-fast", "codex-max-fast-2025-12-
+
+FOUND composerState len=3648
+{"maxOpenTabsMode": "custom", "alwaysKeepComposerInBound": true, "location2": "pane", "hasMigratedChatLocation": false, "hasMigratedComposerGlobalConfigsToModeSpecificConfigs": true, "hasMigratedToAgentIsCmdI": true, "hasMigratedToBgIsCmdE2": false, "hasMigratedToDefaultAutoRun": false, "defaultCapabilities": [], "autoApplyFilesOutsideContext": true, "defaultMode2": "agent", "useCliAgentBackendDev": false, "useYoloMode": false, "yoloPrompt": "", "yoloCommandAllowlist": [".\\Build.bat", "Get-ChildItem", "Select-Object", "Copy-Item", "Where-Object"], "yoloCommandDenylist": [], "yoloMcpToolsDisabled": false, "doNotShowYoloModeWarningAgain": false, "doNotShowFullYoloModeWarningAgain": true, "selectedFakeStreamerId": null, "yoloDeleteFileDisabled": false, "yoloDotFilesDisabled": true, "yoloOutsideWorkspaceDisabled": true, "yoloEnableRunEverything": false, "isWebSearchToolEnabled": true, "isWebSearchToolEnabled2": false, "isWebSearchToolEnabled3": null, "autoAcceptWebSearchTool": false, "autoApprovedModeTransitions": [], "autoRejectedModeTransitions": [], "backgroundComposerEnv": "dev", "useLegacyTerminalTool": false, "modes4": [{"id": "agent", "name": "Agent", "actionId": "composerMode.agent", "icon": "infinity", "description": "Plan, search, make edits, run commands", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": true, "autoFix": true, "autoRun": true, "fullAutoRun": true, "enabledTools": [], "enabledMcpServers": [], "smartModeAutoRun": false}, {"id": "plan", "name": "Plan", "actionId": "composerMode.plan", "icon": "todos", "description": "Create detailed plans for accomplishing tasks", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": false, "autoFix": false, "autoRun": false, "enabledTools": [], "enabledMcpServers": []}, {"id": "chat", "name": "Ask", "actionId": "composerMode.chat", "icon": "chat", "description": "Ask Cursor questions about your codebase", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": false, "autoFix": true, "autoRun": false, "enabledTools": [], "enabledMcpServers": []}, {"id": "triage", "name": "Triage", "actionId": "composerMode.triage", "icon": "rocket", "description": "Coordinate long-horizon tasks with delegated subagents", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": false, "autoFix": false, "autoRun": true, "fullAutoRun": false, "enabledTools": [48, 50], "enabledMcpServers": []}, {"id": "spec", "name": "Spec", "actionId": "composerMode.spec", "icon": "checklist", "description": "Create structured plans with implementation steps", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": false, "autoFix": false, "autoRun": false, "enabledTools": [], "enabledMcpServers": []}, {"id": "debug", "name": "Debug", "actionId": "composerMode.debug", "icon": "bug", "description": "Systematically diagnose and fix bugs using runtime traces", "thinkingLevel": "none", "shouldAutoApplyIfNoEditTool": true, "autoFix": false, "autoRun": false, "enabledTools": [], "enabledMcpServers": []}, {"id": "multitask", 
+
+FOUND backgroundComposerState len=2
+{}
+
+FOUND featureModelConfigs len=1173
+{"composer": {"defaultModel": "default", "fallbackModels": ["claude-sonnet-4-6", "gpt-5.3-codex"], "bestOfNDefaultModels": ["gpt-5.3-codex"]}, "cmdK": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["muse-wonder-1.0", "claude-sonnet-5-5", "claude-haiku-5-5"], "bestOfNDefaultModels": []}, "backgroundComposer": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["gpt-5.3-codex", "gpt-5.4", "claude-opus-4-6", "gpt-5.2", "gpt-5.3-codex"], "bestOfNDefaultModels": ["gpt-5.3-codex", "claude-sonnet-4-6", "gpt-5.3-codex", "gpt-5.4", "claude-opus-4-6", "gpt-5.2"]}, "planExecution": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": ["grok-4.7", "grok-4.6", "composer-2.5", "claude-opus-5-5", "claude-opus-5"], "bestOfNDefaultModels": []}, "spec": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": [], "bestOfNDefaultModels": []}, "deepSearch": {"defaultModel": "claude-sonnet-4-6", "fallbackModels": [], "bestOfNDefaultModels": []}, "quickAgent": {"defaultModel": "default", "fallbackModels": [], "bestOfNDefaultModels": []}, "subagentModels": {"explore": {"defaultModel": "grok-4.5", "fallbackModels": ["composer-2.5"], "bestOfNDefaultModels": []}}}
+
+FOUND availableDefaultModels2 len=511982
+[{"name": "default", "defaultOn": true, "supportsAgent": true, "degradationStatus": 0, "tooltipData": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "tooltipDataForMaxMode": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "supportsThinking": false, "supportsImages": true, "supportsMaxMode": true, "supportsNonMaxMode": true, "clientDisplayName": "Auto", "serverModelName": "default", "isRecommendedForBackgroundComposer": false, "supportsPlanMode": true, "supportsSandboxing": true, "inputboxShortModelName": "Auto", "parameterDefinitions": [], "variants": [{"parameterValues": [], "displayName": "Auto", "displayNameOutsidePicker": "Auto", "isMaxMode": false, "isDefaultMaxConfig": true, "isDefaultNonMaxConfig": true, "tooltipData": {"primaryText": "", "secondaryText": "", "secondaryWarningText": false, "icon": "", "tertiaryText": "", "tertiaryTextUrl": "", "markdownContent": "**Auto**<br />Good default for everyday tasks, balanced for quality and speed."}, "variantStringRepresentation": "default[]", "legacySlug": "default"}], "legacySlugs": [], "idAliases": ["auto"], "tagline": "Balanced quality and speed, recommended for most tasks", "cloudAgentEffortModes": [], "supportsSmartModeClassifier": true, "modelPickerBadges": []}, {"name": "grok-4.7", "defaultOn": true, "supportsAgent": true, "degradationStatus": 0, "supportsThinking": true, "supportsImages": false, "supportsMaxMode": true, "supportsNonMaxMode": true, "contextTokenLimit": 256000, "contextTokenLimitForMaxMode": 500000, "clientDisplayName": "Grok 4.7", "serverModelName": "grok-4.7", "isRecommendedForBackgroundComposer": false, "supportsPlanMode": true, "supportsSandboxing": true, "inputboxShortModelName": "Grok 4.7", "supportsCmdK": false, "parameterDefinitions": [{"id": "context", "name": "Context", "markdownTooltip": "Context size the model has available.", "parameterType": {"enumParameter": {"values": [{"value": "256k", "displayName": "256K", "modelPickerBadges": []}, {"value": "500k", "displayName": "500K", "increasesModelCost": true, "modelPickerBadges": []}]}}}, {"id": "reasoning_effort", "name": "Effort", "markdownTooltip": "Controls how much reasoning effort the model uses before responding.", "parameterType": {"enumParameter": {"values": [{"value": "low", "displayName": "Low", "modelPickerBadges": []}, {"value": "medium", "displayName": "Medium", "modelPickerBadges": []}, {"value": "high", "displayName": "High", "modelPickerBadges": []}, {"value": "xhigh", "displayName": "Extra High", "modelPickerBadges": []}]}}, "isCycleableByHotkey": true}, {"id": "fast", "name": "Fast", "markdownTooltip": "Significantly faster but consumes mo
+
+==== model-like ids in applicationUser ====
+"claude-4-5-sonnet-20250929"
+"claude-4-5-sonnet-20250929-thinking"
+"claude-4-sonnet"
+"claude-4-sonnet-thinking"
+"claude-4.5-haiku"
+"claude-4.5-haiku-thinking"
+"claude-4.5-opus-high"
+"claude-4.5-opus-high-thinking"
+"claude-4.5-sonnet"
+"claude-4.5-sonnet-thinking"
+"claude-4.6-opus-high"
+"claude-4.6-opus-high-thinking"
+"claude-4.6-opus-low"
+"claude-4.6-opus-low-thinking"
+"claude-4.6-opus-max"
+"claude-4.6-opus-max-thinking"
+"claude-4.6-opus-medium"
+"claude-4.6-opus-medium-thinking"
+"claude-4.6-sonnet-high"
+"claude-4.6-sonnet-high-thinking"
+"claude-4.6-sonnet-low"
+"claude-4.6-sonnet-low-thinking"
+"claude-4.6-sonnet-max"
+"claude-4.6-sonnet-max-thinking"
+"claude-4.6-sonnet-medium"
+"claude-4.6-sonnet-medium-thinking"
+"claude-fable-5"
+"claude-fable-5-1"
+"claude-fable-5-1-high"
+"claude-fable-5-1-low"
+"claude-fable-5-1-max"
+"claude-fable-5-1-medium"
+"claude-fable-5-1-thinking-high"
+"claude-fable-5-1-thinking-low"
+"claude-fable-5-1-thinking-max"
+"claude-fable-5-1-thinking-medium"
+"claude-fable-5-1-thinking-xhigh"
+"claude-fable-5-1-xhigh"
+"claude-fable-5-1[thinking=false,context=1m,effort=high]"
+"claude-fable-5-1[thinking=false,context=1m,effort=low]"
+"claude-fable-5-1[thinking=false,context=1m,effort=max]"
+"claude-fable-5-1[thinking=false,context=1m,effort=medium]"
+"claude-fable-5-1[thinking=false,context=1m,effort=xhigh]"
+"claude-fable-5-1[thinking=false,context=300k,effort=high]"
+"claude-fable-5-1[thinking=false,context=300k,effort=low]"
+"claude-fable-5-1[thinking=false,context=300k,effort=max]"
+"claude-fable-5-1[thinking=false,context=300k,effort=medium]"
+"claude-fable-5-1[thinking=false,context=300k,effort=xhigh]"
+"claude-fable-5-1[thinking=true,context=1m,effort=high]"
+"claude-fable-5-1[thinking=true,context=1m,effort=low]"
+"claude-fable-5-1[thinking=true,context=1m,effort=max]"
+"claude-fable-5-1[thinking=true,context=1m,effort=medium]"
+"claude-fable-5-1[thinking=true,context=1m,effort=xhigh]"
+"claude-fable-5-1[thinking=true,context=300k,effort=high]"
+"claude-fable-5-1[thinking=true,context=300k,effort=low]"
+"claude-fable-5-1[thinking=true,context=300k,effort=max]"
+"claude-fable-5-1[thinking=true,context=300k,effort=medium]"
+"claude-fable-5-1[thinking=true,context=300k,effort=xhigh]"
+"claude-fable-5-high"
+"claude-fable-5-low"
+"claude-fable-5-max"
+"claude-fable-5-medium"
+"claude-fable-5-thinking-high"
+"claude-fable-5-thinking-low"
+"claude-fable-5-thinking-max"
+"claude-fable-5-thinking-medium"
+"claude-fable-5-thinking-xhigh"
+"claude-fable-5-xhigh"
+"claude-fable-5[thinking=false,context=1m,effort=high]"
+"claude-fable-5[thinking=false,context=1m,effort=low]"
+"claude-fable-5[thinking=false,context=1m,effort=max]"
+"claude-fable-5[thinking=false,context=1m,effort=medium]"
+"claude-fable-5[thinking=false,context=1m,effort=xhigh]"
+"claude-fable-5[thinking=false,context=300k,effort=high]"
+"claude-fable-5[thinking=false,context=300k,effort=low]"
+"claude-fable-5[thinking=false,context=300k,effort=max]"
+"claude-fable-5[thinking=false,context=300k,effort=medium]"
+"claude-fable-5[thinking=false,context=300k,effort=xhigh]"
+"claude-fable-5[thinking=true,context=1m,effort=high]"
+"claude-fable-5[thinking=true,context=1m,effort=low]"
+total 801

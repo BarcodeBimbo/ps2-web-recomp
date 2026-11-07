@@ -14,40 +14,30 @@ TEXT = (52, 10, 130, 40)  # JARVIS / COMMAND CENTER glyph zone
 
 
 def blank_text(c: np.ndarray) -> np.ndarray:
+    """Paint out entire glyph rectangle with L/R teal fill lerp (no residual JARVIS)."""
     tx0, ty0, tx1, ty1 = TEXT
-    for y in range(ty0, ty1):
-        left = c[y, 48:52].astype(np.float32).mean(axis=0)
-        right = c[y, 128:135].astype(np.float32).mean(axis=0)
-        for x in range(tx0, tx1):
-            t = (x - tx0) / max(1, (tx1 - tx0 - 1))
-            base = left * (1.0 - t) + right * t
-            pix = c[y, x].astype(np.float32)
-            lum = float(pix[0] + pix[1] + pix[2])
-            if pix[1] > 120 or lum > 320 or (pix[2] > 140 and pix[0] > 40):
-                c[y, x] = base.astype(np.uint8)
-            elif pix[1] > 100:
-                a = min(1.0, (float(pix[1]) - 100.0) / 40.0)
-                c[y, x] = (pix * (1.0 - a) + base * a).astype(np.uint8)
-
-    # Second pass: neighborhood heal residual AA fringes
-    r = c[:, :, 0].astype(int)
-    g = c[:, :, 1].astype(int)
-    b = c[:, :, 2].astype(int)
-    bright = (g > 125) & (b > 140) & ((r + g + b) > 300)
-    mask = np.zeros(c.shape[:2], dtype=bool)
-    mask[ty0:ty1, tx0:tx1] = bright[ty0:ty1, tx0:tx1]
-    ys, xs = np.where(mask)
-    for y, x in zip(ys.tolist(), xs.tolist()):
-        y0, y1 = max(0, y - 3), min(c.shape[0], y + 4)
-        x0, x1 = max(0, x - 4), min(c.shape[1], x + 5)
-        patch = c[y0:y1, x0:x1]
-        pr = patch[:, :, 0].astype(int)
-        pg = patch[:, :, 1].astype(int)
-        pb = patch[:, :, 2].astype(int)
-        keep = ~((pg > 125) & (pb > 140) & ((pr + pg + pb) > 300))
-        if keep.any():
-            c[y, x] = patch[keep].mean(axis=0).astype(np.uint8)
-    return c
+    # Slightly wider paint so AA fringes and the left accent tick disappear.
+    x0, x1 = 50, 134
+    y0, y1 = 9, 41
+    out = c.astype(np.float32)
+    for y in range(y0, y1):
+        left = out[y, 44:49].mean(axis=0)
+        right = out[y, 134:142].mean(axis=0)
+        for x in range(x0, x1):
+            t = (x - x0) / max(1, (x1 - x0 - 1))
+            out[y, x] = left * (1.0 - t) + right * t
+    # Soft vertical feather at top/bottom of paint strip into original
+    for feather_y, alpha in ((y0 - 1, 0.45), (y0, 0.75), (y1 - 1, 0.75), (y1, 0.45)):
+        if 0 <= feather_y < out.shape[0]:
+            for x in range(x0, x1):
+                t = (x - x0) / max(1, (x1 - x0 - 1))
+                base = out[feather_y, 44:49].mean(axis=0) * (1.0 - t) + out[
+                    feather_y, 134:142
+                ].mean(axis=0) * t
+                out[feather_y, x] = c[feather_y, x].astype(np.float32) * (
+                    1.0 - alpha
+                ) + base * alpha
+    return out.astype(np.uint8)
 
 
 def main() -> None:
@@ -68,6 +58,12 @@ def main() -> None:
     b64 = base64.b64encode(path.read_bytes()).decode("ascii")
     print("b64_chars", len(b64))
     (OUT / "_probe" / "topleft_b64.txt").write_text(b64, encoding="utf-8")
+    var_css = (
+        "/* Brand chrome crop from reference-command-center-2.png — not generative */\n"
+        f':root {{ --jcc-photo-topleft: url("data:image/png;base64,{b64}"); }}\n'
+    )
+    (OUT / "_probe" / "topleft_var.css").write_text(var_css, encoding="utf-8")
+    print("wrote topleft_var.css")
 
 
 if __name__ == "__main__":

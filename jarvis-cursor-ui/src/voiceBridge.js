@@ -40,4 +40,13 @@ async function startVoice() {
   return openChat();
 }
 
-module.exports = { openChat, startVoice };
+/**
+ * Palette/keybinding entry for wake listen.
+ * Continuous "Hey Cortana" recognition is armed by the inject HUD script;
+ * this command starts the voice channel (same path as Talk).
+ */
+async function wakeListen() {
+  return startVoice();
+}
+
+module.exports = { openChat, startVoice, wakeListen };

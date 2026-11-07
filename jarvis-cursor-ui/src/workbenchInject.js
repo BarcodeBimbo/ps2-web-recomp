@@ -19,6 +19,7 @@ const fs = require("fs");
 const fsp = fs.promises;
 const path = require("path");
 const crypto = require("crypto");
+const os = require("os");
 const vscode = require("vscode");
 
 const MARKER_START = "CORTANA-INJECT-START";
@@ -29,6 +30,9 @@ const STYLE_ID = "cortana-workbench-css";
 const BOOT_STAGED_NAME = "cortana-boot-splash.png";
 /** Authoritative boot still: calibrating splash (CSS-drawn cover; PNG staged for binding). */
 const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
+/** Hero globe cutout (CC-2) — NOT boot splash. Staged beside workbench for HUD CSS. */
+const HERO_GLOBE_STAGED_NAME = "jcc-hero-globe.png";
+const HERO_GLOBE_SOURCE_REL = path.join("media", "inject", "jcc-hero-globe.png");
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
 const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
 /** Cursor product.json checksums key for the patched workbench HTML. */
@@ -178,6 +182,10 @@ function backupBesideWorkbench(workbenchPath, uuid) {
 
 function stagedSplashPath(workbenchPath) {
   return path.join(path.dirname(workbenchPath), BOOT_STAGED_NAME);
+}
+
+function stagedHeroGlobePath(workbenchPath) {
+  return path.join(path.dirname(workbenchPath), HERO_GLOBE_STAGED_NAME);
 }
 
 function globalBackupFile(context) {
@@ -534,6 +542,7 @@ function stripHudMarkup(html) {
   return html
     .replace(/<!--\s*CORTANA-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*CORTANA-HUD-END\s*-->\s*/g, "")
     .replace(/<script[^>]*id=["']cortana-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<script[^>]*id=["']cortana-hud-live-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-voice-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-wake-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
@@ -604,13 +613,75 @@ function formatHudClock(now = new Date()) {
   return { date, clock };
 }
 
+function escapeHudText(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Honest inject-time facts only — never invent weather, missions, or Optimal. */
+function collectHudLiveFacts() {
+  let user = "—";
+  let initials = "—";
+  try {
+    const u = os.userInfo();
+    user = (u && u.username) || "—";
+    const parts = String(user).trim().split(/[.\s_-]+/).filter(Boolean);
+    initials = parts.length
+      ? parts
+          .slice(0, 2)
+          .map((p) => p[0].toUpperCase())
+          .join("")
+      : String(user).slice(0, 2).toUpperCase() || "—";
+  } catch {
+    /* keep — */
+  }
+  const host = (() => {
+    try {
+      return os.hostname() || "—";
+    } catch {
+      return "—";
+    }
+  })();
+  const folders = vscode.workspace.workspaceFolders || [];
+  const workspace = folders.length ? folders.map((f) => f.name).join(", ") : "No folder open";
+  let ramPct = null;
+  try {
+    const total = os.totalmem();
+    const free = os.freemem();
+    if (total > 0) ramPct = Math.round(((total - free) / total) * 100);
+  } catch {
+    ramPct = null;
+  }
+  return { user, initials, host, workspace, ramPct };
+}
+
 async function readHudMarkup(context) {
   const full = path.join(context.extensionUri.fsPath, HUD_MARKUP_REL);
   let markup = await fsp.readFile(full, "utf8");
   const { date, clock } = formatHudClock();
+  const live = collectHudLiveFacts();
   markup = markup
-    .replace(/>Monday, 15 June 2026</, `>${date}<`)
-    .replace(/>11:18:21 am</i, `>${clock}<`);
+    .replace(/id="cortana-hud-date">[^<]*</, `id="cortana-hud-date">${escapeHudText(date)}<`)
+    .replace(/id="cortana-hud-clock">[^<]*</, `id="cortana-hud-clock">${escapeHudText(clock)}<`)
+    .replace(/id="cortana-op-av">[^<]*</, `id="cortana-op-av">${escapeHudText(live.initials)}<`)
+    .replace(/id="cortana-op-name">[^<]*</, `id="cortana-op-name">${escapeHudText(live.user)}<`)
+    .replace(/id="cortana-meta-host">[^<]*</, `id="cortana-meta-host">${escapeHudText(live.host)}<`)
+    .replace(/id="cortana-meta-ws">[^<]*</, `id="cortana-meta-ws">${escapeHudText(live.workspace)}<`)
+    .replace(
+      /id="cortana-system-status-text">[^<]*</,
+      `id="cortana-system-status-text">SYSTEM STATUS · INJECT ON<`
+    )
+    .replace(/id="cortana-ov-system">[^<]*</, `id="cortana-ov-system">Inject on<`);
+  if (live.ramPct != null) {
+    const p = live.ramPct;
+    markup = markup.replace(
+      /<div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-ram"[^>]*>/,
+      `<div class="jcc-gauge" style="--p:${p}" data-pct="${p}" data-lab="RAM" id="cortana-gauge-ram" title="RAM from os.freemem at inject">`
+    );
+  }
   const clockScript = [
     `<script id="cortana-hud-clock-script">`,
     `(function(){function t(){var d=new Date(),c=document.getElementById("cortana-hud-clock"),a=document.getElementById("cortana-hud-date");`,
@@ -619,9 +690,47 @@ async function readHudMarkup(context) {
     `t();setInterval(t,1000);}());`,
     `</script>`,
   ].join("");
+  const liveScript = buildHudLiveScript();
   const voiceScript = buildHudVoiceScript();
   const wakeScript = buildHudWakeScript();
-  return { markup, clockScript, voiceScript, wakeScript };
+  return { markup, clockScript, liveScript, voiceScript, wakeScript };
+}
+
+/**
+ * Browser-honest live fields: navigator.onLine, sync talk hint with wake status.
+ */
+function buildHudLiveScript() {
+  const body = [
+    "(function(){",
+    "if(window.__cortanaLiveWired)return;window.__cortanaLiveWired=true;",
+    "function net(){",
+    "var el=document.getElementById('cortana-meta-net');if(!el)return;",
+    "var on=typeof navigator!=='undefined'&&navigator.onLine;",
+    "el.textContent=on?'Online':'Offline';",
+    "if(on)el.classList.add('ok');else el.classList.remove('ok');",
+    "}",
+    "function syncTalkHint(){",
+    "var voice=document.getElementById('cortana-voice-status');",
+    "var hint=document.getElementById('cortana-talk-hint');",
+    "if(!voice||!hint)return;",
+    "var t=String(voice.textContent||'').trim();",
+    "if(/^Listening/i.test(t))hint.textContent='Listening…';",
+    "else if(/responding/i.test(t))hint.textContent='Responding…';",
+    "else if(/^Offline/i.test(t))hint.textContent='Voice offline';",
+    "else hint.textContent='Tap to speak';",
+    "}",
+    "net();",
+    "window.addEventListener('online',net);",
+    "window.addEventListener('offline',net);",
+    "var voiceEl=document.getElementById('cortana-voice-status');",
+    "if(voiceEl&&window.MutationObserver){",
+    "new MutationObserver(syncTalkHint).observe(voiceEl,{childList:true,characterData:true,subtree:true});",
+    "}",
+    "syncTalkHint();",
+    "setInterval(syncTalkHint,1500);",
+    "})();",
+  ].join("");
+  return `<script id="cortana-hud-live-script">${body}</script>`;
 }
 
 /**
@@ -687,6 +796,26 @@ function buildHudVoiceScript() {
     "try{window.__cortanaVoiceClick({source:'hud'});}catch(e){}",
     "}",
     "}",
+    "function markVoiceLive(on){",
+    "var live=!!on;",
+    "window.__cortanaVoiceLiveState=live;",
+    "var hud=document.getElementById('cortana-cc-hud');",
+    "var talk=document.getElementById('cortana-talk-cta');",
+    "var wrap=talk&&talk.closest?talk.closest('.jcc-talk-wrap'):(hud?hud.querySelector('.jcc-talk-wrap'):null);",
+    "var rail=hud?hud.querySelector('.jcc-voice'):null;",
+    "var hint=document.getElementById('cortana-talk-hint');",
+    "var nodes=[hud,talk,wrap,rail].filter(Boolean);",
+    "for(var i=0;i<nodes.length;i++){",
+    "var el=nodes[i];",
+    "if(live){el.classList.add('is-live');el.setAttribute('data-voice-live','1');}",
+    "else{el.classList.remove('is-live');el.removeAttribute('data-voice-live');}",
+    "}",
+    "if(hint)hint.textContent=live?'Listening\\u2026':'Tap to speak';",
+    "try{window.dispatchEvent(new CustomEvent('cortana-voice-live',{detail:{live:live}}));}catch(e){}",
+    "try{window.postMessage({type:'cortana-voice-live',live:live},'*');}catch(e){}",
+    "return live;",
+    "}",
+    "window.__cortanaVoiceLive=markVoiceLive;",
     "function tryVoiceDom(){return !!clickFirst(VOICE_SELS);}",
     "function tryOpenChatDom(){return !!clickFirst(CHAT_SELS);}",
     "function revealIde(){",
@@ -696,6 +825,7 @@ function buildHudVoiceScript() {
     "}",
     "function startVoice(){",
     "signal();",
+    "markVoiceLive(true);",
     "revealIde();",
     "if(tryVoiceDom()){toast('Voice channel — Cursor mic engaged');return;}",
     "tryOpenChatDom();",
@@ -837,11 +967,12 @@ function buildHudWakeScript() {
 }
 
 
-function buildHudBlock({ uuid, markup, clockScript, voiceScript, wakeScript }) {
+function buildHudBlock({ uuid, markup, clockScript, liveScript, voiceScript, wakeScript }) {
   return [
     `<!-- ${MARKER_HUD_START} uuid=${uuid} -->`,
     markup.trim(),
     clockScript,
+    liveScript || "",
     voiceScript || "",
     wakeScript || "",
     `<!-- ${MARKER_HUD_END} -->`,
@@ -948,15 +1079,17 @@ async function readCssBundle(context) {
 
   const bootMs = resolveBootMs();
 
-  // CSP img-src allows 'self' and data:. Stage PNG as sibling of workbench.html.
+  // CSP img-src allows 'self' and data:. Stage PNGs as siblings of workbench.html.
   // Bind URL + bootMs via CSS vars only — boot.css composes PNG + progress + particle layers.
+  // Hero globe is a separate CC-2 cutout — never alias boot/calibrating splash.
   // Do NOT override background-image here (would wipe multi-layer boot.css stacks).
   parts.push(
     [
-      "/* === cortana staged splash binding === */",
+      "/* === cortana staged splash + hero globe binding === */",
       `:root {`,
       `  --cortana-boot-splash: url(./${BOOT_STAGED_NAME});`,
       `  --cortana-boot-ms: ${bootMs}ms;`,
+      `  --cortana-hero-globe: url(./${HERO_GLOBE_STAGED_NAME});`,
       `}`,
     ].join("\n")
   );
@@ -974,6 +1107,16 @@ async function stageBootSplash(context, workbenchPath) {
   return { ok: true, path: dest };
 }
 
+async function stageHeroGlobe(context, workbenchPath) {
+  const src = path.join(context.extensionUri.fsPath, HERO_GLOBE_SOURCE_REL);
+  const dest = stagedHeroGlobePath(workbenchPath);
+  if (!(await pathExists(src))) {
+    return { ok: false, message: `hero globe source missing: ${HERO_GLOBE_SOURCE_REL}` };
+  }
+  await copyFileBinary(src, dest);
+  return { ok: true, path: dest };
+}
+
 async function removeStagedSplash(workbenchPath) {
   if (!workbenchPath) {
     return;
@@ -982,6 +1125,14 @@ async function removeStagedSplash(workbenchPath) {
     await safeUnlink(stagedSplashPath(workbenchPath));
   } catch (err) {
     // Soft: splash delete must not block restore of HTML.
+    if (err && (err.code === "EACCES" || err.code === "EPERM")) {
+      return formatWriteError(err);
+    }
+    throw err;
+  }
+  try {
+    await safeUnlink(stagedHeroGlobePath(workbenchPath));
+  } catch (err) {
     if (err && (err.code === "EACCES" || err.code === "EPERM")) {
       return formatWriteError(err);
     }
@@ -1289,6 +1440,9 @@ async function enable(context) {
     return { ok: false, message };
   }
 
+  // Decorative hero cutout (CC-2) — soft: never blocks Enable / IDE if missing.
+  await stageHeroGlobe(context, loc.workbenchPath).catch(() => null);
+
   const { css, warnings } = await readCssBundle(context);
   if (!css.trim()) {
     const message = "No CSS available to inject (media/inject/*.css missing)";
@@ -1326,6 +1480,7 @@ async function enable(context) {
     uuid: markerUuid,
     markup: hudBundle.markup,
     clockScript: hudBundle.clockScript,
+    liveScript: hudBundle.liveScript,
     voiceScript: hudBundle.voiceScript,
     wakeScript: hudBundle.wakeScript,
   });

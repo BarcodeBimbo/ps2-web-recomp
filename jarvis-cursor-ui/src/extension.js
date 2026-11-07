@@ -120,6 +120,20 @@ async function activate(context) {
     }),
     vscode.commands.registerCommand("cortana.voice.talk", () => voice.startVoice()),
     vscode.commands.registerCommand("cortana.voice.chat", () => voice.openChat()),
+    vscode.commands.registerCommand("cortana.voice.wakeListen", async () => {
+      // Continuous Hey Cortana wake is inject-HUD SpeechRecognition; command starts voice now.
+      try {
+        const st = inject && typeof inject.status === "function" ? await inject.status() : null;
+        if (!st || st.active !== true) {
+          vscode.window.showInformationMessage(
+            "Hey Cortana wake listen arms automatically when workbench injection HUD is active. Starting voice now."
+          );
+        }
+      } catch {
+        /* status optional */
+      }
+      return voice.wakeListen();
+    }),
     vscode.commands.registerCommand("cortana.toggle.focusFortress", async () => {
       await toggle(context, "focusFortress");
       commandCenter.refresh();

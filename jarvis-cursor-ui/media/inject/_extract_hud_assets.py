@@ -41,6 +41,9 @@ save("talk-wave-left.png", (328, 526, 400, 554))
 save("talk-wave-right.png", (624, 526, 696, 554))
 save("agent-wave-cyan.png", (292, 332, 400, 352))
 save("agent-wave-purple.png", (430, 332, 538, 352))
+# Memory Insights constellation — run _extract_memory_constellation.py for alpha punch;
+# box kept here so full regen still emits the var (opaque crop).
+save("memory-constellation.png", (398, 414, 512, 462))
 
 assets = {
     "hero-globe.png": "--jcc-photo-hero-globe",
@@ -51,6 +54,7 @@ assets = {
     "talk-wave-right.png": "--jcc-photo-talk-wave-r",
     "agent-wave-cyan.png": "--jcc-photo-agent-wave-cyan",
     "agent-wave-purple.png": "--jcc-photo-agent-wave-purple",
+    "memory-constellation.png": "--jcc-photo-memory-constellation",
 }
 
 lines = [
