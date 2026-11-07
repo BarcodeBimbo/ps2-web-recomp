@@ -13,12 +13,7 @@ const path = require("path");
 const Module = require("module");
 const os = require("os");
 
-const EXT_DEFAULT = path.join(
-  process.env.USERPROFILE || "",
-  ".cursor",
-  "extensions",
-  "ps2recomp-local.cortana-cursor-ui-0.5.5"
-);
+const EXT_DIR = path.join(process.env.USERPROFILE || "", ".cursor", "extensions");
 const SOURCE_FALLBACK = path.join("C:", "PS2Recomp", "cortana-cursor-ui");
 const APP_ROOT = path.join("C:", "Program Files", "cursor", "resources", "app");
 
@@ -28,12 +23,36 @@ function argValue(flag) {
   return null;
 }
 
+/** Prefer newest installed ps2recomp-local.cortana-cursor-ui-* (semver folder suffix). */
+function findLatestInstall() {
+  if (!fs.existsSync(EXT_DIR)) return null;
+  const prefix = "ps2recomp-local.cortana-cursor-ui-";
+  const hits = fs
+    .readdirSync(EXT_DIR, { withFileTypes: true })
+    .filter((d) => d.isDirectory() && d.name.startsWith(prefix))
+    .map((d) => {
+      const ver = d.name.slice(prefix.length);
+      const parts = ver.split(".").map((n) => parseInt(n, 10) || 0);
+      return { name: d.name, ver, parts, full: path.join(EXT_DIR, d.name) };
+    })
+    .filter((h) => fs.existsSync(path.join(h.full, "package.json")));
+  hits.sort((a, b) => {
+    for (let i = 0; i < 3; i++) {
+      const d = (b.parts[i] || 0) - (a.parts[i] || 0);
+      if (d) return d;
+    }
+    return 0;
+  });
+  return hits[0] ? hits[0].full : null;
+}
+
 function resolveExt() {
   const fromArg = argValue("--ext");
   if (fromArg && fs.existsSync(path.join(fromArg, "package.json"))) return fromArg;
-  if (fs.existsSync(path.join(EXT_DEFAULT, "package.json"))) return EXT_DEFAULT;
+  const latest = findLatestInstall();
+  if (latest) return latest;
   if (fs.existsSync(path.join(SOURCE_FALLBACK, "package.json"))) return SOURCE_FALLBACK;
-  throw new Error("Extension root not found (tried install 0.5.5 + source junction)");
+  throw new Error("Extension root not found (tried newest cortana-cursor-ui install + source junction)");
 }
 
 const extRoot = resolveExt();
@@ -147,9 +166,14 @@ const context = {
       const html = fs.readFileSync(wb, "utf8");
       report.hasCssMarker = html.includes("CORTANA-INJECT-START");
       report.hasHud = html.includes("cortana-cc-hud") && html.includes("CORTANA-HUD-START");
-      report.hasWake = /hey\s*cortana|webkitSpeechRecognition|SpeechRecognition/i.test(html);
+      const wakeJs = path.join(path.dirname(wb), "cortana-hud-wake.js");
+      const wakeSrc = fs.existsSync(wakeJs) ? fs.readFileSync(wakeJs, "utf8") : "";
+      report.hasWake =
+        html.includes("cortana-hud-wake.js") &&
+        /hey\s*cortana|webkitSpeechRecognition|SpeechRecognition/i.test(wakeSrc || html);
       report.hasManhattan = html.includes("Manhattan");
       report.wbBytes = Buffer.byteLength(html, "utf8");
+      report.stagedWakeJs = fs.existsSync(wakeJs);
     }
     console.log(JSON.stringify(report, null, 2));
     process.exit(report.ok ? 0 : 1);

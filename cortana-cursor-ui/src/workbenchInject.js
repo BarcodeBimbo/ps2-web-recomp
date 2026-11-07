@@ -35,6 +35,15 @@ const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
 /** Hero globe cutout (CC-2) — NOT boot splash. Staged beside workbench for HUD CSS. */
 const HERO_GLOBE_STAGED_NAME = "jcc-hero-globe.png";
 const HERO_GLOBE_SOURCE_REL = path.join("media", "inject", "jcc-hero-globe.png");
+/** Staged beside workbench.html — CSP script-src 'self' (inline scripts are blocked). */
+const HUD_SCRIPT_FILES = [
+  { key: "clock", file: "cortana-hud-clock.js", id: "cortana-hud-clock-script" },
+  { key: "live", file: "cortana-hud-live.js", id: "cortana-hud-live-script" },
+  { key: "wave", file: "cortana-hud-wave.js", id: "cortana-hud-wave-script" },
+  { key: "voice", file: "cortana-hud-voice.js", id: "cortana-hud-voice-script" },
+  { key: "wake", file: "cortana-hud-wake.js", id: "cortana-hud-wake-script" },
+  { key: "interact", file: "cortana-hud-interact.js", id: "cortana-hud-interact-script" },
+];
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
 const CURSOR_MODELS_REL = path.join("media", "inject", "cursor-models.json");
 /** Cursor reactive storage key → availableDefaultModels2 (real picker catalog). */
@@ -1193,6 +1202,19 @@ async function collectHudLiveFacts() {
  * @param {number | null} pct
  * @param {string} title
  */
+/** Fill `.jcc-badge[data-count]` on Tasks / Conversations / Tools nav rows (reference CC-2). */
+function stampHudNavBadges(markup, counts) {
+  const map = {
+    tasks: counts && counts.tasks != null ? String(counts.tasks) : "3",
+    conversations: counts && counts.conversations != null ? String(counts.conversations) : "12",
+    tools: counts && counts.tools != null ? String(counts.tools) : "18",
+  };
+  return String(markup || "").replace(
+    /(<a\b[^>]*\bdata-nav="(tasks|conversations|tools)"[^>]*>[\s\S]*?<span\b[^>]*\bjcc-badge\b[^>]*\bdata-count=")([^"]*)("[^>]*>)/gi,
+    (full, pre, nav, _old, post) => `${pre}${map[nav] || ""}${post}`
+  );
+}
+
 function stampHudGauge(markup, id, lab, metric, pct, title) {
   const p = clampHudPct(pct);
   const open =
@@ -1495,6 +1517,8 @@ async function readHudMarkup(context) {
     live.diskPct,
     "Disk from fs.statfs at inject"
   );
+  // Reference CC-2 sidebar badges (Tasks / Conversations / Tools & Skills).
+  markup = stampHudNavBadges(markup, { tasks: 3, conversations: 12, tools: 18 });
   const clockScript = [
     `<script id="cortana-hud-clock-script">`,
     `(function(){function t(){var d=new Date(),c=document.getElementById("cortana-hud-clock"),a=document.getElementById("cortana-hud-date");`,
@@ -1565,7 +1589,8 @@ function buildHudLiveScript(overviewSeed) {
     "if(/^Listening/i.test(t))hint.textContent='I am listening…';",
     "else if(/responding/i.test(t))hint.textContent='Responding…';",
     "else if(/^Offline/i.test(t))hint.textContent='Voice offline';",
-    "else hint.textContent='I am listening…';",
+    "else if(/^Standby/i.test(t))hint.textContent='Tap to speak';",
+    "else hint.textContent='Tap to speak';",
     "}",
     "function syncVoiceOv(){",
     "var v=document.getElementById('cortana-voice-status');",
@@ -2107,7 +2132,8 @@ function buildHudInteractScript() {
     "}",
     "if(cmd==='maximize'){",
     "if(clickStock('.monaco-workbench .codicon-chrome-maximize,.monaco-workbench .codicon-chrome-restore,.window-controls-container .window-maximize,.window-controls-container .window-restore'))return;",
-    "runExtCommand('workbench.action.toggleFullScreen');return;",
+    "/* no toggleFullScreen — that is not maximize/restore */",
+    "return;",
     "}",
     "if(cmd==='close'){",
     "if(clickStock('.monaco-workbench .codicon-chrome-close,.monaco-workbench .window-icon.window-close,.window-controls-container .window-close'))return;",
@@ -2146,6 +2172,20 @@ function buildHudInteractScript() {
     "nav.classList.add('active');",
     "}",
     "}",
+    "function syncFocusMode(){",
+    "var on=!!(document.getElementById('cortana-focus-toggle')||{}).checked;",
+    "var root=document.documentElement;",
+    "var body=document.body;",
+    "if(root){root.classList.toggle('cortana-focus-mode',on);root.setAttribute('data-cortana-focus',on?'on':'off');}",
+    "if(body){body.classList.toggle('cortana-focus-mode',on);body.setAttribute('data-cortana-focus',on?'on':'off');}",
+    "}",
+    "function wireFocusToggle(){",
+    "var box=document.getElementById('cortana-focus-toggle');",
+    "if(!box||box.__cortanaFocusWired)return;",
+    "box.__cortanaFocusWired=true;",
+    "box.addEventListener('change',syncFocusMode);",
+    "syncFocusMode();",
+    "}",
     "function boot(){",
     "if(!hud()){setTimeout(boot,400);return;}",
     "if(document.documentElement)document.documentElement.classList.add('cortana-inject');",
@@ -2154,6 +2194,7 @@ function buildHudInteractScript() {
     "parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cortana-boot-ms'),10)||1800);",
     "wireVoiceBridge();",
     "wireHeaderTools();",
+    "wireFocusToggle();",
     "document.addEventListener('click',onDocClick,true);",
     "}",
     "if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);",
@@ -2174,9 +2215,10 @@ function validateHudPatchPlacement(html) {
   const tailStart = bodyIdx + "</body>".length;
   let tail = html.slice(tailStart, htmlIdx === -1 ? undefined : htmlIdx).trim();
   // Strip Cursor's legitimate post-body startup module before inspecting the tail.
+  // Attribute order varies (`src` then `type="module"`); lookahead so [^>]* cannot swallow src=.
   tail = tail
     .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/<script\b[^>]*\bsrc=["']\.\/workbench\.js["'][^>]*>\s*<\/script>/gi, "")
+    .replace(/<script\b(?=[^>]*\bsrc=["']\.\/workbench\.js["'])[^>]*>\s*<\/script>/gi, "")
     .trim();
   if (
     /CORTANA-HUD/i.test(tail) ||
@@ -2198,27 +2240,48 @@ function validateHudPatchPlacement(html) {
   return true;
 }
 
-function buildHudBlock({
-  uuid,
-  markup,
-  interactStyle,
-  clockScript,
-  liveScript,
-  waveScript,
-  voiceScript,
-  wakeScript,
-  interactScript,
-}) {
+/** Pull IIFE body out of a legacy `<script id>…</script>` string (or return raw body). */
+function extractScriptBody(scriptHtmlOrBody) {
+  const s = String(scriptHtmlOrBody || "");
+  const m = s.match(/<script\b[^>]*>([\s\S]*)<\/script>/i);
+  return (m ? m[1] : s).trim();
+}
+
+function scriptSrcTag(file, id) {
+  return `<script id="${id}" src="./${file}" defer></script>`;
+}
+
+async function stageHudScripts(workbenchPath, bodiesByKey) {
+  const dir = path.dirname(workbenchPath);
+  const tags = [];
+  for (const meta of HUD_SCRIPT_FILES) {
+    const body = bodiesByKey[meta.key];
+    if (!body) continue;
+    await writeTextFile(path.join(dir, meta.file), `${body}\n`);
+    tags.push(scriptSrcTag(meta.file, meta.id));
+  }
+  return tags;
+}
+
+async function removeStagedHudScripts(workbenchPath) {
+  if (!workbenchPath) return;
+  const dir = path.dirname(workbenchPath);
+  for (const meta of HUD_SCRIPT_FILES) {
+    try {
+      await safeUnlink(path.join(dir, meta.file));
+    } catch (err) {
+      if (err && (err.code === "EACCES" || err.code === "EPERM")) continue;
+      throw err;
+    }
+  }
+}
+
+function buildHudBlock({ uuid, markup, interactStyle, scriptTags }) {
   return [
     `<!-- ${MARKER_HUD_START} uuid=${uuid} -->`,
     interactStyle || "",
     markup.trim(),
-    clockScript,
-    liveScript || "",
-    waveScript || "",
-    voiceScript || "",
-    wakeScript || "",
-    interactScript || "",
+    ...(Array.isArray(scriptTags) ? scriptTags : []),
     `<!-- ${MARKER_HUD_END} -->`,
   ].join("\n");
 }
@@ -2355,14 +2418,19 @@ function buildChromePaletteBindCss() {
     ".monaco-workbench .part.editor {",
     "  background-color: var(--cortana-bg-editor, #050d16) !important;",
     "}",
-    "/* Cortana Workstation: hide stock captions; functional UI is #cortana-win-chrome */",
+    "/* Cortana Workstation: hide stock captions (broad selectors — container may not wrap icons) */",
     ".monaco-workbench .window-controls-container,",
     ".monaco-workbench .part.titlebar .window-controls-container,",
+    ".monaco-workbench .titlebar-right .window-controls-container,",
     ".monaco-workbench .window-controls-container > .window-icon,",
-    ".monaco-workbench .window-controls-container .codicon-chrome-minimize,",
-    ".monaco-workbench .window-controls-container .codicon-chrome-maximize,",
-    ".monaco-workbench .window-controls-container .codicon-chrome-restore,",
-    ".monaco-workbench .window-controls-container .codicon-chrome-close {",
+    ".monaco-workbench .codicon-chrome-minimize,",
+    ".monaco-workbench .codicon-chrome-maximize,",
+    ".monaco-workbench .codicon-chrome-restore,",
+    ".monaco-workbench .codicon-chrome-close,",
+    ".monaco-workbench .window-icon.window-minimize,",
+    ".monaco-workbench .window-icon.window-maximize,",
+    ".monaco-workbench .window-icon.window-restore,",
+    ".monaco-workbench .window-icon.window-close {",
     "  display: none !important;",
     "  visibility: hidden !important;",
     "  opacity: 0 !important;",
@@ -2374,6 +2442,31 @@ function buildChromePaletteBindCss() {
     "  margin: 0 !important;",
     "  padding: 0 !important;",
     "  overflow: hidden !important;",
+    "}",
+    "/* Focus Mode: Cortana IDE surface — opaque panels, not transparent hole-punch */",
+    "body.cortana-focus-mode .monaco-workbench,",
+    "html.cortana-focus-mode .monaco-workbench,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench {",
+    "  background-color: var(--cortana-bg-deep, #020817) !important;",
+    "  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,80,120,0.18), transparent 55%) !important;",
+    "}",
+    "body.cortana-focus-mode .monaco-workbench .part,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench .part {",
+    "  background-color: var(--cortana-bg-panel, #000f24) !important;",
+    "}",
+    "body.cortana-focus-mode .monaco-workbench .part.editor,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench .part.editor {",
+    "  background-color: var(--cortana-bg-editor, #050d16) !important;",
+    "}",
+    "body.cortana-focus-mode .monaco-workbench .part.activitybar,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench .part.activitybar {",
+    "  background-color: var(--cortana-bg-activity, #030a12) !important;",
+    "}",
+    "body.cortana-focus-mode .monaco-workbench .part.sidebar,",
+    "body.cortana-focus-mode .monaco-workbench .part.auxiliarybar,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench .part.sidebar,",
+    "body:has(#cortana-focus-toggle:checked) .monaco-workbench .part.auxiliarybar {",
+    "  background-color: var(--cortana-bg-sidebar, #001020) !important;",
     "}",
   ].join("\n");
 }
@@ -2449,6 +2542,14 @@ async function removeStagedSplash(workbenchPath) {
   }
   try {
     await safeUnlink(stagedHeroGlobePath(workbenchPath));
+  } catch (err) {
+    if (err && (err.code === "EACCES" || err.code === "EPERM")) {
+      return formatWriteError(err);
+    }
+    throw err;
+  }
+  try {
+    await removeStagedHudScripts(workbenchPath);
   } catch (err) {
     if (err && (err.code === "EACCES" || err.code === "EPERM")) {
       return formatWriteError(err);
@@ -2793,16 +2894,27 @@ async function enable(context) {
     commit: fp.commit,
     css,
   });
+  let scriptTags;
+  try {
+    scriptTags = await stageHudScripts(loc.workbenchPath, {
+      clock: extractScriptBody(hudBundle.clockScript),
+      live: extractScriptBody(hudBundle.liveScript),
+      wave: extractScriptBody(hudBundle.waveScript),
+      voice: extractScriptBody(hudBundle.voiceScript),
+      wake: extractScriptBody(hudBundle.wakeScript),
+      interact: extractScriptBody(hudBundle.interactScript),
+    });
+  } catch (err) {
+    const message = `HUD script staging failed: ${formatWriteError(err)}`;
+    await writeState(context, { lastError: message });
+    return { ok: false, message };
+  }
+
   const hudBlock = buildHudBlock({
     uuid: markerUuid,
     markup: hudBundle.markup,
     interactStyle: hudBundle.interactStyle,
-    clockScript: hudBundle.clockScript,
-    liveScript: hudBundle.liveScript,
-    waveScript: hudBundle.waveScript,
-    voiceScript: hudBundle.voiceScript,
-    wakeScript: hudBundle.wakeScript,
-    interactScript: hudBundle.interactScript,
+    scriptTags,
   });
 
   let patched;
@@ -2811,6 +2923,11 @@ async function enable(context) {
     patched = insertBeforeBodyClose(patched, hudBlock);
     validateHudPatchPlacement(patched);
   } catch (err) {
+    try {
+      await removeStagedHudScripts(loc.workbenchPath);
+    } catch {
+      /* ignore */
+    }
     const message = err.message || String(err);
     await writeState(context, { lastError: message });
     return { ok: false, message };

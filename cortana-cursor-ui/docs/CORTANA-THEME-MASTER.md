@@ -1,15 +1,16 @@
 # CORTANA Theme Master — Cold Reopen
 
-> ## CORTANA WORKSTATION 0.5.5 — cold reopen (Nov 7 ~4:22 AM)
+> ## CORTANA WORKSTATION 0.5.7 — inject live (Nov 7 ~4:55 AM)
 >
-> **Branding:** Cortana Workstation (renamed from Jarvis). **Physical folder** still `jarvis-cursor-ui`; **junction** `C:\PS2Recomp\cortana-cursor-ui` → same tree (physical rename skipped per God; Cursor file lock).  
-> **Package:** `cortana-cursor-ui-0.5.5.vsix` built + installed to `~\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.5`.  
-> **Admin Enable:** elevated run **failed** — crash guard false-positive on Cursor’s post-`</body>` `workbench.js`. Source fixed; **installed 0.5.5 still stale**. Program Files `workbench.html` still pristine (~1824 B) — not patched.  
-> **Splash:** deprioritized (God has a later plan). Fail-safes 1–3 preserved.
+> **Branding:** Cortana Workstation. **Physical folder** `jarvis-cursor-ui`; **junction** `C:\PS2Recomp\cortana-cursor-ui`.  
+> **Package:** `cortana-cursor-ui-0.5.7.vsix` → `~\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.7`.  
+> **Admin Enable:** elevated **OK** — Program Files `workbench.html` ~1.56 MB patched; HUD + Manhattan + staged `cortana-hud-*.js` (CSP-safe, no inline scripts). Wake lives in `cortana-hud-wake.js`.  
+> **Settings:** `cortana.injection.enabled=true`. **Reload Cursor** required to see inject.  
+> **Splash:** still deprioritized. Fail-safes 1–3 preserved.
 
 **Authority:** God (team) · **Operator:** Joshua · **Date locked:** Nov 7, 2026  
 **Canonical plan:** `cortana_pro_recreation_a1985356` (plan wins on lock conflicts).  
-**Extension root:** `C:\PS2Recomp\cortana-cursor-ui` (junction) / physical `jarvis-cursor-ui` · **v0.5.5** · **Admin Enable = Joshua / elevated script**
+**Extension root:** `C:\PS2Recomp\cortana-cursor-ui` (junction) / physical `jarvis-cursor-ui` · **v0.5.7** · **Admin Enable = Joshua / elevated script**
 
 ### Workers (God rebuild NOW)
 
@@ -24,7 +25,16 @@
 
 ## Session log (tonight) — Nov 6–7, 2026
 
-**Written into this file for cold reopen.** Earlier rebuild (~1:42 AM) + late-night Cortana Workstation ship attempt (~3–4 AM).
+**Written into this file for cold reopen.** Earlier rebuild (~1:42 AM) + late-night Cortana Workstation ship attempt (~3–4 AM) + post-audit fix wave (~4:50 AM).
+
+### A2) Fix wave — Cortana Workstation 0.5.7 (after five-domain audit)
+
+1. **P1 inject restored:** crash-guard strip uses lookahead for `workbench.js`; HUD scripts staged as `'self'` `.js` files (CSP blocks inline); Admin Enable prefers newest install; `voiceBridge` → `composer.toggleVoiceDictation`.
+2. **Enable probes:** hasHud/hasManhattan true; wbBytes ~1.56MB; wake in staged JS; badges Tasks 3 / Conversations 12 / Tools 18 stamped.
+3. **P2 Focus surface (partial):** `cortana-focus-mode` body class + opaque part backgrounds when Focus ON (no transparent hole-punch). Full IDE glass/menus still open.
+4. **P3 window chrome (partial):** broader stock caption hide; Cortana `#cortana-win-chrome` always visible (not opacity-0).
+5. **P4/P5:** nav pill rows + parallelogram Focus Mode control; sidebar badges filled.
+6. **Still open:** most of V-001–200 visual deltas; THEME-001–180 depth; Focus still not a full Cortana IDE skin; voice needs Cursor reload + mic permission live confirm.
 
 ### A) Late session — Cortana Workstation 0.5.5 (before Josh restart)
 

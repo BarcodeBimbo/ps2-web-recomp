@@ -2,7 +2,7 @@
   "name": "cortana-cursor-ui",
   "displayName": "Cortana Workstation",
   "description": "Full Cortana Workstation HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Hey Cortana wake word, Voice TTS hooks, and File Map. Inspired by cortana.institute + Cortana 3D PRO patterns — custom local reimplementation, all features unlocked.",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"

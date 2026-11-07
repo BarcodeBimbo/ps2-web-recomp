@@ -19,7 +19,7 @@ if (-not $vsce) {
 }
 
 Write-Host "Packaging VSIX..."
-npx --yes @vscode/vsce package --allow-missing-repository --skip-license -o $vsixName
+npx --yes @vscode/vsce package --allow-missing-repository --skip-license --baseContentUrl "https://example.local/cortana-cursor-ui" --baseImagesUrl "https://example.local/cortana-cursor-ui" -o $vsixName
 if (-not (Test-Path $vsixName)) { throw "VSIX missing: $vsixName" }
 Write-Host "VSIX OK: $((Get-Item $vsixName).FullName) ($((Get-Item $vsixName).Length) bytes)"
 

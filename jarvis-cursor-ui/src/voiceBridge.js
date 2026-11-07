@@ -22,19 +22,30 @@ async function openChat() {
 }
 
 async function startVoice() {
+  // Cursor (current): composer voice dictation — obsolete *startVoiceChat IDs are gone.
   const tries = [
+    "composer.toggleVoiceDictation",
+    "composer.cancelVoiceDictation",
     "workbench.action.chat.startVoiceChat",
     "workbench.action.chat.speech.startVoiceChat",
     "inlineChat.startVoiceChat",
     "aichat.startVoiceChat",
   ];
+  const failures = [];
   for (const cmd of tries) {
+    // cancelVoiceDictation alone would stop mic — only use toggle first; skip cancel in start path
+    if (cmd === "composer.cancelVoiceDictation") continue;
     try {
       await vscode.commands.executeCommand(cmd);
       return true;
-    } catch {
-      /* next */
+    } catch (err) {
+      failures.push(`${cmd}: ${err && err.message ? err.message : "fail"}`);
     }
+  }
+  try {
+    console.warn("[cortana.voice] startVoice failed:", failures.join(" | "));
+  } catch {
+    /* ignore */
   }
   // Fall back to chat — user can hit the mic there
   return openChat();
