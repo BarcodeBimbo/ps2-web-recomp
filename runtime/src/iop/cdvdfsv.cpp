@@ -296,12 +296,13 @@ void install_cdvdfsv() {
             if (is_followon) {
                 std::uint32_t lg = 0;
                 if (0x006F2540u + 4u <= ps2::kRamSize) lg = ee32(0x006F2540u);
-                std::uint32_t st = 3;
+                std::uint32_t st = 0;
                 if (lg && lg + 0x54u + 4u <= ps2::kRamSize) st = ee32(lg + 0x54u);
-                // Shared stream+0x48 (CNK BD1000): hold intro until deferred UI
-                // FCE0 has run (igfileio). Soft-arm alone must not release — that
-                // let intro clobber butanim bytes before parse.
-                if (!ps2::iop::igfileio::ui_igb_parse_attempted() && (st == 3u || st == 1u)) {
+                // Shared stream+0x48 (CNK BD1000): hold intro until BUTANIM
+                // vt+108 has run (igfileio ui_igb_parse_attempted). Soft-arm
+                // +45 alone must not release — that clobbered butanim bytes
+                // before parse (prims stuck at 2). Alchemy/virt-GFC only.
+                if (!ps2::iop::igfileio::ui_igb_parse_attempted()) {
                     --g_butanim_hold;
                     schedule(now() + usec_to_cycles(16000), j);
                     static int s_hold = 0;
@@ -476,13 +477,22 @@ void install_cdvdfsv() {
                                 // when the bind graph is still cold. Let the guest font
                                 // tick reach FCE0 once INTC/sema path is warm.
                                 int armed = 0;
+                                const bool is_butanim = path.find("butanim") != std::string::npos ||
+                                                        path.find("BUTANIM") != std::string::npos;
                                 if (head_ok && obj && obj + 46u < ps2::kRamSize && o45 == 0) {
                                     ps2::g_ram[obj + 44u] = 0;
                                     ps2::g_ram[obj + 45u] = 1;
                                     o45 = 1;
                                     armed = 1;
+                                    // Remember butanim obj so intro hold waits for vt+108
+                                    // (+0xFF), not soft-arm alone. No host FCE0.
+                                    ps2::iop::igfileio::note_ui_igb_soft_arm(obj, is_butanim);
                                 }
                                 if (lg + 24020u + 4u <= ps2::kRamSize) set_ee32(lg + 24020u, i);
+                                // Clear +0x5DD0 so guest 0x10F560 can call 0x10FCE0 on
+                                // the mapped tid after soft-arm (CNK/Alchemy only).
+                                if (armed && lg + 24016u < ps2::kRamSize && ps2::g_ram[lg + 24016u])
+                                    ps2::g_ram[lg + 24016u] = 0;
                                 if ((st_before == 3u || st_before == 4u) && head_ok)
                                     set_ee32(slot + 0x54u, 1u);
                                 const std::uint32_t a9 =

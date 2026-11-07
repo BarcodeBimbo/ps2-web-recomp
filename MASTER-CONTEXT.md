@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:39 local)  
+**Updated:** 2026-11-07 (~07:42 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -36,7 +36,7 @@ Also still true:
 
 | Target | Status | Exact next |
 |--------|--------|------------|
-| **1 Disc-fix → SDK** | R1–R4 joint-stable; R5 observe **PASS** (step 8) | Next: SDK-aligned proposal — `sceCdDiskReady` always-2 is top compliance flag; R5 clear_with_evidence or named pad/sound fix; matrix + live Hitman/NFS. |
+| **1 Disc-fix → SDK** | **R4-D1 DiskReady `verified_apply`** (cycle 9) — mode 0/1 → Complete(2)/NotReady(6); Hitman+NFS 600f green | Next: R5 `clear_with_evidence` or joint-stable commit (R3+R4D1). Report: `discfix-sdk-advance-2026-11-07.md`. |
 | **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS live log lacks `cdvdfsv` search (five-phase); keep logging. |
 | **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
 | **4 Live test → logs/** | 6-game native matrix logged (GoW/GoW2/CNK/Hitman/NFS/Sly) | Repeat; panel play URLs noted; prefer native over Chrome fight. |
@@ -60,7 +60,7 @@ Also still true:
 | **R1** SIF end | `cleared_with_evidence` (joint-stable `1e04172`) | **Notes written** → `sdk-compliance-r1-sif.md` | Orphan end-packet HLE may synthesize success REND on soft reset (flagged; queue drains) |
 | **R2** WaitSema fidelity | `cleared_with_evidence` (never `host_signal(2)`) | **Notes written** → `sdk-compliance-r2-waitsema.md` | Never `host_signal(2)` on Hitman/NFS; CNK igfileio pulse quarantined |
 | **R3** readee / AlignReadBuffer | **`verified_apply`** in `runtime/src/iop/cdvdfsv.cpp` | **Notes written** → `sdk-compliance-r3-readee.md` | AlignReadBuffer absent from public `libcdvd.h`; Device PDF = 64B align compensation; CNK virt/Alchemy paths quarantined |
-| **R4** sceCdSync / finish_read | `cleared_with_evidence` (no wake code) | **Notes written** → `sdk-compliance-r4-cdsync.md` | `sceCdDiskReady` HLE always returns `2` (SCECdComplete), ignores mode — flag if titles need NotReady |
+| **R4** sceCdSync / finish_read | `cleared_with_evidence` (no wake code) + **R4-D1 DiskReady `verified_apply`** | **Notes** → `sdk-compliance-r4-cdsync.md`; advance → `discfix-sdk-advance-2026-11-07.md` | Mode-aware DiskReady in `cdvd.cpp`/`cdvdfsv.cpp`; ISO keeps `drive_ready` → Hitman/NFS still Complete(2) |
 | **R5** pad / sound | **still gated** (no disc-fix apply) | **Inventory written** (2026-11-07) — still not an apply/HLE rewrite | See `verification/recovery/sdk-compliance-r5-pad-sound-inventory.md`. SDK assets present; runtime has SIO2/SPU2 + `PS2_TRACE_PAD`, **no** padman/libsd HLE module set comparable to CDVD. Board step 8 observe-only; do not apply |
 
 **Audit rules:** research only; **flag deviations, do not patch** unless user asks. Official tree: **`E:\usr\local\sce` only**.
