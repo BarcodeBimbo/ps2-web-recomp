@@ -199,16 +199,18 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
  * Integrated Cortana window controls — top-right, icon-btn shapes (reference).
  * Lives outside #cortana-cc-hud so Focus Mode keeps them (stock never returns).
  */
+/* Integrated captions: hidden until hover of top-right reveal zone (photo has no OS chrome) */
 #cortana-win-chrome.jcc-win-chrome {
   position: fixed;
-  top: 8px;
-  right: 10px;
+  top: 0;
+  right: 0;
   z-index: calc(var(--cortana-z-caption, 100000) + 5);
   display: inline-flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--cortana-win-chrome-gap, 6px);
   margin: 0;
-  padding: 0;
+  padding: 8px 10px 16px 28px;
   pointer-events: auto;
   -webkit-app-region: no-drag;
   app-region: no-drag;
@@ -227,12 +229,28 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: inline-grid;
   place-items: center;
   line-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
   box-shadow:
     inset 0 0 10px rgba(0, 212, 255, 0.06),
     0 0 10px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+#cortana-win-chrome:hover .jcc-win-btn,
+#cortana-win-chrome:focus-within .jcc-win-btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 #cortana-win-chrome .jcc-win-btn:hover {
@@ -1359,8 +1377,8 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 
 .jcc-wave.jcc-wave-photo.voice i {
   display: none;
-  flex: 0 0 3px;
-  width: 3px;
+  flex: 0 0 var(--cortana-stroke-wave-bar, 2px);
+  width: var(--cortana-stroke-wave-bar, 2px);
   height: 40%;
   border-radius: 1px;
   background: linear-gradient(180deg, #7af0ff, #00b8e0);
@@ -1941,7 +1959,7 @@ button.jcc-search:hover,
     radial-gradient(ellipse 75% 55% at 100% 8%, rgba(0, 0, 0, 0.28), transparent 58%),
     radial-gradient(ellipse 60% 45% at 4% 92%, rgba(0, 8, 22, 0.35), transparent 55%),
     linear-gradient(165deg, rgba(9, 29, 53, 0.52) 0%, rgba(0, 15, 36, 0.86) 48%, rgba(2, 8, 23, 0.92) 100%);
-  border: 1px solid rgba(0, 212, 255, 0.22);
+  border: var(--cortana-stroke-panel, 1px) solid rgba(0, 212, 255, 0.22);
   box-shadow:
     0 0 0 1px rgba(0, 212, 255, 0.05),
     0 8px 24px rgba(0, 0, 0, 0.45),
@@ -1971,35 +1989,32 @@ button.jcc-search:hover,
   animation-delay: calc(var(--cortana-panel-breathe-ms) * -0.55);
 }
 
-.jcc-panel::before,
-.jcc-panel::after {
+/* HUD L-brackets on all four corners (SPLICE inventory) */
+.jcc-panel::before {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--cortana-cyan, #00d4ff);
+  inset: 5px;
+  width: auto;
+  height: auto;
+  border: none;
   pointer-events: none;
   z-index: 2;
-  box-shadow: 0 0 6px rgba(0, 212, 255, 0.45);
+  --jcc-br: var(--cortana-cyan, #00d4ff);
+  background:
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 0 0 / 12px var(--cortana-stroke-bracket, 1px) no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 0 0 / var(--cortana-stroke-bracket, 1px) 12px no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 100% 0 / 12px var(--cortana-stroke-bracket, 1px) no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 100% 0 / var(--cortana-stroke-bracket, 1px) 12px no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 0 100% / 12px var(--cortana-stroke-bracket, 1px) no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 0 100% / var(--cortana-stroke-bracket, 1px) 12px no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 100% 100% / 12px var(--cortana-stroke-bracket, 1px) no-repeat,
+    linear-gradient(var(--jcc-br), var(--jcc-br)) 100% 100% / var(--cortana-stroke-bracket, 1px) 12px no-repeat;
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.45));
   animation: cortana-corner-breathe var(--cortana-corner-breathe-ms) ease-in-out infinite;
 }
 
 .jcc-panel::after {
-  animation-delay: calc(var(--cortana-corner-breathe-ms) * -0.45);
-}
-
-.jcc-panel::before {
-  top: 5px;
-  left: 5px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.jcc-panel::after {
-  right: 5px;
-  bottom: 5px;
-  border-left: none;
-  border-top: none;
+  display: none;
 }
 
 /* Small skewed foot under panel title (reference panel parallelogram chrome) */
@@ -2153,12 +2168,13 @@ button.jcc-search:hover,
   z-index: 2;
 }
 
-.jcc-ov-ico[data-ico="0"] { background-image: url("./overview-ico-0.png"); }
-.jcc-ov-ico[data-ico="1"] { background-image: url("./overview-ico-1.png"); }
-.jcc-ov-ico[data-ico="2"] { background-image: url("./overview-ico-2.png"); }
-.jcc-ov-ico[data-ico="3"] { background-image: url("./overview-ico-3.png"); }
-.jcc-ov-ico[data-ico="4"] { background-image: url("./overview-ico-4.png"); }
-.jcc-ov-ico[data-ico="5"] { background-image: url("./overview-ico-5.png"); }
+.jcc-ov-ico[data-ico] { background-image: none !important; color: var(--cortana-cyan-bright, #4ad1f1); }
+.jcc-ov-ico svg { display: block; width: 12px; height: 12px; filter: drop-shadow(0 0 3px rgba(74, 209, 241, 0.45)); }
+.jcc-ov-ico[data-ico="1"] { color: #70a1b0; }
+.jcc-ov-ico[data-ico="2"] { color: #2dd4bf; }
+.jcc-ov-ico[data-ico="3"] { color: #c084fc; }
+.jcc-ov-ico[data-ico="4"] { color: #fbbf24; }
+.jcc-ov-ico[data-ico="5"] { color: #34d399; }
 
 .jcc-ov-k {
   grid-column: 2;
@@ -2627,8 +2643,10 @@ button.jcc-search:hover,
   background: rgba(74, 209, 241, 0.92);
   box-shadow: 0 0 8px rgba(74, 209, 241, 0.35);
 }
-.jcc-feed-glyph.info::before,
-.jcc-tag.info::before { content: "i"; }
+.jcc-feed-glyph::before,
+.jcc-tag::before { content: none !important; }
+.jcc-feed-glyph svg,
+.jcc-tag svg { display: block; width: 11px; height: 11px; }
 
 .jcc-feed-glyph.warn,
 .jcc-tag.warn {
@@ -2637,8 +2655,6 @@ button.jcc-search:hover,
   box-shadow: 0 0 10px rgba(255, 171, 0, 0.45);
   color: #1a0c04;
 }
-.jcc-feed-glyph.warn::before,
-.jcc-tag.warn::before { content: "!"; }
 
 .jcc-feed-glyph.tip,
 .jcc-tag.tip {
@@ -2646,8 +2662,6 @@ button.jcc-search:hover,
   background: rgba(0, 180, 220, 0.88);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.28);
 }
-.jcc-feed-glyph.tip::before,
-.jcc-tag.tip::before { content: "✦"; font-size: 9px; }
 
 .jcc-feed-glyph.live,
 .jcc-tag.live {
@@ -2657,8 +2671,6 @@ button.jcc-search:hover,
   animation: cortana-live-pulse var(--cortana-live-ms, 1.4s) ease-in-out infinite;
   color: #031810;
 }
-.jcc-feed-glyph.live::before,
-.jcc-tag.live::before { content: "◉"; font-size: 9px; }
 
 .jcc-feed-body {
   display: flex;
@@ -2780,12 +2792,12 @@ button.jcc-search:hover,
   color: var(--cortana-cyan);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
 }
-.jcc-agent-ico[data-glyph="code"]::before { content: "</>"; font-size: 8px; letter-spacing: -0.04em; }
-.jcc-agent-ico[data-glyph="search"]::before { content: "⌕"; font-size: 12px; }
-.jcc-agent-ico[data-glyph="db"]::before { content: "▣"; }
-.jcc-agent-ico[data-glyph="globe"]::before { content: "◎"; }
-.jcc-agent-ico[data-glyph="check"]::before { content: "☑"; }
-.jcc-agent-ico[data-glyph="shield"]::before { content: "✓"; }
+.jcc-agent-ico svg {
+  display: block;
+}
+.jcc-agent-ico[data-glyph]::before {
+  content: none !important;
+}
 
 .jcc-agent-ico[data-tone="cyan"] {
   color: #4ad1f1;
@@ -2876,12 +2888,13 @@ button.jcc-search:hover,
 }
 
 .jcc-wave-tone-green {
+  /* Photo agent wave bars ~2px core */
   background: repeating-linear-gradient(
     90deg,
     transparent 0 2px,
-    rgba(61, 214, 140, 0.85) 2px 3px,
-    transparent 3px 5px,
-    rgba(61, 214, 140, 0.45) 5px 8px,
+    rgba(61, 214, 140, 0.85) 2px 4px,
+    transparent 4px 6px,
+    rgba(61, 214, 140, 0.45) 6px 8px,
     transparent 8px 11px
   );
   background-size: 44px 100%;
@@ -2891,9 +2904,9 @@ button.jcc-search:hover,
 .jcc-wave-tone-amber {
   background: repeating-linear-gradient(
     90deg,
-    transparent 0 3px,
-    rgba(251, 191, 36, 0.8) 3px 5px,
-    transparent 5px 9px
+    transparent 0 2px,
+    rgba(251, 191, 36, 0.8) 2px 4px,
+    transparent 4px 8px
   );
   background-size: 36px 100%;
   filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.45));
@@ -3179,7 +3192,7 @@ button.jcc-search:hover,
 .jcc-gauge-track,
 .jcc-gauge-prog {
   fill: none;
-  stroke-width: 1.65;
+  stroke-width: var(--cortana-stroke-gauge, 4);
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
 }
@@ -3506,38 +3519,24 @@ button.jcc-search:hover,
   border-radius: 5px;
   display: grid;
   place-items: center;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0;
-  color: #031018;
-  background: #4ad1f1;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  background: rgba(0, 16, 32, 0.92);
+  border: 1px solid rgba(0, 120, 160, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 8px rgba(0, 180, 220, 0.12);
+  line-height: 0;
+  overflow: hidden;
 }
-
-.jcc-llm-logo::before {
-  content: "AI";
-}
-
-.jcc-llm-logo[data-provider="claude"] { background: #d4a574; }
-.jcc-llm-logo[data-provider="claude"]::before { content: "Cl"; }
-.jcc-llm-logo[data-provider="openai"] { background: #6ee7b7; }
-.jcc-llm-logo[data-provider="openai"]::before { content: "O"; }
-.jcc-llm-logo[data-provider="gemini"] { background: #7aa2ff; }
-.jcc-llm-logo[data-provider="gemini"]::before { content: "G"; }
-.jcc-llm-logo[data-provider="grok"] { background: #e8e8e8; color: #111; }
-.jcc-llm-logo[data-provider="grok"]::before { content: "X"; }
-.jcc-llm-logo[data-provider="groq"] { background: #f5c542; }
-.jcc-llm-logo[data-provider="groq"]::before { content: "q"; }
-.jcc-llm-logo[data-provider="cursor"] { background: #4ad1f1; }
-.jcc-llm-logo[data-provider="cursor"]::before { content: "Cu"; }
-.jcc-llm-logo[data-provider="muse"] { background: #c084fc; }
-.jcc-llm-logo[data-provider="muse"]::before { content: "M"; }
-.jcc-llm-logo[data-provider="ollama"] { background: #a3a3a3; }
-.jcc-llm-logo[data-provider="ollama"]::before { content: "Ol"; }
-.jcc-llm-logo[data-provider="openrouter"] { background: #5b9fff; }
-.jcc-llm-logo[data-provider="openrouter"]::before { content: "OR"; }
-.jcc-llm-logo[data-provider="copilot"] { background: #3dd68c; }
-.jcc-llm-logo[data-provider="copilot"]::before { content: "Co"; }
+.jcc-llm-logo::before { content: none !important; }
+.jcc-llm-logo svg { display: block; width: 14px; height: 14px; }
+.jcc-llm-logo[data-provider="claude"] { border-color: rgba(212, 165, 116, 0.55); box-shadow: 0 0 8px rgba(212, 165, 116, 0.22); }
+.jcc-llm-logo[data-provider="openai"] { border-color: rgba(110, 231, 183, 0.5); box-shadow: 0 0 8px rgba(110, 231, 183, 0.2); }
+.jcc-llm-logo[data-provider="gemini"] { border-color: rgba(122, 162, 255, 0.5); box-shadow: 0 0 8px rgba(122, 162, 255, 0.2); }
+.jcc-llm-logo[data-provider="grok"] { border-color: rgba(232, 232, 232, 0.4); }
+.jcc-llm-logo[data-provider="groq"] { border-color: rgba(245, 197, 66, 0.55); box-shadow: 0 0 8px rgba(245, 197, 66, 0.2); }
+.jcc-llm-logo[data-provider="cursor"] { border-color: rgba(74, 209, 241, 0.55); box-shadow: 0 0 8px rgba(74, 209, 241, 0.25); }
+.jcc-llm-logo[data-provider="muse"] { border-color: rgba(192, 132, 252, 0.5); box-shadow: 0 0 8px rgba(192, 132, 252, 0.2); }
+.jcc-llm-logo[data-provider="ollama"] { border-color: rgba(163, 163, 163, 0.45); }
+.jcc-llm-logo[data-provider="openrouter"] { border-color: rgba(91, 159, 255, 0.5); box-shadow: 0 0 8px rgba(91, 159, 255, 0.2); }
+.jcc-llm-logo[data-provider="copilot"] { border-color: rgba(61, 214, 140, 0.5); box-shadow: 0 0 8px rgba(61, 214, 140, 0.22); }
 
 .jcc-llm-copy {
   flex: 1 1 auto;
@@ -3701,7 +3700,7 @@ button.jcc-search:hover,
 
 .jcc-footer-mini-wave i {
   display: block;
-  width: 2px;
+  width: var(--cortana-stroke-wave-bar, 2px);
   height: 35%;
   border-radius: 1px;
   background: linear-gradient(180deg, #7af0ff, #00b8e0);

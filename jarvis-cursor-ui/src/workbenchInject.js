@@ -1043,6 +1043,29 @@ function llmProviderKey(id, label) {
   return "generic";
 }
 
+
+/** Hairline brand-mark SVGs for LLM chips (photo-matched; no letter wells / no AI mush). */
+const LLM_LOGO_SVG = {
+  claude: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M5.2 3.2c1.1 2.4 1.1 7.2 0 9.6M10.8 3.2c-1.1 2.4-1.1 7.2 0 9.6M3.4 6.2h9.2M3.4 9.8h9.2" stroke="#d4a574" stroke-width="1.25" stroke-linecap="round"/></svg>`,
+  openai: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5" stroke="#6ee7b7" stroke-width="1.25"/><circle cx="8" cy="8" r="2.1" stroke="#6ee7b7" stroke-width="1.15"/><path d="M8 3v2.2M8 10.8V13M3 8h2.2M10.8 8H13" stroke="#6ee7b7" stroke-width="1.1" stroke-linecap="round"/></svg>`,
+  gemini: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M8 2.2l1.1 4.7L14 8l-4.9 1.1L8 13.8l-1.1-4.7L2 8l4.9-1.1L8 2.2z" stroke="#7aa2ff" stroke-width="1.25" stroke-linejoin="round"/></svg>`,
+  grok: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4L4 12" stroke="#e8e8e8" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+  groq: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5" stroke="#f5c542" stroke-width="1.25"/><path d="M6.2 6.5h2.6c.9 0 1.6.7 1.6 1.5S9.7 9.5 8.8 9.5H7.4v2" stroke="#f5c542" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  cursor: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.2 2.8l10 5.2-4.4 1.2-1.2 4.4L3.2 2.8z" stroke="#4ad1f1" stroke-width="1.25" stroke-linejoin="round"/></svg>`,
+  muse: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M8 2.4l.9 3.3H12.4L9.7 7.7l.9 3.3L8 9.1l-2.6 1.9.9-3.3L3.6 5.7h3.5L8 2.4z" stroke="#c084fc" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+  ollama: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><ellipse cx="8" cy="9.2" rx="4.6" ry="3.6" stroke="#a3a3a3" stroke-width="1.25"/><path d="M4.2 7.2c0-2.2 1.4-3.8 3.8-3.8s3.8 1.6 3.8 3.8" stroke="#a3a3a3" stroke-width="1.25"/><circle cx="6.3" cy="9" r="0.7" fill="#a3a3a3"/><circle cx="9.7" cy="9" r="0.7" fill="#a3a3a3"/><path d="M5.2 4.2l-.8-1.6M10.8 4.2l.8-1.6" stroke="#a3a3a3" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+  openrouter: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M4.2 4.5L8 8l-3.8 3.5M8.5 4.5h3.5v7H8.5" stroke="#5b9fff" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  copilot: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.2" stroke="#3dd68c" stroke-width="1.25"/><path d="M5.2 8c0-1.8 1.2-3 2.8-3 2.2 0 2.8 1.6 2.8 2.6S9.8 11 8 11c-1.4 0-2.2-.7-2.2-1.5 0-.9.8-1.4 2-1.4h2.2" stroke="#3dd68c" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+  generic: `<svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><rect x="3" y="3" width="10" height="10" rx="2" stroke="#4ad1f1" stroke-width="1.25"/><circle cx="8" cy="8" r="2" stroke="#4ad1f1" stroke-width="1.2"/></svg>`,
+};
+
+const FEED_GLYPH_SVG = {
+  info: `<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"><rect x="3.2" y="2.8" width="9.6" height="10.4" rx="1.2"/><path d="M3.2 5.6h9.6M5.5 2.2v2.2M10.5 2.2v2.2M6 8h4M6 10.4h2.8"/></svg>`,
+  warn: `<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.6L13.6 12.4H2.4L8 2.6z"/><path d="M8 6.4v3.2M8 11.2h.01"/></svg>`,
+  tip: `<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"><path d="M8 2.6a3.6 3.6 0 0 1 2.2 6.4c-.4.3-.7.8-.7 1.3v.3H6.5v-.3c0-.5-.3-1-.7-1.3A3.6 3.6 0 0 1 8 2.6z"/><path d="M6.6 12.4h2.8M7 13.6h2"/></svg>`,
+  live: `<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"><rect x="3.2" y="3.2" width="9.6" height="9.6" rx="1.4"/><path d="M3.2 6h1.2M3.2 10h1.2M11.6 6H12.8M11.6 10H12.8M6 3.2V4.4M10 3.2V4.4M6 11.6v1.2M10 11.6v1.2"/><rect x="6.2" y="6.2" width="3.6" height="3.6" rx="0.6"/></svg>`,
+};
+
 /** Replace placeholder provider tiles with one chip per Cursor catalog model. */
 function stampHudLlmGrid(markup, catalog) {
   const models = catalog.models || [];
@@ -1057,7 +1080,8 @@ function stampHudLlmGrid(markup, catalog) {
           const on = Boolean(m.defaultOn) && !degraded;
           const status = degraded ? "Degraded" : on ? "Default" : "Available";
           const cls = degraded ? "unknown" : on ? "on" : "";
-          return `<div class="jcc-llm-chip ${cls}" data-model-id="${id}" data-provider="${provider}" data-cursor-model="1" data-status="${degraded ? "degraded" : on ? "default" : "available"}"><i class="jcc-llm-logo" data-provider="${provider}" aria-hidden="true"></i><span class="jcc-llm-copy"><span>${label}</span><em>${escapeHudText(status)}</em></span></div>`;
+          const logo = LLM_LOGO_SVG[provider] || LLM_LOGO_SVG.generic;
+          return `<div class="jcc-llm-chip ${cls}" data-model-id="${id}" data-provider="${provider}" data-cursor-model="1" data-status="${degraded ? "degraded" : on ? "default" : "available"}"><i class="jcc-llm-logo" data-provider="${provider}" aria-hidden="true">${logo}</i><span class="jcc-llm-copy"><span>${label}</span><em>${escapeHudText(status)}</em></span></div>`;
         })
         .join("\n          ")
     : `<p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data — open Cursor once, run scripts/_list_picker_models.py, or re-Enable injection.</p>`;
@@ -1195,7 +1219,8 @@ function stampHudFeed(markup, feed) {
           const tone = escapeHudText(it.tone || "info");
           const title = escapeHudText(it.title || "—");
           const meta = escapeHudText(it.meta || "");
-          return `<div class="jcc-feed-item" data-tone="${tone}"><span class="jcc-feed-glyph ${tone}" role="img" aria-label="${tone}"></span><div class="jcc-feed-body"><strong>${title}</strong><span class="jcc-feed-meta" data-text="${meta}"></span></div></div>`;
+          const g = FEED_GLYPH_SVG[tone] || FEED_GLYPH_SVG.info;
+          return `<div class="jcc-feed-item" data-tone="${tone}"><span class="jcc-feed-glyph ${tone}" role="img" aria-label="${tone}">${g}</span><div class="jcc-feed-body"><strong>${title}</strong><span class="jcc-feed-meta" data-text="${meta}"></span></div></div>`;
         })
         .join("\n          ")
     : `<p class="jcc-feed-empty">Awaiting data</p>`;

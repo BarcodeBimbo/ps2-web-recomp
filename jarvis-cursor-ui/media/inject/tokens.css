@@ -168,6 +168,16 @@ body.CORTANA-inject {
   --cortana-radius-lg: 12px;
   --cortana-radius-pill: 999px;
   /* HUD chrome vs reference-command-center-2.png (panels, chips, commands) */
+
+  /* —— Photo stroke weights (reference-command-center-2.png @ 1024×573) —— */
+  --cortana-stroke-hairline: 1px;
+  --cortana-stroke-panel: 1px;
+  --cortana-stroke-rail-div: 1px;
+  --cortana-stroke-bracket: 1px;
+  --cortana-stroke-gauge: 4;
+  --cortana-stroke-wave-bar: 2px;
+  --cortana-stroke-icon: 1.25;
+  --cortana-stroke-divider: 1px;
   --cortana-hud-panel-radius: 6px;
   --cortana-hud-panel-chamfer: 7px;
   --cortana-hud-panel-glass-inset: inset 0 1px 0 rgba(0, 212, 255, 0.08);
@@ -208,9 +218,9 @@ body.CORTANA-inject {
   --cortana-boot-pip-gap: 14px;
   /* Staged sibling beside workbench.html (set by inject engine binding) */
   --cortana-boot-splash: url(./cortana-boot-splash.png);
-  --cortana-rail-w: 208px;
-  --cortana-rail-w-narrow: 176px;
-  --cortana-header-h: 50px;
+  --cortana-rail-w: 157px;
+  --cortana-rail-w-narrow: 140px;
+  --cortana-header-h: 46px;
   --cortana-header-icon-border: rgba(0, 212, 255, 0.16);
   --cortana-header-icon-bg: rgba(0, 15, 36, 0.72);
   --cortana-header-icon: #40a7ca;
@@ -239,7 +249,7 @@ body.CORTANA-inject {
   --cortana-hud-fs-sm: 9px;
   --cortana-hud-fs-md: 11px;
   --cortana-hud-fs-lg: 14px;
-  --cortana-hud-fs-clock: 22px;
+  --cortana-hud-fs-clock: 18px;
   --cortana-badge-size: 18px;
   --cortana-iris-size: 36px;
   --cortana-mic-size: 56px;
