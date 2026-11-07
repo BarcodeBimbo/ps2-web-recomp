@@ -1,8 +1,6 @@
 # CyberArcade
 
-## AI-assisted development
-
-This project is developed with AI assistance (Cursor). A person directs the work, reviews changes, and owns the result; Cursor helps with drafting, debugging, and edits. Some commits may show **Cursor** (`cursor@users.noreply.github.com`) as the git author so that AI involvement is visible in history. That is transparency, not a claim that the AI replaces the human behind the project.
+Cursor is used for research, reverse engineering, and WebAssembly patching. Commits may be authored as **Cursor** (`cursor@users.noreply.github.com`) so that assistance is visible in history.
 
 **Latest runtime fix:** [NFS polling RPC deadlock](NFS_RPC_FIX.md), verified with the uploaded driver snapshot. Broader fixes and test limits: [FIX_REPORT.md](FIX_REPORT.md).
 
@@ -25,6 +23,85 @@ This is the sibling of [psp-web-recomp](https://github.com/snuri00/psp-web-recom
 God of War II followed through the same scripts. It needed no game-specific code, but it found two bugs that Gran Turismo 4 had never triggered, one in the recompiler and one in the vector unit timing, and a few missing pieces of the PS2's input/output processor. It now plays from the menus through its cutscenes into combat, and holds 60 frames per second in heavy combat at the PS2's resolution in Chrome. At twice the resolution it runs at 48 to 60, limited by the laptop's integrated GPU.
 
 No game data is included here. You bring a disc image of a game you own, and the scripts in this repository turn it into a web page on your machine.
+
+## Architecture and research
+
+### Project architecture
+
+```mermaid
+flowchart TB
+  subgraph Host["Host / WebAssembly"]
+    EE["EE recomp<br/>R5900 + VU0"]
+    IOP["IOP HLE + R3000 IRX"]
+    GS["GS WebGPU / software"]
+    CDVD["CDVD / disc HTTP Range"]
+    SIF["SIF RPC bridge"]
+  end
+  Disc["Owned disc image"] --> CDVD
+  EE <--> SIF
+  IOP <--> SIF
+  CDVD --> IOP
+  EE --> GS
+  IOP --> EE
+```
+
+### Disc-fix research flow
+
+```mermaid
+flowchart LR
+  A[Triage leftovers] --> B[WaitSema mapping]
+  B --> C[Sony-contract gap analysis]
+  C --> D{Patch vs rewrite?}
+  D -->|narrow host fix| E[Scoped patch]
+  D -->|contract wrong| F[Behavior-accurate rewrite]
+  E --> G[Prove-before-swap]
+  F --> G
+  G --> H[Keep or roll back]
+```
+
+### Sony documentation and contracts map
+
+```mermaid
+flowchart TB
+  subgraph Sources["Sony / community contracts"]
+    SIFRPC["ps2sdk sifrpc.c"]
+    LIBCD["ps2sdk libcdvd.c"]
+    TEK["PS2Tek EE Syscalls<br/>EE Threading"]
+    BIOS["BIOS references"]
+  end
+  subgraph HLE["Runtime HLE stubs"]
+    SIFH["SIF reply / complete"]
+    SEM["WaitSema / SignalSema<br/>iSignalSema"]
+    CDV["cdvdfsv readee / CdSync"]
+  end
+  SIFRPC --> SIFH
+  LIBCD --> CDV
+  TEK --> SEM
+  BIOS --> SEM
+  BIOS --> SIFH
+```
+
+### Ranked rewrite priorities
+
+```mermaid
+flowchart TB
+  R1["R1 — SIF RPC end contract<br/>reply_call / complete / orphaned"]
+  R2["R2 — EE WaitSema / iSignalSema fidelity<br/>reschedule vs READY-only wake"]
+  R3["R3 — cdvdfsv readee full contract<br/>dst + readee + curReadPos"]
+  R1 --> R2 --> R3
+```
+
+### Test matrix phases
+
+```mermaid
+flowchart LR
+  P1[Boot] --> P2[Menu]
+  P2 --> P3[First disc read]
+  P3 --> P4[Streaming load]
+  P4 --> P5[Sustained run]
+```
+
+Each phase must pass its Sony-contract checks before a ranked rewrite is swapped in (prove-before-swap).
 
 ## How it works
 
