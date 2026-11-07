@@ -1,4 +1,4 @@
-"""Private Store settings kept out of git."""
+"""Store settings helpers. Captcha keys are browser-localStorage only — never persisted here."""
 from __future__ import annotations
 import json
 import os
@@ -9,9 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PATH = ROOT / 'config' / 'store.private.json'
 
-KEYS = (
-    'twocaptcha_api_key',
-)
+# No server-side secrets. Legacy captcha keys in store.private.json are scrubbed.
+KEYS = ()
 
 VPN_NAME_RE = re.compile(
     r'mullvad|pia|private\s*internet\s*access|wintun|wireguard|openvpn|nordlynx|'
@@ -27,42 +26,48 @@ def _blank():
     return {key: '' for key in KEYS}
 
 
-def load():
-    data = _blank()
+def scrub_private_file():
+    """Remove legacy captcha secrets from disk; delete the file if nothing remains."""
+    if not PATH.is_file():
+        return
     try:
         raw = json.loads(PATH.read_text(encoding='utf-8'))
     except (OSError, ValueError):
-        return data
+        try:
+            PATH.unlink(missing_ok=True)
+        except OSError:
+            pass
+        return
     if not isinstance(raw, dict):
-        return data
-    for key in KEYS:
-        value = raw.get(key, '')
-        data[key] = value.strip() if isinstance(value, str) else ''
-    return data
+        try:
+            PATH.unlink(missing_ok=True)
+        except OSError:
+            pass
+        return
+    raw.pop('twocaptcha_api_key', None)
+    remaining = {key: value for key, value in raw.items() if value not in ('', None, {}, [])}
+    try:
+        if not remaining:
+            PATH.unlink(missing_ok=True)
+        else:
+            temporary = PATH.with_suffix('.tmp')
+            temporary.write_text(json.dumps(remaining, indent=2) + '\n', encoding='utf-8')
+            temporary.replace(PATH)
+    except OSError:
+        pass
+
+
+def load():
+    scrub_private_file()
+    return _blank()
 
 
 def save(updates):
     if not isinstance(updates, dict):
         raise ValueError('Invalid settings payload.')
-    current = load()
-    for key in KEYS:
-        if key not in updates:
-            continue
-        value = updates.get(key)
-        if value is None:
-            continue
-        if not isinstance(value, str):
-            raise ValueError(f'Invalid {key}.')
-        if len(value) > 512:
-            raise ValueError(f'{key} is too long.')
-        if any(ch in value for ch in '\0\r\n'):
-            raise ValueError(f'Invalid {key}.')
-        current[key] = value.strip()
-    PATH.parent.mkdir(parents=True, exist_ok=True)
-    temporary = PATH.with_suffix('.tmp')
-    temporary.write_text(json.dumps(current, indent=2) + '\n', encoding='utf-8')
-    temporary.replace(PATH)
-    return public_view(current)
+    # Ignore any captcha field from the client — browser localStorage owns that secret.
+    scrub_private_file()
+    return public_view()
 
 
 def detect_vpn():
@@ -108,11 +113,14 @@ def detect_vpn():
 
 
 def public_view(data=None):
-    data = data or load()
+    del data  # captcha is not server-stored
+    scrub_private_file()
     vpn = detect_vpn()
     return {
-        'twocaptcha_api_key': data.get('twocaptcha_api_key', ''),
-        'has_twocaptcha': bool(data.get('twocaptcha_api_key')),
+        # Intentionally empty — the panel keeps the key in localStorage only.
+        'twocaptcha_api_key': '',
+        'has_twocaptcha': False,
+        'twocaptcha_storage': 'localStorage',
         'vpn_connected': bool(vpn.get('connected')),
         'vpn_name': vpn.get('name') or '',
         'vpn_detail': vpn.get('detail') or '',

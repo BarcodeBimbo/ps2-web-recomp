@@ -143,7 +143,7 @@ html{scroll-behavior:smooth}article{transition:transform .18s ease,background .1
       <div class="settings-card-head">
         <div>
           <h2>Captcha</h2>
-          <p>Optional 2Captcha key for store challenge pages.</p>
+          <p>Optional 2Captcha key for store challenge pages. Saved in this browser only (localStorage) — never written to disk or source.</p>
         </div>
       </div>
       <form id="settings-form" class="settings-form">
@@ -336,6 +336,27 @@ for (const close of document.querySelectorAll('[data-close]')) close.onclick = (
 logDialog.addEventListener('close', () => { openLog = null; });
 logKind.onchange = () => showLog().catch(report);
 
+const TWOCAPTCHA_LS_KEY = 'ps2-twocaptcha-api-key';
+function getTwocaptchaKey() {
+  try { return (localStorage.getItem(TWOCAPTCHA_LS_KEY) || '').trim(); }
+  catch (error) { return ''; }
+}
+function setTwocaptchaKey(value) {
+  const key = String(value || '').trim();
+  try {
+    if (key) localStorage.setItem(TWOCAPTCHA_LS_KEY, key);
+    else localStorage.removeItem(TWOCAPTCHA_LS_KEY);
+  } catch (error) {
+    throw new Error('Could not save the 2Captcha key in this browser.');
+  }
+}
+function withTwocaptcha(data) {
+  const payload = data && typeof data === 'object' ? {...data} : {};
+  const key = getTwocaptchaKey();
+  if (key) payload.twocaptcha_api_key = key;
+  else delete payload.twocaptcha_api_key;
+  return payload;
+}
 async function request(path, data) {
   const response = await fetch(path, data === undefined ? {} : {
     method: 'POST',
@@ -675,7 +696,7 @@ function applyCoverSettings(data){
 }
 async function loadSettings(){
   const data=await request('/api/settings');
-  document.getElementById('settings-twocaptcha').value=data.twocaptcha_api_key||'';
+  document.getElementById('settings-twocaptcha').value=getTwocaptchaKey();
   applyCoverSettings(data);
   setVpnUi(data);
 }
@@ -714,8 +735,10 @@ document.getElementById('settings-form').onsubmit=async(event)=>{
   const button=document.getElementById('settings-save');
   button.disabled=true;message.dataset.ok='0';message.textContent='Saving…';
   try{
-    await request('/api/settings',{twocaptcha_api_key:document.getElementById('settings-twocaptcha').value.trim()});
-    message.dataset.ok='1';message.textContent='Saved.';
+    setTwocaptchaKey(document.getElementById('settings-twocaptcha').value);
+    // Scrub any legacy server-side captcha copy; do not POST the key.
+    await request('/api/settings',{});
+    message.dataset.ok='1';message.textContent='Saved in this browser only.';
     await loadSettings();
   }catch(error){message.dataset.ok='0';message.textContent=error.message;}
   finally{button.disabled=false;}
@@ -754,11 +777,11 @@ document.getElementById('network-submit').onclick=async()=>{
   try{
     const url=document.getElementById('network-url').value.trim();
     new URL(url);
-    await request('/api/store/download',{
+    await request('/api/store/download',withTwocaptcha({
       url,
       title:document.getElementById('network-title').value.trim(),
       password:document.getElementById('network-password').value
-    });
+    }));
     addDialog.close();selectView('downloads');await refreshDownloads();
   }catch(error){addMessage.textContent=error.message;}
   finally{button.disabled=false;}
@@ -795,7 +818,7 @@ async function loadCatalog(page=storePage,query=storeQuery){
 async function openStoreGame(game){
   if(game.source==='torrent' || String(game.url||'').startsWith('torrent:')){
     storeMessage.textContent='Queuing download…';
-    await request('/api/store/download',{url:game.url,title:game.title,password:document.getElementById('store-password').value});
+    await request('/api/store/download',withTwocaptcha({url:game.url,title:game.title,password:document.getElementById('store-password').value}));
     selectView('downloads');await refreshDownloads();return;
   }
   const versionsBox=document.getElementById('store-versions');
@@ -826,7 +849,7 @@ async function openStoreGame(game){
     downloadBtn.onclick=async()=>{
       downloadBtn.disabled=true;versionMessage.textContent='Queuing download…';
       try{
-        await request('/api/store/download',{url:selected.url,title:game.title,password:document.getElementById('store-password').value});
+        await request('/api/store/download',withTwocaptcha({url:selected.url,title:game.title,password:document.getElementById('store-password').value}));
         storeDialog.close();selectView('downloads');await refreshDownloads();
       }catch(error){versionMessage.textContent=error.message;downloadBtn.disabled=false;}
     };

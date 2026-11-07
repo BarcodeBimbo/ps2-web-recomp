@@ -10,7 +10,9 @@ const WAIT_SECONDS = 20;
 const ORIGIN_IP = '199.127.62.112';
 const PROVIDER_HOST = 'romsfun.com';
 
-const TWOCAPTCHA_API_KEY = "30fa9ce989c7f43c15d28e1e0f1a8264";
+// Never hardcode captcha secrets — set TWOCAPTCHA_API_KEY in the environment
+// (panel Store downloads pass the browser localStorage key into the worker env).
+const TWOCAPTCHA_API_KEY = (process.env.TWOCAPTCHA_API_KEY || '').trim();
 const TWOCAPTCHA_CREATE_URL = "https://api.2captcha.com/createTask";
 const TWOCAPTCHA_RESULT_URL = "https://api.2captcha.com/getTaskResult";
 
@@ -38,6 +40,9 @@ function cleanFilenameForR36s(filename: string, cleanTags = false): string {
 }
 
 async function solveTurnstile2Captcha(sitekey: string, pageUrl: string, action?: string, cdata?: string, pagedata?: string): Promise<string> {
+    if (!TWOCAPTCHA_API_KEY) {
+        throw new Error('TWOCAPTCHA_API_KEY is not set. Paste a 2Captcha key in CyberArcade Settings (saved in this browser only), or export TWOCAPTCHA_API_KEY.');
+    }
     const task: any = { type: "TurnstileTaskProxyless", websiteURL: pageUrl, websiteKey: sitekey };
     if (action) task.action = action;
     if (cdata) task.data = cdata;

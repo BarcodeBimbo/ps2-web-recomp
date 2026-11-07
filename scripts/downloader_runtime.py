@@ -1,5 +1,4 @@
 """Shared paths for the project's private downloader runtime."""
-import json
 import os
 from pathlib import Path
 import shutil
@@ -39,22 +38,17 @@ def node_executable():
     return usable[0] if usable else (path_node or (str(managed) if managed.is_file() else None))
 
 
-def _private_settings():
-    try:
-        from store_settings import load
-        return load()
-    except Exception:
-        try:
-            data = json.loads((ROOT / 'config/store.private.json').read_text(encoding='utf-8'))
-        except (OSError, ValueError):
-            data = {}
-        return data if isinstance(data, dict) else {}
+def runtime_env(twocaptcha_api_key=None):
+    """Build the Node worker environment.
 
-
-def runtime_env():
+    Captcha keys come from the browser (localStorage → per-job request → here) or
+    from an already-set process environment. Never read config/store.private.json.
+    """
     binary = node_executable()
-    data = _private_settings()
-    secret = os.environ.get('TWOCAPTCHA_API_KEY') or data.get('twocaptcha_api_key') or ''
+    if twocaptcha_api_key is None:
+        secret = os.environ.get('TWOCAPTCHA_API_KEY') or ''
+    else:
+        secret = str(twocaptcha_api_key)
     # Strip HTTP(S)_PROXY so CDN/browser downloads use the system VPN tunnel,
     # not an app-level proxy from Settings or the environment.
     env = {

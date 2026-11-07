@@ -841,9 +841,22 @@ def resolve_download_url(url):
     return public_url(url), None
 
 
+def _normalize_twocaptcha_key(value):
+    """Accept a browser-supplied key for one job; never persist it."""
+    if value is None or value == '':
+        return ''
+    if not isinstance(value, str):
+        raise ValueError('Invalid twocaptcha_api_key.')
+    value = value.strip()
+    if len(value) > 512 or any(ch in value for ch in '\0\r\n'):
+        raise ValueError('Invalid twocaptcha_api_key.')
+    return value
+
+
 def start(data, root, importer):
     raw = data.get('url')
     password = data.get('password', DEFAULT_ARCHIVE_PASSWORD) or None
+    twocaptcha_key = _normalize_twocaptcha_key(data.get('twocaptcha_api_key'))
     if password is not None and (not isinstance(password, str) or len(password) > 1024 or any(c in password for c in '\0\r\n')):
         raise ValueError('Invalid archive password.')
     url, resolved_title = resolve_download_url(raw)
@@ -895,19 +908,23 @@ def start(data, root, importer):
         JOBS[identifier] = {'id':identifier,'title':title.strip(),'status':'queued','bytes':0,'total':None,'speed':0,'detail':detail}
         CONTROLS[identifier] = {'paused':False,'cancelled':False}
         try:
-            threading.Thread(target=download,args=(identifier,mode,payload,ext,password,Path(root),importer),daemon=True).start()
+            threading.Thread(
+                target=download,
+                args=(identifier, mode, payload, ext, password, Path(root), importer, twocaptcha_key),
+                daemon=True,
+            ).start()
         except RuntimeError:
             JOBS.pop(identifier, None); CONTROLS.pop(identifier, None)
             raise ValueError('Could not start the download worker. Try again after other transfers finish.') from None
         return dict(JOBS[identifier])
 
 
-def _run_node_worker(script, job, flags, identifier):
+def _run_node_worker(script, job, flags, identifier, twocaptcha_key=''):
     node = node_executable()
     if not node: raise ValueError('Node.js is required for this download. Run Setup.cmd.')
     worker = Path(__file__).resolve().parents[1] / 'downloader' / script
     if not worker.is_file(): raise ValueError('Downloader worker is missing.')
-    env = runtime_env()
+    env = runtime_env(twocaptcha_api_key=twocaptcha_key or '')
     process = subprocess.Popen(
         [node, str(worker)],
         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -962,7 +979,7 @@ def _run_node_worker(script, job, flags, identifier):
         _kill_worker(process)
 
 
-def download(identifier, mode, payload, ext, password, root, importer):
+def download(identifier, mode, payload, ext, password, root, importer, twocaptcha_key=''):
     global ACTIVE
     folder = root / 'downloads'
     destination = folder / identifier
@@ -998,7 +1015,7 @@ def download(identifier, mode, payload, ext, password, root, importer):
                         result = _run_node_worker('worker.mjs', {
                             'url': payload['url'],
                             'destination': str(destination),
-                        }, flags, identifier)
+                        }, flags, identifier, twocaptcha_key=twocaptcha_key)
                         path = Path(result['path'])
                         if not path.is_file(): raise ValueError('Downloader did not produce a file.')
                         update(identifier, status='importing', path=str(path), bytes=int(result.get('bytes') or path.stat().st_size), total=result.get('total'), speed=0, detail='Installing...')
@@ -1043,7 +1060,7 @@ def download(identifier, mode, payload, ext, password, root, importer):
                             'referer': payload.get('referer') or BASE + '/',
                             'cookies': payload.get('cookies') or '',
                             'destination': str(destination),
-                        }, flags, identifier)
+                        }, flags, identifier, twocaptcha_key=twocaptcha_key)
                     except ValueError as error:
                         worker_error = error
                         match = find_torrent_match(JOBS[identifier]['title'])
@@ -1063,7 +1080,7 @@ def download(identifier, mode, payload, ext, password, root, importer):
                         result = _run_node_worker('worker.mjs', {
                             'url': payload['url'],
                             'destination': str(destination),
-                        }, flags, identifier)
+                        }, flags, identifier, twocaptcha_key=twocaptcha_key)
                     except ValueError as error:
                         worker_error = error
                         match = find_torrent_match(JOBS[identifier]['title'])
@@ -1082,7 +1099,7 @@ def download(identifier, mode, payload, ext, password, root, importer):
                         'torrent': payload['torrent'],
                         'fileIndex': payload['file_index'],
                         'destination': str(destination) + (Path(payload['name']).suffix.lower() or '.bin'),
-                    }, flags, identifier)
+                    }, flags, identifier, twocaptcha_key=twocaptcha_key)
                 if not result:
                     raise worker_error or ValueError('Downloader finished without a file.')
                 path = Path(result['path'])
