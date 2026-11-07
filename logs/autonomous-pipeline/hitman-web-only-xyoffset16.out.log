@@ -1,0 +1,25 @@
+== [1/1] Building browser player
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/PS2Recomp/build/tools-windows
+ninja: no work to do.
+code 908116 instructions (3547 KiB), functions 7346, entries 100372, rejected seeds 1
+889 units written to generated/a2116d2ac08a7be4db4e8455ad58d2e5
+-- Configuring done (1.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: C:/PS2Recomp/build/web-a2116d2ac08a7be4db4e8455ad58d2e5-next
+[0/2] Re-checking globbed directories...
+[1/931] Generating gs_wgsl.cpp
+[2/931] Generating blit_wgsl.cpp
+[3/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/memory.cpp.o
+[4/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dispatch.cpp.o
+[5/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[6/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[7/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[8/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.o
+[9/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/disc.cpp.o
+[10/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.o
+[11/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.o
+[12/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
+[13/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.o
+[14/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit_web.cpp.o

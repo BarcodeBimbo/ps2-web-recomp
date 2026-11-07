@@ -1,0 +1,9 @@
+[0/2] Re-checking globbed directories...
+[1/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[2/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[3/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.o
+[4/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/disc.cpp.o
+[5/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.o
+[6/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.o
+[7/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
+[8/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.o

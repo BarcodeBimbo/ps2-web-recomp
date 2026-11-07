@@ -73,7 +73,7 @@
 - [x] 2026-11-07 — Native 400f smoke with **`disc.iso`**: **97,531** prims (`logs/autonomous-pipeline/hitman-xyoffset-400f.log`)
 - [x] 2026-11-07 — Web player rebuilt XYOFFSET runtime; `ps2web.wasm` **11:09** > native **10:18** (`build/web-a2116…/`)
 - [ ] Harness `canvas_lum` pass post web rebuild (`20261107T161255Z`: boot OK **845k** prims **~58fps**, `end_lum≈0.14` still fail)
-- [ ] DISPFB vs FRAME page split (400 vs 288): compose blit if raster non-empty but present black
+- [ ] DISPFB vs FRAME page split (400 vs 288): compose blit if raster non-empty but present black — **2026-11-07 research:** prefer **(B)** sprite/tex fill first (`logs/workers/W-HITMAN-compose-research-2026-11-07.md`); host blit deferred until FBP288 non-empty; XYOFFSET now 16-bit 12.4
 
 ---
 
