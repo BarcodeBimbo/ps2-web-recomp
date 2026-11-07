@@ -70,7 +70,7 @@
 - [x] 2026-11-07 — `ps2web.js` ACL serve fix + `ensure_web_build_readable` (`hitman-web-js-content-length-fix-2026-11-07.md`)
 - [x] 2026-11-07 — Harness ~865k prims, ~60 FPS, no serve abort; **canvas still black** (pre-XYOFFSET web)
 - [x] 2026-11-07 — Native 400f smoke with **`disc.iso`**: **97,531** prims (`logs/autonomous-pipeline/hitman-xyoffset-400f.log`)
-- [ ] Web player rebuilt after native XYOFFSET fix (wasm newer than native; was **stale** ~08:56 vs ~10:18)
+- [x] 2026-11-07 — Web player rebuilt XYOFFSET runtime; `ps2web.wasm` **11:09** > native **10:18** (`build/web-a2116…/`)
 - [ ] Harness `canvas_lum` pass post web rebuild
 - [ ] DISPFB vs FRAME page split (400 vs 288): compose blit if raster non-empty but present black
 
