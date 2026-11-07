@@ -313,8 +313,8 @@ Setup make_setup(const State &st) {
     s.scax1 = static_cast<int>((c.scissor >> 16) & 0x7FFu);
     s.scay0 = static_cast<int>((c.scissor >> 32) & 0x7FFu);
     s.scay1 = static_cast<int>((c.scissor >> 48) & 0x7FFu);
-    s.ofx = static_cast<int>(c.xyoffset & 0xFFFFu);
-    s.ofy = static_cast<int>((c.xyoffset >> 32) & 0xFFFFu);
+    s.ofx = xyoffset_component(c.xyoffset, false);
+    s.ofy = xyoffset_component(c.xyoffset, true);
     s.tbp = static_cast<std::uint32_t>(c.tex0) & 0x3FFFu;
     s.tbw = static_cast<std::uint32_t>(c.tex0 >> 14) & 0x3Fu;
     s.tpsm = static_cast<std::uint32_t>(c.tex0 >> 20) & 0x3Fu;

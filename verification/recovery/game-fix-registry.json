@@ -1,0 +1,44 @@
+{
+  "updated": "2026-11-07T15:20:00-05:00",
+  "schema": 1,
+  "global_runtime": {
+    "disc_fix_applied": ["R3_readee", "R4D1_DiskReady"],
+    "disc_fix_quarantine": ["CNK_Alchemy_host_hacks", "R5_padman_libsd_HLE_rewrite"],
+    "min_fps_default": 60,
+    "min_fps_exceptions": {},
+    "install_gates": ["install_health.py", "matrix_phase_check.py", "autonomous_verify.py"]
+  },
+  "per_game": {
+    "a2116d2ac08a7be4db4e8455ad58d2e5": {
+      "title": "Hitman Blood Money",
+      "matrix_key": "hitman_bm",
+      "tracks": ["gs_black_canvas", "disc_fix_stable"],
+      "known_issues": ["black_canvas_xyoffset", "web_ps2web_acl"],
+      "smoke_frames": 600,
+      "matrix_phases": 5,
+      "min_prims_smoke": 100000,
+      "web_rebuild_required_after_runtime": true
+    },
+    "60c82f4a111da300ac23bbec85272788": {
+      "title": "NFS Most Wanted",
+      "matrix_key": "nfs_mw",
+      "tracks": ["disc_fix_stable"],
+      "smoke_frames": 600,
+      "matrix_phases": 5
+    },
+    "695b874b308a4e5353767bb6df8ba697": {
+      "title": "God of War USA",
+      "matrix_key": "gow_usa",
+      "tracks": ["fps_patient_zero"],
+      "min_fps_target": 60,
+      "smoke_frames": 3600
+    },
+    "b49f2e769315347e8bda839feb705744": {
+      "title": "Crash Nitro Kart",
+      "matrix_key": "cnk",
+      "tracks": ["alchemy_quarantine"],
+      "disc_fix_quarantine": true,
+      "alchemy_only": true
+    }
+  }
+}

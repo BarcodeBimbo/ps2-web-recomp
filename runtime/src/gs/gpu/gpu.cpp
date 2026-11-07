@@ -1343,7 +1343,7 @@ void draw(const State &st, const Vertex *v, int count) {
     const std::uint32_t *setup = cache.setup;
     const std::uint32_t flags = cache.flags;
     const bool fst = flags & 16u, iip = flags & 1u;
-    const int ofx = static_cast<int>(c.xyoffset & 0xFFFFu), ofy = static_cast<int>((c.xyoffset >> 32) & 0xFFFFu);
+    const int ofx = xyoffset_component(c.xyoffset, false), ofy = xyoffset_component(c.xyoffset, true);
     const int scax0 = static_cast<int>(setup[10] & 0xFFFFu), scax1 = static_cast<int>(setup[10] >> 16);
     const int scay0 = static_cast<int>(setup[11] & 0xFFFFu), scay1 = static_cast<int>(setup[11] >> 16);
     const auto sx = [&](const Vertex &p) { return (static_cast<float>(p.x) - static_cast<float>(ofx)) / 16.0f; };

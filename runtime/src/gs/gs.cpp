@@ -650,7 +650,8 @@ void prim(const State &s, int needed) {
         b.x1 = b.y1 = b.u1 = b.v1 = -1e30f;
     }
     ++b.count;
-    const float ox = static_cast<float>(x.xyoffset & 0xFFFFu) / 16.0f, oy = static_cast<float>((x.xyoffset >> 32) & 0xFFFFu) / 16.0f;
+    const float ox = static_cast<float>(xyoffset_component(x.xyoffset, false)) / 16.0f;
+    const float oy = static_cast<float>(xyoffset_component(x.xyoffset, true)) / 16.0f;
     const float tw = static_cast<float>(1u << ((x.tex0 >> 26) & 15u)), th = static_cast<float>(1u << ((x.tex0 >> 30) & 15u));
     for (int i = 0; i < needed; ++i) {
         const Vertex &v = s.queue[i];
