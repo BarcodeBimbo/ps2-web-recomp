@@ -1,0 +1,214 @@
+{
+  "date": "2026-11-07",
+  "log_dir": "c:\\PS2Recomp\\logs\\live-matrix-2026-11-07",
+  "scorer_fix": "ALCHEMY_PULSE no longer matches createsema attr=0x1FFFCE0 (bare FCE0 substring removed; standalone 0xFCE0 only); read_log_text supports UTF-16 Tee-Object logs",
+  "board_cycle": "8 R5 observe PASS",
+  "matrix_toward_100_pct": 90.0,
+  "matrix_score_detail": {
+    "passes": 36,
+    "checks": 40
+  },
+  "games": [
+    {
+      "name": "GoW_USA",
+      "id": "695b874b",
+      "full_id": "695b874b308a4e5353767bb6df8ba697",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 900,
+      "prims": "11600480",
+      "fps_host": "107.6",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": false,
+      "note": "",
+      "play_url": "http://127.0.0.1:8620/play/695b874b308a4e5353767bb6df8ba697/"
+    },
+    {
+      "name": "GoW_II",
+      "id": "34402ee3",
+      "full_id": "34402ee3c1917272f971028b4fb24868",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 900,
+      "prims": "4989882",
+      "fps_host": "25.9",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": false,
+      "note": "",
+      "play_url": "http://127.0.0.1:8620/play/34402ee3c1917272f971028b4fb24868/"
+    },
+    {
+      "name": "CNK",
+      "id": "b49f2e76",
+      "full_id": "b49f2e769315347e8bda839feb705744",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 3000,
+      "prims": "2",
+      "fps_host": "1,592.1",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": true,
+      "note": "alchemy_gate_prims=2; alchemy_pulses_expected",
+      "play_url": "http://127.0.0.1:8620/play/b49f2e769315347e8bda839feb705744/"
+    },
+    {
+      "name": "Hitman_BM",
+      "id": "a2116d2a",
+      "full_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 900,
+      "prims": "261534",
+      "fps_host": "250.9",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": false,
+      "note": "",
+      "play_url": "http://127.0.0.1:8620/play/a2116d2ac08a7be4db4e8455ad58d2e5/"
+    },
+    {
+      "name": "NFS_MW",
+      "id": "60c82f4a",
+      "full_id": "60c82f4a111da300ac23bbec85272788",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 900,
+      "prims": "408728",
+      "fps_host": "376.0",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": false,
+      "note": "",
+      "play_url": "http://127.0.0.1:8620/play/60c82f4a111da300ac23bbec85272788/"
+    },
+    {
+      "name": "Sly1",
+      "id": "c0c45270",
+      "full_id": "c0c4527037b6168660829a0eb13df1a3",
+      "exe": true,
+      "iso": true,
+      "exit": "0",
+      "boot": "YES",
+      "past_loader": "YES",
+      "frames": 900,
+      "prims": "152786",
+      "fps_host": "~300",
+      "crash": "",
+      "frame_limit": true,
+      "alchemy_contamination": false,
+      "note": "wall~3s/900f",
+      "play_url": "http://127.0.0.1:8620/play/c0c4527037b6168660829a0eb13df1a3/"
+    }
+  ],
+  "phase_scores": {
+    "Hitman_BM": {
+      "game": "hitman_bm",
+      "frames": 900,
+      "primitives": 261534,
+      "cdvd_searches_found": 14,
+      "alchemy_contamination": false,
+      "missing_code": [],
+      "halt": null,
+      "sif_packets_waiting": 0,
+      "leftover_semas": [
+        {
+          "id": 2,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 7,
+          "count": 0,
+          "waiters": 1
+        }
+      ],
+      "phases": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass"
+      },
+      "verdict": "pass",
+      "first_fail_phase": null
+    },
+    "NFS_MW": {
+      "game": "nfs_mw",
+      "frames": 900,
+      "primitives": 408728,
+      "cdvd_searches_found": 0,
+      "alchemy_contamination": false,
+      "missing_code": [],
+      "halt": null,
+      "sif_packets_waiting": 0,
+      "leftover_semas": [
+        {
+          "id": 2,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 17,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 23,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 29,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 30,
+          "count": 0,
+          "waiters": 1
+        },
+        {
+          "id": 32,
+          "count": 0,
+          "waiters": 1
+        }
+      ],
+      "phases": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "fail",
+        "streaming": "fail",
+        "sustained_run": "fail"
+      },
+      "verdict": "fail",
+      "first_fail_phase": "first_disc_read"
+    }
+  },
+  "play_urls": {
+    "GoW_USA": "http://127.0.0.1:8620/play/695b874b308a4e5353767bb6df8ba697/",
+    "GoW_II": "http://127.0.0.1:8620/play/34402ee3c1917272f971028b4fb24868/",
+    "CNK": "http://127.0.0.1:8620/play/b49f2e769315347e8bda839feb705744/",
+    "Hitman_BM": "http://127.0.0.1:8620/play/a2116d2ac08a7be4db4e8455ad58d2e5/",
+    "NFS_MW": "http://127.0.0.1:8620/play/60c82f4a111da300ac23bbec85272788/",
+    "Sly1": "http://127.0.0.1:8620/play/c0c4527037b6168660829a0eb13df1a3/"
+  },
+  "fps_overlay_evidence": "Native stderr frame-limit + prims in *.log; no Chrome FPS overlay screenshot this cycle"
+}

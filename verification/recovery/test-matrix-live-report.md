@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-07 (RESUMED w2 idle watcher)
+Updated: 2026-11-07 (~07:40) — TARGET 2 live matrix + scorer fix
 
 ## Gate cycle 1 — FAIL
 
@@ -272,4 +272,46 @@ Post-R3 five-phase still green (Hitman 600f/127974; NFS 600f/208253; SIF 0). Hit
 - Differs from pause snapshot (step 7 / null proposal) — disc-fix posted observe gate while matrix was paused.
 - Full note: `verification/recovery/worker-resume-matrix-w2-2026-11-07.md`.
 - Awaiting: process observe gate when directed, or next disc-fix proposal / optional R5 when ungated.
+
+---
+
+## Gate cycle 8 — PASS (R5 pad/sound OBSERVE)
+
+Disc-fix proposed `R5_pad_sound_observe` (`code_change: false`). Matrix **OBSERVE gate PASS**. No R5 apply. Evidence: `verification/recovery/discfix-r5-observe-matrix-2026-11-07.md`.
+
+**Ranked now:** R1–R4 cleared/verified; **R5 still gated for apply**. `allow_discfix_apply=false`.
+
+---
+
+## Live matrix lane — 2026-11-07 → toward 100% (~90%)
+
+**Log dir:** `logs/live-matrix-2026-11-07/` (`SUMMARY.md`, `summary.json`, `native-results.json`)
+
+### Scorer fix (done)
+
+`matrix_phase_check.py` `ALCHEMY_PULSE` no longer matches bare `FCE0` substring — Hitman `createsema attr=0x1FFFCE0` is **not** Alchemy. Standalone `0xFCE0` / `host_signal(16|54|55)` / soft-arm / virt-LBA still flag. Also reads UTF-16 Tee-Object logs.
+
+### Native smoke table (relative `disc.iso` + `runtime-deps` PATH)
+
+| Game | ID | Boot | Loader | Frames | Prims | FPS host | Crash | Note |
+|------|----|------|--------|--------|-------|----------|-------|------|
+| GoW USA | 695b874b | YES | YES | 900 | 11600480 | 107.6 | — | |
+| GoW II | 34402ee3 | YES | YES | 900 | 4989882 | 25.9 | — | |
+| CNK | b49f2e76 | YES | YES | 3000 | 2 | 1592.1 | — | alchemy gate |
+| Hitman BM | a2116d2a | YES | YES | 900 | 261534 | 250.9 | — | five-phase **pass** |
+| NFS MW | 60c82f4a | YES | YES | 900 | 408728 | 376.0 | — | five-phase fail: no `cdvdfsv` search in this log |
+| Sly1 | c0c45270 | YES | YES | 900 | 152786 | ~300 | — | native exe was present; prior miss was path lookup |
+
+**Toward 100%:** **90%** (36/40 checks) — remaining: CNK `prims=2` + NFS CDVD-search phases on this live log.
+
+### Play URLs (panel http://127.0.0.1:8620)
+
+- GoW USA: `/play/695b874b308a4e5353767bb6df8ba697/`
+- GoW II: `/play/34402ee3c1917272f971028b4fb24868/`
+- CNK: `/play/b49f2e769315347e8bda839feb705744/`
+- Hitman: `/play/a2116d2ac08a7be4db4e8455ad58d2e5/`
+- NFS: `/play/60c82f4a111da300ac23bbec85272788/`
+- Sly: `/play/c0c4527037b6168660829a0eb13df1a3/`
+
+FPS evidence: native stderr frame-limit + prims in `*.log` (no Chrome overlay screenshot; prefer native).
 

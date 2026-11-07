@@ -27,9 +27,14 @@ void def(const char *library, std::uint32_t index, const char *name, std::functi
 
 struct CdState {
     bool busy = false;
+    // SDK sceCdDiskReady: SCECdComplete(2) when drive can accept cmds,
+    // SCECdNotReady(6) when media detect / spin not stable. ISO HLE starts
+    // ready (disc always mounted); NotReady + ready_waiters exist for mode fidelity.
+    bool drive_ready = true;
     std::uint32_t callback = 0;
     std::uint32_t error = 0;
     std::vector<int> sync_waiters;
+    std::vector<int> ready_waiters;
 } g_cd;
 
 std::uint8_t bcd(int v) { return static_cast<std::uint8_t>(((v / 10) << 4) | (v % 10)); }
@@ -41,6 +46,14 @@ void finish_read() {
     if (!g_cd.sync_waiters.empty()) reschedule();
     g_cd.sync_waiters.clear();
     if (g_cd.callback) call_guest(g_cd.callback, 1);
+}
+
+void finish_drive_ready() {
+    g_cd.drive_ready = true;
+    for (int id : g_cd.ready_waiters)
+        if (Thread *t = thread(id)) wake(*t, 0);
+    if (!g_cd.ready_waiters.empty()) reschedule();
+    g_cd.ready_waiters.clear();
 }
 
 std::uint64_t read_cycles(std::uint32_t sectors) {
@@ -86,8 +99,14 @@ void install_cdvd() {
         finish_read();
     });
     register_hle_library("cdvdman", 0x0101);
-    def("cdvdman", 4, "sceCdInit", [](Cpu &c) { c.r[2] = 1; });
-    def("cdvdman", 5, "sceCdStandby", [](Cpu &c) { c.r[2] = 1; });
+    def("cdvdman", 4, "sceCdInit", [](Cpu &c) {
+        finish_drive_ready();
+        c.r[2] = 1;
+    });
+    def("cdvdman", 5, "sceCdStandby", [](Cpu &c) {
+        finish_drive_ready();
+        c.r[2] = 1;
+    });
     def("cdvdman", 6, "sceCdRead", [](Cpu &c) {
         if (g_trace_hle) std::fprintf(stderr, "[cdvd] read lsn %u count %u to 0x%08X\n", arg(c, 0), arg(c, 1), arg(c, 2));
         c.r[2] = start_read(arg(c, 0), arg(c, 1), arg(c, 2), arg(c, 3), false) ? 1u : 0u;
@@ -113,7 +132,24 @@ void install_cdvd() {
         block(c, kWaitHle, 0);
     });
     def("cdvdman", 12, "sceCdGetDiskType", [](Cpu &c) { c.r[2] = 0x14; });
-    def("cdvdman", 13, "sceCdDiskReady", [](Cpu &c) { c.r[2] = 2; });
+    // SDK: mode 0 block until rotation stable; mode 1 return status immediately.
+    // Returns SCECdComplete(0x02) or SCECdNotReady(0x06). EE libcdvd also RPCs
+    // 0x8000059A/59C with mode in send word — see cdvdfsv DiskReady servers.
+    def("cdvdman", 13, "sceCdDiskReady", [](Cpu &c) {
+        const std::uint32_t mode = arg(c, 0);
+        if (g_cd.drive_ready) {
+            c.r[2] = 2; // SCECdComplete
+            return;
+        }
+        if (mode == 1) {
+            c.r[2] = 6; // SCECdNotReady
+            return;
+        }
+        c.r[2] = 2;
+        if (!current()) return;
+        g_cd.ready_waiters.push_back(current()->id);
+        block(c, kWaitHle, 0);
+    });
     def("cdvdman", 14, "sceCdTrayReq", [](Cpu &c) { if (arg(c, 1)) write32(arg(c, 1), 0); c.r[2] = 1; });
     def("cdvdman", 15, "sceCdStop", [](Cpu &c) { c.r[2] = 1; });
     def("cdvdman", 22, "sceCdRI", [](Cpu &c) {
@@ -182,6 +218,11 @@ void cdvd_state(ps2::state::Stream &s) {
     s.pod(g_cd.callback);
     s.pod(g_cd.error);
     s.vec(g_cd.sync_waiters);
+    // drive_ready / ready_waiters: ISO HLE always-ready; not in save schema yet.
+    if (s.loading()) {
+        g_cd.drive_ready = true;
+        g_cd.ready_waiters.clear();
+    }
 }
 
 }

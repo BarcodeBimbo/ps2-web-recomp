@@ -37,9 +37,9 @@ Also still true:
 | Target | Status | Exact next |
 |--------|--------|------------|
 | **1 Disc-fix → SDK** | R1–R4 joint-stable; R5 observe **PASS** (step 8) | Next: SDK-aligned proposal — `sceCdDiskReady` always-2 is top compliance flag; R5 clear_with_evidence or named pad/sound fix; matrix + live Hitman/NFS. |
-| **2 Matrix → 100%** | Cycle 8 observe pass; live matrix running `logs/live-matrix-2026-11-07/` | Expand phases/games; fix false Alchemy FCE0 substring scorer; log every run. |
+| **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS live log lacks `cdvdfsv` search (five-phase); keep logging. |
 | **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
-| **4 Live test → logs/** | GoW USA native 900f in-flight (~11.6M prims @900 earlier slice) | Repeat Chrome+native; capture FPS/boot/stalls under `logs/`. |
+| **4 Live test → logs/** | 6-game native matrix logged (GoW/GoW2/CNK/Hitman/NFS/Sly) | Repeat; panel play URLs noted; prefer native over Chrome fight. |
 | GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
 
 **DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).

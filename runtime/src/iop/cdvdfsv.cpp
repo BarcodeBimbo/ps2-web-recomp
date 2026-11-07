@@ -28,6 +28,9 @@ std::uint8_t bcd(int v) { return static_cast<std::uint8_t>(((v / 10) << 4) | (v 
 
 bool g_streaming = false;
 std::uint32_t g_stream_pos = 0;
+// sceCdDiskReady FSV path (0x8000059A/59C + N-cmd 0x0E). ISO HLE keeps the
+// drive ready; mode is honored so NotReady(6) can return if this ever clears.
+bool g_fsv_drive_ready = true;
 // sceCdRead is single-flight (_CdCheckNCmd). Stash readee/curReadPos targets
 // here so the FsvRead job (4 payload words) can still finish retail-style.
 std::uint32_t g_read_eeaddr1 = 0, g_read_eeaddr2 = 0;
@@ -603,7 +606,8 @@ void install_cdvdfsv() {
             disc::ready(sector, count);
             schedule(now() + delay(count, sector), Job{kJobFsvIopRead, sector, count, dst});
             return false;
-        case 0x0E: set_ee32(ret, 2); return true;
+        // sceCdNcmdDiskReady — status only (EE does not send mode on this path).
+        case 0x0E: set_ee32(ret, g_fsv_drive_ready ? 2u : 6u); return true;
         default:
             std::fprintf(stderr, "[cdvdfsv] N command 0x%X\n", method);
             set_ee32(ret, 1);
@@ -635,7 +639,21 @@ void install_cdvdfsv() {
         set_ee32(ret, entry ? 1u : 0u);
         return true;
     });
-    const auto ready = [](std::uint32_t, std::uint32_t, std::uint32_t, std::uint32_t ret, std::uint32_t) {
+    // EE libcdvd sceCdDiskReady / sceCdDiskReady_old: CallRpc send word = mode
+    // (0 block / 1 poll). Recv word = SCECdComplete(2) or SCECdNotReady(6).
+    // Mode 0 blocking is EE-side when IOP returns NotReady; with drive ready
+    // we complete immediately (SDK-stable for mounted ISO).
+    const auto ready = [](std::uint32_t, std::uint32_t args, std::uint32_t args_size, std::uint32_t ret, std::uint32_t) {
+        const std::uint32_t mode = (args_size >= 4 && args) ? ee32(args) : 0u;
+        if (g_fsv_drive_ready) {
+            set_ee32(ret, 2); // SCECdComplete
+            return true;
+        }
+        if (mode == 1) {
+            set_ee32(ret, 6); // SCECdNotReady
+            return true;
+        }
+        // mode 0 + not ready: no tray/spin model yet — Complete once media present.
         set_ee32(ret, 2);
         return true;
     };
@@ -657,6 +675,7 @@ void cdvdfsv_state(ps2::state::Stream &s) {
     } else if (s.loading()) {
         g_read_eeaddr1 = g_read_eeaddr2 = 0;
     }
+    if (s.loading()) g_fsv_drive_ready = true;
 }
 
 }
