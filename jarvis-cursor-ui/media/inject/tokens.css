@@ -178,6 +178,11 @@ body.CORTANA-inject {
   --cortana-hud-icon-btn-radius: 8px;
   --cortana-constellation-h: 76px;
   --cortana-constellation-max-w: 178px;
+  /* Parallelogram chrome (reference-command-center-2 skewed feet / traps) */
+  --cortana-hud-para-skew: -18deg;
+  --cortana-hud-para-skew-brand: -20deg;
+  --cortana-hud-para-foot-h: 4px;
+  --cortana-hud-search-min-w: 156px;
   --cortana-line: 1px;
   --cortana-boot-ms: 1800ms;
   --cortana-boot-hold: 70%;
