@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-07T07:32:00-05:00",
+  "updated": "2026-11-07T07:40:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 8,
-  "phase": "observe_pass_awaiting_next_proposal",
+  "step": 9,
+  "phase": "apply_proposed",
   "prior_cycles": [
     {
       "step": 1,
@@ -54,7 +54,7 @@
     }
   ],
   "discfix": {
-    "status": "observe_accepted",
+    "status": "apply_in_progress",
     "applied": {
       "R3_readee": {
         "file": "runtime/src/iop/cdvdfsv.cpp",
@@ -62,56 +62,61 @@
       }
     },
     "proposed_change": {
-      "id": "R5_pad_sound_observe",
-      "summary": "Open R5 pad/sound for Hitman+NFS: observe-only inventory + evidence. Guest padman/libsd IRX already load from disc; host has SIO2+SPU2 HLE (no padman/libsd HLE servers). Classify leftover WaitSema 7 (Hitman) and 17/23/29/30/32 (NFS) vs pad/sound RPC parks. Prove-before-swap: no behavioral patch this cycle.",
-      "files": [],
-      "code_change": false,
-      "details": [
-        "Do NOT host_signal any leftover sema IDs.",
-        "Do NOT implement CNK Alchemy pulses.",
-        "Do NOT land CdSync wake (R4 cleared).",
-        "Gather: module load order, SPU2 activity, pad press path, SIF drain, create_ra ownership.",
-        "After matrix pass on this observe gate, disc-fix may propose clear_with_evidence OR a narrow SIF/pad/sound RPC fix named by evidence."
+      "id": "R4D1_DiskReady_mode_fidelity",
+      "summary": "Close SDK R4-D1: sceCdDiskReady HLE honors mode (0 block / 1 poll) and can return SCECdNotReady(6). EE FSV servers 0x8000059A/59C read mode from CallRpc send word; N-cmd 0x0E returns status; IOP cdvdman export 13 mirrors SDK. ISO HLE keeps drive_ready=true so Hitman/NFS behavior stays Complete(2) — no random NotReady, no tray model, no CNK Alchemy.",
+      "files": [
+        "runtime/src/iop/cdvd.cpp",
+        "runtime/src/iop/cdvdfsv.cpp"
       ],
-      "success_bar": "Matrix accepts observe evidence cycle; R5 stays gated for apply until a follow-up proposal."
+      "code_change": true,
+      "details": [
+        "SDK EE Ref 2-23 / IOP 1-20: mode 0 blocks until rotation stable; mode 1 returns immediately; returns 0x02 SCECdComplete or 0x06 SCECdNotReady.",
+        "EE libcdvd (3.0.3 libcdvd.a): sceCdDiskReady stores mode then CallRpc 0x8000059C/59A with 4-byte send; N-cmd DiskReady uses method 0x0E with no mode word.",
+        "Product was always ret=2 and ignored args/mode — highest compliance flag after R1–R4 clear.",
+        "Narrow apply: read mode; branch NotReady when !drive_ready && mode==1; mode-0 waiters on IOP cdvdman; default drive_ready=true (mounted ISO).",
+        "Do NOT clear drive_ready on Stop yet (hang risk without Standby wake).",
+        "Do NOT touch CNK Alchemy (host_signal 16/54/55, soft-arm, FCE0, virt-LBA).",
+        "Do NOT reopen R5 pad/sound apply.",
+        "Evidence: 600f Hitman+NFS smokes PATH=runtime-deps; logs/discfix-sdk-*; matrix_phase_check.py; no Alchemy pulses."
+      ],
+      "success_bar": "Both games hit frame limit ≥600f with prims moving, SIF wait 0, no real Alchemy, CDVD searches still live (Hitman); DiskReady code paths mode-aware; R1–R4 regression green."
     },
     "evidence": {
-      "prior_ownership": "verification/recovery/waitsema-createsema-trace-live-report.md",
-      "nfs_rpc_fix": "docs/NFS_RPC_FIX.md (SND Library EE driver poll wake already landed)",
-      "sdk_local": "E:/usr/local/sce ee/include/libpad.h libsdr.h; iop/include/libsd.h; iop/modules/padman.irx",
-      "sdk_iso_download": "E:/AI games/...3.03.ISO — not waiting; flag if needed",
+      "sdk_header": "E:/usr/local/sce/common/include/libcdvd.h SCECdComplete=0x02 SCECdNotReady=0x06",
+      "sdk_pdf": "verification/recovery/_sdk_pdf_extract/PS2_EE-Reference-Device-3.0.3.pdf.txt (sceCdDiskReady 2-23)",
+      "sdk_lib_disasm": "E:/usr/local/sce/ee/lib/libcdvd.a sceCdDiskReady → CallRpc 0x8000059C mode send; N-cmd 0x0E",
+      "r4_note": "verification/recovery/sdk-compliance-r4-cdsync.md (D1)",
+      "compliance_report": "verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md",
       "r1_r4": "joint-stable 1e04172",
-      "r5_observe_report": "verification/recovery/discfix-r5-observe-matrix-2026-11-07.md",
-      "r5_observe_logs": [
-        "logs/discfix-r5-observe-hitman-400.err.log",
-        "logs/discfix-r5-observe-nfs-400.err.log",
-        "logs/discfix-r5-observe-hitman-400.merged.log",
-        "logs/discfix-r5-observe-nfs-400.merged.log"
+      "planned_logs": [
+        "logs/discfix-sdk-hitman-600.err.log",
+        "logs/discfix-sdk-nfs-600.err.log"
       ]
     },
     "files_touched": [
-      "runtime/src/iop/cdvdfsv.cpp"
+      "runtime/src/iop/cdvdfsv.cpp",
+      "runtime/src/iop/cdvd.cpp"
     ],
     "ack": {
       "R4_clear_with_evidence": "pass",
       "R5_pad_sound_observe": "pass",
+      "R4D1_DiskReady_mode_fidelity": "apply_proposed",
       "cdvd_wake_code": false,
       "r5_apply": false,
-      "note": "Matrix accepted R5 observe gate 2026-11-07. No pad/sound HLE apply. R5 remains gated. Next legal proposals only: clear_with_evidence OR evidence-named narrow RPC fix — parent decides."
+      "note": "God ordered disc-fix apply ban lifted for TARGET 1 DiskReady SDK fidelity. R5 still gated."
     },
     "next_options": [
-      "R5_pad_sound clear_with_evidence (observe-only close; still no HLE rewrite)",
-      "Narrow evidence-named SIF/pad/sound RPC fix proposal (prove-before-swap; still needs matrix + allow_discfix_apply)",
-      "Parent joint-stable commit ask (R3 verified only code change)",
-      "Longer soak smokes if parent wants"
+      "Matrix scores R4D1 after 600f smokes",
+      "If pass: verified_apply + optional R5 clear_with_evidence",
+      "If fail: revert DiskReady to always-2 and re-propose"
     ]
   },
   "matrix": {
-    "status": "pass",
-    "current_phase": null,
-    "verdict": "pass",
+    "status": "pending",
+    "current_phase": "boot",
+    "verdict": null,
     "last_completed": "R5_pad_sound_observe",
-    "notes": "Cycle 8 OBSERVE gate PASS. Short 400f Hitman+NFS smokes with PS2_TRACE_SEMA/PAD/SPU2. R1-R4 regression green (frame limit, prims, SIF 0, no real Alchemy). Leftover WaitSema IDs unchanged. No R5 apply. allow_discfix_apply=false. Mechanical matrix_phase_check.py false-fails Hitman on createsema attr=0x1FFFCE0 (FCE0 substring) — not real Alchemy contamination.",
+    "notes": "Cycle 9 APPLY proposal posted. allow_discfix_apply=true for R4D1 DiskReady mode fidelity only. Quarantine CNK Alchemy held.",
     "phases": [
       "boot",
       "menu",
@@ -119,55 +124,16 @@
       "streaming",
       "sustained_run"
     ],
-    "phase_results": {
-      "hitman_bm": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/discfix-r5-observe-hitman-400.merged.log",
-        "frames": 400,
-        "prims": 78933,
-        "observe": {
-          "modules": ["SIO2MAN", "PADMAN", "MCMAN", "MCSERV", "LIBSD", "SCRTCHPD", "SYNTHCD"],
-          "leftover_semas": [2, 7],
-          "pad_trace_lines": 395,
-          "spu2_trace_lines": 128,
-          "cdvd_searches_found": 14,
-          "sif_packets_waiting": 0,
-          "alchemy_real": false,
-          "alchemy_scorer_false_positive": "createsema attr=0x1FFFCE0 matches FCE0 regex"
-        }
-      },
-      "nfs_mw": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/discfix-r5-observe-nfs-400.merged.log",
-        "frames": 400,
-        "prims": 73253,
-        "observe": {
-          "modules": ["sio2man", "padman", "mcman", "mcserv", "Sound_Device_Library", "sdr_driver", "SND_Library_EE_Driver"],
-          "leftover_semas": [2, 17, 23, 29, 30, 32],
-          "pad_trace_lines": 440,
-          "spu2_trace_lines": 2237,
-          "sif_packets_waiting": 0,
-          "alchemy_real": false,
-          "note": "NFS short observe logs show fileio + IOP modules + draws; cdvdfsv search strings absent under heavy pad/SPU2 trace (same as prior r5-nfs-pad-sound-400). Prior R3 600f already proved CDVD path."
-        }
-      }
-    },
+    "phase_results": {},
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
       "R4_CdSync": "cleared_with_evidence",
+      "R4D1_DiskReady": "apply_proposed",
       "R5_pad_sound": "observe_pass_still_gated"
     },
-    "allow_discfix_apply": false
+    "allow_discfix_apply": true
   },
   "ranked_rewrites_gated": [
     "R5_pad_sound"
@@ -181,5 +147,5 @@
     "R3_readee"
   ],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "R3 verified; R4 cleared_with_evidence; R5 observe pass only — apply still gated; commit still deferred until parent/matrix call stable (or after R5 gate closes)."
+  "commit_policy": "R4D1 apply in progress; commit deferred until matrix pass + parent call."
 }

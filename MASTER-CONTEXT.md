@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:34 local)  
+**Updated:** 2026-11-07 (~07:39 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -41,6 +41,9 @@ Also still true:
 | **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
 | **4 Live test → logs/** | 6-game native matrix logged (GoW/GoW2/CNK/Hitman/NFS/Sly) | Repeat; panel play URLs noted; prefer native over Chrome fight. |
 | GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
+
+**QUEUED / DEFERRED (God ~07:39) — do not work until God calls for it:**
+- **FPS tuning beyond locked ~60** (Chrome GoW play session): research of graphics-menu levers (V-Sync / FPS limit / present mode / URL `PS2_VSYNC`·`PS2_FPS_LIMIT`), host `pace()` clamps in `host/web.cpp`, and prior chat notes on uncapped vs ≥60 bar. **Status: deferred/queued.** Agents must **not** start or continue this research or apply FPS-tuning changes until God explicitly asks.
 
 **DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).
 
