@@ -36,7 +36,7 @@ Also still true:
 
 | Target | Status | Exact next |
 |--------|--------|------------|
-| **1 Disc-fix → SDK** | **R4-D1 DiskReady `verified_apply`** (cycle 9) — mode 0/1 → Complete(2)/NotReady(6); Hitman+NFS 600f green | Next: R5 `clear_with_evidence` or joint-stable commit (R3+R4D1). Report: `discfix-sdk-advance-2026-11-07.md`. |
+| **1 Disc-fix → SDK** | R4-D1 DiskReady **verified** + **live 900f** Hitman/NFS green (`logs/discfix-live-2026-11-07/`) | R5 `clear_with_evidence` in flight; then joint-stable commit (R3+R4D1) when asked. |
 | **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS live log lacks `cdvdfsv` search (five-phase); keep logging. |
 | **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
 | **4 Live test → logs/** | 6-game native matrix logged (GoW/GoW2/CNK/Hitman/NFS/Sly) | Repeat; panel play URLs noted; prefer native over Chrome fight. |

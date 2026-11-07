@@ -26,6 +26,8 @@ void reset();
 bool ui_igb_parse_attempted();
 // Record the UI IGB object soft-armed by cdvdfsv (CNK/Alchemy virt-GFC path).
 void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim);
+// BUTANIM plant byte count from virt-GFC ingest (for scratch restore).
+void note_butanim_plant_size(std::uint32_t nbytes);
 
 // RPC 0x12114 handler. Returns true when the call is fully answered.
 bool handle(std::uint32_t method, std::uint32_t args, std::uint32_t size, std::uint32_t ret, std::uint32_t ret_size);

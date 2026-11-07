@@ -41,6 +41,13 @@ bool g_ui_igb_parse_attempted = false;
 // slot pointer — keep this so we can detect vt+108 completion via obj+0xFF and
 // restore the slot if the fail path cleared it.
 std::uint32_t g_butanim_soft_obj = 0;
+std::uint32_t g_butanim_plant_size = 0;
+// Require +0xFF to rise after soft-arm; recycled heap objs may already have
+// stale +0xFF=1 which previously released the intro hold before guest FCE0.
+bool g_butanim_saw_ff_clear = false;
+// Latch only when vt+108 ran while shared scratch still held butanim bytes
+// (vt+108 sets +0xFF even when obj+0x20==0 and no real ingest happened).
+bool g_butanim_parsed_ok = false;
 
 struct Block {
     std::uint32_t compressed = 0;
@@ -445,6 +452,74 @@ bool alchemy_stbl_pending() {
     return std::memcmp(g_ram + ptr, "STBL0", 5) == 0;
 }
 
+// Shared Alchemy UI stream assemble (CNK: stream+0x48 → 0xBD1000).
+std::uint32_t butanim_assemble_dst() {
+    std::uint32_t lg = 0;
+    std::memcpy(&lg, g_ram + 0x006F2540u, 4);
+    if (!lg || lg + 8u * 96u + 0x50u >= kRamSize) return 0;
+    for (std::uint32_t i = 0; i < 8u; ++i) {
+        const std::uint32_t slot = lg + i * 96u;
+        const char *spath = reinterpret_cast<const char *>(g_ram + slot + 8u);
+        if (!(std::strstr(spath, "butanim") || std::strstr(spath, "BUTANIM"))) continue;
+        std::uint32_t stream = 0;
+        std::memcpy(&stream, g_ram + slot + 0x4Cu, 4);
+        if (!stream || stream + 0x4Cu >= kRamSize) return 0;
+        std::uint32_t dst = 0;
+        std::memcpy(&dst, g_ram + stream + 0x48u, 4);
+        return dst;
+    }
+    return 0;
+}
+
+bool assemble_holds_butanim() {
+    constexpr std::uint32_t kPlant = 0x01B00000u;
+    const std::uint32_t dst = butanim_assemble_dst();
+    if (!dst || dst + 8u > kRamSize || kPlant + 8u > kRamSize) return false;
+    return std::memcmp(g_ram + dst, g_ram + kPlant, 8) == 0;
+}
+
+void poll_butanim_parse_complete() {
+    if (g_ui_igb_parse_attempted || g_butanim_parsed_ok) return;
+    if (!g_butanim_soft_obj || g_butanim_soft_obj + 0x100u > kRamSize) return;
+    if (!g_ram[g_butanim_soft_obj + 0xffu]) {
+        g_butanim_saw_ff_clear = true;
+        return;
+    }
+    std::uint32_t o20 = 0;
+    std::memcpy(&o20, g_ram + g_butanim_soft_obj + 0x20u, 4);
+    // vt+108 (0x5032E0) sets +0xFF even when +0x20==0 (skips 0x51C100 ingest).
+    // Only release intro once +0x20 is live AND scratch still holds butanim.
+    if (g_butanim_saw_ff_clear && o20 != 0 && assemble_holds_butanim()) {
+        g_butanim_parsed_ok = true;
+        g_ui_igb_parse_attempted = true;
+        std::fprintf(stderr,
+                     "[igfileio] UI parse complete (butanim obj=0x%X +0xFF +20=0x%X plant ok, release intro)\n",
+                     g_butanim_soft_obj, o20);
+        return;
+    }
+    const bool plant_ok = assemble_holds_butanim();
+    if (g_butanim_saw_ff_clear && !plant_ok) {
+        // Clobbered scratch stamped +0xFF — clear so a later guest pass can retry.
+        g_ram[g_butanim_soft_obj + 0xffu] = 0;
+        static int s_false = 0;
+        if (s_false < 4) {
+            std::fprintf(stderr,
+                         "[igfileio] butanim +0xFF with wrong scratch; clear and keep intro hold\n");
+            ++s_false;
+        }
+    } else if (g_butanim_saw_ff_clear && plant_ok && o20 == 0) {
+        // vt+108 ran with good bytes but skipped 0x51C100 (+20==0). Keep hold;
+        // do not poke status/obj (that crashed ra 0x110224). Wait for guest or
+        // intro-hold backstop.
+        static int s_weak = 0;
+        if (s_weak < 4) {
+            std::fprintf(stderr,
+                         "[igfileio] butanim vt+108 weak (+20=0, plant ok); hold intro, no re-arm\n");
+            ++s_weak;
+        }
+    }
+}
+
 // FINISH's guest path DisableIntc(TIM0/TIM1) and leaves Alchemy WaitSema pumps
 // parked even though MODE still has compare/overflow IE and work is queued.
 // Re-arm those causes (and wake if STAT already latched) while a GFC cluster
@@ -726,13 +801,7 @@ bool try_kick_alchemy_font_tick() {
     //   (status=4/obj=0), and re-copy butanim plant if intro already landed.
     // Do NOT host_call FCE0 — wrong EE tid → jalr null @ ra 0x51ACEC.
     {
-        if (!g_ui_igb_parse_attempted && g_butanim_soft_obj &&
-            g_butanim_soft_obj + 0x100u <= kRamSize && g_ram[g_butanim_soft_obj + 0xffu]) {
-            g_ui_igb_parse_attempted = true;
-            std::fprintf(stderr,
-                         "[igfileio] UI parse complete (butanim obj=0x%X +0xFF set, release intro hold)\n",
-                         g_butanim_soft_obj);
-        }
+        poll_butanim_parse_complete();
         if (!g_ui_igb_parse_attempted && g_butanim_soft_obj && g_butanim_soft_obj + 0x100u <= kRamSize) {
             constexpr std::uint32_t kPlantButanim = 0x01B00000u;
             constexpr std::uint32_t kPlantIntro = 0x01B80000u;
@@ -757,12 +826,11 @@ bool try_kick_alchemy_font_tick() {
                     kPlantButanim + 16u <= kRamSize &&
                     std::memcmp(g_ram + dst, g_ram + kPlantIntro, 8) == 0 &&
                     std::memcmp(g_ram + kPlantButanim, g_ram + kPlantIntro, 8) != 0) {
-                    std::uint32_t nbytes = 0;
-                    std::memcpy(&nbytes, g_ram + 0x006F5A2Cu, 4);
-                    // Prefer plant size from the butanim well's known ingest; fall
-                    // back to a safe upper bound under the intro plant gap.
-                    if (nbytes < 0x100u || nbytes > 0x80000u) nbytes = 0x1098u;
-                    if (dst + nbytes <= kRamSize && kPlantButanim + nbytes <= kRamSize) {
+                    // Only the butanim plant size — never 0x6F5A2C (that tracks the
+                    // latest virt ingest and becomes intro's ~400KB after clobber).
+                    std::uint32_t nbytes = g_butanim_plant_size ? g_butanim_plant_size : 0x1098u;
+                    if (nbytes >= 0x100u && nbytes <= 0x10000u && dst + nbytes <= kRamSize &&
+                        kPlantButanim + nbytes <= kRamSize) {
                         std::memcpy(g_ram + dst, g_ram + kPlantButanim, nbytes);
                         watch_span(dst, nbytes, "igfileio:butanim-restore");
                         static int s_rest = 0;
@@ -774,35 +842,24 @@ bool try_kick_alchemy_font_tick() {
                         }
                     }
                 }
-                // Re-arm so guest FCE0/finalize can take the status==1 path on tid1.
-                // Fail path clears obj and sets status=4 when +45 was already 0.
-                if (obj != g_butanim_soft_obj) {
-                    std::memcpy(g_ram + butanim_slot + 0x58u, &g_butanim_soft_obj, 4);
-                    obj = g_butanim_soft_obj;
-                }
-                if (obj && obj + 0x100u < kRamSize && !g_ram[obj + 0xffu]) {
-                    if (g_ram[obj + 45u] == 0) {
-                        g_ram[obj + 44u] = 0;
-                        g_ram[obj + 45u] = 1;
-                    }
-                    if (st != 1u) {
-                        const std::uint32_t one = 1u;
-                        std::memcpy(g_ram + butanim_slot + 0x54u, &one, 4);
-                        std::memcpy(g_ram + butanim_slot + 0x50u, &one, 4);
-                        st = 1;
-                    }
-                    // Aim walker at butanim so FCE0 does not skip to end-of-walk.
-                    std::memcpy(g_ram + lg + 24020u, &butanim_i, 4);
-                    if (g_ram[lg + 24016u] != 0) g_ram[lg + 24016u] = 0;
-                    static int s_rearm = 0;
-                    if (s_rearm < 6) {
-                        std::fprintf(stderr,
-                                     "[igfileio] re-arm butanim slot%u st=%u obj=0x%X +45=%u (guest FCE0, no host "
-                                     "call)\n",
-                                     butanim_i, st, obj, g_ram[obj + 45u]);
-                        ++s_rearm;
-                    }
+                // Keep +5DD0 clear and wake tid1 so guest 0x10F560→0x10FCE0 can
+                // run. Do NOT force status back to 1 after finalize has advanced
+                // the slot (status 3/4) — that re-entered 0x110100 on a mutated
+                // object and jalr'd heap junk @0x974768 (ra 0x110224).
+                if (g_ram[lg + 24016u] != 0) {
+                    g_ram[lg + 24016u] = 0;
                     changed = true;
+                }
+                static int s_pump = 0;
+                if (s_pump < 4) {
+                    std::fprintf(stderr,
+                                 "[igfileio] butanim pump-wait slot%u st=%u obj=0x%X soft=0x%X +45=%u "
+                                 "(+5DD0 clear, no host FCE0)\n",
+                                 butanim_i, st, obj, g_butanim_soft_obj,
+                                 (g_butanim_soft_obj && g_butanim_soft_obj + 46u < kRamSize)
+                                     ? g_ram[g_butanim_soft_obj + 45u]
+                                     : 0);
+                    ++s_pump;
                 }
             }
             // Wake tid1 if parked in 0x10F560's registry delay (often sema 50).
@@ -1280,10 +1337,7 @@ bool poll_deferred_work() {
 }
 
 bool ui_igb_parse_attempted() {
-    if (!g_ui_igb_parse_attempted && g_butanim_soft_obj && g_butanim_soft_obj + 0x100u <= kRamSize &&
-        g_ram[g_butanim_soft_obj + 0xffu]) {
-        g_ui_igb_parse_attempted = true;
-    }
+    poll_butanim_parse_complete();
     return g_ui_igb_parse_attempted;
 }
 
@@ -1292,8 +1346,24 @@ void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim) {
     if (!butanim || !obj || obj + 0x100u > kRamSize) return;
     if (!g_butanim_soft_obj) {
         g_butanim_soft_obj = obj;
-        std::fprintf(stderr, "[igfileio] noted butanim soft-arm obj=0x%X\n", obj);
+        // Drop stale completion so intro hold cannot release on recycled +0xFF.
+        g_ram[obj + 0xffu] = 0;
+        g_butanim_saw_ff_clear = true;
+        g_ui_igb_parse_attempted = false;
+        g_butanim_parsed_ok = false;
+        std::uint32_t o14 = 0, o20 = 0, o8 = 0;
+        std::memcpy(&o8, g_ram + obj + 8u, 4);
+        std::memcpy(&o14, g_ram + obj + 0x14u, 4);
+        std::memcpy(&o20, g_ram + obj + 0x20u, 4);
+        std::fprintf(stderr,
+                     "[igfileio] noted butanim soft-arm obj=0x%X (cleared +0xFF) +8=%u +14=0x%X +20=0x%X "
+                     "assemble_butanim=%d\n",
+                     obj, o8, o14, o20, assemble_holds_butanim() ? 1 : 0);
     }
+}
+
+void note_butanim_plant_size(std::uint32_t nbytes) {
+    if (nbytes >= 0x100u && nbytes <= 0x10000u) g_butanim_plant_size = nbytes;
 }
 
 void reset() {
@@ -1306,6 +1376,9 @@ void reset() {
     g_deferred_font_bind = false;
     g_ui_igb_parse_attempted = false;
     g_butanim_soft_obj = 0;
+    g_butanim_plant_size = 0;
+    g_butanim_saw_ff_clear = false;
+    g_butanim_parsed_ok = false;
 }
 
 bool handle(std::uint32_t method, std::uint32_t args, std::uint32_t size, std::uint32_t ret, std::uint32_t ret_size) {

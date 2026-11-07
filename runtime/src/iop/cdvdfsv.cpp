@@ -96,7 +96,10 @@ void read_to_ee(std::uint32_t sector, std::uint32_t count, std::uint32_t dst, st
                                 "cdvd:virt-full");
                 std::fprintf(stderr, "[cdvdfsv] virt FULL-file plant %s -> 0x%X (%zu B) dst kept 0x%X\n",
                              path.c_str(), it->second, full.size(), dst);
-                if (it->second == 0x01B00000u) g_butanim_hold = 800;
+                if (it->second == 0x01B00000u) {
+                    g_butanim_hold = 800;
+                    std::fprintf(stderr, "[cdvdfsv] butanim hold armed (%d)\n", g_butanim_hold);
+                }
             } else if (it != s_planted.end()) {
                 // Refresh plant slice only; retail bounce path still uses dst.
                 const std::uint32_t off = (sector - base) * disc::kSector;
@@ -302,16 +305,38 @@ void install_cdvdfsv() {
                 // vt+108 has run (igfileio ui_igb_parse_attempted). Soft-arm
                 // +45 alone must not release — that clobbered butanim bytes
                 // before parse (prims stuck at 2). Alchemy/virt-GFC only.
-                if (!ps2::iop::igfileio::ui_igb_parse_attempted()) {
-                    --g_butanim_hold;
-                    schedule(now() + usec_to_cycles(16000), j);
-                    static int s_hold = 0;
-                    if (s_hold < 8) {
-                        std::fprintf(stderr, "[cdvdfsv] hold intro read (butanim +76=%u left=%d)\n", st,
-                                     g_butanim_hold);
-                        ++s_hold;
+                const bool parsed = ps2::iop::igfileio::ui_igb_parse_attempted();
+                static int s_gate = 0;
+                if (s_gate < 4) {
+                    std::fprintf(stderr, "[cdvdfsv] intro-gate parsed=%d hold=%d\n", parsed ? 1 : 0,
+                                 g_butanim_hold);
+                    ++s_gate;
+                }
+                if (!parsed) {
+                    // Prefer holding until butanim vt+108; allow a long backstop
+                    // so 8k–20k frame smokes still cover the guest FCE0 window.
+                    static int s_held_iters = 0;
+                    ++s_held_iters;
+                    if (s_held_iters < 20000) {
+                        schedule(now() + usec_to_cycles(16000), j);
+                        static int s_hold = 0;
+                        if (s_hold < 8) {
+                            std::fprintf(stderr,
+                                         "[cdvdfsv] hold intro read (butanim +76=%u left=%d iters=%d)\n", st,
+                                         g_butanim_hold, s_held_iters);
+                            ++s_hold;
+                        }
+                        return;
                     }
-                    return;
+                    std::fprintf(stderr,
+                                 "[cdvdfsv] intro hold backstop (butanim vt+108 not seen after %d iters)\n",
+                                 s_held_iters);
+                } else {
+                    static int s_rel = 0;
+                    if (s_rel < 2) {
+                        std::fprintf(stderr, "[cdvdfsv] release intro hold (butanim vt+108 done)\n");
+                        ++s_rel;
+                    }
                 }
                 g_butanim_hold = 0;
             }
@@ -345,9 +370,12 @@ void install_cdvdfsv() {
                     static_cast<std::uint32_t>((full.size() + disc::kSector - 1) / disc::kSector);
                 if (j.a + j.b >= base + nsec) {
                     std::uint32_t plant = 0;
-                    if (path.find("butanim") != std::string::npos || path.find("BUTANIM") != std::string::npos)
+                    const bool is_butanim_path = path.find("butanim") != std::string::npos ||
+                                                 path.find("BUTANIM") != std::string::npos;
+                    if (is_butanim_path)
                         plant = 0x01B00000u;
-                    else if (path.find("introtxr") != std::string::npos || path.find("INTROTXR") != std::string::npos)
+                    else if (path.find("introtxr") != std::string::npos ||
+                             path.find("INTROTXR") != std::string::npos)
                         plant = 0x01B80000u;
                     if (plant) {
                         // NEVER retarget bounce global 0x6F5A38 (clobbers plants).
@@ -356,6 +384,12 @@ void install_cdvdfsv() {
                         // (CNK: slot+0x4C → stream+0x48 @ 0xBD1000) so IGB bytes
                         // exist only in the side-channel well and slots stick at +76=3.
                         const std::uint32_t fsz = static_cast<std::uint32_t>(full.size());
+                        if (is_butanim_path) {
+                            ps2::iop::igfileio::note_butanim_plant_size(fsz);
+                            // Re-arm hold at file-done in case the first-sector
+                            // plant path did not see sector==base.
+                            g_butanim_hold = 800;
+                        }
                         int ingested = 0, progress = 0, undiverted = 0;
 
                         // 1) Undo plant diversion on live LBA/size/buf reqs.
@@ -479,9 +513,11 @@ void install_cdvdfsv() {
                                 int armed = 0;
                                 const bool is_butanim = path.find("butanim") != std::string::npos ||
                                                         path.find("BUTANIM") != std::string::npos;
-                                if (head_ok && obj && obj + 46u < ps2::kRamSize && o45 == 0) {
+                                if (head_ok && obj && obj + 0x100u < ps2::kRamSize && o45 == 0) {
                                     ps2::g_ram[obj + 44u] = 0;
                                     ps2::g_ram[obj + 45u] = 1;
+                                    // Clear stale vt+108 completion on recycled objs.
+                                    if (is_butanim) ps2::g_ram[obj + 0xffu] = 0;
                                     o45 = 1;
                                     armed = 1;
                                     // Remember butanim obj so intro hold waits for vt+108
