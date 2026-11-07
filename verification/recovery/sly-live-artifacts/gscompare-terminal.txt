@@ -1,0 +1,30 @@
+---
+pid: 24184
+cwd: "c:\\PS2Recomp"
+command: "$gid='c0c4527037b6168660829a0eb13df1a3'\n$root='c:\\PS2Recomp'\n$dllDir = Split-Path (Get-ChildItem -Path \"$root\\third_party\\wgpu-native\" -Recurse -Filter 'wgpu_native.dll' | Select-Object -First 1 -ExpandProperty FullName)\n$env:PATH = \"$dllDir;C:\\PS2Recomp\\tools\\msys64\\clang64\\bin;C:\\PS2Recomp\\tools\\msys64\\usr\\bin;\" + $env:PATH\n$env:PS2_GPU_LOW_POWER = '1'\n$env:PS2_NO_DEINTERLACE = '1'\n$env:PS2_GS = 'both'\n$env:PS2_GS_COMPARE = '1'\nRemove-Item Env:PS2_VU_INTERPRET -ErrorAction SilentlyContinue\nRemove-Item Env:PS2_VU_EXACT -ErrorAction SilentlyContinue\nRemove-Item Env:PS2_CAPTURE -ErrorAction SilentlyContinue\n$out = \"$root\\logs\\sly-live-gscompare\"\nRemove-Item \"$out\\*\" -Force -ErrorAction SilentlyContinue\n$exe = \"$root\\build\\native-$gid\\ps2run.exe\"\n$log = Join-Path $out 'run.log'\n& $exe \"games/$gid/disc/boot.elf\" --disc \"games/$gid/disc.iso\" --boot 'cdrom0:\\SCUS_971.98;1' `\n  --memcard \"logs/sly-live-gscompare.ps2\" --frames 1800 `\n  --press '300:start' --press '600:cross' --press '900:cross' --press '1200:cross' --press '1500:cross' `\n  --frames-dir $out --frame-every 300 *> $log\nWrite-Host \"GSCOMPARE_EXIT=$LASTEXITCODE\"\nSelect-String -Path $log -Pattern 'gpu differs|primitives|stopped|path 1|path 3|WebGPU|software' | Select-Object -Last 40\n"
+title: "Run GS both+compare 1800f gameplay"
+status: succeeded
+started_at: 2026-11-07T02:33:34.707Z
+running_for_ms: 92933    
+---
+GSCOMPARE_EXIT=0
+
+logs\sly-live-gscompare\run.log:66:[gs] gpu differs in 0 of 286720 pixels (max 1)
+logs\sly-live-gscompare\run.log:67:[gs] gpu differs in 0 of 286720 pixels (max 1)
+logs\sly-live-gscompare\run.log:68:[gs] gpu differs in 0 of 286720 pixels (max 0)
+logs\sly-live-gscompare\run.log:69:[gs] gpu differs in 770 of 286720 pixels (max 17)
+logs\sly-live-gscompare\run.log:70:[gs] gpu differs in 70506 of 286720 pixels (max 69)
+logs\sly-live-gscompare\run.log:71:[gs] gpu differs in 81006 of 286720 pixels (max 46)
+logs\sly-live-gscompare\run.log:121:[gs] 4865142 primitives drawn, register writes: 00:1896719 01:52407 03:7236 
+04:5623393 05:47754 06:263604 07:27001 
+logs\sly-live-gscompare\run.log:127:[gif] path 1 tags: packed 1397313 reglist 0 image 0
+logs\sly-live-gscompare\run.log:129:[gif] path 3 tags: packed 509585 reglist 382 image 498797
+logs\sly-live-gscompare\run.log:133:[ee] stopped after 1800 frames, 8848470112 cycles: frame limit reached
+
+
+
+---
+exit_code: 0
+elapsed_ms: 92932
+ended_at: 2026-11-07T02:35:07.639Z
+---

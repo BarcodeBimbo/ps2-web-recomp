@@ -1,0 +1,130 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/ffb47d7e14cf9f5c02425d9158c29b76/disc.iso: 9 files, 2165936 sectors, layer 1 at 0
+[mc] card in slot 1: games/ffb47d7e14cf9f5c02425d9158c29b76/explore.ps2 (new, unformatted)
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP.IMG;1 reports 3000, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP.IMG;1 reports 3000
+[fileio] open cdrom0:\MODULES.DAT;1 -> 3
+[loadfile] buffer at 0x20000, 5217 bytes
+[loadfile] buffer at 0x21464, 45925 bytes
+[loadfile] buffer at 0x2C7CC, 30085 bytes
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00078C78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00078C7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00078C98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00078CA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00078CD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00078CD8)
+[loadfile] buffer at 0x33D54, 45896 bytes
+[iop-tty] [IOP](SYS)===== CAPCOM Sound Engine Ver.0.13(Jul 18 2005 13:15:18) =====
+[iop-tty] [IOP](SYS)[CSE] Spu init switch  = 1
+[iop-tty] [IOP](SYS)[CSE] Using spudma ch  = 0
+[iop-tty] [IOP](SYS)[CSE] Base thread prio = 30
+[iop-tty] [IOP](SYS)==============================================================
+[iop-tty] [IOP](SYS)[CSE] sceSdInit(SD_INIT_COLD) call.
+[loadfile] buffer at 0x3F09C, 75173 bytes
+[iop-tty] CRI ADX Driver Ver.9.42(Feb  8 2005 17:53:57)
+[iop-tty] CRI ADX Driver : sceSdInit Call = 0
+[iop-tty] CRI ADX Driver : Main Thread Priority = 39
+[iop-tty] CRI ADX Driver : PSM Thread Priority  = 39
+[iop-tty] CRI ADX Driver : DTX Thread Priority  = 48
+[iop-tty] CRI ADX Driver : SPU CORE Number = 1
+[loadfile] buffer at 0x51644, 103677 bytes
+[iop-tty] [IOP](SYS)[CSE] Set spudma ch=0 interrupt handler.
+[iop-tty] [IOP](SYS)[CSE] Set spudma ch=1 interrupt handler.
+[loadfile] buffer at 0x6AB44, 7713 bytes
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[cdvdfsv] search \DATA\0FLIST.DIR;1 -> found
+[cdvdfsv] search \DATA\BIO4DAT.AFS;1 -> found
+[cdvdfsv] search \DATA\BIO4MOV.AFS;1 -> found
+[cdvdfsv] search \DATA\BIO4MOV2.AFS;1 -> found
+[iop-io] read 0x1F808280 = 0x0 (pc 0x0006CD98)
+[io] write 0x1000F590 = 0x10000 (pc 0x002E7318)
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 24 wait 1/0 pc 0x0029CB48 ra 0x0017CD08
+[thread]   stack: 00227F2C 00227EE4 00100240 001760D0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0029CC68 ra 0x0029D4F8
+[thread]   stack:
+[thread] 3 status 4 prio 104 wait 1/0 pc 0x0029CB48 ra 0x0029FA90
+[thread]   stack: 00299178
+[thread] 4 status 8 prio 8 wait 0/0 pc 0x0017C0F0 ra 0x0017C0F8
+[thread]   stack:
+[thread] 5 status 4 prio 16 wait 1/0 pc 0x0029CB48 ra 0x0017C1E4
+[thread]   stack:
+[thread] 6 status 4 prio 18 wait 1/0 pc 0x0029CB48 ra 0x0017C2D8
+[thread]   stack:
+[thread] 7 status 4 prio 25 wait 1/0 pc 0x0029CB48 ra 0x0017C40C
+[thread]   stack:
+[thread] 8 status 4 prio 10 wait 2/12 pc 0x0029CC68 ra 0x0029A540
+[thread]   stack:
+[thread] 9 status 4 prio 11 wait 2/14 pc 0x0029CC68 ra 0x0029B500
+[thread]   stack:
+[thread] 10 status 4 prio 19 wait 1/0 pc 0x0029CB48 ra 0x002991E8
+[thread]   stack:
+[thread] 11 status 4 prio 23 wait 2/19 pc 0x0029CC68 ra 0x0025607C
+[thread]   stack: 0021787C
+[thread] 12 status 4 prio 22 wait 2/38 pc 0x0029CC68 ra 0x0025607C
+[thread]   stack: 00274854 00206648
+[thread] 13 status 4 prio 23 wait 2/22 pc 0x0029CC68 ra 0x0025607C
+[thread]   stack: 002573F0
+[sema] 2 count 0 waiters 1
+[sema] 12 count 0 waiters 1
+[sema] 14 count 0 waiters 1
+[sema] 19 count 0 waiters 1
+[sema] 22 count 0 waiters 1
+[sema] 38 count 0 waiters 1
+[iop] module 1 sio2man at 0x0006CA00
+[iop] module 2 padman at 0x0006D700
+[iop] module 3 Sound_Device_Library at 0x00077700
+[iop] module 4 Capcom Sound Engine at 0x0007D500
+[iop] module 5 CRI_ADX_Driver at 0x0008B100
+[iop] module 6 mcman at 0x000A1300
+[iop] module 7 mcserv at 0x000CC200
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 46 wait 8/488516 pc 0x00001020
+[iop] thread 4 status 4 prio 46 wait 8/488740 pc 0x00001020
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 30 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 20 wait 8/2025352 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 4 prio 39 wait 7/1 pc 0x0008B284
+[iop] thread 11 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 12 status 4 prio 32 wait 8/1988488 pc 0x00001020
+[iop] thread 13 status 4 prio 31 wait 8/1986440 pc 0x00001020
+[iop] thread 14 status 4 prio 48 wait 8/628816 pc 0x00001020
+[iop] thread 15 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 16 status 4 prio 104 wait 8/850368 pc 0x00001020
+[iop] thread 17 status 4 prio 36 wait 4/6 pc 0x0007DE74
+[iop] thread 18 status 4 prio 30 wait 1/0 pc 0x00082F98
+[iop] thread 19 status 4 prio 34 wait 5/7 pc 0x00082BD8
+[iop] thread 20 status 4 prio 35 wait 5/8 pc 0x0008413C
+[iop] thread 21 status 4 prio 33 wait 5/9 pc 0x000832A8
+[iop] thread 22 status 4 prio 37 wait 4/6 pc 0x0007DE74
+[iop] thread 23 status 4 prio 39 wait 3/10 pc 0x000906C0
+[iop] thread 24 status 2 prio 20 wait 0/11 pc 0x0006D794
+[iop] thread 25 status 4 prio 46 wait 4/11 pc 0x0006D794
+[iop] thread 26 status 4 prio 46 wait 4/13 pc 0x0006D794
+[iop] thread 27 status 16 prio 46 wait 0/13 pc 0x00070338
+[iop] thread 28 status 16 prio 46 wait 0/13 pc 0x00070474
+[iop] thread 29 status 16 prio 46 wait 0/13 pc 0x000705AC
+[iop] thread 30 status 16 prio 46 wait 0/13 pc 0x0007074C
+[iop] thread 31 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 32 status 4 prio 46 wait 4/14 pc 0x0006D794
+[iop] thread 33 status 4 prio 46 wait 4/14 pc 0x0006D794
+[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 35 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 36 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 37 status 16 prio 46 wait 0/0 pc 0x00000000
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1880 submits, dispatches: upload 7028 copy_read 0 copy_write 0 load_clut 6906 display 12 raster 12506 resolve 0 snapshot 8880 decode 3665
+[gs] 117501 primitives drawn, register writes: 00:43891 01:78934 02:46728 03:125216 04:128576 05:102570 06:39401 07:563 08:64512 09:2312 0D:3856 14:41148 15:566 18:5222 19:1754 1A:3475 3B:1 3F:41715 40:59930 41:17783 42:37674 43:452 44:1727 45:3475 46:3477 47:54580 48:2758 4C:15157 4D:2210 4E:41149 4F:2201 50:30420 51:30420 52:30420 53:30420 61:1750 7F:25992
+[ipu] commands: 0:1670 2:310258 3:1526128 4:473786 5:4 6:1 7:556 9:1 stalls 0 out 38804832 qwords, busy 0 decoding 0 cmd 0x00000031 in 128 bytes bit 49 out 0
+[dma] starts: ch0=1 ch1=1750 ch2=1751 ch3=310814 ch4=2223 ch5=0 ch6=0 ch7=0 ch8=6975 ch9=339119
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 190107 reglist 0 image 30420
+[gif] path 3 tags: packed 1751 reglist 0 image 0
+[vif0] 00:3 01:1 05:1 20:1 4A:1
+[vif1] 00:744558 01:6989 02:2 03:2 04:1 05:1 06:1748 10:11932 11:75348 13:37674 20:1 4A:16 50:220527 6C:6988
+[ee] stopped after 3600 frames, 17695706182 cycles: frame limit reached

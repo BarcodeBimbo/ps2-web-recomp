@@ -1,0 +1,256 @@
+== [1/6] Preparing disc
+== [2/6] Preparing executable
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/PS2Recomp/build/tools-windows
+ninja: no work to do.
+ninja: no work to do.
+== [3/6] Translating PS2 machine code
+code 260774 instructions (1018 KiB), functions 2399, entries 23149, rejected seeds 2144
+76 units written to generated/1e5a12a02722175839d88d0301949cd9
+== [4/6] Exploring game paths
+-- The CXX compiler identification is Clang 23.1.5
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/PS2Recomp/tools/msys64/clang64/bin/clang++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/PS2Recomp/build/native-1e5a12a02722175839d88d0301949cd9
+[0/2] Re-checking globbed directories...
+[1/115] Generating gs_wgsl.cpp
+[2/115] Generating blit_wgsl.cpp
+[3/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/memory.cpp.obj
+[4/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dispatch.cpp.obj
+[5/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.obj
+[6/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.obj
+[7/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.obj
+[8/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.obj
+[9/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/disc.cpp.obj
+[10/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.obj
+[11/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.obj
+[12/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.obj
+[13/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit_web.cpp.obj
+[14/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/ipu/ipu.cpp.obj
+[15/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.obj
+[16/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gif.cpp.obj
+[17/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.obj
+[18/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/queue.cpp.obj
+[19/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/raster.cpp.obj
+[20/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cpu.cpp.obj
+[21/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/kernel.cpp.obj
+[22/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/hw.cpp.obj
+[23/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/spu2.cpp.obj
+[24/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/libs.cpp.obj
+[25/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sio2.cpp.obj
+[26/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/io.cpp.obj
+[27/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvd.cpp.obj
+[28/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvdfsv.cpp.obj
+[29/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.obj
+[30/115] Building CXX object CMakeFiles/ps2runtime.dir/gs_wgsl.cpp.obj
+[31/115] Building CXX object CMakeFiles/ps2runtime.dir/blit_wgsl.cpp.obj
+[32/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/table.cpp.obj
+[33/115] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gpu/gpu.cpp.obj
+[34/115] Linking CXX static library libps2runtime.a
+[35/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0005.cpp.obj
+[36/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0007.cpp.obj
+[37/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0006.cpp.obj
+[38/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0008.cpp.obj
+[39/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0009.cpp.obj
+[40/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000B.cpp.obj
+[41/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000A.cpp.obj
+[42/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000D.cpp.obj
+[43/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000E.cpp.obj
+[44/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000C.cpp.obj
+[45/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002A.cpp.obj
+[46/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002B.cpp.obj
+[47/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002C.cpp.obj
+[48/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0055.cpp.obj
+[49/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0056.cpp.obj
+[50/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0057.cpp.obj
+[51/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0058.cpp.obj
+[52/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0059.cpp.obj
+[53/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005B.cpp.obj
+[54/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005C.cpp.obj
+[55/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005D.cpp.obj
+[56/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005E.cpp.obj
+[57/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005F.cpp.obj
+[58/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0060.cpp.obj
+[59/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0061.cpp.obj
+[60/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0062.cpp.obj
+[61/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0063.cpp.obj
+[62/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0064.cpp.obj
+[63/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0065.cpp.obj
+[64/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0066.cpp.obj
+[65/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0067.cpp.obj
+[66/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0068.cpp.obj
+[67/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0069.cpp.obj
+[68/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006A.cpp.obj
+[69/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006B.cpp.obj
+[70/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006C.cpp.obj
+[71/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006D.cpp.obj
+[72/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006E.cpp.obj
+[73/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006F.cpp.obj
+[74/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0070.cpp.obj
+[75/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0071.cpp.obj
+[76/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0073.cpp.obj
+[77/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0072.cpp.obj
+[78/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0074.cpp.obj
+[79/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0075.cpp.obj
+[80/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0076.cpp.obj
+[81/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0077.cpp.obj
+[82/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0079.cpp.obj
+[83/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0078.cpp.obj
+[84/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007A.cpp.obj
+[85/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007B.cpp.obj
+[86/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007C.cpp.obj
+[87/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007D.cpp.obj
+[88/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007E.cpp.obj
+[89/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007F.cpp.obj
+[90/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0080.cpp.obj
+[91/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0081.cpp.obj
+[92/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0082.cpp.obj
+[93/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0083.cpp.obj
+[94/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0085.cpp.obj
+[95/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0084.cpp.obj
+[96/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0086.cpp.obj
+[97/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0087.cpp.obj
+[98/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0089.cpp.obj
+[99/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0088.cpp.obj
+[100/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008A.cpp.obj
+[101/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008B.cpp.obj
+[102/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008C.cpp.obj
+[103/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008D.cpp.obj
+[104/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008E.cpp.obj
+[105/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008F.cpp.obj
+[106/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0090.cpp.obj
+[107/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0091.cpp.obj
+[108/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0093.cpp.obj
+[109/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0092.cpp.obj
+[110/115] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0094.cpp.obj
+[111/115] Building CXX object CMakeFiles/ps2run.dir/host/main.cpp.obj
+[112/115] Linking CXX static library libps2game.a
+[113/115] Building CXX object CMakeFiles/ps2run.dir/host/window.cpp.obj
+[114/115] Linking CXX executable ps2run.exe
+Round 1: 0 new entry points. 
+== [5/6] Compiling vector unit programs
+== [6/6] Building browser player
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/PS2Recomp/build/web-1e5a12a02722175839d88d0301949cd9-next
+[0/2] Re-checking globbed directories...
+[1/114] Generating gs_wgsl.cpp
+[2/114] Generating blit_wgsl.cpp
+[3/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/memory.cpp.o
+[4/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dispatch.cpp.o
+[5/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[6/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[7/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[8/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.o
+[9/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/disc.cpp.o
+[10/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.o
+[11/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.o
+[12/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
+[13/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit_web.cpp.o
+[14/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.o
+[15/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/ipu/ipu.cpp.o
+[16/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gif.cpp.o
+[17/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.o
+[18/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/raster.cpp.o
+[19/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/queue.cpp.o
+[20/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cpu.cpp.o
+[21/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/kernel.cpp.o
+[22/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/hw.cpp.o
+[23/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/libs.cpp.o
+[24/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/spu2.cpp.o
+[25/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/io.cpp.o
+[26/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sio2.cpp.o
+[27/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvd.cpp.o
+[28/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvdfsv.cpp.o
+[29/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.o
+[30/114] Building CXX object CMakeFiles/ps2runtime.dir/gs_wgsl.cpp.o
+[31/114] Building CXX object CMakeFiles/ps2runtime.dir/blit_wgsl.cpp.o
+[32/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/table.cpp.o
+[33/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0005.cpp.o
+[34/114] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gpu/gpu.cpp.o
+[35/114] Linking CXX static library libps2runtime.a
+[36/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0006.cpp.o
+[37/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0007.cpp.o
+[38/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0008.cpp.o
+[39/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0009.cpp.o
+[40/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000B.cpp.o
+[41/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000A.cpp.o
+[42/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000D.cpp.o
+[43/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000C.cpp.o
+[44/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_000E.cpp.o
+[45/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002A.cpp.o
+[46/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002B.cpp.o
+[47/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_002C.cpp.o
+[48/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0055.cpp.o
+[49/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0056.cpp.o
+[50/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0057.cpp.o
+[51/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0058.cpp.o
+[52/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0059.cpp.o
+[53/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005B.cpp.o
+[54/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005C.cpp.o
+[55/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005D.cpp.o
+[56/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005E.cpp.o
+[57/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_005F.cpp.o
+[58/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0060.cpp.o
+[59/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0061.cpp.o
+[60/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0062.cpp.o
+[61/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0063.cpp.o
+[62/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0064.cpp.o
+[63/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0065.cpp.o
+[64/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0066.cpp.o
+[65/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0067.cpp.o
+[66/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0069.cpp.o
+[67/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0068.cpp.o
+[68/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006A.cpp.o
+[69/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006B.cpp.o
+[70/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006C.cpp.o
+[71/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006D.cpp.o
+[72/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006E.cpp.o
+[73/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_006F.cpp.o
+[74/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0070.cpp.o
+[75/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0071.cpp.o
+[76/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0073.cpp.o
+[77/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0072.cpp.o
+[78/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0074.cpp.o
+[79/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0075.cpp.o
+[80/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0076.cpp.o
+[81/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0077.cpp.o
+[82/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0079.cpp.o
+[83/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0078.cpp.o
+[84/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007A.cpp.o
+[85/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007B.cpp.o
+[86/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007C.cpp.o
+[87/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007D.cpp.o
+[88/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007E.cpp.o
+[89/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_007F.cpp.o
+[90/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0081.cpp.o
+[91/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0080.cpp.o
+[92/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0082.cpp.o
+[93/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0083.cpp.o
+[94/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0084.cpp.o
+[95/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0085.cpp.o
+[96/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0086.cpp.o
+[97/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0087.cpp.o
+[98/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0088.cpp.o
+[99/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0089.cpp.o
+[100/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008A.cpp.o
+[101/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008B.cpp.o
+[102/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008C.cpp.o
+[103/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008D.cpp.o
+[104/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008E.cpp.o
+[105/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_008F.cpp.o
+[106/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0091.cpp.o
+[107/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0090.cpp.o
+[108/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0093.cpp.o
+[109/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0092.cpp.o
+[110/114] Building CXX object CMakeFiles/ps2game.dir/generated/1e5a12a02722175839d88d0301949cd9/unit_0094.cpp.o
+[111/114] Linking CXX static library libps2game.a
+[112/114] Building CXX object CMakeFiles/ps2web.dir/host/web.cpp.o
+[113/114] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]

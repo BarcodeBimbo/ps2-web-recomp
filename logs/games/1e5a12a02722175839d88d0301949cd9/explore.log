@@ -1,0 +1,104 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/1e5a12a02722175839d88d0301949cd9/disc.iso: 98 files, 1869312 sectors, layer 1 at 0
+[mc] card in slot 1: games/1e5a12a02722175839d88d0301949cd9/explore.ps2 (new, unformatted)
+[vu0] cfc2 28
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[sys] unhandled syscall 0x61 from 0x0011AE74
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP255.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP255.IMG;1 reports 2550, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP255.IMG;1 reports 2550
+[loadfile] buffer at 0x20000, 28573 bytes
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00076D88)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00076D8C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00076DA8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00076DB8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00076DE4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00076DE8)
+[loadfile] buffer at 0x20000, 1768 bytes
+[loadfile] buffer at 0x20000, 6553 bytes
+[loadfile] buffer at 0x20000, 95517 bytes
+[loadfile] buffer at 0x20000, 7417 bytes
+[loadfile] buffer at 0x20000, 13373 bytes
+[loadfile] buffer at 0x20000, 7441 bytes
+[loadfile] buffer at 0x20000, 11205 bytes
+[loadfile] buffer at 0x20000, 11205 bytes
+[loadfile] buffer at 0x20000, 158304 bytes
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v2.9.13
+[iop-tty]                         (built Sep 21 2003 at 00:23:01)
+[iop-tty]  Insomniac special version 13
+[iop-tty] 
+[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds
+[iop-tty]                   (banks and streams only)
+[iop-tty] 
+[iop-tty]  (build with sce library rev 2.5.5)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 58
+[iop-tty]                         Loading RPC = 59
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty]    Memory Locations...
+[iop-tty]        Voice Allocator Owner  : 0x0018c568
+[iop-tty]        Master Tick Owner List : 0x0018c3e8
+[iop-tty] ==========================================================
+[iop-tty] 
+[fileio] open rom0:ROMVER -> 3
+[iop-io] read 0x1F808280 = 0x0 (pc 0x0013BF84)
+[io] write 0x1000F590 = 0x10000 (pc 0x0012F6A0)
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/10 pc 0x0011B191 ra 0x0011B184
+[thread]   stack: 00126258 0026F608 0026F620 0026F5B0 0026EDE8 00131DC0 00131CA0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0011AC68 ra 0x0011B770
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[iop] module 1 Sound_Device_Library at 0x00075800
+[iop] module 2 IOP_stash_daemon at 0x0007B200
+[iop] module 3 sio2man at 0x0013BE00
+[iop] module 4 mcman at 0x0013CE00
+[iop] module 5 mcserv at 0x00164000
+[iop] module 6 Dbc_Manager at 0x00167800
+[iop] module 7 sio2d at 0x0016A900
+[iop] module 8 ds2u at 0x0016C000
+[iop] module 9 ds2u at 0x0016E300
+[iop] module 10 989snd_Library at 0x00170600
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 96 wait 8/2064256 pc 0x00001020
+[iop] thread 4 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 5 status 4 prio 16 wait 4/1 pc 0x0013C1C4
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/1472256 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 4 prio 20 wait 8/1482560 pc 0x00001020
+[iop] thread 11 status 4 prio 20 wait 8/1482584 pc 0x00001020
+[iop] thread 12 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 13 status 16 prio 46 wait 0/1 pc 0x0016B0BC
+[iop] thread 14 status 4 prio 46 wait 7/1 pc 0x0016AFE4
+[iop] thread 15 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 16 status 2 prio 46 wait 0/0 pc 0x0016C1A4
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 19 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 20 status 4 prio 58 wait 8/1904008 pc 0x00001020
+[iop] thread 21 status 4 prio 59 wait 8/1899912 pc 0x00001020
+[iop] thread 22 status 4 prio 9 wait 1/0 pc 0x00177820
+[iop] thread 23 status 4 prio 60 wait 3/15 pc 0x00184564
+[iop] thread 24 status 4 prio 62 wait 3/14 pc 0x00181FEC
+[iop] thread 25 status 4 prio 61 wait 3/16 pc 0x0018494C
+[iop] thread 26 status 4 prio 63 wait 3/17 pc 0x00183254
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 3662 submits, dispatches: upload 4569 copy_read 0 copy_write 0 load_clut 1487 display 12 raster 6559 resolve 0 snapshot 0 decode 2972
+[gs] 621804 primitives drawn, register writes: 00:265824 01:597992 02:426312 03:671996 04:145300 05:1098308 06:253859 08:21780 09:776 14:3172 18:5652 19:776 1A:5652 1B:776 1C:776 22:776 3B:776 3D:776 3F:2262 40:12834 41:776 42:2368 43:776 44:776 45:5652 46:5652 47:33892 48:776 49:776 4A:1552 4B:1552 4C:5652 4D:776 4E:5652 4F:776 50:84032 51:699324 52:84032 53:702296 61:52
+[ipu] commands: 0:1590 2:224966 3:1038226 4:18353034 5:98 6:2 7:746 9:2 stalls 742 out 50521376 qwords, busy 0 decoding 0 cmd 0x00000052 in 0 bytes bit 0 out 0
+[dma] starts: ch0=1 ch1=1899 ch2=2065 ch3=225712 ch4=2327 ch5=0 ch6=0 ch7=0 ch8=0 ch9=537851
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 127302 reglist 272152 image 82948
+[gif] path 3 tags: packed 623233 reglist 3648 image 619296
+[vif0] 00:3 4A:1
+[vif1] 00:1422074 01:2 02:2 03:2 04:2 05:2 06:106 13:52 20:2 50:465670
+[ee] stopped after 3600 frames, 17695947866 cycles: frame limit reached

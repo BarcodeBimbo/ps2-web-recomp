@@ -1,0 +1,98 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/a2116d2ac08a7be4db4e8455ad58d2e5/disc.iso: 310 files, 1540176 sectors, layer 1 at 0
+[mc] card in slot 1: games/a2116d2ac08a7be4db4e8455ad58d2e5/explore.ps2 (new, unformatted)
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOP\IOPRP310.IMG;1"
+[sif] FILEIO from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100
+[vu0] cfc2 28
+[loadfile] cdrom0:\IOP\SIO2MAN.IRX
+[loadfile] cdrom0:\IOP\PADMAN.IRX
+[loadfile] cdrom0:\IOP\MCMAN.IRX
+[loadfile] cdrom0:\IOP\MCSERV.IRX
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[cdvdfsv] search \MAIN.INI;1 -> found
+[cdvdfsv] search \MAIN.INI;1 -> found
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[dma] gif tag id 7 qwc 31 addr 0x00000000 data 0x01FFF6C0
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020398)
+[dma] gif tag id 7 qwc 11 addr 0x00000000 data 0x01FFF6B0
+[loadfile] cdrom0:\IOP\LIBSD.IRX
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0005AA78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0005AA7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0005AA98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0005AAA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0005AAD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0005AAD8)
+[loadfile] cdrom0:\IOP\SCRTCHPD.IRX
+[loadfile] cdrom0:\IOP\SYNTHCD.IRX
+[iop-io] write 0x1FFE0144 = 0x1F800800 (pc 0x0005F52C)
+[fileio] open rom0:ROMVER -> 3
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.WHD;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.WAV;1 -> found
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[cdvdfsv] search \SCENES\HITMANBL.ZIP;1 -> found
+[cdvdfsv] search \SCENES\HITMANBL.ZIP;1 -> found
+[cdvdfsv] search \SCENES\HITMANBL.ZIP;1 -> found
+[cdvdfsv] search \SCENES\HITMANBL.WHD;1 -> found
+[cdvdfsv] search \SCENES\HITMANBL.WAV;1 -> found
+[cdvdfsv] search \MOVIES\NTSC\INTRO_BI.PSS;1 -> found
+[io] write 0x1000F590 = 0x10000 (pc 0x0042E7B0)
+[sif] command 0x80000004 has no handler (from ee buffer 0x0057F200)
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/13 pc 0x0028B541 ra 0x0028B4DC
+[thread]   stack: 0028B2D0 0023D248 0023D358 00292B48 00292008 00120C78 0012DF18 0012E508 0023E708 0023D498 0012E2D8 00125ABC 00125B90 00125B88 00132E44 001107FC 0010FE10 0023F29C 0023F294 0023E87C 0023E9B4 002A2050 00277E10 00277C84 001B95F0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00102EA8 ra 0x001037F8
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/7 pc 0x00102EA8 ra 0x001008A0
+[thread]   stack:
+[thread] 4 status 4 prio 0 wait 1/0 pc 0x00102D88 ra 0x001062D8
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 7 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00020D00
+[iop] module 3 MCMAN at 0x0002AD00
+[iop] module 4 MCSERV at 0x00055C00
+[iop] module 5 LIBSD at 0x00059500
+[iop] module 6 SCRTCHPD at 0x0005F300
+[iop] module 7 SYNTHCD at 0x0005F600
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 46 wait 8/174660 pc 0x00001020
+[iop] thread 4 status 4 prio 46 wait 8/174884 pc 0x00001020
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 4 prio 104 wait 8/365504 pc 0x00001020
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 10 wait 1/0 pc 0x00068AB8
+[iop] thread 20 status 4 prio 67 wait 1/0 pc 0x00068AFC
+[iop] thread 21 status 2 prio 20 wait 0/11 pc 0x00020D94
+[iop] thread 22 status 4 prio 46 wait 4/11 pc 0x00020D94
+[iop] thread 23 status 4 prio 46 wait 4/13 pc 0x00020D94
+[iop] thread 24 status 16 prio 46 wait 0/13 pc 0x00023938
+[iop] thread 25 status 16 prio 46 wait 0/13 pc 0x00023A74
+[iop] thread 26 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 27 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1541 submits, dispatches: upload 16088 copy_read 0 copy_write 0 load_clut 2489 display 12 raster 8594 resolve 0 snapshot 415 decode 417
+[gs] 147809 primitives drawn, register writes: 00:778779 01:1153 04:90798 05:204160 06:14826 07:579 08:14826 09:1160 0D:800 0F:2304 14:14826 15:583 16:2 17:2 18:3041 19:583 1A:583 1C:1140 22:2 34:13684 36:13684 3B:583 3D:14824 3F:27953 40:3611 41:581 42:14886 43:583 44:2 45:585 46:583 47:15585 48:583 49:581 4A:2 4B:581 4C:3041 4D:579 4E:15015 4F:2 50:19421 51:7214 52:19421 53:20316 54:2 61:1
+[ipu] commands: 0:6 2:1160 3:3716 4:2858 5:4 6:1 7:1 9:1 stalls 3 out 113024 qwords, busy 0 decoding 0 cmd 0x00000048 in 128 bytes bit 72 out 0
+[dma] starts: ch0=0 ch1=1159 ch2=769 ch3=1161 ch4=7 ch5=0 ch6=0 ch7=0 ch8=12 ch9=896
+[gif] path 1 tags: packed 28311 reglist 0 image 5
+[gif] path 2 tags: packed 20004 reglist 570 image 2315
+[gif] path 3 tags: packed 21250 reglist 0 image 18000
+[vif0]
+[vif1] 00:2301252 01:164208 02:19967 03:19967 04:1 05:49 06:28526 11:115272 13:13687 14:38788 20:1 30:36 4A:23511 50:21179 68:37620 6C:132259 6E:36
+[ee] stopped after 3600 frames, 17699650964 cycles: frame limit reached

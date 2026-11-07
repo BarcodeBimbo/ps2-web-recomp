@@ -1,0 +1,52 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/f29093e1f939f924fb11cc605b592b11/disc.iso: 1912 files, 648336 sectors, layer 1 at 0
+[mc] card in slot 1: games/f29093e1f939f924fb11cc605b592b11/explore.ps2 (new, unformatted)
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\MODULES\IOPRP23.IMG;1"
+[sif] FILEIO from cdrom0:\MODULES\IOPRP23.IMG;1 reports 2300, asynchronous protocol
+[sif] LOADFILE from cdrom0:\MODULES\IOPRP23.IMG;1 reports 2300
+[loadfile] cdrom0:\MODULES\SIO2MAN.IRX;1
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021DF4)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00021DF8)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00021DFC)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00021E0C)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00021E1C)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000210D0)
+[loadfile] cdrom0:\MODULES\SDRDRV.IRX;1
+[iop-tty] SDR driver version 4.0.1 (C) SCEI
+[iop-tty]  Exit rsd_main 
+[ee] missing instruction words: 27BDFE70 3C050036 7FBE0080 24A5F820
+[ee] no translated code at 0x00332980 (ra 0x00100AFC)
+[ee]   r1  00340000 00332980 00000001 0035D800
+[ee]   r5  00149760 0035D7F0 00001318 00000001
+[ee]   r9  BF5105EC BED105EC 0000006C BED105EC
+[ee]   r13 BED105EC 002E0000 BF56D0A4 0033831C
+[ee]   r17 0033838C 00000000 00000000 00000000
+[ee]   r21 00000000 00000000 00000000 01FFE540
+[ee]   r25 01FFE4F0 00000000 00000000 003443F0
+[ee]   r29 01FFECC0 00000000 00100AFC 00000000
+[ee] halted: missing code at 0x00332980 (ra 0x00100AFC)
+[thread] 1 status 1 prio 1 wait 0/6 pc 0x00332981 ra 0x00100AFC
+[thread]   stack: 0014F6E8 001000AC 0010008C
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0010EAA8 ra 0x0010F830
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 LIBSD at 0x00021000
+[iop] module 3 SDRDRV at 0x00025C00
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203DC
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 5 status 4 prio 24 wait 8/2039688 pc 0x00001020
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 0 submits, dispatches: upload 0 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 decode 0
+[gs] 0 primitives drawn, register writes:
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=0 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 0 reglist 0 image 0
+[vif0]
+[vif1]
+[ee] stopped after 0 frames, 3025428 cycles: missing code at 0x00332980 (ra 0x00100AFC)

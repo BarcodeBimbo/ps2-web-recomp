@@ -1,0 +1,225 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/34402ee3c1917272f971028b4fb24868/disc.iso: 16 files, 4166832 sectors, layer 1 at 2083872
+[mc] card in slot 1: games/34402ee3c1917272f971028b4fb24868/explore.ps2 (new, unformatted)
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[vu0] cfc2 28
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP300.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP300.IMG;1 reports 3000, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP300.IMG;1 reports 3000
+[loadfile] cdrom0:\SIO2MAN.IRX;1
+[loadfile] cdrom0:\DBCMAN.IRX;1
+[loadfile] cdrom0:\SIO2D.IRX;1
+[loadfile] cdrom0:\MC2_D.IRX;1
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[loadfile] cdrom0:\DS2U_D.IRX;1
+[loadfile] cdrom0:\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00031B78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00031B7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00031B98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00031BA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00031BD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00031BD8)
+[loadfile] cdrom0:\989NOMID.IRX;1
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000-2003 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v3.1.7
+[iop-tty]                         (built Jan 26 2005 at 17:40:57)
+[iop-tty] 
+[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds
+[iop-tty]                   (banks and streams only)
+[iop-tty] 
+[iop-tty]  (build with sce library rev 3.0.1)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 64
+[iop-tty]                         Loading RPC = 65
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty] ==========================================================
+[iop-tty] 
+[loadfile] cdrom0:\SMPD.IRX;1
+[iop-tty] InitialiseMemory(size:10d914 base:cc800 top:1da114)
+[iop-tty] arg 0 : cdrom0:\SMPD.IRX;1
+[iop-tty] arg 1 : wad/,Z:/GoW2/GameArt/Cinematics/GameData/,Z:/GoW2/GameArt/Sounds/dvd_streams/,sound/
+[iop-tty] ========================================================
+[iop-tty] files   = wad/
+[iop-tty] movies  = Z:/GoW2/GameArt/Cinematics/GameData/
+[iop-tty] streams = Z:/GoW2/GameArt/Sounds/dvd_streams/
+[iop-tty] banks   = sound/
+[loadfile] buffer at 0x69C00, 857 bytes
+[iop] missing cdvdman #50 called from 0x0005D014
+[iop-tty] ========================================================
+[iop-tty] 
+[iop-tty] Len Ext    Start  DataLen      Recording Date GMT Flg USz IGp Vol             ID
+[iop-tty] ================================================================================
+[iop-tty] Sector 261 :
+[iop-tty]  48   0      261        992  6/02/07 15:23:15  36   2   0   0   1 .
+[iop-tty]  48   0      261        992  6/02/07 15:23:15  36   2   0   0   1 ..
+[iop-tty]  60   0      281         57  6/02/07 14:01:41  36   0   0   0   1 SYSTEM.CNF;1
+[iop-tty]  60   0      282    2125688  6/02/07 14:57:26  36   0   0   0   1 SCUS_974.81;1
+[iop-tty]  62   0     1320     278305 17/02/06 18:34:52  36   0   0   0   1 IOPRP300.IMG;1
+[iop-tty]  60   0     1456       6641 17/02/06 18:34:52  36   0   0   0   1 SIO2MAN.IRX;1
+[iop-tty]  58   0     1460      52140 29/01/07 16:45:26  36   0   0   0   1 SMPD.IRX;1
+[iop-tty]  62   0     1486     178984 14/09/06 15:08:17  36   0   0   0   1 989NOMID.IRX;1
+[iop-tty]  60   0     1574      15653 17/02/06 18:34:51  36   0   0   0   1 DBCMAN.IRX;1
+[iop-tty]  60   0     1582       9437 17/02/06 18:34:52  36   0   0   0   1 DS1O_S1.IRX;1
+[iop-tty]  60   0     1587      11725 17/02/06 18:34:52  36   0   0   0   1 DS2U_D.IRX;1
+[iop-tty]  58   0     1593      30085 20/01/07 13:02:34  36   0   0   0   1 LIBSD.IRX;1
+[iop-tty]  58   0     1608      20221 17/02/06 18:34:52  36   0   0   0   1 MC2_D.IRX;1
+[iop-tty]  60   0     1618      20165 17/02/06 18:34:52  36   0   0   0   1 MC2_S1.IRX;1
+[iop-tty]  58   0     1628      11289 17/02/06 18:34:52  36   0   0   0   1 SIO2D.IRX;1
+[iop-tty]  62   0     1634      39000  6/02/07 15:09:46  36   0   0   0   1 GODOFWAR.TOC;1
+[iop-tty]  58   0     1654 4264382464  6/02/07 15:04:14  36   0   0   0   1 PART1.PAK;1
+[iop-tty] cd initialised
+[iop-tty] stream initialised
+[iop-tty] streamer initialised
+[iop-tty] collector initialised
+[iop-tty] bank loader initialised
+[iop-tty] vag bank initialised
+[iop-tty] ========================================================
+[io] write 0x1000F590 = 0x10000 (pc 0x002B568C)
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[vu0] cfc2 28
+[dma] gif tag id 1 qwc 3 addr 0x00000000 data 0x0143F610
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F650
+[dma] gif tag id 3 qwc 1792 addr 0x013275C0 data 0x013275C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F6B0
+[dma] gif tag id 3 qwc 1792 addr 0x0132E5C0 data 0x0132E5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F710
+[dma] gif tag id 3 qwc 1792 addr 0x013355C0 data 0x013355C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F770
+[dma] gif tag id 3 qwc 1792 addr 0x0133C5C0 data 0x0133C5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F7D0
+[dma] gif tag id 3 qwc 1792 addr 0x013435C0 data 0x013435C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F830
+[dma] gif tag id 3 qwc 1792 addr 0x0134A5C0 data 0x0134A5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F890
+[dma] gif tag id 3 qwc 1792 addr 0x013515C0 data 0x013515C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F8F0
+[dma] gif tag id 3 qwc 1792 addr 0x013585C0 data 0x013585C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F950
+[dma] gif tag id 3 qwc 1792 addr 0x0135F5C0 data 0x0135F5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143F9B0
+[dma] gif tag id 3 qwc 1792 addr 0x013665C0 data 0x013665C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FA10
+[dma] gif tag id 3 qwc 1792 addr 0x0136D5C0 data 0x0136D5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FA70
+[dma] gif tag id 3 qwc 1792 addr 0x013745C0 data 0x013745C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FAD0
+[dma] gif tag id 3 qwc 1792 addr 0x0137B5C0 data 0x0137B5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FB30
+[dma] gif tag id 3 qwc 1792 addr 0x013825C0 data 0x013825C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FB90
+[dma] gif tag id 3 qwc 1792 addr 0x013895C0 data 0x013895C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FBF0
+[dma] gif tag id 3 qwc 1792 addr 0x013905C0 data 0x013905C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FC50
+[dma] gif tag id 3 qwc 1792 addr 0x013975C0 data 0x013975C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FCB0
+[dma] gif tag id 3 qwc 1792 addr 0x0139E5C0 data 0x0139E5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FD10
+[dma] gif tag id 3 qwc 1792 addr 0x013A55C0 data 0x013A55C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FD70
+[dma] gif tag id 3 qwc 1792 addr 0x013AC5C0 data 0x013AC5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FDD0
+[dma] gif tag id 3 qwc 1792 addr 0x013B35C0 data 0x013B35C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FE30
+[dma] gif tag id 3 qwc 1792 addr 0x013BA5C0 data 0x013BA5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FE90
+[dma] gif tag id 3 qwc 1792 addr 0x013C15C0 data 0x013C15C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FEF0
+[dma] gif tag id 3 qwc 1792 addr 0x013C85C0 data 0x013C85C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FF50
+[dma] gif tag id 3 qwc 1792 addr 0x013CF5C0 data 0x013CF5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x0143FFB0
+[dma] gif tag id 3 qwc 1792 addr 0x013D65C0 data 0x013D65C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440010
+[dma] gif tag id 3 qwc 1792 addr 0x013DD5C0 data 0x013DD5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440070
+[dma] gif tag id 3 qwc 1792 addr 0x013E45C0 data 0x013E45C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x014400D0
+[dma] gif tag id 3 qwc 1792 addr 0x013EB5C0 data 0x013EB5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440130
+[dma] gif tag id 3 qwc 1792 addr 0x013F25C0 data 0x013F25C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440190
+[dma] gif tag id 3 qwc 1792 addr 0x013F95C0 data 0x013F95C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x014401F0
+[dma] gif tag id 3 qwc 1792 addr 0x014005C0 data 0x014005C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440250
+[dma] gif tag id 3 qwc 1792 addr 0x014075C0 data 0x014075C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x014402B0
+[dma] gif tag id 3 qwc 1792 addr 0x0140E5C0 data 0x0140E5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440310
+[dma] gif tag id 3 qwc 1792 addr 0x014155C0 data 0x014155C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440370
+[dma] gif tag id 3 qwc 1792 addr 0x0141C5C0 data 0x0141C5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x014403D0
+[dma] gif tag id 3 qwc 1792 addr 0x014235C0 data 0x014235C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440430
+[dma] gif tag id 3 qwc 1792 addr 0x0142A5C0 data 0x0142A5C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x01440490
+[dma] gif tag id 3 qwc 1792 addr 0x014315C0 data 0x014315C0
+[dma] gif tag id 1 qwc 4 addr 0x00000000 data 0x014404F0
+[dma] gif tag id 3 qwc 1792 addr 0x014385C0 data 0x014385C0
+[dma] gif tag id 6 qwc 0 addr 0x00000000 data 0x01440550
+[dma] gif tag id 6 qwc 9 addr 0x00000000 data 0x0033E750
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 2 wait 0/12 pc 0x002AF931 ra 0x002AFF7C
+[thread]   stack: 002AFF7C 002A8524 002B01CC 00192E7C 002A79BC 00191C58 00190B10 002A9438 002A8EF8 001917CC 00186CB8 00186EF4 0027F914 00277280 001873FC 00187550 002D0000 00187598 00146430 001001C8
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x002CF968 ra 0x002D0480
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/9 pc 0x002CF968 ra 0x002B8CF8
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 9 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 DBCMAN at 0x00021100
+[iop] module 3 SIO2D at 0x00026300
+[iop] module 4 MC2_D at 0x00029100
+[iop] module 5 DS2U_D at 0x0002DF00
+[iop] module 6 LIBSD at 0x00030600
+[iop] module 7 989NOMID at 0x00036400
+[iop] module 8 SMPD at 0x0005E600
+[iop] module 9 ck01 at 0x0005D000
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 20 wait 8/147072 pc 0x00001020
+[iop] thread 5 status 4 prio 20 wait 8/147096 pc 0x00001020
+[iop] thread 6 status 4 prio 20 wait 8/147120 pc 0x00001020
+[iop] thread 7 status 4 prio 20 wait 8/147144 pc 0x00001020
+[iop] thread 8 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 9 status 4 prio 46 wait 7/1 pc 0x00026E10
+[iop] thread 10 status 16 prio 8 wait 0/1 pc 0x00001010
+[iop] thread 11 status 4 prio 104 wait 7/1 pc 0x00029570
+[iop] thread 12 status 16 prio 104 wait 0/0 pc 0x00000000
+[iop] thread 13 status 16 prio 8 wait 0/1 pc 0x00001010
+[iop] thread 14 status 2 prio 46 wait 0/0 pc 0x0002E140
+[iop] thread 15 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 4 prio 64 wait 8/1964424 pc 0x00001020
+[iop] thread 19 status 4 prio 65 wait 8/1960328 pc 0x00001020
+[iop] thread 20 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 21 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 22 status 4 prio 9 wait 1/0 pc 0x0003DC28
+[iop] thread 23 status 4 prio 60 wait 3/22 pc 0x0004D144
+[iop] thread 24 status 4 prio 62 wait 3/21 pc 0x00049F58
+[iop] thread 25 status 4 prio 61 wait 3/23 pc 0x0004D544
+[iop] thread 26 status 4 prio 63 wait 3/24 pc 0x0004BB84
+[iop] thread 27 status 4 prio 66 wait 9/0 pc 0x0006016C
+[iop] thread 28 status 4 prio 66 wait 3/27 pc 0x0006432C
+[iop] thread 29 status 4 prio 80 wait 3/30 pc 0x0005F3C8
+[iop] thread 30 status 4 prio 80 wait 3/31 pc 0x00062D58
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 2812 submits, dispatches: upload 32815 copy_read 0 copy_write 0 load_clut 34005 display 12 raster 144668 resolve 0 snapshot 102344 decode 49457
+[gs] 21907190 primitives drawn, register writes: 00:2242582 01:196770 03:1804 05:22294950 06:92217 07:34416 08:92997 09:6288 0D:51971518 14:92217 15:9409 18:88616 19:26800 1A:4238 1B:6392 34:91315 36:91315 3B:97763 3F:52415 40:88616 41:26678 42:88653 43:20691 44:903 45:2586 46:2586 47:101419 48:21716 4C:6851 4D:61459 4E:88528 4F:18596 50:34907 51:70085 52:34907 53:70085 61:3369
+[ipu] commands: 0:2832 2:865925 3:3992476 4:3523318 5:120 6:2 7:1808 9:2 stalls 2767 out 106363120 qwords, busy 0 decoding 0 cmd 0x00000045 in 128 bytes bit 69 out 0
+[dma] starts: ch0=1 ch1=4272 ch2=1804 ch3=867733 ch4=5594 ch5=0 ch6=0 ch7=0 ch8=8756 ch9=870535
+[gif] path 1 tags: packed 4143939 reglist 0 image 0
+[gif] path 2 tags: packed 191676 reglist 0 image 34005
+[gif] path 3 tags: packed 37884 reglist 0 image 36080
+[vif0] 00:5 01:1 4A:1 6C:1
+[vif1] 00:9279236 01:4049016 02:215933 03:215933 04:291517 05:169190 06:2 07:3369 10:22702 11:44571 14:1940947 20:2 30:101856 4A:102288 50:216226 60:38676 64:24956 65:2010206 6A:1592113 6C:4313568 6D:1917377 6E:1832655
+[ee] stopped after 3600 frames, 17697821503 cycles: frame limit reached

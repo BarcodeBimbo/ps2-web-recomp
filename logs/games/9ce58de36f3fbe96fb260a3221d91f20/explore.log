@@ -1,0 +1,198 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/9ce58de36f3fbe96fb260a3221d91f20/disc.iso: 146 files, 2594960 sectors, layer 1 at 1317040
+[mc] card in slot 1: games/9ce58de36f3fbe96fb260a3221d91f20/explore.ps2 (new, unformatted)
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP300.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP300.IMG;1 reports 3000, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP300.IMG;1 reports 3000
+[fileio] open rom0:ROMVER -> 3
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[vu0] cfc2 28
+[loadfile] cdrom0:\IRX\SIO2MAN.IRX;1
+[loadfile] cdrom0:\IRX\MCMAN.IRX;1
+[loadfile] cdrom0:\IRX\MCSERV.IRX;1
+[loadfile] cdrom0:\IRX\SIO2D.IRX;1
+[loadfile] cdrom0:\IRX\DBCMAN.IRX;1
+[loadfile] cdrom0:\IRX\DS2U_D.IRX;1
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[dma] gif tag id 2 qwc 0 addr 0x0077EED0 data 0x0077EB20
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0077EEE0
+[loadfile] cdrom0:\IRX\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00057A78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00057A7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00057A98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00057AA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00057AD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00057AD8)
+[loadfile] cdrom0:\IRX\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.4.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x0005F9F0)
+[loadfile] cdrom0:\IRX\INET.IRX;1
+[iop-tty] INET (Version 2.25.0) DEBUG REMOVABLE
+[iop-tty] inet: mem=128KB thpri=48 thstack=8192
+[iop-tty] inet: debug=0x0 &debug=0008dc50 &free_{size,min}=0008ddd4,0008ddd8
+[loadfile] cdrom0:\IRX\NETCNF.IRX;1
+[loadfile] cdrom0:\IRX\INETCTL.IRX;1
+[loadfile] cdrom0:\IRX\DEV9.IRX;1
+[iop-io] read 0x1F80146E = 0x0 (pc 0x000C4E78)
+[iop-tty] dev9: unknown dev9 hardware.
+[fileio] devctl dev9x: 0x4401
+[loadfile] cdrom0:\IRX\MSIFRPC.IRX;1
+[iop-tty] Multi-thread available sifrpc module...
+[loadfile] cdrom0:\IRX\LIBPDI.IRX;1
+[loadfile] cdrom0:\IRX\PDICDVD.IRX;1
+[loadfile] cdrom0:\IRX\PDISPU2.IRX;1
+[loadfile] cdrom0:\IRX\PDISTR.IRX;1
+[loadfile] cdrom0:\IRX\PDIUSB.IRX;1
+[loadfile] cdrom0:\IRX\USTORAGE.IRX;1
+[loadfile] cdrom0:\IRX\LGDEV.IRX;1
+[iop-tty] LgDev_tb_rb_Driver Version 1.11.036 (PDI branch), Rooz special, built on Jan 27 2005 at 19:18:45, thpri=42,43
+[iop-tty]   dynamic memory allocations
+[loadfile] cdrom0:\IRX\POWOFF.IRX;1
+[loadfile] cdrom0:\IRX\RTINETB.IRX;1
+[iop-tty] libnetb version: 1.10.0005 (09.22.2004.01.44.53)
+[iop-tty] libnetb: delay between sends = 3 msecs
+[dma] gif tag id 2 qwc 0 addr 0x006DECE0 data 0x006DEB20
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x006DECF0
+[fileio] devctl dev9x: 0x4401
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 64 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 00109CF0 0010A160 0010A150 005767D0 00326634 00326778 00255364 00255334 0010B2C0 0010822C 00108124 00107F48 00100218
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x005ADCE8 ra 0x005AE9E8
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 1/0 pc 0x005ADBC8 ra 0x004A2248
+[thread]   stack: 00610000 004A2390 00610000 00107928 001078F8 00610000 00610000 00610000 00101818 00101718 0057871C 001016E8
+[thread] 4 status 4 prio 13 wait 2/26 pc 0x005ADCE8 ra 0x00578540
+[thread]   stack: 005517C0 005517C8 0057871C 00551758
+[thread] 5 status 4 prio 13 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 0054A140 0057871C 00549D98 005780F8
+[thread] 6 status 4 prio 13 wait 2/29 pc 0x005ADCE8 ra 0x00578540
+[thread]   stack: 0054A2A8 0057871C 0054A230
+[thread] 7 status 4 prio 13 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 005481B8 00574ECC 005475A8 005477D8 0057871C 005477C8
+[thread] 8 status 4 prio 14 wait 2/31 pc 0x005ADCE8 ra 0x00578540
+[thread]   stack: 0055EBC0 0055EBE4 0057871C 0055EB50 00553D80 00565310 00565310 00565310 00565310 00553580 005660D0 00567390 00552970
+[thread] 9 status 4 prio 12 wait 1/0 pc 0x005ADBC8 ra 0x005B20D8
+[thread]   stack: 00553BF4 00553B90 0057871C 00553B80
+[thread] 10 status 4 prio 14 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 00553C68 00553C18 0057871C 00553C08
+[thread] 11 status 4 prio 13 wait 2/37 pc 0x005ADCE8 ra 0x00578540
+[thread]   stack: 005554A0 00555328 005553FC 0055521C 0057871C 00555208
+[thread] 12 status 4 prio 65 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 004B0648 004B0224 0057871C 004B0210
+[thread] 13 status 4 prio 12 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 004AF8A0 00574ECC 004B06AC 004B0244 0057871C 004B0230
+[thread] 14 status 4 prio 13 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 004AD930 004AD03C 0057871C 004AD018
+[thread] 15 status 4 prio 13 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 004ADC10 00574ECC 004AD930 004AD03C 0057871C 004AD018
+[thread] 16 status 4 prio 64 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 00103284 001031E0 0057871C 001031D0
+[thread] 17 status 4 prio 13 wait 2/39 pc 0x005ADCE8 ra 0x00578540
+[thread]   stack: 00557B78 00557B94 00557AE0 0057871C 00557AD0 0035F700 005780F8
+[thread] 18 status 4 prio 113 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00574ECC 0054E928 0054DB88 0057871C 0054DB78
+[thread] 19 status 4 prio 65 wait 1/0 pc 0x005ADBC8 ra 0x0057689C
+[thread]   stack: 00574E60 00109C58 00574ECC 00213C58 00251DA8 00251D88 0024E478 0024E400 0024EB58 00303124 0032DA90 003284C8 00302E8C 0031ABEC 0030154C 003214F4 003214F4 00321788 00321FEC 00321FD8 00310104 002F9F44 002651C0 00265174 00277998 00265CAC 00305FA4 00235BD0 0028E8BC 00277944 002357D8 002356A8 002AACD8 00265CAC 00235BD0 00265648 001FA42C 00576A38 0028E8BC 00235A94 005767D0 00327318 002A9EC4 00250B40 005767D0 00109C58 00574ECC 00251D80 00213B7C 0057871C
+[sema] 2 count 0 waiters 1
+[sema] 26 count 0 waiters 1
+[sema] 29 count 0 waiters 1
+[sema] 31 count 0 waiters 1
+[sema] 37 count 0 waiters 1
+[sema] 39 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 MCMAN at 0x00021100
+[iop] module 3 MCSERV at 0x00048500
+[iop] module 4 SIO2D at 0x0004BD00
+[iop] module 5 DBCMAN at 0x0004EB00
+[iop] module 6 DS2U_D at 0x00053D00
+[iop] module 7 LIBSD at 0x00056500
+[iop] module 8 USBD at 0x0005C300
+[iop] module 9 INET at 0x00072400
+[iop] module 10 NETCNF at 0x000B0900
+[iop] module 11 INETCTL at 0x000BD100
+[iop] module 12 DEV9 at 0x000C4A00
+[iop] module 13 MSIFRPC at 0x000C4A00
+[iop] module 14 LIBPDI at 0x000C7100
+[iop] module 15 PDICDVD at 0x000C9B00
+[iop] module 16 PDISPU2 at 0x000CB700
+[iop] module 17 PDISTR at 0x000CF700
+[iop] module 18 PDIUSB at 0x000D3E00
+[iop] module 19 USTORAGE at 0x000D9200
+[iop] module 20 LGDEV at 0x000DBF00
+[iop] module 21 POWOFF at 0x000E5900
+[iop] module 22 RTINETB at 0x000E5C00
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 5 status 4 prio 104 wait 8/310240 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 4 prio 46 wait 7/1 pc 0x0004C810
+[iop] thread 8 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 9 status 4 prio 20 wait 8/333952 pc 0x00001020
+[iop] thread 10 status 4 prio 20 wait 8/333976 pc 0x00001020
+[iop] thread 11 status 4 prio 20 wait 8/334000 pc 0x00001020
+[iop] thread 12 status 4 prio 20 wait 8/334024 pc 0x00001020
+[iop] thread 13 status 16 prio 8 wait 0/1 pc 0x00001010
+[iop] thread 14 status 2 prio 46 wait 0/0 pc 0x00053F40
+[iop] thread 15 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 4 prio 30 wait 4/10 pc 0x00060D04
+[iop] thread 19 status 4 prio 36 wait 4/11 pc 0x00060D64
+[iop] thread 20 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 21 status 4 prio 48 wait 4/14 pc 0x0007FB10
+[iop] thread 22 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 23 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 24 status 4 prio 48 wait 4/18 pc 0x0007FB10
+[iop] thread 25 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 26 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 27 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 28 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 29 status 4 prio 25 wait 3/20 pc 0x000C8F18
+[iop] thread 30 status 4 prio 78 wait 3/19 pc 0x000C8F18
+[iop] thread 31 status 4 prio 79 wait 8/832628 pc 0x00001020
+[iop] thread 32 status 4 prio 79 wait 8/832852 pc 0x00001020
+[iop] thread 33 status 4 prio 9 wait 2/0 pc 0x000CAE48
+[iop] thread 34 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 35 status 4 prio 9 wait 3/29 pc 0x000C8F18
+[iop] thread 36 status 4 prio 22 wait 3/30 pc 0x000C8F18
+[iop] thread 37 status 4 prio 21 wait 8/847428 pc 0x00001020
+[iop] thread 38 status 4 prio 77 wait 8/848484 pc 0x00001020
+[iop] thread 39 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 40 status 4 prio 24 wait 8/863988 pc 0x00001020
+[iop] thread 41 status 4 prio 76 wait 8/865368 pc 0x00001020
+[iop] thread 42 status 4 prio 24 wait 8/865392 pc 0x00001020
+[iop] thread 43 status 4 prio 95 wait 8/867252 pc 0x00001020
+[iop] thread 44 status 4 prio 24 wait 8/867540 pc 0x00001020
+[iop] thread 45 status 4 prio 75 wait 3/35 pc 0x000C8F18
+[iop] thread 46 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 47 status 4 prio 28 wait 8/887460 pc 0x00001020
+[iop] thread 48 status 4 prio 29 wait 8/1706280 pc 0x00001020
+[iop] thread 49 status 4 prio 29 wait 1/0 pc 0x000D7144
+[iop] thread 50 status 4 prio 29 wait 8/1701672 pc 0x00001020
+[iop] thread 51 status 4 prio 29 wait 1/0 pc 0x000D77B0
+[iop] thread 52 status 4 prio 29 wait 8/1697064 pc 0x00001020
+[iop] thread 53 status 4 prio 29 wait 1/0 pc 0x000D7F28
+[iop] thread 54 status 4 prio 29 wait 8/1692200 pc 0x00001020
+[iop] thread 55 status 4 prio 29 wait 1/0 pc 0x000D69B8
+[iop] thread 56 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 57 status 4 prio 36 wait 8/900452 pc 0x00001020
+[iop] thread 58 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 59 status 4 prio 42 wait 8/1652616 pc 0x00001020
+[iop] thread 60 status 4 prio 43 wait 3/56 pc 0x000E21F8
+[iop] thread 61 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 62 status 4 prio 1 wait 1/0 pc 0x000E5930
+[iop] thread 63 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 64 status 4 prio 16 wait 5/73 pc 0x000C58EC
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 3702 submits, dispatches: upload 266812 copy_read 0 copy_write 0 load_clut 63119 display 12 raster 3569 resolve 0 snapshot 0 decode 211432
+[gs] 1110858 primitives drawn, register writes: 00:541271 01:1172498 02:782656 03:1225848 04:1535922 05:35696 06:217140 08:217140 0C:614402 0D:35696 14:217906 16:192690 18:10734 1A:3596 1C:3596 22:3596 34:3596 36:3596 3B:3596 3D:3596 3F:154840 40:15769 42:150547 44:3596 45:3596 46:3596 47:10734 49:3596 4A:3596 4C:6922 4E:10734 50:307209 51:307209 52:307209 53:307209
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=1 ch1=3597 ch2=214847 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 254848 reglist 1077992 image 0
+[gif] path 3 tags: packed 458695 reglist 0 image 307209
+[vif0] 00:8 10:2 4A:2
+[vif1] 00:2682397 01:3596 02:3596 03:3596 05:3596 10:8 11:1003801 20:3596 4A:8 50:792550
+[ee] stopped after 3600 frames, 17697248671 cycles: frame limit reached

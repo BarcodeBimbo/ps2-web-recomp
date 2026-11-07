@@ -1,0 +1,126 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games\60c82f4a111da300ac23bbec85272788\disc.iso: 25 files, 1807840 sectors, layer 1 at 0
+[mc] card in slot 1: games\60c82f4a111da300ac23bbec85272788\menu.ps2 (new, unformatted)
+[sif] IOP reboot requested with "rom0:UDNL cdrom:\NFS\IOPRP280.IMG"
+[sif] FILEIO from cdrom:\NFS\IOPRP280.IMG reports 2800, asynchronous protocol
+[sif] LOADFILE from cdrom:\NFS\IOPRP280.IMG reports 2800
+[fileio] open cdrom:\NFS\IRX281A.BUN -> 3
+[loadfile] buffer at 0x20000, 6641 bytes
+[loadfile] buffer at 0x22B00, 43813 bytes
+[loadfile] buffer at 0x37100, 95909 bytes
+[loadfile] buffer at 0x22B00, 7417 bytes
+[loadfile] buffer at 0x37100, 28605 bytes
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)
+[loadfile] buffer at 0x28000, 9161 bytes
+[iop-tty] SDR driver version 4.0.1 (C) SCEI
+[iop-tty]  Exit rsd_main 
+[loadfile] buffer at 0x75B00, 81600 bytes
+[loadfile] buffer at 0x43B00, 34969 bytes
+[iop-tty] USB Driver (Version 1.1.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x0003A7EC)
+[loadfile] buffer at 0x7B500, 52349 bytes
+[iop-tty] LgDev_tb_rb_Driver Version 1.11.037 ( Wheel ), built on Jun 16 2005 at 16:02:04, thpri=42,43
+[iop-tty]   fixed memory allocations for 2 devices and 8 effects
+[vu0] cfc2 28
+[vu0] cfc2 28
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[dma] gif tag id 2 qwc 0 addr 0x01D7B2A0 data 0x0054B5B0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B2B0
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B390 data 0x01D7B330
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B3A0
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B480 data 0x01D7B420
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B490
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B570 data 0x01D7B510
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B580
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01D7B600
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690
+[dma] gif tag id 2 qwc 0 addr 0x01C4FA30 data 0x0054B550
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FA40
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FB20 data 0x01C4FAC0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FB30
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FC10 data 0x01C4FBB0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FC20
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FD00 data 0x01C4FCA0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FD10
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01C4FD90
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690
+[sif] IOP reboot requested with ""
+[sif] IOP reboot requested with ""
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 100 wait 2/44 pc 0x00495528 ra 0x00497C00
+[thread]   stack:
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00495528 ra 0x00495DE8
+[thread]   stack:
+[thread] 3 status 4 prio 99 wait 2/17 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00
+[thread] 4 status 4 prio 99 wait 2/23 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00 001A4C40
+[thread] 5 status 4 prio 6 wait 2/29 pc 0x00495528 ra 0x00469E00
+[thread]   stack:
+[thread] 6 status 4 prio 5 wait 2/30 pc 0x00495528 ra 0x0046BD30
+[thread]   stack: 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8
+[thread] 7 status 4 prio 99 wait 2/32 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00 001A4C40 001A4C40
+[sema] 2 count 0 waiters 1
+[sema] 17 count 0 waiters 1
+[sema] 23 count 0 waiters 1
+[sema] 29 count 0 waiters 1
+[sema] 30 count 0 waiters 1
+[sema] 32 count 0 waiters 1
+[sema] 44 count 0 waiters 1
+[iop] module 1 sio2man at 0x00021A00
+[iop] module 2 padman at 0x0002D700
+[iop] module 3 mcman at 0x0004E800
+[iop] module 4 mcserv at 0x00024800
+[iop] module 5 Sound_Device_Library at 0x0003E100
+[iop] module 6 sdr_driver at 0x0002A400
+[iop] module 7 SND_Library_EE_Driver at 0x00089A00
+[iop] module 8 USB_driver at 0x00037100
+[iop] module 9 LgDev_tb_rb_Driver at 0x00043B00
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x00021DC4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/224852 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/225076 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/163584 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 24 wait 8/178624 pc 0x00001020
+[iop] thread 12 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 13 status 4 prio 15 wait 1/0 pc 0x00093554
+[iop] thread 14 status 4 prio 9 wait 1/0 pc 0x00093460
+[iop] thread 15 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 16 status 4 prio 30 wait 4/5 pc 0x0003BB04
+[iop] thread 17 status 4 prio 36 wait 4/6 pc 0x0003BB64
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 42 wait 8/1891976 pc 0x00001020
+[iop] thread 20 status 4 prio 43 wait 3/14 pc 0x00048374
+[iop] thread 21 status 2 prio 20 wait 0/17 pc 0x0002D794
+[iop] thread 22 status 4 prio 46 wait 4/17 pc 0x0002D794
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 16 submits, dispatches: upload 17 copy_read 0 copy_write 0 load_clut 7 display 12 raster 9 resolve 0 snapshot 0 decode 2
+[gs] 164 primitives drawn, register writes: 00:58 01:6 03:112 04:208 05:120 06:7 08:9 09:2 0A:2 14:7 18:13 19:11 1A:2 22:2 34:7 36:7 3B:2 3D:2 3F:18 40:15 41:11 42:11 43:2 45:2 46:2 47:21 48:11 49:2 4A:13 4B:13 4C:11 4D:11 4E:13 4F:11 50:18 51:18 52:18 53:18 7F:10
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=3 ch2=2 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 14 reglist 0 image 0
+[gif] path 2 tags: packed 98 reglist 0 image 10
+[gif] path 3 tags: packed 8 reglist 0 image 8
+[vif0]
+[vif1] 00:2226 01:8 02:3 03:3 04:1 05:4 06:21 07:4 10:30 13:12 14:16 20:6 30:2 4A:24 50:108 6C:44
+[ee] stopped after 1800 frames, 8862118296 cycles: frame limit reached

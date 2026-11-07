@@ -1,0 +1,8 @@
+== [1/6] Preparing disc
+== [1/6] Verifying disc identity
+Traceback (most recent call last):
+  File "C:\PS2Recomp\scripts\windows_port.py", line 268, in <module>
+    port(sys.argv[1], Path(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), archive_password)
+  File "C:\PS2Recomp\scripts\windows_port.py", line 150, in port
+    if duplicate: raise ValueError('This disc is already installed as ' + duplicate)
+ValueError: This disc is already installed as 97a89291e5c9cf08666ceb876690d4d0
