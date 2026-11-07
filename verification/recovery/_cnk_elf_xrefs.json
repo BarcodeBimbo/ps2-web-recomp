@@ -1,3 +1,32 @@
 {
-  "name_xrefs": {}
+  "elf": "c:\\PS2Recomp\\games\\b49f2e769315347e8bda839feb705744\\disc\\boot.elf",
+  "load_va": "0x100000",
+  "entry": "0x108d28",
+  "ig_name_count": 677,
+  "name_xrefs": {
+    "0x63a8b0": {
+      "name": "igGuiComponentModel",
+      "ptr_sites": [
+        "0x63ac9c"
+      ],
+      "ptr_count": 1
+    },
+    "0x63a8d0": {
+      "name": "igGuiComponentController",
+      "ptr_sites": [
+        "0x63aca0"
+      ],
+      "ptr_count": 1
+    },
+    "0x63aa08": {
+      "name": "igGuiComponent",
+      "ptr_sites": [
+        "0x63acc8"
+      ],
+      "ptr_count": 1
+    }
+  },
+  "typeinfos_key": [],
+  "vtable_rtti": [],
+  "vtable_broad": []
 }

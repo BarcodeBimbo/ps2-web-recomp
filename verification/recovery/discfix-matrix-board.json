@@ -1,0 +1,46 @@
+{
+  "updated": "2026-11-06T21:32:00-05:00",
+  "priority_pair": true,
+  "games": {
+    "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
+    "nfs_mw": "60c82f4a111da300ac23bbec85272788"
+  },
+  "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
+  "step": 0,
+  "phase": "waiting_for_proposal",
+  "discfix": {
+    "status": "starting",
+    "proposed_change": null,
+    "evidence": null,
+    "files_touched": []
+  },
+  "matrix": {
+    "status": "watching",
+    "current_phase": null,
+    "verdict": null,
+    "notes": "Matrix armed. Waiting for discfix.proposed_change + evidence for Hitman BM + NFS MW. Ranked rewrites R1–R5 stay gated until earlier phases pass with real evidence. No CNK Alchemy contamination allowed.",
+    "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
+    "pass_checks": {
+      "boot": "EE reaches frames; SIF IOP reboot + LOADFILE ok; no hard halt",
+      "menu": "prims climb; menu assets found (Hitman BOOTMENU / NFS UI); pad press still advances",
+      "first_disc_read": "CDVD complete; curReadPos/readee written; WaitSema not falsely pulsed (no Alchemy 16/54/55)",
+      "streaming": "further disc searches/reads continue; SIF queue drains",
+      "sustained_run": "frame limit reached; prims keep moving; ~60-class draw without stall blackout"
+    },
+    "runners_ready": true,
+    "boot_paths": {
+      "hitman_bm": "cdrom0:\\SLUS_211.08;1",
+      "nfs_mw": "cdrom0:\\SLUS_212.67;1"
+    }
+  },
+  "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
+  "ranked_rewrite_unlock": {
+    "R1_SIF_end": "blocked_until_boot_menu_pass",
+    "R2_WaitSema_fidelity": "blocked_until_R1_and_first_disc_read_pass",
+    "R3_readee": "blocked_until_R2_and_streaming_evidence",
+    "R4_CdSync": "blocked_until_R3_pass",
+    "R5_pad_sound": "blocked_until_sustained_run_pass"
+  },
+  "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.",
+  "commit_policy": "No commits until stable build; then commit freely."
+}
