@@ -71,69 +71,48 @@
 
     <div class="jcc-grid">
       <!-- Row 1 -->
+      <!-- Workstation Overview: PNG face (icons/chrome from reference-command-center-2.png) + text overlays. Metrics: live/--ov-* or "—" — never invented. -->
       <section
         class="jcc-panel jcc-overview"
         data-memory-count=""
         data-agent-count=""
         data-llm-count=""
       >
-        <h2 class="jcc-panel-title jcc-ov-title">
-          <span class="jcc-ov-title-ico" aria-hidden="true">
-            <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><rect x="0" y="0" width="4" height="4" rx="0.6"/><rect x="8" y="0" width="4" height="4" rx="0.6"/><rect x="0" y="8" width="4" height="4" rx="0.6"/><rect x="8" y="8" width="4" height="4" rx="0.6"/></svg>
-          </span>
-          Workstation Overview
-        </h2>
+        <div class="jcc-ov-face" role="img" aria-label="Workstation Overview"></div>
+        <h2 class="jcc-ov-title">Workstation Overview</h2>
         <ul class="jcc-ov-list">
-          <li class="jcc-ov-row" data-row="workstation">
-            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="12" height="12" rx="2"/><rect x="7.5" y="7.5" width="5" height="5" rx="1"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="workstation" data-tone="cyan">
             <span class="jcc-ov-k">Workstation</span>
-            <span class="jcc-ov-v" data-ov-live="workstation"></span>
+            <span class="jcc-ov-v" data-ov-live="workstation" data-tone="cyan">Active</span>
           </li>
-          <li class="jcc-ov-row" data-row="memory">
-            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="10" cy="5.5" rx="5.5" ry="2.2"/><path d="M4.5 5.5v3.2c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V5.5"/><path d="M4.5 8.7v3.2c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V8.7"/><path d="M4.5 11.9v2.4c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2v-2.4"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="memory" data-tone="blue">
             <span class="jcc-ov-k">Memory</span>
-            <span class="jcc-ov-v" data-ov-live="memory">
+            <span class="jcc-ov-v" data-ov-live="memory" data-tone="blue">
               <span class="jcc-ov-num" data-ov-num="memory"></span>
               <span class="jcc-ov-unit" data-ov-unit="memory"></span>
             </span>
           </li>
-          <li class="jcc-ov-row" data-row="voice">
-            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><rect x="2" y="8" width="2" height="4" rx="0.6"/><rect x="5.5" y="5" width="2" height="10" rx="0.6"/><rect x="9" y="3" width="2" height="14" rx="0.6"/><rect x="12.5" y="6" width="2" height="8" rx="0.6"/><rect x="16" y="8.5" width="2" height="3" rx="0.6"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="voice" data-tone="teal">
             <span class="jcc-ov-k">Voice</span>
-            <span class="jcc-ov-v" data-ov-live="voice"></span>
+            <span class="jcc-ov-v" data-ov-live="voice" data-tone="teal"></span>
           </li>
-          <li class="jcc-ov-row" data-row="agents">
-            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="7" r="3"/><path d="M4.5 16.5c1.2-3 3-4.5 5.5-4.5s4.3 1.5 5.5 4.5"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="agents" data-tone="purple">
             <span class="jcc-ov-k">Agents</span>
-            <span class="jcc-ov-v" data-ov-live="agents">
+            <span class="jcc-ov-v" data-ov-live="agents" data-tone="purple">
               <span class="jcc-ov-num" data-ov-num="agents"></span>
               <span class="jcc-ov-unit" data-ov-unit="agents"></span>
             </span>
           </li>
-          <li class="jcc-ov-row" data-row="llms">
-            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3.5 6.5h13M3.5 10h13M3.5 13.5h13"/><circle cx="7" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="13.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="llms" data-tone="amber">
             <span class="jcc-ov-k">LLMs</span>
-            <span class="jcc-ov-v" data-ov-live="llms">
+            <span class="jcc-ov-v" data-ov-live="llms" data-tone="amber">
               <span class="jcc-ov-num" data-ov-num="llms"></span>
               <span class="jcc-ov-unit" data-ov-unit="llms"></span>
             </span>
           </li>
-          <li class="jcc-ov-row" data-row="system">
-            <span class="jcc-ov-ico" data-tone="ok" aria-hidden="true">
-              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2.5l6 2.2v5.1c0 3.4-2.4 5.8-6 7.2-3.6-1.4-6-3.8-6-7.2V4.7L10 2.5z"/><path d="M7.2 10.1l1.9 1.9 3.7-3.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+          <li class="jcc-ov-row" data-row="system" data-tone="green">
             <span class="jcc-ov-k">System</span>
-            <span class="jcc-ov-v" data-ov-live="system"></span>
+            <span class="jcc-ov-v" data-ov-live="system" data-tone="green"></span>
           </li>
         </ul>
       </section>
@@ -181,20 +160,9 @@
       <!-- Row 3 -->
       <section class="jcc-panel jcc-monitor">
         <h2 class="jcc-panel-title">System Monitor</h2>
+        <!-- Blank until inject stamps real os/%; never hardcode 15/54/40. -->
         <div class="jcc-gauges">
-          <div class="jcc-gauge jcc-gauge-await" data-lab="CPU" id="cortana-gauge-cpu" title="CPU % not available in inject shell">
-            <div class="jcc-gauge-frame">
-              <svg class="jcc-gauge-ring" viewBox="0 0 72 72" aria-hidden="true">
-                <circle class="jcc-gauge-track" cx="36" cy="36" r="33" pathLength="100"/>
-                <circle class="jcc-gauge-prog" cx="36" cy="36" r="33" pathLength="100" style="stroke-dasharray:0 100"/>
-              </svg>
-              <div class="jcc-gauge-core">
-                <div class="jcc-gauge-lab"></div>
-                <div class="jcc-gauge-val">—</div>
-              </div>
-            </div>
-          </div>
-          <div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-ram" data-lab="RAM" title="Stamped at inject from os.freemem">
+          <div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-cpu" data-lab="CPU" data-metric="cpu" title="CPU from os.cpus sample at inject">
             <div class="jcc-gauge-frame">
               <svg class="jcc-gauge-ring" viewBox="0 0 72 72" aria-hidden="true">
                 <circle class="jcc-gauge-track" cx="36" cy="36" r="33" pathLength="100"/>
@@ -202,19 +170,31 @@
               </svg>
               <div class="jcc-gauge-core">
                 <div class="jcc-gauge-lab"></div>
-                <div class="jcc-gauge-val">—</div>
+                <div class="jcc-gauge-val"></div>
               </div>
             </div>
           </div>
-          <div class="jcc-gauge jcc-gauge-await" data-lab="Disk" id="cortana-gauge-disk" title="Disk % not available in inject shell">
+          <div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-ram" data-lab="RAM" data-metric="ram" title="RAM from os.freemem at inject">
             <div class="jcc-gauge-frame">
               <svg class="jcc-gauge-ring" viewBox="0 0 72 72" aria-hidden="true">
                 <circle class="jcc-gauge-track" cx="36" cy="36" r="33" pathLength="100"/>
-                <circle class="jcc-gauge-prog" cx="36" cy="36" r="33" pathLength="100" style="stroke-dasharray:0 100"/>
+                <circle class="jcc-gauge-prog" cx="36" cy="36" r="33" pathLength="100"/>
               </svg>
               <div class="jcc-gauge-core">
                 <div class="jcc-gauge-lab"></div>
-                <div class="jcc-gauge-val">—</div>
+                <div class="jcc-gauge-val"></div>
+              </div>
+            </div>
+          </div>
+          <div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-disk" data-lab="Disk" data-metric="disk" title="Disk from fs.statfs at inject">
+            <div class="jcc-gauge-frame">
+              <svg class="jcc-gauge-ring" viewBox="0 0 72 72" aria-hidden="true">
+                <circle class="jcc-gauge-track" cx="36" cy="36" r="33" pathLength="100"/>
+                <circle class="jcc-gauge-prog" cx="36" cy="36" r="33" pathLength="100"/>
+              </svg>
+              <div class="jcc-gauge-core">
+                <div class="jcc-gauge-lab"></div>
+                <div class="jcc-gauge-val"></div>
               </div>
             </div>
           </div>
