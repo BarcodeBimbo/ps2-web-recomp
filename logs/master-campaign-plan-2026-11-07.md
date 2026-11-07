@@ -211,6 +211,8 @@
 | Handoff / policy docs | 4 | 2 |
 | Improvement-pass extras | 1 | 3 |
 
+**Parallel workers (2026-11-07):** `logs/worker-roster-2026-11-07.md` — reports under `logs/workers/W-*-report-2026-11-07.md`; each updates this plan on verify.
+
 **Current focus (do not idle):** Finish Hitman **web rebuild** → harness **canvas_lum** → check Layer 3 capture boxes → then NFS shared GS checklist.
 
 ---

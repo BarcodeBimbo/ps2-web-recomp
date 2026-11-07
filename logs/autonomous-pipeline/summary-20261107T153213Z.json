@@ -1,0 +1,23 @@
+{
+  "results": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "title": "NFS Most Wanted",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261107T153210Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 140753,
+        "frames": 500,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "error": "Traceback (most recent call last):\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 137, in <module>\n    raise SystemExit(main(sys.argv))\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 131, in main\n    text = read_log_text(Path(argv[2]))\n  File \"C:\\PS2Recomp\\verification\\recovery\\matrix_phase_check.py\", line 115, in read_log_text\n    raw = path.read_bytes()\n  File \"C:\\Users\\joshy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pathlib.py\", line 1126, in read_bytes\n    with self.open(mode='rb') as f:\n  File \"C:\\Users\\joshy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\nFileNotFoundError: [Errno 2] No such file or directory: '-'"
+      }
+    }
+  ]
+}
