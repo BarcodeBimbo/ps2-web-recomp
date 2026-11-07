@@ -240,9 +240,13 @@ Classic seven tracks (plus extras that spun up):
 3. Prove-before-swap via matrix board before R1–R5 behavioral patches.  
 4. BIOS = reference only.  
 5. Chrome + Edge only for product browser work.  
-6. **No commits** until a stable build — then commit freely.  
+6. **No commits** until a stable build — then commit freely (user may pre-approve stable disc-fix commits).  
 7. Simple-language status when reporting to the user.  
-8. PCSX2 oracle path is dropped.
+8. PCSX2 oracle path is dropped.  
+9. **redumper-based custom PS2 disc dumper (GPL-3.0):** Any README (and every future README update/push) for a fork or derivative of [superg/redumper](https://github.com/superg/redumper) **must**:
+   - Credit redumper with a link to `https://github.com/superg/redumper`
+   - Document **every** change from upstream, including code that was **stripped**
+   - Note **GPL-3.0** license implications (derivative must remain GPL-3.0-compatible; source distribution obligations)
 
 ---
 

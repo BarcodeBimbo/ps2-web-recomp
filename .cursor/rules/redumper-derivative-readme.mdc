@@ -1,0 +1,14 @@
+---
+description: README / license requirements for any redumper-based PS2 disc dumper
+alwaysApply: true
+---
+
+# redumper derivative — README obligations
+
+When building, forking, stripping, or documenting a **custom PS2 disc dumper** based on [superg/redumper](https://github.com/superg/redumper) (GPL-3.0):
+
+1. **Credit** — The project README must name redumper and link to `https://github.com/superg/redumper`.
+2. **Change log** — Document **every** divergence from upstream in the README (or a linked CHANGES / ATTRIBUTION section), including features or files that were **removed/stripped**, not only additions.
+3. **GPL-3.0** — State in the README that the work is a GPL-3.0 derivative: license the derivative under GPL-3.0 (or compatible), keep copyright notices, and note source-distribution obligations when binaries are shipped.
+
+These apply to **any future push that updates the README** for that tool. Do not ship a redumper-based dumper README that omits credit, a full change list, or the GPL note.
