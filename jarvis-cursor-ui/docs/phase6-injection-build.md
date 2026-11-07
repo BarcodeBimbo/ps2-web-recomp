@@ -83,7 +83,7 @@ Scaffold intact on disk; **Enable injection against Program Files is deferred** 
 5. ~~Fail-safes 1–3 in engine + God-as-builder docs~~ ✓
 6. **PAUSED** — Admin Enable deferred (do not run against Program Files)
 7. On resume: HUD Studio YES polish + full verify (3D/anim/arc/tracking)
-8. Demote webview / package iterate after God confirms splash+chrome live
+8. Demote webview / package iterate after Joshua confirms splash+chrome live
 9. Optional 6.I / 6.J only if God schedules
 
 **Do not** Enable while paused. **Do not** build overlays. **Do not** implement Active support.
@@ -95,7 +95,7 @@ Scaffold intact on disk; **Enable injection against Program Files is deferred** 
 | D1 | Boot asset | **Resolved** — calibrating splash |
 | D2 | Inject host | **Resolved** — Rank-1 Custom CSS Loader in-repo |
 | D3 | Legacy Command Center webview | Fallback only (`jarvis.injection.fallbackWebview` default false) |
-| D4 | Install-dir write / elevation | **LOCKED:** Workers soft-fail only; **God runs Admin Enable manually** — see `GOD-ADMIN-ENABLE.md` |
+| D4 | Install-dir write / elevation | **LOCKED:** Workers soft-fail only; **Joshua runs Admin Enable manually** — see `GOD-ADMIN-ENABLE.md` |
 | D5 | Fingerprint | `vscode.version` + product.json version when readable (± workbench hash) |
 | D6 | Studio YES / no Gumroad | **Resolved** — full Studio column YES; unlocked locally |
 | D7 | Active support | **Resolved — EXCLUDED**; fail-safe 3 = God-as-builder only |

@@ -1,6 +1,6 @@
 # God Admin Enable — Phase 6 scaffold ready
 
-Workers **cannot elevate**. God runs Admin Enable manually. Scaffold is ready **now**. Parallel polish continues and must **not** block this gate.
+Workers **cannot elevate**. Joshua runs Admin Enable manually. Scaffold is ready **now**. Parallel polish continues and must **not** block this gate.
 
 ## Already done (workers)
 
@@ -9,7 +9,7 @@ Workers **cannot elevate**. God runs Admin Enable manually. Scaffold is ready **
 - `media/inject/{tokens,boot,hud}.css` — calibrating boot + chrome
 - Commands wired in `extension.js` / `package.json`
 
-## God steps (fast path)
+## Joshua steps (fast path)
 
 1. **Extension already synced** to  
    `%USERPROFILE%\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0`  

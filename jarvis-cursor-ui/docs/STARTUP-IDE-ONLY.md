@@ -32,9 +32,9 @@ Splash appears **inside** the Cursor workbench after **JARVIS: Enable Workbench 
 | `media/inject/boot.css` | Full-bleed calibrating cover lifecycle (`--jarvis-boot-ms`) |
 | `media/reference-calibrating-splash.png` | Staged beside `workbench.html` as `jarvis-boot-splash.png` |
 | `jarvis.injection.bootMs` | Injected into CSS as `--jarvis-boot-ms` (User default **1200**) |
-| `jarvis.injection.enabled` | Left **`false`** until God enables (do not force-enable without Admin) |
+| `jarvis.injection.enabled` | Left **`false`** until Joshua enables (do not force-enable without Admin) |
 
-### God resume (when ready)
+### Joshua resume (when ready)
 
 1. Follow [`GOD-ADMIN-ENABLE.md`](GOD-ADMIN-ENABLE.md) (elevate Cursor once).
 2. Command Palette → **JARVIS: Enable Workbench Injection** → Reload.

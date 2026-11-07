@@ -6,7 +6,7 @@ Local Cursor / VS Code extension: **full JARVIS Command Center HUD** via **Custo
 
 **Visual targets (locked):** Boot/loading splash **and** the entire UI look = [`media/reference-calibrating-splash.png`](media/reference-calibrating-splash.png) (calibrating aesthetic). Command-center PNGs are supporting composition refs only. Custom CSS / workbench **injection is required**; overlays are **definitively out**.
 
-**v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `jarvis.injection.enabled` = **false** until God enables.
+**v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `jarvis.injection.enabled` = **false** until Joshua enables.
 
 **Boot path:** Calibrating splash runs on **Cursor IDE launch via workbench injection** (`media/inject/boot.css` + `jarvis.injection.bootMs`). There is **no** separate Jarvis splash `.exe` and **no** Windows Startup shortcut for splash. See [`docs/STARTUP-IDE-ONLY.md`](docs/STARTUP-IDE-ONLY.md).
 

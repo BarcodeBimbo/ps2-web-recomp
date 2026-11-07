@@ -100,7 +100,7 @@ Works technically; **fails** “extension owns auto-disable” and “God is the
 | File | Change |
 |------|--------|
 | `src/extension.js` | On `activate`: call `workbenchInject.reconcileOnActivate(context)` — **never** auto-enable without God; auto-**disable** on version/marker fail |
-| `package.json` | Commands: `jarvis.injection.enable` / `disable` / `status`; settings: `jarvis.injection.enabled` (default false until God enables) |
+| `package.json` | Commands: `jarvis.injection.enable` / `disable` / `status`; settings: `jarvis.injection.enabled` (default false until Joshua enables) |
 | `README.md` | Injection credits/risks, fail-safes, Admin note, corrupt-install warning, God-owns-rebuild |
 
 ### What to patch
@@ -166,7 +166,7 @@ On every `activate` / `onStartupFinished`:
    - Restore backup / strip markers.
    - Set `enabled=false`, `active=false`.
    - One notification: “Cursor updated — JARVIS injection disabled. Re-enable after verify.”
-3. Do **not** auto-re-enable (God re-runs Enable after rebuild/verify).
+3. Do **not** auto-re-enable (Joshua re-runs Enable after rebuild/verify).
 
 ### Fail-safe (2) — Disable on patch detection / health failure
 
@@ -231,13 +231,13 @@ reconcileOnActivate():
 
 2. **Inject host standard** — **LOCKED:** Rank 1 Custom CSS Loader / CSS Injector / Custom UI Style pattern (extension-owned `workbench.html` inline CSS). No third-party loader runtime dependency.
 
-3. **Default `jarvis.injection.enabled`** — **`false`** until God runs Enable once.
+3. **Default `jarvis.injection.enabled`** — **`false`** until Joshua runs Enable once.
 
 4. **CSP stripping** — Do **not** strip Cursor CSP for CSS-only phase 6.
 
 5. **Command Center webview** — Demote to optional fallback (`jarvis.injection.fallbackWebview` default false).
 
-6. **Admin elevation** — Soft-fail with clear message; God runs Enable as Admin once if Program Files ACL blocks.
+6. **Admin elevation** — Soft-fail with clear message; Joshua runs Enable as Admin once if Program Files ACL blocks.
 
 7. **Boot splash** — `reference-calibrating-splash.png` is boot **and** overall UI visual target (God).
 

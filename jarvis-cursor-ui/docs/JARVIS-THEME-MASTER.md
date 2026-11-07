@@ -4,7 +4,7 @@
 >
 > **Status:** Phases **1–5 done**. Phase **6 scaffold started** (on disk). **PAUSED** here — do **not** implement new inject features; do **not** delete scaffold files.
 >
-> ### Resume after reopen (God)
+> ### Resume after reopen (Joshua)
 >
 > 1. Open this workspace: `C:\PS2Recomp` (Recomp-folder IDE — see § Startup scope).
 > 2. Confirm scaffold still present (§ On-disk scaffold inventory).
@@ -220,7 +220,7 @@ Phases 1–5 modules remain: `suitModes`, `gitHud`, `threatHints`, `sessionCinem
 | **Splash** | Injection path only (`boot.css` / `jarvis.injection.*`) — never a separate splash exe or new window to show it |
 | **Sibling note** | A sibling agent or other Cursor window **may apply settings** that affect user/global Cursor config; that does not expand product scope — still document and verify against **Recomp IDE** |
 
-Full write-up: [`STARTUP-IDE-ONLY.md`](./STARTUP-IDE-ONLY.md). Workers soft-fail on Admin; God enables inject in the Recomp-scoped Admin session per [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md).
+Full write-up: [`STARTUP-IDE-ONLY.md`](./STARTUP-IDE-ONLY.md). Workers soft-fail on Admin; Joshua enables inject in the Recomp-scoped Admin session per [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md).
 
 ---
 
@@ -263,7 +263,7 @@ Core idea: IDE launch → calibrating PNG via inject → Command Center chrome w
 
 ---
 
-## Resume checklist (God)
+## Resume checklist (Joshua)
 
 - [ ] Cold-reopen this master + plan  
 - [ ] Scaffold files still present (inventory above)  
