@@ -18,8 +18,8 @@ const MARKER_START = "JARVIS-INJECT-START";
 const MARKER_END = "JARVIS-INJECT-END";
 const STYLE_ID = "jarvis-workbench-css";
 const BOOT_STAGED_NAME = "jarvis-boot-splash.png";
-/** Authoritative boot still: Command Center frame (same as reference-command-center.png). */
-const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
+/** Authoritative boot still: calibrating splash (CSS-drawn cover; PNG staged for binding). */
+const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
 const GLOBAL_BACKUP_NAME = "workbench.jarvis.pristine.html";
 
 const CSS_REL_PATHS = [

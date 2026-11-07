@@ -27,8 +27,8 @@ const MARKER_HUD_START = "CORTANA-HUD-START";
 const MARKER_HUD_END = "CORTANA-HUD-END";
 const STYLE_ID = "cortana-workbench-css";
 const BOOT_STAGED_NAME = "cortana-boot-splash.png";
-/** Authoritative boot still: Command Center frame (same as reference-command-center.png). */
-const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
+/** Authoritative boot still: calibrating splash (CSS-drawn cover; PNG staged for binding). */
+const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
 const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
 /** Cursor product.json checksums key for the patched workbench HTML. */
@@ -38,6 +38,7 @@ const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.htm
 const CSS_REL_PATHS = [
   path.join("media", "inject", "tokens.css"),
   path.join("media", "inject", "boot.css"),
+  path.join("media", "inject", "hud-photo-assets.css"),
   path.join("media", "inject", "hud.css"),
 ];
 
@@ -533,6 +534,7 @@ function stripHudMarkup(html) {
   return html
     .replace(/<!--\s*CORTANA-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*CORTANA-HUD-END\s*-->\s*/g, "")
     .replace(/<script[^>]*id=["']cortana-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<script[^>]*id=["']cortana-hud-voice-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
 }
 
@@ -616,14 +618,115 @@ async function readHudMarkup(context) {
     `t();setInterval(t,1000);}());`,
     `</script>`,
   ].join("");
-  return { markup, clockScript };
+  const voiceScript = buildHudVoiceScript();
+  return { markup, clockScript, voiceScript };
 }
 
-function buildHudBlock({ uuid, markup, clockScript }) {
+/**
+ * Injected HUD voice click bridge.
+ * Workbench page has no vscode API — try Cursor DOM mic / chat openers,
+ * CustomEvent + postMessage hooks, then a HUD toast naming cortana.voice.talk.
+ */
+function buildHudVoiceScript() {
+  // Keep as one IIFE string; no template ${} interpolation inside body.
+  const body = [
+    "(function(){",
+    "if(window.__cortanaVoiceWired)return;window.__cortanaVoiceWired=true;",
+    "var VOICE_SELS=[",
+    "'button[aria-label=\"Start voice chat\"]',",
+    "'button[aria-label*=\"Start voice chat\" i]',",
+    "'button[aria-label*=\"Voice Chat\" i]',",
+    "'button[aria-label*=\"voice chat\" i]',",
+    "'button[title*=\"Start voice chat\" i]',",
+    "'button[aria-label*=\"Start Voice\" i]',",
+    "'.codicon-mic',",
+    "'button[aria-label*=\"Dictate\" i]',",
+    "'button[aria-label*=\"microphone\" i]',",
+    "'button[aria-label*=\"Microphone\" i]'",
+    "];",
+    "var CHAT_SELS=[",
+    "'button[aria-label=\"Chat\"]',",
+    "'a[aria-label=\"Chat\"]',",
+    "'button[aria-label*=\"Open Chat\" i]',",
+    "'button[aria-label*=\"Agent\" i]',",
+    "'div[aria-label*=\"Chat\" i]',",
+    "'.codicon-comment-discussion',",
+    "'[data-command=\"workbench.action.chat.open\"]',",
+    "'[data-command=\"aichat.newchataction\"]'",
+    "];",
+    "function qsa(sel){try{return Array.prototype.slice.call(document.querySelectorAll(sel));}catch(e){return[];}}",
+    "function clickFirst(sels){",
+    "for(var i=0;i<sels.length;i++){",
+    "var nodes=qsa(sels[i]);",
+    "for(var j=0;j<nodes.length;j++){",
+    "var el=nodes[j];",
+    "if(!el||el.closest&&el.closest('#cortana-cc-hud'))continue;",
+    "try{el.click();return el;}catch(e){}",
+    "}",
+    "}",
+    "return null;",
+    "}",
+    "function toast(msg){",
+    "var host=document.getElementById('cortana-cc-hud')||document.body;",
+    "var t=document.getElementById('cortana-voice-toast');",
+    "if(!t){t=document.createElement('div');t.id='cortana-voice-toast';",
+    "t.setAttribute('role','status');",
+    "t.style.cssText='position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:100000;",
+    "padding:10px 16px;border-radius:8px;background:rgba(0,20,40,.92);border:1px solid rgba(0,212,255,.45);",
+    "color:#cfefff;font:12px/1.35 Segoe UI,system-ui,sans-serif;pointer-events:none;max-width:420px;text-align:center;",
+    "box-shadow:0 0 24px rgba(0,212,255,.2)';host.appendChild(t);}",
+    "t.textContent=msg;t.style.opacity='1';",
+    "clearTimeout(t.__hide);t.__hide=setTimeout(function(){t.style.opacity='0';},4200);",
+    "}",
+    "function signal(){",
+    "try{window.dispatchEvent(new CustomEvent('cortana-voice',{detail:{source:'hud',action:'talk'}}));}catch(e){}",
+    "try{window.postMessage({type:'cortana-voice',action:'talk',source:'hud'},'*');}catch(e){}",
+    "if(typeof window.__cortanaVoiceClick==='function'){",
+    "try{window.__cortanaVoiceClick({source:'hud'});}catch(e){}",
+    "}",
+    "}",
+    "function tryVoiceDom(){return !!clickFirst(VOICE_SELS);}",
+    "function tryOpenChatDom(){return !!clickFirst(CHAT_SELS);}",
+    "function revealIde(){",
+    "var cb=document.getElementById('cortana-focus-toggle');",
+    "if(cb&&!cb.checked){cb.checked=true;try{cb.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}return true;}",
+    "return false;",
+    "}",
+    "function startVoice(){",
+    "signal();",
+    "revealIde();",
+    "if(tryVoiceDom()){toast('Voice channel — Cursor mic engaged');return;}",
+    "tryOpenChatDom();",
+    "setTimeout(function(){",
+    "if(tryVoiceDom()){toast('Voice channel — Cursor mic engaged');return;}",
+    "toast('Press Command Palette → CORTANA: Talk / Start Voice (cortana.voice.talk)');",
+    "},400);",
+    "}",
+    "window.__cortanaStartVoice=startVoice;",
+    "function isVoiceTarget(el){",
+    "if(!el||!el.closest)return null;",
+    "return el.closest('[data-cortana-action=\"voice\"],[data-cortana-voice],#cortana-mic-btn,.jcc-mic,.jcc-voice,#cortana-talk-cta,.jcc-talk');",
+    "}",
+    "function onActivate(e){",
+    "var t=isVoiceTarget(e.target);",
+    "if(!t||!t.closest('#cortana-cc-hud'))return;",
+    "if(e.type==='keydown'&&e.key!=='Enter'&&e.key!==' ')return;",
+    "e.preventDefault();e.stopPropagation();",
+    "startVoice();",
+    "}",
+    "document.addEventListener('click',onActivate,true);",
+    "document.addEventListener('keydown',onActivate,true);",
+    "})();",
+  ].join("");
+  return `<script id="cortana-hud-voice-script">${body}</script>`;
+}
+
+function buildHudBlock({ uuid, markup, clockScript, voiceScript }) {
   return [
     `<!-- ${MARKER_HUD_START} uuid=${uuid} -->`,
     markup.trim(),
     clockScript,
+    voiceScript || "",
     `<!-- ${MARKER_HUD_END} -->`,
   ].join("\n");
 }
@@ -1106,6 +1209,7 @@ async function enable(context) {
     uuid: markerUuid,
     markup: hudBundle.markup,
     clockScript: hudBundle.clockScript,
+    voiceScript: hudBundle.voiceScript,
   });
 
   let patched;

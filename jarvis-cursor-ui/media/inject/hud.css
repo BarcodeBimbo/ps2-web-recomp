@@ -22,15 +22,15 @@ body.cortana-inject .monaco-workbench,
 }
 
 /*
- * Title bar (God note): reference-command-center(-2).png is FULL-BLEED —
- * no Cursor/OS title bar, min/max/close, or menu strip appears in the photo.
- * #cortana-cc-hud { inset:0 } intentionally covers the stock title bar while
- * HUD is primary so the window reads 1:1 with the PNG. This is NOT a missing
- * element for photo match. Escape hatch: Focus Mode reveals IDE chrome;
- * title bar is then themed navy/cyan per VISUAL-SPEC §3.1 (rules below).
- * Do not restore a stock Cursor title strip on top of the HUD for PNG QA.
+ * Title bar (God note): reference-command-center(-2).png / Latest_UI_Update
+ * is FULL-BLEED navy glass — no stock Windows caption chrome. While HUD is
+ * primary (#cortana-cc-hud), the stock title strip is
+ * subsumed (transparent) and only themed min/max/close remain elevated into
+ * the HUD chrome. Escape hatch: Focus Mode (#cortana-focus-toggle) reveals
+ * IDE chrome with the navy title bar rules below. Do not restore a stock
+ * Cursor/Win title strip on top of the HUD for PNG QA.
  */
-/* HUD primary: hide stock parts until Focus Mode (#cortana-focus-toggle) */
+/* HUD primary: visually hide stock parts until Focus Mode (no pointer-events blank — click-through HUD) (#cortana-focus-toggle) */
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.activitybar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.sidebar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.editor,
@@ -38,7 +38,6 @@ body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workb
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.statusbar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar {
   opacity: 0 !important;
-  pointer-events: none !important;
 }
 
 #cortana-focus-toggle.jcc-focus-check {
@@ -49,12 +48,21 @@ body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workb
   pointer-events: none;
 }
 
+/* FAB restore chip — hidden while HUD primary; never z-fight #cortana-cc-hud (99990).
+   Only mounts as fixed overlay when Focus Mode is ON (IDE revealed). */
 .jcc-focus-fab {
+  /* Content-sized chip only — never inset:0 / full-viewport hit target */
   display: none;
+  visibility: hidden;
+  pointer-events: none;
   position: fixed;
+  inset: auto;
   right: 16px;
   bottom: 48px;
-  z-index: 99995;
+  width: auto;
+  height: auto;
+  max-width: max-content;
+  margin: 0;
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid rgba(0, 212, 255, 0.45);
@@ -65,6 +73,7 @@ body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workb
   box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
   cursor: pointer;
   text-transform: uppercase;
+  z-index: 100;
 }
 
 body:has(#cortana-focus-toggle:checked) #cortana-cc-hud {
@@ -74,9 +83,22 @@ body:has(#cortana-focus-toggle:checked) #cortana-cc-hud {
   transform: translateZ(0) scale(0.98);
 }
 
+/* Focus Mode ON: floating restore control above IDE chrome only (HUD already hidden). */
 body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: inline-flex;
   align-items: center;
+  visibility: visible;
+  pointer-events: auto;
+  position: fixed;
+  right: 16px;
+  bottom: 48px;
+  z-index: 100;
+
+  /* Keep chip-sized; never stretch */
+  inset: auto;
+  width: auto;
+  height: auto;
+  max-width: max-content;
 }
 
 /* ========== Title bar ========== */
@@ -106,12 +128,132 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 
 .monaco-workbench .titlebar .action-label,
 .monaco-workbench .window-appicon {
-  color: var(--cortana-cyan-dim) !important;
+  color: var(--cortana-cyan-dim, #3a8fa8) !important;
+  background: transparent !important;
+}
+
+.monaco-workbench .window-appicon {
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.45));
+  opacity: 0.85;
 }
 
 .monaco-workbench .titlebar .action-label:hover {
-  color: var(--cortana-cyan-soft) !important;
+  color: var(--cortana-cyan-soft, #4ad1f1) !important;
   text-shadow: var(--cortana-glow-tight);
+}
+
+/* Caption / window controls — navy glass, no stock Win boxes */
+.monaco-workbench .window-controls-container {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.monaco-workbench .window-controls-container > .window-icon,
+.monaco-workbench .window-controls-container .codicon-chrome-minimize,
+.monaco-workbench .window-controls-container .codicon-chrome-maximize,
+.monaco-workbench .window-controls-container .codicon-chrome-restore,
+.monaco-workbench .window-controls-container .codicon-chrome-close {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--cortana-cyan-soft, #7ee8ff) !important;
+  opacity: 0.78;
+  width: 46px !important;
+  height: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease, text-shadow 0.15s ease;
+}
+
+.monaco-workbench .window-controls-container > .window-icon:hover,
+.monaco-workbench .window-controls-container .codicon-chrome-minimize:hover,
+.monaco-workbench .window-controls-container .codicon-chrome-maximize:hover,
+.monaco-workbench .window-controls-container .codicon-chrome-restore:hover {
+  background: rgba(0, 212, 255, 0.1) !important;
+  color: var(--cortana-cyan-bright, #4ad1f1) !important;
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.55);
+}
+
+/* Close: cyan glass hover — not stock Windows red box */
+.monaco-workbench .window-controls-container .codicon-chrome-close:hover,
+.monaco-workbench .window-controls-container > .window-icon.window-close:hover {
+  background: rgba(0, 212, 255, 0.14) !important;
+  color: #e8fbff !important;
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.65);
+}
+
+/*
+ * HUD primary: subsume stock title strip into Command Center chrome.
+ * Titlebar sits above HUD (z > 99990) but is visually invisible except
+ * themed caption buttons; Focus Mode restores the full navy strip.
+ */
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  z-index: 99999 !important;
+  pointer-events: none !important;
+}
+
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-container,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-container,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-appicon,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-title,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .menubar,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .command-center,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-appicon,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-title,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .menubar,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .command-center {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
+  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-controls-container,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-controls-container {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 100000 !important;
+  background: transparent !important;
+  margin-right: 2px !important;
 }
 
 /* ========== Activity bar ========== */
@@ -152,7 +294,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .monaco-workbench .activitybar .badge .badge-content,
 .monaco-workbench .activitybar .badge-content {
   background-color: var(--cortana-cyan) !important;
-  color: #021018 !important;
+  color: var(--cortana-ink-on-cyan, #021018) !important;
   border: none !important;
   box-shadow: var(--cortana-reactor-glow-lo);
   font-weight: 700;
@@ -357,7 +499,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .monaco-workbench .badge,
 .monaco-workbench .monaco-count-badge {
   background-color: var(--cortana-cyan) !important;
-  color: #021018 !important;
+  color: var(--cortana-ink-on-cyan, #021018) !important;
   box-shadow: var(--cortana-reactor-glow-lo);
   font-weight: 700;
 }
@@ -626,7 +768,33 @@ html.cortana-inject-probe::after {
   animation: cortana-cc-reveal 0.7s ease forwards;
   animation-delay: calc(var(--cortana-boot-ms, 1800ms) * 0.72);
   transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
-  pointer-events: auto;
+  pointer-events: none;
+}
+
+
+/* Click-through HUD shell — only interactive chrome captures input */
+#cortana-cc-hud .jcc-rail,
+#cortana-cc-hud .jcc-footer,
+#cortana-cc-hud .jcc-header,
+#cortana-cc-hud button,
+#cortana-cc-hud a,
+#cortana-cc-hud label,
+#cortana-cc-hud input,
+#cortana-cc-hud select,
+#cortana-cc-hud textarea,
+#cortana-cc-hud .jcc-talk,
+#cortana-cc-hud .jcc-nav,
+#cortana-cc-hud .jcc-nav-item,
+#cortana-cc-hud .jcc-voice,
+#cortana-cc-hud .jcc-mic,
+#cortana-cc-hud .jcc-mic-hint,
+#cortana-cc-hud .jcc-focus,
+#cortana-cc-hud .jcc-icon-btn,
+#cortana-cc-hud .jcc-search,
+#cortana-cc-hud .jcc-panel,
+#cortana-cc-hud [data-cortana-action="voice"],
+.jcc-focus-fab {
+  pointer-events: auto !important;
 }
 
 @keyframes cortana-cc-reveal {
@@ -679,34 +847,57 @@ html.cortana-inject-probe::after {
 .jcc-particles i:nth-child(19) { left: 5%; top: 85%; }
 .jcc-particles i:nth-child(20) { left: 42%; top: 28%; }
 
-/* —— Left rail —— */
+/* —— Left rail (1:1 vs reference-command-center-2.png; navy glass + color-split brand) —— */
 .jcc-rail {
   grid-area: rail;
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 14px 12px 12px;
+  gap: 0;
+  padding: 0 0 12px;
   background:
-    linear-gradient(180deg, rgba(0, 30, 55, 0.55) 0%, rgba(0, 16, 32, 0.92) 40%, #001020 100%);
-  border-right: 1px solid var(--cortana-border);
-  box-shadow: inset -1px 0 0 rgba(0, 242, 255, 0.06), 8px 0 32px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(var(--cortana-glass-blur));
+    linear-gradient(
+      180deg,
+      rgba(14, 36, 60, 0.78) 0%,
+      rgba(5, 20, 36, 0.9) 26%,
+      var(--CORTANA-bg-rail, var(--cortana-bg-rail, #001020)) 58%,
+      rgba(1, 12, 24, 0.98) 100%
+    );
+  border-right: 1px solid rgba(74, 209, 241, 0.22);
+  box-shadow:
+    inset -1px 0 0 rgba(0, 212, 255, 0.08),
+    1px 0 0 rgba(0, 0, 0, 0.45),
+    10px 0 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(var(--CORTANA-glass-blur, var(--cortana-glass-blur, 18px)));
+  -webkit-backdrop-filter: blur(var(--CORTANA-glass-blur, var(--cortana-glass-blur, 18px)));
+  overflow: hidden;
 }
 
+/* Brand block — distinct header cell with diagonal bottom-right cut (ref split) */
 .jcc-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 4px 12px;
-  border-bottom: 1px solid var(--cortana-border-subtle);
+  margin: 0 0 6px;
+  padding: 14px 14px 16px;
+  min-height: var(--CORTANA-header-h, var(--cortana-header-h, 52px));
+  background:
+    linear-gradient(165deg, #0a2438 0%, #061729 45%, #030a12 100%);
+  border-bottom: 1px solid var(--CORTANA-border-solid, var(--cortana-border-solid, #0a3852));
+  border-right: 1px solid rgba(0, 212, 255, 0.16);
+  box-shadow:
+    inset 0 -1px 0 rgba(0, 212, 255, 0.1),
+    inset 0 1px 0 rgba(0, 212, 255, 0.06);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  position: relative;
+  z-index: 3;
 }
 
 .jcc-iris {
   position: relative;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
 }
 
@@ -714,123 +905,185 @@ html.cortana-inject-probe::after {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(0, 212, 255, 0.55);
+  border: 1px solid rgba(74, 209, 241, 0.55);
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.35);
   animation: cortana-orbit-spin 8s linear infinite;
 }
 
 .jcc-iris-ring.r2 {
   inset: 6px;
-  border-color: rgba(74, 209, 241, 0.4);
+  border-color: rgba(74, 209, 241, 0.35);
   animation: cortana-orbit-spin-rev 5s linear infinite;
 }
 
 .jcc-iris-core {
   position: absolute;
-  inset: 12px;
+  inset: 11px;
   border-radius: 50%;
-  background: radial-gradient(circle, #4ad1f1 0%, #00d4ff 45%, transparent 70%);
-  box-shadow: 0 0 12px rgba(0, 242, 255, 0.8);
-  animation: cortana-arc-reactor-pulse var(--cortana-reactor-ms) ease-in-out infinite;
+  background: radial-gradient(circle, #4ad1f1 0%, #00d4ff 45%, transparent 72%);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.7);
+  animation: cortana-arc-reactor-pulse var(--CORTANA-reactor-ms, var(--cortana-reactor-ms, 2.4s)) ease-in-out infinite;
+}
+
+.jcc-brand-text {
+  min-width: 0;
+  flex: 1;
 }
 
 .jcc-brand-title {
-  font-family: var(--cortana-font-display);
+  font-family: var(--CORTANA-font-display, var(--cortana-font-display, "Segoe UI", sans-serif));
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--cortana-cyan-soft);
-  text-shadow: var(--cortana-text-glow);
-  font-size: 11px;
-  line-height: 1.25;
+  letter-spacing: 0.1em;
+  color: #4ad1f1;
+  text-shadow: 0 0 8px rgba(74, 209, 241, 0.32);
+  font-size: 10px;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .jcc-brand-sub {
-  font-size: 8px;
-  letter-spacing: 0.28em;
-  color: var(--cortana-text-dim);
-  margin-top: 2px;
+  font-size: 7.5px;
+  letter-spacing: 0.26em;
+  color: #7a8fa3;
+  margin-top: 3px;
+  text-transform: uppercase;
 }
 
 .jcc-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   flex: 1;
+  min-height: 0;
   overflow: auto;
-  padding: 6px 0;
+  padding: 2px 0 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 212, 255, 0.25) transparent;
 }
 
 .jcc-nav-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  color: var(--cortana-text-dim);
+  gap: 9px;
+  margin: 0 8px;
+  padding: 7px 10px 7px 12px;
+  border-radius: 6px;
+  color: #8aa0b4;
   text-decoration: none;
   font-size: 11px;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
   border: 1px solid transparent;
   position: relative;
   transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .jcc-nav-item:hover {
-  color: var(--cortana-text-bright);
-  background: var(--cortana-bg-hover);
+  color: #e8f7ff;
+  background: rgba(0, 212, 255, 0.06);
 }
 
 .jcc-nav-item.active {
-  color: var(--cortana-text-bright);
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.18) 0%, rgba(0, 212, 255, 0.04) 100%);
-  box-shadow: inset 2px 0 0 var(--cortana-cyan), inset 0 0 18px rgba(0, 212, 255, 0.06);
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.16) 0%, rgba(10, 26, 47, 0.85) 42%, rgba(5, 16, 30, 0.35) 100%);
+  box-shadow:
+    inset 3px 0 0 #00d4ff,
+    inset 3px 0 10px rgba(0, 212, 255, 0.35),
+    inset 0 0 22px rgba(0, 212, 255, 0.05);
+}
+
+.jcc-nav-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: #00f2ff;
+  box-shadow: 0 0 8px rgba(0, 242, 255, 0.85), 0 0 16px rgba(0, 212, 255, 0.45);
+  pointer-events: none;
 }
 
 .jcc-nav-ico {
-  width: 16px;
+  width: 15px;
+  flex-shrink: 0;
   text-align: center;
-  color: var(--cortana-cyan-mid);
-  font-size: 10px;
+  color: #40a7ca;
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.85;
 }
 
 .jcc-nav-item.active .jcc-nav-ico {
-  color: var(--cortana-cyan-soft);
-  text-shadow: var(--cortana-glow-tight);
+  color: #00f2ff;
+  opacity: 1;
+  text-shadow: 0 0 6px rgba(0, 242, 255, 0.55);
 }
 
 .jcc-badge {
   margin-left: auto;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 999px;
-  background: var(--cortana-cyan);
-  color: #021018;
-  font-size: 9px;
+  min-width: var(--CORTANA-badge-size, var(--cortana-badge-size, 18px));
+  height: 16px;
+  padding: 0 6px;
+  border-radius: var(--CORTANA-radius-pill, var(--cortana-radius-pill, 999px));
+  background: rgba(6, 32, 52, 0.92);
+  color: #e8f7ff;
+  font-size: var(--CORTANA-hud-fs-sm, var(--cortana-hud-fs-sm, 9px));
   font-weight: 700;
+  letter-spacing: 0.02em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--cortana-reactor-glow-lo);
+  border: 1px solid rgba(0, 212, 255, 0.55);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.28), inset 0 0 6px rgba(0, 212, 255, 0.08);
 }
 
-/* Voice status */
+.jcc-badge[data-count]::before {
+  content: attr(data-count);
+}
+
+/* Voice status — rail footer block (clickable → Cursor voice) */
 .jcc-voice {
-  margin-top: auto;
-  padding: 12px 10px;
-  border-radius: var(--cortana-radius);
-  background: var(--cortana-glass);
-  border: 1px solid var(--cortana-border);
-  box-shadow: var(--cortana-shadow-card);
+  margin: 6px 10px 0;
+  padding: 10px 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 18, 36, 0.72);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(0, 212, 255, 0.08),
+    0 0 18px rgba(0, 212, 255, 0.06);
   text-align: center;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  flex-shrink: 0;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+.jcc-voice .jcc-mic,
+.jcc-voice .jcc-mic-hint {
+  pointer-events: auto !important;
 }
 
 .jcc-voice-lab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-size: 8px;
   letter-spacing: 0.28em;
-  color: var(--cortana-cyan);
+  color: #00d4ff;
   margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.jcc-voice-lab::after {
+  content: "\203A";
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.7;
+  letter-spacing: 0;
 }
 
 .jcc-wave {
@@ -838,34 +1091,37 @@ html.cortana-inject-probe::after {
   align-items: flex-end;
   justify-content: center;
   gap: 2px;
-  height: 22px;
+  height: 20px;
   margin-bottom: 6px;
 }
 
 .jcc-wave i {
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, var(--cortana-cyan-soft), var(--cortana-cyan-dim));
+  background: linear-gradient(180deg, #4ad1f1, #0c79a0);
   border-radius: 1px;
   transform-origin: bottom;
-  animation: cortana-wave-bar 0.9s ease-in-out infinite;
-  box-shadow: 0 0 4px rgba(0, 242, 255, 0.55);
+  animation: cortana-wave-bar var(--cortana-wave-ms) ease-in-out infinite;
+  box-shadow: 0 0 4px rgba(0, 212, 255, 0.45);
+  will-change: transform;
+  pointer-events: none;
 }
 
-.jcc-wave i:nth-child(odd) { animation-duration: 0.75s; }
+.jcc-wave i:nth-child(odd) { animation-duration: var(--cortana-wave-ms-fast); }
 .jcc-wave i:nth-child(3n) { animation-delay: 0.15s; }
 .jcc-wave i:nth-child(4n) { animation-delay: 0.28s; }
+.jcc-wave i:nth-child(5n) { animation-delay: 0.06s; animation-duration: calc(var(--cortana-wave-ms) * 1.12); }
 
 .jcc-listen {
   font-size: 10px;
-  color: var(--cortana-text-calibrating);
+  color: rgba(185, 235, 244, 0.72);
   margin-bottom: 8px;
 }
 
 .jcc-mic {
   position: relative;
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   margin: 0 auto;
   border: none;
   background: transparent;
@@ -878,68 +1134,79 @@ html.cortana-inject-probe::after {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(0, 212, 255, 0.45);
+  border: 1px solid rgba(0, 212, 255, 0.42);
   animation: cortana-mic-ring 2.2s ease-out infinite;
 }
 
 .jcc-mic-ring.r2 {
   inset: 6px;
   animation-delay: 0.55s;
-  border-color: rgba(74, 209, 241, 0.35);
+  border-color: rgba(74, 209, 241, 0.32);
 }
 
 .jcc-mic-core {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: radial-gradient(circle at 40% 35%, #0a4a66, #001e32 70%);
-  border: 1px solid var(--cortana-talk-rim);
-  color: var(--cortana-cyan-soft);
-  font-size: 14px;
-  box-shadow: var(--cortana-talk-glow);
+  border: 1px solid #0c79a0;
+  color: #4ad1f1;
+  font-size: 13px;
+  box-shadow:
+    0 0 10px rgba(0, 212, 255, 0.35),
+    0 0 28px rgba(12, 121, 160, 0.28);
   z-index: 1;
 }
 
 .jcc-mic-hint {
   margin-top: 6px;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  color: var(--cortana-text-dim);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  color: #7a8fa3;
   text-transform: uppercase;
 }
 
-.jcc-focus {
+/* Focus Mode — rail-local control under voice */
+.jcc-rail > .jcc-focus {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
-  margin-top: 8px;
-  padding: 9px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--cortana-border);
-  background: rgba(0, 30, 50, 0.55);
-  color: var(--cortana-cyan-bright);
-  letter-spacing: 0.12em;
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  background: rgba(0, 24, 42, 0.55);
+  color: #4ad1f1;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 10px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: var(--cortana-glow-soft);
+  box-shadow:
+    inset 0 0 14px rgba(0, 212, 255, 0.06),
+    0 0 10px rgba(0, 212, 255, 0.12);
+  flex-shrink: 0;
 }
 
-.jcc-focus:hover {
-  background: rgba(0, 60, 90, 0.65);
-  box-shadow: var(--cortana-glow);
+.jcc-rail > .jcc-focus:hover {
+  background: rgba(0, 48, 72, 0.7);
+  border-color: rgba(0, 212, 255, 0.55);
+  box-shadow:
+    inset 0 0 18px rgba(0, 212, 255, 0.1),
+    0 0 16px rgba(0, 212, 255, 0.22);
 }
 
-.jcc-focus-ico {
-  color: var(--cortana-warn);
-  text-shadow: 0 0 8px rgba(255, 201, 77, 0.6);
+.jcc-rail > .jcc-focus .jcc-focus-ico {
+  color: #ffc94d;
+  text-shadow: 0 0 8px rgba(255, 201, 77, 0.55);
+  font-size: 11px;
 }
 
-/* —— Main column —— */
+/* —— Main column (lifted glass well — color-split vs solid rail) —— */
 .jcc-main {
   grid-area: main;
   position: relative;
@@ -948,17 +1215,29 @@ html.cortana-inject-probe::after {
   flex-direction: column;
   min-width: 0;
   min-height: 0;
-  padding: 10px 14px 8px;
+  padding: 0 14px 8px;
+  background:
+    linear-gradient(180deg, rgba(6, 23, 41, 0.55) 0%, rgba(2, 8, 23, 0.25) 48%, transparent 100%);
+  border-left: 1px solid rgba(10, 56, 82, 0.35);
 }
 
+/* Header strip — glass band that stops at the rail (does not bleed into brand) */
 .jcc-header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 12px;
-  min-height: var(--cortana-header-h);
-  padding: 4px 4px 12px;
-  border-bottom: 1px solid var(--cortana-border-subtle);
+  min-height: var(--cortana-header-h, 52px);
+  margin: 0 -14px 8px;
+  padding: 10px 18px 12px;
+  background:
+    linear-gradient(180deg, rgba(0, 15, 36, 0.72) 0%, rgba(2, 12, 26, 0.42) 100%);
+  border-bottom: 1px solid var(--cortana-border-solid, #0a3852);
+  border-left: 1px solid rgba(74, 209, 241, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(0, 212, 255, 0.05),
+    0 8px 20px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(var(--cortana-glass-blur, 18px));
 }
 
 .jcc-status-pill {
@@ -975,6 +1254,7 @@ html.cortana-inject-probe::after {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   box-shadow: 0 0 12px rgba(61, 214, 140, 0.15);
+  animation: cortana-status-pill-breathe var(--cortana-pill-breathe-ms) ease-in-out infinite;
 }
 
 .jcc-status-dot {
@@ -982,7 +1262,7 @@ html.cortana-inject-probe::after {
   height: 7px;
   border-radius: 50%;
   background: var(--cortana-ok-bright);
-  animation: cortana-status-dot 1.8s ease-in-out infinite;
+  animation: cortana-status-dot var(--cortana-status-dot-ms) ease-in-out infinite;
 }
 
 .jcc-clock-wrap {
@@ -1034,6 +1314,21 @@ html.cortana-inject-probe::after {
   background: rgba(0, 20, 40, 0.45);
   color: var(--cortana-cyan-mid);
   cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  line-height: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.35));
+}
+
+.jcc-icon-btn.notifications {
+  color: var(--cortana-cyan-mid);
+}
+
+.jcc-icon-btn.notifications svg {
+  fill: none;
+  stroke: currentColor;
+  color: inherit;
 }
 
 .jcc-operator {
@@ -1054,7 +1349,7 @@ html.cortana-inject-probe::after {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #0a4a66, #021018);
+  background: linear-gradient(135deg, var(--cortana-fill-mid, #0a4a66), var(--cortana-ink-on-cyan, #021018));
   border: 1px solid var(--cortana-cyan-dim);
   color: var(--cortana-cyan);
   font-size: 8px;
@@ -1071,39 +1366,70 @@ html.cortana-inject-probe::after {
   gap: 10px;
   padding-top: 12px;
   overflow: auto;
+  background-image:
+    radial-gradient(circle at center, rgba(0, 229, 255, 0.07) 0.9px, transparent 1.2px),
+    linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+  background-size: 22px 22px, 44px 44px, 44px 44px;
+  background-position: 0 0, 0 0, 0 0;
 }
 
 .jcc-panel {
   position: relative;
-  border-radius: var(--cortana-radius);
-  background: var(--cortana-panel-glass);
-  border: 1px solid var(--cortana-border);
-  box-shadow: var(--cortana-shadow-card);
+  border-radius: 2px;
+  background:
+    linear-gradient(165deg, rgba(26, 43, 60, 0.42) 0%, rgba(0, 15, 36, 0.78) 48%, rgba(0, 11, 20, 0.88) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.08),
+    0 10px 28px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(0, 242, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(var(--cortana-glass-blur));
   padding: 12px 14px;
   overflow: hidden;
+  clip-path: polygon(
+    0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px)
+  );
+  animation: cortana-panel-breathe var(--cortana-panel-breathe-ms) ease-in-out infinite;
+}
+
+.jcc-panel:nth-child(2n) {
+  animation-delay: calc(var(--cortana-panel-breathe-ms) * -0.28);
+}
+
+.jcc-panel:nth-child(3n) {
+  animation-delay: calc(var(--cortana-panel-breathe-ms) * -0.55);
 }
 
 .jcc-panel::before,
 .jcc-panel::after {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 1px solid rgba(0, 212, 255, 0.35);
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #00e5ff;
   pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.65);
+  animation: cortana-corner-breathe var(--cortana-corner-breathe-ms) ease-in-out infinite;
+}
+
+.jcc-panel::after {
+  animation-delay: calc(var(--cortana-corner-breathe-ms) * -0.45);
 }
 
 .jcc-panel::before {
-  top: 4px;
-  left: 4px;
+  top: 5px;
+  left: 5px;
   border-right: none;
   border-bottom: none;
 }
 
 .jcc-panel::after {
-  right: 4px;
-  bottom: 4px;
+  right: 5px;
+  bottom: 5px;
   border-left: none;
   border-top: none;
 }
@@ -1118,101 +1444,233 @@ html.cortana-inject-probe::after {
   text-shadow: var(--cortana-text-glow-soft);
 }
 
-/* Overview */
+/* Overview — Workstation Overview (layout 1:1 vs reference-command-center-2.png) */
+.jcc-overview {
+  --ov-memory: "3,380";
+  --ov-agents: "2";
+  --ov-llms: "4";
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px 14px 10px;
+  background: rgba(5, 22, 34, 0.82);
+  border-color: rgba(0, 212, 255, 0.28);
+  box-shadow:
+    var(--cortana-shadow-card),
+    inset 0 0 24px rgba(0, 212, 255, 0.04);
+}
+
+.jcc-overview .jcc-ov-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 12px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cortana-cyan);
+  font-weight: 700;
+  text-shadow: var(--cortana-text-glow-soft);
+}
+
+.jcc-ov-title-ico {
+  display: inline-grid;
+  place-items: center;
+  color: var(--cortana-cyan);
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
 .jcc-ov-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
+  flex: 1;
 }
 
-.jcc-ov-list li {
+.jcc-ov-row {
   display: grid;
-  grid-template-columns: 18px 1fr auto;
-  gap: 8px;
+  grid-template-columns: 28px 1fr auto;
+  gap: 10px;
   align-items: center;
+  min-height: 34px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.07);
   font-size: 11px;
 }
 
-.jcc-ov-ico {
-  color: var(--cortana-cyan-mid);
-  font-size: 10px;
+.jcc-ov-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.jcc-ov-ico.ok { color: var(--cortana-ok-bright); }
-.jcc-ov-k { color: var(--cortana-text-dim); }
-.jcc-ov-v { font-weight: 650; }
-.jcc-ov-v.ok { color: var(--cortana-ok-bright); }
-.jcc-ov-v.cyan { color: var(--cortana-cyan-bright); }
+.jcc-ov-ico {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 28, 48, 0.85);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  color: var(--cortana-cyan-soft);
+  box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.08);
+  flex-shrink: 0;
+}
 
-/* Hero globe */
+.jcc-ov-ico[data-tone="ok"] {
+  color: var(--cortana-ok-bright);
+  border-color: rgba(61, 214, 140, 0.35);
+  box-shadow: inset 0 0 10px rgba(61, 214, 140, 0.1);
+}
+
+.jcc-ov-ico[data-tone="cyan"] {
+  color: var(--cortana-cyan-soft);
+}
+
+.jcc-ov-ico svg {
+  display: block;
+}
+
+.jcc-ov-k {
+  color: var(--cortana-text-dim, #7a8fa3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.jcc-ov-v {
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-align: right;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.jcc-ov-v[data-tone="ok"] {
+  color: var(--cortana-ok-bright, #3dd68c);
+  text-shadow: 0 0 8px rgba(61, 214, 140, 0.35);
+}
+
+.jcc-ov-num {
+  color: var(--cortana-cyan-soft, #00f2ff);
+  font-weight: 700;
+  text-shadow: var(--cortana-text-glow-soft);
+}
+
+.jcc-ov-num[data-ov-num="memory"]::before {
+  content: var(--ov-memory);
+}
+
+.jcc-ov-num[data-ov-num="agents"]::before {
+  content: var(--ov-agents);
+}
+
+.jcc-ov-num[data-ov-num="llms"]::before {
+  content: var(--ov-llms);
+}
+
+.jcc-ov-unit {
+  color: var(--cortana-text-dim, #7a8fa3);
+  font-weight: 500;
+}
+
+.jcc-ov-unit.ok {
+  color: var(--cortana-ok-bright, #3dd68c);
+  font-weight: 650;
+  text-shadow: 0 0 8px rgba(61, 214, 140, 0.3);
+}
+
+/* Hero globe — reference-command-center-2.png crop only (no invented SVG/orbits) */
 .jcc-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at 50% 45%, rgba(0, 100, 140, 0.25) 0%, transparent 55%),
-    var(--cortana-panel-glass);
+    radial-gradient(circle at 50% 42%, rgba(0, 180, 220, 0.18) 0%, transparent 58%),
+    linear-gradient(165deg, rgba(26, 43, 60, 0.42) 0%, rgba(0, 15, 36, 0.78) 48%, rgba(0, 11, 20, 0.88) 100%);
 }
 
 .jcc-globe {
   position: relative;
-  width: min(220px, 70%);
-  aspect-ratio: 1;
+  width: min(248px, 82%);
+  aspect-ratio: 236 / 240;
   display: grid;
   place-items: center;
   animation: cortana-globe-breathe 3.2s ease-in-out infinite;
-  perspective: 600px;
-  transform-style: preserve-3d;
+  overflow: hidden;
 }
 
-.jcc-orbit {
+/* Exact pixels from staged splash (= reference-command-center-2.png); crop box 392,78,236×240 */
+.jcc-globe-photo {
   position: absolute;
-  inset: 6%;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 212, 255, 0.28);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.12);
-  transform: rotateX(68deg) rotateZ(0deg);
-  animation: cortana-orbit-spin 14s linear infinite;
-}
-
-.jcc-orbit.o2 {
-  inset: 14%;
-  border-color: rgba(74, 209, 241, 0.35);
-  transform: rotateX(68deg) rotateY(25deg);
-  animation: cortana-orbit-spin-rev 10s linear infinite;
-}
-
-.jcc-orbit.o3 {
-  inset: 22%;
-  border-style: dashed;
-  border-color: rgba(0, 212, 255, 0.22);
-  animation-duration: 18s;
-}
-
-.jcc-globe-svg {
-  width: 78%;
-  height: 78%;
+  inset: 0;
   z-index: 1;
-  animation: cortana-orbit-spin 28s linear infinite;
-  filter: drop-shadow(0 0 16px rgba(0, 212, 255, 0.35));
-}
-
-.jcc-globe-dots circle {
-  filter: drop-shadow(0 0 2px #00f2ff);
+  background-image: var(--cortana-boot-splash, url(./cortana-boot-splash.png));
+  background-repeat: no-repeat;
+  /* size = source/crop; position % = origin/(source-crop) so crop fills the box */
+  background-size: 433.8983% 238.75%;
+  background-position: 49.7462% 23.4234%;
+  filter: drop-shadow(0 0 18px rgba(0, 212, 255, 0.35));
+  pointer-events: none;
 }
 
 .jcc-hero-label {
-  margin-top: 10px;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  pointer-events: none;
+  text-align: center;
   font-family: var(--cortana-font-display);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  /* Soft scrim so CORTANA brand reads over baked reference title pixels */
+  background: radial-gradient(circle at 50% 46%, rgba(2, 12, 24, 0.55) 0%, rgba(2, 12, 24, 0.22) 42%, transparent 68%);
+}
+
+.jcc-hero-label strong {
+  font-size: clamp(18px, 3.2vw, 28px);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: #e8f7ff;
+  text-shadow:
+    0 0 12px rgba(0, 242, 255, 0.95),
+    0 0 32px rgba(0, 212, 255, 0.7),
+    0 0 56px rgba(0, 180, 255, 0.4);
+}
+
+.jcc-hero-label span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
   color: var(--cortana-cyan-soft);
   text-shadow: var(--cortana-text-glow);
-  text-align: center;
+}
+
+.jcc-hero-label em {
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: rgba(185, 235, 244, 0.85);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.45);
+}
+
+/* Legacy selectors kept inert so prior invented SVG/orbit markup cannot paint */
+.jcc-globe-svg,
+.jcc-globe-aura,
+.jcc-globe-core,
+.jcc-globe-particles,
+.jcc-orbit,
+.jcc-orbit-node {
+  display: none !important;
 }
 
 /* Feed */
@@ -1247,7 +1705,12 @@ html.cortana-inject-probe::after {
 .jcc-tag.info { color: var(--cortana-info); border-color: rgba(74, 209, 241, 0.4); background: rgba(0, 60, 90, 0.35); }
 .jcc-tag.warn { color: var(--cortana-warn); border-color: rgba(255, 201, 77, 0.4); background: rgba(60, 45, 10, 0.4); }
 .jcc-tag.tip { color: var(--cortana-tip); border-color: rgba(126, 200, 255, 0.4); background: rgba(20, 40, 70, 0.4); }
-.jcc-tag.live { color: var(--cortana-live); border-color: rgba(61, 214, 140, 0.4); background: rgba(10, 50, 35, 0.4); }
+.jcc-tag.live {
+  color: var(--cortana-live);
+  border-color: rgba(61, 214, 140, 0.4);
+  background: rgba(10, 50, 35, 0.4);
+  animation: cortana-live-pulse var(--cortana-live-ms) ease-in-out infinite;
+}
 
 .jcc-feed-body {
   display: flex;
@@ -1263,8 +1726,12 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-feed-body span {
-  font-size: 9px;
+  font-size: var(--cortana-hud-fs-sm, 9px);
   color: var(--cortana-text-dim);
+}
+
+.jcc-feed-meta[data-text]::before {
+  content: attr(data-text);
 }
 
 /* Agents */
@@ -1284,6 +1751,7 @@ html.cortana-inject-probe::after {
 .jcc-agent.active {
   border-color: rgba(0, 212, 255, 0.4);
   box-shadow: 0 0 12px rgba(0, 212, 255, 0.12);
+  animation: cortana-agent-glow var(--cortana-agent-glow-ms) ease-in-out infinite;
 }
 
 .jcc-agent-h {
@@ -1300,9 +1768,9 @@ html.cortana-inject-probe::after {
   border-radius: 5px;
   display: grid;
   place-items: center;
-  font-size: 8px;
-  background: #0a3a55;
-  border: 1px solid #1a5a7a;
+  font-size: var(--cortana-hud-fs-xs, 8px);
+  background: var(--cortana-agent-ico-bg, #0a3a55);
+  border: 1px solid var(--cortana-agent-ico-border, #1a5a7a);
   color: var(--cortana-cyan);
 }
 
@@ -1330,16 +1798,20 @@ html.cortana-inject-probe::after {
   background: var(--cortana-cyan);
   border-radius: 1px;
   transform-origin: bottom;
-  animation: cortana-wave-bar 1s ease-in-out infinite;
+  animation: cortana-wave-bar var(--cortana-mini-wave-ms) ease-in-out infinite;
+  will-change: transform;
+  pointer-events: none;
 }
 
 .jcc-mini-wave i:nth-child(2) { animation-delay: 0.1s; }
 .jcc-mini-wave i:nth-child(3) { animation-delay: 0.2s; }
 .jcc-mini-wave i:nth-child(4) { animation-delay: 0.3s; }
+.jcc-mini-wave i:nth-child(5) { animation-delay: 0.18s; animation-duration: calc(var(--cortana-mini-wave-ms) * 0.85); }
 .jcc-mini-wave.dim i {
   opacity: 0.25;
   animation: none;
   height: 4px;
+  will-change: auto;
 }
 
 /* Timeline */
@@ -1392,24 +1864,85 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-tl-m {
-  font-size: 9px;
+  font-size: var(--cortana-hud-fs-sm, 9px);
   color: var(--cortana-text-dim);
   margin-top: 2px;
 }
 
+.jcc-tl-item[data-pct] {
+  --pct: attr(data-pct type(<number>), 0);
+  --pct-text: attr(data-pct);
+}
+
+.jcc-tl-item[data-pct] .jcc-tl-pct::before {
+  content: var(--pct-text) "%";
+}
+
 .jcc-tl-bar {
-  margin-top: 5px;
-  height: 3px;
-  border-radius: 999px;
-  background: #12324a;
-  overflow: hidden;
+  margin-top: 6px;
+  height: 4px;
+  border-radius: var(--cortana-radius-pill, 999px);
+  background: var(--cortana-tl-track, #3a4552);
+  overflow: visible;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
 }
 
 .jcc-tl-bar i {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--cortana-cyan-dim), var(--cortana-cyan-soft));
-  box-shadow: 0 0 8px rgba(0, 242, 255, 0.55);
+  width: calc(var(--pct, 0) * 1%);
+  border-radius: inherit;
+  background: var(--cortana-tl-fill, #5a6570);
+  box-shadow: none;
+}
+
+.jcc-tl-item.done .jcc-tl-bar {
+  background: var(--cortana-tl-track-done, #2e3640);
+}
+
+.jcc-tl-item.done .jcc-tl-bar i {
+  width: 100%;
+  background: var(--cortana-tl-fill-done, #6a737c);
+  box-shadow: none;
+  filter: none;
+}
+
+.jcc-tl-item.active::before {
+  animation: cortana-status-dot var(--cortana-tl-glow-ms) ease-in-out infinite;
+}
+
+.jcc-tl-item.active .jcc-tl-bar {
+  background: color-mix(in srgb, var(--cortana-gauge-track, #12324a) 85%, transparent);
+}
+
+.jcc-tl-item.active .jcc-tl-bar i {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--cortana-cyan-dim, #00b8e0) 0%, var(--cortana-cyan, #00e5ff) 45%, var(--cortana-boot-bar-tip, #7af0ff) 100%);
+  box-shadow:
+    0 0 4px var(--cortana-cyan-bloom, #00f2ff),
+    0 0 10px rgba(0, 242, 255, 0.95),
+    0 0 22px rgba(0, 229, 255, 0.75),
+    0 0 36px rgba(0, 180, 255, 0.45);
+  filter: drop-shadow(0 0 6px var(--cortana-cyan, #00e5ff));
+  animation: cortana-tl-bar-glow var(--cortana-tl-glow-ms) ease-in-out infinite;
+}
+
+.jcc-tl-item.active .jcc-tl-bar i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 42%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 48%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: cortana-tl-bar-sheen var(--cortana-tl-sheen-ms) linear infinite;
 }
 
 /* Quick commands */
@@ -1453,31 +1986,43 @@ html.cortana-inject-probe::after {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  --p: attr(data-pct type(<number>), 0);
+  --p-text: attr(data-pct);
+  --lab-text: attr(data-lab);
 }
 
 .jcc-gauge-ring {
-  width: 56px;
-  height: 56px;
+  width: var(--cortana-gauge-size, 56px);
+  height: var(--cortana-gauge-size, 56px);
   border-radius: 50%;
-  background: conic-gradient(var(--cortana-cyan) calc(var(--p) * 1%), #12324a 0);
+  background: conic-gradient(var(--cortana-cyan) calc(var(--p) * 1%), var(--cortana-gauge-track, #12324a) 0);
   -webkit-mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
   mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
   box-shadow: 0 0 14px rgba(0, 212, 255, 0.25);
-  animation: cortana-gauge-glow 2.8s ease-in-out infinite;
+  animation: cortana-gauge-glow var(--cortana-gauge-glow-ms) ease-in-out infinite;
+  pointer-events: none;
 }
 
 .jcc-gauge-val {
   font-weight: 700;
   color: var(--cortana-cyan-bright);
-  font-size: 12px;
+  font-size: var(--cortana-hud-fs, 12px);
   margin-top: -4px;
 }
 
+.jcc-gauge[data-pct] .jcc-gauge-val::before {
+  content: var(--p-text) "%";
+}
+
 .jcc-gauge-lab {
-  font-size: 9px;
+  font-size: var(--cortana-hud-fs-sm, 9px);
   letter-spacing: 0.12em;
   color: var(--cortana-text-dim);
   text-transform: uppercase;
+}
+
+.jcc-gauge[data-lab] .jcc-gauge-lab::before {
+  content: var(--lab-text);
 }
 
 /* Memory constellation */
@@ -1505,7 +2050,8 @@ html.cortana-inject-probe::after {
   border-radius: 50%;
   background: var(--cortana-cyan-soft);
   box-shadow: 0 0 8px rgba(0, 242, 255, 0.8);
-  animation: cortana-status-dot 2s ease-in-out infinite;
+  animation: cortana-status-dot var(--cortana-constellation-ms) ease-in-out infinite;
+  pointer-events: none;
 }
 
 .jcc-constellation .n1 { left: 12%; top: 68%; }
@@ -1523,18 +2069,33 @@ html.cortana-inject-probe::after {
   text-align: center;
 }
 
-.jcc-mem-stats strong {
+.jcc-mem-stat[data-value] {
+  --mem-value: attr(data-value);
+  --mem-lab: attr(data-lab);
+}
+
+.jcc-mem-stats strong,
+.jcc-mem-stat strong {
   display: block;
   color: var(--cortana-cyan-bright);
-  font-size: 14px;
+  font-size: var(--cortana-hud-fs-lg, 14px);
   text-shadow: var(--cortana-text-glow-soft);
 }
 
-.jcc-mem-stats span {
-  font-size: 8px;
+.jcc-mem-stat[data-value] strong::before {
+  content: var(--mem-value);
+}
+
+.jcc-mem-stats span,
+.jcc-mem-stat span {
+  font-size: var(--cortana-hud-fs-xs, 8px);
   letter-spacing: 0.08em;
   color: var(--cortana-text-dim);
   text-transform: uppercase;
+}
+
+.jcc-mem-stat[data-lab] span::before {
+  content: var(--mem-lab);
 }
 
 /* LLM grid */
@@ -1676,8 +2237,10 @@ html.cortana-inject-probe::after {
   background: var(--cortana-cyan-soft);
   border-radius: 1px;
   transform-origin: bottom;
-  animation: cortana-wave-bar 0.85s ease-in-out infinite;
+  animation: cortana-wave-bar var(--cortana-talk-wave-ms) ease-in-out infinite;
   box-shadow: 0 0 4px rgba(0, 242, 255, 0.7);
+  will-change: transform;
+  pointer-events: none;
 }
 
 .jcc-talk-wave i:nth-child(2) { animation-delay: 0.08s; }
@@ -1686,6 +2249,7 @@ html.cortana-inject-probe::after {
 .jcc-talk-wave i:nth-child(5) { animation-delay: 0.12s; }
 .jcc-talk-wave i:nth-child(6) { animation-delay: 0.2s; }
 .jcc-talk-wave i:nth-child(7) { animation-delay: 0.28s; }
+.jcc-talk-wave i:nth-child(odd) { animation-duration: calc(var(--cortana-talk-wave-ms) * 0.88); }
 
 .jcc-briefing {
   justify-self: end;
@@ -1745,6 +2309,28 @@ html.cortana-inject-probe::after {
   }
   .jcc-briefing {
     justify-self: center;
+  }
+}
+
+/* Living HUD — respect reduced motion; keep interactive hit-targets intact */
+@media (prefers-reduced-motion: reduce) {
+  .jcc-panel,
+  .jcc-panel::before,
+  .jcc-panel::after,
+  .jcc-status-pill,
+  .jcc-status-dot,
+  .jcc-tag.live,
+  .jcc-agent.active,
+  .jcc-wave i,
+  .jcc-talk-wave i,
+  .jcc-mini-wave i,
+  .jcc-tl-item.active::before,
+  .jcc-tl-item.active .jcc-tl-bar i,
+  .jcc-tl-item.active .jcc-tl-bar i::after,
+  .jcc-gauge-ring,
+  .jcc-constellation .n,
+  .jcc-talk {
+    animation: none !important;
   }
 }
 

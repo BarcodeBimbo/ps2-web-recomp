@@ -12,7 +12,7 @@ const MARKER_HUD_START = "JARVIS-HUD-START";
 const MARKER_HUD_END = "JARVIS-HUD-END";
 const STYLE_ID = "jarvis-workbench-css";
 const BOOT_STAGED = "jarvis-boot-splash.png";
-const BOOT_SRC = path.join(EXT, "media", "reference-command-center-2.png");
+const BOOT_SRC = path.join(EXT, "media", "reference-calibrating-splash.png");
 
 function uuid() {
   return crypto.randomUUID ? crypto.randomUUID() : crypto.randomBytes(16).toString("hex").replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, "$1-$2-$3-$4-$5");

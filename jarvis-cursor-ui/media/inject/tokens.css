@@ -1,15 +1,16 @@
-/* CORTANA-HEALTH: tokens+boot+hud */
+/* cortana-HEALTH: tokens+boot+hud */
 /* CORTANA — Phase 6 injection design tokens
-   Boot splash authority: media/reference-command-center-2.png (staged as cortana-boot-splash.png)
-   Archive (optional): media/reference-calibrating-splash.png
+   Boot splash authority: media/reference-calibrating-splash.png (boot.css owns bloom)
    CC chrome authority: media/reference-command-center.png / -2.png (VISUAL-SPEC §2.1)
-   Studio polish: glass depth + arc-reactor pulse cadence */
+   Palette: deep navy voids + glass panels + muted teal-cyan accents (NOT #00f2ff neon bloom) */
 
 :root,
 .monaco-workbench,
 .monaco-workbench.cortana-inject,
-body.cortana-inject {
-  /* —— Void / surfaces (CC deep navy) —— */
+.monaco-workbench.CORTANA-inject,
+body.cortana-inject,
+body.CORTANA-inject {
+  /* —— Void / surfaces (CC deep navy — PNG samples) —— */
   --cortana-bg: #050d16;
   --cortana-bg-deep: #020817;
   --cortana-bg-elevated: #091d35;
@@ -18,23 +19,27 @@ body.cortana-inject {
   --cortana-bg-activity: #030a12;
   --cortana-bg-editor: #050d16;
   --cortana-bg-input: #021018;
-  --cortana-bg-hover: rgba(0, 212, 255, 0.07);
-  --cortana-bg-active: rgba(0, 212, 255, 0.14);
+  --cortana-bg-hover: rgba(0, 212, 255, 0.05);
+  --cortana-bg-active: rgba(0, 212, 255, 0.1);
   --cortana-bg-void: #020817;
   --cortana-bg-well: #061729;
+  --cortana-bg-rail: #001020;
+  --cortana-bg-main: #020c1a;
 
-  /* —— Cyan spectrum (CC sampled) —— */
+  /* —— Cyan spectrum (CC sampled accents — muted, not neon bloom) —— */
   --cortana-cyan: #00d4ff;
   --cortana-cyan-bright: #4ad1f1;
   --cortana-cyan-mid: #40a7ca;
-  --cortana-cyan-soft: #00f2ff;
+  --cortana-cyan-soft: #4ad1f1;
   --cortana-cyan-brand: #00d9ff;
   --cortana-cyan-clock: #4ad1f1;
   --cortana-cyan-dim: #0c79a0;
   --cortana-cyan-muted: #57a3c3;
   --cortana-cyan-deep: #0a3852;
-  --cortana-cyan-ghost: rgba(0, 212, 255, 0.16);
-  --cortana-cyan-wash: rgba(0, 212, 255, 0.1);
+  --cortana-cyan-ghost: rgba(0, 212, 255, 0.12);
+  --cortana-cyan-wash: rgba(0, 212, 255, 0.07);
+  /* Splash-only bloom (boot.css may reference; CC chrome must NOT use as fill/glow everywhere) */
+  --cortana-cyan-bloom: #00f2ff;
 
   /* —— Text —— */
   --cortana-text: #becedb;
@@ -45,72 +50,87 @@ body.cortana-inject {
   --cortana-text-percent: #656c73;
   --cortana-subtitle: #464950;
 
-  /* —— Borders / glass (CC glassmorphism) —— */
-  --cortana-border: rgba(0, 212, 255, 0.22);
-  --cortana-border-strong: rgba(0, 212, 255, 0.4);
-  --cortana-border-subtle: rgba(0, 212, 255, 0.14);
+  /* —— Borders / glass (CC glassmorphism — thin cool edges) —— */
+  --cortana-border: rgba(0, 212, 255, 0.18);
+  --cortana-border-strong: rgba(0, 212, 255, 0.28);
+  --cortana-border-subtle: rgba(0, 212, 255, 0.12);
   --cortana-border-solid: #0a3852;
   --cortana-glass: rgba(0, 15, 36, 0.82);
   --cortana-glass-strong: rgba(0, 10, 28, 0.94);
   --cortana-glass-soft: rgba(0, 18, 40, 0.55);
-  --cortana-glass-edge: rgba(0, 212, 255, 0.1);
+  --cortana-glass-edge: rgba(0, 212, 255, 0.08);
   --cortana-glass-blur: 18px;
   --cortana-glass-blur-strong: 28px;
   --cortana-panel-glass: rgba(0, 15, 36, 0.88);
 
-  /* —— Talk capsule (CC footer) —— */
+  /* —— Talk capsule (CC footer — only strong bloom site) —— */
   --cortana-talk-fill: #001e32;
   --cortana-talk-rim: #0c79a0;
   --cortana-talk-glow:
-    0 0 12px rgba(0, 212, 255, 0.55),
-    0 0 36px rgba(12, 121, 160, 0.45),
-    0 0 72px rgba(0, 212, 255, 0.28);
+    0 0 10px rgba(0, 212, 255, 0.35),
+    0 0 28px rgba(12, 121, 160, 0.32),
+    0 0 56px rgba(0, 212, 255, 0.16);
 
-  /* —— Glow / bloom —— */
-  --cortana-glow: 0 0 8px rgba(0, 212, 255, 0.55), 0 0 24px rgba(0, 212, 255, 0.35), 0 0 48px rgba(0, 212, 255, 0.18);
-  --cortana-glow-soft: 0 0 6px rgba(0, 212, 255, 0.35), 0 0 18px rgba(0, 212, 255, 0.2);
-  --cortana-glow-tight: 0 0 4px rgba(0, 242, 255, 0.7);
-  --cortana-glow-active: 0 0 10px rgba(0, 242, 255, 0.65), 0 0 28px rgba(0, 212, 255, 0.4), 0 0 56px rgba(0, 212, 255, 0.22);
-  --cortana-text-glow: 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55), 0 0 56px rgba(0, 212, 255, 0.28);
-  --cortana-text-glow-soft: 0 0 6px rgba(0, 242, 255, 0.5), 0 0 16px rgba(0, 212, 255, 0.3);
+  /* —— Glow / bloom (restrained #00d4ff / #4ad1f1 — no #00f2ff neon wash) —— */
+  --cortana-glow: 0 0 6px rgba(0, 212, 255, 0.28), 0 0 18px rgba(0, 212, 255, 0.14);
+  --cortana-glow-soft: 0 0 4px rgba(0, 212, 255, 0.18), 0 0 12px rgba(0, 212, 255, 0.1);
+  --cortana-glow-tight: 0 0 3px rgba(74, 209, 241, 0.35);
+  --cortana-glow-active: 0 0 6px rgba(0, 212, 255, 0.32), 0 0 18px rgba(0, 212, 255, 0.16);
+  --cortana-text-glow: 0 0 6px rgba(74, 209, 241, 0.35), 0 0 14px rgba(0, 212, 255, 0.18);
+  --cortana-text-glow-soft: 0 0 4px rgba(74, 209, 241, 0.22);
 
-  /* —— 3D elevation / studio shadows —— */
-  --cortana-shadow-flat: 0 1px 0 rgba(0, 242, 255, 0.06);
+  /* —— 3D elevation / studio shadows (navy depth, thin cyan hairline) —— */
+  --cortana-shadow-flat: 0 1px 0 rgba(0, 212, 255, 0.04);
   --cortana-shadow-raised:
-    0 1px 0 rgba(0, 242, 255, 0.08),
+    0 1px 0 rgba(0, 212, 255, 0.05),
     0 8px 24px rgba(0, 0, 0, 0.55),
     0 2px 6px rgba(0, 0, 0, 0.4);
   --cortana-shadow-deep:
-    0 1px 0 rgba(0, 242, 255, 0.1),
+    0 1px 0 rgba(0, 212, 255, 0.06),
     0 12px 40px rgba(0, 0, 0, 0.65),
     0 4px 12px rgba(0, 0, 0, 0.5),
-    0 0 32px rgba(0, 212, 255, 0.08);
+    0 0 24px rgba(0, 212, 255, 0.04);
   --cortana-shadow-inset:
-    inset 0 1px 0 rgba(0, 242, 255, 0.1),
+    inset 0 1px 0 rgba(0, 212, 255, 0.06),
     inset 0 -1px 0 rgba(0, 0, 0, 0.45),
     inset 0 0 24px rgba(0, 0, 0, 0.35);
   --cortana-shadow-inset-glow:
-    inset 0 1px 0 rgba(0, 242, 255, 0.14),
+    inset 0 1px 0 rgba(0, 212, 255, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-    inset 0 0 28px rgba(0, 212, 255, 0.06);
+    inset 0 0 28px rgba(0, 212, 255, 0.03);
   --cortana-shadow-panel:
-    0 -2px 0 rgba(0, 242, 255, 0.04),
+    0 -2px 0 rgba(0, 212, 255, 0.03),
     0 -8px 32px rgba(0, 0, 0, 0.45),
-    0 0 24px rgba(0, 212, 255, 0.06);
+    0 0 16px rgba(0, 212, 255, 0.03);
   --cortana-shadow-tab-active:
     inset 0 2px 0 var(--cortana-cyan),
-    0 0 12px rgba(0, 242, 255, 0.22),
-    0 0 28px rgba(0, 212, 255, 0.12),
-    inset 0 -8px 16px rgba(0, 212, 255, 0.04);
+    0 0 8px rgba(0, 212, 255, 0.12),
+    inset 0 -8px 16px rgba(0, 212, 255, 0.03);
   --cortana-shadow-card:
-    0 0 0 1px rgba(0, 212, 255, 0.18),
+    0 0 0 1px rgba(0, 212, 255, 0.14),
     0 8px 28px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(0, 242, 255, 0.1);
+    inset 0 1px 0 rgba(0, 212, 255, 0.06);
 
-  /* —— Arc-reactor pulse cadence —— */
+  /* —— Arc-reactor pulse cadence (muted) —— */
   --cortana-reactor-ms: 2.4s;
-  --cortana-reactor-glow-lo: 0 0 4px rgba(0, 242, 255, 0.45), 0 0 12px rgba(0, 212, 255, 0.22);
-  --cortana-reactor-glow-hi: 0 0 8px rgba(0, 242, 255, 0.85), 0 0 22px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.22);
+  --cortana-reactor-glow-lo: 0 0 3px rgba(0, 212, 255, 0.22), 0 0 10px rgba(0, 212, 255, 0.1);
+  --cortana-reactor-glow-hi: 0 0 5px rgba(74, 209, 241, 0.4), 0 0 14px rgba(0, 212, 255, 0.22);
+
+  /* —— Living HUD cadence (bars / waves / edge glow) —— */
+  --cortana-wave-ms: 0.9s;
+  --cortana-wave-ms-fast: 0.75s;
+  --cortana-talk-wave-ms: 0.85s;
+  --cortana-mini-wave-ms: 1s;
+  --cortana-tl-glow-ms: 2.2s;
+  --cortana-tl-sheen-ms: 2.8s;
+  --cortana-panel-breathe-ms: 4.8s;
+  --cortana-corner-breathe-ms: 3.6s;
+  --cortana-status-dot-ms: 1.8s;
+  --cortana-pill-breathe-ms: 3.2s;
+  --cortana-live-ms: 1.4s;
+  --cortana-gauge-glow-ms: 2.8s;
+  --cortana-agent-glow-ms: 2.6s;
+  --cortana-constellation-ms: 2s;
 
   /* —— Status —— */
   --cortana-ok: #2fa58f;
@@ -122,6 +142,17 @@ body.cortana-inject {
   --cortana-live: #3dd68c;
   --cortana-bar-track: #151626;
   --cortana-dot-off: #292d35;
+  --cortana-ink-on-cyan: #021018;
+  --cortana-gauge-track: #12324a;
+  --cortana-fill-mid: #0a4a66;
+  --cortana-agent-ico-bg: #0a3a55;
+  --cortana-agent-ico-border: #1a5a7a;
+  --cortana-boot-bar-tip: #7af0ff;
+  --cortana-statusbar-fg: #7ab0c8;
+  --cortana-tl-track: #3a4552;
+  --cortana-tl-track-done: #2e3640;
+  --cortana-tl-fill: #5a6570;
+  --cortana-tl-fill-done: #6a737c;
 
   /* —— Geometry —— */
   --cortana-radius: 10px;
@@ -134,12 +165,53 @@ body.cortana-inject {
   --cortana-boot-stream-ms: 4.8s;
   --cortana-boot-parallax-scale: 1.05;
   --cortana-boot-bar-height: 3px;
-  --cortana-boot-bar-width: min(420px, 52vw);
+  --cortana-boot-bar-max: 420px;
+  --cortana-boot-bar-width: min(var(--cortana-boot-bar-max), 52vw);
+  --cortana-boot-bar-y: 72px;
+  --cortana-boot-glow-ms: 1.1s;
+  --cortana-boot-pip-gap: 14px;
   /* Staged sibling beside workbench.html (set by inject engine binding) */
   --cortana-boot-splash: url(./cortana-boot-splash.png);
   --cortana-rail-w: 220px;
+  --cortana-rail-w-narrow: 180px;
   --cortana-header-h: 52px;
   --cortana-footer-h: 72px;
+  --cortana-z-hud: 99990;
+  --cortana-z-fab: 99995;
+  --cortana-boot-overlay-z: 2147483000;
+  --cortana-boot-ui-z: 2147483001;
+  --cortana-boot-root-z: 2147483100;
+
+  /* —— HUD sizes (display values live on data-* in markup) —— */
+  --cortana-hud-fs: 12px;
+  --cortana-hud-fs-xs: 8px;
+  --cortana-hud-fs-sm: 9px;
+  --cortana-hud-fs-md: 11px;
+  --cortana-hud-fs-lg: 14px;
+  --cortana-hud-fs-clock: 22px;
+  --cortana-badge-size: 18px;
+  --cortana-iris-size: 36px;
+  --cortana-mic-size: 56px;
+  --cortana-mic-core: 34px;
+  --cortana-gauge-size: 56px;
+  --cortana-status-dot-size: 7px;
+  --cortana-icon-btn-size: 30px;
+  /* Header tool icons — cyan/glass only (never warn/amber) */
+  --cortana-header-icon: #40a7ca;
+  --cortana-header-icon-hover: #4ad1f1;
+  --cortana-header-icon-border: rgba(0, 212, 255, 0.14);
+  --cortana-header-icon-bg: rgba(0, 20, 40, 0.45);
+  --cortana-wave-h: 22px;
+  --cortana-constellation-h: 70px;
+  --cortana-focus-fab-right: 16px;
+  --cortana-focus-fab-bottom: 48px;
+  --cortana-cc-reveal-ms: 0.7s;
+  --cortana-particle-ms: 7s;
+  --cortana-wave-ms: 0.9s;
+  --cortana-mic-ring-ms: 2.2s;
+  --cortana-status-dot-ms: 1.8s;
+  --cortana-gauge-glow-ms: 2.8s;
+  --cortana-globe-breathe-ms: 3.2s;
 
   /* —— Typography —— */
   --cortana-font-ui: "Segoe UI Condensed", "Arial Narrow", "Helvetica Neue Condensed", "Franklin Gothic Medium", "Segoe UI", Tahoma, sans-serif;
@@ -169,9 +241,9 @@ body.cortana-inject {
   --vscode-activityBar-inactiveForeground: var(--cortana-text-dim) !important;
   --vscode-activityBar-border: var(--cortana-border-solid) !important;
   --vscode-activityBarBadge-background: var(--cortana-cyan) !important;
-  --vscode-activityBarBadge-foreground: #021018 !important;
+  --vscode-activityBarBadge-foreground: var(--cortana-ink-on-cyan) !important;
   --vscode-statusBar-background: var(--cortana-bg-deep) !important;
-  --vscode-statusBar-foreground: #7ab0c8 !important;
+  --vscode-statusBar-foreground: var(--cortana-statusbar-fg) !important;
   --vscode-statusBar-border: var(--cortana-border-solid) !important;
   --vscode-statusBarItem-hoverBackground: var(--cortana-bg-hover) !important;
   --vscode-titleBar-activeBackground: var(--cortana-bg-deep) !important;
@@ -207,13 +279,13 @@ body.cortana-inject {
   --vscode-list-activeSelectionBackground: var(--cortana-bg-active) !important;
   --vscode-list-inactiveSelectionBackground: rgba(10, 40, 64, 0.55) !important;
   --vscode-list-focusBackground: var(--cortana-bg-active) !important;
-  --vscode-list-highlightForeground: var(--cortana-cyan-soft) !important;
+  --vscode-list-highlightForeground: var(--cortana-cyan-bright) !important;
   --vscode-badge-background: var(--cortana-cyan) !important;
-  --vscode-badge-foreground: #021018 !important;
+  --vscode-badge-foreground: var(--cortana-ink-on-cyan) !important;
   --vscode-progressBar-background: var(--cortana-cyan) !important;
-  --vscode-scrollbarSlider-background: rgba(0, 212, 255, 0.18) !important;
-  --vscode-scrollbarSlider-hoverBackground: rgba(0, 212, 255, 0.32) !important;
-  --vscode-scrollbarSlider-activeBackground: rgba(0, 229, 255, 0.45) !important;
+  --vscode-scrollbarSlider-background: rgba(0, 212, 255, 0.14) !important;
+  --vscode-scrollbarSlider-hoverBackground: rgba(0, 212, 255, 0.26) !important;
+  --vscode-scrollbarSlider-activeBackground: rgba(0, 212, 255, 0.38) !important;
   --vscode-menu-background: var(--cortana-glass-strong) !important;
   --vscode-menu-foreground: var(--cortana-text) !important;
   --vscode-menu-selectionBackground: var(--cortana-bg-active) !important;
@@ -221,8 +293,8 @@ body.cortana-inject {
   --vscode-quickInput-foreground: var(--cortana-text) !important;
   --vscode-quickInputList-focusBackground: var(--cortana-bg-active) !important;
   --vscode-widget-border: var(--cortana-border-solid) !important;
-  --vscode-focusBorder: rgba(0, 212, 255, 0.55) !important;
-  --vscode-sash-hoverBorder: rgba(0, 212, 255, 0.4) !important;
+  --vscode-focusBorder: rgba(0, 212, 255, 0.45) !important;
+  --vscode-sash-hoverBorder: rgba(0, 212, 255, 0.32) !important;
   --vscode-commandCenter-background: var(--cortana-bg-well) !important;
   --vscode-commandCenter-foreground: var(--cortana-text) !important;
   --vscode-commandCenter-activeBackground: var(--cortana-bg-active) !important;
@@ -234,6 +306,122 @@ body.cortana-inject {
   --vscode-problemsErrorIcon-foreground: var(--cortana-danger) !important;
   --vscode-problemsWarningIcon-foreground: var(--cortana-warn) !important;
   --vscode-problemsInfoIcon-foreground: var(--cortana-cyan) !important;
+
+  /* —— Uppercase aliases (case-sensitive CSS vars; dual-case hud/boot compat) —— */
+  --CORTANA-bg: var(--cortana-bg);
+  --CORTANA-bg-deep: var(--cortana-bg-deep);
+  --CORTANA-bg-elevated: var(--cortana-bg-elevated);
+  --CORTANA-bg-panel: var(--cortana-bg-panel);
+  --CORTANA-bg-sidebar: var(--cortana-bg-sidebar);
+  --CORTANA-bg-activity: var(--cortana-bg-activity);
+  --CORTANA-bg-editor: var(--cortana-bg-editor);
+  --CORTANA-bg-input: var(--cortana-bg-input);
+  --CORTANA-bg-hover: var(--cortana-bg-hover);
+  --CORTANA-bg-active: var(--cortana-bg-active);
+  --CORTANA-bg-void: var(--cortana-bg-void);
+  --CORTANA-bg-well: var(--cortana-bg-well);
+  --CORTANA-bg-rail: var(--cortana-bg-rail);
+  --CORTANA-bg-main: var(--cortana-bg-main);
+  --CORTANA-cyan: var(--cortana-cyan);
+  --CORTANA-cyan-bright: var(--cortana-cyan-bright);
+  --CORTANA-cyan-mid: var(--cortana-cyan-mid);
+  --CORTANA-cyan-soft: var(--cortana-cyan-soft);
+  --CORTANA-cyan-brand: var(--cortana-cyan-brand);
+  --CORTANA-cyan-clock: var(--cortana-cyan-clock);
+  --CORTANA-cyan-dim: var(--cortana-cyan-dim);
+  --CORTANA-cyan-muted: var(--cortana-cyan-muted);
+  --CORTANA-cyan-deep: var(--cortana-cyan-deep);
+  --CORTANA-cyan-ghost: var(--cortana-cyan-ghost);
+  --CORTANA-cyan-wash: var(--cortana-cyan-wash);
+  --CORTANA-cyan-bloom: var(--cortana-cyan-bloom);
+  --CORTANA-text: var(--cortana-text);
+  --CORTANA-text-bright: var(--cortana-text-bright);
+  --CORTANA-text-dim: var(--cortana-text-dim);
+  --CORTANA-text-muted: var(--cortana-text-muted);
+  --CORTANA-text-calibrating: var(--cortana-text-calibrating);
+  --CORTANA-text-percent: var(--cortana-text-percent);
+  --CORTANA-subtitle: var(--cortana-subtitle);
+  --CORTANA-border: var(--cortana-border);
+  --CORTANA-border-strong: var(--cortana-border-strong);
+  --CORTANA-border-subtle: var(--cortana-border-subtle);
+  --CORTANA-border-solid: var(--cortana-border-solid);
+  --CORTANA-glass: var(--cortana-glass);
+  --CORTANA-glass-strong: var(--cortana-glass-strong);
+  --CORTANA-glass-soft: var(--cortana-glass-soft);
+  --CORTANA-glass-edge: var(--cortana-glass-edge);
+  --CORTANA-glass-blur: var(--cortana-glass-blur);
+  --CORTANA-glass-blur-strong: var(--cortana-glass-blur-strong);
+  --CORTANA-panel-glass: var(--cortana-panel-glass);
+  --CORTANA-talk-fill: var(--cortana-talk-fill);
+  --CORTANA-talk-rim: var(--cortana-talk-rim);
+  --CORTANA-talk-glow: var(--cortana-talk-glow);
+  --CORTANA-glow: var(--cortana-glow);
+  --CORTANA-glow-soft: var(--cortana-glow-soft);
+  --CORTANA-glow-tight: var(--cortana-glow-tight);
+  --CORTANA-glow-active: var(--cortana-glow-active);
+  --CORTANA-text-glow: var(--cortana-text-glow);
+  --CORTANA-text-glow-soft: var(--cortana-text-glow-soft);
+  --CORTANA-shadow-flat: var(--cortana-shadow-flat);
+  --CORTANA-shadow-raised: var(--cortana-shadow-raised);
+  --CORTANA-shadow-deep: var(--cortana-shadow-deep);
+  --CORTANA-shadow-inset: var(--cortana-shadow-inset);
+  --CORTANA-shadow-inset-glow: var(--cortana-shadow-inset-glow);
+  --CORTANA-shadow-panel: var(--cortana-shadow-panel);
+  --CORTANA-shadow-tab-active: var(--cortana-shadow-tab-active);
+  --CORTANA-shadow-card: var(--cortana-shadow-card);
+  --CORTANA-reactor-ms: var(--cortana-reactor-ms);
+  --CORTANA-reactor-glow-lo: var(--cortana-reactor-glow-lo);
+  --CORTANA-reactor-glow-hi: var(--cortana-reactor-glow-hi);
+  --CORTANA-wave-ms: var(--cortana-wave-ms);
+  --CORTANA-wave-ms-fast: var(--cortana-wave-ms-fast);
+  --CORTANA-talk-wave-ms: var(--cortana-talk-wave-ms);
+  --CORTANA-mini-wave-ms: var(--cortana-mini-wave-ms);
+  --CORTANA-tl-glow-ms: var(--cortana-tl-glow-ms);
+  --CORTANA-tl-sheen-ms: var(--cortana-tl-sheen-ms);
+  --CORTANA-panel-breathe-ms: var(--cortana-panel-breathe-ms);
+  --CORTANA-corner-breathe-ms: var(--cortana-corner-breathe-ms);
+  --CORTANA-status-dot-ms: var(--cortana-status-dot-ms);
+  --CORTANA-pill-breathe-ms: var(--cortana-pill-breathe-ms);
+  --CORTANA-live-ms: var(--cortana-live-ms);
+  --CORTANA-gauge-glow-ms: var(--cortana-gauge-glow-ms);
+  --CORTANA-agent-glow-ms: var(--cortana-agent-glow-ms);
+  --CORTANA-constellation-ms: var(--cortana-constellation-ms);
+  --CORTANA-ok: var(--cortana-ok);
+  --CORTANA-ok-bright: var(--cortana-ok-bright);
+  --CORTANA-warn: var(--cortana-warn);
+  --CORTANA-danger: var(--cortana-danger);
+  --CORTANA-info: var(--cortana-info);
+  --CORTANA-tip: var(--cortana-tip);
+  --CORTANA-live: var(--cortana-live);
+  --CORTANA-bar-track: var(--cortana-bar-track);
+  --CORTANA-dot-off: var(--cortana-dot-off);
+  --CORTANA-radius: var(--cortana-radius);
+  --CORTANA-radius-sm: var(--cortana-radius-sm);
+  --CORTANA-radius-lg: var(--cortana-radius-lg);
+  --CORTANA-radius-pill: var(--cortana-radius-pill);
+  --CORTANA-line: var(--cortana-line);
+  --CORTANA-boot-ms: var(--cortana-boot-ms);
+  --CORTANA-boot-hold: var(--cortana-boot-hold);
+  --CORTANA-boot-stream-ms: var(--cortana-boot-stream-ms);
+  --CORTANA-boot-parallax-scale: var(--cortana-boot-parallax-scale);
+  --CORTANA-boot-bar-height: var(--cortana-boot-bar-height);
+  --CORTANA-boot-bar-width: var(--cortana-boot-bar-width);
+  --CORTANA-boot-splash: var(--cortana-boot-splash);
+  --CORTANA-rail-w: var(--cortana-rail-w);
+  --CORTANA-header-h: var(--cortana-header-h);
+  --CORTANA-footer-h: var(--cortana-footer-h);
+  --CORTANA-font-ui: var(--cortana-font-ui);
+  --CORTANA-font-display: var(--cortana-font-display);
+  --CORTANA-font-mono: var(--cortana-font-mono);
+  --CORTANA-tracking-wide: var(--cortana-tracking-wide);
+  --CORTANA-tracking-mid: var(--cortana-tracking-mid);
+  --CORTANA-tracking-cal: var(--cortana-tracking-cal);
+  --CORTANA-ink-on-cyan: #021018;
+  --CORTANA-header-icon: var(--cortana-header-icon);
+  --CORTANA-header-icon-hover: var(--cortana-header-icon-hover);
+  --CORTANA-header-icon-border: var(--cortana-header-icon-border);
+  --CORTANA-header-icon-bg: var(--cortana-header-icon-bg);
+  --CORTANA-icon-btn-size: var(--cortana-icon-btn-size);
 }
 
 /* Shared Studio keyframe — status accents / badges / active indicators */
@@ -245,7 +433,7 @@ body.cortana-inject {
   }
   50% {
     box-shadow: var(--cortana-reactor-glow-hi);
-    filter: brightness(1.18);
+    filter: brightness(1.08);
   }
 }
 
@@ -257,17 +445,135 @@ body.cortana-inject {
   }
   50% {
     text-shadow: var(--cortana-text-glow);
-    opacity: 0.92;
+    opacity: 0.94;
   }
 }
 
 @keyframes cortana-wave-bar {
   0%,
   100% {
-    transform: scaleY(0.35);
+    transform: scaleY(0.28);
+  }
+  18% {
+    transform: scaleY(0.72);
+  }
+  36% {
+    transform: scaleY(0.4);
+  }
+  55% {
+    transform: scaleY(1);
+  }
+  74% {
+    transform: scaleY(0.48);
+  }
+  88% {
+    transform: scaleY(0.82);
+  }
+}
+
+@keyframes cortana-tl-bar-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 3px #00f2ff,
+      0 0 8px rgba(0, 242, 255, 0.7),
+      0 0 16px rgba(0, 229, 255, 0.45),
+      0 0 28px rgba(0, 180, 255, 0.28);
+    filter: drop-shadow(0 0 4px #00e5ff) brightness(1);
   }
   50% {
-    transform: scaleY(1);
+    box-shadow:
+      0 0 5px #7af0ff,
+      0 0 14px rgba(0, 242, 255, 0.95),
+      0 0 26px rgba(0, 229, 255, 0.7),
+      0 0 40px rgba(0, 180, 255, 0.42);
+    filter: drop-shadow(0 0 8px #00e5ff) brightness(1.12);
+  }
+}
+
+@keyframes cortana-tl-bar-sheen {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(280%);
+    opacity: 0;
+  }
+}
+
+@keyframes cortana-panel-breathe {
+  0%,
+  100% {
+    border-color: rgba(0, 229, 255, 0.36);
+    box-shadow:
+      0 0 0 1px rgba(0, 229, 255, 0.06),
+      0 10px 28px rgba(0, 0, 0, 0.5),
+      0 0 14px rgba(0, 212, 255, 0.05),
+      inset 0 1px 0 rgba(0, 242, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    border-color: rgba(0, 229, 255, 0.52);
+    box-shadow:
+      0 0 0 1px rgba(0, 229, 255, 0.12),
+      0 10px 28px rgba(0, 0, 0, 0.5),
+      0 0 22px rgba(0, 212, 255, 0.14),
+      inset 0 1px 0 rgba(0, 242, 255, 0.18),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+
+@keyframes cortana-corner-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(0, 229, 255, 0.45);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.85);
+    opacity: 1;
+  }
+}
+
+@keyframes cortana-status-pill-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(61, 214, 140, 0.12);
+    border-color: rgba(47, 165, 143, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(61, 214, 140, 0.28);
+    border-color: rgba(61, 214, 140, 0.62);
+  }
+}
+
+@keyframes cortana-live-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    border-color: rgba(61, 214, 140, 0.4);
+    text-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.35);
+    border-color: rgba(255, 71, 87, 0.55);
+    text-shadow: 0 0 6px rgba(255, 71, 87, 0.45);
+  }
+}
+
+@keyframes cortana-agent-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.36);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(0, 212, 255, 0.22);
+    border-color: rgba(0, 212, 255, 0.55);
   }
 }
 
@@ -286,11 +592,11 @@ body.cortana-inject {
 @keyframes cortana-globe-breathe {
   0%,
   100% {
-    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.35));
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22));
     opacity: 0.92;
   }
   50% {
-    filter: drop-shadow(0 0 28px rgba(0, 242, 255, 0.7));
+    filter: drop-shadow(0 0 18px rgba(74, 209, 241, 0.4));
     opacity: 1;
   }
 }
@@ -298,14 +604,14 @@ body.cortana-inject {
 @keyframes cortana-particle-drift {
   0% {
     transform: translate3d(0, 0, 0);
-    opacity: 0.15;
+    opacity: 0.12;
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.35;
   }
   100% {
     transform: translate3d(12px, -40px, 0);
-    opacity: 0.1;
+    opacity: 0.08;
   }
 }
 
@@ -313,25 +619,25 @@ body.cortana-inject {
   0%,
   100% {
     box-shadow:
-      0 0 0 0 rgba(0, 212, 255, 0.45),
-      0 0 18px rgba(0, 212, 255, 0.35);
+      0 0 0 0 rgba(0, 212, 255, 0.28),
+      0 0 12px rgba(0, 212, 255, 0.2);
   }
   50% {
     box-shadow:
-      0 0 0 10px rgba(0, 212, 255, 0),
-      0 0 28px rgba(0, 242, 255, 0.55);
+      0 0 0 8px rgba(0, 212, 255, 0),
+      0 0 18px rgba(74, 209, 241, 0.32);
   }
 }
 
 @keyframes cortana-status-dot {
   0%,
   100% {
-    box-shadow: 0 0 4px rgba(61, 214, 140, 0.6);
+    box-shadow: 0 0 4px rgba(61, 214, 140, 0.55);
     opacity: 1;
   }
   50% {
-    box-shadow: 0 0 10px rgba(61, 214, 140, 0.95);
-    opacity: 0.75;
+    box-shadow: 0 0 8px rgba(61, 214, 140, 0.8);
+    opacity: 0.8;
   }
 }
 
@@ -339,14 +645,99 @@ body.cortana-inject {
   0%,
   100% {
     filter: brightness(1);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
   }
   50% {
-    filter: brightness(1.2);
+    filter: brightness(1.12);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.42);
   }
 }
 
-/* CORTANA — probe hook (engine string-search + optional class test) */
-html.cortana-inject-probe::before {
+/* Legacy uppercase aliases (compat for any remaining CORTANA-* references) */
+@keyframes CORTANA-arc-reactor-pulse {
+  0%, 100% { box-shadow: var(--cortana-reactor-glow-lo); filter: brightness(1); }
+  50% { box-shadow: var(--cortana-reactor-glow-hi); filter: brightness(1.08); }
+}
+@keyframes CORTANA-arc-reactor-text {
+  0%, 100% { text-shadow: var(--cortana-text-glow-soft); opacity: 1; }
+  50% { text-shadow: var(--cortana-text-glow); opacity: 0.94; }
+}
+@keyframes CORTANA-wave-bar {
+  0%, 100% { transform: scaleY(0.28); }
+  18% { transform: scaleY(0.72); }
+  36% { transform: scaleY(0.4); }
+  55% { transform: scaleY(1); }
+  74% { transform: scaleY(0.48); }
+  88% { transform: scaleY(0.82); }
+}
+@keyframes CORTANA-tl-bar-glow {
+  0%, 100% {
+    box-shadow: 0 0 3px #00f2ff, 0 0 8px rgba(0, 242, 255, 0.7), 0 0 16px rgba(0, 229, 255, 0.45), 0 0 28px rgba(0, 180, 255, 0.28);
+    filter: drop-shadow(0 0 4px #00e5ff) brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 5px #7af0ff, 0 0 14px rgba(0, 242, 255, 0.95), 0 0 26px rgba(0, 229, 255, 0.7), 0 0 40px rgba(0, 180, 255, 0.42);
+    filter: drop-shadow(0 0 8px #00e5ff) brightness(1.12);
+  }
+}
+@keyframes CORTANA-tl-bar-sheen {
+  0% { transform: translateX(-120%); opacity: 0; }
+  18% { opacity: 0.85; }
+  100% { transform: translateX(280%); opacity: 0; }
+}
+@keyframes CORTANA-panel-breathe {
+  0%, 100% {
+    border-color: rgba(0, 229, 255, 0.36);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.06), 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 14px rgba(0, 212, 255, 0.05), inset 0 1px 0 rgba(0, 242, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    border-color: rgba(0, 229, 255, 0.52);
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.12), 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 22px rgba(0, 212, 255, 0.14), inset 0 1px 0 rgba(0, 242, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes CORTANA-corner-breathe {
+  0%, 100% { box-shadow: 0 0 6px rgba(0, 229, 255, 0.45); opacity: 0.85; }
+  50% { box-shadow: 0 0 12px rgba(0, 229, 255, 0.85); opacity: 1; }
+}
+@keyframes CORTANA-status-pill-breathe {
+  0%, 100% { box-shadow: 0 0 10px rgba(61, 214, 140, 0.12); border-color: rgba(47, 165, 143, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(61, 214, 140, 0.28); border-color: rgba(61, 214, 140, 0.62); }
+}
+@keyframes CORTANA-live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); border-color: rgba(61, 214, 140, 0.4); text-shadow: none; }
+  50% { box-shadow: 0 0 10px rgba(255, 71, 87, 0.35); border-color: rgba(255, 71, 87, 0.55); text-shadow: 0 0 6px rgba(255, 71, 87, 0.45); }
+}
+@keyframes CORTANA-agent-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.1); border-color: rgba(0, 212, 255, 0.36); }
+  50% { box-shadow: 0 0 16px rgba(0, 212, 255, 0.22); border-color: rgba(0, 212, 255, 0.55); }
+}
+@keyframes CORTANA-orbit-spin { to { transform: rotate(360deg); } }
+@keyframes CORTANA-orbit-spin-rev { to { transform: rotate(-360deg); } }
+@keyframes CORTANA-globe-breathe {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.22)); opacity: 0.92; }
+  50% { filter: drop-shadow(0 0 18px rgba(74, 209, 241, 0.4)); opacity: 1; }
+}
+@keyframes CORTANA-particle-drift {
+  0% { transform: translate3d(0, 0, 0); opacity: 0.12; }
+  50% { opacity: 0.35; }
+  100% { transform: translate3d(12px, -40px, 0); opacity: 0.08; }
+}
+@keyframes CORTANA-mic-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.28), 0 0 12px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(0, 212, 255, 0), 0 0 18px rgba(74, 209, 241, 0.32); }
+}
+@keyframes CORTANA-status-dot {
+  0%, 100% { box-shadow: 0 0 4px rgba(61, 214, 140, 0.55); opacity: 1; }
+  50% { box-shadow: 0 0 8px rgba(61, 214, 140, 0.8); opacity: 0.8; }
+}
+@keyframes CORTANA-gauge-glow {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 12px rgba(0, 212, 255, 0.2); }
+  50% { filter: brightness(1.12); box-shadow: 0 0 20px rgba(0, 212, 255, 0.42); }
+}
+
+/* cortana — probe hook (engine string-search + optional class test) */
+html.cortana-inject-probe::before,
+html.CORTANA-inject-probe::before {
   content: "cortana-ok";
   display: none;
 }

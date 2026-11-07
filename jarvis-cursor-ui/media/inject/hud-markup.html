@@ -9,11 +9,7 @@
 
   <aside class="jcc-rail">
     <div class="jcc-brand">
-      <div class="jcc-iris" aria-hidden="true">
-        <span class="jcc-iris-ring"></span>
-        <span class="jcc-iris-ring r2"></span>
-        <span class="jcc-iris-core"></span>
-      </div>
+      <div class="jcc-iris" aria-hidden="true" title="Brand iris from reference-command-center-2.png"></div>
       <div class="jcc-brand-text">
         <div class="jcc-brand-title">CORTANA COMMAND CENTER</div>
         <div class="jcc-brand-sub">OPERATOR SUITE</div>
@@ -22,29 +18,29 @@
 
     <nav class="jcc-nav" aria-label="Command Center">
       <a class="jcc-nav-item active" href="#" data-nav="home"><span class="jcc-nav-ico">◈</span>Command Center</a>
-      <a class="jcc-nav-item" href="#" data-nav="core"><span class="jcc-nav-ico">◉</span>AI Core</a>
+      <a class="jcc-nav-item" href="#" data-nav="core"><span class="jcc-nav-ico">◉</span>Workstation</a>
       <a class="jcc-nav-item" href="#" data-nav="agents"><span class="jcc-nav-ico">⬡</span>Agents</a>
-      <a class="jcc-nav-item" href="#" data-nav="tasks"><span class="jcc-nav-ico">▣</span>Tasks<span class="jcc-badge">3</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="tasks"><span class="jcc-nav-ico">▣</span>Tasks<span class="jcc-badge" data-count="3"></span></a>
       <a class="jcc-nav-item" href="#" data-nav="calendar"><span class="jcc-nav-ico">▦</span>Calendar</a>
       <a class="jcc-nav-item" href="#" data-nav="memory"><span class="jcc-nav-ico">◎</span>Memory</a>
-      <a class="jcc-nav-item" href="#" data-nav="conversations"><span class="jcc-nav-ico">☰</span>Conversations<span class="jcc-badge">12</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="conversations"><span class="jcc-nav-ico">☰</span>Conversations<span class="jcc-badge" data-count="12"></span></a>
       <a class="jcc-nav-item" href="#" data-nav="knowledge"><span class="jcc-nav-ico">▤</span>Knowledge Base</a>
-      <a class="jcc-nav-item" href="#" data-nav="tools"><span class="jcc-nav-ico">⚙</span>Tools &amp; Skills<span class="jcc-badge">18</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="tools"><span class="jcc-nav-ico">⚙</span>Tools &amp; Skills<span class="jcc-badge" data-count="18"></span></a>
       <a class="jcc-nav-item" href="#" data-nav="workflows"><span class="jcc-nav-ico">⇄</span>Workflows</a>
     </nav>
 
-    <div class="jcc-voice">
+    <div class="jcc-voice" data-cortana-voice data-cortana-action="voice" title="Tap to Speak — start Cursor voice chat">
       <div class="jcc-voice-lab">VOICE STATUS</div>
       <div class="jcc-wave" aria-hidden="true">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
       <div class="jcc-listen">Listening…</div>
-      <button type="button" class="jcc-mic" title="Tap to Speak" aria-label="Tap to Speak">
+      <button type="button" id="cortana-mic-btn" class="jcc-mic" data-cortana-voice data-cortana-action="voice" title="Tap to Speak" aria-label="Tap to Speak">
         <span class="jcc-mic-ring"></span>
         <span class="jcc-mic-ring r2"></span>
         <span class="jcc-mic-core">🎙</span>
       </button>
-      <div class="jcc-mic-hint">Tap to Speak</div>
+      <div class="jcc-mic-hint" data-cortana-action="voice">Tap to Speak</div>
     </div>
 
     <label for="cortana-focus-toggle" class="jcc-focus" id="cortana-focus-mode" title="Focus Mode — reveal IDE editor">
@@ -65,7 +61,9 @@
       <div class="jcc-header-tools">
         <div class="jcc-search"><span>⌕</span> Search…</div>
         <button type="button" class="jcc-icon-btn" title="Layout" aria-label="Layout">⊞</button>
-        <button type="button" class="jcc-icon-btn" title="Notifications" aria-label="Notifications">🔔</button>
+        <button type="button" class="jcc-icon-btn notifications" title="Notifications" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+        </button>
         <div class="jcc-operator">
           <span class="jcc-op-av">OC</span>
           <span>Operator Commander</span>
@@ -75,50 +73,84 @@
 
     <div class="jcc-grid">
       <!-- Row 1 -->
-      <section class="jcc-panel jcc-overview">
-        <h2 class="jcc-panel-title">AI Core Overview</h2>
+      <section
+        class="jcc-panel jcc-overview"
+        data-memory-count="3,380"
+        data-agent-count="2"
+        data-llm-count="4"
+        style="--ov-memory: '3,380'; --ov-agents: '2'; --ov-llms: '4';"
+      >
+        <h2 class="jcc-panel-title jcc-ov-title">
+          <span class="jcc-ov-title-ico" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><rect x="0" y="0" width="4" height="4" rx="0.6"/><rect x="8" y="0" width="4" height="4" rx="0.6"/><rect x="0" y="8" width="4" height="4" rx="0.6"/><rect x="8" y="8" width="4" height="4" rx="0.6"/></svg>
+          </span>
+          Workstation Overview
+        </h2>
         <ul class="jcc-ov-list">
-          <li><span class="jcc-ov-ico ok">◉</span><span class="jcc-ov-k">AI Core</span><span class="jcc-ov-v ok">Active</span></li>
-          <li><span class="jcc-ov-ico">◎</span><span class="jcc-ov-k">Memory</span><span class="jcc-ov-v cyan">3,380 stored</span></li>
-          <li><span class="jcc-ov-ico ok">🎙</span><span class="jcc-ov-k">Voice</span><span class="jcc-ov-v ok">Online</span></li>
-          <li><span class="jcc-ov-ico">⬡</span><span class="jcc-ov-k">Agents</span><span class="jcc-ov-v cyan">2 Running</span></li>
-          <li><span class="jcc-ov-ico">▣</span><span class="jcc-ov-k">LLMs</span><span class="jcc-ov-v cyan">4 Connected</span></li>
-          <li><span class="jcc-ov-ico ok">●</span><span class="jcc-ov-k">System</span><span class="jcc-ov-v ok">Optimal</span></li>
+          <li class="jcc-ov-row" data-row="workstation">
+            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="12" height="12" rx="2"/><rect x="7.5" y="7.5" width="5" height="5" rx="1"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2"/></svg>
+            </span>
+            <span class="jcc-ov-k">Workstation</span>
+            <span class="jcc-ov-v" data-tone="ok">Active</span>
+          </li>
+          <li class="jcc-ov-row" data-row="memory">
+            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="10" cy="5.5" rx="5.5" ry="2.2"/><path d="M4.5 5.5v3.2c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V5.5"/><path d="M4.5 8.7v3.2c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V8.7"/><path d="M4.5 11.9v2.4c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2v-2.4"/></svg>
+            </span>
+            <span class="jcc-ov-k">Memory</span>
+            <span class="jcc-ov-v">
+              <span class="jcc-ov-num" data-ov-num="memory"></span>
+              <span class="jcc-ov-unit">stored</span>
+            </span>
+          </li>
+          <li class="jcc-ov-row" data-row="voice">
+            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><rect x="2" y="8" width="2" height="4" rx="0.6"/><rect x="5.5" y="5" width="2" height="10" rx="0.6"/><rect x="9" y="3" width="2" height="14" rx="0.6"/><rect x="12.5" y="6" width="2" height="8" rx="0.6"/><rect x="16" y="8.5" width="2" height="3" rx="0.6"/></svg>
+            </span>
+            <span class="jcc-ov-k">Voice</span>
+            <span class="jcc-ov-v" data-tone="ok">Online</span>
+          </li>
+          <li class="jcc-ov-row" data-row="agents">
+            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="7" r="3"/><path d="M4.5 16.5c1.2-3 3-4.5 5.5-4.5s4.3 1.5 5.5 4.5"/></svg>
+            </span>
+            <span class="jcc-ov-k">Agents</span>
+            <span class="jcc-ov-v">
+              <span class="jcc-ov-num" data-ov-num="agents"></span>
+              <span class="jcc-ov-unit ok">Running</span>
+            </span>
+          </li>
+          <li class="jcc-ov-row" data-row="llms">
+            <span class="jcc-ov-ico" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3.5 6.5h13M3.5 10h13M3.5 13.5h13"/><circle cx="7" cy="6.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="13.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="jcc-ov-k">LLMs</span>
+            <span class="jcc-ov-v">
+              <span class="jcc-ov-num" data-ov-num="llms"></span>
+              <span class="jcc-ov-unit ok">Connected</span>
+            </span>
+          </li>
+          <li class="jcc-ov-row" data-row="system">
+            <span class="jcc-ov-ico" data-tone="ok" aria-hidden="true">
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2.5l6 2.2v5.1c0 3.4-2.4 5.8-6 7.2-3.6-1.4-6-3.8-6-7.2V4.7L10 2.5z"/><path d="M7.2 10.1l1.9 1.9 3.7-3.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="jcc-ov-k">System</span>
+            <span class="jcc-ov-v" data-tone="ok">Optimal</span>
+          </li>
         </ul>
       </section>
 
       <section class="jcc-panel jcc-hero">
-        <div class="jcc-globe" aria-hidden="true">
-          <div class="jcc-orbit o1"></div>
-          <div class="jcc-orbit o2"></div>
-          <div class="jcc-orbit o3"></div>
-          <svg class="jcc-globe-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="jccGlow" cx="50%" cy="45%" r="55%">
-                <stop offset="0%" stop-color="#4ad1f1" stop-opacity="0.55"/>
-                <stop offset="55%" stop-color="#00d4ff" stop-opacity="0.12"/>
-                <stop offset="100%" stop-color="#020817" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <circle cx="100" cy="100" r="72" fill="url(#jccGlow)" stroke="rgba(0,212,255,0.35)" stroke-width="1"/>
-            <ellipse cx="100" cy="100" rx="72" ry="24" fill="none" stroke="rgba(0,212,255,0.28)" stroke-width="0.8"/>
-            <ellipse cx="100" cy="100" rx="72" ry="48" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="0.6"/>
-            <ellipse cx="100" cy="100" rx="24" ry="72" fill="none" stroke="rgba(0,212,255,0.28)" stroke-width="0.8"/>
-            <ellipse cx="100" cy="100" rx="48" ry="72" fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="0.6"/>
-            <g class="jcc-globe-dots" fill="#00f2ff">
-              <circle cx="100" cy="34" r="1.6"/><circle cx="132" cy="42" r="1.2"/>
-              <circle cx="158" cy="70" r="1.4"/><circle cx="168" cy="100" r="1.6"/>
-              <circle cx="158" cy="130" r="1.2"/><circle cx="132" cy="158" r="1.4"/>
-              <circle cx="100" cy="166" r="1.6"/><circle cx="68" cy="158" r="1.2"/>
-              <circle cx="42" cy="130" r="1.4"/><circle cx="32" cy="100" r="1.6"/>
-              <circle cx="42" cy="70" r="1.2"/><circle cx="68" cy="42" r="1.4"/>
-              <circle cx="118" cy="78" r="1"/><circle cx="82" cy="92" r="1"/>
-              <circle cx="110" cy="118" r="1.1"/><circle cx="78" cy="122" r="0.9"/>
-              <circle cx="100" cy="100" r="2.4" fill="#4ad1f1"/>
-            </g>
-          </svg>
+        <!-- Hero world: reference-command-center-2.png crop only (no invented SVG). Runtime pixels via staged splash sibling. -->
+        <div class="jcc-globe" role="img" aria-label="CORTANA AI CORE v.3.0.0">
+          <div class="jcc-globe-photo" aria-hidden="true"></div>
+          <div class="jcc-hero-label">
+            <strong>CORTANA</strong>
+            <span>AI CORE</span>
+            <em>v.3.0.0</em>
+          </div>
         </div>
-        <div class="jcc-hero-label">CORTANA AI CORE v3.0.0</div>
       </section>
 
       <section class="jcc-panel jcc-feed">
@@ -126,8 +158,8 @@
         <div class="jcc-feed-list">
           <article class="jcc-feed-item"><span class="jcc-tag info">INFO</span><div class="jcc-feed-body"><strong>Standing meeting in 12m</strong><span>Calendar · Strategy sync</span></div></article>
           <article class="jcc-feed-item"><span class="jcc-tag warn">WARN</span><div class="jcc-feed-body"><strong>GitHub PR review pending</strong><span>Repos · needs attention</span></div></article>
-          <article class="jcc-feed-item"><span class="jcc-tag tip">TIP</span><div class="jcc-feed-body"><strong>Memory compaction suggested</strong><span>3,380 stored · optimize</span></div></article>
-          <article class="jcc-feed-item"><span class="jcc-tag live">LIVE</span><div class="jcc-feed-body"><strong>CPU load nominal</strong><span>System monitor · 15%</span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag tip">TIP</span><div class="jcc-feed-body"><strong>Memory compaction suggested</strong><span class="jcc-feed-meta" data-text="3,380 stored · optimize"></span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag live">LIVE</span><div class="jcc-feed-body"><strong>CPU load nominal</strong><span class="jcc-feed-meta" data-text="System monitor · 15%"></span></div></article>
           <article class="jcc-feed-item"><span class="jcc-tag info">INFO</span><div class="jcc-feed-body"><strong>Voice channel online</strong><span>Tap to Speak armed</span></div></article>
         </div>
       </section>
@@ -148,8 +180,8 @@
       <section class="jcc-panel jcc-timeline">
         <h2 class="jcc-panel-title">Mission Timeline</h2>
         <div class="jcc-tl">
-          <div class="jcc-tl-item done"><div class="jcc-tl-t">09:00 · Workspace indexed</div><div class="jcc-tl-m">Done · file map ready</div></div>
-          <div class="jcc-tl-item"><div class="jcc-tl-t">11:00 · Suit systems online</div><div class="jcc-tl-m">In progress · 62%</div><div class="jcc-tl-bar"><i style="width:62%"></i></div></div>
+          <div class="jcc-tl-item done"><div class="jcc-tl-t">09:00 · Workspace indexed</div><div class="jcc-tl-m">Done · file map ready</div><div class="jcc-tl-bar"><i style="width:100%"></i></div></div>
+          <div class="jcc-tl-item active" data-pct="62"><div class="jcc-tl-t">11:00 · Suit systems online</div><div class="jcc-tl-m">In progress · <span class="jcc-tl-pct">62%</span></div><div class="jcc-tl-bar"><i style="width:62%"></i></div></div>
           <div class="jcc-tl-item"><div class="jcc-tl-t">14:30 · Deep-work: Voice pipeline</div><div class="jcc-tl-m">Queued</div></div>
           <div class="jcc-tl-item overdue"><div class="jcc-tl-t">16:00 · Executive briefing</div><div class="jcc-tl-m">Overdue · prepare capsule</div></div>
         </div>
@@ -169,9 +201,9 @@
       <section class="jcc-panel jcc-monitor">
         <h2 class="jcc-panel-title">System Monitor</h2>
         <div class="jcc-gauges">
-          <div class="jcc-gauge" style="--p:15"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">15%</div><div class="jcc-gauge-lab">CPU</div></div>
-          <div class="jcc-gauge" style="--p:54"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">54%</div><div class="jcc-gauge-lab">RAM</div></div>
-          <div class="jcc-gauge" style="--p:40"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">40%</div><div class="jcc-gauge-lab">Disk</div></div>
+          <div class="jcc-gauge" data-pct="15" data-lab="CPU"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val"></div><div class="jcc-gauge-lab"></div></div>
+          <div class="jcc-gauge" data-pct="54" data-lab="RAM"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val"></div><div class="jcc-gauge-lab"></div></div>
+          <div class="jcc-gauge" data-pct="40" data-lab="Disk"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val"></div><div class="jcc-gauge-lab"></div></div>
         </div>
       </section>
 
@@ -184,9 +216,9 @@
           <svg viewBox="0 0 160 70" preserveAspectRatio="none"><path d="M20 50 L45 22 L80 35 L110 18 L140 40 M45 22 L80 35 L110 18 M80 35 L70 55 L110 48" fill="none" stroke="rgba(0,212,255,0.35)" stroke-width="1"/></svg>
         </div>
         <div class="jcc-mem-stats">
-          <div><strong>3,380</strong><span>Memories</span></div>
-          <div><strong>22</strong><span>Session Turns</span></div>
-          <div><strong>14</strong><span>Tool Calls</span></div>
+          <div class="jcc-mem-stat" data-value="3,380" data-lab="Memories"><strong></strong><span></span></div>
+          <div class="jcc-mem-stat" data-value="22" data-lab="Session Turns"><strong></strong><span></span></div>
+          <div class="jcc-mem-stat" data-value="14" data-lab="Tool Calls"><strong></strong><span></span></div>
         </div>
       </section>
 
@@ -208,18 +240,21 @@
 
   <footer class="jcc-footer">
     <div class="jcc-footer-meta">
-      <div class="jcc-meta-chip"><span class="jcc-meta-k">Location</span><span class="jcc-meta-v">Local Host</span></div>
-      <div class="jcc-meta-chip"><span class="jcc-meta-k">Weather</span><span class="jcc-meta-v">28°C Overcast</span></div>
-      <div class="jcc-meta-chip"><span class="jcc-meta-k">Network</span><span class="jcc-meta-v ok">Excellent</span></div>
+      <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">⌖</span><span class="jcc-meta-line"><span class="jcc-meta-k">Location:</span> <span class="jcc-meta-v">Bhimber, Paki…</span></span></div>
+      <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">☁</span><span class="jcc-meta-line"><span class="jcc-meta-k">Weather:</span> <span class="jcc-meta-v">28°C Overcast</span></span></div>
+      <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">◉</span><span class="jcc-meta-line"><span class="jcc-meta-k">Network:</span> <span class="jcc-meta-v ok">Excellent</span></span></div>
     </div>
-    <button type="button" class="jcc-talk" id="cortana-talk-cta" aria-label="Talk to CORTANA">
-      <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-      <span class="jcc-talk-copy">
-        <strong>TALK TO CORTANA</strong>
-        <em>I am listening…</em>
-      </span>
-      <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-    </button>
+    <div class="jcc-talk-wrap">
+      <button type="button" class="jcc-talk" id="cortana-talk-cta" data-cortana-voice data-cortana-action="voice" aria-label="Talk to CORTANA">
+        <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="jcc-talk-copy">
+          <strong>TALK TO CORTANA</strong>
+          <em>I am listening…</em>
+        </span>
+        <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      </button>
+      <div class="jcc-talk-meter" aria-hidden="true"><i style="width:60%"></i></div>
+    </div>
     <button type="button" class="jcc-briefing" title="Executive Briefing">
       <span class="jcc-play">▶</span> Executive Briefing
     </button>

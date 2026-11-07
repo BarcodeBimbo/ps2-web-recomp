@@ -634,7 +634,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 
   <div class="nav">
     <button class="active" data-panel="home">Command Center</button>
-    <button data-panel="core">AI Core</button>
+    <button data-panel="core">Workstation</button>
     <button data-panel="agents">Agents</button>
     <button data-panel="tasks">Tasks <span class="badge">3</span></button>
     <button data-panel="map" id="navMap">File Map</button>
@@ -661,7 +661,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       </div>
 
       <div class="card keep">
-        <h2>AI core overview</h2>
+        <h2>Workstation Overview</h2>
         <div class="row"><span class="k">Assistant</span><span class="v ok">${escapeHtml(assistant)}</span></div>
         <div class="row"><span class="k">Voice</span><span class="v ok">Online</span></div>
         <div class="row"><span class="k">Mapped files</span><span class="v cyan">${stats.files || 0}</span></div>
@@ -803,7 +803,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
         <h2>Tasks</h2>
         <div class="timeline">
           <div class="tl done"><div class="t">Install CORTANA Command Center</div><div class="m">Done</div></div>
-          <div class="tl"><div class="t">Apply suit theme</div><div class="m">AI Core → Suit Modes</div></div>
+          <div class="tl"><div class="t">Apply suit theme</div><div class="m">Workstation → Suit Modes</div></div>
           <div class="tl"><div class="t">Talk to CORTANA</div><div class="m">Bottom bar / Start Voice Chat</div></div>
         </div>
       </div>
