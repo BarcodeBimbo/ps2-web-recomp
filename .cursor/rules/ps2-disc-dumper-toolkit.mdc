@@ -1,0 +1,32 @@
+---
+description: Custom PS2 disc dumper — toolkit credits, Windows target, no binary wrapping
+alwaysApply: true
+---
+
+# Custom PS2 disc dumper toolkit
+
+We are building **our own** Windows PS2 disc dumper inspired by community tools’ **patterns and techniques**, not a wrapper that shells out to or ships their binaries as the product core.
+
+## Reference toolkit (credit both)
+
+| Tool | Repo | Role in our design |
+|------|------|--------------------|
+| **redumper** | https://github.com/superg/redumper | Low-level accurate optical rip / sector workflows (GPL-3.0) |
+| **dumps2iso** / **mkps2iso** | https://github.com/N4gtan/mkps2iso | PS2 DVD UDF extract + rebuild / LBA + file-table patterns |
+
+README (and **every future README update/push**) for our custom dumper **must**:
+
+1. **Credit both** with names and links to the repos above.
+2. **Document every change / divergence** from the patterns we took from either project — including ideas or code paths we **stripped** or did not port.
+3. **License notes** — Call out **GPL-3.0** implications from redumper-derived logic (compatible licensing, copyright notices, source obligations if we ship binaries). Also respect **mkps2iso**’s license when any of its code or closely derived logic is used; credit it either way as a pattern source.
+4. **State clearly** that we reimplemented / built custom code for Windows — we do **not** wrap or require running upstream `redumper` / `dumps2iso` / `mkps2iso` binaries as our dumper.
+
+## Platform
+
+- Check upstream platform support when consulting either project (as of research: **both** publish **Windows**, Linux, and macOS builds — neither is Linux-only).
+- **Our custom build targets Windows** as the primary product platform (align with CyberArcade Windows branch). Do not ship a Linux-only custom dumper unless the user explicitly changes that.
+
+## Do not
+
+- Bundle or invoke upstream binaries as the main dumping path.
+- Update the README without refreshing credits, change list, license notes, and Windows-target statement.
