@@ -1,0 +1,20 @@
+[
+{
+  "Analysis": {
+    "file_path": "c:\\PS2Recomp\\logs\\gow-binwalk\\SCUS_973.99",
+    "file_map": [
+      {
+        "offset": 0,
+        "id": "10d3a128-21eb-4b14-8b15-395c9ddb276d",
+        "size": 1911580,
+        "name": "elf",
+        "confidence": 128,
+        "description": "ELF binary, 32-bit executable, MIPS for System-V (Unix), little endian",
+        "always_display": false,
+        "extraction_declined": false
+      }
+    ],
+    "extractions": {}
+  }
+}
+]

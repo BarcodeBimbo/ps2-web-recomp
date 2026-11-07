@@ -1,0 +1,832 @@
+{
+  "game": "God of War (USA)",
+  "game_id": "695b874b308a4e5353767bb6df8ba697",
+  "method": "manual mmap/struct structural walk (CNK A2 style)",
+  "tools": [
+    "python3 mmap/struct/re \u2014 not binwalk library"
+  ],
+  "iso": "C:\\PS2Recomp\\games\\695b874b308a4e5353767bb6df8ba697\\disc.iso",
+  "iso_size": 8522792960,
+  "disc_inventory": [
+    {
+      "name": "SYSTEM.CNF",
+      "lba": 281,
+      "size": 57,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 575488
+    },
+    {
+      "name": "SCUS_973.99",
+      "lba": 282,
+      "size": 1911580,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 577536
+    },
+    {
+      "name": "IOPRP300.IMG",
+      "lba": 1216,
+      "size": 278305,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2490368
+    },
+    {
+      "name": "SIO2MAN.IRX",
+      "lba": 1352,
+      "size": 6641,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2768896
+    },
+    {
+      "name": "DBCMAN.IRX",
+      "lba": 1356,
+      "size": 15653,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2777088
+    },
+    {
+      "name": "SIO2D.IRX",
+      "lba": 1364,
+      "size": 11289,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2793472
+    },
+    {
+      "name": "MC2_S1.IRX",
+      "lba": 1370,
+      "size": 20165,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2805760
+    },
+    {
+      "name": "DS1O_S1.IRX",
+      "lba": 1380,
+      "size": 9437,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2826240
+    },
+    {
+      "name": "MC2_D.IRX",
+      "lba": 1385,
+      "size": 20221,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2836480
+    },
+    {
+      "name": "DS2U_D.IRX",
+      "lba": 1395,
+      "size": 11725,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2856960
+    },
+    {
+      "name": "LIBSD.IRX",
+      "lba": 1401,
+      "size": 28573,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2869248
+    },
+    {
+      "name": "989NOMID.IRX",
+      "lba": 1415,
+      "size": 178884,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 2897920
+    },
+    {
+      "name": "SMPD_IOP.IRX",
+      "lba": 1503,
+      "size": 47948,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 3078144
+    },
+    {
+      "name": "GODOFWAR.TOC",
+      "lba": 1527,
+      "size": 40068,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 3127296
+    },
+    {
+      "name": "PART1.PAK",
+      "lba": 1547,
+      "size": 4257794048,
+      "flags": 0,
+      "is_dir": false,
+      "byte_offset": 3168256
+    }
+  ],
+  "alchemy_vs_gow_layout": {
+    "has_ASSETS_GFC": false,
+    "has_ASSETS_GOB": false,
+    "has_MODULES_dir": false,
+    "has_GODOFWAR_TOC": true,
+    "has_PART1_PAK": true,
+    "root_file_count": 15
+  },
+  "system_cnf": {
+    "raw": "BOOT2 = cdrom0:\\SCUS_973.99;1\r\nVER = 1.00\r\nVMODE = NTSC",
+    "boot_line": "BOOT2 = cdrom0:\\SCUS_973.99;1"
+  },
+  "elf_sidecar_matches_iso": true,
+  "elf": {
+    "valid": true,
+    "class": 1,
+    "endian": "LE",
+    "type": 2,
+    "machine": 8,
+    "entry": "0x00100008",
+    "phnum": 1,
+    "load_segments": [
+      {
+        "index": 0,
+        "offset": 4096,
+        "vaddr": "0x00100000",
+        "filesz": 1863704,
+        "memsz": 2478208
+      }
+    ],
+    "ig_class_count": 0,
+    "ig_sample": [],
+    "intrinsic_alchemy": false,
+    "igFileIO": false,
+    "STBLz_count": 0,
+    "STBL0_count": 0,
+    "DA_FA_count": 0,
+    "interesting_strings": [
+      "sceCdReadDvdDualInfo function fail",
+      "goBerserkBlade",
+      "goBolt",
+      "goBoltChargeUp",
+      "goBreastPlate",
+      "goBracerR",
+      "goBracerL",
+      "gobubpart",
+      "goBirds",
+      "libsd.irx",
+      "error: sceSifBindRpc in %s, at line %d",
+      "Need to re-setup libipu since sceMpegGetPicture was aborted",
+      "sceMpegGetPicture is aborted",
+      "_sceMpegSliceA0(): error happens",
+      "sceGsSyncPath: DMA Ch.1 does not terminate",
+      "sceGsSyncPath: DMA Ch.2 does not terminate",
+      "sceGsSyncPath: VIF1 does not terminate",
+      "sceGsSyncPath: VU1 does not terminate",
+      "sceGsSyncPath: GIF does not terminate",
+      "sceCdCbfunc= %d sceCdCbfunc_num= %d",
+      "SceCdCallbackThread",
+      "SceCdNcmdSema",
+      "SceCdScmdSema",
+      "SceCdRcmdSema",
+      "SceCdCallbackSema",
+      "sceCdChgSys: Illegal_function_call",
+      "sceDbc_sema",
+      "sceDbcSetWorkAddr: rpc error",
+      "sceDbcCreateSocket: rpc error",
+      "sceDbcDeleteSocket: rpc error",
+      "sceDbcGetDepNumber: rpc error",
+      "sceDbcInitSocket: rpc error",
+      "sceDbcResetSocket: rpc error",
+      "sceDbcGetDeviceStatus: rpc error",
+      "sceDbcSRData: rpc error",
+      "sceDbcSendData: rpc error",
+      "sceDbcSendData2: rpc error",
+      "sceDbcReceiveData: rpc error",
+      "sceMc2_sema_main",
+      "sceMc2_sema_start",
+      "sceMc2_sema_end",
+      "sceMc2_basic_thread",
+      "Sony PS2 Memory Card Format",
+      "sceMc2_sema_subs",
+      "SceKerneltopThread",
+      "SceKernelDelayThread",
+      "SceSifrpcGod",
+      "SceSifrpcBind",
+      "SceSifrpcCall",
+      "SceStdioIobSema",
+      "SceStdioQueSema",
+      "SceStdioFioSema",
+      "SceStdioOpenSema",
+      "SceStdioCloseSema",
+      "SceStdioLseekSema",
+      "SceStdioReadSema",
+      "SceStdioWriteSema",
+      "SceStdioIoctlSema",
+      "SceStdioIoctl2Sema",
+      "SceStdioCCodeSema"
+    ],
+    "size": 1911580,
+    "iso_path": "SCUS_973.99",
+    "lba": 282
+  },
+  "godofwar_toc": {
+    "size": 40068,
+    "layout": {
+      "record_stride": 24,
+      "name_len": 16,
+      "fields": [
+        "name[16]",
+        "size_u32le",
+        "offset_u32le"
+      ],
+      "record_count": 1669,
+      "trailer_bytes": 12,
+      "trailer_hex": "000000000000000000000000"
+    },
+    "ext_census": {
+      "wad": 587,
+      "vpk": 507,
+      "vag": 436,
+      "pss": 67,
+      "psw": 53,
+      "txt": 19
+    },
+    "offset_monotonic_count": 1668,
+    "record_count": 1669,
+    "records_sample": [
+      {
+        "index": 0,
+        "name": "R_PERM.WAD",
+        "size": 3638576,
+        "offset": 0
+      },
+      {
+        "index": 1,
+        "name": "BONUS03.PSS",
+        "size": 566018052,
+        "offset": 1777
+      },
+      {
+        "index": 2,
+        "name": "TIT1E1_2.VPK",
+        "size": 2959360,
+        "offset": 278154
+      },
+      {
+        "index": 3,
+        "name": "BONUS06.PSS",
+        "size": 249954308,
+        "offset": 279599
+      },
+      {
+        "index": 4,
+        "name": "BONUS10.PSS",
+        "size": 106184708,
+        "offset": 401648
+      },
+      {
+        "index": 5,
+        "name": "BONUS12.PSS",
+        "size": 173146116,
+        "offset": 453497
+      },
+      {
+        "index": 6,
+        "name": "BONUS14.PSS",
+        "size": 166592516,
+        "offset": 538042
+      },
+      {
+        "index": 7,
+        "name": "BONUS16.PSS",
+        "size": 58638340,
+        "offset": 619387
+      },
+      {
+        "index": 8,
+        "name": "BONUS17.PSS",
+        "size": 104464388,
+        "offset": 648020
+      },
+      {
+        "index": 9,
+        "name": "BONUS18.PSS",
+        "size": 41811972,
+        "offset": 699029
+      },
+      {
+        "index": 10,
+        "name": "BONUS24.PSS",
+        "size": 18825220,
+        "offset": 719446
+      },
+      {
+        "index": 11,
+        "name": "BONUS25.PSS",
+        "size": 68288516,
+        "offset": 728639
+      },
+      {
+        "index": 12,
+        "name": "CREDITS1.VPK",
+        "size": 5285888,
+        "offset": 761984
+      },
+      {
+        "index": 13,
+        "name": "R_SHELL.WAD",
+        "size": 3599632,
+        "offset": 764565
+      },
+      {
+        "index": 14,
+        "name": "R_SAVEPT.WAD",
+        "size": 475488,
+        "offset": 766323
+      },
+      {
+        "index": 15,
+        "name": "TIT1E1_2.VPK",
+        "size": 2959360,
+        "offset": 766556
+      },
+      {
+        "index": 16,
+        "name": "TIT1Q1_2.VPK",
+        "size": 313344,
+        "offset": 768001
+      },
+      {
+        "index": 17,
+        "name": "OLY1E2_2.VPK",
+        "size": 4073472,
+        "offset": 768154
+      },
+      {
+        "index": 18,
+        "name": "EXTHOLLP.VPK",
+        "size": 4360192,
+        "offset": 770143
+      },
+      {
+        "index": 19,
+        "name": "R_HERO0.WAD",
+        "size": 1966896,
+        "offset": 772272
+      },
+      {
+        "index": 20,
+        "name": "R_HERO1.WAD",
+        "size": 1793808,
+        "offset": 773233
+      },
+      {
+        "index": 21,
+        "name": "R_HERO2.WAD",
+        "size": 1886800,
+        "offset": 774109
+      },
+      {
+        "index": 22,
+        "name": "R_HERO3.WAD",
+        "size": 1902528,
+        "offset": 775031
+      },
+      {
+        "index": 23,
+        "name": "R_HERO4.WAD",
+        "size": 1863392,
+        "offset": 775960
+      }
+    ],
+    "records_tail": [
+      {
+        "index": 1661,
+        "name": "R_SD2.WAD",
+        "size": 881504,
+        "offset": 2018114
+      },
+      {
+        "index": 1662,
+        "name": "R_SK2.WAD",
+        "size": 923040,
+        "offset": 2018545
+      },
+      {
+        "index": 1663,
+        "name": "R_SKF.WAD",
+        "size": 1056624,
+        "offset": 2018996
+      },
+      {
+        "index": 1664,
+        "name": "PAND00B.WAD",
+        "size": 7675152,
+        "offset": 2019512
+      },
+      {
+        "index": 1665,
+        "name": "PAN0Q1_2.VPK",
+        "size": 1320960,
+        "offset": 2023260
+      },
+      {
+        "index": 1666,
+        "name": "P00MP02.PSS",
+        "size": 55820292,
+        "offset": 2023905
+      },
+      {
+        "index": 1667,
+        "name": "SSAMB2LP.VPK",
+        "size": 4605952,
+        "offset": 2051162
+      },
+      {
+        "index": 1668,
+        "name": "P00MP02.PSW",
+        "size": 55885828,
+        "offset": 2053411
+      }
+    ],
+    "largest": [
+      {
+        "index": 1,
+        "name": "BONUS03.PSS",
+        "size": 566018052,
+        "offset": 1777
+      },
+      {
+        "index": 3,
+        "name": "BONUS06.PSS",
+        "size": 249954308,
+        "offset": 279599
+      },
+      {
+        "index": 911,
+        "name": "SEMO10.PSS",
+        "size": 185794564,
+        "offset": 305135
+      },
+      {
+        "index": 910,
+        "name": "SEMO10.PSW",
+        "size": 185581572,
+        "offset": 214518
+      },
+      {
+        "index": 1076,
+        "name": "SEMO08.PSW",
+        "size": 175390724,
+        "offset": 682595
+      },
+      {
+        "index": 1078,
+        "name": "SEMO08.PSS",
+        "size": 175308804,
+        "offset": 770485
+      },
+      {
+        "index": 5,
+        "name": "BONUS12.PSS",
+        "size": 173146116,
+        "offset": 453497
+      },
+      {
+        "index": 6,
+        "name": "BONUS14.PSS",
+        "size": 166592516,
+        "offset": 538042
+      },
+      {
+        "index": 1238,
+        "name": "SEMO06.PSS",
+        "size": 132644868,
+        "offset": 1229593
+      },
+      {
+        "index": 1237,
+        "name": "SEMO06.PSW",
+        "size": 132513796,
+        "offset": 1164888
+      },
+      {
+        "index": 1204,
+        "name": "SEMO07.PSS",
+        "size": 130596868,
+        "offset": 1034382
+      },
+      {
+        "index": 1203,
+        "name": "SEMO07.PSW",
+        "size": 129679364,
+        "offset": 971061
+      }
+    ],
+    "lba": 1527,
+    "iso_size": 40068
+  },
+  "part1_pak": {
+    "claimed_iso_size": 4257794048,
+    "sample_bytes": 8388608,
+    "head_hex": "78030000080000005741445f525f5065726d0000000000000000000000000000ffffffffffffffff0000000000000000280000000000000047726f7570537461727400000000000000000000000000001e000000380000005741445f525f5065726d00000000000000000000000000001b0000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0000000000000000280000000000000047726f7570537461727400000000000000000000000000001e00000030000000474658585f525f5065726d000000000000000000000000000c000080000000000004000000040000",
+    "ascii_0_32": "x\u0003",
+    "contains_WAD_marker": true,
+    "le32_0": 888,
+    "le32_4": 8,
+    "sig_counts_in_sample": {
+      "STBLz": 0,
+      "STBL0": 0,
+      "DA_FA": 115,
+      "FA_DA": 136,
+      "IGB": 0,
+      "PNG": 0,
+      "MPEG_PS_pack": 290,
+      "VAG": 1,
+      "RIFF": 0
+    },
+    "toc_offset_landings_in_sample": [
+      {
+        "toc_index": 0,
+        "name": "R_PERM.WAD",
+        "pak_offset": 0,
+        "size": 3638576,
+        "head_hex": "78030000080000005741445f525f5065",
+        "ascii": "x.......WAD_R_Perm......"
+      },
+      {
+        "toc_index": 1,
+        "name": "BONUS03.PSS",
+        "pak_offset": 1777,
+        "size": 566018052,
+        "head_hex": "000100300000004d444c585f525f5065",
+        "ascii": "...0...MDLX_R_Perm......"
+      },
+      {
+        "toc_index": 2,
+        "name": "TIT1E1_2.VPK",
+        "pak_offset": 278154,
+        "size": 2959360,
+        "head_hex": "dff0df1fee0dee10eec01302b3023bef",
+        "ascii": "..............;....../.."
+      },
+      {
+        "toc_index": 3,
+        "name": "BONUS06.PSS",
+        "pak_offset": 279599,
+        "size": 249954308,
+        "head_hex": "10f1f1022013022ed0325c00d05f4b0f",
+        "ascii": ".... ....2\\.._K....|=..."
+      },
+      {
+        "toc_index": 4,
+        "name": "BONUS10.PSS",
+        "pak_offset": 401648,
+        "size": 106184708,
+        "head_hex": "93f11add1200113b1211e020f0f541d0",
+        "ascii": ".......;... ..A...;....."
+      },
+      {
+        "toc_index": 5,
+        "name": "BONUS12.PSS",
+        "pak_offset": 453497,
+        "size": 173146116,
+        "head_hex": "3006d00115d213121e32f0250200feec",
+        "ascii": "0........2.%............"
+      },
+      {
+        "toc_index": 6,
+        "name": "BONUS14.PSS",
+        "pak_offset": 538042,
+        "size": 166592516,
+        "head_hex": "fdff3fb2ffe2fffd0ffe0900deedefee",
+        "ascii": "..?....................."
+      },
+      {
+        "toc_index": 7,
+        "name": "BONUS16.PSS",
+        "pak_offset": 619387,
+        "size": 58638340,
+        "head_hex": "2d2e1d40f2f233416f030023310ecdee",
+        "ascii": "-..@..3Ao..#1...\\\\ 0...."
+      },
+      {
+        "toc_index": 8,
+        "name": "BONUS17.PSS",
+        "pak_offset": 648020,
+        "size": 104464388,
+        "head_hex": "100051ed11031f2ec43ee21f2fe32ffe",
+        "ascii": "..Q......>.././.....\"..-"
+      },
+      {
+        "toc_index": 9,
+        "name": "BONUS18.PSS",
+        "pak_offset": 699029,
+        "size": 41811972,
+        "head_hex": "001fefc2d3cf0beff30e00dea6415d25",
+        "ascii": ".............A]%.... 2.4"
+      },
+      {
+        "toc_index": 10,
+        "name": "BONUS24.PSS",
+        "pak_offset": 719446,
+        "size": 18825220,
+        "head_hex": "e2e35ee0e4f54ee2103d3e0d102e0102",
+        "ascii": "..^...N..=>............."
+      },
+      {
+        "toc_index": 11,
+        "name": "BONUS25.PSS",
+        "pak_offset": 728639,
+        "size": 68288516,
+        "head_hex": "101c94d3d51002f1d201c1233be021ef",
+        "ascii": "...........#;.!........+"
+      },
+      {
+        "toc_index": 12,
+        "name": "CREDITS1.VPK",
+        "pak_offset": 761984,
+        "size": 5285888,
+        "head_hex": "2fe006f2110020ef3ff1ef132f5fe100",
+        "ascii": "/..... .?.../_.....N../."
+      },
+      {
+        "toc_index": 13,
+        "name": "R_SHELL.WAD",
+        "pak_offset": 764565,
+        "size": 3599632,
+        "head_hex": "003f424f34f3234532bf1f214e21d100",
+        "ascii": ".?BO4.#E2..!N!....CQ.0.."
+      },
+      {
+        "toc_index": 14,
+        "name": "R_SAVEPT.WAD",
+        "pak_offset": 766323,
+        "size": 475488,
+        "head_hex": "ef100042010fffd1031f2ee3dd33012f",
+        "ascii": "...B.........3./........"
+      },
+      {
+        "toc_index": 15,
+        "name": "TIT1E1_2.VPK",
+        "pak_offset": 766556,
+        "size": 2959360,
+        "head_hex": "1fd0e22220f04d1f1000c00620eff030",
+        "ascii": "...\" .M..... ..0.....#N."
+      },
+      {
+        "toc_index": 16,
+        "name": "TIT1Q1_2.VPK",
+        "pak_offset": 768001,
+        "size": 313344,
+        "head_hex": "b3ce5111002edd342139edc412c3c032",
+        "ascii": "..Q....4!9.....2..S....."
+      },
+      {
+        "toc_index": 17,
+        "name": "OLY1E2_2.VPK",
+        "pak_offset": 768154,
+        "size": 4073472,
+        "head_hex": "10d223243bf0ef0013ff1000202fff3e",
+        "ascii": "..#$;....... /.>....!../"
+      },
+      {
+        "toc_index": 18,
+        "name": "EXTHOLLP.VPK",
+        "pak_offset": 770143,
+        "size": 4360192,
+        "head_hex": "23d32f12d01100ed10f23221121002ef",
+        "ascii": "#./.......2!........... "
+      },
+      {
+        "toc_index": 19,
+        "name": "R_HERO0.WAD",
+        "pak_offset": 772272,
+        "size": 1966896,
+        "head_hex": "01e21f3010001ef11f10301e0edf2420",
+        "ascii": "...0......0...$ ...0..3."
+      },
+      {
+        "toc_index": 20,
+        "name": "R_HERO1.WAD",
+        "pak_offset": 773233,
+        "size": 1793808,
+        "head_hex": "0df1b10000cee0011b1c1f116406c1dd",
+        "ascii": "............d....Lt....."
+      },
+      {
+        "toc_index": 21,
+        "name": "R_HERO2.WAD",
+        "pak_offset": 774109,
+        "size": 1886800,
+        "head_hex": "0901d6e32f0d1b10001f0392e003ef30",
+        "ascii": "..../..........0........"
+      },
+      {
+        "toc_index": 22,
+        "name": "R_HERO3.WAD",
+        "pak_offset": 775031,
+        "size": 1902528,
+        "head_hex": "01fd45d2ff0011c3f2d2f1400f1300fe",
+        "ascii": "..E........@....B.,\"...."
+      },
+      {
+        "toc_index": 23,
+        "name": "R_HERO4.WAD",
+        "pak_offset": 775960,
+        "size": 1863392,
+        "head_hex": "7b818f708777a867f778f87801009775",
+        "ascii": "{..p.w.g.x.x...uxxx...|."
+      }
+    ],
+    "landings_count": 24,
+    "lba": 1547,
+    "iso_size": 4257794048
+  },
+  "iop_modules": [
+    {
+      "name": "SIO2MAN.IRX",
+      "lba": 1352,
+      "size": 6641
+    },
+    {
+      "name": "DBCMAN.IRX",
+      "lba": 1356,
+      "size": 15653
+    },
+    {
+      "name": "SIO2D.IRX",
+      "lba": 1364,
+      "size": 11289
+    },
+    {
+      "name": "MC2_S1.IRX",
+      "lba": 1370,
+      "size": 20165
+    },
+    {
+      "name": "DS1O_S1.IRX",
+      "lba": 1380,
+      "size": 9437
+    },
+    {
+      "name": "MC2_D.IRX",
+      "lba": 1385,
+      "size": 20221
+    },
+    {
+      "name": "DS2U_D.IRX",
+      "lba": 1395,
+      "size": 11725
+    },
+    {
+      "name": "LIBSD.IRX",
+      "lba": 1401,
+      "size": 28573
+    },
+    {
+      "name": "989NOMID.IRX",
+      "lba": 1415,
+      "size": 178884
+    },
+    {
+      "name": "SMPD_IOP.IRX",
+      "lba": 1503,
+      "size": 47948
+    }
+  ],
+  "ioprp": {
+    "name": "IOPRP300.IMG",
+    "lba": 1216,
+    "size": 278305
+  },
+  "signature_census_sampled": {
+    "bytes_scanned": 46177412,
+    "counts": {
+      "ASSETS.GFC": 0,
+      "ASSETS.GOB": 0,
+      "STBLz": 0,
+      "STBL0": 0,
+      "Intrinsic Alchemy": 0,
+      "igFileIO": 0,
+      "GODOFWAR.TOC": 1,
+      "PART1.PAK": 1
+    }
+  },
+  "verdict": {
+    "alchemy_engine": false,
+    "packaging": "Santa Monica PART1.PAK + GODOFWAR.TOC (not GFC/GOB/IGB)",
+    "elf_ig_classes": 0,
+    "gfc_gob_on_disc": false,
+    "igFileIO_on_disc_or_elf": false,
+    "notes": [
+      "ISO root is flat: boot ELF, IOPRP300, IRXs, GODOFWAR.TOC, PART1.PAK (~4.0 GiB).",
+      "No MODULES/ directory; IRX sit beside boot image.",
+      "No ASSETS.GFC / ASSETS.GOB / STBL framing \u2014 Alchemy stack absent.",
+      "DA FA hits in naive scans are not IGB cookies without GFC chain context."
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "game": "God of War USA",
+  "id": "695b874b308a4e5353767bb6df8ba697",
+  "tools": [
+    "python mmap signature scan (binwalk CLI not installed)"
+  ],
+  "iso_size": 8522792960,
+  "toc": [
+    {
+      "name": "SYSTEM.CNF",
+      "lba": 281,
+      "size": 57,
+      "flags": 0
+    },
+    {
+      "name": "SCUS_973.99",
+      "lba": 282,
+      "size": 1911580,
+      "flags": 0
+    },
+    {
+      "name": "IOPRP300.IMG",
+      "lba": 1216,
+      "size": 278305,
+      "flags": 0
+    },
+    {
+      "name": "SIO2MAN.IRX",
+      "lba": 1352,
+      "size": 6641,
+      "flags": 0
+    },
+    {
+      "name": "DBCMAN.IRX",
+      "lba": 1356,
+      "size": 15653,
+      "flags": 0
+    },
+    {
+      "name": "SIO2D.IRX",
+      "lba": 1364,
+      "size": 11289,
+      "flags": 0
+    },
+    {
+      "name": "MC2_S1.IRX",
+      "lba": 1370,
+      "size": 20165,
+      "flags": 0
+    },
+    {
+      "name": "DS1O_S1.IRX",
+      "lba": 1380,
+      "size": 9437,
+      "flags": 0
+    },
+    {
+      "name": "MC2_D.IRX",
+      "lba": 1385,
+      "size": 20221,
+      "flags": 0
+    },
+    {
+      "name": "DS2U_D.IRX",
+      "lba": 1395,
+      "size": 11725,
+      "flags": 0
+    },
+    {
+      "name": "LIBSD.IRX",
+      "lba": 1401,
+      "size": 28573,
+      "flags": 0
+    },
+    {
+      "name": "989NOMID.IRX",
+      "lba": 1415,
+      "size": 178884,
+      "flags": 0
+    },
+    {
+      "name": "SMPD_IOP.IRX",
+      "lba": 1503,
+      "size": 47948,
+      "flags": 0
+    },
+    {
+      "name": "GODOFWAR.TOC",
+      "lba": 1527,
+      "size": 40068,
+      "flags": 0
+    },
+    {
+      "name": "PART1.PAK",
+      "lba": 1547,
+      "size": 4257794048,
+      "flags": 0
+    }
+  ],
+  "sig_counts": {
+    "ASSETS.GFC": 0,
+    "ASSETS.GOB": 0,
+    "STBLz": 0,
+    "STBL0": 0,
+    "DA_FA": 3308,
+    "IntrinsicAlchemy": 0,
+    "igFileIO": 0,
+    "igActor": 0,
+    "PART1.PAK": 1,
+    "GODOFWAR.TOC": 1
+  },
+  "elf": {
+    "path": "C:\\PS2Recomp\\games\\695b874b308a4e5353767bb6df8ba697\\disc\\boot.elf",
+    "size": 1911580,
+    "ig_class_count": 0,
+    "ig_sample": [],
+    "intrinsic_alchemy": false,
+    "igFileIO": false,
+    "STBLz": 0,
+    "DA_FA": 0
+  },
+  "notes": [
+    "GoW uses PART1.PAK + GODOFWAR.TOC packaging, not Alchemy GFC/GOB/IGB",
+    "No ASSETS.GFC/GOB on ISO9660 root; IRX modules at root not MODULES/"
+  ],
+  "sig_sample_offsets": {
+    "ASSETS.GFC": [],
+    "ASSETS.GOB": [],
+    "STBLz": [],
+    "STBL0": [],
+    "DA_FA": [
+      4027103,
+      4193947,
+      4228114,
+      4942002,
+      5117397,
+      5463389,
+      6871516,
+      7021062
+    ],
+    "IntrinsicAlchemy": [],
+    "igFileIO": [],
+    "igActor": [],
+    "PART1.PAK": [
+      535499
+    ],
+    "GODOFWAR.TOC": [
+      535437
+    ]
+  },
+  "bytes_scanned": 218103808,
+  "alchemy_present": false
+}
