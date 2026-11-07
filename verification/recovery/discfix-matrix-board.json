@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T07:40:00-05:00",
+  "updated": "2026-11-07T07:50:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -7,7 +7,7 @@
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
   "step": 9,
-  "phase": "apply_proposed",
+  "phase": "verified_apply",
   "prior_cycles": [
     {
       "step": 1,
@@ -51,35 +51,44 @@
       "id": "R5_pad_sound_observe",
       "verdict": "pass",
       "why": "Observe gate only: Hitman+NFS 400f smokes green; modules/pad/SPU2/WaitSema evidence gathered; no R5 apply; allow_discfix_apply remains false"
+    },
+    {
+      "step": 9,
+      "id": "R4D1_DiskReady_mode_fidelity",
+      "verdict": "pass",
+      "why": "DiskReady mode-aware HLE; Hitman 600f all phases pass; NFS 600f green + N 0xE DiskReady prove; ISO drive_ready=true; no Alchemy"
     }
   ],
   "discfix": {
-    "status": "apply_in_progress",
+    "status": "verified_apply",
     "applied": {
       "R3_readee": {
         "file": "runtime/src/iop/cdvdfsv.cpp",
+        "status": "verified_apply"
+      },
+      "R4D1_DiskReady": {
+        "files": [
+          "runtime/src/iop/cdvd.cpp",
+          "runtime/src/iop/cdvdfsv.cpp"
+        ],
         "status": "verified_apply"
       }
     },
     "proposed_change": {
       "id": "R4D1_DiskReady_mode_fidelity",
-      "summary": "Close SDK R4-D1: sceCdDiskReady HLE honors mode (0 block / 1 poll) and can return SCECdNotReady(6). EE FSV servers 0x8000059A/59C read mode from CallRpc send word; N-cmd 0x0E returns status; IOP cdvdman export 13 mirrors SDK. ISO HLE keeps drive_ready=true so Hitman/NFS behavior stays Complete(2) — no random NotReady, no tray model, no CNK Alchemy.",
+      "summary": "Close SDK R4-D1: sceCdDiskReady HLE honors mode (0 block / 1 poll) and can return SCECdNotReady(6). EE FSV servers 0x8000059A/59C read mode from CallRpc send word; N-cmd 0x0E returns status; IOP cdvdman export 13 mirrors SDK. ISO HLE keeps drive_ready=true so Hitman/NFS behavior stays Complete(2).",
       "files": [
         "runtime/src/iop/cdvd.cpp",
         "runtime/src/iop/cdvdfsv.cpp"
       ],
       "code_change": true,
       "details": [
-        "SDK EE Ref 2-23 / IOP 1-20: mode 0 blocks until rotation stable; mode 1 returns immediately; returns 0x02 SCECdComplete or 0x06 SCECdNotReady.",
-        "EE libcdvd (3.0.3 libcdvd.a): sceCdDiskReady stores mode then CallRpc 0x8000059C/59A with 4-byte send; N-cmd DiskReady uses method 0x0E with no mode word.",
-        "Product was always ret=2 and ignored args/mode — highest compliance flag after R1–R4 clear.",
-        "Narrow apply: read mode; branch NotReady when !drive_ready && mode==1; mode-0 waiters on IOP cdvdman; default drive_ready=true (mounted ISO).",
-        "Do NOT clear drive_ready on Stop yet (hang risk without Standby wake).",
-        "Do NOT touch CNK Alchemy (host_signal 16/54/55, soft-arm, FCE0, virt-LBA).",
-        "Do NOT reopen R5 pad/sound apply.",
-        "Evidence: 600f Hitman+NFS smokes PATH=runtime-deps; logs/discfix-sdk-*; matrix_phase_check.py; no Alchemy pulses."
+        "Applied and smoke-verified 2026-11-07.",
+        "Do NOT clear drive_ready on Stop without Standby/tray wake.",
+        "Do NOT touch CNK Alchemy.",
+        "R5 still gated."
       ],
-      "success_bar": "Both games hit frame limit ≥600f with prims moving, SIF wait 0, no real Alchemy, CDVD searches still live (Hitman); DiskReady code paths mode-aware; R1–R4 regression green."
+      "success_bar": "Both games ≥600f frame limit, prims moving, SIF 0, no Alchemy; DiskReady mode-aware."
     },
     "evidence": {
       "sdk_header": "E:/usr/local/sce/common/include/libcdvd.h SCECdComplete=0x02 SCECdNotReady=0x06",
@@ -87,10 +96,12 @@
       "sdk_lib_disasm": "E:/usr/local/sce/ee/lib/libcdvd.a sceCdDiskReady → CallRpc 0x8000059C mode send; N-cmd 0x0E",
       "r4_note": "verification/recovery/sdk-compliance-r4-cdsync.md (D1)",
       "compliance_report": "verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md",
+      "advance_report": "verification/recovery/discfix-sdk-advance-2026-11-07.md",
       "r1_r4": "joint-stable 1e04172",
-      "planned_logs": [
+      "logs": [
         "logs/discfix-sdk-hitman-600.err.log",
-        "logs/discfix-sdk-nfs-600.err.log"
+        "logs/discfix-sdk-nfs-600.err.log",
+        "logs/discfix-sdk-nfs-hletrace.err.log"
       ]
     },
     "files_touched": [
@@ -100,23 +111,24 @@
     "ack": {
       "R4_clear_with_evidence": "pass",
       "R5_pad_sound_observe": "pass",
-      "R4D1_DiskReady_mode_fidelity": "apply_proposed",
+      "R4D1_DiskReady_mode_fidelity": "pass",
       "cdvd_wake_code": false,
       "r5_apply": false,
-      "note": "God ordered disc-fix apply ban lifted for TARGET 1 DiskReady SDK fidelity. R5 still gated."
+      "note": "R4-D1 DiskReady verified_apply. Mode honored; ISO stays ready. R5 still gated. allow_discfix_apply=false."
     },
     "next_options": [
-      "Matrix scores R4D1 after 600f smokes",
-      "If pass: verified_apply + optional R5 clear_with_evidence",
-      "If fail: revert DiskReady to always-2 and re-propose"
+      "R5_pad_sound clear_with_evidence (observe-only close; still no HLE rewrite)",
+      "Narrow evidence-named SIF/pad/sound RPC fix proposal",
+      "Parent joint-stable commit ask (R3 + R4D1 code changes)",
+      "Optional: tray/spin NotReady model (not needed for Hitman/NFS ISO)"
     ]
   },
   "matrix": {
-    "status": "pending",
-    "current_phase": "boot",
-    "verdict": null,
-    "last_completed": "R5_pad_sound_observe",
-    "notes": "Cycle 9 APPLY proposal posted. allow_discfix_apply=true for R4D1 DiskReady mode fidelity only. Quarantine CNK Alchemy held.",
+    "status": "pass",
+    "current_phase": null,
+    "verdict": "pass",
+    "last_completed": "R4D1_DiskReady_mode_fidelity",
+    "notes": "Cycle 9 APPLY PASS. Hitman matrix_phase_check all phases pass (146363 prims/600f, 14 CDVD searches, SIF 0). NFS mechanical scorer fails first_disc_read on searches=0 (fileio path; same as R5) — manual pass: 49750 prims/600f, SIF 0, no Alchemy; --trace-iop-hle proves 60x N 0xE DiskReady. allow_discfix_apply=false.",
     "phases": [
       "boot",
       "menu",
@@ -124,16 +136,44 @@
       "streaming",
       "sustained_run"
     ],
-    "phase_results": {},
+    "phase_results": {
+      "hitman_bm": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/discfix-sdk-hitman-600.merged.log",
+        "frames": 600,
+        "prims": 146363,
+        "cdvd_searches_found": 14,
+        "sif_packets_waiting": 0,
+        "alchemy_real": false
+      },
+      "nfs_mw": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass_manual",
+        "streaming": "pass_manual",
+        "sustained_run": "pass_manual",
+        "log": "logs/discfix-sdk-nfs-600.merged.log",
+        "frames": 600,
+        "prims": 49750,
+        "cdvd_searches_found": 0,
+        "sif_packets_waiting": 0,
+        "alchemy_real": false,
+        "note": "Scorer first_disc_read needs SearchFile strings; NFS uses fileio. DiskReady path proved: logs/discfix-sdk-nfs-hletrace.err.log (60x N 0xE)."
+      }
+    },
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
       "R4_CdSync": "cleared_with_evidence",
-      "R4D1_DiskReady": "apply_proposed",
+      "R4D1_DiskReady": "verified_apply",
       "R5_pad_sound": "observe_pass_still_gated"
     },
-    "allow_discfix_apply": true
+    "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": [
     "R5_pad_sound"
@@ -144,8 +184,9 @@
     "R4_CdSync"
   ],
   "ranked_rewrites_applied": [
-    "R3_readee"
+    "R3_readee",
+    "R4D1_DiskReady"
   ],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "R4D1 apply in progress; commit deferred until matrix pass + parent call."
+  "commit_policy": "R3 + R4D1 verified; R5 observe pass only — apply still gated; commit deferred until parent/matrix call stable."
 }

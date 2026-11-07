@@ -20,8 +20,12 @@ bool alchemy_asset_pending();
 // Run deferred host_call work from the top-level EE loop (not from vblank).
 bool poll_deferred_work();
 void reset();
-// True after deferred UI-IGB FCE0 attempt (cdvdfsv may release intro hold).
+// True after BUTANIM vt+108 has run (obj+0xFF). cdvdfsv may then release the
+// INTROTXR hold on the shared Alchemy stream scratch. Soft-arm +45 alone is NOT
+// enough — releasing then lets intro clobber BD1000 before parse.
 bool ui_igb_parse_attempted();
+// Record the UI IGB object soft-armed by cdvdfsv (CNK/Alchemy virt-GFC path).
+void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim);
 
 // RPC 0x12114 handler. Returns true when the call is fully answered.
 bool handle(std::uint32_t method, std::uint32_t args, std::uint32_t size, std::uint32_t ret, std::uint32_t ret_size);
