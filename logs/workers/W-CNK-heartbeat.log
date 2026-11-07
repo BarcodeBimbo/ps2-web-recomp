@@ -1,0 +1,4 @@
+[2026-11-07 18:53:41] W-CNK start pid=28476 seed=read locks=none
+[2026-11-07 18:53:49] W-CNK locks acquired pid=7596 web+native-b49f
+[2026-11-07 18:54:03] W-CNK ghidra switch=cnk_boot.elf decompiling 5032e0/110100/51c100
+[2026-11-07 18:54:19] W-CNK hunting SW to +0x20; vt108 callers

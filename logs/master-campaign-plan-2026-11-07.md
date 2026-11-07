@@ -54,9 +54,10 @@
 
 - [x] 2026-11-07 — Init zero scissor/XYOFFSET documented; live scissor 512×448; TRACE `xy=0x720000007000` (`02-ghidra-zeroed-scissor-xyoffset.md`)
 - [x] 2026-11-07 — Capture showed draws at **x ≈ −1792** (full 16-bit OFX bug) (`01c-TRACE-draws-frame180.tsv`)
-- [x] 2026-11-07 — **Fix shipped:** GS XYOFFSET 11-bit OFX/OFY in `gs.hpp`, `raster.cpp`, `gpu/gpu.cpp`, `gs.cpp`
-- [x] 2026-11-07 — Native rebuilt: `build/native-a2116…/ps2run.exe` (cmake build success)
-- [x] 2026-11-07 — Post-fix `PS2_CAPTURE` frame 180: **2018/2770** draws intersect x **0..511** (`logs/hitman-capture-post-xyoffset-2026-11-07/draws.tsv`)
+- [x] 2026-11-07 — **Wrong turn (documented):** 11-bit OFX/OFY truncates GS `XYOFFSET` (confused with DISPFB.DBX); GS Users Manual p.136 = **16-bit 12.4**
+- [x] 2026-11-07 — **Corrected:** `xyoffset_component` → 16-bit `int16` (`gs.hpp`); Hitman `xy=0x720000007000` ⇒ OFX=1792px/OFY=1824px (`logs/hitman-xyoffset-16bit-revert-2026-11-07.md`)
+- [x] 2026-11-07 — Native rebuilt post-revert; capture sprite box now `0..512×0..448` (`logs/hitman-capture-xyoffset16-20261107/draws.tsv`)
+- [x] 2026-11-07 — Present still near-black (`frames-dir` lum≈0.07–0.11); `PS2_PRESENT_FRAME` → page 288 pure black after clear; compose still open
 - [x] 2026-11-07 — ATE off (`PS2_GS_NO_ATE`) did not raise PPM lum; not sole black-canvas cause (`06-ATE-off-experiment.md`)
 
 ### Layer 4 — Ghidra load hygiene (Raw Binary vs ELF)

@@ -21,10 +21,13 @@ enum Psm : std::uint32_t {
     PSMZ32 = 0x30, PSMZ24 = 0x31, PSMZ16 = 0x32, PSMZ16S = 0x3A,
 };
 
-// GS XYOFFSET OFX/OFY are 11-bit signed fields (1/16 px), not full 16-bit limbs.
+// GS XYOFFSET OFX/OFY are 16-bit 12.4 fixed-point (GS Users Manual). Do not
+// truncate to 11 bits (that matches DISPFB.DBX, not XYOFFSET) — Hitman live
+// xy=0x720000007000 must stay OFX=1792px / OFY=1824px so full-screen sprites
+// at 1792..2304 land in 0..512×0..448.
 inline int xyoffset_component(std::uint64_t reg, bool ofy) {
-    const std::uint32_t v = static_cast<std::uint32_t>(ofy ? (reg >> 32) : reg) & 0x7FFu;
-    return (v & 0x400u) ? static_cast<int>(v | ~0x7FFu) : static_cast<int>(v);
+    const std::uint32_t v = static_cast<std::uint32_t>(ofy ? (reg >> 32) : reg) & 0xFFFFu;
+    return static_cast<std::int16_t>(v);
 }
 
 struct Vertex {

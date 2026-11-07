@@ -1,0 +1,267 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] C:\PS2Recomp\games\60c82f4a111da300ac23bbec85272788\disc.iso: 25 files, 1807840 sectors, layer 1 at 0
+[createsema] id=0 init=1 max=1 attr=0x0 option=0x0 ra=0x0049A144 thr=1
+[createsema] id=1 init=1 max=1 attr=0x0 option=0x0 ra=0x0049A154 thr=1
+[createsema] id=2 init=0 max=255 attr=0x0 option=0x0 ra=0x00495EA8 thr=1
+[waitsema] id=2 count=0 waiters=0 ra=0x00495DE8 thr=2 create_ra=0x00495EA8 init=0 max=255 will_block
+[createsema] id=3 init=0 max=257 attr=0x4A849C option=0x0 ra=0x00490A68 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=4 init=0 max=257 attr=0x0 option=0x0 ra=0x00490A68 thr=1
+[createsema] id=5 init=0 max=257 attr=0x540000 option=0x0 ra=0x00490A68 thr=1
+[createsema] id=6 init=0 max=1 attr=0x1ED0E5C option=0x0 ra=0x004978F0 thr=1
+[createsema] id=6 init=0 max=1 attr=0x80000592 option=0xFFFFFFFF ra=0x00497B9C thr=1
+[createsema] id=6 init=1 max=1 attr=0x5B0000 option=0x0 ra=0x004A3BC0 thr=1
+[createsema] id=7 init=1 max=1 attr=0x5B0000 option=0x0 ra=0x004A3BCC thr=1
+[createsema] id=8 init=1 max=1 attr=0x5B0000 option=0x0 ra=0x004A3BD8 thr=1
+[createsema] id=9 init=0 max=1 attr=0x5B0000 option=0x0 ra=0x004A3BE8 thr=1
+[createsema] id=10 init=0 max=1 attr=0x5D53A8 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x1 ra=0x00497B9C thr=1
+[createsema] id=10 init=0 max=1 attr=0x497BD8 option=0x0 ra=0x00497B9C thr=1
+[sif] IOP reboot requested with "rom0:UDNL cdrom:\NFS\IOPRP280.IMG"
+[sif] FILEIO from cdrom:\NFS\IOPRP280.IMG reports 2800, asynchronous protocol
+[sif] LOADFILE from cdrom:\NFS\IOPRP280.IMG reports 2800
+[createsema] id=10 init=0 max=1 attr=0x540000 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=10 init=0 max=1 attr=0x80000592 option=0xFFFFFFFF ra=0x00497B9C thr=1
+[createsema] id=10 init=0 max=1 attr=0x5D53A8 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x1 ra=0x00497B9C thr=1
+[createsema] id=10 init=0 max=1 attr=0x497BD8 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=10 init=1 max=1 attr=0x0 option=0x0 ra=0x004981E0 thr=1
+[createsema] id=11 init=0 max=1 attr=0x205CDE40 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=11 init=1 max=1 attr=0x1 option=0x0 ra=0x00497CD0 thr=1
+[createsema] id=12 init=1 max=1 attr=0x1 option=0x0 ra=0x00497CDC thr=1
+[createsema] id=13 init=0 max=1 attr=0x80000001 option=0xFFFFFFFF ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x5B9C84 option=0x0 ra=0x004986C8 thr=1
+[createsema] id=14 init=0 max=1 attr=0x1 option=0x0 ra=0x00497B9C thr=1
+[fileio] open cdrom:\NFS\IRX281A.BUN -> 3
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x00498A20 thr=1
+[createsema] id=14 init=0 max=1 attr=0x5D0000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x00498A20 thr=1
+[createsema] id=14 init=0 max=1 attr=0x5D0000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x25C70 option=0x0 ra=0x00498C60 thr=1
+[createsema] id=14 init=0 max=1 attr=0x7FFFFFFF option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x00498888 thr=1
+[createsema] id=14 init=0 max=1 attr=0x10000001 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=13 init=0 max=1 attr=0x80000003 option=0xFFFFFFFF ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x205CDE40 option=0x0 ra=0x004978F0 thr=1
+[createsema] id=13 init=0 max=1 attr=0x80000006 option=0xFFFFFFFF ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x00497B9C thr=1
+[loadfile] buffer at 0x20000, 6641 bytes
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x205CDE40 option=0x0 ra=0x00497B9C thr=1
+[loadfile] buffer at 0x22B00, 43813 bytes
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x205CDE40 option=0x0 ra=0x00497B9C thr=1
+[loadfile] buffer at 0x37100, 95909 bytes
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=13 init=0 max=1 attr=0x205CDE40 option=0x0 ra=0x00497B9C thr=1
+[loadfile] buffer at 0x22B00, 7417 bytes
+[createsema] id=13 init=0 max=1 attr=0x500000 option=0x0 ra=0x00497B9C thr=1
+[createsema] id=17 init=0 max=1 attr=0x5A6B88 option=0x0 ra=0x00490224 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[waitsema] id=17 count=0 waiters=0 ra=0x00490308 thr=3 create_ra=0x00490224 init=0 max=1 will_block
+[createsema] id=23 init=0 max=1 attr=0x64 option=0x0 ra=0x00490224 thr=1
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[intc] TIM1 handlers fn=0x00490120
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00490120
+[intc] TIM1 handlers fn=0x00490120
+[waitsema] id=17 count=0 waiters=0 ra=0x00490308 thr=3 create_ra=0x00490224 init=0 max=1 will_block
+[intc] TIM1 handlers fn=0x00490120
+[loadfile] buffer at 0x37100, 28605 bytes
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)
+[loadfile] buffer at 0x28000, 9161 bytes
+[iop-tty] SDR driver version 4.0.1 (C) SCEI
+[iop-tty]  Exit rsd_main 
+[loadfile] buffer at 0x75B00, 81600 bytes
+[loadfile] buffer at 0x43B00, 34969 bytes
+[iop-tty] USB Driver (Version 1.1.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x0003A7EC)
+[intc] TIM1 handlers fn=0x00490120
+[loadfile] buffer at 0x7B500, 52349 bytes
+[iop-tty] LgDev_tb_rb_Driver Version 1.11.037 ( Wheel ), built on Jun 16 2005 at 16:02:04, thpri=42,43
+[iop-tty]   fixed memory allocations for 2 devices and 8 effects
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=17 count=0 waiters=0 ra=0x00490308 thr=3 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[waitsema] id=23 count=0 waiters=0 ra=0x00490308 thr=4 create_ra=0x00490224 init=0 max=1 will_block
+[vu0] cfc2 28
+[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[vu0] cfc2 28
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[createsema] id=29 init=0 max=3 attr=0x0 option=0x0 ra=0x0046A208 thr=1
+[createsema] id=30 init=0 max=1 attr=0x24B0 option=0x26B11 ra=0x004978F0 thr=1
+[waitsema] id=30 count=0 waiters=0 ra=0x00497950 thr=1 create_ra=0x004978F0 init=0 max=1 will_block
+[deletesema] id=30 init=0 max=1 create_ra=0x004978F0 ra=0x00497958
+[waitsema] id=29 count=0 waiters=0 ra=0x00469E00 thr=5 create_ra=0x0046A208 init=0 max=3 will_block
+[createsema] id=30 init=0 max=1 attr=0x0 option=0x0 ra=0x004978F0 thr=1
+[waitsema] id=30 count=0 waiters=0 ra=0x00497950 thr=1 create_ra=0x004978F0 init=0 max=1 will_block
+[deletesema] id=30 init=0 max=1 create_ra=0x004978F0 ra=0x00497958
+[createsema] id=30 init=0 max=1 attr=0x5690 option=0x238F9 ra=0x00497B9C thr=1
+[waitsema] id=30 count=0 waiters=0 ra=0x00497C00 thr=1 create_ra=0x00497B9C init=0 max=1 will_block
+[waitsema] id=29 count=1 waiters=0 ra=0x00469E00 thr=5 create_ra=0x0046A208 init=0 max=3 will_pass
+[waitsema] id=29 count=0 waiters=0 ra=0x00469E00 thr=5 create_ra=0x0046A208 init=0 max=3 will_block
+[deletesema] id=30 init=0 max=1 create_ra=0x00497B9C ra=0x00497C08
+[createsema] id=30 init=0 max=1 attr=0x0 option=0x0 ra=0x00497B9C thr=1
+[waitsema] id=30 count=0 waiters=0 ra=0x00497C00 thr=1 create_ra=0x00497B9C init=0 max=1 will_block
+[deletesema] id=30 init=0 max=1 create_ra=0x00497B9C ra=0x00497C08
+[createsema] id=30 init=0 max=253 attr=0x0 option=0x0 ra=0x0046B748 thr=1
+[waitsema] id=30 count=0 waiters=0 ra=0x0046BD30 thr=6 create_ra=0x0046B748 init=0 max=253 will_block
+[createsema] id=32 init=0 max=1 attr=0x0 option=0x0 ra=0x00490224 thr=1
+[waitsema] id=32 count=0 waiters=0 ra=0x00490308 thr=7 create_ra=0x00490224 init=0 max=1 will_block
+[dma] gif tag id 2 qwc 0 addr 0x01D7B2A0 data 0x0054B5B0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B2B0
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B390 data 0x01D7B330
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B3A0
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B480 data 0x01D7B420
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B490
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01D7B570 data 0x01D7B510
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B580
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01D7B600
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690
+[dma] gif tag id 2 qwc 0 addr 0x01C4FA30 data 0x0054B550
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FA40
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FB20 data 0x01C4FAC0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FB30
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FC10 data 0x01C4FBB0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FC20
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x01C4FD00 data 0x01C4FCA0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FD10
+[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870
+[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01C4FD90
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[timer] TIM0 compare IRQ count=6640 comp=6640 mode=0x580
+[fileio] open rom0:ROMVER -> 3
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 100 wait 0/0 pc 0x00208399 ra 0x0020DA38
+[thread]   stack:
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00495528 ra 0x00495DE8
+[thread]   stack:
+[thread] 3 status 4 prio 99 wait 2/17 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00
+[thread] 4 status 4 prio 99 wait 2/23 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00
+[thread] 5 status 4 prio 6 wait 2/29 pc 0x00495528 ra 0x00469E00
+[thread]   stack:
+[thread] 6 status 4 prio 5 wait 2/30 pc 0x00495528 ra 0x0046BD30
+[thread]   stack: 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8
+[thread] 7 status 4 prio 99 wait 2/32 pc 0x00495528 ra 0x00490308
+[thread]   stack: 0048CEB4 0049034C 0048CE00
+[sema] 2 count 0 waiters 1 create_ra=0x00495EA8 init=0 max=255
+[sema] 17 count 0 waiters 1 create_ra=0x00490224 init=0 max=1
+[sema] 23 count 0 waiters 1 create_ra=0x00490224 init=0 max=1
+[sema] 29 count 0 waiters 1 create_ra=0x0046A208 init=0 max=3
+[sema] 30 count 0 waiters 1 create_ra=0x0046B748 init=0 max=253
+[sema] 32 count 0 waiters 1 create_ra=0x00490224 init=0 max=1
+[cnk] skip@0x702BA0=4008636142 sema45_id@0x705C18=4008636142 sema47_id@0x705C10=4008636142 csr=0x551B4008 imr=0x7F00 intc_pend=0x4 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1
+[cnk] gate 705BF0=4008636142 705C00=17216961135462248174 6542A0=17216961135462248174 6542D8=4008636142 705BE0=EEEEEEEE 705C20=4008636142 654290=4008636142 705DF8=4008636142 705F10=EEEEEEEE
+[cnk] T0 mode=0x580 comp=8801 count=41675 pending=0x4 mask=0xC24
+[cnk] TIM0 handler (none registered)
+[cnk] asset STBL@762390=EEEEEEEE fonts_crc@7B3638=EEEEEEEE siid@155F940=EEEEEEEE/EEEEEEEE gob+912=00000000 walk flag=238 first=4008636142 cur=4008636142 want=4008636142 cap=4008636142 ptr=0xEEEEEEEE mag5=0x00
+[cnk] loadgate 6F2540=EEEEEEEE 6F35E0=EEEEEEEE 6F2538=EEEEEEEE 6F5AB8=EEEEEEEE 635138=EEEEEEEE
+[iop] module 1 sio2man at 0x00021A00
+[iop] module 2 padman at 0x0002D700
+[iop] module 3 mcman at 0x0004E800
+[iop] module 4 mcserv at 0x00024800
+[iop] module 5 Sound_Device_Library at 0x0003E100
+[iop] module 6 sdr_driver at 0x0002A400
+[iop] module 7 SND_Library_EE_Driver at 0x00089A00
+[iop] module 8 USB_driver at 0x00037100
+[iop] module 9 LgDev_tb_rb_Driver at 0x00043B00
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x00021DC4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/224852 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/225076 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/163584 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 24 wait 8/178624 pc 0x00001020
+[iop] thread 12 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 13 status 4 prio 15 wait 1/0 pc 0x00093554
+[iop] thread 14 status 4 prio 9 wait 1/0 pc 0x00093460
+[iop] thread 15 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 16 status 4 prio 30 wait 4/5 pc 0x0003BB04
+[iop] thread 17 status 4 prio 36 wait 4/6 pc 0x0003BB64
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 42 wait 8/1891976 pc 0x00001020
+[iop] thread 20 status 4 prio 43 wait 3/14 pc 0x00048374
+[iop] thread 21 status 2 prio 20 wait 0/17 pc 0x0002D794
+[iop] thread 22 status 4 prio 46 wait 4/17 pc 0x0002D794
+[iop] thread 23 status 4 prio 46 wait 4/18 pc 0x0002D794
+[iop] thread 24 status 16 prio 46 wait 0/18 pc 0x00030168
+[iop] thread 25 status 16 prio 46 wait 0/18 pc 0x000302A4
+[iop] thread 26 status 16 prio 46 wait 0/18 pc 0x000303DC
+[iop] thread 27 status 16 prio 46 wait 0/18 pc 0x0003057C
+[iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 29 status 4 prio 46 wait 4/19 pc 0x0002D794
+[iop] thread 30 status 4 prio 46 wait 4/19 pc 0x0002D794
+[iop] thread 31 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 32 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 33 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 763 submits, dispatches: upload 1633 copy_read 0 copy_write 0 load_clut 739 display 0 raster 874 resolve 0 snapshot 0 decode 27
+[gs] 12895 primitives drawn, register writes: 00:2401 01:371 03:17192 04:8120 05:17670 06:775 08:882 09:107 0A:107 14:775 18:1135 19:978 1A:107 22:107 34:775 36:775 3B:107 3D:107 3F:1778 40:1192 41:978 42:1039 43:107 45:132 46:107 47:1563 48:978 49:107 4A:1085 4B:1085 4C:978 4D:978 4E:1135 4F:978 50:1714 51:1714 52:1714 53:1714 7F:535
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=108 ch2=107 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 1550 reglist 0 image 0
+[gif] path 2 tags: packed 6021 reglist 0 image 1286
+[gif] path 3 tags: packed 428 reglist 0 image 428
+[vif0]
+[vif1] 00:128438 01:323 02:108 03:108 04:1 05:109 06:1071 07:214 10:2445 13:642 14:1657 20:216 30:107 4A:864 50:7307 6C:3094
+[ee] stopped after 300 frames, 1489323419 cycles: frame limit reached

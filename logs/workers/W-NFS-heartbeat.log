@@ -1,1 +1,8 @@
 2026-11-07 18:45:57 W-NFS start pid=21348 seed load nfs=60c82f4a111da300ac23bbec85272788
+2026-11-07 18:46:36 W-NFS lock acquired native-60c82f4a pid=28796 starting smoke
+2026-11-07 18:46:48 W-NFS smoke started pid=24320 frames=300 log=C:\PS2Recomp\logs\autonomous-pipeline\60c82f4a111da300ac23bbec85272788-smoke-W-NFS-20261107T184648Z.log
+2026-11-07 18:47:06 W-NFS smoke done 300f prims=12895 frame_limit; diagnosing hitch/VU
+2026-11-07 18:47:42 W-NFS writing fresh report; smoke verified 300f
+2026-11-07 18:48:12 W-NFS fresh report written; chrome60 still open; lock free; hitman lock untouched
+[2026-11-07 18:55:33] W-NFS-2 start: implement post-seek prefetch / concurrent fetches
+[2026-11-07 18:55:40] W-NFS-2 acquired web-60c82f4a lock pid=22752

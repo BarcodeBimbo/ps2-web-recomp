@@ -3,16 +3,16 @@
   "updated": "2026-11-07",
   "invariants": [
     {
-      "id": "xyoffset_11bit",
-      "description": "GS XYOFFSET OFX/OFY use 11-bit signed offsets, not full 16-bit",
+      "id": "xyoffset_16bit_12_4",
+      "description": "GS XYOFFSET OFX/OFY are 16-bit 12.4 (bits 15:0 / 47:32 per GS Users Manual). Not 11-bit (that is DISPFB.DBX). Hitman xy=0x720000007000 => OFX=1792px OFY=1824px.",
       "files": [
         "runtime/src/gs/gs.hpp",
         "runtime/src/gs/raster.cpp",
-        "runtime/src/gpu/gpu.cpp",
+        "runtime/src/gs/gpu/gpu.cpp",
         "runtime/src/gs/gs.cpp"
       ],
       "games": ["a2116d2ac08a7be4db4e8455ad58d2e5"],
-      "evidence": "logs/hitman-capture-post-xyoffset-2026-11-07/draws.tsv"
+      "evidence": "logs/hitman-xyoffset-16bit-revert-2026-11-07.md; E:\\usr\\local\\sce\\Docs&Training\\HardwareManuals\\GS_Users_Manual.pdf p.136"
     },
     {
       "id": "dispfb2_psm0_fbw8",
