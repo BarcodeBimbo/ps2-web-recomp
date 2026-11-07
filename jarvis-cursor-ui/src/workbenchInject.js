@@ -40,6 +40,8 @@ const CURSOR_MODELS_REL = path.join("media", "inject", "cursor-models.json");
 const CURSOR_APPUSER_DB_KEY =
   "src.vs.platform.reactivestorage.browser.reactiveStorageServiceImpl.persistentStorage.applicationUser";
 const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
+/** Footer Location chip (#cortana-meta-host) — static HUD fiction, not geolocation/hostname. */
+const HUD_FOOTER_LOCATION = "Manhattan, New York";
 /** Cursor product.json checksums key for the patched workbench HTML. */
 const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.html";
 
@@ -813,7 +815,7 @@ async function collectHudOverviewFacts(context, catalog, fp) {
       num: models.length > 0 ? String(models.length) : "—",
       unit: models.length > 0 ? (models.length === 1 ? "model" : "models") : "",
     },
-    system: extVersion ? `CORTANA ${extVersion}` : "CORTANA",
+    system: extVersion ? `Cortana Workstation ${extVersion}` : "Cortana Workstation",
     extensionVersion: extVersion,
   };
 }
@@ -959,13 +961,6 @@ async function collectHudLiveFacts() {
   } catch {
     /* keep — */
   }
-  const host = (() => {
-    try {
-      return os.hostname() || "—";
-    } catch {
-      return "—";
-    }
-  })();
   const folders = vscode.workspace.workspaceFolders || [];
   const workspace = folders.length ? folders.map((f) => f.name).join(", ") : "No folder open";
   let ramPct = null;
@@ -983,7 +978,7 @@ async function collectHudLiveFacts() {
     cpuPct = null;
   }
   const diskPct = sampleDiskPct();
-  return { user, initials, host, workspace, ramPct, cpuPct, diskPct };
+  return { user, initials, workspace, ramPct, cpuPct, diskPct };
 }
 
 /**
@@ -1019,7 +1014,10 @@ async function readHudMarkup(context) {
     .replace(/id="cortana-hud-clock">[^<]*</, `id="cortana-hud-clock">${escapeHudText(clock)}<`)
     .replace(/id="cortana-op-av">[^<]*</, `id="cortana-op-av">${escapeHudText(live.initials)}<`)
     .replace(/id="cortana-op-name">[^<]*</, `id="cortana-op-name">${escapeHudText(live.user)}<`)
-    .replace(/id="cortana-meta-host">[^<]*</, `id="cortana-meta-host">${escapeHudText(live.host)}<`)
+    .replace(
+      /id="cortana-meta-host">[^<]*</,
+      `id="cortana-meta-host">${escapeHudText(HUD_FOOTER_LOCATION)}<`
+    )
     .replace(/id="cortana-meta-ws">[^<]*</, `id="cortana-meta-ws">${escapeHudText(live.workspace)}<`)
     .replace(
       /id="cortana-system-status-text">[^<]*</,
@@ -1103,6 +1101,10 @@ function buildHudLiveScript(overviewSeed) {
     "if(OV_SEED.agents)setOvNum('agents',OV_SEED.agents.num,OV_SEED.agents.unit);",
     "if(OV_SEED.llms)setOvNum('llms',OV_SEED.llms.num,OV_SEED.llms.unit);",
     "}",
+    "function pinLocation(){",
+    "var el=document.getElementById('cortana-meta-host');if(el)el.textContent=",
+    JSON.stringify(HUD_FOOTER_LOCATION),
+    ";}",
     "function net(){",
     "var el=document.getElementById('cortana-meta-net');if(!el)return;",
     "var on=typeof navigator!=='undefined'&&navigator.onLine;",
@@ -1125,6 +1127,7 @@ function buildHudLiveScript(overviewSeed) {
     "if(v&&ov){var t=String(v.textContent||'').trim();ov.textContent=t||'Standby';}",
     "}",
     "applyOverviewSeed();",
+    "pinLocation();",
     "net();",
     "syncVoiceOv();",
     "window.addEventListener('online',net);",
@@ -1279,7 +1282,7 @@ function buildHudVoiceScript() {
     "tryOpenChatDom();",
     "setTimeout(function(){",
     "if(tryVoiceDom()){toast('Voice channel — Cursor mic engaged');return;}",
-    "toast('Press Command Palette → CORTANA: Talk / Start Voice (cortana.voice.talk)');",
+    "toast('Press Command Palette → Cortana Workstation: Talk / Start Voice (cortana.voice.talk)');",
     "},400);",
     "}",
     "window.__cortanaStartVoice=startVoice;",
@@ -1303,21 +1306,42 @@ function buildHudVoiceScript() {
 
 
 /**
- * Hands-free wake word ("Hey Cortana") via SpeechRecognition.
+ * Hands-free wake word ("Hey Cortana" / "Hey Cortana Workstation") via SpeechRecognition.
  * Privacy: mic/recognition only while inject HUD is present and data-cortana-wake is on
  * (paused in Focus Mode / data-cortana-mute). No listening when injection is disabled.
- * Calls the same window.__cortanaStartVoice helper as the rail mic click.
+ * On match: pulse Talk capsule + same path as Talk/mic (cortana.voice.talk / __cortanaStartVoice).
  */
 function buildHudWakeScript() {
   const body = [
     "(function(){",
     "if(window.__cortanaWakeWired)return;window.__cortanaWakeWired=true;",
-    "var PHRASE=/\\bhey\\s+cortana\\b/i;",
-    "var lastFire=0,rec=null,armed=false,want=true;",
+    "var PHRASE=/\\bhey\\s+cortana(?:\\s+workstation)?\\b/i;",
+    "var lastFire=0,rec=null,armed=false,want=true,deniedToast=false;",
     "function hud(){return document.getElementById('cortana-cc-hud');}",
+    "function talkBtn(){return document.getElementById('cortana-talk-cta');}",
+    "function talkWrap(){var t=talkBtn();return t&&(t.closest?t.closest('.jcc-talk-wrap'):null)||document.querySelector('#cortana-cc-hud .jcc-talk-wrap');}",
     "function voiceBox(){var h=hud();return h?h.querySelector('.jcc-voice'):null;}",
+    "function hudPrimaryVisible(){",
+    "var h=hud();if(!h)return false;",
+    "var focus=document.getElementById('cortana-focus-toggle');",
+    "if(focus&&focus.checked)return false;",
+    "try{var st=window.getComputedStyle(h);",
+    "if(st.display==='none'||st.visibility==='hidden')return false;",
+    "if(parseFloat(st.opacity||'1')<0.04)return false;}catch(e){}",
+    "return true;",
+    "}",
     "function statusEl(){var h=hud();return h?(h.querySelector('#cortana-voice-status')||h.querySelector('.jcc-listen')):null;}",
     "function ovVoice(){var h=hud();return h?h.querySelector('[data-row=\"voice\"] .jcc-ov-v'):null;}",
+    "function softToast(msg){",
+    "try{",
+    "var t=document.createElement('div');",
+    "t.setAttribute('role','status');",
+    "t.style.cssText='position:fixed;bottom:88px;left:50%;transform:translateX(-50%);z-index:2147483646;padding:8px 14px;border-radius:8px;background:rgba(2,12,28,.92);border:1px solid rgba(0,212,255,.35);color:#e8f7ff;font:600 11px/1.3 Segoe UI,sans-serif;pointer-events:none;';",
+    "t.textContent=msg;",
+    "document.body.appendChild(t);",
+    "setTimeout(function(){try{t.remove();}catch(e){}},4200);",
+    "}catch(e){}",
+    "}",
     "function setStatus(text,mode){",
     "var s=statusEl(),box=voiceBox(),ov=ovVoice(),hint=document.getElementById('cortana-talk-hint');",
     "if(s)s.textContent=text;",
@@ -1330,37 +1354,46 @@ function buildHudWakeScript() {
     "else{ov.textContent='Standby';ov.removeAttribute('data-tone');}",
     "}",
     "if(hint){",
-    "if(mode==='is-listening')hint.textContent='Listening…';",
-    "else if(mode==='is-responding')hint.textContent='Responding…';",
+    "if(mode==='is-listening')hint.textContent='Say Hey Cortana\\u2026';",
+    "else if(mode==='is-responding')hint.textContent='Cortana Workstation responding\\u2026';",
     "else if(mode==='is-offline')hint.textContent='Voice offline';",
-    "else hint.textContent='Tap to speak';",
+    "else hint.textContent='Say Hey Cortana';",
     "}",
     "}",
     "function wakeAllowed(){",
-    "var h=hud();if(!h)return false;",
+    "var h=hud();if(!h||!hudPrimaryVisible())return false;",
     "var mute=(h.getAttribute('data-cortana-mute')||'').toLowerCase();",
     "if(mute==='1'||mute==='true'||mute==='on')return false;",
     "var wake=(h.getAttribute('data-cortana-wake')||'on').toLowerCase();",
     "if(wake==='off'||wake==='0'||wake==='false')return false;",
-    "var focus=document.getElementById('cortana-focus-toggle');",
-    "if(focus&&focus.checked)return false;",
     "return true;",
     "}",
+    "function activateTalkCapsule(){",
+    "var talk=talkBtn(),wrap=talkWrap(),h=hud();",
+    "if(talk){talk.classList.add('is-live');talk.setAttribute('data-voice-live','1');",
+    "try{talk.focus({preventScroll:true});}catch(e){try{talk.focus();}catch(e2){}}",
+    "}",
+    "if(h){h.classList.add('is-live');h.setAttribute('data-voice-live','1');}",
+    "if(typeof window.__cortanaVoiceLive==='function'){",
+    "try{window.__cortanaVoiceLive(true);}catch(e){}",
+    "}",
+    "}",
     "function invokeVoice(){",
-    "if(typeof window.__cortanaStartVoice==='function'){try{window.__cortanaStartVoice();return true;}catch(e){}}",
+    "if(typeof window.__cortanaStartVoice==='function'){",
+    "try{window.__cortanaStartVoice();return true;}catch(e){}",
+    "}",
+    "if(typeof window.__cortanaVoiceClick==='function'){",
+    "try{window.__cortanaVoiceClick({source:'wake'});return true;}catch(e){}",
+    "}",
     "try{window.dispatchEvent(new CustomEvent('cortana-voice',{detail:{source:'wake',action:'talk'}}));}catch(e){}",
+    "var talk=talkBtn();",
+    "if(talk){try{talk.click();return true;}catch(e){}}",
     "return false;",
     "}",
     "function onWake(){",
     "var now=Date.now();if(now-lastFire<4500)return;lastFire=now;",
-    "setStatus('Cortana responding\\u2026','is-responding');",
-    "if(typeof window.__cortanaVoiceLive==='function'){",
-    "try{window.__cortanaVoiceLive(true);}catch(e){}",
-    "}else{",
-    "var talk=document.getElementById('cortana-talk-cta'),h=hud();",
-    "if(talk){talk.classList.add('is-live');talk.setAttribute('data-voice-live','1');}",
-    "if(h){h.classList.add('is-live');h.setAttribute('data-voice-live','1');}",
-    "}",
+    "setStatus('Cortana Workstation responding\\u2026','is-responding');",
+    "activateTalkCapsule();",
     "if(typeof window.__cortanaEnsureTalkMic==='function'){",
     "try{window.__cortanaEnsureTalkMic({source:'wake',live:true});}catch(e){}",
     "}",
@@ -1369,7 +1402,9 @@ function buildHudWakeScript() {
     "}",
     "function matches(text){",
     "var t=String(text||'').toLowerCase().replace(/[^a-z0-9\\s]/g,' ').replace(/\\s+/g,' ').trim();",
-    "return PHRASE.test(t);",
+    "if(PHRASE.test(t))return true;",
+    "if(/\\bhey\\s+cortana\\b/.test(t))return true;",
+    "return false;",
     "}",
     "function stopRec(){",
     "armed=false;",
@@ -1377,17 +1412,26 @@ function buildHudWakeScript() {
     "}",
     "function bindRec(r){",
     "r.continuous=true;r.interimResults=true;r.lang='en-US';",
+    "r.maxAlternatives=3;",
     "r.onstart=function(){armed=true;if(wakeAllowed())setStatus('Listening\\u2026','is-listening');};",
     "r.onresult=function(ev){",
     "if(!wakeAllowed())return;",
     "for(var i=ev.resultIndex;i<ev.results.length;i++){",
-    "var tr=ev.results[i][0]&&ev.results[i][0].transcript;",
-    "if(matches(tr)){onWake();break;}",
+    "var alts=ev.results[i];",
+    "for(var a=0;a<(alts&&alts.length||0);a++){",
+    "var tr=alts[a]&&alts[a].transcript;",
+    "if(matches(tr)){onWake();return;}",
+    "}",
     "}",
     "};",
     "r.onerror=function(ev){",
     "var err=ev&&ev.error?String(ev.error):'error';",
     "if(err==='aborted'||err==='no-speech')return;",
+    "if(err==='not-allowed'||err==='service-not-allowed'){",
+    "setStatus('Offline','is-offline');armed=false;want=false;",
+    "if(!deniedToast){deniedToast=true;softToast('Cortana Workstation: mic permission needed for Hey Cortana');}",
+    "return;",
+    "}",
     "setStatus('Offline','is-offline');armed=false;",
     "};",
     "r.onend=function(){",
@@ -1398,7 +1442,11 @@ function buildHudWakeScript() {
     "function startRec(){",
     "if(!wakeAllowed()){setStatus('Standby','');return;}",
     "var SR=window.SpeechRecognition||window.webkitSpeechRecognition;",
-    "if(!SR){setStatus('Offline','is-offline');return;}",
+    "if(!SR){",
+    "setStatus('Offline','is-offline');",
+    "if(!deniedToast){deniedToast=true;softToast('Cortana Workstation: speech recognition unavailable');}",
+    "return;",
+    "}",
     "stopRec();",
     "rec=new SR();bindRec(rec);want=true;",
     "try{rec.start();}catch(e){setStatus('Offline','is-offline');}",
@@ -1421,7 +1469,10 @@ function buildHudWakeScript() {
     "try{window.dispatchEvent(new CustomEvent('cortana-mic-stream',{detail:{stream:stream,meta:{source:'wake-arm',live:false}}}));}catch(e){}",
     "}",
     "startRec();",
-    "}).catch(function(){setStatus('Offline','is-offline');});",
+    "}).catch(function(){",
+    "setStatus('Offline','is-offline');",
+    "if(!deniedToast){deniedToast=true;softToast('Cortana Workstation: allow microphone for Hey Cortana');}",
+    "});",
     "}else{startRec();}",
     "}",
     "function onFocusChange(){",

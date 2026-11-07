@@ -1,7 +1,7 @@
 {
   "name": "cortana-cursor-ui",
-  "displayName": "CORTANA Command Center UI",
-  "description": "Full CORTANA Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by cortana.institute + Cortana 3D PRO patterns — custom local reimplementation, all features unlocked.",
+  "displayName": "Cortana Workstation",
+  "description": "Full Cortana Workstation HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Hey Cortana wake word, Voice TTS hooks, and File Map. Inspired by cortana.institute + Cortana 3D PRO patterns — custom local reimplementation, all features unlocked.",
   "version": "0.5.4",
   "publisher": "ps2recomp-local",
   "engines": {
@@ -65,7 +65,7 @@
       "activitybar": [
         {
           "id": "cortanaCommand",
-          "title": "CORTANA",
+          "title": "Cortana Workstation",
           "icon": "media/cortana-activity.svg"
         }
       ]
@@ -89,92 +89,92 @@
     "commands": [
       {
         "command": "cortana.fileMap.refresh",
-        "title": "CORTANA: Refresh File Map",
+        "title": "Cortana Workstation: Refresh File Map",
         "icon": "$(refresh)"
       },
       {
         "command": "cortana.fileMap.focus",
-        "title": "CORTANA: Focus File Map"
+        "title": "Cortana Workstation: Focus File Map"
       },
       {
         "command": "cortana.commandCenter.focus",
-        "title": "CORTANA: Focus Command Center"
+        "title": "Cortana Workstation: Focus Command Center"
       },
       {
         "command": "cortana.theme.applyHints",
-        "title": "CORTANA: Apply Active Suit Theme"
+        "title": "Cortana Workstation: Apply Active Suit Theme"
       },
       {
         "command": "cortana.suit.pick",
-        "title": "CORTANA: Suit Mode…"
+        "title": "Cortana Workstation: Suit Mode…"
       },
       {
         "command": "cortana.voice.talk",
-        "title": "CORTANA: Talk / Start Voice"
+        "title": "Cortana Workstation: Talk / Start Voice"
       },
       {
         "command": "cortana.voice.talk",
-        "title": "CORTANA: Talk / Start Voice"
+        "title": "Cortana Workstation: Talk / Start Voice"
       },
       {
         "command": "cortana.voice.chat",
-        "title": "CORTANA: Open Chat"
+        "title": "Cortana Workstation: Open Chat"
       },
       {
         "command": "cortana.voice.wakeListen",
-        "title": "CORTANA: Wake Listen / Hey Cortana"
+        "title": "Cortana Workstation: Wake Listen / Hey Cortana"
       },
       {
         "command": "cortana.toggle.focusFortress",
-        "title": "CORTANA: Toggle Focus Fortress"
+        "title": "Cortana Workstation: Toggle Focus Fortress"
       },
       {
         "command": "cortana.toggle.cinema",
-        "title": "CORTANA: Toggle Session Cinema"
+        "title": "Cortana Workstation: Toggle Session Cinema"
       },
       {
         "command": "cortana.toggle.streamPack",
-        "title": "CORTANA: Toggle Stream Pack"
+        "title": "Cortana Workstation: Toggle Stream Pack"
       },
       {
         "command": "cortana.toggle.friday",
-        "title": "CORTANA: Toggle F.R.I.D.A.Y. Mode"
+        "title": "Cortana Workstation: Toggle F.R.I.D.A.Y. Mode"
       },
       {
         "command": "cortana.preset.save",
-        "title": "CORTANA: Save Workspace Preset"
+        "title": "Cortana Workstation: Save Workspace Preset"
       },
       {
         "command": "cortana.preset.apply",
-        "title": "CORTANA: Apply Workspace Preset"
+        "title": "Cortana Workstation: Apply Workspace Preset"
       },
       {
         "command": "cortana.hud.refresh",
-        "title": "CORTANA: Refresh HUD"
+        "title": "Cortana Workstation: Refresh HUD"
       },
       {
         "command": "cortana.injection.enable",
-        "title": "CORTANA: Enable Workbench Injection"
+        "title": "Cortana Workstation: Enable Workbench Injection"
       },
       {
         "command": "cortana.injection.enable",
-        "title": "CORTANA: Enable Workbench Injection"
+        "title": "Cortana Workstation: Enable Workbench Injection"
       },
       {
         "command": "cortana.injection.disable",
-        "title": "CORTANA: Disable Workbench Injection"
+        "title": "Cortana Workstation: Disable Workbench Injection"
       },
       {
         "command": "cortana.injection.reenableAfterUpdate",
-        "title": "CORTANA: Re-enable Injection After Update"
+        "title": "Cortana Workstation: Re-enable Injection After Update"
       },
       {
         "command": "cortana.injection.healthCheck",
-        "title": "CORTANA: Injection Health Check"
+        "title": "Cortana Workstation: Injection Health Check"
       },
       {
         "command": "cortana.injection.status",
-        "title": "CORTANA: Injection Status"
+        "title": "Cortana Workstation: Injection Status"
       }
     ],
     "menus": {

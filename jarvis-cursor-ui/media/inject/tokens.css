@@ -25,6 +25,7 @@ body.CORTANA-inject {
   --cortana-bg-well: #061729;
   --cortana-bg-rail: #001020;
   --cortana-bg-main: #020c1a;
+  --cortana-nebula-ms: 22s;
 
   /* —— Cyan spectrum (CC sampled accents — muted, not neon bloom) —— */
   --cortana-cyan: #00d4ff;
