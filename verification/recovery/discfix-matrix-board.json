@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T21:35:00-05:00",
+  "updated": "2026-11-06T21:37:30-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -7,7 +7,7 @@
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
   "step": 1,
-  "phase": "awaiting_matrix",
+  "phase": "matrix_verdict",
   "discfix": {
     "status": "proposed",
     "proposed_change": {
@@ -68,23 +68,45 @@
     "files_touched": []
   },
   "matrix": {
-    "status": "pending",
-    "current_phase": null,
-    "verdict": null,
-    "notes": "Disc-fix posted R3_generic_complete_path with parallel Hitman+NFS HLE evidence. Waiting for matrix phases.",
-    "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"]
+    "status": "complete",
+    "current_phase": "sustained_run",
+    "verdict": "fail",
+    "notes": "FAIL gate for proposed R3_generic_complete_path. Prove-before-swap: R1_SIF_end and R2_WaitSema_fidelity are still locked, so R3 must not land yet. Proposal also bundles R4-style sceCdSync waiter wake with R3 — that is a second order skip. Evidence itself is real (both games draw; Hitman BOOTMENU + ~1.8k sceCdSync/Status polls; NFS stream writes; shared leftover WaitSema 2; no Alchemy pulses). Independent matrix smokes logs/matrix-hitman-600.log and logs/matrix-nfs-600.log: Hitman 600f/78k prims/19 searches; NFS 600f/50k prims/67 streams; both frame-limit; SIF drains to 0; leftover semas match. Sony gaps still unproven in logs (no curReadPos/readee write lines). Huge garbage N-cmd counts seen (Hitman and NFS). Do NOT apply cdvdfsv/cdvd patch. Next: post R1 SIF-end proposal (or clear R1 with evidence) before any R3/R4 rewrite. No commit.",
+    "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
+    "phase_results": {
+      "hitman_bm": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/matrix-hitman-600.log",
+        "frames": 600,
+        "prims": 78118,
+        "notes": "BOOTMENU/ERRORMES searches; CDVD N+stream; sceCdSync heavy; leftover sema 2/7/13; no Alchemy host_signal"
+      },
+      "nfs_mw": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/matrix-nfs-600.log",
+        "frames": 600,
+        "prims": 49750,
+        "notes": "CDVD N+stream active; leftover sema 2/17/23/29/30/32; one huge garbage N count; no Alchemy"
+      }
+    },
+    "ranked_rewrite_decision": {
+      "R1_SIF_end": "still_gated",
+      "R2_WaitSema_fidelity": "still_gated",
+      "R3_readee": "blocked_prove_before_swap",
+      "R4_CdSync": "blocked_bundled_with_R3",
+      "R5_pad_sound": "still_gated"
+    },
+    "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.",
-  "commit_policy": "No commits until stable build; then commit freely.",
-  "bios_reference": {
-    "report": "verification/recovery/bios-reference-live-report.md",
-    "source": "2fa08b23-fc60-42ef-8713-1b2571f32b91",
-    "facts_for_R3": [
-      "CDVDFSV byte-identical on SCPH-70012 and SCPH-77001 — one generic complete contract",
-      "Every EE read: payload→dst, preserve readee at eeaddr1, nbytes→curReadPos at eeaddr2, then sif::complete_call(0x80000595)",
-      "Wake IOP sceCdSync / DiskReady / Status in cdvd.cpp; no CNK host_signal bleed"
-    ],
-    "rebuild_note": "Hitman/NFS ninja rebuilds failed (~65s) with clang exit -1 mid-compile — likely parallel build thrash; retry cmake --build -j2 one game at a time after matrix pass"
-  }
+  "commit_policy": "No commits until stable build; then commit freely."
 }
