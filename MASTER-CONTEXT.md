@@ -239,6 +239,7 @@ Classic seven tracks (plus extras that spun up):
 2. Never blind-wake WaitSema **2**.  
 3. Prove-before-swap via matrix board before R1–R5 behavioral patches.  
 4. BIOS = reference only.  
+4b. **PS2 SDK 3.0.3 research path:** prefer **`E:\PS2_SDK`**. Fallback if incomplete/missing: **`E:\AI games\PS2_SDK`** (AI Browser Games folder). Use whichever has the complete 3.0.3 tree. Do **not** use `C:\usr\local\sce` for new research.  
 5. Chrome + Edge only for product browser work.  
 6. **No commits** until a stable build — then commit freely (user may pre-approve stable disc-fix commits).  
 7. Simple-language status when reporting to the user.  
