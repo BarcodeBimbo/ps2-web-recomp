@@ -1,0 +1,1090 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] games\a2116d2ac08a7be4db4e8455ad58d2e5\disc.iso: 310 files, 1540176 sectors, layer 1 at 0
+[createsema] id=0 init=1 max=1 attr=0x0 option=0x57F1D0 ra=0x001080BC thr=1
+[createsema] id=1 init=1 max=1 attr=0x0 option=0x57F1E0 ra=0x001080CC thr=1
+[createsema] id=2 init=0 max=255 attr=0x0 option=0x57EC38 ra=0x001038CC thr=1
+[waitsema] id=2 count=0 waiters=0 ra=0x001037F8 thr=2 create_ra=0x001038CC init=0 max=255 will_block
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOP\IOPRP310.IMG;1"
+[sif] FILEIO from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100
+[createsema] id=3 init=0 max=1 attr=0x530000 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=3 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=3 init=0 max=1 attr=0x205BD700 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=3 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=3 init=0 max=1 attr=0x80000592 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=3 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=3 init=1 max=1 attr=0x550000 option=0x5BAD08 ra=0x0041B108 thr=1
+[createsema] id=4 init=1 max=1 attr=0x550000 option=0x5BAD18 ra=0x0041B120 thr=1
+[createsema] id=5 init=1 max=1 attr=0x550000 option=0x5BAD28 ra=0x0041B138 thr=1
+[createsema] id=6 init=0 max=1 attr=0x550000 option=0x5BAD38 ra=0x0041B154 thr=1
+[createsema] id=7 init=0 max=1 attr=0x5D8A28 option=0x57EEB8 ra=0x00105B74 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105BD4 thr=1 create_ra=0x00105B74 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=7 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=7 init=0 max=1 attr=0x105BAC option=0x57EEC8 ra=0x00105E30 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[vu0] cfc2 28
+[createsema] id=7 init=0 max=1 attr=0x4A0000 option=0x0 ra=0x001008FC thr=1
+[createsema] id=8 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x001008A0 thr=3 create_ra=0x001008FC init=0 max=1 will_block
+[deletesema] id=8 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=8 init=0 max=1 attr=0x80000006 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\SIO2MAN.IRX
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\PADMAN.IRX
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\MCMAN.IRX
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\MCSERV.IRX
+[deletesema] id=8 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=8 init=1 max=1 attr=0x1207DC option=0x5BC028 ra=0x00427C38 thr=1
+[createsema] id=9 init=0 max=1 attr=0x1207DC option=0x5BC038 ra=0x00427C64 thr=1
+[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=10 init=0 max=1 attr=0x5C4870 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x3CF5C28F option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x5D8A90 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=10 init=0 max=1 attr=0x80000597 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x432E4D45 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x41B680 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x270 option=0x57EC50 ra=0x00103A68 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[deletesema] id=10 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=10 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x53454D52 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x2BA91C option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=10 init=0 max=1 attr=0xA option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=10 init=0 max=1 attr=0xA option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=10 init=0 max=1 attr=0x635C50 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \MAIN.INI;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x494E492E option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \MAIN.INI;1 -> found
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x41B680 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x968BE option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=10 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[dma] gif tag id 7 qwc 31 addr 0x00000000 data 0x01FFF6C0
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 41 5A FF FF
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020398)
+[dma] gif tag id 7 qwc 11 addr 0x00000000 data 0x01FFF6B0
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\LIBSD.IRX
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0005AA78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0005AA7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0005AA98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0005AAA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0005AAD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0005AAD8)
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\SCRTCHPD.IRX
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\SYNTHCD.IRX
+[iop-io] write 0x1FFE0144 = 0x1F800800 (pc 0x0005F52C)
+[spu2] core 0 reg 0x1B0 = 0x0000
+[spu2] core 1 reg 0x1B0 = 0x0000
+[spu2] core 0 reg 0x19A = 0x0000
+[spu2] core 1 reg 0x19A = 0x0000
+[spu2] core 0 reg 0x19A = 0x8000
+[spu2] core 1 reg 0x19A = 0x8000
+[spu2] core 0 reg 0x1A4 = 0xFFFF
+[spu2] core 0 reg 0x1A6 = 0x00FF
+[spu2] core 1 reg 0x1A4 = 0xFFFF
+[spu2] core 1 reg 0x1A6 = 0x00FF
+[spu2] core 0 reg 0x180 = 0x0000
+[spu2] core 0 reg 0x182 = 0x0000
+[spu2] core 1 reg 0x180 = 0x0000
+[spu2] core 1 reg 0x182 = 0x0000
+[spu2] core 0 reg 0x184 = 0x0000
+[spu2] core 0 reg 0x186 = 0x0000
+[spu2] core 1 reg 0x184 = 0x0000
+[spu2] core 1 reg 0x186 = 0x0000
+[spu2] core 0 reg 0x2E0 = 0x000E
+[spu2] core 0 reg 0x2E2 = 0xFFF8
+[spu2] core 1 reg 0x2E0 = 0x000F
+[spu2] core 1 reg 0x2E2 = 0xFFF8
+[spu2] core 0 reg 0x19A = 0x8000
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x2800
+[spu2] core 0 reg 0x19A = 0x8010
+[spu2] core 0 reg 0x19A = 0x8000
+[spu2] core 1 reg 0x1A0 = 0xFFFF
+[spu2] core 0 reg 0x1A0 = 0xFFFF
+[spu2] core 1 reg 0x1A2 = 0x00FF
+[spu2] core 0 reg 0x1A2 = 0x00FF
+[spu2] core 1 reg 0x1A4 = 0xFFFF
+[spu2] core 0 reg 0x1A4 = 0xFFFF
+[spu2] core 1 reg 0x1A6 = 0x00FF
+[spu2] core 0 reg 0x1A6 = 0x00FF
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[spu2] core 0 reg 0x342 = 0x0000
+[spu2] core 0 reg 0x340 = 0x0000
+[spu2] core 1 reg 0x342 = 0x0000
+[spu2] core 1 reg 0x340 = 0x0000
+[spu2] core 0 reg 0x19A = 0xC000
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x188 = 0xFFFF
+[spu2] core 0 reg 0x18A = 0x00FF
+[spu2] core 0 reg 0x190 = 0xFFFF
+[spu2] core 0 reg 0x192 = 0x00FF
+[spu2] core 0 reg 0x18C = 0xFFFF
+[spu2] core 0 reg 0x18E = 0x00FF
+[spu2] core 0 reg 0x194 = 0xFFFF
+[spu2] core 0 reg 0x196 = 0x00FF
+[spu2] core 1 reg 0x188 = 0xFFFF
+[spu2] core 1 reg 0x18A = 0x00FF
+[spu2] core 1 reg 0x190 = 0xFFFF
+[spu2] core 1 reg 0x192 = 0x00FF
+[spu2] core 1 reg 0x18C = 0xFFFF
+[spu2] core 1 reg 0x18E = 0x00FF
+[spu2] core 1 reg 0x194 = 0xFFFF
+[spu2] core 1 reg 0x196 = 0x00FF
+[spu2] core 0 reg 0x198 = 0x0FF0
+[spu2] core 1 reg 0x198 = 0x0FFC
+[spu2] core 0 reg 0x33C = 0x000E
+[spu2] core 1 reg 0x33C = 0x000F
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x1000
+[spu2] core 0 reg 0x19A = 0xC000
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x0000
+[spu2] core 0 reg 0x1B0 = 0x0001
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 out FF 41 5A FF FF
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[pad] port 0 ctrl2 00020014 in 01 45 00 5A 5A 5A 5A 5A 5A out FF F3 5A 03 02 00 02 01 00
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[pad] port 0 ctrl2 00020014 in 01 46 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 02 00 0A
+[pad] port 0 ctrl2 00020014 in 01 46 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 01 01 14
+[pad] port 0 ctrl2 00020014 in 01 47 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 02 00 01 00
+[pad] port 0 ctrl2 00020014 in 01 4C 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 04 00 00
+[createsema] id=10 init=0 max=1 attr=0x46AFF4 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=10 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=10 init=1 max=1 attr=0x20 option=0x57EF68 ra=0x00106938 thr=1
+[createsema] id=11 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[deletesema] id=11 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=11 init=1 max=1 attr=0x54D2B0 option=0x57EEE0 ra=0x00106320 thr=1
+[createsema] id=12 init=1 max=1 attr=0x54D2B0 option=0x57EEF0 ra=0x00106338 thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1207DC option=0x57EF80 ra=0x00106E20 thr=1
+[createsema] id=14 init=0 max=1 attr=0x5BEF40 option=0x57EEC8 ra=0x00105E30 thr=1
+[fileio] open rom0:ROMVER -> 3
+[deletesema] id=14 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[deletesema] id=13 init=0 max=1 create_ra=0x00106E20 ra=0x00106EB4
+[createsema] id=13 init=0 max=1 attr=0x5BC904 option=0x57EFC8 ra=0x001073B4 thr=1
+[createsema] id=14 init=0 max=1 attr=0x418 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=14 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[deletesema] id=13 init=0 max=1 create_ra=0x001073B4 ra=0x00107528
+[createsema] id=13 init=0 max=1 attr=0x54D2B0 option=0x57EF98 ra=0x00106FD8 thr=1
+[createsema] id=14 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=14 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[deletesema] id=13 init=0 max=1 create_ra=0x00106FD8 ra=0x00107080
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[pad] port 0 ctrl2 00020014 in 01 4C 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 07 00 00
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x31 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2BA91C option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x90000 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2E756E65 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[pad] port 0 ctrl2 00020014 in 01 4D 00 FF FF FF FF FF FF out FF F3 5A FF FF FF FF FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1207DC option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 41 00 5A 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[createsema] id=13 init=0 max=1 attr=0x4E736573 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2E444150 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x9689C option=0x57EC50 ra=0x00103A68 thr=1
+[cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x9689D option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1207DC option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x6 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1207DC option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1207DC option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2E756E65 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x4E454353 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\BOOTMENU.WHD;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x4E454353 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\BOOTMENU.WAV;1 -> found
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x2800
+[spu2] core 1 reg 0x1AA = 0x2800
+[spu2] core 1 reg 0x1A8 = 0x0000
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x2A00
+[spu2] core 1 reg 0x1AA = 0x2A00
+[spu2] core 1 reg 0x1A8 = 0x0000
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0x6A00
+[spu2] core 1 reg 0x1AA = 0x6A00
+[spu2] core 1 reg 0x1A8 = 0x0000
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0xAA00
+[spu2] core 1 reg 0x1AA = 0xAA00
+[spu2] core 1 reg 0x1A8 = 0x0000
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0000
+[spu2] core 0 reg 0x1AA = 0xEA00
+[spu2] core 1 reg 0x1AA = 0xEA00
+[spu2] core 1 reg 0x1A8 = 0x0000
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0001
+[spu2] core 0 reg 0x1AA = 0x2A00
+[spu2] core 1 reg 0x1AA = 0x2A00
+[spu2] core 1 reg 0x1A8 = 0x0001
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[spu2] core 0 reg 0x1A8 = 0x0001
+[spu2] core 0 reg 0x1AA = 0x6A00
+[spu2] core 1 reg 0x1AA = 0x6A00
+[spu2] core 1 reg 0x1A8 = 0x0001
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0001
+[spu2] core 0 reg 0x1AA = 0xAA00
+[spu2] core 1 reg 0x1AA = 0xAA00
+[spu2] core 1 reg 0x1A8 = 0x0001
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[spu2] core 0 reg 0x1A8 = 0x0001
+[spu2] core 0 reg 0x1AA = 0xEA00
+[spu2] core 1 reg 0x1AA = 0xEA00
+[spu2] core 1 reg 0x1A8 = 0x0001
+[spu2] core 1 reg 0x19A = 0xC021
+[spu2] core 1 reg 0x19A = 0xC001
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x5E4E58 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x6 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x6 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1FEC0D0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x1FEC0D0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0x1FEC0D0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1FE4690 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x2B90C0 option=0x57EC50 ra=0x00103A68 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[deletesema] id=13 init=0 max=1 create_ra=0x00103A68 ra=0x00103AC8
+[createsema] id=13 init=0 max=1 attr=0xD option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=13 init=0 max=1 attr=0xABA5A0 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[createsema] id=13 init=0 max=1 attr=0xAFB768 option=0x57EEC8 ra=0x00105E30 thr=1
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 41 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 out FF 41 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 44 00 01 03 00 00 00 00 out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 out FF 73 5A FF FF
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 73 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 00 00 00 00 out FF 73 5A FF FF 80 80 80 80
+[pad] port 0 ctrl2 00020014 in 01 45 00 5A 5A 5A 5A 5A 5A out FF F3 5A 03 02 01 02 01 00
+[pad] port 0 ctrl2 00020014 in 01 46 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 02 00 0A
+[pad] port 0 ctrl2 00020014 in 01 46 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 01 01 14
+[pad] port 0 ctrl2 00020014 in 01 47 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 02 00 01 00
+[pad] port 0 ctrl2 00020014 in 01 4C 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 04 00 00
+[pad] port 0 ctrl2 00020014 in 01 4C 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 07 00 00
+[pad] port 0 ctrl2 00020014 in 01 4D 00 00 01 FF FF FF FF out FF F3 5A FF FF FF FF FF FF
+[pad] port 0 ctrl2 00020014 in 01 41 00 5A 5A 5A 5A 5A 5A out FF F3 5A FF FF 03 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 73 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 out FF 73 5A FF FF 80 80 80 80
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 out FF 73 5A FF FF 80 80 80 80
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 00 00 00 00 out FF 73 5A FF FF 80 80 80 80
+[pad] port 0 ctrl2 00020014 in 01 4F 00 FF FF 03 00 00 00 out FF F3 5A 00 00 00 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 00 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 01 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 02 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 03 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 04 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 05 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 06 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 07 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 08 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 09 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 0A 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 40 00 0B 02 00 00 00 00 out FF F3 5A 00 00 02 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 79 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 45 00 5A 5A 5A 5A 5A 5A out FF F3 5A 03 02 01 02 01 00
+[pad] port 0 ctrl2 00020014 in 01 46 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 02 00 0A
+[pad] port 0 ctrl2 00020014 in 01 46 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 01 01 01 14
+[pad] port 0 ctrl2 00020014 in 01 47 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 02 00 01 00
+[pad] port 0 ctrl2 00020014 in 01 4C 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 04 00 00
+[pad] port 0 ctrl2 00020014 in 01 4C 00 01 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 07 00 00
+[pad] port 0 ctrl2 00020014 in 01 4D 00 00 01 FF FF FF FF out FF F3 5A FF FF FF FF FF FF
+[pad] port 0 ctrl2 00020014 in 01 41 00 5A 5A 5A 5A 5A 5A out FF F3 5A FF FF 03 00 00 5A
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 0002000A in 01 42 00 00 00 out FF 79 5A FF FF
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x57EEC8 ra=0x00105E30 thr=1
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[deletesema] id=13 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[pad] port 0 ctrl2 00020014 in 01 43 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 4D 00 00 01 FF FF FF FF out FF F3 5A FF FF FF FF FF FF
+[pad] port 0 ctrl2 00020014 in 01 43 00 00 5A 5A 5A 5A 5A out FF F3 5A 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A F7 FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=53205 comp=53205 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=55305 comp=55305 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=57405 comp=57405 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=59505 comp=59505 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=61605 comp=61605 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[spu2] core 0 reg 0x1A4 = 0x0001
+[spu2] core 0 reg 0x1A6 = 0x0000
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[spu2] core 0 reg 0x1A0 = 0x0001
+[spu2] core 0 reg 0x1A2 = 0x0000
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF BF 80 80 80 80 00 00 00 00 00 00 FF 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=63705 comp=63705 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=269 comp=269 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[spu2] core 0 reg 0x1A4 = 0x0001
+[spu2] core 0 reg 0x1A6 = 0x0000
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=2369 comp=2369 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=4469 comp=4469 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=6569 comp=6569 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=8669 comp=8669 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[timer] TIM0 compare IRQ count=10769 comp=10769 mode=0x583
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[pad] port 0 ctrl2 00020014 in 01 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 out FF 79 5A FF FF 80 80 80 80 00 00 00 00 00 00 00 00 00 00 00 00
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/9 pc 0x00103331 ra 0x00103324
+[thread]   stack: 0041928C 00286908 00291F20 00291E84 002A1244 0014F6C4 001172F4 00117DB0 0015ED84 0015E068 0015F530 001172F4 00117DB0 00118E80 001609D8 001947F4 002A2050 002AE118 002AB268 002AE8A8 002AC63C 002A5880 00271A24 00271950
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00102EA8 ra 0x001037F8
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/7 pc 0x00102EA8 ra 0x001008A0
+[thread]   stack:
+[thread] 4 status 4 prio 0 wait 1/0 pc 0x00102D88 ra 0x001062D8
+[thread]   stack:
+[sema] 2 count 0 waiters 1 create_ra=0x001038CC init=0 max=255
+[sema] 7 count 0 waiters 1 create_ra=0x001008FC init=0 max=1
+[cnk] skip@0x702BA0=0 sema45_id@0x705C18=0 sema47_id@0x705C10=0 csr=0x551B4008 imr=0x7F00 intc_pend=0x0 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1
+[cnk] gate 705BF0=0 705C00=0 6542A0=0 6542D8=0 705BE0=00000000 705C20=0 654290=0 705DF8=0 705F10=00000000
+[cnk] T0 mode=0x583 comp=38069 count=38323 pending=0x0 mask=0x830
+[cnk] TIM0 handler (none registered)
+[cnk] asset STBL@762390=AAAAAAAA fonts_crc@7B3638=AAAAAAAA siid@155F940=00000000/00000000 gob+912=00000000 walk flag=205 first=3452816845 cur=3452816845 want=3452816845 cap=3452816845 ptr=0xCDCDCDCD mag5=0x00
+[cnk] loadgate 6F2540=00000000 6F35E0=CDCDCDCD 6F2538=00010000 6F5AB8=CDCDCDCD 635138=00000000
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00020D00
+[iop] module 3 MCMAN at 0x0002AD00
+[iop] module 4 MCSERV at 0x00055C00
+[iop] module 5 LIBSD at 0x00059500
+[iop] module 6 SCRTCHPD at 0x0005F300
+[iop] module 7 SYNTHCD at 0x0005F600
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 46 wait 8/174660 pc 0x00001020
+[iop] thread 4 status 4 prio 46 wait 8/174884 pc 0x00001020
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 4 prio 104 wait 8/365504 pc 0x00001020
+[iop] thread 8 status 2 prio 20 wait 0/4 pc 0x00020D94
+[iop] thread 9 status 4 prio 46 wait 4/4 pc 0x00020D94
+[iop] thread 10 status 4 prio 46 wait 4/6 pc 0x00020D94
+[iop] thread 11 status 16 prio 46 wait 0/6 pc 0x00023938
+[iop] thread 12 status 16 prio 46 wait 0/6 pc 0x00023A74
+[iop] thread 13 status 16 prio 46 wait 0/6 pc 0x00023BAC
+[iop] thread 14 status 16 prio 46 wait 0/6 pc 0x00023D4C
+[iop] thread 15 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 10 wait 1/0 pc 0x00068AB8
+[iop] thread 20 status 4 prio 67 wait 1/0 pc 0x00068AFC
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1138 submits, dispatches: upload 7371 copy_read 0 copy_write 0 load_clut 5089 display 0 raster 7124 resolve 0 snapshot 93 decode 2
+[gs] 78933 primitives drawn, register writes: 00:914684 01:739 04:85860 05:11776 06:737 07:43071 08:43439 09:43441 0D:400 0F:1472 14:737 15:371 16:1 17:1 18:1869 19:371 1A:371 1C:736 22:1 3B:371 3D:736 3F:8362 40:2237 41:370 42:737 43:371 44:1 45:372 46:371 47:1133 48:371 49:370 4A:1 4B:370 4C:1869 4D:369 4E:765 4F:1 50:10832 51:4049 52:10832 53:10832 54:1
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[spu2] core 0 voice 0 phase 0 ssa 0x1B9B8 lsax 0x02800 block 0x02800 flags 7 next 0x02800 pitch 0x0759 env 0 end 1
+[dma] starts: ch0=0 ch1=738 ch2=397 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 522 reglist 0 image 2
+[gif] path 2 tags: packed 12042 reglist 368 image 1472
+[gif] path 3 tags: packed 11257 reglist 0 image 9360
+[vif0]
+[vif1] 00:1376358 01:100965 02:12043 03:12043 04:1 05:25 06:16721 11:70566 13:7992 14:24612 20:1 30:18 4A:15100 50:12778 68:22608 6C:82022 6E:18
+[ee] stopped after 400 frames, 1970996765 cycles: frame limit reached

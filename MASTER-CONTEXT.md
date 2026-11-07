@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:18 local)  
+**Updated:** 2026-11-07 (~07:27 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -26,17 +26,16 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **Background still true:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) Custom PS2 Alchemy dumper Phase 1–3 — **verify 28/28 PASS** exit 0 on CNK (~07:18, includes Ghidra prologue locks); schema 1.1; optical stub (§9). **No** disc-fix/R5/CNK runtime patches.
 
-### G) Active five-todo chain — Ghidra MCP / Alchemy RE (2026-11-07 ~07:03) — **PRIMARY RESUME**
+### G) Continuous loop — CNK 2-prims + disc-fix (2026-11-07 ~07:27) — **PRIMARY RESUME**
 
-Cursor agent todos were **0/5** when this refresh started. Live workspace also had an active silent Ghidra script + CNK boot ELF hash-checked against the AI Browser ISO extract.
+Five-todo Ghidra/Alchemy chain **closed** (MCP dual-ELF, ISO, VA 6/6, verify **28/28**, MASTER). God (~07:27): **do not idle** — loop continues past closed todos until 100% operational.
 
-| ID | Todo | Status @ 07:03 | Done / evidence | Exact resume next |
-|----|------|----------------|-----------------|-------------------|
-| **p0-mcp** | Finish MCP dual-ELF verify (GoW + CNK on USR Ghidra) | **DONE ~07:08** | `logs/ghidra-ps2/dual-elf-verify.json` `all_pass=true`. GoW **5692** / CNK **19188** funcs, `r5900:LE:32:default`. Fix: `GET /switch_program?program=<name>` after load. | Closed. |
-| **p0-iso** | CNK from Downloads ISO; re-import ELF into Ghidra | **DONE** | AI Browser ISO extract ≡ library boot SHA256 `FA37C064…E204`. | Closed. |
-| **p1-ghidra-vas** | MCP: disassemble CNK key VAs (loadgate/bind/GFC) | **DONE ~07:10** | `cnk-key-vas-summary.json`: **6/6** `all_code_vas_pass=true`; per-VA dumps under `logs/ghidra-ps2/cnk-vas/`. Durable script: `ghidra_exports\ps2-elves\Dump-CnkKeyVas.ps1`. | Closed. Next = p1-plan RE depth + alchemy verify regression. |
-| **p1-plan** | Highest-value Alchemy RE from VA evidence | **NEXT** | Rank: (1) loadgate `0x10FCE0` (2) bind/`0x725F50` (3) IGB consumers (4) dumper automation. No optical Phase 4 / no CNK host patches. | Code+verify only: prologue locks in dumper `elf_alchemy.py`; deepen RE via MCP while games smoke. |
-| **p1-docs** | Write handoff report + update MASTER-CONTEXT | **THIS REFRESH** | §G reconciled with dual-ELF + VA pass + DLL restore notes. Formal handoff md still optional. | Keep §G current each loop. |
+| Track | Status | Exact next |
+|-------|--------|------------|
+| **CNK prims=2** | **IN PROGRESS** observe | Soft-arm no host FCE0 → 2 prims; forced FCE0 → `ra=0x51ACEC` tid-map miss. Diagnose bind install / `*0x725F50` stall; no Alchemy host patches. Worker: `cnk-2prims-gate-diagnose`. |
+| **Disc-fix Hitman/NFS** | **IN PROGRESS** observe | Board step 8 `R5_pad_sound_observe`; `allow_discfix_apply=false`. Matrix observe cycle + short smokes. No R5 apply. |
+| **GoW DLL PATH smoke** | **IN PROGRESS** | Re-smoke with `runtime-deps` PATH after DLL restore. |
+| Prior §G todos p0-mcp / p0-iso / p1-ghidra-vas / p1-plan / p1-docs | **DONE** | Evidence above; alchemy verify 28/28. |
 
 **DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).
 
@@ -97,9 +96,9 @@ Cursor agent todos were **0/5** when this refresh started. Live workspace also h
 
 | ID | Track | Last known |
 |----|--------|------------|
-| w1 | Disc-fix Hitman/NFS | **RESUMED** idle watcher — R1–R4 `1e04172`; board **step 8** `R5_pad_sound_observe` (observe-only; `allow_discfix_apply=false`); see `worker-resume-discfix-w1-2026-11-07.md` |
-| w2 | Test-matrix | **RESUMED** idle watcher — same board step 8; no smokes/R5 apply; see `worker-resume-matrix-w2-2026-11-07.md` |
-| w3 | CNK null-bind `51ACEC` | **RESUMED** observe — offline live vtable dump done; soft-arm still 2 prims; `worker-resume-cnk-nullbind-w3-2026-11-07.md` |
+| w1 | Disc-fix Hitman/NFS | **ACTIVE ~07:27** — R5 observe matrix run in flight (no apply); R1–R4 `1e04172`; see `worker-resume-discfix-w1-2026-11-07.md` |
+| w2 | Test-matrix | **ACTIVE ~07:27** — same board step 8; matrix observe smokes with disc-fix worker; see `worker-resume-matrix-w2-2026-11-07.md` |
+| w3 | CNK null-bind `51ACEC` / 2-prims | **ACTIVE ~07:27** — deep diagnose soft-arm stall + tid map (observe); soft-arm still prims=2; `worker-resume-cnk-nullbind-w3-2026-11-07.md` |
 | w4 / w4b | Sly GS/VU + asset bin-walk | **RESUMED-as-complete/parked** — next STQ/PATH3/CLUT when prioritized; `worker-resume-sly-w4-w4b-2026-11-07.md` |
 | w5 | WaitSema / CreateSema | **RESUMED** observe-only; `worker-resume-waitsema-w5-2026-11-07.md` |
 | w6 | BIOS zip reference | **RESUMED-as-complete**; `worker-resume-bios-w6-2026-11-07.md` |
