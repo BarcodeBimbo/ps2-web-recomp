@@ -28,6 +28,26 @@ def relative(path):
     return path.relative_to(ROOT).as_posix()
 
 
+def ensure_web_build_readable(folder):
+    """Reset ACLs on published player assets so the non-elevated panel can read them.
+
+    Elevated Emscripten/link steps on Windows sometimes emit ps2web.js with an
+    explicit Administrators/SYSTEM/OWNER-only DACL (no Users RX). The panel then
+    can stat the file for Content-Length but fails open(), which used to yield
+    ERR_CONTENT_LENGTH_MISMATCH after the GPU-compat prefix.
+    """
+    if os.name != 'nt':
+        return
+    for name in ('ps2web.html', 'ps2web.js', 'ps2web.wasm', 'ps2web.data', 'boot.txt', 'build.json'):
+        path = folder / name
+        if not path.is_file():
+            continue
+        try:
+            subprocess.run(['icacls', str(path), '/reset'], check=False, capture_output=True, timeout=30)
+        except (OSError, subprocess.SubprocessError):
+            pass
+
+
 def cmake(folder, *options, target, env):
     subprocess.run([BIN / 'cmake.exe', '-S', '.', '-B', relative(folder),
                     '-G', 'Ninja', '-DCMAKE_BUILD_TYPE=Release',
@@ -126,6 +146,7 @@ def build_web(game_id):
         backup.rename(published)
         raise
     shutil.rmtree(backup)
+    ensure_web_build_readable(published)
 
 
 def port(game_id, source, frames=3600, rounds=8, password=None):

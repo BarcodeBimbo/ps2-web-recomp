@@ -215,13 +215,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         compat = Path(__file__).resolve().parents[1] / 'web/gpu_upload_compat.js'
         if not compat.is_file():
             return False
-        prefix = compat.read_bytes() + b'\n'
+        # Read the full body before headers so a permission/IO failure cannot
+        # advertise Content-Length and then only ship the compat prefix
+        # (Chrome: net::ERR_CONTENT_LENGTH_MISMATCH → engine script abort).
+        try:
+            body = compat.read_bytes() + b'\n' + Path(path).read_bytes()
+        except OSError:
+            self.send_error(500, 'Player script is unreadable. Check permissions on the web build output.')
+            return True
         self.send_response(200)
-        self.headers_for(path, len(prefix) + os.path.getsize(path))
+        self.headers_for(path, len(body))
         if not head:
-            self.wfile.write(prefix)
-            with open(path, 'rb') as source:
-                shutil.copyfileobj(source, self.wfile, 1 << 20)
+            self.wfile.write(body)
         return True
 
     def do_HEAD(self):

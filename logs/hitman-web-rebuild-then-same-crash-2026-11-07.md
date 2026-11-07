@@ -24,6 +24,10 @@
 
 After publish, `GET/HEAD http://127.0.0.1:8620/play/a2116…/ps2web.js` Content-Length **244503** ≠ disk **241343** → script load abort.
 
+## Follow-up — FIXED (same day)
+
+Root cause was **Hitman `ps2web.js` ACL** (panel could stat but not read → prefix-only body), not CL math. See `logs/hitman-web-js-content-length-fix-2026-11-07.md`. Harness `20261107T140555Z` boots again; black canvas remains.
+
 ## Cross-ref
 
 Full bisect narrative: `verification/recovery/hitman-ui-regression-bisect-2026-11-07.md`

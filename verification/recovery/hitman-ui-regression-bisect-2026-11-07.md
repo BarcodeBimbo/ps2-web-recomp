@@ -83,6 +83,8 @@ Terminal: agent shell `830623` / log `logs/hitman-web-rebuild-2026-11-07.log`
 
 **Serve check after rebuild:** panel `HEAD` for `ps2web.js` advertised **Content-Length 244503** while disk file is **241343** → browser aborts script load (`ERR_CONTENT_LENGTH_MISMATCH`). Wasm/data lengths matched disk. HTML path is shell-injected (hdr ≠ disk `ps2web.html` is expected).
 
-**Plain verdict:** New Hitman web player **did build**, but first harness load after publish **still crashes** — engine script failed to load (length mismatch / serve), so the session never reached the prior black-canvas BOOTMENU path. Treat as **same product failure after rebuild** (player unusable in Chrome harness) until panel serve / Content-Length is fixed and harness shows non-abort boot.
+**Plain verdict (amended):** Serve abort was **Hitman `ps2web.js` ACL** (Admin/SYSTEM-only; panel could stat but not read → prefix-only body / CL mismatch). Fixed via `icacls /reset` + `ensure_web_build_readable` on publish. Full write-up: `logs/hitman-web-js-content-length-fix-2026-11-07.md`.
+
+**Harness after ACL fix (`20261107T140555Z`):** `booted=True` `abort_seen=False` max_prims≈865k ~60 FPS GPU — script loads; **black canvas remains** (UI regression track continues).
 
 Also mirrored: `logs/hitman-web-rebuild-then-same-crash-2026-11-07.md`
