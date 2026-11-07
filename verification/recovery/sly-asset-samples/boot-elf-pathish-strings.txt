@@ -1,0 +1,16 @@
+﻿R&\.81
+sio2man.irx
+padman.irx
+mcman.irx
+mcserv.irx
+libsd.irx
+989snd.irx
+ioprp243.img
+sly.ico
+icon.sys
+libmc: too old release of mcserv.irx
+libmc: too old release of mcman.irx
+0824.2206
+.text
+.data
+.sbss

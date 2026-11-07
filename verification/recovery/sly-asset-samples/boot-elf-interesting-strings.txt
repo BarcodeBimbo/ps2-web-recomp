@@ -1,0 +1,43 @@
+﻿989snd.c
+989snd.c: Sif says RPC isn't busy, but we still don't have returns from the IOP!
+989snd.c: RPC collision!
+989snd.c: RPC call has failed inside snd_BankLoad
+989snd.c: RPC call has failed inside snd_BankLoadByLoc
+989snd.c: RPC call has failed inside snd_BankLoadFromEE
+snd_BankLoadFromIOP: Load already in progress!
+snd_BankLoadFromIOP: CD BUSY!
+989snd.c: RPC call has failed inside snd_BankLoadFromIOP
+snd_BankLoadFromIOP_CB: Load already in progress!
+snd_BankLoadFromIOP_CB: CD BUSY!
+snd_SendIOPCommandNoWait: BUFFER %d FULL(%d)! Sound stalled waiting for IOP comands to finish!
+snd_SendIOPCommandNoWait: continueing (%d).
+cdrom0:
+Paris, France
+sio2man.irx
+padman.irx
+mcman.irx
+mcserv.irx
+libsd.irx
+989snd.irx
+ioprp243.img
+Return to this level at any time
+View Map
+Restart Level
+Exit Level
+[libpad.a = %d.%d, padman.irx = %d.%d]
+libmc: too old release of mcserv.irx
+libmc: too old release of mcman.irx
+Unsupported profile/level
+.DVP.overlay..0x0.13243.15.0
+.DVP.overlay..0x0.437755.19.0
+.DVP.overlay..0x0.437275.54.0
+.DVP.overlay..0x800.437275.924.1
+.DVP.overlay..0x1000.437275.1661.2
+.DVP.overlay..0x1800.437275.2268.3
+.DVP.overlay..0x2000.437275.2968.4
+.DVP.overlay..0x2800.437275.3767.5
+.DVP.overlay..0x3000.437275.4489.6
+.DVP.overlay..0x3800.437275.5141.7
+.DVP.overlay..0x0.436667.33.0
+.DVP.overlay..0x800.436667.787.1
+.DVP.overlay..0x1000.436667.1563.2
