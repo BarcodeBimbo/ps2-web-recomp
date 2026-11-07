@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "title": "Hitman Blood Money",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\a2116d2ac08a7be4db4e8455ad58d2e5-400f-20261107T153624Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 97531,
+        "frames": 400,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "game": "hitman_bm",
+        "frames": 400,
+        "primitives": 97531,
+        "cdvd_searches_found": 14,
+        "fileio_disc_opens": null,
+        "disc_read_signals": 14,
+        "alchemy_contamination": false,
+        "missing_code": [],
+        "halt": null,
+        "sif_packets_waiting": 0,
+        "leftover_semas": [
+          {
+            "id": 2,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 7,
+            "count": 0,
+            "waiters": 1
+          }
+        ],
+        "phases": {
+          "boot": "pass",
+          "menu": "pass",
+          "first_disc_read": "pass",
+          "streaming": "pass",
+          "sustained_run": "pass"
+        },
+        "verdict": "pass",
+        "first_fail_phase": null
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 400,
+        "ee_cycles_per_vblank": 4927491.3625,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": {
+        "run_id": "20261107T140555Z",
+        "canvas_lum_end": 0.1382,
+        "canvas_black_end": true,
+        "fps": {
+          "avg": 58.913414634146335,
+          "min": 23.5,
+          "max": 64.8
+        },
+        "fps_overlay": {
+          "samples": 25,
+          "avg": 56.16,
+          "min": 23.0,
+          "max": 65.0,
+          "maxMs_peak": 340.0,
+          "graph_trend_avg": -0.007807692307692305,
+          "graph_trend_last": 0.032
+        },
+        "bootmenu": {
+          "bootmenu_found": true,
+          "bootmenu_assets": {
+            "ZIP": true,
+            "WHD": true,
+            "WAV": true
+          },
+          "console_hits": 5
+        },
+        "max_prims": 864983
+      }
+    }
+  ]
+}

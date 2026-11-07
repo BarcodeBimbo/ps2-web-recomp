@@ -203,7 +203,7 @@
 
 | Section | Checked | Open |
 |---------|---------|------|
-| Hitman foundation (all sub-items) | 11 | 12 |
+| Hitman foundation (all sub-items) | 15 | 8 |
 | Hitman Chrome gate | 3 | 3 |
 | NFS expansion | 2 | 3 |
 | CNK track | 3 | 3 |

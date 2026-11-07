@@ -107,3 +107,71 @@
 [cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8
 [cdvdfsv] search \SCENES\BOOTMENU.WHD;1 -> found
 [cdvdfsv] search \SCENES\BOOTMENU.WAV;1 -> found
+[gs] captured 2770 draws and 1131 images in C:\PS2Recomp\logs\hitman-capture-post-xyoffset-2026-11-07
+[timer] TIM0 compare IRQ count=53205 comp=53205 mode=0x583
+[timer] TIM0 compare IRQ count=55305 comp=55305 mode=0x583
+[timer] TIM0 compare IRQ count=57405 comp=57405 mode=0x583
+[timer] TIM0 compare IRQ count=59505 comp=59505 mode=0x583
+[timer] TIM0 compare IRQ count=61605 comp=61605 mode=0x583
+[timer] TIM0 compare IRQ count=63705 comp=63705 mode=0x583
+[timer] TIM0 compare IRQ count=269 comp=269 mode=0x583
+[timer] TIM0 compare IRQ count=2369 comp=2369 mode=0x583
+[timer] TIM0 compare IRQ count=4469 comp=4469 mode=0x583
+[timer] TIM0 compare IRQ count=6569 comp=6569 mode=0x583
+[timer] TIM0 compare IRQ count=8669 comp=8669 mode=0x583
+[timer] TIM0 compare IRQ count=10769 comp=10769 mode=0x583
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/9 pc 0x00103331 ra 0x00103324
+[thread]   stack: 0041928C 00286908 00291F20 00291E84 002A1244 0014F6C4 001172F4 00117DB0 0015ED84 0015E068 0015F530 001172F4 00117DB0 00118E80 001609D8 0010EDF8 00109F40 002A2050 002AE118 002AB268 002AE8A8 002AC63C 002A5880 00271A24 00271950
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00102EA8 ra 0x001037F8
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/7 pc 0x00102EA8 ra 0x001008A0
+[thread]   stack:
+[thread] 4 status 4 prio 0 wait 1/0 pc 0x00102D88 ra 0x001062D8
+[thread]   stack:
+[sema] 2 count 0 waiters 1 create_ra=0x001038CC init=0 max=255
+[sema] 7 count 0 waiters 1 create_ra=0x001008FC init=0 max=1
+[cnk] skip@0x702BA0=0 sema45_id@0x705C18=0 sema47_id@0x705C10=0 csr=0x551B4008 imr=0x7F00 intc_pend=0x0 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1
+[cnk] gate 705BF0=0 705C00=0 6542A0=0 6542D8=0 705BE0=00000000 705C20=0 654290=0 705DF8=0 705F10=00000000
+[cnk] T0 mode=0x583 comp=38069 count=38323 pending=0x0 mask=0x830
+[cnk] TIM0 handler (none registered)
+[cnk] asset STBL@762390=AAAAAAAA fonts_crc@7B3638=AAAAAAAA siid@155F940=00000000/00000000 gob+912=00000000 walk flag=205 first=3452816845 cur=3452816845 want=3452816845 cap=3452816845 ptr=0xCDCDCDCD mag5=0x00
+[cnk] loadgate 6F2540=CDCDCDCD 6F35E0=CDCDCDCD 6F2538=CDCDCDCD 6F5AB8=CDCDCDCD 635138=00000000
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00020D00
+[iop] module 3 MCMAN at 0x0002AD00
+[iop] module 4 MCSERV at 0x00055C00
+[iop] module 5 LIBSD at 0x00059500
+[iop] module 6 SCRTCHPD at 0x0005F300
+[iop] module 7 SYNTHCD at 0x0005F600
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 46 wait 8/174660 pc 0x00001020
+[iop] thread 4 status 4 prio 46 wait 8/174884 pc 0x00001020
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 4 prio 104 wait 8/365504 pc 0x00001020
+[iop] thread 8 status 2 prio 20 wait 0/4 pc 0x00020D94
+[iop] thread 9 status 4 prio 46 wait 4/4 pc 0x00020D94
+[iop] thread 10 status 4 prio 46 wait 4/6 pc 0x00020D94
+[iop] thread 11 status 16 prio 46 wait 0/6 pc 0x00023938
+[iop] thread 12 status 16 prio 46 wait 0/6 pc 0x00023A74
+[iop] thread 13 status 16 prio 46 wait 0/6 pc 0x00023BAC
+[iop] thread 14 status 16 prio 46 wait 0/6 pc 0x00023D4C
+[iop] thread 15 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 10 wait 1/0 pc 0x00068AB8
+[iop] thread 20 status 4 prio 67 wait 1/0 pc 0x00068AFC
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1944 submits, dispatches: upload 5944 copy_read 0 copy_write 0 load_clut 5373 display 0 raster 5418 resolve 0 snapshot 78 decode 2
+[gs] 97531 primitives drawn, register writes: 00:1057531 01:739 04:110324 05:11776 06:737 07:55303 08:55670 09:55672 0D:400 0F:1472 14:737 15:371 16:1 17:1 18:1869 19:371 1A:371 1C:736 22:1 3B:371 3D:736 3F:7730 40:2237 41:370 42:737 43:371 44:1 45:372 46:371 47:1133 48:371 49:370 4A:1 4B:370 4C:1869 4D:369 4E:765 4F:1 50:9568 51:4049 52:9568 53:9568 54:1
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=738 ch2=397 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 523 reglist 0 image 2
+[gif] path 2 tags: packed 11410 reglist 368 image 1472
+[gif] path 3 tags: packed 9993 reglist 0 image 8096
+[vif0]
+[vif1] 00:1294830 01:97173 02:11411 03:11411 04:1 05:25 06:15457 11:67722 13:7360 14:24296 20:1 30:18 4A:15100 50:12146 68:21344 6C:79494 6E:18
+[ee] stopped after 400 frames, 1970996545 cycles: frame limit reached
