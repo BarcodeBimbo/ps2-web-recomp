@@ -243,10 +243,7 @@ Classic seven tracks (plus extras that spun up):
 6. **No commits** until a stable build — then commit freely (user may pre-approve stable disc-fix commits).  
 7. Simple-language status when reporting to the user.  
 8. PCSX2 oracle path is dropped.  
-9. **redumper-based custom PS2 disc dumper (GPL-3.0):** Any README (and every future README update/push) for a fork or derivative of [superg/redumper](https://github.com/superg/redumper) **must**:
-   - Credit redumper with a link to `https://github.com/superg/redumper`
-   - Document **every** change from upstream, including code that was **stripped**
-   - Note **GPL-3.0** license implications (derivative must remain GPL-3.0-compatible; source distribution obligations)
+9. **Custom PS2 disc dumper toolkit:** Build **our own Windows** dumper from patterns (do **not** wrap upstream binaries). README (every update) must credit both [superg/redumper](https://github.com/superg/redumper) and [N4gtan/mkps2iso](https://github.com/N4gtan/mkps2iso) (`dumps2iso`/`mkps2iso`), document every divergence including stripped ideas, and note GPL-3.0 implications from redumper-derived logic. Both upstreams ship Windows builds (not Linux-only). See `.cursor/rules/ps2-disc-dumper-toolkit.mdc`.
 
 ---
 
