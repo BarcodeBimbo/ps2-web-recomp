@@ -1,0 +1,98 @@
+/* JARVIS-HEALTH: tokens+boot+hud */
+/* JARVIS — Phase 6 injection design tokens
+   Visual authority: media/reference-calibrating-splash.png
+   Palette: deep charcoal/navy void + electric cyan neon bloom */
+
+:root,
+.monaco-workbench,
+.monaco-workbench.jarvis-inject,
+body.jarvis-inject {
+  /* —— Void / surfaces (splash-locked) —— */
+  --jarvis-bg: #0b0e14;
+  --jarvis-bg-deep: #0e121a;
+  --jarvis-bg-elevated: #12161f;
+  --jarvis-bg-panel: #0a1018;
+  --jarvis-bg-sidebar: #080c14;
+  --jarvis-bg-activity: #06090f;
+  --jarvis-bg-editor: #0b0e14;
+  --jarvis-bg-input: #05080e;
+  --jarvis-bg-hover: rgba(0, 242, 255, 0.06);
+  --jarvis-bg-active: rgba(0, 242, 255, 0.12);
+
+  /* —— Cyan spectrum (splash neon) —— */
+  --jarvis-cyan: #00f2ff;
+  --jarvis-cyan-bright: #1be4ff;
+  --jarvis-cyan-mid: #00d4ff;
+  --jarvis-cyan-soft: #0fdeff;
+  --jarvis-cyan-dim: #086473;
+  --jarvis-cyan-muted: #0a6c84;
+  --jarvis-cyan-deep: #004a55;
+  --jarvis-cyan-ghost: rgba(0, 242, 255, 0.14);
+  --jarvis-cyan-wash: rgba(0, 212, 255, 0.08);
+
+  /* —— Text —— */
+  --jarvis-text: #c8d6e5;
+  --jarvis-text-bright: #e8f7ff;
+  --jarvis-text-dim: #7a8fa3;
+  --jarvis-text-muted: #52565e;
+  --jarvis-text-calibrating: #b9ebf4;
+  --jarvis-text-percent: #656c73;
+  --jarvis-subtitle: #464950;
+
+  /* —— Borders / glass —— */
+  --jarvis-border: rgba(0, 242, 255, 0.22);
+  --jarvis-border-strong: rgba(0, 242, 255, 0.45);
+  --jarvis-border-subtle: rgba(0, 212, 255, 0.12);
+  --jarvis-border-solid: #0a3852;
+  --jarvis-glass: rgba(8, 14, 22, 0.82);
+  --jarvis-glass-strong: rgba(5, 10, 18, 0.92);
+  --jarvis-glass-soft: rgba(10, 18, 28, 0.55);
+  --jarvis-glass-blur: 12px;
+
+  /* —— Glow / bloom —— */
+  --jarvis-glow: 0 0 8px rgba(0, 242, 255, 0.55), 0 0 24px rgba(0, 212, 255, 0.35), 0 0 48px rgba(0, 212, 255, 0.18);
+  --jarvis-glow-soft: 0 0 6px rgba(0, 242, 255, 0.35), 0 0 18px rgba(0, 212, 255, 0.2);
+  --jarvis-glow-tight: 0 0 4px rgba(0, 242, 255, 0.7);
+  --jarvis-text-glow: 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55), 0 0 56px rgba(0, 212, 255, 0.28);
+  --jarvis-text-glow-soft: 0 0 6px rgba(0, 242, 255, 0.5), 0 0 16px rgba(0, 212, 255, 0.3);
+
+  /* —— Status —— */
+  --jarvis-ok: #2fa58f;
+  --jarvis-ok-bright: #3dd68c;
+  --jarvis-warn: #ffc94d;
+  --jarvis-danger: #ff4757;
+  --jarvis-bar-track: #151626;
+  --jarvis-dot-off: #292d35;
+
+  /* —— Geometry —— */
+  --jarvis-radius: 8px;
+  --jarvis-radius-sm: 4px;
+  --jarvis-radius-lg: 12px;
+  --jarvis-radius-pill: 999px;
+  --jarvis-line: 1px;
+  --jarvis-boot-ms: 1800ms;
+  --jarvis-boot-hold: 70%;
+
+  /* —— Typography: condensed / futuristic local stacks (no remote @import) —— */
+  --jarvis-font-ui: "Segoe UI Condensed", "Arial Narrow", "Helvetica Neue Condensed", "Franklin Gothic Medium", "Segoe UI", Tahoma, sans-serif;
+  --jarvis-font-display: "Orbitron", "Rajdhani", "Segoe UI Condensed", "Arial Narrow", "Eurostile", "Microgramma", Impact, sans-serif;
+  --jarvis-font-mono: "Cascadia Mono", "Consolas", "SF Mono", "Courier New", monospace;
+  --jarvis-tracking-wide: 0.28em;
+  --jarvis-tracking-mid: 0.18em;
+  --jarvis-tracking-cal: 0.4em;
+
+  /* —— VS Code workbench CSS var bridges (when inject active) —— */
+  --vscode-editor-background: var(--jarvis-bg-editor) !important;
+  --vscode-sideBar-background: var(--jarvis-bg-sidebar) !important;
+  --vscode-activityBar-background: var(--jarvis-bg-activity) !important;
+  --vscode-statusBar-background: var(--jarvis-bg-deep) !important;
+  --vscode-titleBar-activeBackground: var(--jarvis-bg-deep) !important;
+  --vscode-panel-background: var(--jarvis-bg-panel) !important;
+  --vscode-focusBorder: rgba(0, 242, 255, 0.55) !important;
+}
+
+/* JARVIS — probe hook (engine string-search + optional class test) */
+html.jarvis-inject-probe::before {
+  content: "jarvis-ok";
+  display: none;
+}
