@@ -38,8 +38,8 @@ Also still true:
 |--------|--------|------------|
 | **1 Disc-fix → SDK** | R4-D1 DiskReady **verified** + live 900f green; **R5 `cleared_with_evidence` PASS** (step 10; no HLE rewrite) | Joint-stable commit (R3+R4D1+R5 clear) when asked. |
 | **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS five-phase; keep logging. |
-| **3 Alchemy → 100%** | Dumper **28/28**; guest FCE0/+5DD0 **fixed**; CNK still **prims=2** | Blocker: vt+108 weak — `obj+0x20` cleared → no `0x51C100` ingest (`cnk-alchemy-fix-attempt-2026-11-07.md`). Quarantine Hitman/NFS. |
-| **4 Live test → logs/** | BootMash Chrome restore (`_gow_min60_settle` + frames in `logs/screenshots/gow-bootmash/`); native matrix logged | Keep BootMash + frame reads; extend shot-compare to 5 games. |
+| **3 Alchemy → 100%** | Dumper **28/28**; guest FCE0/+5DD0 **fixed**; `obj+0x20` restore **implemented** but still **prims=2** | Blocker: guest clears `+0x20` + runs vt+108 in one EE burst before HLE can restore (`cnk-alchemy-obj20-fix-2026-11-07.md`). Next = EE clear intercept / AlignReadBuffer wiring. Quarantine Hitman/NFS. |
+| **4 Live test → logs/** | Native matrix + Hitman/NFS Chrome probe; **Hitman web abort** seen: `ps2web_frames` before runtime init | Harness must scrape `#boot-status`/`#help`; mute Chrome; **no BootMash**; GoW = patient-zero (do not test). |
 | GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
 
 **QUEUED / DEFERRED (God ~07:39) — do not work until God calls for it:**
