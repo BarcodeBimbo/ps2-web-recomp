@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~21:41 local
+Updated: 2026-11-06 ~22:03 local
 
 ## Gate cycle 1 — FAIL
 
@@ -87,4 +87,82 @@ CNK ELF/Alchemy reports at `cnk-elf-alchemy-full-redo-report.md` and `alchemy-sd
 ### Next
 
 Disc-fix may post an **unbundled R3** (readee + curReadPos only). R2 remains gated; do not bundle R4 sceCdSync wake.
+
+
+---
+
+## Gate cycle 3 — FAIL (R3 blocked by R2)
+
+Disc-fix proposed `R3_readee_length_harden`: unbundled readee length harden in `cdvdfsv.cpp` only. No R4. No WaitSema rewrite. No CNK. Diag-only logs already in tree; behavioral patch not applied.
+
+### Why fail
+
+**Prove-before-swap:** R1 is cleared, but **R2 WaitSema fidelity is still gated**. Any R3 *code* change stays locked until R2 is cleared (same rule as cycle 1 — order is R1 → R2 → R3). Unbundled is good; skipping R2 is not.
+
+### Evidence spot-check (not enough to unlock)
+
+| Check | Result |
+|-------|--------|
+| Hitman curReadPos exact | 35/35 in `discfix-hitman-curpos-300.log` |
+| NFS curReadPos exact (regex) | 45/60 in `discfix-nfs-curpos-300.log` |
+| Hitman unaligned dst `0x52C098` | present |
+| Alchemy / host_signal(2) | none |
+| R4 sceCdSync wake bundled | no |
+
+Five-phase smoke was **not** re-run this cycle — ranked order failed before apply. Prior 600f phase passes still stand.
+
+### Ranked locks now
+
+- R1 — cleared_with_evidence
+- R2 — **still_gated** (next clear target)
+- R3 — **blocked_until_R2_clear**
+- R4 / R5 — still gated
+
+`allow_discfix_apply`: **false**. Do not land readee-length harden yet.
+
+### Next for disc-fix
+
+Post **`R2_clear_with_evidence`** (observe-only, like R1). Ownership report already shows sema 2 = durable libcdvd-class parking — never `host_signal(2)`. After that passes, re-post unbundled R3.
+
+### Matrix posture
+
+Watching board for the next `proposed_change`.
+
+
+---
+
+## Gate cycle 4 — PASS (R2 clear, no code)
+
+Disc-fix proposed `R2_clear_with_evidence` right after cycle-3 fail (as requested). Observe-only clear. No WaitSema rewrite. No `host_signal(2)`.
+
+### Verified
+
+| | Hitman | NFS |
+|--|--------|-----|
+| Log | waitsema-createsema-hitman-2k | waitsema-createsema-nfs-2k |
+| Frames / prims | 2000 / 586246 | 2000 / 1153253 |
+| Sema 2 create | once, init=0 max=255, ra `0x001038CC` | once, init=0 max=255, ra `0x00495EA8` |
+| Sema 2 delete | 0 | 0 |
+| End dump | waiters 1, same create_ra | waiters 1, same create_ra |
+| SIF end | 0 packets wait | 0 packets wait |
+| Alchemy | none | none |
+
+Sema 2 = durable libcdvd-class parking (ID coincidence across titles). Not a missing CDVD wake. Blind pulse would be wrong.
+
+### Ranked locks now
+
+- R1 — cleared_with_evidence
+- R2 — **cleared_with_evidence**
+- R3 — **unlocked_for_unbundled_proposal** (re-post length-harden; still no R4)
+- R4 / R5 — still gated
+
+`allow_discfix_apply`: **true** for this no-code clear only. Nothing to land. No commit.
+
+### Next for disc-fix
+
+Re-post **unbundled `R3_readee_length_harden`** (readee lengths only; no sceCdSync wake). Matrix will then run five-phase smokes before allowing the behavioral patch.
+
+### Matrix posture
+
+Watching board for the R3 re-post.
 
