@@ -1,0 +1,80 @@
+INFO  Using log config file: jar:file:/C:/Users/joshy/ghidra_12.1.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\joshy\AppData\Roaming\ghidra\ghidra_12.1.2_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\joshy\AppData\Roaming\ghidra\ghidra_12.1.2_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (917 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (4585 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 93 extension points (47 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Extensions\ghidra-emotionengine-reloaded\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    C:\Users\joshy\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\Users\joshy\ghidra_12.1.2_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Creating project: C:\Users\joshy\ghidra_projects\PS2Elves (HeadlessAnalyzer)  
+INFO  Creating project: C:\Users\joshy\ghidra_projects\PS2Elves (DefaultProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: C:\Users\joshy\ghidra_projects\PS2Elves (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///C:/Users/joshy/ghidra_exports/ps2-elves/gow_boot.elf (HeadlessAnalyzer)  
+INFO  Using Loader: Executable and Linking Format (ELF) (ProgramLoader)  
+INFO  Using Language/Compiler: r5900:LE:32:default:default (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\WINDOWS\SysWOW64, C:\Program Files\Eclipse Adoptium\jdk-21.0.12.8-hotspot\bin, C:\WINDOWS\Sun\Java\bin, C:\WINDOWS\system32, C:\WINDOWS, C:\Windows\System32, C:\Windows] (ProgramLoader)  
+INFO  Additional info:
+Loading file:///C:/Users/joshy/ghidra_exports/ps2-elves/gow_boot.elf?MD5=4f8bc1bb411d0e8e5b15d77217e0313e...
+Skipping section [.sbss] with invalid size 0x0
+_mips_gp0_value=0x2cf070
+Failed to add language defined memory block due to conflict: rom0: start_address=0x1FC00000, uninitialized, length=0x4000000
+------------------------------------------------
+
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///C:/Users/joshy/ghidra_exports/ps2-elves/gow_boot.elf (HeadlessAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.1740474883.314.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.214627.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.3528035.10.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.4126919515.50.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56370531.12.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56610403.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x200.1740474883.451.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x400.1740474883.194.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.1174.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.647.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.106.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.592.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.3935118283.194.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1059.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1609.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.162.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.603.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1361.9' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1708.10' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2086.11' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2421.12' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.470.6' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.497.7' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.967.8' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabelSyncAnalyzer)  
