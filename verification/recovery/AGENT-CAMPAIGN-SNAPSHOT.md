@@ -1,7 +1,8 @@
 # Agent campaign snapshot (context rollover seed)
 
 **Updated:** 2026-11-07 ~10:20 local (America/New_York)  
-**Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**
+**Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**  
+**Checkbox campaign plan:** `logs/master-campaign-plan-2026-11-07.md` (update checkboxes when steps verify).
 
 ## Improvement-pass policy (refined ~10:21)
 
