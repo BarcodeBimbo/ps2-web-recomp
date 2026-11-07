@@ -1166,7 +1166,7 @@ async function enable(context) {
   if (!splash || !splash.ok) {
     const message =
       (splash && splash.message) ||
-      "Boot splash PNG staging failed — Enable requires reference-command-center-2.png";
+      "Boot splash PNG staging failed — Enable requires reference-calibrating-splash.png";
     await writeState(context, { lastError: message, enabled: false, active: false });
     await mirrorEnabledSetting(false);
     return { ok: false, message };
@@ -1459,7 +1459,7 @@ async function healthCheck(context) {
     details.issues.push("active but cortana-boot-splash.png not staged beside workbench");
   }
   if (state.active && !details.splash.sourcePresent) {
-    details.issues.push("boot source PNG missing (reference-command-center-2.png)");
+    details.issues.push("boot source PNG missing (reference-calibrating-splash.png)");
   }
 
   details.warnings = details.warnings || [];

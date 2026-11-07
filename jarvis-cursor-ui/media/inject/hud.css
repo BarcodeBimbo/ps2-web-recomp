@@ -103,6 +103,15 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 
 /* ========== Title bar ========== */
 
+/*
+ * Caption reserve: 3×46px chrome icons + gap so .jcc-operator / header tools
+ * never sit under min/max/close (reference-command-center-2.png).
+ */
+:root {
+  --cortana-caption-btn: 46px;
+  --cortana-caption-reserve: calc((3 * var(--cortana-caption-btn, 46px)) + 16px);
+}
+
 .monaco-workbench .part.titlebar,
 .monaco-workbench .titlebar,
 .monaco-workbench .titlebar-container,
@@ -151,6 +160,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: flex !important;
   align-items: center !important;
   height: 100% !important;
+  min-width: var(--cortana-caption-reserve, 154px);
 }
 
 .monaco-workbench .window-controls-container > .window-icon,
@@ -165,7 +175,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   box-shadow: none !important;
   color: var(--cortana-cyan-soft, #7ee8ff) !important;
   opacity: 0.78;
-  width: 46px !important;
+  width: var(--cortana-caption-btn, 46px) !important;
   height: 100% !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -198,7 +208,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
  * themed caption buttons; Focus Mode restores the full navy strip.
  */
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
@@ -213,10 +223,10 @@ body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workb
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-container,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-container,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
   background: transparent !important;
   background-image: none !important;
   border: none !important;
@@ -229,31 +239,52 @@ body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workb
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-title,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .menubar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .command-center,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-appicon,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-title,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .menubar,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .command-center {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-left,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-center,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-appicon,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-title,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .menubar,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .command-center {
   opacity: 0 !important;
   visibility: hidden !important;
 }
 
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .titlebar-right {
   pointer-events: none !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-controls-container,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-controls-container {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar .window-controls-container {
   pointer-events: auto !important;
   opacity: 1 !important;
   visibility: visible !important;
   z-index: 100000 !important;
   background: transparent !important;
-  margin-right: 2px !important;
+  margin-right: 0 !important;
+}
+
+/*
+ * Header right padding — keep .jcc-operator / search / icon buttons clear of
+ * elevated caption controls while HUD is primary (Focus Mode hides HUD).
+ */
+#cortana-cc-hud .jcc-header,
+#jarvis-cc-hud .jcc-header {
+  padding-right: calc(18px + var(--cortana-caption-reserve, 154px));
+}
+
+#cortana-cc-hud .jcc-header-tools,
+#jarvis-cc-hud .jcc-header-tools {
+  padding-right: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+#cortana-cc-hud .jcc-operator,
+#jarvis-cc-hud .jcc-operator {
+  margin-right: 0;
 }
 
 /* ========== Activity bar ========== */
@@ -1229,7 +1260,8 @@ html.cortana-inject-probe::after {
   gap: 12px;
   min-height: var(--cortana-header-h, 52px);
   margin: 0 -14px 8px;
-  padding: 10px 18px 12px;
+  /* Right pad clears elevated Win caption controls (see --cortana-caption-reserve) */
+  padding: 10px calc(18px + var(--cortana-caption-reserve, 154px)) 12px 18px;
   background:
     linear-gradient(180deg, rgba(0, 15, 36, 0.72) 0%, rgba(2, 12, 26, 0.42) 100%);
   border-bottom: 1px solid var(--cortana-border-solid, #0a3852);
@@ -1291,6 +1323,9 @@ html.cortana-inject-probe::after {
   display: flex;
   align-items: center;
   gap: 8px;
+  /* Room for caption cluster; parent .jcc-header also pads by --cortana-caption-reserve */
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .jcc-search {
@@ -1307,22 +1342,31 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-icon-btn {
-  width: 30px;
-  height: 30px;
+  width: var(--cortana-icon-btn-size, 30px);
+  height: var(--cortana-icon-btn-size, 30px);
   border-radius: 8px;
-  border: 1px solid var(--cortana-border-subtle);
-  background: rgba(0, 20, 40, 0.45);
-  color: var(--cortana-cyan-mid);
+  border: 1px solid var(--cortana-header-icon-border, var(--cortana-border-subtle));
+  background: var(--cortana-header-icon-bg, rgba(0, 20, 40, 0.45));
+  color: var(--cortana-header-icon, var(--cortana-cyan-mid));
   cursor: pointer;
   display: inline-grid;
   place-items: center;
   padding: 0;
   line-height: 0;
-  filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.35));
+  filter: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
-.jcc-icon-btn.notifications {
-  color: var(--cortana-cyan-mid);
+.jcc-icon-btn:hover {
+  color: var(--cortana-header-icon-hover, var(--cortana-cyan-bright));
+  border-color: var(--cortana-border);
+  background: rgba(0, 30, 55, 0.6);
+}
+
+/* Notification bell — cyan/glass only; never --cortana-warn / amber */
+.jcc-icon-btn.notifications,
+.jcc-header-tools .jcc-icon-btn[aria-label="Notifications"] {
+  color: var(--cortana-header-icon, #40a7ca);
 }
 
 .jcc-icon-btn.notifications svg {
@@ -2151,34 +2195,63 @@ html.cortana-inject-probe::after {
 .jcc-footer-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
 .jcc-meta-chip {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid var(--cortana-border-subtle);
-  background: rgba(0, 20, 40, 0.4);
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 229, 255, 0.32);
+  background: linear-gradient(180deg, rgba(26, 43, 60, 0.55), rgba(0, 15, 36, 0.72));
+  box-shadow:
+    inset 0 1px 0 rgba(0, 242, 255, 0.1),
+    0 4px 14px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.jcc-meta-ico {
+  font-size: 11px;
+  color: var(--cortana-cyan-soft);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.55);
+  line-height: 1;
+}
+
+.jcc-meta-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
 }
 
 .jcc-meta-k {
-  font-size: 8px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: none;
   color: var(--cortana-text-dim);
 }
 
 .jcc-meta-v {
   font-size: 11px;
-  color: var(--cortana-text);
+  color: var(--cortana-text-bright);
+  font-weight: 600;
 }
 
 .jcc-meta-v.ok {
   color: var(--cortana-ok-bright);
+}
+
+.jcc-talk-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  width: 100%;
+  justify-self: center;
 }
 
 .jcc-talk {
@@ -2187,21 +2260,48 @@ html.cortana-inject-probe::after {
   justify-content: center;
   gap: 14px;
   width: 100%;
-  padding: 12px 22px;
+  padding: 14px 26px;
   border-radius: 999px;
-  border: 1px solid var(--cortana-talk-rim);
-  background: radial-gradient(120% 140% at 50% 0%, rgba(0, 120, 160, 0.35) 0%, var(--cortana-talk-fill) 55%);
-  color: var(--cortana-text-bright);
+  border: 2px solid #00e5ff;
+  background:
+    linear-gradient(180deg, rgba(0, 200, 255, 0.45) 0%, rgba(0, 120, 180, 0.55) 42%, rgba(0, 40, 70, 0.92) 100%);
+  color: #e8f7ff;
   cursor: pointer;
-  box-shadow: var(--cortana-talk-glow);
+  box-shadow:
+    0 0 10px rgba(0, 242, 255, 0.85),
+    0 0 28px rgba(0, 212, 255, 0.65),
+    0 0 56px rgba(0, 180, 255, 0.4),
+    0 0 90px rgba(0, 140, 200, 0.28),
+    inset 0 1px 0 rgba(180, 255, 255, 0.45);
   animation: cortana-arc-reactor-pulse var(--cortana-reactor-ms) ease-in-out infinite;
+  position: relative;
+  z-index: 2;
 }
 
 .jcc-talk:hover {
+  border-color: #7af0ff;
   box-shadow:
-    0 0 16px rgba(0, 242, 255, 0.75),
-    0 0 48px rgba(12, 121, 160, 0.55),
-    0 0 90px rgba(0, 212, 255, 0.35);
+    0 0 16px rgba(0, 242, 255, 0.95),
+    0 0 48px rgba(0, 212, 255, 0.7),
+    0 0 96px rgba(0, 180, 255, 0.45);
+}
+
+.jcc-talk-meter {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(18, 40, 58, 0.9);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.jcc-talk-meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #00b8e0, #00e5ff 60%, #7af0ff);
+  box-shadow:
+    0 0 6px #00f2ff,
+    0 0 14px rgba(0, 229, 255, 0.75);
 }
 
 .jcc-talk-copy {
@@ -2212,16 +2312,19 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-talk-copy strong {
-  font-size: 13px;
-  letter-spacing: 0.2em;
-  text-shadow: var(--cortana-text-glow);
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  font-weight: 800;
+  text-shadow:
+    0 0 10px rgba(0, 242, 255, 0.95),
+    0 0 24px rgba(0, 212, 255, 0.65);
 }
 
 .jcc-talk-copy em {
   font-style: normal;
   font-size: 9px;
-  letter-spacing: 0.12em;
-  color: var(--cortana-text-calibrating);
+  letter-spacing: 0.14em;
+  color: #b9ebf4;
 }
 
 .jcc-talk-wave {

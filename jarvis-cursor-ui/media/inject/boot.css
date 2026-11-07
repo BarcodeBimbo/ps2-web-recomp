@@ -44,6 +44,32 @@
   initial-value: 0px;
 }
 
+@property --cortana-pip-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-4 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-5 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+
 @keyframes cortana-boot-bar-grow {
   0% {
     --cortana-boot-bar-w: 0px;
@@ -303,11 +329,10 @@ html:has(#cortana-workbench-css) body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   box-sizing: border-box;
   margin: 0;
   padding: calc(50% + 9.2vh) 16px 0;
-  justify-content: flex-start;
   pointer-events: none !important;
   --cortana-boot-bar-w: 0px;
   font-family: var(--cortana-font-ui, "Segoe UI", Tahoma, sans-serif);
