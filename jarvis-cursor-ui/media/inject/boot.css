@@ -310,7 +310,7 @@ html:has(#cortana-workbench-css) body::before,
     center calc(50% - 1vh),
     center calc(50% - 1vh),
     center calc(50% - 11.5vh);
-  font-family: var(--cortana-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
+  font-family: var(--cortana-font-ui, "Segoe UI", system-ui, sans-serif);
   font-size: clamp(28px, 4.6vw, 44px);
   font-weight: 700;
   letter-spacing: var(--cortana-tracking-wide, 0.32em);
@@ -482,7 +482,7 @@ html.cortana-inject:has(#cortana-workbench-css) body::after {
   animation: cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards;
   pointer-events: none !important;
   color: var(--cortana-cyan-bright, #4ad1f1);
-  font-family: var(--cortana-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
+  font-family: var(--cortana-font-ui, "Segoe UI", system-ui, sans-serif);
 }
 
 body:has(#cortana-boot-root)::before,

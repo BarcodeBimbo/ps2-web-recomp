@@ -344,7 +344,7 @@ class CommandCenterViewProvider {
   --glow-a: ${glow};
   --glow: 0 0 calc(16px * var(--glow-a)) rgba(0, 217, 255, calc(0.35 * var(--glow-a)));
   --radius: 12px;
-  --font: "Segoe UI", "Rajdhani", system-ui, sans-serif;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
 html, body {

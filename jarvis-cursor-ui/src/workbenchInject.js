@@ -1046,7 +1046,7 @@ function stampHudLlmGrid(markup, catalog) {
     : `<p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data — open Cursor once, run scripts/_list_picker_models.py, or re-Enable injection.</p>`;
   const state = models.length ? "live" : "empty";
   const re =
-    /<div\s+class="jcc-llm-grid"\s+id="cortana-llm-grid"[\s\S]*?<\/div>(?=\s*<\/section>)/i;
+    /<div\s+class="jcc-llm-grid"\s+id="cortana-llm-grid"[\s\S]*?<\/div>(?=\s*(?:<button\b|<\/section>))/i;
   if (!re.test(markup)) {
     return markup;
   }
@@ -1998,6 +1998,7 @@ function buildHudInteractScript() {
     "var HEADER_CMDS={",
     "search:['workbench.action.quickOpen','workbench.action.showCommands'],",
     "layout:['workbench.action.toggleEditorGroupLayout','workbench.action.editorLayout','workbench.action.togglePanel'],",
+    "apps:['workbench.view.extensions','workbench.extensions.action.showRecommendedExtensions','workbench.action.showCommands'],",
     "settings:['workbench.action.openSettings'],",
     "notifications:['notifications.showList','workbench.action.showNotifications','workbench.actions.view.problems'],",
     "account:['workbench.action.openAccountSettings','workbench.action.openSettings','cursor.account.open'],",
@@ -2028,12 +2029,14 @@ function buildHudInteractScript() {
     "var root=hud();if(!root)return;",
     "var search=root.querySelector('#cortana-search-btn,[data-cortana-action=\"search\"],[data-cortana-header=\"search\"]');",
     "var layout=root.querySelector('#cortana-layout-btn,[data-cortana-action=\"layout\"],[data-cortana-header=\"layout\"]');",
+    "var apps=root.querySelector('#cortana-apps-btn,[data-cortana-action=\"apps\"],[data-cortana-header=\"apps\"]');",
     "var settings=root.querySelector('#cortana-settings-btn,[data-cortana-action=\"settings\"],[data-cortana-header=\"settings\"]');",
     "var notes=root.querySelector('#cortana-notifications-btn,[data-cortana-action=\"notifications\"],[data-cortana-header=\"notifications\"]');",
     "var account=root.querySelector('#cortana-operator,[data-cortana-action=\"account\"],[data-cortana-header=\"account\"]');",
     "var briefing=root.querySelector('#cortana-briefing-btn,[data-cortana-action=\"briefing\"]');",
     "bindHeaderControl(search,'search');",
     "bindHeaderControl(layout,'layout');",
+    "bindHeaderControl(apps,'apps');",
     "bindHeaderControl(settings,'settings');",
     "bindHeaderControl(notes,'notifications');",
     "bindHeaderControl(account,'account');",

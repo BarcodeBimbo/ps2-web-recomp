@@ -183,9 +183,16 @@ body.CORTANA-inject {
   --cortana-constellation-h: 76px;
   --cortana-constellation-max-w: 178px;
   /* Parallelogram chrome (reference-command-center-2 skewed feet / traps) */
-  --cortana-hud-para-skew: -18deg;
-  --cortana-hud-para-skew-brand: -20deg;
+  /* Brand trap steeper than System Status / panel feet (SPLICE inventory §5.B.9) */
+  --cortana-hud-para-skew: -14deg;
+  --cortana-hud-para-skew-brand: -22deg;
   --cortana-hud-para-foot-h: 4px;
+  --cortana-hud-brand-clip: polygon(0 0, 93% 0, 100% 100%, 0 100%);
+  --cortana-hud-status-shell-clip: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
+  --cortana-hud-ov-ico-radius: 6px;
+  --cortana-talk-fill-top: #0f3d52;
+  --cortana-talk-fill-bot: #021827;
+  --cortana-talk-rim: #3d94b0;
   --cortana-hud-search-min-w: 156px;
   --cortana-line: 1px;
   --cortana-boot-ms: 1800ms;
@@ -253,13 +260,20 @@ body.CORTANA-inject {
   --cortana-mic-ring-ms: 2.2s;
   --cortana-globe-breathe-ms: 3.2s;
 
-  /* —— Typography —— */
-  --cortana-font-ui: "Segoe UI Condensed", "Arial Narrow", "Helvetica Neue Condensed", "Franklin Gothic Medium", "Segoe UI", Tahoma, sans-serif;
-  --cortana-font-display: "Orbitron", "Rajdhani", "Segoe UI Condensed", "Arial Narrow", "Eurostile", Impact, sans-serif;
+  /* —— Typography (CC-2 photo: one geometric UI sans; weight/tracking only) —— */
+  /* Loaded system faces only — no Orbitron/Rajdhani/@font-face (those were never shipped). */
+  --cortana-font-ui: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --cortana-font-display: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   --cortana-font-mono: "Cascadia Mono", "Consolas", "SF Mono", "Courier New", monospace;
-  --cortana-tracking-wide: 0.28em;
-  --cortana-tracking-mid: 0.18em;
-  --cortana-tracking-cal: 0.4em;
+  --cortana-tracking-wide: 0.2em;
+  --cortana-tracking-mid: 0.12em;
+  --cortana-tracking-cal: 0.28em;
+  --cortana-tracking-tight: 0.02em;
+  --cortana-tracking-talk-sub: 0.02em;
+  --cortana-tracking-globe-sub: 0.18em;
+  --cortana-tracking-globe-ver: 0.08em;
+  --cortana-weight-brand: 650;
+  --cortana-weight-display: 700;
 
   /* —— VS Code workbench CSS var bridges (gray killers) —— */
   --vscode-editor-background: var(--cortana-bg-editor) !important;
