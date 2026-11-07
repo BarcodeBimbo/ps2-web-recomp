@@ -31,10 +31,15 @@ gba(0,212,255,~0.18–0.28)) | Existing panel borders; verify no yellow |
 4. Full-app chrome still partially stock (plan/build) — breaks unison grade
 5. Accidental warm amber/yellow in header tools (must stay cool)
 
+## Related
+
+Full button/panel/window/icon inventory + God-missed flags: [`SPLICE-ELEMENT-INVENTORY-CC2.md`](./SPLICE-ELEMENT-INVENTORY-CC2.md)
+
 ## Work items
 
 - [ ] Re-sample tokens.css against photo means (void / panel / accent / talk)
 - [ ] Verify .jcc-nebula + particles read as photo glow treatment
 - [ ] Audit dark-spot layering across rail, grid, footer
 - [ ] Full-app chrome grade (editor/sidebar/status) vs HUD unison
+- [ ] God reviews inventory + missed flags before rebuild locks
 - [ ] No package until God signs theming + element audit
