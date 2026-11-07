@@ -1494,7 +1494,7 @@ function buildHudWaveScript() {
 function buildHudInteractStyle() {
   return [
     `<style id="cortana-hud-interact-css">`,
-    "/* CORTANA-HEALTH: interact-pointer */",
+    "/* CORTANA-HEALTH: interact-pointer — colors from head bundle tokens.css */",
     "#cortana-cc-hud .jcc-main,",
     "#cortana-cc-hud .jcc-grid,",
     "#cortana-cc-hud .jcc-footer,",
