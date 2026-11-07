@@ -1,8 +1,6 @@
 "use strict";
 
 const vscode = require("vscode");
-const path = require("path");
-const fs = require("fs");
 const { FileMapProvider } = require("./fileMapProvider");
 const { CommandCenterViewProvider } = require("./commandCenterView");
 
@@ -21,12 +19,6 @@ function activate(context) {
     vscode.commands.registerCommand("jarvis.fileMap.refresh", () => {
       fileMap.refresh();
       commandCenter.refresh();
-    }),
-    vscode.commands.registerCommand("jarvis.fileMap.focus", () => {
-      vscode.commands.executeCommand("jarvis.fileMap.focus");
-    }),
-    vscode.commands.registerCommand("jarvis.commandCenter.focus", () => {
-      vscode.commands.executeCommand("jarvis.commandCenter.focus");
     }),
     vscode.commands.registerCommand("jarvis.theme.applyHints", async () => {
       const cfg = vscode.workspace.getConfiguration();
