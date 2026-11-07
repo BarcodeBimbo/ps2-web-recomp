@@ -1,0 +1,109 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] C:\PS2Recomp\games\a2116d2ac08a7be4db4e8455ad58d2e5\disc.iso: 310 files, 1540176 sectors, layer 1 at 0
+[createsema] id=0 init=1 max=1 attr=0x0 option=0x57F1D0 ra=0x001080BC thr=1
+[createsema] id=1 init=1 max=1 attr=0x0 option=0x57F1E0 ra=0x001080CC thr=1
+[createsema] id=2 init=0 max=255 attr=0x0 option=0x57EC38 ra=0x001038CC thr=1
+[waitsema] id=2 count=0 waiters=0 ra=0x001037F8 thr=2 create_ra=0x001038CC init=0 max=255 will_block
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOP\IOPRP310.IMG;1"
+[sif] FILEIO from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOP\IOPRP310.IMG;1 reports 3100
+[createsema] id=3 init=0 max=1 attr=0x530000 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=3 init=0 max=1 attr=0x205BD700 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=3 init=0 max=1 attr=0x80000592 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=3 init=1 max=1 attr=0x550000 option=0x5BAD08 ra=0x0041B108 thr=1
+[createsema] id=4 init=1 max=1 attr=0x550000 option=0x5BAD18 ra=0x0041B120 thr=1
+[createsema] id=5 init=1 max=1 attr=0x550000 option=0x5BAD28 ra=0x0041B138 thr=1
+[createsema] id=6 init=0 max=1 attr=0x550000 option=0x5BAD38 ra=0x0041B154 thr=1
+[createsema] id=7 init=0 max=1 attr=0x5D8A28 option=0x57EEB8 ra=0x00105B74 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105BD4 thr=1 create_ra=0x00105B74 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC
+[createsema] id=7 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[createsema] id=7 init=0 max=1 attr=0x105BAC option=0x57EEC8 ra=0x00105E30 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block
+[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C
+[vu0] cfc2 28
+[createsema] id=7 init=0 max=1 attr=0x4A0000 option=0x0 ra=0x001008FC thr=1
+[createsema] id=8 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[waitsema] id=7 count=0 waiters=0 ra=0x001008A0 thr=3 create_ra=0x001008FC init=0 max=1 will_block
+[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=8 init=0 max=1 attr=0x80000006 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\SIO2MAN.IRX
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\PADMAN.IRX
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\MCMAN.IRX
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[loadfile] cdrom0:\IOP\MCSERV.IRX
+[createsema] id=8 init=1 max=1 attr=0x1207DC option=0x5BC028 ra=0x00427C38 thr=1
+[createsema] id=9 init=0 max=1 attr=0x1207DC option=0x5BC038 ra=0x00427C64 thr=1
+[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=10 init=0 max=1 attr=0x5C4870 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x3CF5C28F option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x5D8A90 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=10 init=0 max=1 attr=0x80000597 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[createsema] id=10 init=0 max=1 attr=0x432E4D45 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SYSTEM.CNF;1 -> found
+[createsema] id=10 init=0 max=1 attr=0x41B680 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1
+[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x270 option=0x57EC50 ra=0x00103A68 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=10 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[createsema] id=10 init=0 max=1 attr=0x53454D52 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1
+[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1
+[cdvdfsv] search \SCENES\ALLLEVEL\ERRORMES.ZIP;1 -> found
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[cdvdfsv] search \MAIN.INI;1 -> found
+[cdvdfsv] search \MAIN.INI;1 -> found
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[dma] gif tag id 7 qwc 31 addr 0x00000000 data 0x01FFF6C0
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020398)
+[dma] gif tag id 7 qwc 11 addr 0x00000000 data 0x01FFF6B0
+[loadfile] cdrom0:\IOP\LIBSD.IRX
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0005AA78)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0005AA7C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0005AA98)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0005AAA8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0005AAD4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0005AAD8)
+[loadfile] cdrom0:\IOP\SCRTCHPD.IRX
+[loadfile] cdrom0:\IOP\SYNTHCD.IRX
+[iop-io] write 0x1FFE0144 = 0x1F800800 (pc 0x0005F52C)
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[fileio] open rom0:ROMVER -> 3
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.ZIP;1 -> found
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[cdvdfsv] search \HM3GPAD.CFG;1 -> found
+[cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8
+[cdvdfsv] search \SCENES\BOOTMENU.WHD;1 -> found
+[cdvdfsv] search \SCENES\BOOTMENU.WAV;1 -> found
