@@ -81,18 +81,27 @@
   }
 }
 
-/* ========== Full-bleed cover: body / workbench early paint ========== */
+/* ========== Full-bleed cover: body / workbench early paint ==========
+   This stylesheet is ONLY inlined when JARVIS injection is active, so
+   bare `body::before/::after` is correct. `.jarvis-inject` aliases kept
+   for optional future class hooks — engine does not require them.
+*/
 
+body,
 body.jarvis-inject,
 body.jarvis-boot,
 html.jarvis-inject body,
+html:has(#jarvis-workbench-css) body,
+.monaco-workbench,
 .monaco-workbench.jarvis-inject {
   background-color: var(--jarvis-bg-deep, #0e121a) !important;
 }
 
 /* Primary CSS cover — PNG preferred; dark void underneath */
+body::before,
 body.jarvis-inject::before,
 body.jarvis-boot::before,
+html:has(#jarvis-workbench-css) body::before,
 .monaco-workbench.jarvis-inject::before {
   content: "";
   position: fixed;
@@ -108,8 +117,10 @@ body.jarvis-boot::before,
 }
 
 /* When PNG missing, ::before still paints void; ::after paints CSS fallback HUD */
+body::after,
 body.jarvis-inject::after,
-body.jarvis-boot::after {
+body.jarvis-boot::after,
+html:has(#jarvis-workbench-css) body::after {
   content: "J.A.R.V.I.S.\A JUST A RATHER VERY INTELLIGENT SYSTEM";
   white-space: pre;
   position: fixed;
@@ -122,7 +133,7 @@ body.jarvis-boot::after {
   padding-bottom: 8vh;
   box-sizing: border-box;
   font-family: var(--jarvis-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
-  font-size: clamp(28px, 5.5vw, 52px);
+  font-size: clamp(26px, 5vw, 48px);
   font-weight: 700;
   letter-spacing: var(--jarvis-tracking-wide, 0.28em);
   color: var(--jarvis-cyan, #00f2ff);
@@ -132,8 +143,7 @@ body.jarvis-boot::after {
   animation:
     jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards,
     jarvis-boot-title-bloom 1.6s ease-in-out infinite;
-  /* Hide CSS fallback title when PNG loads (cover sits under; PNG opaque).
-     Fallback remains visible if PNG 404 — void + text still read as splash. */
+  /* Fallback remains visible if PNG 404 — void + text still read as splash. */
   pointer-events: none;
   background:
     /* ring track */
@@ -152,13 +162,6 @@ body.jarvis-boot::after {
     linear-gradient(90deg, var(--jarvis-cyan-soft, #0fdeff) 0%, var(--jarvis-cyan, #00f2ff) 100%)
       center calc(50% + 118px) / min(94px, 14.5vw) 4px no-repeat;
   background-repeat: no-repeat;
-}
-
-/* Tagline size override via first-line trick is limited; use smaller second line via font on parent + letter-spacing */
-body.jarvis-inject::after,
-body.jarvis-boot::after {
-  /* subtitle line inherits; scale down via smaller overall + padding trick */
-  font-size: clamp(26px, 5vw, 48px);
 }
 
 /* ========== #jarvis-boot-root — engine may inject empty host ========== */
@@ -185,13 +188,7 @@ body.jarvis-boot::after {
   pointer-events: auto;
 }
 
-/* Pure-CSS fallback stack inside boot root (visible when PNG fails — children optional) */
-#jarvis-boot-root .jarvis-boot-fallback,
-#jarvis-boot-root[data-fallback="css"],
-#jarvis-boot-root:empty::before {
-  /* :empty::before = CSS recreation when engine leaves root empty AND PNG fails to paint content */
-}
-
+/* :empty host — CSS recreation when engine leaves root empty / PNG fails */
 #jarvis-boot-root:empty::before {
   content: "J.A.R.V.I.S.";
   display: block;
@@ -360,6 +357,7 @@ body.jarvis-boot::after {
 }
 
 /* Suppress duplicate body::after title when dedicated boot root is present */
+body:has(#jarvis-boot-root)::after,
 body.jarvis-inject:has(#jarvis-boot-root)::after,
 body.jarvis-boot:has(#jarvis-boot-root)::after {
   content: none !important;
@@ -368,6 +366,7 @@ body.jarvis-boot:has(#jarvis-boot-root)::after {
   background: none !important;
 }
 
+body:has(#jarvis-boot-root)::before,
 body.jarvis-inject:has(#jarvis-boot-root)::before,
 body.jarvis-boot:has(#jarvis-boot-root)::before {
   /* Root owns the cover; avoid double opaque layers */
@@ -402,8 +401,6 @@ body.jarvis-boot-css-fallback .monaco-workbench::after,
   border: 1.5px solid rgba(8, 100, 115, 0.4);
   box-sizing: border-box;
   box-shadow: inset 0 0 0 0 transparent;
-  animation:
-    jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards;
   pointer-events: none;
   background:
     conic-gradient(from 0deg, var(--jarvis-cyan, #00f2ff) 0 80deg, transparent 80deg),

@@ -471,12 +471,14 @@ async function readCssBundle(context) {
   }
 
   // CSP img-src allows 'self' and data:. Prefer relative sibling next to workbench.
+  // Boot CSS uses bare body::before (sheet only present when patched) — bind URL there too.
   parts.push(
     [
       "/* === jarvis staged splash binding === */",
       `:root { --jarvis-boot-splash: url(./${BOOT_STAGED_NAME}); }`,
-      `#jarvis-boot, .jarvis-boot-splash, body.jarvis-booting {`,
-      `  background-image: var(--jarvis-boot-splash);`,
+      `body::before,`,
+      `#jarvis-boot, .jarvis-boot-splash, body.jarvis-booting, body.jarvis-inject::before, body.jarvis-boot::before {`,
+      `  background-image: var(--jarvis-boot-splash, url(./${BOOT_STAGED_NAME}));`,
       `}`,
     ].join("\n")
   );
@@ -630,18 +632,7 @@ async function reconcileOnActivate(context) {
   const currentFp = fingerprintString(fp.version, fp.commit, fp.vscodeVersion);
 
   if (state.active || state.enabled) {
-    const storedFp = state.lastOkFingerprint || fingerprintString(state.cursorVersion, state.cursorCommit, "");
-    const versionMismatch =
-      (state.cursorVersion && state.cursorVersion !== fp.version) ||
-      (state.cursorCommit && state.cursorCommit !== fp.commit) ||
-      (state.lastOkFingerprint && state.lastOkFingerprint !== currentFp) ||
-      (Boolean(state.cursorVersion || state.cursorCommit) &&
-        fingerprintString(state.cursorVersion, state.cursorCommit, fp.vscodeVersion) !== currentFp &&
-        state.lastOkFingerprint &&
-        state.lastOkFingerprint.split("|")[2] &&
-        state.lastOkFingerprint.split("|")[2] !== fp.vscodeVersion);
-
-    // Simpler authoritative compare when we have a stored fingerprint:
+    // Fail-safe (1): product.json version+commit and vscode.version vs stored fingerprint
     let mismatch = false;
     let mismatchReason = "";
     if (state.lastOkFingerprint) {
@@ -656,61 +647,48 @@ async function reconcileOnActivate(context) {
       }
     }
 
-    // Silence unused locals from exploratory compare above
-    void versionMismatch;
-    void storedFp;
+    if (mismatch) {
+      try {
+        await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
+      } catch (err) {
+        const msg = formatWriteError(err);
+        await writeState(context, { enabled: false, active: false, lastError: msg });
+        await mirrorEnabledSetting(false);
+        return { status: "auto-disabled", message: mismatchReason, restoreError: msg };
+      }
+      await clearInjectionState(context, mismatchReason);
+      return { status: "auto-disabled", message: mismatchReason };
+    }
 
-    const expectedUuid = state.markerUuid || null;
-    const validity = state.active || isAlreadyPatched(html)
-      ? markersValid(html, expectedUuid || undefined)
-      : { ok: true, reason: "not-on-disk", markers: parseMarkers(html) };
-
-    // When enabled/active we expect a healthy patch on disk
-    if (state.active || state.enabled) {
-      if (mismatch) {
+    // Fail-safe (2): corrupt / wrong-uuid / missing style while patch expected on disk
+    const expectedUuid = state.markerUuid || undefined;
+    if (state.active || isAlreadyPatched(html)) {
+      const validity = markersValid(html, expectedUuid);
+      if (!validity.ok) {
+        const reason = `Patch detection failed: ${validity.reason} — JARVIS injection disabled.`;
         try {
           await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
         } catch (err) {
           const msg = formatWriteError(err);
-          await writeState(context, {
-            enabled: false,
-            active: false,
-            lastError: msg,
-          });
+          await writeState(context, { enabled: false, active: false, lastError: msg });
           await mirrorEnabledSetting(false);
-          return { status: "auto-disabled", message: mismatchReason, restoreError: msg };
-        }
-        await clearInjectionState(context, mismatchReason);
-        return { status: "auto-disabled", message: mismatchReason };
-      }
-
-      if (state.active || isAlreadyPatched(html)) {
-        if (!validity.ok) {
-          const reason = `Patch detection failed: ${validity.reason} — JARVIS injection disabled.`;
-          try {
-            await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
-          } catch (err) {
-            const msg = formatWriteError(err);
-            await writeState(context, { enabled: false, active: false, lastError: msg });
-            await mirrorEnabledSetting(false);
-            return { status: "auto-disabled", message: reason, restoreError: msg };
-          }
-          await clearInjectionState(context, reason);
-          return { status: "auto-disabled", message: reason };
-        }
-      }
-
-      // enabled but patch missing on disk (update wipe / external restore)
-      if (state.enabled && !parseMarkers(html).hasStart) {
-        const reason = "patch missing — re-enable manually";
-        try {
-          await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
-        } catch {
-          /* already missing */
+          return { status: "auto-disabled", message: reason, restoreError: msg };
         }
         await clearInjectionState(context, reason);
         return { status: "auto-disabled", message: reason };
       }
+    }
+
+    // enabled but patch missing — never auto-reapply
+    if (state.enabled && !parseMarkers(html).hasStart) {
+      const reason = "patch missing — re-enable manually";
+      try {
+        await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
+      } catch {
+        /* already missing */
+      }
+      await clearInjectionState(context, reason);
+      return { status: "auto-disabled", message: reason };
     }
   }
 
@@ -1002,7 +980,11 @@ async function healthCheck(context) {
     details.issues.push("enabled+active requires healthy markers");
   }
 
-  if (state.lastOkFingerprint && state.lastOkFingerprint !== details.fingerprint.string) {
+  if (
+    (state.active || state.enabled) &&
+    state.lastOkFingerprint &&
+    state.lastOkFingerprint !== details.fingerprint.string
+  ) {
     details.issues.push("fingerprint mismatch vs lastOkFingerprint");
   }
 

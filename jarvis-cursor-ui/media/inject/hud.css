@@ -1,0 +1,532 @@
+/* JARVIS — Workbench HUD chrome (calibrating aesthetic → full IDE)
+   Visual authority: media/reference-calibrating-splash.png (color/glow)
+   Layout cues: media/reference-command-center.png (regions)
+   Injected into workbench.html — not an extension webview.
+   JARVIS-HEALTH: tokens+boot+hud */
+
+/* ========== Root / shell void ========== */
+
+.monaco-workbench.jarvis-inject,
+body.jarvis-inject .monaco-workbench,
+.monaco-workbench {
+  background-color: var(--jarvis-bg, #0b0e14) !important;
+  color: var(--jarvis-text, #c8d6e5) !important;
+  font-family: var(--jarvis-font-ui, "Segoe UI Condensed", "Arial Narrow", sans-serif) !important;
+}
+
+.monaco-workbench .part {
+  background-color: transparent !important;
+}
+
+/* ========== Title bar ========== */
+
+.monaco-workbench .part.titlebar,
+.monaco-workbench .titlebar,
+.monaco-workbench .titlebar-container,
+.monaco-workbench .titlebar-left,
+.monaco-workbench .titlebar-center,
+.monaco-workbench .titlebar-right {
+  background-color: var(--jarvis-bg-deep, #0e121a) !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 242, 255, 0.04) 0%,
+    transparent 100%
+  ) !important;
+  color: var(--jarvis-text, #c8d6e5) !important;
+  border-bottom: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle, rgba(0, 212, 255, 0.12)) !important;
+}
+
+.monaco-workbench .window-title,
+.monaco-workbench .titlebar-center .title {
+  color: var(--jarvis-cyan-mid, #00d4ff) !important;
+  letter-spacing: 0.08em;
+  text-shadow: var(--jarvis-text-glow-soft);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px !important;
+}
+
+.monaco-workbench .titlebar .action-label,
+.monaco-workbench .window-appicon {
+  color: var(--jarvis-cyan-dim, #086473) !important;
+}
+
+.monaco-workbench .titlebar .action-label:hover {
+  color: var(--jarvis-cyan, #00f2ff) !important;
+  text-shadow: var(--jarvis-glow-tight);
+}
+
+/* ========== Activity bar (left icon rail) ========== */
+
+.monaco-workbench .part.activitybar,
+.monaco-workbench .activitybar {
+  background-color: var(--jarvis-bg-activity, #06090f) !important;
+  border-right: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle) !important;
+  box-shadow: inset -1px 0 12px rgba(0, 212, 255, 0.04);
+}
+
+.monaco-workbench .activitybar .action-item .action-label {
+  color: var(--jarvis-text-dim, #7a8fa3) !important;
+}
+
+.monaco-workbench .activitybar .action-item:hover .action-label,
+.monaco-workbench .activitybar .action-item.checked .action-label {
+  color: var(--jarvis-cyan, #00f2ff) !important;
+  text-shadow: var(--jarvis-glow-soft);
+  filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.45));
+}
+
+.monaco-workbench .activitybar .action-item.checked .active-item-indicator,
+.monaco-workbench .activitybar .action-item.checked::before,
+.monaco-workbench .activitybar .active-item-indicator {
+  border-left-color: var(--jarvis-cyan, #00f2ff) !important;
+  background-color: var(--jarvis-cyan, #00f2ff) !important;
+  box-shadow: var(--jarvis-glow-tight);
+  width: 2px !important;
+}
+
+.monaco-workbench .activitybar .badge .badge-content,
+.monaco-workbench .activitybar .badge-content {
+  background-color: var(--jarvis-cyan, #00f2ff) !important;
+  color: #021018 !important;
+  border: none !important;
+  box-shadow: var(--jarvis-glow-tight);
+  font-weight: 700;
+  font-size: 9px !important;
+}
+
+/* ========== Side bar ========== */
+
+.monaco-workbench .part.sidebar,
+.monaco-workbench .sidebar {
+  background-color: var(--jarvis-bg-sidebar, #080c14) !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 242, 255, 0.03) 0%,
+    transparent 120px
+  ) !important;
+  border-right: var(--jarvis-line, 1px) solid var(--jarvis-border, rgba(0, 242, 255, 0.22)) !important;
+  color: var(--jarvis-text, #c8d6e5) !important;
+}
+
+.monaco-workbench .sidebar .composite.title,
+.monaco-workbench .pane-header,
+.monaco-workbench .sidebar .title-label h2,
+.monaco-workbench .view-pane-header {
+  background-color: var(--jarvis-glass, rgba(8, 14, 22, 0.82)) !important;
+  color: var(--jarvis-cyan-bright, #1be4ff) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--jarvis-tracking-mid, 0.18em);
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  border-bottom: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle) !important;
+  text-shadow: var(--jarvis-text-glow-soft);
+}
+
+.monaco-workbench .sidebar .monaco-list-row {
+  border-radius: var(--jarvis-radius-sm, 4px);
+}
+
+.monaco-workbench .sidebar .monaco-list-row:hover {
+  background-color: var(--jarvis-bg-hover) !important;
+}
+
+.monaco-workbench .sidebar .monaco-list-row.selected,
+.monaco-workbench .sidebar .monaco-list-row.focused {
+  background-color: var(--jarvis-bg-active) !important;
+  box-shadow: inset 2px 0 0 var(--jarvis-cyan, #00f2ff);
+}
+
+.monaco-workbench .sidebar .monaco-tl-row .monaco-icon-label,
+.monaco-workbench .sidebar .label-name {
+  color: var(--jarvis-text, #c8d6e5) !important;
+}
+
+.monaco-workbench .auxiliarybar,
+.monaco-workbench .part.auxiliarybar {
+  background-color: var(--jarvis-bg-sidebar) !important;
+  border-left: var(--jarvis-line, 1px) solid var(--jarvis-border) !important;
+}
+
+/* ========== Editor group / tabs ========== */
+
+.monaco-workbench .part.editor,
+.monaco-workbench .editor-group-container,
+.monaco-workbench .monaco-editor,
+.monaco-workbench .monaco-editor-background,
+.monaco-workbench .margin-view-overlays,
+.monaco-workbench .monaco-editor .overflow-guard {
+  background-color: var(--jarvis-bg-editor, #0b0e14) !important;
+}
+
+.monaco-workbench .editor-group-container.empty {
+  background-color: var(--jarvis-bg, #0b0e14) !important;
+}
+
+.monaco-workbench .tabs-container,
+.monaco-workbench .editor-group-container > .title,
+.monaco-workbench .tabs-and-actions-container {
+  background-color: var(--jarvis-bg-panel, #0a1018) !important;
+  border-bottom: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle) !important;
+}
+
+.monaco-workbench .tab,
+.monaco-workbench .tab .tab-label {
+  background-color: transparent !important;
+  color: var(--jarvis-text-dim, #7a8fa3) !important;
+  border-right: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle) !important;
+}
+
+.monaco-workbench .tab:hover {
+  background-color: var(--jarvis-bg-hover) !important;
+  color: var(--jarvis-text-bright) !important;
+}
+
+.monaco-workbench .tab.active,
+.monaco-workbench .tab.active .tab-label {
+  background-color: var(--jarvis-bg-editor) !important;
+  color: var(--jarvis-cyan, #00f2ff) !important;
+  text-shadow: var(--jarvis-text-glow-soft);
+  box-shadow: inset 0 2px 0 var(--jarvis-cyan, #00f2ff);
+}
+
+.monaco-workbench .editor-group-container > .title .tabs-container > .tab.active::before,
+.monaco-workbench .tab.active::after {
+  /* cyan top accent — fallback when box-shadow inset insufficient */
+  border-top-color: var(--jarvis-cyan, #00f2ff) !important;
+}
+
+.monaco-workbench .breadcrumbs-control,
+.monaco-workbench .monaco-breadcrumbs {
+  background-color: var(--jarvis-bg-panel) !important;
+  color: var(--jarvis-text-dim) !important;
+  border-bottom: var(--jarvis-line, 1px) solid var(--jarvis-border-subtle) !important;
+}
+
+.monaco-workbench .monaco-breadcrumb-item:hover,
+.monaco-workbench .monaco-breadcrumb-item.focused {
+  color: var(--jarvis-cyan, #00f2ff) !important;
+}
+
+/* Optional subtle grid / scanline on editor void (tasteful, low opacity) */
+.monaco-workbench .part.editor > .content::before,
+.monaco-workbench .editor-group-container.empty::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image:
+    linear-gradient(rgba(0, 242, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 255, 0.5) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Scanline wash over editor background only (not glyphs) */
+.monaco-workbench .monaco-editor .monaco-editor-background {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 242, 255, 0.015) 2px,
+    rgba(0, 242, 255, 0.015) 3px
+  ) !important;
+}
+
+/* ========== Panel (terminal / problems) ========== */
+
+.monaco-workbench .part.panel,
+.monaco-workbench .panel {
+  background-color: var(--jarvis-bg-panel, #0a1018) !important;
+  border-top: var(--jarvis-line, 1px) solid var(--jarvis-border, rgba(0, 242, 255, 0.22)) !important;
+  box-shadow: 0 -4px 24px rgba(0, 212, 255, 0.05);
+}
+
+.monaco-workbench .panel .composite.title,
+.monaco-workbench .panel .panel-header,
+.monaco-workbench .panel .tabs-container {
+  background-color: var(--jarvis-glass-strong, rgba(5, 10, 18, 0.92)) !important;
+}
+
+.monaco-workbench .panel .tab.active,
+.monaco-workbench .panel .action-item.active,
+.monaco-workbench .panel .title-actions .action-label.checked {
+  color: var(--jarvis-cyan, #00f2ff) !important;
+  border-bottom: 2px solid var(--jarvis-cyan, #00f2ff) !important;
+  text-shadow: var(--jarvis-text-glow-soft);
+}
+
+.monaco-workbench .panel .monaco-list-row:hover {
+  background-color: var(--jarvis-bg-hover) !important;
+}
+
+/* ========== Status bar (footer meta strip) ========== */
+
+.monaco-workbench .part.statusbar,
+.monaco-workbench .statusbar {
+  background-color: var(--jarvis-bg-deep, #0e121a) !important;
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 242, 255, 0.05) 0%,
+    transparent 100%
+  ) !important;
+  color: var(--jarvis-text-dim, #7a8fa3) !important;
+  border-top: var(--jarvis-line, 1px) solid var(--jarvis-border-strong, rgba(0, 242, 255, 0.45)) !important;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.12);
+  font-size: 11px !important;
+  letter-spacing: 0.04em;
+}
+
+.monaco-workbench .statusbar .statusbar-item a,
+.monaco-workbench .statusbar .statusbar-item span,
+.monaco-workbench .statusbar-item {
+  color: var(--jarvis-text-dim, #7a8fa3) !important;
+}
+
+.monaco-workbench .statusbar .statusbar-item:hover a,
+.monaco-workbench .statusbar .statusbar-item:hover {
+  background-color: var(--jarvis-bg-hover) !important;
+  color: var(--jarvis-cyan, #00f2ff) !important;
+  text-shadow: var(--jarvis-glow-tight);
+}
+
+.monaco-workbench .statusbar .statusbar-item.remote-kind,
+.monaco-workbench .statusbar .left-items .statusbar-item:first-child {
+  color: var(--jarvis-cyan-mid, #00d4ff) !important;
+}
+
+/* ========== Scrollbars ========== */
+
+.monaco-workbench .monaco-scrollable-element > .scrollbar > .slider,
+.monaco-workbench .scrollbar .slider {
+  background: rgba(0, 212, 255, 0.22) !important;
+  border-radius: 2px !important;
+}
+
+.monaco-workbench .monaco-scrollable-element > .scrollbar > .slider:hover,
+.monaco-workbench .scrollbar .slider:hover {
+  background: rgba(0, 242, 255, 0.4) !important;
+  box-shadow: var(--jarvis-glow-tight);
+}
+
+.monaco-workbench .monaco-scrollable-element > .scrollbar > .slider.active {
+  background: rgba(0, 242, 255, 0.55) !important;
+}
+
+/* ========== Badges / progress / notifications ========== */
+
+.monaco-workbench .badge,
+.monaco-workbench .monaco-count-badge,
+.monaco-workbench .notifications-count-badge {
+  background-color: var(--jarvis-cyan, #00f2ff) !important;
+  color: #021018 !important;
+  box-shadow: var(--jarvis-glow-tight);
+  font-weight: 700;
+}
+
+.monaco-workbench .progress-bit,
+.monaco-workbench .monaco-progress-container .progress-bit {
+  background-color: var(--jarvis-cyan, #00f2ff) !important;
+  box-shadow: var(--jarvis-glow-soft);
+}
+
+.monaco-workbench .notification-toast,
+.monaco-workbench .notifications-list-container,
+.monaco-workbench .notification-list-item {
+  background-color: var(--jarvis-glass-strong) !important;
+  border: var(--jarvis-line, 1px) solid var(--jarvis-border) !important;
+  border-radius: var(--jarvis-radius, 8px) !important;
+  box-shadow: var(--jarvis-glow-soft);
+  color: var(--jarvis-text) !important;
+  backdrop-filter: blur(var(--jarvis-glass-blur, 12px));
+}
+
+/* ========== Focus rings / inputs / buttons ========== */
+
+.monaco-workbench input:focus,
+.monaco-workbench textarea:focus,
+.monaco-workbench select:focus,
+.monaco-workbench .monaco-inputbox.synthetic-focus,
+.monaco-workbench .quick-input-widget .monaco-inputbox.synthetic-focus,
+.monaco-workbench .setting-item-control input:focus {
+  outline: none !important;
+  border-color: var(--jarvis-cyan, #00f2ff) !important;
+  box-shadow: 0 0 0 1px rgba(0, 242, 255, 0.45), var(--jarvis-glow-soft) !important;
+}
+
+.monaco-workbench .monaco-inputbox,
+.monaco-workbench input,
+.monaco-workbench textarea,
+.monaco-workbench .suggest-input-container {
+  background-color: var(--jarvis-bg-input, #05080e) !important;
+  border-color: var(--jarvis-border-solid, #0a3852) !important;
+  color: var(--jarvis-text-bright, #e8f7ff) !important;
+  border-radius: var(--jarvis-radius-sm, 4px) !important;
+}
+
+.monaco-workbench .monaco-button,
+.monaco-workbench .monaco-text-button {
+  background-color: rgba(0, 60, 80, 0.85) !important;
+  color: var(--jarvis-text-bright) !important;
+  border: var(--jarvis-line, 1px) solid var(--jarvis-border) !important;
+  border-radius: var(--jarvis-radius-pill, 999px) !important;
+  box-shadow: var(--jarvis-glow-soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 11px !important;
+}
+
+.monaco-workbench .monaco-button:hover,
+.monaco-workbench .monaco-text-button:hover {
+  background-color: rgba(0, 90, 110, 0.95) !important;
+  border-color: var(--jarvis-border-strong) !important;
+  box-shadow: var(--jarvis-glow);
+  color: var(--jarvis-cyan, #00f2ff) !important;
+}
+
+/* ========== Quick Input / Command Palette / Chat — Talk capsule language ========== */
+
+.monaco-workbench .quick-input-widget {
+  background-color: var(--jarvis-glass-strong) !important;
+  border: var(--jarvis-line, 1px) solid var(--jarvis-border-strong) !important;
+  border-radius: var(--jarvis-radius-lg, 12px) !important;
+  box-shadow: var(--jarvis-glow), 0 12px 48px rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(var(--jarvis-glass-blur));
+  overflow: hidden;
+}
+
+.monaco-workbench .quick-input-widget .quick-input-header,
+.monaco-workbench .quick-input-widget .monaco-inputbox {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.monaco-workbench .quick-input-list .monaco-list-row:hover,
+.monaco-workbench .quick-input-list .monaco-list-row.focused {
+  background-color: var(--jarvis-bg-active) !important;
+}
+
+.monaco-workbench .quick-input-list .monaco-list-row.focused {
+  box-shadow: inset 2px 0 0 var(--jarvis-cyan, #00f2ff);
+}
+
+/* Chat / Composer / AI panes — Talk capsule glow language */
+.monaco-workbench .interactive-session,
+.monaco-workbench .chat-input-container,
+.monaco-workbench .composer-bar,
+.monaco-workbench [class*="composer"] [class*="input"] {
+  border-color: var(--jarvis-border) !important;
+  background-color: rgba(0, 30, 50, 0.55) !important;
+  box-shadow: var(--jarvis-glow-soft);
+  border-radius: var(--jarvis-radius-pill, 999px) !important;
+}
+
+/* ========== Lists / trees / menus ========== */
+
+.monaco-workbench .monaco-list-row.focused {
+  outline: none !important;
+  background-color: var(--jarvis-bg-active) !important;
+}
+
+.monaco-workbench .monaco-menu,
+.monaco-workbench .context-view,
+.monaco-workbench .monaco-dropdown-with-primary {
+  background-color: var(--jarvis-glass-strong) !important;
+  border: var(--jarvis-line, 1px) solid var(--jarvis-border) !important;
+  border-radius: var(--jarvis-radius, 8px) !important;
+  box-shadow: var(--jarvis-glow-soft);
+  color: var(--jarvis-text) !important;
+}
+
+.monaco-workbench .monaco-menu .action-item:hover .action-menu-item,
+.monaco-workbench .monaco-menu .action-menu-item.focused {
+  background-color: var(--jarvis-bg-active) !important;
+  color: var(--jarvis-cyan, #00f2ff) !important;
+}
+
+/* ========== Sash / splits ========== */
+
+.monaco-workbench .monaco-sash {
+  background-color: transparent !important;
+}
+
+.monaco-workbench .monaco-sash:hover,
+.monaco-workbench .monaco-sash.active {
+  background-color: rgba(0, 242, 255, 0.35) !important;
+  box-shadow: var(--jarvis-glow-tight);
+}
+
+/* ========== Minimap / find widget ========== */
+
+.monaco-workbench .minimap {
+  opacity: 0.75;
+}
+
+.monaco-workbench .find-widget,
+.monaco-workbench .editor-widget {
+  background-color: var(--jarvis-glass-strong) !important;
+  border: var(--jarvis-line, 1px) solid var(--jarvis-border) !important;
+  border-radius: var(--jarvis-radius, 8px) !important;
+  box-shadow: var(--jarvis-glow-soft);
+}
+
+/* ========== Welcome / empty editor ========== */
+
+.monaco-workbench .editor-group-container.empty .editor-group-watermark,
+.monaco-workbench .editorGettingStarted,
+.monaco-workbench .gettingStartedContainer {
+  background-color: var(--jarvis-bg) !important;
+  color: var(--jarvis-text-dim) !important;
+}
+
+.monaco-workbench .editor-group-watermark .letterpress {
+  filter: hue-rotate(160deg) saturate(1.2) brightness(0.7);
+  opacity: 0.35;
+}
+
+/* ========== Selection / current line (editor) ========== */
+
+.monaco-workbench .monaco-editor .selected-text,
+.monaco-workbench .monaco-editor .selectionHighlight {
+  background-color: rgba(0, 212, 255, 0.18) !important;
+}
+
+.monaco-workbench .monaco-editor .current-line {
+  border: none !important;
+  background-color: rgba(0, 242, 255, 0.04) !important;
+}
+
+.monaco-workbench .monaco-editor .focused .current-line {
+  background-color: rgba(0, 242, 255, 0.06) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 242, 255, 0.08);
+}
+
+/* ========== Glass panel utility for composite views ========== */
+
+.monaco-workbench .composite.viewlet,
+.monaco-workbench .pane > .pane-body {
+  background-color: var(--jarvis-glass-soft, rgba(10, 18, 28, 0.55)) !important;
+}
+
+/* ========== Cursor-specific chrome (best-effort; non-breaking) ========== */
+
+.monaco-workbench .cursor-settings-sidebar,
+.monaco-workbench [class*="anysphere"],
+.monaco-workbench [class*="composer-"] {
+  --focus-border: var(--jarvis-cyan, #00f2ff);
+}
+
+/* Keep primary text readable — never crush contrast on code */
+.monaco-workbench .monaco-editor .view-line span {
+  text-shadow: none !important;
+}
+
+/* ========== Health / probe (duplicate safe marker) ========== */
+
+html.jarvis-inject-probe::after {
+  content: "jarvis-ok";
+  display: none;
+}
+
+/* End JARVIS hud.css */
