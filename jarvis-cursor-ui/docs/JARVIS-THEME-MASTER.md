@@ -1,10 +1,10 @@
 # JARVIS Theme Master — Cold Reopen
 
-> ## PAUSED — Joshua taking over JARVIS personally
+> ## REBUILD LIVE — God ordered full rebuild (Nov 7 ~1:42 AM)
 >
-> **Status:** Phases **1–5 done**. Phase **6** scaffold + Program Files inject **on disk**. All agent workers **STOPPED** (Nov 7 2026 ~1:37 AM). No new builds / installs until Joshua resumes.
+> **Status:** Pause lifted. Four workers running: **A** splash PNG + animated progress/bg · **B** one-to-one HUD vs `reference-command-center-2.png` · **C** full IDE theming unison · **D** fail-safes + package. Injection only; overlays out; fail-safes 1–3 preserved.
 >
-> See **§ Session log (tonight)** below for the full night history. Pristine backup still beside workbench if Disable/restore is needed.
+> See **§ Session log (tonight)** below. Pristine workbench bak still available if Disable/restore is needed.
 
 **Authority:** God (team) · **Operator:** Joshua · **Date locked:** Nov 7, 2026  
 **Canonical plan:** `jarvis_pro_recreation_a1985356` (plan wins on lock conflicts).  
