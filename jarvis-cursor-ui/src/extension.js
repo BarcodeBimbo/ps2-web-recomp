@@ -24,11 +24,13 @@ function activate(context) {
       fileMap.refresh();
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.fileMap.focus", () => {
-      vscode.commands.executeCommand("jarvis.fileMap.focus");
+    vscode.commands.registerCommand("jarvis.fileMap.focus", async () => {
+      await vscode.commands.executeCommand("workbench.view.extension.jarvisCommand");
+      if (typeof fileMap.reveal === "function") fileMap.reveal();
     }),
-    vscode.commands.registerCommand("jarvis.commandCenter.focus", () => {
-      vscode.commands.executeCommand("jarvis.commandCenter.focus");
+    vscode.commands.registerCommand("jarvis.commandCenter.focus", async () => {
+      await vscode.commands.executeCommand("workbench.view.extension.jarvisCommand");
+      if (typeof commandCenter.reveal === "function") commandCenter.reveal();
     }),
     vscode.commands.registerCommand("jarvis.theme.applyHints", async () => {
       const suit = getSuit(context);
@@ -102,8 +104,8 @@ function activate(context) {
     })
   );
 
-  // Periodic GitHUD refresh
-  const gitTimer = setInterval(() => commandCenter.refresh(), 15000);
+  // Periodic GitHUD / threat soft refresh (no splash remount)
+  const gitTimer = setInterval(() => commandCenter.refresh({ full: false }), 15000);
   context.subscriptions.push({ dispose: () => clearInterval(gitTimer) });
 }
 

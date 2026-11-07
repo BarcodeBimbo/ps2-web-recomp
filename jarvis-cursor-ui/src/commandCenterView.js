@@ -21,19 +21,28 @@ class CommandCenterViewProvider {
     this.view = undefined;
     this._git = null;
     this._threats = null;
+    this._booted = false;
   }
 
   resolveWebviewView(webviewView) {
     this.view = webviewView;
+    this._booted = false;
     webviewView.webview.options = {
       enableScripts: true,
       localResourceRoots: [vscode.Uri.joinPath(this.context.extensionUri, "media")],
     };
     webviewView.webview.onDidReceiveMessage((msg) => this._onMessage(msg));
-    this.refresh();
+    this.refresh({ full: true });
   }
 
-  async refresh() {
+  reveal() {
+    if (this.view) this.view.show?.(true);
+  }
+
+  /**
+   * @param {{ full?: boolean }} [opts]
+   */
+  async refresh(opts = {}) {
     if (!this.view) return;
     try {
       this._git = await getGitStatus();
@@ -45,7 +54,13 @@ class CommandCenterViewProvider {
     } catch {
       this._threats = null;
     }
-    this.view.webview.html = this._html(this.view.webview);
+    const full = opts.full || !this._booted;
+    if (full) {
+      this.view.webview.html = this._html(this.view.webview);
+      this._booted = true;
+    } else {
+      this.post({ type: "state", state: this._snapshot() });
+    }
   }
 
   /** Push live patch without full HTML reload when possible */
@@ -66,7 +81,7 @@ class CommandCenterViewProvider {
         break;
       case "refresh":
         this.fileMap.refresh();
-        await this.refresh();
+        await this.refresh({ full: true });
         break;
       case "openFileMap":
         vscode.commands.executeCommand("jarvis.fileMap.focus");
@@ -86,16 +101,16 @@ class CommandCenterViewProvider {
         break;
       case "setSuit":
         await setSuit(this.context, msg.id);
-        await this.refresh();
+        await this.refresh({ full: true });
         break;
       case "pickSuit":
         await pickSuit(this.context);
-        await this.refresh();
+        await this.refresh({ full: true });
         break;
       case "toggle":
         if (msg.key) {
           await toggle(this.context, msg.key);
-          await this.refresh();
+          await this.refresh({ full: true });
         }
         break;
       case "setGlow":
@@ -105,11 +120,11 @@ class CommandCenterViewProvider {
       case "savePreset":
         await savePreset(this.context, msg.name);
         vscode.window.showInformationMessage("JARVIS preset saved.");
-        await this.refresh();
+        await this.refresh({ full: true });
         break;
       case "applyPreset":
         await applyPreset(this.context, msg.name);
-        await this.refresh();
+        await this.refresh({ full: true });
         break;
       case "openThreat":
         await openThreat(msg.uri, msg.line);
@@ -176,11 +191,13 @@ class CommandCenterViewProvider {
     const memGb = (os.totalmem() / 1024 / 1024 / 1024).toFixed(1);
     const assistant = data.assistant;
     const glow = session.glow ?? 1;
+    const skipSplash = this._booted;
     const bodyClass = [
       session.focusFortress ? "focus-fortress" : "",
       session.streamPack ? "stream-pack" : "",
       session.cinema ? "cinema-on" : "",
       session.friday ? "mode-friday" : "",
+      skipSplash ? "booted" : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -258,7 +275,7 @@ canvas#fx {
   background: #1a1a1a;
   transition: opacity 0.55s ease, visibility 0.55s;
 }
-#splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+#splash.hide, body.booted #splash { opacity: 0; visibility: hidden; pointer-events: none; }
 #splash .title {
   font-size: 42px; font-weight: 700; letter-spacing: 0.28em;
   color: var(--cyan); text-shadow: 0 0 28px color-mix(in srgb, var(--cyan) 55%, transparent);
@@ -1040,7 +1057,29 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     };
   }
 
+  window.addEventListener("message", (ev) => {
+    const msg = ev.data;
+    if (!msg || typeof msg !== "object") return;
+    if (msg.type === "energy" && msg.keystrokes != null) {
+      const el = document.getElementById("cineEnergy");
+      if (el) el.textContent = String(msg.keystrokes);
+    }
+    if (msg.type === "state" && msg.state) {
+      const g = msg.state.git;
+      const th = msg.state.threats;
+      // Soft update badges without remounting
+      const badge = document.querySelector('.nav button[data-panel="threats"] .badge');
+      if (badge && th) badge.textContent = String(th.total || 0);
+      const cineMin = document.getElementById("cineMin");
+      if (cineMin && msg.state.session) cineMin.textContent = String(msg.state.session.minutes || 0);
+      if (g) {
+        /* git strip refreshed on next full paint */
+      }
+    }
+  });
+
   post("ready");
+  ${skipSplash ? "document.getElementById('splash').classList.add('hide');" : ""}
 </script>
 </body>
 </html>`;

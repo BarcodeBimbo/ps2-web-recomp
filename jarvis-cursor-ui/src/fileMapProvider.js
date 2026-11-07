@@ -26,6 +26,10 @@ class FileMapProvider {
     this._stats = { files: 0, folders: 0, truncated: false };
   }
 
+  reveal() {
+    if (this.view) this.view.show?.(true);
+  }
+
   resolveWebviewView(webviewView) {
     this.view = webviewView;
     webviewView.webview.options = {
@@ -225,7 +229,7 @@ class FileMapProvider {
     <input id="q" type="search" placeholder="Filter map…" spellcheck="false"/>
     <button id="refresh" title="Refresh">↻</button>
   </div>
-  <div class="badge">Large project map for this workspace — click a file to open it. Panel chrome follows the Command Center layout; the assistant voice here is Cursor’s, not a third-party persona.</div>
+  <div class="badge">JARVIS File Map — click a file to open it. Holographic project structure for this workspace.</div>
   <div class="tree-wrap"><ul class="root" id="root"></ul></div>
   <script nonce="${nonce}">
     const vscode = acquireVsCodeApi();

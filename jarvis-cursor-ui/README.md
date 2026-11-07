@@ -1,51 +1,70 @@
-# Cursor Command Center UI
+# JARVIS Command Center UI
 
-Local Cursor / VS Code extension: **Command Center layout + cyan HUD theme + large File Map**.
+Local Cursor / VS Code extension: **full JARVIS Command Center HUD** with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
 
-Visual structure is inspired by [jarvis.institute](https://jarvis.institute/) (Microsoft Store Windows assistant, ~$9.99 lifetime).  
-**Voice and copy are Cursor’s coding agent** — not JARVIS / Iron Man persona, wake-words, or “Talk to Jarvis” branding.
+**v0.4.0:** Recreates the jarvis.institute Command Center shell (calibrating splash → HUD) and the Jarvis 3D marketplace **PRO feature set** as first-party unlocked modules. Webview-first — no Custom CSS workbench injection.
 
-**v0.3.0:** Full Command Center dashboard (calibrating splash → core orb, agents, gauges, feed, quick commands) aligned to the reference HUD screenshots.
+## Credits & pattern sources
 
-> Note: `jarvis.institution` / `www.jarvis.institution` do **not** resolve. The product site is **`https://jarvis.institute`**.
+| Source | Link | Role |
+|--------|------|------|
+| **jarvis.institute** | https://jarvis.institute/ | Command Center layout, calibrating splash, Voice Status / Talk to JARVIS composition |
+| **Jarvis 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
 
-## Marketplace research (context)
+This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Jarvis 3D or jarvis.institute binaries. Assets and logic are original to this repo.
 
-| Reference | Role |
-|-----------|------|
-| [JARVIS HUD](https://marketplace.visualstudio.com/items?itemName=iareebahmad.jarvis-hud) | Closest free cyan-on-near-black *theme* |
-| [Jarvis 3D](https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme) | Heavier HUD / effects product |
-| [jarvis.institute](https://jarvis.institute/) | App blueprint: Command Center, AI Core, agents, system monitor, bottom interaction bar |
+## License note
 
-None of the marketplace themes ship a large custom **File Map** sidebar — this extension adds one.
+Local / personal tooling under this workspace. Jarvis 3D marketplace listing is freemium (PRO via Gumroad); we reimplemented equivalent capabilities unlocked for local use — we did **not** copy their VSIX, CSS, or proprietary shaders.
 
-## What we took from jarvis.institute (structure only)
+## What shipped (PRO map)
 
-- Activity-bar **Command Center** container
-- Overview cards: workspace pulse, core status, active lanes, quick actions, live feed
-- Separate **File Map** view (holographic tree) as the project-structure surface
-- Dark navy + cyan accent panels
+| Marketplace PRO idea | Our module |
+|----------------------|------------|
+| Suit Modes (Mark I / 50 / Endgame / Stealth) | 4 color themes + AI Core suit switcher |
+| Particles / Arc pulse / Data Streams / glow | Canvas FX + CSS streams + glow slider |
+| F.R.I.D.A.Y. | Tools toggle + chrome rename |
+| Voice TTS | Talk to JARVIS → Cursor Voice/Chat; Web Speech announcements |
+| Sound Design | Optional UI beeps (mute in Tools) |
+| Session Cinema | Timed overlay + keystroke energy |
+| Stream Pack | Dense HUD + optional watermark |
+| Focus Fortress | Dims nonessential panels |
+| Threat Fix Hints | Problems API → Threats panel |
+| GitHUD | Live `git` branch/dirty/ahead-behind |
+| Dashboard | Full nav shell matching institute layout |
+| AI Companion hooks | Chat / Voice commands |
+| Workspace Presets | Save/apply suit + mode combo |
 
-## What we intentionally changed
+### Intentionally different / stripped vs upstreams
 
-| jarvis.institute | This extension |
-|------------------|----------------|
-| JARVIS / Iron Man voice | **Cursor coding-agent voice** |
-| “Talk to Jarvis”, wake word | Neutral Cursor CTAs (“Ready when you are…”) |
-| Full Electron agent product | Theme + sidebar webviews for Cursor |
+- No Gumroad license, trial, or soft-lock paywall
+- No Custom CSS editor-wide injection (Cursor-safe webviews only)
+- Calendar / Knowledge / Workflows panels are stubs until wired
+- CPU/Disk gauges remain illustrative; RAM is live from the host
+- Voice channel opens **Cursor** voice/chat (not a separate LLM runtime)
 
 ## Install in Cursor
 
 ```powershell
-# From this folder (Developer: Install Extension from Location), or:
-cursor --install-extension "C:\PS2Recomp\jarvis-cursor-ui"
+cursor --install-extension "C:\PS2Recomp\jarvis-cursor-ui" --force
 ```
+
+Or: **Extensions → … → Install from VSIX…** → `jarvis-cursor-ui-0.4.0.vsix`
 
 Then:
 
-1. Command Palette → **Color Theme** → **JARVIS Command** (palette name; UI copy is Cursor)
-2. Or run **Command Center: Apply Recommended Theme**
-3. Open the **Command Center** activity-bar icon → **Command Center** + **File Map**
+1. Command Palette → **Color Theme** → **JARVIS Mark I** (or Endgame / Mark 50 / Stealth)
+2. Or **JARVIS: Apply Active Suit Theme**
+3. Open the **JARVIS** activity-bar icon → Command Center + File Map
+4. **Talk to JARVIS** / mic → Cursor Voice or Chat
+
+## Commands
+
+- `JARVIS: Suit Mode…`
+- `JARVIS: Talk / Start Voice`
+- `JARVIS: Toggle Focus Fortress` / `Session Cinema` / `Stream Pack` / `F.R.I.D.A.Y. Mode`
+- `JARVIS: Save / Apply Workspace Preset`
+- `JARVIS: Refresh HUD`
 
 ## Layout
 
@@ -53,12 +72,18 @@ Then:
 jarvis-cursor-ui/
   package.json
   README.md
-  themes/jarvis-command-color-theme.json
+  themes/          # Command + Mark I/50/Endgame/Stealth
   media/
   src/
     extension.js
     commandCenterView.js
     fileMapProvider.js
+    suitModes.js
+    voiceBridge.js
+    gitHud.js
+    threatHints.js
+    sessionCinema.js
+    workspacePresets.js
 ```
 
-Does not modify PS2 recomp runtime or project sources — this folder is standalone.
+Does not modify PS2 recomp runtime — this folder is standalone.
