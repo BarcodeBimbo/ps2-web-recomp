@@ -1187,14 +1187,6 @@ code{color:#00d4ff}
   }
 }
 
-function agentCard(ico, name, active) {
-  return `<div class="agent ${active ? "active" : "standby"}">
-    <div class="n"><span class="ico">${escapeHtml(ico)}</span>${escapeHtml(name)}</div>
-    <div class="s">${active ? "● Active" : "Standby"}</div>
-    <div class="wave"><i></i><i></i><i></i><i></i><i></i></div>
-  </div>`;
-}
-
 function escapeHtml(s) {
   return String(s)
     .replace(/&/g, "&amp;")

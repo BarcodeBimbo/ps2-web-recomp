@@ -83,7 +83,7 @@
         <ul class="jcc-ov-list">
           <li class="jcc-ov-row" data-row="workstation" data-tone="cyan">
             <span class="jcc-ov-k">Workstation</span>
-            <span class="jcc-ov-v" data-ov-live="workstation" data-tone="cyan">Active</span>
+            <span class="jcc-ov-v" id="cortana-ov-workstation" data-ov-live="workstation" data-tone="cyan">Live</span>
           </li>
           <li class="jcc-ov-row" data-row="memory" data-tone="blue">
             <span class="jcc-ov-k">Memory</span>
@@ -94,7 +94,7 @@
           </li>
           <li class="jcc-ov-row" data-row="voice" data-tone="teal">
             <span class="jcc-ov-k">Voice</span>
-            <span class="jcc-ov-v" data-ov-live="voice" data-tone="teal"></span>
+            <span class="jcc-ov-v" id="cortana-ov-voice" data-ov-live="voice" data-tone="teal">Standby</span>
           </li>
           <li class="jcc-ov-row" data-row="agents" data-tone="purple">
             <span class="jcc-ov-k">Agents</span>
@@ -112,7 +112,7 @@
           </li>
           <li class="jcc-ov-row" data-row="system" data-tone="green">
             <span class="jcc-ov-k">System</span>
-            <span class="jcc-ov-v" data-ov-live="system" data-tone="green"></span>
+            <span class="jcc-ov-v" id="cortana-ov-system" data-ov-live="system" data-tone="green">—</span>
           </li>
         </ul>
       </section>
@@ -219,16 +219,9 @@
 
       <section class="jcc-panel jcc-llm">
         <h2 class="jcc-panel-title">LLM Status</h2>
-        <!-- Sync: media/inject/cursor-models.json ← Cursor availableDefaultModels2 (defaultOn, deg=0). Status = catalog availability, not fake Connected. -->
-        <div class="jcc-llm-grid" id="cortana-llm-grid" data-jcc-llm-source="cursor-models.json">
-          <div class="jcc-llm-chip on" data-model-id="default"><span>Auto</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="composer-2.5"><span>Composer 2.5</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="grok-4.7"><span>Grok 4.7</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="grok-4.6"><span>Grok 4.6</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="claude-opus-5-5"><span>Claude Opus 5.5</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="claude-sonnet-5-5"><span>Claude Sonnet 5.5</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="gpt-5.6-sol"><span>GPT-5.6 Sol</span><em>Available</em></div>
-          <div class="jcc-llm-chip on" data-model-id="gemini-4-argon"><span>Gemini 4 Argon</span><em>Available</em></div>
+        <!-- Chips stamped at inject from media/inject/cursor-models.json (availableDefaultModels2). Empty until stamp. -->
+        <div class="jcc-llm-grid" id="cortana-llm-grid" data-jcc-llm-source="cursor-models.json" data-state="empty">
+          <p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data</p>
         </div>
       </section>
     </div>

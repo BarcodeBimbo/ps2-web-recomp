@@ -2297,7 +2297,9 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-gauge.jcc-gauge-await .jcc-gauge-val::before {
-  content: none;
+  content: "—";
+  color: rgba(180, 210, 230, 0.55);
+  text-shadow: none;
 }
 
 .jcc-gauge-val {
@@ -2657,26 +2659,27 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-talk.is-live .jcc-talk-wave i,
-.jcc-talk[data-voice-live="1"] .jcc-talk-wave i {
+.jcc-talk[data-voice-live="1"] .jcc-talk-wave i,
+.jcc-talk-wrap.is-live .jcc-talk-wave i,
+.jcc-talk-wrap[data-voice-live="1"] .jcc-talk-wave i {
   display: inline-block !important;
   animation: none !important;
   width: 3px;
   margin: 0;
-  /* Prefer per-bar --h / --amp; fall back to --cortana-bar-h or overall amp */
-  height: var(
-    --h,
-    var(--amp, var(--cortana-bar-h, calc(var(--cortana-voice-amp, 0.4) * 100%)))
-  );
-  min-height: 15%;
+  /* Length hook: --cortana-bar-h (e.g. 70%). Unitless hook: --h / --amp (0..1) via scaleY. */
+  height: var(--cortana-bar-h, 100%);
+  min-height: 3px;
   max-height: 100%;
   border-radius: 1px;
   background: linear-gradient(180deg, #7af0ff, #00b8e0);
   box-shadow: 0 0 4px rgba(0, 242, 255, 0.7);
   transform-origin: bottom center;
-  transform: scaleY(1);
+  transform: scaleY(max(0.12, var(--h, var(--amp, 1))));
   vertical-align: bottom;
-  transition: height var(--cortana-talk-live-ms, 48ms) linear;
-  will-change: height;
+  transition:
+    transform var(--cortana-talk-live-ms, 48ms) linear,
+    height var(--cortana-talk-live-ms, 48ms) linear;
+  will-change: transform, height;
   pointer-events: none;
 }
 
@@ -2765,8 +2768,11 @@ html.cortana-inject-probe::after {
   filter: drop-shadow(0 0 6px rgba(0, 242, 255, 0.55));
 }
 
-/* Idle: hide structural bars (photo art shows). Live: .is-live rules win with !important. */
-.jcc-talk:not(.is-live):not([data-voice-live="1"]) .jcc-talk-wave i {
+/* Idle: hide structural bars (photo art shows). Live talk/wrap unlocks bars via rules above. */
+.jcc-talk-wrap:not(.is-live):not([data-voice-live="1"])
+  .jcc-talk:not(.is-live):not([data-voice-live="1"])
+  .jcc-talk-wave
+  i {
   display: none !important;
   animation: none !important;
 }
