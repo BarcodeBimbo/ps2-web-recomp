@@ -81,6 +81,7 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | Install | Prefer `cursor --install-extension` on the `.vsix` (folder path install **fails** — CLI wants ID or `.vsix`) |
 | Visual target | **`media/reference-command-center.png`** — exact match; also used as **Cursor boot/loading screen** |
 | Mechanism | **Custom CSS / workbench injection required**; overlays **out** |
+| Fail-safes | (1) Auto-disable on Cursor update, (2) auto-disable if inject breaks, (3) caller self-rebuild — official support N/A |
 | Branding | Full JARVIS UI copy; spoken channel = **Cursor** voice (not JARVIS TTS persona) |
 | Plan | `C:\Users\joshy\.cursor\plans\jarvis_pro_recreation_a1985356.plan.md` |
 | Activate | Reload after install; select suit theme + injection boot path per plan |
@@ -354,7 +355,7 @@ Org: [github.com/orgs/ps2dev/repositories](https://github.com/orgs/ps2dev/reposi
 |------|--------|
 | Folder | `C:\PS2Recomp\jarvis-cursor-ui\` |
 | Authoritative imagery | **`jarvis-cursor-ui/media/reference-command-center.png`** (boot splash **and** full UI target — exact match, no approximation). Cross-check: `reference-command-center-2.png`. `reference-calibrating-splash.png` is **not** the boot screen under current lock. |
-| Mechanism | **Injection** (Custom CSS / workbench DOM) **required**. Overlays definitively out. |
+| Mechanism | **Injection** (Custom CSS / workbench DOM) **required**. Overlays definitively out. Fail-safes: auto-disable on Cursor update; auto-disable on inject-break detect; caller owns update/fix/rebuild (no official-support concern). |
 | Blueprint site | **`https://jarvis.institute/`** (not `jarvis.institution`) — pattern source; local PNG wins for pixel target |
 | Branding | Full JARVIS UI (“Talk to Jarvis”, Suit Modes, F.R.I.D.A.Y. chrome); voice channel = **Cursor** coding agent |
 | Plan | `jarvis_pro_recreation_a1985356.plan.md` |

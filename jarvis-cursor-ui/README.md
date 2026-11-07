@@ -2,16 +2,19 @@
 
 Local Cursor / VS Code extension: **full JARVIS Command Center HUD** with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
 
-**Visual target (locked):** [`media/reference-command-center.png`](media/reference-command-center.png) is both the **Cursor boot/loading screen** and the **exact** full-UI design target — match pixel composition; do not approximate. Custom CSS / workbench **injection is required**; overlays are **definitively out** (caller: that look is impossible via overlay).
+**Status:** Phases 1–5 complete. **Phase 6 (injection) is next** — see plan `jarvis_pro_recreation_a1985356`.
 
-**v0.4.0 baseline:** Prior shell shipped PRO modules; rebuild toward injection + exact `reference-command-center.png` match (see plan `jarvis_pro_recreation_a1985356`).
+**Visual targets (locked):** Boot/loading splash = [`media/reference-calibrating-splash.png`](media/reference-calibrating-splash.png). Full IDE chrome matches [`media/reference-command-center.png`](media/reference-command-center.png) / [`media/reference-command-center-2.png`](media/reference-command-center-2.png). Custom CSS / workbench **injection is required**; overlays are **definitively out**.
+
+**v0.4.0 baseline:** PRO modules shipped in phases 1–5; Phase 6 wires them into injected chrome (docs may land under `docs/`).
 
 ## Credits & pattern sources
 
 | Source | Link | Role |
 |--------|------|------|
 | **jarvis.institute** | https://jarvis.institute/ | Pattern source for Command Center composition / Voice Status / Talk to JARVIS |
-| **Local reference PNG** | `media/reference-command-center.png` | **Authoritative** boot splash + full UI visual target (exact match) |
+| **Boot splash PNG** | `media/reference-calibrating-splash.png` | **Authoritative** Cursor boot / calibrating splash |
+| **Command Center PNGs** | `media/reference-command-center.png`, `media/reference-command-center-2.png` | **Authoritative** full IDE chrome visual target (exact match) |
 | **Jarvis 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
 
 This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Jarvis 3D or jarvis.institute binaries. Assets and logic are original to this repo.
@@ -42,7 +45,8 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 
 - No Gumroad license, trial, or soft-lock paywall
 - Custom CSS / workbench injection required; no floating/editor overlays
-- Boot screen = `reference-command-center.png` (not the calibrating-splash PNG)
+- Injection fail-safes: auto-disable when Cursor updates; disable on patch/break detection; God-as-builder (no outside-support gap)
+- Boot screen = `reference-calibrating-splash.png`; chrome = command-center reference PNGs
 - Calendar / Knowledge / Workflows panels are stubs until wired — **visual chrome must still match the reference image**
 - CPU/Disk gauges remain illustrative until wired; RAM is live from the host
 - Voice channel opens **Cursor** voice/chat (not a separate JARVIS TTS persona); UI copy is full JARVIS branding
