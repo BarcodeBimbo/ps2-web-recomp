@@ -1,18 +1,18 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-06 (~23:49 local)  
+**Updated:** 2026-11-06 (~23:51 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely.
 
 This file is the single handoff for humans and agents. Detailed evidence lives under `verification/recovery/` and `logs/`. Prefer those reports over re-deriving.
 
-**Stasis:** After this update, leave work in place until the user returns. Do not start new tracks unless they ask.
+**Stasis:** Leave work in place until the user returns. Do not start new tracks unless they ask. **Safe to reload Cursor.**
 
 ---
 
 ## RESUME POINT — pick up here (do not ask the user to re-explain)
 
-**Session cut-off:** 2026-11-06 ~23:49 local. User asked for MASTER-CONTEXT + this resume block only — **no new work**.
+**Session cut-off:** 2026-11-06 ~23:51 local. MASTER-CONTEXT + RESUME POINT written; four named workers safely paused — **no new work**.
 
 ### A) R1–R5 official SDK audit (research only)
 
@@ -57,20 +57,20 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **Next resume action:** grep/read Device Reference + Sound extracts; produce the deferred R1–R5 compliance report.
 
-### C) Active workers — last known state (stasis)
+### C) Active workers — last known state (**PAUSED** for reload)
 
 | ID | Track | Last known |
 |----|--------|------------|
-| w1 | Disc-fix Hitman/NFS | R1–R4 done; R5 gated; joint-stable `1e04172` + `DISCFIX-R1-R4-STABLE.md` |
-| w2 | Test-matrix | Idle after R4 clear PASS; watching board; no soak |
-| w3 | CNK null-bind `51ACEC` | Read-only observe; soft-arm still 2 prims; next live vtable dump |
+| w1 / `76656af6` | Disc-fix Hitman/NFS | **PAUSED** — R1–R4 done; R5 gated; `1e04172`; see `worker-pause-discfix-76656af6.md` |
+| w2 / `11558b0f` | Test-matrix | **PAUSED** — board step 7 / R4 ack; R5 gated; see `worker-pause-matrix-11558b0f.md` |
+| w3 | CNK null-bind `51ACEC` | Observe-only; soft-arm still 2 prims; next live vtable dump |
 | w4 | Sly GS/VU | **Completed** research; next STQ/PATH3/CLUT when prioritized |
 | w4b | Sly asset bin-walk | **Done** |
 | w5 | WaitSema / CreateSema | Ownership report done; observe-only |
-| w6 | BIOS zip reference | Reference-only; never execute |
-| w7 | CNK ELF Alchemy redo | Reports exist; Alchemy 3.0 source still not found |
+| w6 / `2fa08b23` | BIOS zip reference | **PAUSED** (already complete); see `worker-pause-bios-2fa08b23.md` |
+| w7 / `8c36c5b2` | CNK ELF Alchemy redo | **PAUSED** (report written); see `worker-pause-cnk-elf-8c36c5b2.md` |
 
-Standing rule: workers persist until user says done — currently **stasis / no new launches**.
+Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rule: no new launches until user unpauses.
 
 ### D) jarvis-cursor-ui
 
