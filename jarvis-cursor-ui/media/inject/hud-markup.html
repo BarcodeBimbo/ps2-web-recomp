@@ -27,8 +27,8 @@
       <div class="jcc-brand-chrome" aria-hidden="true"></div>
       <div class="jcc-brand-para" aria-hidden="true"></div>
       <div class="jcc-brand-text">
-        <div class="jcc-brand-title">CORTANA WORKSTATION</div>
-        <div class="jcc-brand-sub">COMMAND CENTER</div>
+        <div class="jcc-brand-title">CORTANA</div>
+        <div class="jcc-brand-sub">WORKSTATION</div>
       </div>
     </div>
 
@@ -190,11 +190,11 @@
           <h2 class="jcc-panel-title">Live Intelligence Feed</h2>
           <span class="jcc-feed-live" id="cortana-feed-live" hidden title="Armed when real events arrive"><i aria-hidden="true"></i>LIVE</span>
         </div>
-        <!-- Live rows: inject/JS only — never reference dummy copy. Shape:
-             <div class="jcc-feed-item"><span class="jcc-feed-glyph info" role="img" aria-label="Info"></span><div class="jcc-feed-body"><strong>…</strong><span class="jcc-feed-meta" data-text="…"></span></div></div> -->
+        <!-- Live rows: inject/JS only — never reference dummy copy. Square glyphs (info/warn/tip/live), not text pills. -->
         <div class="jcc-feed-list" id="cortana-feed-list" data-state="empty">
           <p class="jcc-feed-empty">Awaiting data</p>
         </div>
+        <a class="jcc-feed-foot" href="#" id="cortana-feed-more" data-cortana-action="notifications" hidden>View All Intelligence &gt;</a>
       </section>
 
       <!-- Row 2 -->
@@ -202,32 +202,32 @@
         <h2 class="jcc-panel-title">Active Agents</h2>
         <div class="jcc-agent-grid" id="cortana-agent-grid" data-state="chrome">
           <article class="jcc-agent" data-agent="coding" data-slot="coding">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="green" aria-hidden="true">⌘</span><span>Coding</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="green" data-glyph="code" aria-hidden="true"></span><span>Coding Agent</span><i class="jcc-agent-dot" data-tone="green" aria-hidden="true"></i></div>
             <div class="jcc-agent-st" data-agent-st>—</div>
             <span class="jcc-mini-wave jcc-wave-tone-green" aria-hidden="true"></span>
           </article>
           <article class="jcc-agent" data-agent="research" data-slot="research">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="cyan" aria-hidden="true">◎</span><span>Research</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="cyan" data-glyph="search" aria-hidden="true"></span><span>Research Agent</span><i class="jcc-agent-dot" data-tone="cyan" aria-hidden="true"></i></div>
             <div class="jcc-agent-st" data-agent-st>—</div>
             <span class="jcc-mini-wave jcc-wave-photo cyan" aria-hidden="true"></span>
           </article>
           <article class="jcc-agent" data-agent="memory" data-slot="memory">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="purple" aria-hidden="true">◈</span><span>Memory</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="purple" data-glyph="db" aria-hidden="true"></span><span>Memory Agent</span><i class="jcc-agent-dot" data-tone="purple" aria-hidden="true"></i></div>
             <div class="jcc-agent-st" data-agent-st>—</div>
             <span class="jcc-mini-wave jcc-wave-photo purple" aria-hidden="true"></span>
           </article>
           <article class="jcc-agent" data-agent="browser" data-slot="browser">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="amber" aria-hidden="true">⬡</span><span>Browser</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="amber" data-glyph="globe" aria-hidden="true"></span><span>Browser Agent</span><i class="jcc-agent-dot" data-tone="amber" aria-hidden="true"></i></div>
             <div class="jcc-agent-st" data-agent-st>—</div>
             <span class="jcc-mini-wave jcc-wave-tone-amber" aria-hidden="true"></span>
           </article>
           <article class="jcc-agent" data-agent="task" data-slot="task">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="blue" aria-hidden="true">▣</span><span>Task</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="blue" data-glyph="check" aria-hidden="true"></span><span>Task Agent</span><i class="jcc-agent-dot" data-tone="blue" aria-hidden="true"></i></div>
             <div class="jcc-agent-st" data-agent-st>—</div>
             <span class="jcc-mini-wave jcc-wave-tone-blue" aria-hidden="true"></span>
           </article>
           <article class="jcc-agent standby" data-agent="system" data-slot="system">
-            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="muted" aria-hidden="true">✓</span><span>System</span></div>
+            <div class="jcc-agent-h"><span class="jcc-agent-ico" data-tone="muted" data-glyph="shield" aria-hidden="true"></span><span>System Agent</span><i class="jcc-agent-dot" data-tone="muted" aria-hidden="true"></i></div>
             <div class="jcc-agent-st standby" data-agent-st>Standby</div>
             <span class="jcc-mini-wave jcc-wave-photo dim" aria-hidden="true"></span>
           </article>
@@ -335,7 +335,7 @@
         <span class="jcc-talk-wave jcc-talk-wave-photo l" aria-hidden="true"></span>
         <span class="jcc-talk-copy">
           <strong>TALK TO CORTANA</strong>
-          <em id="cortana-talk-hint">Say Hey Cortana…</em>
+          <em id="cortana-talk-hint">I am listening…</em>
         </span>
         <span class="jcc-talk-wave jcc-talk-wave-photo r" aria-hidden="true"></span>
       </button>

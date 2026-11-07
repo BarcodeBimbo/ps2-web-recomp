@@ -1148,22 +1148,22 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 
 .jcc-brand-title {
   font-family: var(--CORTANA-font-display, var(--cortana-font-display, "Segoe UI", sans-serif));
-  font-weight: 700;
-  letter-spacing: 0.11em;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   color: #e8f7ff;
-  text-shadow: 0 0 6px rgba(74, 209, 241, 0.28);
-  font-size: clamp(7px, 0.88vw, 10px);
+  text-shadow: 0 0 8px rgba(74, 209, 241, 0.45), 0 0 18px rgba(0, 212, 255, 0.22);
+  font-size: clamp(11px, 1.15vw, 15px);
   line-height: 1.05;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .jcc-brand-sub {
-  font-size: clamp(6px, 0.62vw, 8px);
+  font-size: clamp(7px, 0.7vw, 9px);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   color: #9ad4e6;
-  margin-top: 2px;
+  margin-top: 3px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -2395,23 +2395,26 @@ button.jcc-search:hover,
     0 1px 0 rgba(0, 0, 0, 0.32);
 }
 
-/* Feed row glyphs — square chips (reference-command-center-2), not INFO/WARN text pills */
+/* Feed row glyphs — square icons (reference-command-center-2), not INFO/WARN text pills */
 .jcc-feed-glyph,
 .jcc-tag {
   flex-shrink: 0;
   align-self: flex-start;
-  margin-top: 4px;
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
+  margin-top: 1px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 1px solid;
-  font-size: 0;
-  line-height: 0;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 800;
   overflow: hidden;
-  color: transparent;
-  text-indent: -999px;
+  color: #031018;
+  text-indent: 0;
 }
 
 .jcc-feed-glyph.info,
@@ -2420,13 +2423,18 @@ button.jcc-search:hover,
   background: rgba(74, 209, 241, 0.92);
   box-shadow: 0 0 8px rgba(74, 209, 241, 0.35);
 }
+.jcc-feed-glyph.info::before,
+.jcc-tag.info::before { content: "i"; }
 
 .jcc-feed-glyph.warn,
 .jcc-tag.warn {
   border-color: rgba(224, 122, 74, 0.85);
   background: rgba(224, 122, 74, 0.9);
   box-shadow: 0 0 8px rgba(224, 122, 74, 0.28);
+  color: #1a0c04;
 }
+.jcc-feed-glyph.warn::before,
+.jcc-tag.warn::before { content: "!"; }
 
 .jcc-feed-glyph.tip,
 .jcc-tag.tip {
@@ -2434,6 +2442,8 @@ button.jcc-search:hover,
   background: rgba(0, 180, 220, 0.88);
   box-shadow: 0 0 8px rgba(0, 212, 255, 0.28);
 }
+.jcc-feed-glyph.tip::before,
+.jcc-tag.tip::before { content: "✦"; font-size: 9px; }
 
 .jcc-feed-glyph.live,
 .jcc-tag.live {
@@ -2441,7 +2451,10 @@ button.jcc-search:hover,
   background: rgba(61, 214, 140, 0.9);
   box-shadow: 0 0 8px rgba(61, 214, 140, 0.32);
   animation: cortana-live-pulse var(--cortana-live-ms, 1.4s) ease-in-out infinite;
+  color: #031810;
 }
+.jcc-feed-glyph.live::before,
+.jcc-tag.live::before { content: "◉"; font-size: 9px; }
 
 .jcc-feed-body {
   display: flex;
@@ -2480,11 +2493,15 @@ button.jcc-search:hover,
   text-align: right;
   font-size: 9px;
   letter-spacing: 0.04em;
-  color: rgba(0, 212, 255, 0.65);
+  color: rgba(0, 212, 255, 0.75);
+  text-decoration: none;
+  cursor: pointer;
 }
+.jcc-feed-foot:hover { color: #7ef9ff; }
 
-.jcc-feed-list[data-state="empty"] ~ .jcc-feed-foot {
-  display: none;
+.jcc-feed-list[data-state="empty"] ~ .jcc-feed-foot[hidden],
+.jcc-feed-foot[hidden] {
+  display: none !important;
 }
 
 /* Agents — 3×2 vs reference-command-center-2.png */
@@ -2516,22 +2533,55 @@ button.jcc-search:hover,
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 650;
 }
 
+.jcc-agent-h > span:not(.jcc-agent-ico) {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jcc-agent-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: rgba(120, 140, 160, 0.55);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+.jcc-agent.active .jcc-agent-dot[data-tone="green"],
+.jcc-agent-dot[data-tone="green"] { background: #3dd68c; box-shadow: 0 0 6px rgba(61, 214, 140, 0.7); }
+.jcc-agent.active .jcc-agent-dot[data-tone="cyan"],
+.jcc-agent-dot[data-tone="cyan"] { background: #4ad1f1; box-shadow: 0 0 6px rgba(74, 209, 241, 0.7); }
+.jcc-agent-dot[data-tone="purple"] { background: #c084fc; box-shadow: 0 0 6px rgba(192, 132, 252, 0.45); }
+.jcc-agent-dot[data-tone="amber"] { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4); }
+.jcc-agent-dot[data-tone="blue"] { background: #5b9fff; box-shadow: 0 0 6px rgba(91, 159, 255, 0.4); }
+.jcc-agent-dot[data-tone="muted"] { background: #6a7a8a; }
+.jcc-agent.standby .jcc-agent-dot { opacity: 0.55; }
+
 .jcc-agent-ico {
-  width: 20px;
-  height: 20px;
-  border-radius: var(--cortana-hud-agent-ico-radius, 6px);
+  width: 22px;
+  height: 22px;
+  border-radius: var(--cortana-hud-agent-ico-radius, 5px);
   display: grid;
   place-items: center;
-  font-size: var(--cortana-hud-fs-xs, 9px);
+  font-size: 10px;
+  font-weight: 800;
   background: rgba(0, 24, 42, 0.92);
   border: 1px solid rgba(0, 140, 180, 0.35);
   color: var(--cortana-cyan);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
 }
+.jcc-agent-ico[data-glyph="code"]::before { content: "</>"; font-size: 8px; letter-spacing: -0.04em; }
+.jcc-agent-ico[data-glyph="search"]::before { content: "⌕"; font-size: 12px; }
+.jcc-agent-ico[data-glyph="db"]::before { content: "▣"; }
+.jcc-agent-ico[data-glyph="globe"]::before { content: "◎"; }
+.jcc-agent-ico[data-glyph="check"]::before { content: "☑"; }
+.jcc-agent-ico[data-glyph="shield"]::before { content: "✓"; }
 
 .jcc-agent-ico[data-tone="cyan"] {
   color: #4ad1f1;
