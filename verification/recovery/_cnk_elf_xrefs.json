@@ -1,32 +1,58 @@
 {
   "elf": "c:\\PS2Recomp\\games\\b49f2e769315347e8bda839feb705744\\disc\\boot.elf",
-  "load_va": "0x100000",
-  "entry": "0x108d28",
-  "ig_name_count": 677,
-  "name_xrefs": {
-    "0x63a8b0": {
-      "name": "igGuiComponentModel",
-      "ptr_sites": [
-        "0x63ac9c"
-      ],
-      "ptr_count": 1
-    },
-    "0x63a8d0": {
-      "name": "igGuiComponentController",
-      "ptr_sites": [
-        "0x63aca0"
-      ],
-      "ptr_count": 1
-    },
-    "0x63aa08": {
-      "name": "igGuiComponent",
-      "ptr_sites": [
-        "0x63acc8"
-      ],
-      "ptr_count": 1
-    }
+  "entry": "0x00108D28",
+  "load_va": "0x00100000",
+  "file_off": "0x80",
+  "filesz": "0x5F2000",
+  "memsz": "0x62A480",
+  "bss": ["0x006F2000", "0x0072A480"],
+  "report": "verification/recovery/cnk-elf-alchemy-full-redo-report.md",
+  "key_vas": {
+    "crt0": "0x00108D28",
+    "app_init": "0x00108F60",
+    "fce0": "0x0010FCE0",
+    "finalize_110100": "0x00110100",
+    "factory_508930": "0x00508930",
+    "bind_install": "0x00520160",
+    "bind_teardown": "0x00520210",
+    "unbind_51AC80": "0x0051AC80",
+    "null_jalr_ra_51ACEC": "0x0051ACEC",
+    "allocator_725F00": "0x00725F00",
+    "bind_registry_725F50": "0x00725F50",
+    "sema_lock_705F18": "0x00705F18",
+    "sema_finish_705C18": "0x00705C18"
   },
-  "typeinfos_key": [],
-  "vtable_rtti": [],
-  "vtable_broad": []
+  "bind_725F50_access": {
+    "install_sw": "0x00520180",
+    "clear_sw": "0x005202AC",
+    "lookup_lw_examples": [
+      "0x0051ACC0",
+      "0x00517124",
+      "0x0023AFD8",
+      "0x00520220",
+      "0x0053A940"
+    ]
+  },
+  "unbind_51AC80_callers": ["0x0010FF10", "0x004EDE50", "0x0051AD9C"],
+  "fce0_callers": ["0x0010F5EC"],
+  "vtable_offsets_used": {
+    "8": "factory via *0x725F00",
+    "80": "bind lookup",
+    "84": "bind follow-up (null crash)",
+    "88": "teardown",
+    "92": "unbind prelude",
+    "108": "finalize path (host overnight)",
+    "208": "installer post-create"
+  },
+  "loadgate": {
+    "slot_stride": 96,
+    "slot_count": 250,
+    "slot_plus_48": "state (need ==1 before 0x110100)",
+    "slot_plus_76": "status (1=CD-done)",
+    "gate_plus_24008": "sticky busy flag"
+  },
+  "ig_class_name_strings": 673,
+  "syscall_raw_count": 921,
+  "syscall_li_v1_stub_pairs": 168,
+  "note": "Alchemy core classes lack classic RTTI-before-vtable in ELF; method names for vt slots not recoverable without live dump / Ghidra types."
 }

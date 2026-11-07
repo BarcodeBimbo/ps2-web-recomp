@@ -1,77 +1,71 @@
 {
-  "updated": "2026-11-06T21:37:30-05:00",
+  "updated": "2026-11-06T21:42:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 1,
-  "phase": "matrix_verdict",
+  "step": 2,
+  "phase": "awaiting_matrix",
+  "prior_cycle": {
+    "step": 1,
+    "proposed": "R3_generic_complete_path",
+    "verdict": "fail",
+    "why": "Prove-before-swap blocked R3 while R1/R2 locked; proposal also bundled R4 sceCdSync wake. No code applied."
+  },
   "discfix": {
     "status": "proposed",
     "proposed_change": {
-      "id": "R3_generic_complete_path",
-      "summary": "Harden the shared CDVD complete path so every EE read does payload, then readee, then curReadPos, then complete_call. Optionally wake IOP sceCdSync waiters. No CNK Alchemy hacks. No WaitSema/SIF-end rewrite.",
-      "files": ["runtime/src/iop/cdvdfsv.cpp", "runtime/src/iop/cdvd.cpp"],
+      "id": "R1_clear_with_evidence",
+      "summary": "Clear R1 (SIF end) with evidence only — no SIF rewrite, no code change. End-of-run SIF queue is drained on both games; no held RPC replies left. Unlocks prove-before-swap so a later unbundled R3 can be considered.",
+      "files": [],
+      "code_change": false,
       "details": [
-        "In kJobFsvRead / read_to_ee for normal LBAs: write sector payload to dst first.",
-        "Then fill eeaddr1 readee (_rd_intr_data): keep dest pointers, set length fields when feeding dest1, clear unused payload bytes.",
-        "Then write byte count to eeaddr2 (curReadPos) before sif::complete_call(0x80000595).",
-        "After complete, call a small shared wake so any IOP cdvdman sceCdSync waiters unpark (Hitman polls sceCdStatus/sceCdSync heavily).",
-        "Keep CNK virt-LBA / host_signal 16/54/55 / soft-arm / FCE0 / +24008 quarantined — do not use them here.",
-        "Do not change WaitSema/iSignalSema semantics (R2) or full SIF end rewrite (R1)."
+        "Do NOT rewrite sif.cpp / complete_call / reply_call / end_function.",
+        "Do NOT touch WaitSema/iSignalSema (R2 stays observe-only; sema 2 is durable libcdvd parking — never host_signal(2)).",
+        "Do NOT land R3 or R4 in this step.",
+        "Ask matrix to mark R1_SIF_end cleared/not-needed based on drain evidence below.",
+        "After R1 clear pass, disc-fix will post a separate unbundled R3 (readee+curReadPos only, no sceCdSync wake)."
       ],
-      "success_bar": "Both games: primitives keep moving, ~60 FPS feel, graphics/settings menu untouched."
+      "success_bar": "Matrix sets allow or clears R1 lock; no binary change this cycle."
     },
     "evidence": {
-      "runs": [
-        {
-          "game": "hitman_bm",
-          "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
-          "log": "logs/discfix-hitman-bm-600-hle.log",
-          "also": "logs/triage-hitman-bm-2k.log",
+      "matrix_smokes": {
+        "hitman": {
+          "log": "logs/matrix-hitman-600.log",
           "frames": 600,
-          "prims": 127974,
-          "cdvdfsv": "N 0x1 + stream write after searches (SYSTEM.CNF, ERRORMES.ZIP, BOOTMENU.ZIP); DiskReady N 0xE then Read N 0x1",
-          "iop_cdvdman": "Heavy sceCdStatus + sceCdSync(mode=1) polling (~1.8k each in 600f) while EE reads use cdvdfsv",
-          "end_sema": [2, 7],
-          "shared_note": "EE WaitSema leftover id 2; IOP thsemap WaitSema 1/2 spam around CD path"
+          "prims": 78118,
+          "phases": "all five pass",
+          "sif_end": "[sif] 0 packets wait for the EE (processed 0)",
+          "held_rpc_dump": "none (no 'call to 0x... waiting for its reply')",
+          "alchemy": "none"
         },
-        {
-          "game": "nfs_mw",
-          "id": "60c82f4a111da300ac23bbec85272788",
-          "log": "logs/discfix-nfs-mw-600-hle.log",
-          "also": "logs/triage-nfs-mw-2k.log",
+        "nfs": {
+          "log": "logs/matrix-nfs-600.log",
           "frames": 600,
-          "prims": 208253,
-          "cdvdfsv": "Same N 0x1 → stream write → complete pattern; many sequential sector reads (boot + large 841-sector read)",
-          "iop_cdvdman": "Little/no sceCdSync spam; stalls show as EE WaitSema leftovers",
-          "end_sema": [2, 17, 23, 29, 30, 32],
-          "shared_note": "EE WaitSema leftover id 2 shared with Hitman (libcdvd-class parking)"
+          "prims": 49750,
+          "phases": "all five pass",
+          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
+          "held_rpc_dump": "none",
+          "alchemy": "none"
         }
-      ],
-      "shared_signature": {
-        "path": "cdvdfsv N-cmd 0x1 → kJobFsvRead → read_to_ee → sif::complete_call(0x80000595)",
-        "stall_class": "CDVD complete / curReadPos / sync-wake contract — not Alchemy (no virt LBA, no GFC, no +24008, no host_signal 16/54/55)",
-        "both_draw": true,
-        "both_leftover_sema_2": true,
-        "prior_2k": "triage-*-2k.log already showed Hitman ~586k prims / NFS ~1.15M prims at 2k frames with same leftover WaitSema pattern"
       },
-      "gap_vs_sony": [
-        "Need strict order: payload + readee + curReadPos BEFORE complete_call on every EE read",
-        "readee length fields should be set when dest1 is fed so AlignReadBuffer can run",
-        "Hitman also needs IOP sceCdSync waiters woken when FSV completes (cdvd.cpp finish_read-style wake)",
-        "No CNK-only pulses"
-      ]
+      "discfix_hle": {
+        "hitman_log": "logs/discfix-hitman-bm-600-hle.log",
+        "nfs_log": "logs/discfix-nfs-mw-600-hle.log",
+        "note": "Same pair: draws, CDVD N+stream, shared leftover WaitSema 2 is R2/ownership not R1"
+      },
+      "waitsema_ownership": "verification/recovery/waitsema-createsema-trace-live-report.md — sema 2 durable parking; do not pulse",
+      "argument": "If SIF outgoing is 0 and no held calls remain after sustained_run, a full SIF-end rewrite is not the active Hitman/NFS blocker. Clear R1 so disc-fix can propose unbundled R3 next."
     },
     "files_touched": []
   },
   "matrix": {
-    "status": "complete",
-    "current_phase": "sustained_run",
-    "verdict": "fail",
-    "notes": "FAIL gate for proposed R3_generic_complete_path. Prove-before-swap: R1_SIF_end and R2_WaitSema_fidelity are still locked, so R3 must not land yet. Proposal also bundles R4-style sceCdSync waiter wake with R3 — that is a second order skip. Evidence itself is real (both games draw; Hitman BOOTMENU + ~1.8k sceCdSync/Status polls; NFS stream writes; shared leftover WaitSema 2; no Alchemy pulses). Independent matrix smokes logs/matrix-hitman-600.log and logs/matrix-nfs-600.log: Hitman 600f/78k prims/19 searches; NFS 600f/50k prims/67 streams; both frame-limit; SIF drains to 0; leftover semas match. Sony gaps still unproven in logs (no curReadPos/readee write lines). Huge garbage N-cmd counts seen (Hitman and NFS). Do NOT apply cdvdfsv/cdvd patch. Next: post R1 SIF-end proposal (or clear R1 with evidence) before any R3/R4 rewrite. No commit.",
+    "status": "pending",
+    "current_phase": null,
+    "verdict": null,
+    "notes": "Disc-fix cycle 2: R1_clear_with_evidence (no code). Prior R3 fail acknowledged. Waiting for matrix.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
     "phase_results": {
       "hitman_bm": {
@@ -82,8 +76,7 @@
         "sustained_run": "pass",
         "log": "logs/matrix-hitman-600.log",
         "frames": 600,
-        "prims": 78118,
-        "notes": "BOOTMENU/ERRORMES searches; CDVD N+stream; sceCdSync heavy; leftover sema 2/7/13; no Alchemy host_signal"
+        "prims": 78118
       },
       "nfs_mw": {
         "boot": "pass",
@@ -93,32 +86,12 @@
         "sustained_run": "pass",
         "log": "logs/matrix-nfs-600.log",
         "frames": 600,
-        "prims": 49750,
-        "notes": "CDVD N+stream active; leftover sema 2/17/23/29/30/32; one huge garbage N count; no Alchemy"
+        "prims": 49750
       }
-    },
-    "ranked_rewrite_decision": {
-      "R1_SIF_end": "still_gated",
-      "R2_WaitSema_fidelity": "still_gated",
-      "R3_readee": "blocked_prove_before_swap",
-      "R4_CdSync": "blocked_bundled_with_R3",
-      "R5_pad_sound": "still_gated"
     },
     "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "No commits until stable build; then commit freely.",
-  "waitsema_ownership": {
-    "report": "verification/recovery/waitsema-createsema-trace-live-report.md",
-    "source": "986fc073-e50c-4ede-a4ee-07cd89edd931",
-    "sema_2": "Durable libcdvd-class parking (init=0,max=255, create once, never deleted). Hitman create_ra 0x001038CC / NFS 0x00495EA8 — ID coincidence, not temp RPC. Do NOT host_signal(2).",
-    "hitman_private": {"7": "init=0 max=1 create_ra 0x001008FC"},
-    "nfs_private": {
-      "17_23_32": "factory create_ra 0x00490224 init=0 max=1",
-      "29": "create_ra 0x0046A208 max=3",
-      "30": "final create_ra 0x0046B748 max=253"
-    },
-    "trace": "PS2_TRACE_SEMA=1 observe-only in runtime/src/kernel.cpp"
-  }
+  "commit_policy": "No commits until stable build; then commit freely."
 }

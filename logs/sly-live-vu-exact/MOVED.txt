@@ -1,2 +1,0 @@
-This folder only still holds run.log because another process has it open.
-Preferred location: logs/frames/sly-live-vu-exact/

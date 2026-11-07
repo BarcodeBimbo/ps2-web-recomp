@@ -13,3 +13,7 @@ The user started to say they were working on fixing something else, then got cut
 ## Cut off (still open)
 
 User started describing another fix and got cut off — pick up when they say what it was.
+
+## CNK null-bind (resolved model)
+
+See `cnk-nullbind-51ACEC-live-report.md`: forced FCE0 dies because registry **vt+80** returns null for the current thread (GetThreadId map miss), then code still jalrs vt+84 on null. Soft-arm leaves `0x725F50` clear / prims=2. Next: log tid vs map — no pointer stuffing.
