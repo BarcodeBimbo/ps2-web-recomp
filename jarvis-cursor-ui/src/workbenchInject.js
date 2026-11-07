@@ -251,6 +251,7 @@ async function locateWorkbench() {
 async function readProductFingerprint(appRoot) {
   let version = "";
   let commit = "";
+  let productVscodeVersion = "";
   const productPath = appRoot ? path.join(appRoot, "product.json") : "";
   if (productPath && (await pathExists(productPath))) {
     try {
@@ -261,6 +262,9 @@ async function readProductFingerprint(appRoot) {
       if (product.commit != null) {
         commit = String(product.commit);
       }
+      if (product.vscodeVersion != null) {
+        productVscodeVersion = String(product.vscodeVersion);
+      }
     } catch {
       /* fall through */
     }
@@ -268,10 +272,14 @@ async function readProductFingerprint(appRoot) {
   if (!version && vscode.version) {
     version = String(vscode.version);
   }
+  // Prefer live vscode.version; fall back to product.json vscodeVersion (standalone / early activate).
+  const vscodeVersion = vscode.version
+    ? String(vscode.version)
+    : productVscodeVersion || "";
   return {
     version,
     commit,
-    vscodeVersion: vscode.version ? String(vscode.version) : "",
+    vscodeVersion,
     productPath,
   };
 }

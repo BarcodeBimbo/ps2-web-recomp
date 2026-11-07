@@ -190,17 +190,19 @@ function buildPatchBlock({ uuid, version, commit, css }) {
 async function readProductFingerprint(appRoot) {
   let version = "";
   let commit = "";
+  let vscodeVersion = "";
   const productPath = appRoot ? path.join(appRoot, "product.json") : "";
   if (productPath && (await pathExists(productPath))) {
     try {
       const product = JSON.parse(await fsp.readFile(productPath, "utf8"));
       if (product.version != null) version = String(product.version);
       if (product.commit != null) commit = String(product.commit);
+      if (product.vscodeVersion != null) vscodeVersion = String(product.vscodeVersion);
     } catch {
       /* ignore */
     }
   }
-  return { version, commit, productPath };
+  return { version, commit, vscodeVersion, productPath };
 }
 
 async function readCssBundle(extRoot, bootMs) {
@@ -435,7 +437,7 @@ async function main() {
     backupUuid,
     markerUuid,
     lastError: warnings.length ? warnings.join("; ") : "",
-    lastOkFingerprint: `${fp.version || ""}|${fp.commit || ""}|`,
+    lastOkFingerprint: `${fp.version || ""}|${fp.commit || ""}|${fp.vscodeVersion || ""}`,
     patchedAt: new Date().toISOString(),
     workbenchPath,
     method: "standalone-enable-script",
