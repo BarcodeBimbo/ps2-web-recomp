@@ -2755,7 +2755,7 @@ var Module = {
   audioQueuedMs: () => Module._ps2web_audio_queued_ms(),
   ps2CardSaved: () => storeCard(),
   onFrame: () => {
-    if (launchOverlay.isConnected && !Module.halted && typeof Module._ps2web_primitives === 'function' && Module._ps2web_primitives() > 0) launchOverlay.remove();
+    if (launchOverlay.isConnected && !Module.halted && (safePs2webPrimitives() || 0) > 0) launchOverlay.remove();
     // Rebind at most ~2 Hz — HEAP growth is rare and this ran every present.
     if (typeof Module._ps2web_rebind_audio === 'function' && (frames & 31) === 0) Module._ps2web_rebind_audio();
     if (!Module._gfxPrefsApplied && typeof Module._ps2web_set_fps_limit === 'function') {
@@ -2790,7 +2790,7 @@ var Module = {
       const interpreted = Module._ps2web_vu_interpreted();
       const fps = frames * 1000 / span;
       const avgMs = frameMsN ? frameMsSum / frameMsN : span / Math.max(frames, 1);
-      statsEl.textContent = 'frame ' + Module._ps2web_frames() + '   ' + fps.toFixed(1) + ' fps (' + (shown * 1000 / span).toFixed(0) + ' on screen)   GPU ' + ((gpu - lastGpu) / span * 100).toFixed(0) +
+      statsEl.textContent = 'frame ' + (safePs2webFrames() ?? frames) + '   ' + fps.toFixed(1) + ' fps (' + (shown * 1000 / span).toFixed(0) + ' on screen)   GPU ' + ((gpu - lastGpu) / span * 100).toFixed(0) +
                             '%   idle emu ' + ((emuIdle - lastEmuIdle) / span * 100).toFixed(0) + '% vu ' + ((vuIdle - lastVuIdle) / span * 100).toFixed(0) +
                             '% gs ' + ((renderIdle - lastRenderIdle) / span * 100).toFixed(0) +
                             '%   heap ' + memory + ' MB   audio ' + Module.audioQueuedMs().toFixed(0) + ' ms' +
@@ -2822,6 +2822,19 @@ var Module = {
 };
 
 let stallLogSaved = false;
+// Emscripten KEEPAlive stubs are typeof==='function' before init but assert(runtimeInitialized)
+// and abort the page — never call _ps2web_* until Module.running (post callMain).
+function nativeExportsReady() {
+  return !!(Module && Module.running && typeof Module._ps2web_frames === 'function');
+}
+function safePs2webFrames() {
+  if (!nativeExportsReady()) return null;
+  try { return Module._ps2web_frames(); } catch (e) { return null; }
+}
+function safePs2webPrimitives() {
+  if (!nativeExportsReady()) return null;
+  try { return Module._ps2web_primitives ? Module._ps2web_primitives() : null; } catch (e) { return null; }
+}
 function frameStallLimitMs() {
   // Software GS (Cursor/Electron fallback, forced software, or WebGPU timeout) often
   // spends >30s on a single heavy/FMV frame at ~1 fps — that is lag, not a dead worker.
@@ -2835,9 +2848,10 @@ function checkFrameProgress() {
   const stallLimit = frameStallLimitMs();
   const stalled = Module.running && !document.hidden && !guestRoom &&
     Number.isFinite(Module.lastFrameAt) && performance.now() - Module.lastFrameAt > stallLimit;
+  const frameCount = safePs2webFrames();
+  const primCount = safePs2webPrimitives();
   const noDrawing = Module.running && !document.hidden && !guestRoom &&
-    typeof Module._ps2web_frames==='function' && typeof Module._ps2web_primitives==='function' &&
-    Module._ps2web_frames()>1800 && Module._ps2web_primitives()===0;
+    frameCount != null && primCount != null && frameCount > 1800 && primCount === 0;
   warning.hidden = !stalled && !noDrawing;
   if(noDrawing){
     warning.textContent='No drawing after 1,800 frames. A stall log was saved automatically. Try VU: reference or reload.';
@@ -2891,8 +2905,8 @@ async function saveCrashLog(reason, options = {}) {
   } catch (error) {
     workerSnapshot = 'diagnostics probe failed: ' + (error?.message || error);
   }
-  const frames = typeof Module._ps2web_frames === 'function' ? Module._ps2web_frames() : null;
-  const primitives = typeof Module._ps2web_primitives === 'function' ? Module._ps2web_primitives() : null;
+  const frames = safePs2webFrames();
+  const primitives = safePs2webPrimitives();
   const report = {
     interfaceVersion: '2026-11-06-cyberarcade-crashlog-1',
     reason: String(reason || 'unknown').slice(0, 2048),

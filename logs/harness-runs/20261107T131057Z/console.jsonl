@@ -1,0 +1,694 @@
+{"t": 1794057058.3237948, "game": "Hitman_BM", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794057058.9600685, "game": "Hitman_BM", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057058.9630806, "game": "Hitman_BM", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794057059.3891702, "game": "Hitman_BM", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057059.3907018, "game": "Hitman_BM", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794057059.3932328, "game": "Hitman_BM", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794057059.394786, "game": "Hitman_BM", "type": "log", "text": "[disc] disc: 310 files, 1540176 sectors, layer 1 at 0"}
+{"t": 1794057059.3952909, "game": "Hitman_BM", "type": "log", "text": "[mc] card in slot 1: /memcard-a2116d2ac08a7be4db4e8455ad58d2e5/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794057059.3952909, "game": "Hitman_BM", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x001037F8 thr=2"}
+{"t": 1794057059.820014, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1 0.7 fps (0 on screen) GPU 0% idle emu 0% vu 39% gs 39% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794057059.8220243, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057059.8250508, "game": "Hitman_BM", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOP\\IOPRP310.IMG;1\""}
+{"t": 1794057059.826073, "game": "Hitman_BM", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOP\\IOPRP310.IMG;1 reports 3100, asynchronous protocol"}
+{"t": 1794057059.8280613, "game": "Hitman_BM", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOP\\IOPRP310.IMG;1 reports 3100"}
+{"t": 1794057059.8295734, "game": "Hitman_BM", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057059.8300972, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SIO2MAN.IRX"}
+{"t": 1794057059.831106, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\PADMAN.IRX"}
+{"t": 1794057059.8321056, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057059.8353498, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\MCMAN.IRX"}
+{"t": 1794057059.8373592, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\MCSERV.IRX"}
+{"t": 1794057060.2992225, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SYSTEM.CNF;1 -> found"}
+{"t": 1794057060.300729, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SYSTEM.CNF;1 -> found"}
+{"t": 1794057060.3027456, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.3037446, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794057060.3037446, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794057060.3052492, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794057060.3052492, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.306254, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.3072572, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020398)"}
+{"t": 1794057060.7268322, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.7293494, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\MAIN.INI;1 -> found"}
+{"t": 1794057060.7308638, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\MAIN.INI;1 -> found"}
+{"t": 1794057060.7323759, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.7343843, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057060.7369037, "game": "Hitman_BM", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794057060.745626, "game": "Hitman_BM", "type": "log", "text": "[dma] gif tag id 7 qwc 31 addr 0x00000000 data 0x01FFF6C0"}
+{"t": 1794057060.748644, "game": "Hitman_BM", "type": "log", "text": "[dma] gif tag id 7 qwc 11 addr 0x00000000 data 0x01FFF6B0"}
+{"t": 1794057060.75726, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\LIBSD.IRX"}
+{"t": 1794057060.7587743, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0005AA78)"}
+{"t": 1794057060.7613213, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0005AA7C)"}
+{"t": 1794057060.7623255, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0005AA98)"}
+{"t": 1794057060.76432, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x0005AAA8)"}
+{"t": 1794057060.7648294, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0005AAD4)"}
+{"t": 1794057060.7658398, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0005AAD8)"}
+{"t": 1794057060.774885, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SCRTCHPD.IRX"}
+{"t": 1794057060.7869473, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SYNTHCD.IRX"}
+{"t": 1794057060.7889566, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1FFE0144 = 0x1F800800 (pc 0x0005F52C)"}
+{"t": 1794057060.7914705, "game": "Hitman_BM", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794057060.7934701, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 17 15.9 fps (13 on screen) GPU 1% idle emu 48% vu 96% gs 95% heap 384 MB audio 29 ms hitch 683.0 ms x4"}
+{"t": 1794057060.795514, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794057060.8066344, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794057060.809683, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794057060.8102245, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=2388 comp=2388 mode=0x583"}
+{"t": 1794057061.2435489, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\HM3GPAD.CFG;1 -> found"}
+{"t": 1794057061.245562, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\HM3GPAD.CFG;1 -> found"}
+{"t": 1794057061.2475605, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=4488 comp=4488 mode=0x583"}
+{"t": 1794057061.2490687, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.WHD;1 -> found"}
+{"t": 1794057061.2520835, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.WAV;1 -> found"}
+{"t": 1794057061.5072021, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=6588 comp=6588 mode=0x583"}
+{"t": 1794057061.8319669, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 37 18.0 fps (18 on screen) GPU 0% idle emu 5% vu 102% gs 97% heap 384 MB audio 1 ms hitch 249.5 ms x8"}
+{"t": 1794057063.7243204, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=8688 comp=8688 mode=0x583"}
+{"t": 1794057063.7298634, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=10788 comp=10788 mode=0x583"}
+{"t": 1794057063.7314017, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 58 20.3 fps (20 on screen) GPU 12% idle emu 6% vu 94% gs 89% heap 384 MB audio 5 ms hitch 353.6 ms x10"}
+{"t": 1794057063.737992, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=12888 comp=12888 mode=0x583"}
+{"t": 1794057063.740137, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=14988 comp=14988 mode=0x583"}
+{"t": 1794057063.741657, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=17088 comp=17088 mode=0x583"}
+{"t": 1794057063.7426674, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=19188 comp=19188 mode=0x583"}
+{"t": 1794057063.8147545, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=21288 comp=21288 mode=0x583"}
+{"t": 1794057063.8790977, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 94 35.4 fps (35 on screen) GPU 16% idle emu 5% vu 92% gs 88% heap 384 MB audio 5 ms hitch 62.3 ms x9"}
+{"t": 1794057064.0954967, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=23388 comp=23388 mode=0x583"}
+{"t": 1794057065.3805306, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=25488 comp=25488 mode=0x583"}
+{"t": 1794057065.3820791, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 128 30.1 fps (28 on screen) GPU 6% idle emu 5% vu 92% gs 91% heap 384 MB audio 4 ms hitch 143.4 ms x7"}
+{"t": 1794057066.417298, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 183 57.4 fps (47 on screen) GPU 9% idle emu 16% vu 95% gs 85% heap 384 MB audio 80 ms hitch 129.3 ms x5"}
+{"t": 1794057066.9353006, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 243 60.0 fps (60 on screen) GPU 71% idle emu 42% vu 97% gs 89% heap 384 MB audio 84 ms hitch 18.5 ms x0"}
+{"t": 1794057067.9703367, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 303 60.0 fps (60 on screen) GPU 39% idle emu 45% vu 96% gs 89% heap 384 MB audio 91 ms hitch 19.8 ms x0"}
+{"t": 1794057069.0059915, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 363 59.8 fps (60 on screen) GPU 38% idle emu 43% vu 97% gs 89% heap 384 MB audio 70 ms hitch 21.9 ms x0"}
+{"t": 1794057070.0425017, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 424 60.3 fps (60 on screen) GPU 38% idle emu 39% vu 95% gs 89% heap 384 MB audio 75 ms hitch 18.4 ms x0"}
+{"t": 1794057071.0749886, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 485 60.0 fps (60 on screen) GPU 33% idle emu 39% vu 96% gs 89% heap 384 MB audio 73 ms hitch 21.6 ms x0"}
+{"t": 1794057072.1088243, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 546 60.0 fps (60 on screen) GPU 33% idle emu 34% vu 97% gs 87% heap 384 MB audio 83 ms hitch 19.7 ms x0"}
+{"t": 1794057073.148207, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 607 60.0 fps (60 on screen) GPU 32% idle emu 42% vu 96% gs 89% heap 384 MB audio 77 ms hitch 19.9 ms x0"}
+{"t": 1794057074.1838233, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 668 60.0 fps (60 on screen) GPU 26% idle emu 43% vu 98% gs 88% heap 384 MB audio 73 ms hitch 18.7 ms x0"}
+{"t": 1794057075.2230008, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 729 60.1 fps (60 on screen) GPU 27% idle emu 42% vu 96% gs 89% heap 384 MB audio 89 ms hitch 18.4 ms x0"}
+{"t": 1794057076.1666758, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 790 60.0 fps (60 on screen) GPU 25% idle emu 44% vu 96% gs 89% heap 384 MB audio 77 ms hitch 18.9 ms x0"}
+{"t": 1794057077.2052872, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 850 59.9 fps (60 on screen) GPU 24% idle emu 44% vu 98% gs 89% heap 384 MB audio 77 ms hitch 18.7 ms x0"}
+{"t": 1794057078.2472095, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 911 60.1 fps (60 on screen) GPU 24% idle emu 41% vu 95% gs 88% heap 384 MB audio 83 ms hitch 18.9 ms x0"}
+{"t": 1794057079.2838078, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 971 60.0 fps (60 on screen) GPU 24% idle emu 41% vu 96% gs 88% heap 384 MB audio 80 ms hitch 24.5 ms x0"}
+{"t": 1794057079.8054106, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057079.807409, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057079.807409, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057080.3215523, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1031 60.0 fps (60 on screen) GPU 24% idle emu 46% vu 98% gs 88% heap 384 MB audio 73 ms hitch 18.0 ms x0"}
+{"t": 1794057081.3613827, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1091 60.0 fps (60 on screen) GPU 24% idle emu 45% vu 97% gs 89% heap 384 MB audio 73 ms hitch 17.9 ms x0"}
+{"t": 1794057082.3989713, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1152 60.0 fps (60 on screen) GPU 23% idle emu 43% vu 96% gs 89% heap 384 MB audio 81 ms hitch 18.7 ms x0"}
+{"t": 1794057083.4404387, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1213 60.0 fps (60 on screen) GPU 24% idle emu 42% vu 95% gs 88% heap 384 MB audio 76 ms hitch 18.9 ms x0"}
+{"t": 1794057084.4798167, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1273 60.0 fps (60 on screen) GPU 23% idle emu 46% vu 98% gs 89% heap 384 MB audio 77 ms hitch 18.6 ms x0"}
+{"t": 1794057085.514029, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1333 60.0 fps (60 on screen) GPU 23% idle emu 43% vu 96% gs 89% heap 384 MB audio 88 ms hitch 18.2 ms x0"}
+{"t": 1794057086.5532773, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1394 60.0 fps (60 on screen) GPU 23% idle emu 45% vu 97% gs 89% heap 384 MB audio 75 ms hitch 17.7 ms x0"}
+{"t": 1794057087.5907393, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1455 60.1 fps (60 on screen) GPU 22% idle emu 45% vu 96% gs 89% heap 384 MB audio 82 ms hitch 18.3 ms x0"}
+{"t": 1794057088.6301558, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1515 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 96% gs 89% heap 384 MB audio 88 ms hitch 18.8 ms x0"}
+{"t": 1794057088.6301558, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057088.63116, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057088.6321619, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057089.1399424, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1575 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 81 ms hitch 17.8 ms x0"}
+{"t": 1794057090.1782405, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1636 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 78 ms hitch 18.0 ms x0"}
+{"t": 1794057091.2197933, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1697 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 73 ms hitch 17.5 ms x0"}
+{"t": 1794057092.2557504, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1758 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 81 ms hitch 17.4 ms x0"}
+{"t": 1794057093.2945168, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1819 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 77 ms hitch 17.6 ms x0"}
+{"t": 1794057094.3215322, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1880 60.0 fps (60 on screen) GPU 22% idle emu 47% vu 97% gs 89% heap 384 MB audio 85 ms hitch 17.7 ms x0"}
+{"t": 1794057095.361695, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1941 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 83 ms hitch 17.5 ms x0"}
+{"t": 1794057096.4048517, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2001 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.6 ms x0"}
+{"t": 1794057097.4426224, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2061 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.8 ms x0"}
+{"t": 1794057098.4846642, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2122 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 78 ms hitch 17.8 ms x0"}
+{"t": 1794057099.5223906, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2183 60.1 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 75 ms hitch 17.4 ms x0"}
+{"t": 1794057100.560932, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2243 60.0 fps (60 on screen) GPU 21% idle emu 45% vu 97% gs 89% heap 384 MB audio 74 ms hitch 17.9 ms x0"}
+{"t": 1794057101.5932677, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2304 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 81 ms hitch 18.9 ms x0"}
+{"t": 1794057102.6327813, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2364 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.7 ms x0"}
+{"t": 1794057103.6710029, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2425 60.0 fps (60 on screen) GPU 21% idle emu 47% vu 97% gs 89% heap 384 MB audio 77 ms hitch 17.6 ms x0"}
+{"t": 1794057104.2871323, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2485 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 75 ms hitch 17.6 ms x0"}
+{"t": 1794057105.3958192, "game": "NFS_MW", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057105.396819, "game": "NFS_MW", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794057105.8247678, "game": "NFS_MW", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057105.826773, "game": "NFS_MW", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794057105.8272781, "game": "NFS_MW", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794057105.828285, "game": "NFS_MW", "type": "log", "text": "[disc] disc: 25 files, 1807840 sectors, layer 1 at 0"}
+{"t": 1794057105.8297915, "game": "NFS_MW", "type": "log", "text": "[mc] card in slot 1: /memcard-60c82f4a111da300ac23bbec85272788/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794057105.8297915, "game": "NFS_MW", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x00495DE8 thr=2"}
+{"t": 1794057105.831309, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057106.2620456, "game": "NFS_MW", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom:\\NFS\\IOPRP280.IMG\""}
+{"t": 1794057106.2635577, "game": "NFS_MW", "type": "log", "text": "[sif] FILEIO from cdrom:\\NFS\\IOPRP280.IMG reports 2800, asynchronous protocol"}
+{"t": 1794057106.2645652, "game": "NFS_MW", "type": "log", "text": "[sif] LOADFILE from cdrom:\\NFS\\IOPRP280.IMG reports 2800"}
+{"t": 1794057106.266565, "game": "NFS_MW", "type": "log", "text": "[fileio] open cdrom:\\NFS\\IRX281A.BUN -> 3"}
+{"t": 1794057106.2675683, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x20000, 6641 bytes"}
+{"t": 1794057106.270087, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x22B00, 43813 bytes"}
+{"t": 1794057106.2705965, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x37100, 95909 bytes"}
+{"t": 1794057106.272105, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x22B00, 7417 bytes"}
+{"t": 1794057106.2731154, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057106.2746246, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.2756357, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.2766352, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057106.2771404, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.2781482, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.279147, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057106.2801483, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.281159, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.2821672, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057106.2821672, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057106.2846754, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.144913, "game": "NFS_MW", "type": "log", "text": "[stats] frame 6 1.0 fps (0 on screen) GPU 0% idle emu 4% vu 67% gs 69% heap 384 MB audio 0 ms hitch 1254.9 ms x1"}
+{"t": 1794057107.146421, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057107.1484315, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1544666, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1564767, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057107.157494, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1600018, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1610136, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057107.1625297, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1650345, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1670425, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.1695585, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x37100, 28605 bytes"}
+{"t": 1794057107.1786532, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)"}
+{"t": 1794057107.1821744, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)"}
+{"t": 1794057107.1852012, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)"}
+{"t": 1794057107.189197, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)"}
+{"t": 1794057107.1907034, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)"}
+{"t": 1794057107.1917126, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)"}
+{"t": 1794057107.1927133, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x28000, 9161 bytes"}
+{"t": 1794057107.1937132, "game": "NFS_MW", "type": "log", "text": "[iop-tty] SDR driver version 4.0.1 (C) SCEI"}
+{"t": 1794057107.1982362, "game": "NFS_MW", "type": "log", "text": "[iop-tty]  Exit rsd_main "}
+{"t": 1794057107.2057903, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x75B00, 81600 bytes"}
+{"t": 1794057107.207791, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x43B00, 34969 bytes"}
+{"t": 1794057107.207791, "game": "NFS_MW", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794057107.2163646, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801680 = 0x1 (pc 0x0003A7EC)"}
+{"t": 1794057107.231968, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794057107.236517, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x7B500, 52349 bytes"}
+{"t": 1794057107.2390406, "game": "NFS_MW", "type": "log", "text": "[iop-tty] LgDev_tb_rb_Driver Version 1.11.037 ( Wheel ), built on Jun 16 2005 at 16:02:04, thpri=42,43"}
+{"t": 1794057107.2536771, "game": "NFS_MW", "type": "log", "text": "[iop-tty]   fixed memory allocations for 2 devices and 8 effects"}
+{"t": 1794057107.2576935, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057107.2820396, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057107.2885652, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057107.2926192, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057107.2946177, "game": "NFS_MW", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794057108.1622307, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B2A0 data 0x0054B5B0"}
+{"t": 1794057108.1647468, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B2B0"}
+{"t": 1794057108.1667628, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.171285, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B390 data 0x01D7B330"}
+{"t": 1794057108.173286, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B3A0"}
+{"t": 1794057108.1758099, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.1783326, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B480 data 0x01D7B420"}
+{"t": 1794057108.1798441, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B490"}
+{"t": 1794057108.1843743, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.190417, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B570 data 0x01D7B510"}
+{"t": 1794057108.1919336, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B580"}
+{"t": 1794057108.1929357, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.1944504, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01D7B600"}
+{"t": 1794057108.1959987, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690"}
+{"t": 1794057108.1970098, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.1980119, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2100854, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2120953, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2140958, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.215612, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2176135, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2231414, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2271633, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.229673, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2312107, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2327244, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=21 comp=21 mode=0x580"}
+{"t": 1794057108.2348213, "game": "NFS_MW", "type": "log", "text": "[stats] frame 28 25.9 fps (23 on screen) GPU 1% idle emu 107% vu 101% gs 96% heap 384 MB audio 9 ms hitch 372.0 ms x4"}
+{"t": 1794057108.3505688, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FA30 data 0x0054B550"}
+{"t": 1794057108.35358, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FA40"}
+{"t": 1794057108.3550828, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.357081, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FB20 data 0x01C4FAC0"}
+{"t": 1794057108.3580782, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FB30"}
+{"t": 1794057108.3601959, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.362203, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FC10 data 0x01C4FBB0"}
+{"t": 1794057108.3637145, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FC20"}
+{"t": 1794057108.3652282, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.3672364, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FD00 data 0x01C4FCA0"}
+{"t": 1794057108.3712482, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FD10"}
+{"t": 1794057108.3732557, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794057108.374766, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01C4FD90"}
+{"t": 1794057108.376783, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690"}
+{"t": 1794057109.1258729, "game": "NFS_MW", "type": "log", "text": "[stats] frame 72 43.9 fps (33 on screen) GPU 1% idle emu 7% vu 98% gs 94% heap 384 MB audio 77 ms hitch 155.3 ms x10"}
+{"t": 1794057110.3918087, "game": "NFS_MW", "type": "log", "text": "[stats] frame 95 22.6 fps (22 on screen) GPU 0% idle emu 6% vu 100% gs 96% heap 384 MB audio 1 ms hitch 82.6 ms x17"}
+{"t": 1794057111.4325702, "game": "NFS_MW", "type": "log", "text": "[stats] frame 129 33.3 fps (33 on screen) GPU 0% idle emu 5% vu 100% gs 98% heap 384 MB audio 1 ms hitch 47.9 ms x5"}
+{"t": 1794057112.468263, "game": "NFS_MW", "type": "log", "text": "[stats] frame 178 48.4 fps (48 on screen) GPU 1% idle emu 3% vu 98% gs 96% heap 384 MB audio 0 ms hitch 57.1 ms x5"}
+{"t": 1794057112.4702585, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)"}
+{"t": 1794057113.544551, "game": "NFS_MW", "type": "log", "text": "[stats] frame 239 61.0 fps (45 on screen) GPU 15% idle emu 10% vu 100% gs 76% heap 384 MB audio 138 ms hitch 111.2 ms x8"}
+{"t": 1794057114.071816, "game": "NFS_MW", "type": "log", "text": "[stats] frame 283 43.9 fps (33 on screen) GPU 8% idle emu 28% vu 98% gs 82% heap 384 MB audio 45 ms hitch 256.3 ms x8"}
+{"t": 1794057114.5990825, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057114.6010964, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057114.603606, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057114.605613, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057114.6066134, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057115.1314664, "game": "NFS_MW", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794057115.133477, "game": "NFS_MW", "type": "log", "text": "[stats] frame 334 48.4 fps (38 on screen) GPU 17% idle emu 21% vu 100% gs 77% heap 384 MB audio 54 ms hitch 138.2 ms x8"}
+{"t": 1794057116.1980639, "game": "NFS_MW", "type": "log", "text": "[stats] frame 389 52.6 fps (47 on screen) GPU 31% idle emu 9% vu 94% gs 77% heap 384 MB audio 47 ms hitch 66.0 ms x7"}
+{"t": 1794057116.7204087, "game": "NFS_MW", "type": "log", "text": "[io] write 0x1000F590 = 0x10000 (pc 0x0049C5B0)"}
+{"t": 1794057117.7620783, "game": "NFS_MW", "type": "log", "text": "[stats] frame 412 19.2 fps (12 on screen) GPU 14% idle emu 5% vu 99% gs 95% heap 384 MB audio 2 ms hitch 1109.7 ms x3"}
+{"t": 1794057119.31791, "game": "NFS_MW", "type": "log", "text": "[stats] frame 430 10.8 fps (11 on screen) GPU -0% idle emu 3% vu 100% gs 99% heap 384 MB audio 5 ms hitch 670.7 ms x4"}
+{"t": 1794057120.5646713, "game": "NFS_MW", "type": "log", "text": "[stats] frame 448 12.6 fps (13 on screen) GPU -1% idle emu 3% vu 100% gs 99% heap 384 MB audio 5 ms hitch 538.5 ms x3"}
+{"t": 1794057121.858809, "game": "NFS_MW", "type": "log", "text": "[stats] frame 465 16.8 fps (17 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 7 ms hitch 635.5 ms x2"}
+{"t": 1794057122.8960612, "game": "NFS_MW", "type": "log", "text": "[stats] frame 475 8.6 fps (9 on screen) GPU 0% idle emu 2% vu 100% gs 100% heap 384 MB audio 1 ms hitch 509.3 ms x2"}
+{"t": 1794057124.455529, "game": "NFS_MW", "type": "log", "text": "[stats] frame 493 13.7 fps (14 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 3 ms hitch 508.7 ms x3"}
+{"t": 1794057125.497, "game": "NFS_MW", "type": "log", "text": "[stats] frame 511 13.0 fps (13 on screen) GPU 4% idle emu 5% vu 100% gs 99% heap 384 MB audio 6 ms hitch 552.8 ms x2"}
+{"t": 1794057127.0572257, "game": "NFS_MW", "type": "log", "text": "[stats] frame 529 13.8 fps (14 on screen) GPU 0% idle emu 4% vu 100% gs 99% heap 384 MB audio 6 ms hitch 502.2 ms x2"}
+{"t": 1794057128.094492, "game": "NFS_MW", "type": "log", "text": "[stats] frame 547 13.6 fps (14 on screen) GPU -0% idle emu 5% vu 100% gs 99% heap 384 MB audio 11 ms hitch 515.2 ms x2"}
+{"t": 1794057129.6486986, "game": "NFS_MW", "type": "log", "text": "[stats] frame 565 13.5 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 510.2 ms x3"}
+{"t": 1794057131.201795, "game": "NFS_MW", "type": "log", "text": "[stats] frame 583 12.7 fps (13 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 7 ms hitch 613.3 ms x2"}
+{"t": 1794057132.2400541, "game": "NFS_MW", "type": "log", "text": "[stats] frame 601 13.6 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 9 ms hitch 517.0 ms x2"}
+{"t": 1794057133.799243, "game": "NFS_MW", "type": "log", "text": "[stats] frame 619 13.6 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 507.7 ms x2"}
+{"t": 1794057134.8382723, "game": "NFS_MW", "type": "log", "text": "[stats] frame 637 13.4 fps (13 on screen) GPU 4% idle emu 3% vu 100% gs 99% heap 384 MB audio 11 ms hitch 518.4 ms x2"}
+{"t": 1794057136.3998237, "game": "NFS_MW", "type": "log", "text": "[stats] frame 655 13.0 fps (13 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 4 ms hitch 537.7 ms x3"}
+{"t": 1794057137.9613545, "game": "NFS_MW", "type": "log", "text": "[stats] frame 673 13.7 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 509.3 ms x3"}
+{"t": 1794057138.996381, "game": "NFS_MW", "type": "log", "text": "[stats] frame 691 13.8 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 12 ms hitch 506.1 ms x2"}
+{"t": 1794057140.557034, "game": "NFS_MW", "type": "log", "text": "[stats] frame 709 13.7 fps (14 on screen) GPU 3% idle emu 5% vu 100% gs 99% heap 384 MB audio 5 ms hitch 511.9 ms x2"}
+{"t": 1794057141.597161, "game": "NFS_MW", "type": "log", "text": "[stats] frame 727 13.7 fps (14 on screen) GPU 8% idle emu 4% vu 100% gs 99% heap 384 MB audio 5 ms hitch 507.3 ms x2"}
+{"t": 1794057143.1537538, "game": "NFS_MW", "type": "log", "text": "[stats] frame 745 13.7 fps (14 on screen) GPU -1% idle emu 5% vu 100% gs 99% heap 384 MB audio 5 ms hitch 506.0 ms x2"}
+{"t": 1794057144.1919062, "game": "NFS_MW", "type": "log", "text": "[stats] frame 763 13.5 fps (14 on screen) GPU 2% idle emu 5% vu 100% gs 99% heap 384 MB audio 7 ms hitch 512.9 ms x3"}
+{"t": 1794057145.7516923, "game": "NFS_MW", "type": "log", "text": "[stats] frame 781 13.8 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 7 ms hitch 501.0 ms x2"}
+{"t": 1794057146.7893202, "game": "NFS_MW", "type": "log", "text": "[stats] frame 799 13.2 fps (13 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 2 ms hitch 549.8 ms x2"}
+{"t": 1794057148.3464544, "game": "NFS_MW", "type": "log", "text": "[stats] frame 817 13.2 fps (13 on screen) GPU 1% idle emu 3% vu 100% gs 97% heap 384 MB audio 7 ms hitch 519.8 ms x4"}
+{"t": 1794057149.4222298, "game": "NFS_MW", "type": "log", "text": "[stats] frame 835 13.6 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 513.1 ms x2"}
+{"t": 1794057150.234721, "game": "GoW_USA", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794057150.6753943, "game": "GoW_USA", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057150.6763983, "game": "GoW_USA", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057150.677401, "game": "GoW_USA", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794057150.677401, "game": "GoW_USA", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794057150.6789045, "game": "GoW_USA", "type": "log", "text": "[disc] disc: 16 files, 4161520 sectors, layer 1 at 2080544"}
+{"t": 1794057150.6789045, "game": "GoW_USA", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794057151.932053, "game": "GoW_USA", "type": "log", "text": "[mc] card in slot 1: /memcard-695b874b308a4e5353767bb6df8ba697/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794057151.9345644, "game": "GoW_USA", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x00294810 thr=2"}
+{"t": 1794057151.9355698, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1 0.7 fps (0 on screen) GPU 0% idle emu 0% vu 70% gs 70% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794057151.936569, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057151.938074, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057151.9390783, "game": "GoW_USA", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794057151.9405813, "game": "GoW_USA", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057151.9405813, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794057151.9415886, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057151.9425862, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B400A imr=0x7D00 MASKED — no intc"}
+{"t": 1794057151.9430892, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x5 fn=0x00182DD8"}
+{"t": 1794057151.9430892, "game": "GoW_USA", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP300.IMG;1\""}
+{"t": 1794057151.9445927, "game": "GoW_USA", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP300.IMG;1 reports 3000, asynchronous protocol"}
+{"t": 1794057151.9456012, "game": "GoW_USA", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP300.IMG;1 reports 3000"}
+{"t": 1794057151.9456012, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\SIO2MAN.IRX;1"}
+{"t": 1794057151.9456012, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\DBCMAN.IRX;1"}
+{"t": 1794057151.9471045, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\SIO2D.IRX;1"}
+{"t": 1794057151.947615, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\MC2_D.IRX;1"}
+{"t": 1794057151.9486187, "game": "GoW_USA", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)"}
+{"t": 1794057151.9486187, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\DS2U_D.IRX;1"}
+{"t": 1794057151.9486187, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\LIBSD.IRX;1"}
+{"t": 1794057151.9501214, "game": "GoW_USA", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00031B88)"}
+{"t": 1794057151.9501214, "game": "GoW_USA", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00031B8C)"}
+{"t": 1794057151.9516356, "game": "GoW_USA", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00031BA8)"}
+{"t": 1794057151.9516356, "game": "GoW_USA", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00031BB8)"}
+{"t": 1794057151.9531662, "game": "GoW_USA", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00031BE4)"}
+{"t": 1794057151.9546893, "game": "GoW_USA", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00031BE8)"}
+{"t": 1794057151.9546893, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\989NOMID.IRX;1"}
+{"t": 1794057151.9546893, "game": "GoW_USA", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057151.9561944, "game": "GoW_USA", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057151.9561944, "game": "GoW_USA", "type": "log", "text": "[iop-tty]  989snd (c)2000-2003 Sony Computer Entertainment America"}
+{"t": 1794057151.9571989, "game": "GoW_USA", "type": "log", "text": "[iop-tty]  by Buzz Burrowes                               v3.1.7"}
+{"t": 1794057151.9571989, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                         (built Dec 21 2004 at 14:30:44)"}
+{"t": 1794057151.9581985, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                                          (pre-release 12)"}
+{"t": 1794057151.9581985, "game": "GoW_USA", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057151.9597015, "game": "GoW_USA", "type": "log", "text": "[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds"}
+{"t": 1794057151.9597015, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                   (banks and streams only)"}
+{"t": 1794057151.9607053, "game": "GoW_USA", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057151.9612095, "game": "GoW_USA", "type": "log", "text": "[iop-tty]  (build with sce library rev 3.0.1)"}
+{"t": 1794057151.9612095, "game": "GoW_USA", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057151.9622152, "game": "GoW_USA", "type": "log", "text": "[iop-tty]     Thread Priorities:"}
+{"t": 1794057151.9632144, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                          Sound Tick = 9"}
+{"t": 1794057151.9632144, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                            Main RPC = 64"}
+{"t": 1794057151.9632144, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                         Loading RPC = 65"}
+{"t": 1794057151.9647183, "game": "GoW_USA", "type": "log", "text": "[iop-tty]                           Streaming = 60, 61, 62, 63"}
+{"t": 1794057151.965222, "game": "GoW_USA", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057151.965222, "game": "GoW_USA", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057151.966226, "game": "GoW_USA", "type": "log", "text": "[loadfile] cdrom0:\\SMPD_IOP.IRX;1"}
+{"t": 1794057151.967232, "game": "GoW_USA", "type": "log", "text": "[loadfile] buffer at 0x68800, 857 bytes"}
+{"t": 1794057151.967232, "game": "GoW_USA", "type": "log", "text": "[iop] missing cdvdman #50 called from 0x0005CC14"}
+{"t": 1794057151.9682326, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794057151.9697378, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794057151.9717493, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794057151.972747, "game": "GoW_USA", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794057151.974257, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=45236 comp=45236 mode=0x582"}
+{"t": 1794057151.974257, "game": "GoW_USA", "type": "log", "text": "[iop-tty] ============================"}
+{"t": 1794057151.9752717, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gCollectorLatch    = 1d"}
+{"t": 1794057151.9762642, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gDECISemaphore     = 12"}
+{"t": 1794057151.977266, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gStreamerSemaphore = 13"}
+{"t": 1794057151.977266, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gDiscReadSemaphore = 1b"}
+{"t": 1794057151.9787724, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gReadLatch         = 19"}
+{"t": 1794057151.97978, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gWriteLatch        = 1a"}
+{"t": 1794057151.980285, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gSynchReadLatch    = 1c"}
+{"t": 1794057151.9807885, "game": "GoW_USA", "type": "log", "text": "[iop-tty] ============================"}
+{"t": 1794057151.9807885, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gReadThread        = 1b"}
+{"t": 1794057151.9817939, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gWriteThread       = 1c"}
+{"t": 1794057151.9817939, "game": "GoW_USA", "type": "log", "text": "[iop-tty] gCollectorThread   = 1d"}
+{"t": 1794057151.9833043, "game": "GoW_USA", "type": "log", "text": "[iop-tty] ============================"}
+{"t": 1794057151.9843166, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=45236 comp=45236 mode=0x582"}
+{"t": 1794057151.9853272, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=56500 comp=56500 mode=0x582"}
+{"t": 1794057152.060353, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=56500 comp=56500 mode=0x582"}
+{"t": 1794057152.0623636, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=2230 comp=2230 mode=0x582"}
+{"t": 1794057152.1446943, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=2230 comp=2230 mode=0x582"}
+{"t": 1794057152.1813223, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=13494 comp=13494 mode=0x582"}
+{"t": 1794057152.5131514, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=13494 comp=13494 mode=0x582"}
+{"t": 1794057152.514657, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=24758 comp=24758 mode=0x582"}
+{"t": 1794057152.5207307, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=24758 comp=24758 mode=0x582"}
+{"t": 1794057152.5237532, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=36022 comp=36022 mode=0x582"}
+{"t": 1794057152.547866, "game": "GoW_USA", "type": "log", "text": "[timer] TIM0 compare IRQ count=36022 comp=36022 mode=0x582"}
+{"t": 1794057152.6036189, "game": "GoW_USA", "type": "log", "text": "[stats] frame 60 58.4 fps (54 on screen) GPU 1% idle emu 62% vu 100% gs 94% heap 384 MB audio 59 ms hitch 76.7 ms x3"}
+{"t": 1794057152.810923, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057152.8144243, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x5 fn=0x00182DD8"}
+{"t": 1794057153.5189233, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.520427, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x5 fn=0x00182DD8"}
+{"t": 1794057153.5214305, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5224352, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x00182DD8"}
+{"t": 1794057153.5229383, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5229383, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x00182DD8"}
+{"t": 1794057153.5244417, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5244417, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x00182DD8"}
+{"t": 1794057153.525447, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.525447, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x00182DD8"}
+{"t": 1794057153.5269501, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5269501, "game": "GoW_USA", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x00182DD8"}
+{"t": 1794057153.527954, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.527954, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.528954, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.528954, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.529954, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5304575, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5314612, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057153.5314612, "game": "GoW_USA", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794057154.038641, "game": "GoW_USA", "type": "log", "text": "[stats] frame 122 61.0 fps (56 on screen) GPU 3% idle emu 78% vu 99% gs 95% heap 384 MB audio 93 ms hitch 58.5 ms x2"}
+{"t": 1794057155.0813668, "game": "GoW_USA", "type": "log", "text": "[stats] frame 182 60.0 fps (56 on screen) GPU 10% idle emu 78% vu 92% gs 90% heap 384 MB audio 93 ms hitch 52.9 ms x3"}
+{"t": 1794057156.1184962, "game": "GoW_USA", "type": "log", "text": "[stats] frame 243 59.0 fps (59 on screen) GPU 34% idle emu 72% vu 74% gs 72% heap 384 MB audio 91 ms hitch 28.4 ms x0"}
+{"t": 1794057156.6372097, "game": "GoW_USA", "type": "log", "text": "[stats] frame 303 60.0 fps (60 on screen) GPU 23% idle emu 82% vu 81% gs 81% heap 384 MB audio 91 ms hitch 18.4 ms x0"}
+{"t": 1794057157.6743214, "game": "GoW_USA", "type": "log", "text": "[stats] frame 364 59.9 fps (60 on screen) GPU 40% idle emu 82% vu 81% gs 83% heap 384 MB audio 87 ms hitch 18.2 ms x0"}
+{"t": 1794057158.7120655, "game": "GoW_USA", "type": "log", "text": "[stats] frame 425 60.0 fps (60 on screen) GPU 31% idle emu 82% vu 81% gs 83% heap 384 MB audio 93 ms hitch 18.4 ms x0"}
+{"t": 1794057159.750277, "game": "GoW_USA", "type": "log", "text": "[stats] frame 485 60.0 fps (60 on screen) GPU 41% idle emu 83% vu 82% gs 83% heap 384 MB audio 75 ms hitch 18.0 ms x0"}
+{"t": 1794057160.7866657, "game": "GoW_USA", "type": "log", "text": "[stats] frame 547 60.0 fps (60 on screen) GPU 18% idle emu 82% vu 82% gs 83% heap 384 MB audio 86 ms hitch 18.1 ms x0"}
+{"t": 1794057161.8256986, "game": "GoW_USA", "type": "log", "text": "[stats] frame 607 60.0 fps (60 on screen) GPU 19% idle emu 82% vu 81% gs 82% heap 384 MB audio 86 ms hitch 17.9 ms x0"}
+{"t": 1794057162.863078, "game": "GoW_USA", "type": "log", "text": "[stats] frame 667 60.1 fps (60 on screen) GPU 18% idle emu 84% vu 82% gs 83% heap 384 MB audio 78 ms hitch 17.9 ms x0"}
+{"t": 1794057163.832292, "game": "GoW_USA", "type": "log", "text": "[stats] frame 728 60.0 fps (60 on screen) GPU 15% idle emu 81% vu 82% gs 83% heap 384 MB audio 95 ms hitch 17.8 ms x0"}
+{"t": 1794057165.1155975, "game": "GoW_USA", "type": "log", "text": "[stats] frame 788 60.6 fps (57 on screen) GPU 29% idle emu 76% vu 70% gs 74% heap 384 MB audio 84 ms hitch 67.1 ms x1"}
+{"t": 1794057166.157864, "game": "GoW_USA", "type": "log", "text": "[stats] frame 849 60.3 fps (60 on screen) GPU 21% idle emu 73% vu 65% gs 73% heap 384 MB audio 90 ms hitch 28.7 ms x0"}
+{"t": 1794057166.6770015, "game": "GoW_USA", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057166.6780014, "game": "GoW_USA", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057167.1992037, "game": "GoW_USA", "type": "log", "text": "[stats] frame 911 59.6 fps (60 on screen) GPU 27% idle emu 74% vu 68% gs 72% heap 384 MB audio 105 ms hitch 28.0 ms x0"}
+{"t": 1794057168.239063, "game": "GoW_USA", "type": "log", "text": "[stats] frame 971 60.5 fps (60 on screen) GPU 21% idle emu 72% vu 68% gs 71% heap 384 MB audio 94 ms hitch 28.0 ms x0"}
+{"t": 1794057169.2761407, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1032 59.5 fps (60 on screen) GPU 22% idle emu 74% vu 68% gs 73% heap 384 MB audio 100 ms hitch 28.6 ms x0"}
+{"t": 1794057170.3044658, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1092 60.3 fps (60 on screen) GPU 28% idle emu 72% vu 67% gs 73% heap 384 MB audio 89 ms hitch 29.3 ms x0"}
+{"t": 1794057170.8252065, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1153 59.4 fps (59 on screen) GPU 21% idle emu 72% vu 66% gs 73% heap 384 MB audio 98 ms hitch 29.6 ms x0"}
+{"t": 1794057171.8636944, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1213 60.8 fps (61 on screen) GPU 23% idle emu 74% vu 67% gs 73% heap 384 MB audio 87 ms hitch 29.2 ms x0"}
+{"t": 1794057172.898555, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1273 59.5 fps (60 on screen) GPU 27% idle emu 75% vu 68% gs 74% heap 384 MB audio 87 ms hitch 28.6 ms x0"}
+{"t": 1794057173.9379237, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1335 59.7 fps (60 on screen) GPU 32% idle emu 73% vu 65% gs 72% heap 384 MB audio 91 ms hitch 29.6 ms x0"}
+{"t": 1794057174.9735606, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1395 60.8 fps (61 on screen) GPU 16% idle emu 75% vu 68% gs 75% heap 384 MB audio 91 ms hitch 29.3 ms x0"}
+{"t": 1794057176.0084248, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1455 59.7 fps (60 on screen) GPU 22% idle emu 74% vu 67% gs 74% heap 384 MB audio 91 ms hitch 28.2 ms x0"}
+{"t": 1794057177.0503645, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1516 60.3 fps (60 on screen) GPU 27% idle emu 72% vu 64% gs 72% heap 384 MB audio 87 ms hitch 28.9 ms x0"}
+{"t": 1794057178.0889263, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1576 59.7 fps (60 on screen) GPU 31% idle emu 74% vu 67% gs 73% heap 384 MB audio 87 ms hitch 28.2 ms x0"}
+{"t": 1794057179.1279128, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1637 59.6 fps (60 on screen) GPU 17% idle emu 74% vu 66% gs 73% heap 384 MB audio 93 ms hitch 29.1 ms x0"}
+{"t": 1794057180.1620383, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1697 60.6 fps (61 on screen) GPU 17% idle emu 73% vu 67% gs 74% heap 384 MB audio 93 ms hitch 28.5 ms x0"}
+{"t": 1794057181.1980958, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1757 60.0 fps (60 on screen) GPU 15% idle emu 75% vu 69% gs 75% heap 384 MB audio 173 ms hitch 29.3 ms x0"}
+{"t": 1794057182.2375338, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1817 59.0 fps (59 on screen) GPU 29% idle emu 72% vu 65% gs 72% heap 384 MB audio 341 ms hitch 28.9 ms x0"}
+{"t": 1794057183.2728634, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1877 60.0 fps (57 on screen) GPU 31% idle emu 75% vu 67% gs 72% heap 384 MB audio 341 ms hitch 80.0 ms x1"}
+{"t": 1794057183.792063, "game": "GoW_USA", "type": "log", "text": "[intc] pending 0x5 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057183.7930636, "game": "GoW_USA", "type": "log", "text": "[intc] pending 0x5 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794057184.3123636, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1938 59.8 fps (60 on screen) GPU 22% idle emu 73% vu 63% gs 69% heap 384 MB audio 337 ms hitch 24.5 ms x0"}
+{"t": 1794057185.3545303, "game": "GoW_USA", "type": "log", "text": "[stats] frame 1999 60.3 fps (60 on screen) GPU 21% idle emu 70% vu 63% gs 69% heap 384 MB audio 341 ms hitch 24.0 ms x0"}
+{"t": 1794057186.3903291, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2059 59.8 fps (60 on screen) GPU 27% idle emu 73% vu 64% gs 70% heap 384 MB audio 341 ms hitch 21.3 ms x0"}
+{"t": 1794057187.4273844, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2121 60.2 fps (60 on screen) GPU 30% idle emu 72% vu 64% gs 70% heap 384 MB audio 341 ms hitch 22.7 ms x0"}
+{"t": 1794057187.9472556, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2180 59.9 fps (60 on screen) GPU 29% idle emu 71% vu 64% gs 70% heap 384 MB audio 341 ms hitch 23.4 ms x0"}
+{"t": 1794057188.9826574, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2240 59.9 fps (60 on screen) GPU 28% idle emu 72% vu 63% gs 70% heap 384 MB audio 341 ms hitch 23.6 ms x0"}
+{"t": 1794057190.0208542, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2301 60.2 fps (60 on screen) GPU 29% idle emu 71% vu 63% gs 69% heap 384 MB audio 341 ms hitch 22.3 ms x0"}
+{"t": 1794057191.0631466, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2361 59.8 fps (60 on screen) GPU 26% idle emu 73% vu 66% gs 71% heap 384 MB audio 341 ms hitch 22.6 ms x0"}
+{"t": 1794057192.0982907, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2422 59.9 fps (60 on screen) GPU 29% idle emu 72% vu 64% gs 69% heap 384 MB audio 337 ms hitch 28.8 ms x0"}
+{"t": 1794057193.082531, "game": "GoW_USA", "type": "log", "text": "[stats] frame 2483 60.3 fps (60 on screen) GPU 30% idle emu 70% vu 63% gs 69% heap 384 MB audio 341 ms hitch 22.7 ms x0"}
+{"t": 1794057193.6098716, "game": "CNK", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794057194.047095, "game": "CNK", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057194.048597, "game": "CNK", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794057194.5499816, "game": "CNK", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057194.551993, "game": "CNK", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794057194.552992, "game": "CNK", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794057194.555512, "game": "CNK", "type": "log", "text": "[disc] disc: 6394 files, 1566112 sectors, layer 1 at 0"}
+{"t": 1794057194.556511, "game": "CNK", "type": "log", "text": "[mc] card in slot 1: /memcard-b49f2e769315347e8bda839feb705744/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794057194.55751, "game": "CNK", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP255.IMG;1\""}
+{"t": 1794057194.560027, "game": "CNK", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP255.IMG;1 reports 2550, asynchronous protocol"}
+{"t": 1794057194.562039, "game": "CNK", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP255.IMG;1 reports 2550"}
+{"t": 1794057194.5690677, "game": "CNK", "type": "log", "text": "[fileio] open cdrom0:\\LEGENG.TGA -> 3"}
+{"t": 1794057195.0022473, "game": "CNK", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057195.004755, "game": "CNK", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794057195.0067725, "game": "CNK", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B6820"}
+{"t": 1794057195.0077698, "game": "CNK", "type": "log", "text": "[dma] gif tag id 3 qwc 20480 addr 0x0072A7D0 data 0x0072A7D0"}
+{"t": 1794057195.0087724, "game": "CNK", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B68A0"}
+{"t": 1794057195.0122862, "game": "CNK", "type": "log", "text": "[dma] gif tag id 0 qwc 15360 addr 0x0077A7D0 data 0x0077A7D0"}
+{"t": 1794057195.0143058, "game": "CNK", "type": "log", "text": "[stats] frame 1 0.8 fps (0 on screen) GPU 0% idle emu 0% vu 41% gs 40% heap 256 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794057195.0198405, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\LIBSD.IRX;1"}
+{"t": 1794057195.4704888, "game": "CNK", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021588)"}
+{"t": 1794057195.4724972, "game": "CNK", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002158C)"}
+{"t": 1794057195.4730048, "game": "CNK", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x000215A8)"}
+{"t": 1794057195.4755232, "game": "CNK", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x000215B8)"}
+{"t": 1794057195.4755232, "game": "CNK", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000215E4)"}
+{"t": 1794057195.4765236, "game": "CNK", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000215E8)"}
+{"t": 1794057195.4780273, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4790318, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4805346, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.4805346, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4830556, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.484563, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.4855735, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4870827, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4880912, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.48909, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4900908, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4905963, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.4911027, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4921093, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4921093, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.493111, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.493111, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.494617, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.494617, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4956234, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.496635, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.496635, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4976413, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4976413, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.4986413, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.4986413, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.5001464, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.5001464, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.5011532, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGFILEIO.IRX;1"}
+{"t": 1794057195.5021527, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGFILEIO.IRX;1 is not an ELF module"}
+{"t": 1794057195.5036623, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\USBD.IRX;1"}
+{"t": 1794057196.348892, "game": "CNK", "type": "log", "text": "[stats] frame 2 0.9 fps (1 on screen) GPU 0% idle emu 4% vu 99% gs 100% heap 256 MB audio 0 ms hitch 1133.6 ms x1"}
+{"t": 1794057196.3514082, "game": "CNK", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794057196.3534186, "game": "CNK", "type": "log", "text": "[iop-io] write 0x1F801680 = 0x1 (pc 0x000290EC)"}
+{"t": 1794057196.356431, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\LGDEVW.IRX;1"}
+{"t": 1794057196.357432, "game": "CNK", "type": "log", "text": "[iop-tty] LgDev_tb_rb_Driver Version 1.08( Wheel ), built on Sep 24 2002 at 18:34:09, thpri=42,43"}
+{"t": 1794057196.3584301, "game": "CNK", "type": "log", "text": "[cdvdfsv] search \\POOLS.CSV;1 -> found"}
+{"t": 1794057197.2275734, "game": "CNK", "type": "log", "text": "[stats] frame 24 21.4 fps (20 on screen) GPU 1% idle emu 18% vu 102% gs 98% heap 256 MB audio 0 ms hitch 131.3 ms x13"}
+{"t": 1794057197.3060818, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\CRI_ADXI.IRX;1"}
+{"t": 1794057197.3080907, "game": "CNK", "type": "log", "text": "[iop-tty] CRI ADX Driver Ver.8.80(Apr 18 2003 15:58:46)"}
+{"t": 1794057197.3096008, "game": "CNK", "type": "log", "text": "[iop-tty] CRI ADX Driver : Thread Priority = 39"}
+{"t": 1794057197.3106654, "game": "CNK", "type": "log", "text": "[iop-tty] CRI ADX Driver : SPU CORE Number = 0"}
+{"t": 1794057197.3116755, "game": "CNK", "type": "log", "text": "[iop-tty] CRI ADX Driver : sceSdInit(SD_INIT_COLD) call."}
+{"t": 1794057197.3217525, "game": "CNK", "type": "log", "text": "[cdvdfsv] search \\ASSETS.GFC;1 -> found"}
+{"t": 1794057198.006137, "game": "CNK", "type": "log", "text": "[stats] frame 71 46.8 fps (45 on screen) GPU 0% idle emu 67% vu 100% gs 96% heap 256 MB audio 19 ms hitch 78.2 ms x5"}
+{"t": 1794057199.292795, "game": "CNK", "type": "log", "text": "[stats] frame 131 59.9 fps (56 on screen) GPU 2% idle emu 99% vu 100% gs 96% heap 256 MB audio 19 ms hitch 31.2 ms x0"}
+{"t": 1794057200.327542, "game": "CNK", "type": "log", "text": "[stats] frame 192 60.7 fps (57 on screen) GPU 5% idle emu 99% vu 100% gs 97% heap 256 MB audio 31 ms hitch 31.5 ms x0"}
+{"t": 1794057201.3697798, "game": "CNK", "type": "log", "text": "[stats] frame 252 59.5 fps (57 on screen) GPU 1% idle emu 99% vu 100% gs 97% heap 256 MB audio 31 ms hitch 31.4 ms x0"}
+{"t": 1794057201.893569, "game": "CNK", "type": "log", "text": "[cdvdfsv] search \\ASSETS.GOB;1 -> found"}
+{"t": 1794057202.408234, "game": "CNK", "type": "log", "text": "[stats] frame 311 56.7 fps (55 on screen) GPU 4% idle emu 89% vu 100% gs 96% heap 256 MB audio 50 ms hitch 84.5 ms x1"}
+{"t": 1794057203.443057, "game": "CNK", "type": "log", "text": "[stats] frame 352 42.6 fps (42 on screen) GPU 5% idle emu 46% vu 100% gs 97% heap 256 MB audio 3 ms hitch 68.3 ms x7"}
+{"t": 1794057204.480183, "game": "CNK", "type": "log", "text": "[stats] frame 388 35.5 fps (35 on screen) GPU 1% idle emu 5% vu 100% gs 98% heap 256 MB audio 7 ms hitch 54.9 ms x2"}
+{"t": 1794057205.5164323, "game": "CNK", "type": "log", "text": "[stats] frame 425 36.6 fps (37 on screen) GPU 4% idle emu 4% vu 100% gs 98% heap 256 MB audio 6 ms hitch 47.8 ms x2"}
+{"t": 1794057206.5558457, "game": "CNK", "type": "log", "text": "[stats] frame 461 35.6 fps (36 on screen) GPU 1% idle emu 6% vu 100% gs 98% heap 256 MB audio 0 ms hitch 56.0 ms x3"}
+{"t": 1794057207.0780573, "game": "CNK", "type": "log", "text": "[stats] frame 495 33.8 fps (34 on screen) GPU 2% idle emu 6% vu 100% gs 98% heap 256 MB audio 3 ms hitch 56.7 ms x5"}
+{"t": 1794057208.1171482, "game": "CNK", "type": "log", "text": "[stats] frame 531 35.9 fps (36 on screen) GPU 1% idle emu 6% vu 100% gs 98% heap 256 MB audio 7 ms hitch 55.9 ms x2"}
+{"t": 1794057209.6145248, "game": "CNK", "type": "log", "text": "[stats] frame 567 35.1 fps (35 on screen) GPU 1% idle emu 6% vu 100% gs 98% heap 256 MB audio 4 ms hitch 57.2 ms x3"}
+{"t": 1794057210.1389353, "game": "CNK", "type": "log", "text": "[sys] unhandled syscall 0x61 from 0x0043CD34"}
+{"t": 1794057210.1399357, "game": "CNK", "type": "log", "text": "[dma] gif tag id 1 qwc 9 addr 0x00000000 data 0x017C2410"}
+{"t": 1794057210.1404438, "game": "CNK", "type": "log", "text": "[dma] gif tag id 1 qwc 10 addr 0x00000000 data 0x017C24B0"}
+{"t": 1794057210.1419573, "game": "CNK", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x017C2560"}
+{"t": 1794057210.1444788, "game": "CNK", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057210.1464932, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\USBD.IRX;1"}
+{"t": 1794057210.1470017, "game": "CNK", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794057210.1490135, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1520422, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1545484, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1560588, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1570709, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1580687, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1605818, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1615925, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1625926, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1635916, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1661155, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.167115, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1731665, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1746762, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1756842, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1766844, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.177191, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1787002, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.181254, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1837618, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1847687, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1857705, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1892905, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.190805, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1923127, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.1953409, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.19685, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.1988623, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.2003677, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUMOUSE.IRX;1"}
+{"t": 1794057210.2045302, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUMOUSE.IRX;1 is not an ELF module"}
+{"t": 1794057210.2055404, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\USBD.IRX;1"}
+{"t": 1794057210.2070441, "game": "CNK", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794057210.2090526, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2105615, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2120805, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2130783, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2145889, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2155986, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2166085, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2186155, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2201257, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2221346, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2231348, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2251625, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2261724, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2271738, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2281716, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2296786, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2302072, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2312162, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.233216, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2402534, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2412605, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.246283, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.248284, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2498066, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.255346, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2563446, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2578506, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2588577, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2598612, "game": "CNK", "type": "log", "text": "[iop] cannot read module cdrom0:\\MODULES\\IGUKBD.IRX;1"}
+{"t": 1794057210.2603693, "game": "CNK", "type": "log", "text": "[iop] cdrom0:\\MODULES\\IGUKBD.IRX;1 is not an ELF module"}
+{"t": 1794057210.2628863, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\SIO2MAN.IRX;1"}
+{"t": 1794057210.264395, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\PADMAN.IRX;1"}
+{"t": 1794057210.265403, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MTAPMAN.IRX;1"}
+{"t": 1794057210.267919, "game": "CNK", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x0007A884)"}
+{"t": 1794057210.2699292, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MCMAN.IRX;1"}
+{"t": 1794057210.782665, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MCSERV.IRX;1"}
+{"t": 1794057210.783665, "game": "CNK", "type": "log", "text": "[stats] frame 605 35.5 fps (35 on screen) GPU 3% idle emu 5% vu 98% gs 98% heap 256 MB audio 5 ms hitch 70.9 ms x6"}
+{"t": 1794057210.784169, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\LIBSD.IRX;1"}
+{"t": 1794057210.785177, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\SDRDRV.IRX;1"}
+{"t": 1794057210.787176, "game": "CNK", "type": "log", "text": "[iop-tty] SDR driver version 4.0.1 (C) SCEI"}
+{"t": 1794057210.7881746, "game": "CNK", "type": "log", "text": "[iop-tty]  Exit rsd_main "}
+{"t": 1794057210.7886784, "game": "CNK", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\VVAA.IRX;1"}
+{"t": 1794057211.3035765, "game": "CNK", "type": "log", "text": "[stats] frame 663 57.6 fps (55 on screen) GPU 7% idle emu 80% vu 99% gs 90% heap 256 MB audio 45 ms hitch 59.8 ms x3"}
+{"t": 1794057212.3416111, "game": "CNK", "type": "log", "text": "[stats] frame 723 60.0 fps (60 on screen) GPU 1% idle emu 97% vu 100% gs 95% heap 256 MB audio 45 ms hitch 17.7 ms x0"}
+{"t": 1794057213.3829007, "game": "CNK", "type": "log", "text": "[stats] frame 784 60.0 fps (60 on screen) GPU 4% idle emu 96% vu 99% gs 97% heap 256 MB audio 40 ms hitch 18.1 ms x0"}
+{"t": 1794057214.4201336, "game": "CNK", "type": "log", "text": "[stats] frame 844 60.0 fps (60 on screen) GPU 5% idle emu 98% vu 101% gs 97% heap 256 MB audio 40 ms hitch 19.2 ms x0"}
+{"t": 1794057215.45977, "game": "CNK", "type": "log", "text": "[stats] frame 904 59.9 fps (60 on screen) GPU 1% idle emu 97% vu 100% gs 97% heap 256 MB audio 40 ms hitch 20.6 ms x0"}
+{"t": 1794057216.4855766, "game": "CNK", "type": "log", "text": "[stats] frame 965 60.1 fps (60 on screen) GPU 3% idle emu 96% vu 99% gs 97% heap 256 MB audio 49 ms hitch 20.4 ms x0"}
+{"t": 1794057217.5255232, "game": "CNK", "type": "log", "text": "[stats] frame 1026 59.8 fps (60 on screen) GPU 1% idle emu 97% vu 100% gs 97% heap 256 MB audio 44 ms hitch 21.5 ms x0"}
+{"t": 1794057218.5605373, "game": "CNK", "type": "log", "text": "[stats] frame 1087 59.8 fps (60 on screen) GPU 5% idle emu 97% vu 100% gs 97% heap 256 MB audio 42 ms hitch 22.9 ms x0"}
+{"t": 1794057219.5964892, "game": "CNK", "type": "log", "text": "[stats] frame 1148 60.4 fps (60 on screen) GPU 1% idle emu 96% vu 99% gs 97% heap 256 MB audio 48 ms hitch 23.7 ms x0"}
+{"t": 1794057220.6315455, "game": "CNK", "type": "log", "text": "[stats] frame 1209 60.0 fps (60 on screen) GPU 5% idle emu 97% vu 100% gs 97% heap 256 MB audio 43 ms hitch 25.3 ms x0"}
+{"t": 1794057221.6697845, "game": "CNK", "type": "log", "text": "[stats] frame 1269 59.8 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 43 ms hitch 25.6 ms x0"}
+{"t": 1794057222.7072003, "game": "CNK", "type": "log", "text": "[stats] frame 1329 59.6 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 35 ms hitch 27.5 ms x0"}
+{"t": 1794057223.7428684, "game": "CNK", "type": "log", "text": "[stats] frame 1390 60.6 fps (61 on screen) GPU 1% idle emu 97% vu 100% gs 97% heap 256 MB audio 41 ms hitch 27.5 ms x0"}
+{"t": 1794057224.7830002, "game": "CNK", "type": "log", "text": "[stats] frame 1450 59.6 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 41 ms hitch 28.7 ms x0"}
+{"t": 1794057225.8198407, "game": "CNK", "type": "log", "text": "[stats] frame 1494 42.4 fps (42 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 84 ms hitch 63.0 ms x7"}
+{"t": 1794057226.8621478, "game": "CNK", "type": "log", "text": "[stats] frame 1533 38.8 fps (39 on screen) GPU 1% idle emu 97% vu 99% gs 98% heap 256 MB audio 94 ms hitch 63.1 ms x6"}
+{"t": 1794057227.3819985, "game": "CNK", "type": "log", "text": "[stats] frame 1571 37.6 fps (38 on screen) GPU 2% idle emu 100% vu 101% gs 98% heap 256 MB audio 69 ms hitch 78.0 ms x8"}
+{"t": 1794057228.4181714, "game": "CNK", "type": "log", "text": "[stats] frame 1612 40.2 fps (40 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 91 ms hitch 62.1 ms x9"}
+{"t": 1794057229.449976, "game": "CNK", "type": "log", "text": "[stats] frame 1652 39.4 fps (39 on screen) GPU 8% idle emu 98% vu 100% gs 98% heap 256 MB audio 77 ms hitch 62.3 ms x9"}
+{"t": 1794057230.4890194, "game": "CNK", "type": "log", "text": "[stats] frame 1691 38.7 fps (39 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 58 ms hitch 77.2 ms x7"}
+{"t": 1794057231.5256522, "game": "CNK", "type": "log", "text": "[stats] frame 1733 40.8 fps (41 on screen) GPU 7% idle emu 98% vu 100% gs 98% heap 256 MB audio 89 ms hitch 67.2 ms x6"}
+{"t": 1794057232.5614755, "game": "CNK", "type": "log", "text": "[stats] frame 1771 38.7 fps (39 on screen) GPU 6% idle emu 98% vu 100% gs 98% heap 256 MB audio 82 ms hitch 78.1 ms x8"}
+{"t": 1794057233.600364, "game": "CNK", "type": "log", "text": "[stats] frame 1810 38.2 fps (38 on screen) GPU 2% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 63.5 ms x8"}
+{"t": 1794057234.6369922, "game": "CNK", "type": "log", "text": "[stats] frame 1849 38.7 fps (39 on screen) GPU 3% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 63.2 ms x8"}
+{"t": 1794057235.673523, "game": "CNK", "type": "log", "text": "[stats] frame 1888 38.9 fps (39 on screen) GPU 7% idle emu 98% vu 100% gs 98% heap 256 MB audio 83 ms hitch 62.3 ms x10"}
+{"t": 1794057236.7140563, "game": "CNK", "type": "log", "text": "[stats] frame 1927 38.0 fps (38 on screen) GPU 1% idle emu 98% vu 100% gs 98% heap 256 MB audio 82 ms hitch 66.8 ms x9"}
+{"t": 1794057237.7546802, "game": "CNK", "type": "log", "text": "[stats] frame 1966 38.1 fps (38 on screen) GPU 3% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 70.9 ms x10"}
+{"t": 1794057238.688389, "game": "CNK", "type": "log", "text": "[stats] frame 2006 37.7 fps (38 on screen) GPU 2% idle emu 98% vu 100% gs 98% heap 256 MB audio 57 ms hitch 62.7 ms x12"}
+{"t": 1794057239.0246596, "game": "Sly1", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794057239.4528255, "game": "Sly1", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057239.4553769, "game": "Sly1", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794057239.4563873, "game": "Sly1", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794057239.4578962, "game": "Sly1", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794057239.4800029, "game": "Sly1", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794057239.9045348, "game": "Sly1", "type": "log", "text": "[disc] disc: 9 files, 1368320 sectors, layer 1 at 0"}
+{"t": 1794057239.9055421, "game": "Sly1", "type": "log", "text": "[mc] card in slot 1: /memcard-c0c4527037b6168660829a0eb13df1a3/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794057239.9055421, "game": "Sly1", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794057239.9065404, "game": "Sly1", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794057239.9070482, "game": "Sly1", "type": "log", "text": "[dma] gif tag id 4 qwc 44 addr 0x002BE1A0 data 0x002BE1A0"}
+{"t": 1794057239.9070482, "game": "Sly1", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0064C280"}
+{"t": 1794057239.9085531, "game": "Sly1", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794057239.9085531, "game": "Sly1", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP243.IMG;1\""}
+{"t": 1794057239.9100685, "game": "Sly1", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP243.IMG;1 reports 2430, asynchronous protocol"}
+{"t": 1794057239.9100685, "game": "Sly1", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP243.IMG;1 reports 2430"}
+{"t": 1794057239.911073, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\SIO2MAN.IRX;1"}
+{"t": 1794057239.911073, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\PADMAN.IRX;1"}
+{"t": 1794057239.9120753, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\MCMAN.IRX;1"}
+{"t": 1794057239.9120753, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\MCSERV.IRX;1"}
+{"t": 1794057239.9130723, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\LIBSD.IRX;1"}
+{"t": 1794057239.9135761, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00054B08)"}
+{"t": 1794057239.9145813, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00054B0C)"}
+{"t": 1794057239.9145813, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00054B28)"}
+{"t": 1794057239.9155812, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00054B38)"}
+{"t": 1794057239.9155812, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00054B64)"}
+{"t": 1794057239.916581, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00054B68)"}
+{"t": 1794057239.916581, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\989SND.IRX;1"}
+{"t": 1794057239.9175828, "game": "Sly1", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057239.9180863, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057239.9180863, "game": "Sly1", "type": "log", "text": "[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America"}
+{"t": 1794057239.9190931, "game": "Sly1", "type": "log", "text": "[iop-tty]  by Buzz Burrowes                               v2.9.3"}
+{"t": 1794057239.9205973, "game": "Sly1", "type": "log", "text": "[iop-tty]                         (built Aug 21 2002 at 21:30:44)"}
+{"t": 1794057239.921101, "game": "Sly1", "type": "log", "text": "[iop-tty]                                          (pre-release 8)"}
+{"t": 1794057239.922107, "game": "Sly1", "type": "log", "text": "[iop-tty]  (build with sce library rev 2.4.3)"}
+{"t": 1794057239.9226103, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057239.9226103, "game": "Sly1", "type": "log", "text": "[iop-tty]     Thread Priorities:"}
+{"t": 1794057239.9236143, "game": "Sly1", "type": "log", "text": "[iop-tty]                          Sound Tick = 9"}
+{"t": 1794057239.9236143, "game": "Sly1", "type": "log", "text": "[iop-tty]                            Main RPC = 58"}
+{"t": 1794057239.9246209, "game": "Sly1", "type": "log", "text": "[iop-tty]                         Loading RPC = 59"}
+{"t": 1794057239.9256272, "game": "Sly1", "type": "log", "text": "[iop-tty]                           Streaming = 60, 61, 62, 63"}
+{"t": 1794057239.9256272, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794057239.9266279, "game": "Sly1", "type": "log", "text": "[iop-tty] "}
+{"t": 1794057239.9271321, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)"}
+{"t": 1794057240.7720718, "game": "Sly1", "type": "log", "text": "[stats] frame 4 1.3 fps (1 on screen) GPU 0% idle emu 1% vu 64% gs 66% heap 256 MB audio 0 ms hitch 880.3 ms x1"}
+{"t": 1794057241.6624498, "game": "Sly1", "type": "log", "text": "[stats] frame 35 30.8 fps (30 on screen) GPU 1% idle emu 107% vu 101% gs 96% heap 256 MB audio 55 ms hitch 238.5 ms x4"}
+{"t": 1794057242.522601, "game": "Sly1", "type": "log", "text": "[stats] frame 97 62.0 fps (57 on screen) GPU 3% idle emu 84% vu 100% gs 79% heap 256 MB audio 81 ms hitch 47.4 ms x3"}
+{"t": 1794057243.992942, "game": "Sly1", "type": "log", "text": "[stats] frame 159 60.0 fps (60 on screen) GPU 10% idle emu 93% vu 100% gs 91% heap 256 MB audio 93 ms hitch 19.5 ms x0"}
+{"t": 1794057245.0244086, "game": "Sly1", "type": "log", "text": "[stats] frame 219 60.0 fps (60 on screen) GPU 20% idle emu 93% vu 100% gs 93% heap 256 MB audio 75 ms hitch 17.6 ms x0"}
+{"t": 1794057246.0627635, "game": "Sly1", "type": "log", "text": "[stats] frame 280 60.0 fps (60 on screen) GPU 23% idle emu 91% vu 98% gs 93% heap 256 MB audio 80 ms hitch 17.4 ms x0"}
+{"t": 1794057246.5777326, "game": "Sly1", "type": "log", "text": "[stats] frame 340 60.0 fps (60 on screen) GPU 26% idle emu 94% vu 100% gs 93% heap 256 MB audio 80 ms hitch 17.7 ms x0"}
+{"t": 1794057247.6191647, "game": "Sly1", "type": "log", "text": "[stats] frame 400 60.0 fps (60 on screen) GPU 24% idle emu 94% vu 101% gs 93% heap 256 MB audio 81 ms hitch 17.2 ms x0"}
+{"t": 1794057248.6587653, "game": "Sly1", "type": "log", "text": "[stats] frame 461 60.0 fps (60 on screen) GPU 22% idle emu 92% vu 99% gs 93% heap 256 MB audio 75 ms hitch 17.5 ms x0"}
+{"t": 1794057249.6917768, "game": "Sly1", "type": "log", "text": "[stats] frame 521 60.0 fps (60 on screen) GPU 19% idle emu 93% vu 100% gs 93% heap 256 MB audio 75 ms hitch 20.9 ms x0"}
+{"t": 1794057250.7300143, "game": "Sly1", "type": "log", "text": "[stats] frame 582 60.0 fps (60 on screen) GPU 14% idle emu 94% vu 100% gs 93% heap 256 MB audio 73 ms hitch 17.2 ms x0"}
+{"t": 1794057251.7656453, "game": "Sly1", "type": "log", "text": "[stats] frame 642 60.0 fps (60 on screen) GPU 19% idle emu 92% vu 99% gs 93% heap 256 MB audio 73 ms hitch 17.3 ms x0"}
+{"t": 1794057252.8053422, "game": "Sly1", "type": "log", "text": "[stats] frame 702 60.0 fps (60 on screen) GPU 22% idle emu 93% vu 100% gs 93% heap 256 MB audio 73 ms hitch 17.5 ms x0"}
+{"t": 1794057254.2658646, "game": "Sly1", "type": "log", "text": "[stats] frame 762 60.0 fps (60 on screen) GPU 21% idle emu 93% vu 100% gs 93% heap 256 MB audio 73 ms hitch 17.5 ms x0"}
+{"t": 1794057254.7848089, "game": "Sly1", "type": "log", "text": "[stats] frame 822 60.0 fps (60 on screen) GPU 22% idle emu 92% vu 99% gs 93% heap 256 MB audio 73 ms hitch 17.3 ms x0"}
+{"t": 1794057255.8253703, "game": "Sly1", "type": "log", "text": "[stats] frame 883 60.0 fps (60 on screen) GPU 14% idle emu 94% vu 101% gs 93% heap 256 MB audio 79 ms hitch 17.4 ms x0"}
+{"t": 1794057256.861993, "game": "Sly1", "type": "log", "text": "[stats] frame 942 60.0 fps (60 on screen) GPU 18% idle emu 92% vu 99% gs 93% heap 256 MB audio 63 ms hitch 17.5 ms x0"}
+{"t": 1794057257.897143, "game": "Sly1", "type": "log", "text": "[stats] frame 1003 60.0 fps (60 on screen) GPU 25% idle emu 92% vu 99% gs 93% heap 256 MB audio 61 ms hitch 17.2 ms x0"}
+{"t": 1794057258.9334004, "game": "Sly1", "type": "log", "text": "[stats] frame 1064 60.0 fps (60 on screen) GPU 24% idle emu 95% vu 102% gs 94% heap 256 MB audio 77 ms hitch 17.4 ms x0"}
+{"t": 1794057259.9676917, "game": "Sly1", "type": "log", "text": "[stats] frame 1124 60.0 fps (60 on screen) GPU 19% idle emu 94% vu 100% gs 93% heap 256 MB audio 57 ms hitch 17.4 ms x0"}
+{"t": 1794057260.9974694, "game": "Sly1", "type": "log", "text": "[stats] frame 1184 60.0 fps (60 on screen) GPU 14% idle emu 91% vu 98% gs 93% heap 256 MB audio 56 ms hitch 17.3 ms x0"}
+{"t": 1794057262.0347714, "game": "Sly1", "type": "log", "text": "[stats] frame 1245 60.0 fps (60 on screen) GPU 19% idle emu 94% vu 100% gs 93% heap 256 MB audio 62 ms hitch 17.5 ms x0"}
+{"t": 1794057263.0751622, "game": "Sly1", "type": "log", "text": "[stats] frame 1305 60.0 fps (60 on screen) GPU 24% idle emu 93% vu 100% gs 93% heap 256 MB audio 62 ms hitch 18.0 ms x0"}
+{"t": 1794057264.1123924, "game": "Sly1", "type": "log", "text": "[stats] frame 1366 60.0 fps (60 on screen) GPU 23% idle emu 94% vu 100% gs 93% heap 256 MB audio 79 ms hitch 17.3 ms x0"}
+{"t": 1794057265.1493185, "game": "Sly1", "type": "log", "text": "[stats] frame 1426 60.0 fps (60 on screen) GPU 21% idle emu 92% vu 99% gs 93% heap 256 MB audio 60 ms hitch 17.2 ms x0"}
+{"t": 1794057266.1849384, "game": "Sly1", "type": "log", "text": "[stats] frame 1487 60.0 fps (60 on screen) GPU 22% idle emu 93% vu 100% gs 93% heap 256 MB audio 55 ms hitch 17.2 ms x0"}
+{"t": 1794057266.7073736, "game": "Sly1", "type": "log", "text": "[stats] frame 1548 59.9 fps (60 on screen) GPU 22% idle emu 94% vu 100% gs 93% heap 256 MB audio 72 ms hitch 18.8 ms x0"}
+{"t": 1794057267.7420971, "game": "Sly1", "type": "log", "text": "[stats] frame 1608 60.1 fps (60 on screen) GPU 22% idle emu 92% vu 98% gs 93% heap 256 MB audio 64 ms hitch 18.1 ms x0"}
+{"t": 1794057268.7809324, "game": "Sly1", "type": "log", "text": "[stats] frame 1669 60.0 fps (60 on screen) GPU 21% idle emu 94% vu 100% gs 94% heap 256 MB audio 59 ms hitch 18.8 ms x0"}
+{"t": 1794057269.8182306, "game": "Sly1", "type": "log", "text": "[stats] frame 1726 56.9 fps (57 on screen) GPU 20% idle emu 94% vu 100% gs 94% heap 256 MB audio 79 ms hitch 36.8 ms x1"}
+{"t": 1794057270.8543713, "game": "Sly1", "type": "log", "text": "[stats] frame 1765 38.2 fps (38 on screen) GPU 16% idle emu 96% vu 100% gs 97% heap 256 MB audio 59 ms hitch 62.9 ms x10"}
+{"t": 1794057271.8914986, "game": "Sly1", "type": "log", "text": "[stats] frame 1806 40.2 fps (40 on screen) GPU 16% idle emu 95% vu 100% gs 96% heap 256 MB audio 84 ms hitch 63.8 ms x10"}
+{"t": 1794057272.9272883, "game": "Sly1", "type": "log", "text": "[stats] frame 1845 38.3 fps (38 on screen) GPU 18% idle emu 95% vu 100% gs 96% heap 256 MB audio 83 ms hitch 61.9 ms x12"}
+{"t": 1794057273.9631064, "game": "Sly1", "type": "log", "text": "[stats] frame 1884 38.2 fps (38 on screen) GPU 20% idle emu 95% vu 100% gs 96% heap 256 MB audio 83 ms hitch 77.6 ms x9"}
+{"t": 1794057274.9991276, "game": "Sly1", "type": "log", "text": "[stats] frame 1922 37.9 fps (38 on screen) GPU 20% idle emu 96% vu 100% gs 96% heap 256 MB audio 65 ms hitch 74.0 ms x9"}
+{"t": 1794057276.0378091, "game": "Sly1", "type": "log", "text": "[stats] frame 1962 39.2 fps (39 on screen) GPU 19% idle emu 96% vu 100% gs 96% heap 256 MB audio 84 ms hitch 69.7 ms x10"}
+{"t": 1794057277.0751486, "game": "Sly1", "type": "log", "text": "[stats] frame 2001 38.7 fps (39 on screen) GPU 21% idle emu 96% vu 100% gs 96% heap 256 MB audio 83 ms hitch 63.2 ms x11"}
+{"t": 1794057278.1136043, "game": "Sly1", "type": "log", "text": "[stats] frame 2040 38.7 fps (39 on screen) GPU 23% idle emu 96% vu 100% gs 96% heap 256 MB audio 83 ms hitch 65.8 ms x10"}
+{"t": 1794057279.1475928, "game": "Sly1", "type": "log", "text": "[stats] frame 2077 36.8 fps (37 on screen) GPU 18% idle emu 96% vu 100% gs 96% heap 256 MB audio 59 ms hitch 63.3 ms x12"}
+{"t": 1794057280.1886067, "game": "Sly1", "type": "log", "text": "[stats] frame 2117 39.8 fps (40 on screen) GPU 22% idle emu 94% vu 98% gs 96% heap 256 MB audio 97 ms hitch 74.9 ms x8"}
+{"t": 1794057281.2283316, "game": "Sly1", "type": "log", "text": "[stats] frame 2156 39.0 fps (39 on screen) GPU 18% idle emu 96% vu 100% gs 96% heap 256 MB audio 96 ms hitch 76.2 ms x7"}
+{"t": 1794057282.2548883, "game": "Sly1", "type": "log", "text": "[stats] frame 2196 38.6 fps (39 on screen) GPU 18% idle emu 97% vu 100% gs 96% heap 256 MB audio 83 ms hitch 76.7 ms x9"}
+{"t": 1794057282.91443, "game": "Sly1", "type": "log", "text": "[stats] frame 2233 36.7 fps (37 on screen) GPU 20% idle emu 96% vu 100% gs 96% heap 256 MB audio 59 ms hitch 63.1 ms x11"}

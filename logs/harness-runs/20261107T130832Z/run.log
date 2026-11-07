@@ -1,0 +1,57 @@
+08:08:32 harness run=20261107T130832Z observe=12s games=['Hitman_BM'] mute=1 mash=0
+08:08:32 GOTO Hitman_BM (a2116d2a) observe=12s mute=1 mash=0 cursor=none
+08:08:36 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T130832Z\hitman_bm\01_boot.png
+08:08:37 Hitman_BM BOOT OK prims=1241 renderer=gpu boot=
+08:08:38 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T130832Z\hitman_bm\02_observe_start.png
+08:08:38 Hitman_BM t=  0.0 fps=24.4 prims=1257 renderer=gpu boot=
+08:08:41 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T130832Z\hitman_bm\03_observe_mid.png
+08:08:45 Hitman_BM t=  7.5 fps=60.1 prims=113303 renderer=gpu boot=
+08:08:50 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T130832Z\hitman_bm\04_observe_end.png
+08:08:50 MANIFEST C:\PS2Recomp\logs\screenshots\harness-20261107T130832Z\SHOT_MANIFEST.md
+08:08:50 SUMMARY {
+  "run_id": "20261107T130832Z",
+  "harness": "cyberarcade_live",
+  "screenshot_to_file_to_analysis": true,
+  "console_to_logs": true,
+  "muted_chrome": true,
+  "no_visible_mouse": true,
+  "direct_input_pad_wake": true,
+  "no_bootmash": true,
+  "observe_s": 12,
+  "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T130832Z",
+  "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z",
+  "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\SHOT_MANIFEST.md",
+  "games": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=199259 end_lum=2.888204764276174 software=False abort=False",
+      "booted": true,
+      "max_prims": 199259,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 56.07619047619047,
+        "min": 24.4,
+        "max": 60.1
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot lum=2.9246431772907817",
+        "black_screen 02_observe_start lum=3.1382676792828073",
+        "black_screen 03_observe_mid lum=2.8872170484727215",
+        "black_screen 04_observe_end lum=2.888204764276174"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png"
+      ]
+    }
+  ],
+  "all_ok": false
+}

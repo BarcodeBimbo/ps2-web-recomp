@@ -1,0 +1,291 @@
+08:10:57 harness run=20261107T131057Z observe=40s games=['Hitman_BM', 'NFS_MW', 'GoW_USA', 'CNK', 'Sly1'] mute=1 mash=0
+08:10:58 GOTO Hitman_BM (a2116d2a) observe=40s mute=1 mash=0 cursor=none
+08:11:01 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\hitman_bm\01_boot.png
+08:11:03 FPS Hitman_BM 01_boot overlay=16 frameMs=62.7 maxMs=683 class=bad graph_trend=-0.617 graph_peak=1
+08:11:03 Hitman_BM BOOT OK prims=1225 renderer=gpu boot=
+08:11:04 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\hitman_bm\02_observe_start.png
+08:11:04 FPS Hitman_BM 02_observe_start overlay=20 frameMs=49.1 maxMs=354 class=bad graph_trend=-0.053 graph_peak=1
+08:11:04 Hitman_BM t=  0.0 stats_fps=20.3 overlay_fps=20 maxMs=354 graph_trend=-0.053 prims=1241 renderer=gpu
+08:11:11 Hitman_BM t=  7.3 stats_fps=60.0 overlay_fps=60 maxMs=22 graph_trend=0.012 prims=107039 renderer=gpu
+08:11:15 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\hitman_bm\03_observe_mid.png
+08:11:15 FPS Hitman_BM 03_observe_mid overlay=60 frameMs=16.7 maxMs=18 class=ok graph_trend=0 graph_peak=0.385
+08:11:17 Hitman_BM t= 14.0 stats_fps=59.9 overlay_fps=60 maxMs=19 graph_trend=-0.004 prims=245891 renderer=gpu
+08:11:23 Hitman_BM t= 20.2 stats_fps=60.0 overlay_fps=60 maxMs=19 graph_trend=0.002 prims=376043 renderer=gpu
+08:11:30 Hitman_BM t= 26.4 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=-0.004 prims=505847 renderer=gpu
+08:11:36 Hitman_BM t= 32.7 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=-0.002 prims=635999 renderer=gpu
+08:11:42 Hitman_BM t= 38.9 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=-0.002 prims=765803 renderer=gpu
+08:11:44 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\hitman_bm\04_observe_end.png
+08:11:44 FPS Hitman_BM 04_observe_end overlay=60 frameMs=16.7 maxMs=18 class=ok graph_trend=0.002 graph_peak=0.385
+08:11:44 GOTO NFS_MW (60c82f4a) observe=40s mute=1 mash=0 cursor=none
+08:11:48 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\nfs_mw\01_boot.png
+08:11:49 FPS NFS_MW 01_boot overlay=26 frameMs=38.6 maxMs=372 class=bad graph_trend=-0.657 graph_peak=1
+08:11:49 NFS_MW BOOT OK prims=164 renderer=gpu boot=
+08:11:49 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\nfs_mw\02_observe_start.png
+08:11:49 FPS NFS_MW 02_observe_start overlay=44 frameMs=22.8 maxMs=155 class=bad graph_trend=-0.02 graph_peak=1
+08:11:49 NFS_MW t=  0.0 stats_fps=43.9 overlay_fps=44 maxMs=155 graph_trend=-0.02 prims=164 renderer=gpu
+08:11:56 NFS_MW t=  7.1 stats_fps=52.6 overlay_fps=53 maxMs=66 graph_trend=-0.016 prims=48171 renderer=gpu
+08:12:00 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\nfs_mw\03_observe_mid.png
+08:12:00 FPS NFS_MW 03_observe_mid overlay=11 frameMs=92.4 maxMs=671 class=bad graph_trend=0.207 graph_peak=1
+08:12:02 NFS_MW t= 13.8 stats_fps=8.6 overlay_fps=9 maxMs=509 graph_trend=-0.045 prims=52079 renderer=gpu
+08:12:09 NFS_MW t= 20.0 stats_fps=13.6 overlay_fps=14 maxMs=515 graph_trend=-0.002 prims=52079 renderer=gpu
+08:12:15 NFS_MW t= 26.2 stats_fps=13.4 overlay_fps=13 maxMs=518 graph_trend=-0.008 prims=52308 renderer=gpu
+08:12:21 NFS_MW t= 32.5 stats_fps=13.7 overlay_fps=14 maxMs=507 graph_trend=-0.03 prims=52308 renderer=gpu
+08:12:27 NFS_MW t= 38.7 stats_fps=13.2 overlay_fps=13 maxMs=550 graph_trend=0.087 prims=52308 renderer=gpu
+08:12:29 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\nfs_mw\04_observe_end.png
+08:12:29 FPS NFS_MW 04_observe_end overlay=13 frameMs=75.8 maxMs=520 class=bad graph_trend=0.039 graph_peak=1
+08:12:30 GOTO GoW_USA (695b874b) observe=40s mute=1 mash=0 cursor=none
+08:12:32 SHOT GoW_USA C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\gow_usa\01_boot.png
+08:12:32 FPS GoW_USA 01_boot overlay=1 frameMs=1406.8 maxMs=0 class=bad graph_trend=-0.231 graph_peak=0.795
+08:12:32 GoW_USA BOOT OK prims=2 renderer=gpu boot=
+08:12:32 SHOT GoW_USA C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\gow_usa\02_observe_start.png
+08:12:33 FPS GoW_USA 02_observe_start overlay=1 frameMs=1406.8 maxMs=0 class=bad graph_trend=-0.247 graph_peak=1
+08:12:33 GoW_USA t=  0.0 stats_fps=0.7 overlay_fps=1 maxMs=0 graph_trend=-0.247 prims=2 renderer=gpu
+08:12:39 GoW_USA t=  6.7 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=0.004 prims=2389969 renderer=gpu
+08:12:43 SHOT GoW_USA C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\gow_usa\03_observe_mid.png
+08:12:44 FPS GoW_USA 03_observe_mid overlay=60 frameMs=16.7 maxMs=18 class=ok graph_trend=-0.0 graph_peak=0.385
+08:12:46 GoW_USA t= 13.6 stats_fps=60.3 overlay_fps=60 maxMs=29 graph_trend=-0.047 prims=6383056 renderer=gpu
+08:12:52 GoW_USA t= 19.9 stats_fps=60.8 overlay_fps=61 maxMs=29 graph_trend=-0.0 prims=11296687 renderer=gpu
+08:12:58 GoW_USA t= 26.1 stats_fps=59.7 overlay_fps=60 maxMs=28 graph_trend=0.024 prims=16214212 renderer=gpu
+08:13:04 GoW_USA t= 32.3 stats_fps=59.8 overlay_fps=60 maxMs=25 graph_trend=-0.006 prims=21357923 renderer=gpu
+08:13:11 GoW_USA t= 38.5 stats_fps=59.8 overlay_fps=60 maxMs=23 graph_trend=0.002 prims=26824226 renderer=gpu
+08:13:13 SHOT GoW_USA C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\gow_usa\04_observe_end.png
+08:13:13 FPS GoW_USA 04_observe_end overlay=60 frameMs=16.7 maxMs=29 class=warn graph_trend=-0.014 graph_peak=0.59
+08:13:13 GOTO CNK (b49f2e76) observe=40s mute=1 mash=0 cursor=none
+08:13:17 SHOT CNK C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\cnk\01_boot.png
+08:13:17 FPS CNK 01_boot overlay=21 frameMs=46.7 maxMs=131 class=bad graph_trend=-0.698 graph_peak=1
+08:13:17 CNK BOOT OK prims=0 renderer=gpu boot=Starting game…
+08:13:18 SHOT CNK C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\cnk\02_observe_start.png
+08:13:18 FPS CNK 02_observe_start overlay=21 frameMs=46.7 maxMs=131 class=bad graph_trend=-0.643 graph_peak=1
+08:13:18 CNK t=  0.0 stats_fps=21.4 overlay_fps=21 maxMs=131 graph_trend=-0.643 prims=0 renderer=gpu
+08:13:24 CNK t=  6.7 stats_fps=35.5 overlay_fps=35 maxMs=55 graph_trend=-0.018 prims=0 renderer=gpu
+08:13:28 SHOT CNK C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\cnk\03_observe_mid.png
+08:13:29 FPS CNK 03_observe_mid overlay=36 frameMs=27.9 maxMs=56 class=bad graph_trend=-0.0 graph_peak=1
+08:13:31 CNK t= 13.5 stats_fps=57.6 overlay_fps=58 maxMs=60 graph_trend=-0.308 prims=2 renderer=gpu
+08:13:37 CNK t= 19.7 stats_fps=59.8 overlay_fps=60 maxMs=21 graph_trend=0.006 prims=2 renderer=gpu
+08:13:43 CNK t= 25.9 stats_fps=60.6 overlay_fps=61 maxMs=28 graph_trend=-0.024 prims=2 renderer=gpu
+08:13:49 CNK t= 32.2 stats_fps=39.4 overlay_fps=39 maxMs=62 graph_trend=0.008 prims=2 renderer=gpu
+08:13:56 CNK t= 38.4 stats_fps=38.9 overlay_fps=39 maxMs=62 graph_trend=-0.004 prims=2 renderer=gpu
+08:13:58 SHOT CNK C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\cnk\04_observe_end.png
+08:13:58 FPS CNK 04_observe_end overlay=38 frameMs=26.3 maxMs=71 class=bad graph_trend=0.026 graph_peak=1
+08:13:58 GOTO Sly1 (c0c45270) observe=40s mute=1 mash=0 cursor=none
+08:14:02 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\sly1\01_boot.png
+08:14:02 FPS Sly1 01_boot overlay=31 frameMs=32.5 maxMs=239 class=bad graph_trend=-0.602 graph_peak=1
+08:14:02 Sly1 BOOT OK prims=8531 renderer=gpu boot=
+08:14:02 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\sly1\02_observe_start.png
+08:14:02 FPS Sly1 02_observe_start overlay=31 frameMs=32.5 maxMs=239 class=bad graph_trend=0.071 graph_peak=1
+08:14:02 Sly1 t=  0.0 stats_fps=30.8 overlay_fps=31 maxMs=239 graph_trend=0.071 prims=8708 renderer=gpu
+08:14:09 Sly1 t=  6.7 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0.008 prims=80039 renderer=gpu
+08:14:13 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\sly1\03_observe_mid.png
+08:14:13 FPS Sly1 03_observe_mid overlay=60 frameMs=16.7 maxMs=17 class=ok graph_trend=0 graph_peak=0.359
+08:14:15 Sly1 t= 13.4 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=150662 renderer=gpu
+08:14:22 Sly1 t= 19.6 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=0.002 prims=216506 renderer=gpu
+08:14:28 Sly1 t= 25.8 stats_fps=60.1 overlay_fps=60 maxMs=18 graph_trend=0.004 prims=282704 renderer=gpu
+08:14:34 Sly1 t= 32.0 stats_fps=38.2 overlay_fps=38 maxMs=78 graph_trend=-0.014 prims=330140 renderer=gpu
+08:14:40 Sly1 t= 38.3 stats_fps=39.8 overlay_fps=40 maxMs=75 graph_trend=-0.014 prims=372620 renderer=gpu
+08:14:43 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\sly1\04_observe_end.png
+08:14:43 FPS Sly1 04_observe_end overlay=39 frameMs=25.9 maxMs=77 class=bad graph_trend=0.002 graph_peak=1
+08:14:43 MANIFEST C:\PS2Recomp\logs\screenshots\harness-20261107T131057Z\SHOT_MANIFEST.md
+08:14:43 SUMMARY {
+  "run_id": "20261107T131057Z",
+  "harness": "cyberarcade_live",
+  "screenshot_to_file_to_analysis": true,
+  "fps_overlay_graph_reading": true,
+  "console_to_logs": true,
+  "muted_chrome": true,
+  "no_visible_mouse": true,
+  "direct_input_pad_wake": true,
+  "no_bootmash": true,
+  "observe_s": 40,
+  "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T131057Z",
+  "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z",
+  "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\SHOT_MANIFEST.md",
+  "games": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=787727 end_lum=2.875126162018534 software=False abort=False",
+      "booted": true,
+      "max_prims": 787727,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 58.647999999999996,
+        "min": 20.3,
+        "max": 60.3
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 54.608695652173914,
+        "min": 16.0,
+        "max": 60.0,
+        "maxMs_peak": 683.0,
+        "graph_trend_avg": -0.03321739130434783,
+        "graph_trend_last": 0.002
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=0.17568818362611874 lum=2.9415023240371285",
+        "black_screen 02_observe_start canvas_lum=0.2339071925754064 lum=3.1362734063744466",
+        "black_screen 03_observe_mid canvas_lum=0.12992127941663914 lum=2.8741506474103",
+        "black_screen 04_observe_end canvas_lum=0.13932772621809753 lum=2.875126162018534"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png"
+      ]
+    },
+    {
+      "name": "NFS_MW",
+      "label": "NFS",
+      "ok": true,
+      "goal_ok": true,
+      "goal_note": "expect=gpu_boot booted=True max_prims=52308 end_lum=7.998044488712303 software=False abort=False",
+      "booted": true,
+      "max_prims": 52308,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 19.528000000000006,
+        "min": 8.6,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 20.47826086956522,
+        "min": 9.0,
+        "max": 53.0,
+        "maxMs_peak": 1110.0,
+        "graph_trend_avg": -0.026521739130434784,
+        "graph_trend_last": 0.039
+      },
+      "errors": [
+        "black_screen 03_observe_mid canvas_lum=0.9965550215448018 lum=3.642834412350833",
+        "black_screen 04_observe_end canvas_lum=7.4283618660924775 lum=7.998044488712303"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png"
+      ]
+    },
+    {
+      "name": "GoW_USA",
+      "label": "GoW",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=fps60 booted=True max_prims=27746217 end_lum=36.18280677290761 software=False abort=False",
+      "booted": true,
+      "max_prims": 27746217,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 59.187999999999995,
+        "min": 0.7,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 52.34782608695652,
+        "min": 1.0,
+        "max": 61.0,
+        "maxMs_peak": 53.0,
+        "graph_trend_avg": -0.02421739130434783,
+        "graph_trend_last": -0.014
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=6.159596784885648 lum=6.950726095617659",
+        "black_screen 02_observe_start canvas_lum=6.1628510109380175 lum=7.07913072709176"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png"
+      ]
+    },
+    {
+      "name": "CNK",
+      "label": "Crash",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=prims_break booted=True max_prims=2 end_lum=3.1194198207170682 software=False abort=False",
+      "booted": true,
+      "max_prims": 2,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 48.242105263157875,
+        "min": 21.4,
+        "max": 60.7
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 44.26086956521739,
+        "min": 21.0,
+        "max": 61.0,
+        "maxMs_peak": 131.0,
+        "graph_trend_avg": -0.08773913043478265,
+        "graph_trend_last": 0.026
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=6.239241879351707 lum=8.145640189245093",
+        "black_screen 02_observe_start canvas_lum=6.211545160757077 lum=8.196396248342058",
+        "black_screen 03_observe_mid canvas_lum=6.203720003315916 lum=8.190400232405784",
+        "black_screen 04_observe_end canvas_lum=0.17593254888962556 lum=3.1194198207170682"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png"
+      ]
+    },
+    {
+      "name": "Sly1",
+      "label": "Sly",
+      "ok": true,
+      "goal_ok": true,
+      "goal_note": "expect=draw booted=True max_prims=383240 end_lum=12.992630229084018 software=False abort=False",
+      "booted": true,
+      "max_prims": 383240,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 53.094736842105256,
+        "min": 30.8,
+        "max": 62.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 50.65217391304348,
+        "min": 31.0,
+        "max": 60.0,
+        "maxMs_peak": 239.0,
+        "graph_trend_avg": -0.0027391304347826107,
+        "graph_trend_last": 0.002
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png"
+      ]
+    }
+  ],
+  "all_ok": false
+}

@@ -1,0 +1,75 @@
+08:15:04 harness run=20261107T131504Z observe=35s games=['Hitman_BM'] mute=1 mash=0
+08:15:05 GOTO Hitman_BM (a2116d2a) observe=35s mute=1 mash=0 cursor=none
+08:15:08 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131504Z\hitman_bm\01_boot.png
+08:15:10 FPS Hitman_BM 01_boot overlay=15 frameMs=68.5 maxMs=674 class=bad graph_trend=-0.856 graph_peak=1
+08:15:10 Hitman_BM BOOT OK prims=1161 renderer=gpu boot=
+08:15:10 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131504Z\hitman_bm\02_observe_start.png
+08:15:11 FPS Hitman_BM 02_observe_start overlay=25 frameMs=40.1 maxMs=314 class=bad graph_trend=-0.051 graph_peak=1
+08:15:11 Hitman_BM t=  0.0 stats_fps=25.0 overlay_fps=25 maxMs=314 graph_trend=-0.051 prims=1193 renderer=gpu
+08:15:17 Hitman_BM t=  7.2 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=104951 renderer=gpu
+08:15:20 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131504Z\hitman_bm\03_observe_mid.png
+08:15:20 FPS Hitman_BM 03_observe_mid overlay=60 frameMs=16.7 maxMs=18 class=ok graph_trend=0 graph_peak=0.359
+08:15:24 Hitman_BM t= 13.8 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=243803 renderer=gpu
+08:15:30 Hitman_BM t= 20.0 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=373259 renderer=gpu
+08:15:36 Hitman_BM t= 26.2 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=502715 renderer=gpu
+08:15:42 Hitman_BM t= 32.4 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=0 prims=632519 renderer=gpu
+08:15:45 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T131504Z\hitman_bm\04_observe_end.png
+08:15:45 FPS Hitman_BM 04_observe_end overlay=60 frameMs=16.7 maxMs=17 class=ok graph_trend=0.002 graph_peak=0.385
+08:15:46 MANIFEST C:\PS2Recomp\logs\screenshots\harness-20261107T131504Z\SHOT_MANIFEST.md
+08:15:46 SUMMARY {
+  "run_id": "20261107T131504Z",
+  "harness": "cyberarcade_live",
+  "screenshot_to_file_to_analysis": true,
+  "fps_overlay_graph_reading": true,
+  "console_to_logs": true,
+  "muted_chrome": true,
+  "no_visible_mouse": true,
+  "direct_input_pad_wake": true,
+  "no_bootmash": true,
+  "observe_s": 35,
+  "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T131504Z",
+  "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z",
+  "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\SHOT_MANIFEST.md",
+  "games": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=675671 end_lum=2.8778535856573115 software=False abort=False",
+      "booted": true,
+      "max_prims": 675671,
+      "software": false,
+      "abort_seen": false,
+      "fps": {
+        "avg": 58.7876923076923,
+        "min": 25.0,
+        "max": 62.0
+      },
+      "fps_overlay": {
+        "samples": 21,
+        "avg": 54.42857142857143,
+        "min": 15.0,
+        "max": 60.0,
+        "maxMs_peak": 674.0,
+        "graph_trend_avg": -0.046000000000000006,
+        "graph_trend_last": 0.002
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=0.15656090487238983 lum=2.951406623505921",
+        "black_screen 02_observe_start canvas_lum=0.22474784554192948 lum=3.1135498007967533",
+        "black_screen 03_observe_mid canvas_lum=0.13816357308584695 lum=2.8889226427622257",
+        "black_screen 04_observe_end canvas_lum=0.13936194895591655 lum=2.8778535856573115"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131504Z\\hitman_bm\\04_observe_end.png"
+      ]
+    }
+  ],
+  "all_ok": false
+}

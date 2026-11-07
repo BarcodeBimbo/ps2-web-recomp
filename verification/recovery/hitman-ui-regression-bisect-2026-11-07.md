@@ -1,0 +1,60 @@
+# Hitman UI regression bisect — 2026-11-07
+
+**Priority:** restore Hitman past first loading bar / visible UI (harness Chrome only for shots).
+
+## What God reported
+
+Previously Hitman reached real UI / game parts, then crashed after NTS load. Now black before the first loading bar.
+
+## Candidate “~34 files” delta
+
+Closest match in history: commit **`ffdc179`** (2026-11-07 ~07:52) — **37 files**, Alchemy `cdvdfsv.cpp` + `igfileio.cpp` intro-hold / soft-arm (plus logs). Follow-ups: `7d7eb41` (cdvdfsv), `a002696` (obj+0x20 restore).
+
+Harness / shell changes this morning are separate (tools + uncommitted `web/shell.html` abort guards).
+
+## Evidence
+
+### Native (post-Alchemy `ps2run`, rebuilt ~07:44+)
+
+Command: `ps2run games/…/disc/boot.elf --disc …/disc.iso --frames 900`  
+Log: `logs/hitman-native-postalchemy-900.log`
+
+- BOOTMENU.ZIP / WHD / WAV **found**
+- **261,904** primitives, exit 0, frame limit
+- **No** butanim/intro-gate spam (virt/Alchemy path not entered)
+- Verdict: Alchemy soft-arm / intro-hold **did not break** Hitman native boot→BOOTMENU path
+
+### Web harness (Playwright Chrome only — God screenshot rule)
+
+Run: `logs/harness-runs/20261107T131504Z/` + shots under `logs/screenshots/harness-20261107T131504Z/hitman_bm/`
+
+- Disc mounts; BOOTMENU searches **found** in `console.jsonl`
+- WebGPU present; 60 FPS overlay; prims grow to **~675k**
+- Canvas luminance stays **~0.1–0.2** (pure black) for boot/mid/end — **no visible loading bar/UI**
+- Compare same run: GoW canvas mid/end **~47**; Sly **~14**; Hitman stays black
+
+### Web binary age
+
+`build/web-a2116d2…/ps2web.wasm` last built **2026-11-06 ~12:23** — **before** today’s Alchemy commits. Panel injects live `web/shell.html` over that wasm (`scripts/panel.py` `serve_player_shell`).
+
+So today’s Alchemy edits are **not** inside the Hitman web wasm. Black canvas is a **web present/UI** failure while the EE still advances BOOTMENU work.
+
+### Shell abort-guard (uncommitted)
+
+`web/shell.html` safe `_ps2web_frames` guards — live via panel. Harness Hitman was already canvas-black **before** that edit (08:08 run). Guard is not the black-screen root cause; it only stops the early `ps2web_frames` assert.
+
+## Conclusion (current)
+
+| Change | Breaks Hitman UI? |
+|--------|-------------------|
+| Alchemy `ffdc179` / `7d7eb41` / `a002696` | **No** for native BOOTMENU; not in web wasm |
+| Harness Python | No — observes black; does not alter GS |
+| `web/shell.html` abort guards | No — black predated them |
+| Stale Hitman **web** player (Nov 6 wasm) vs current native | **Likely gap** for web visuals; rebuild + harness re-verify required |
+
+## Next actions
+
+1. Rebuild Hitman `build/web-a2116d2…` so web runtime matches native disc-fix.
+2. Re-run `_cyberarcade_live_harness.py` Hitman-only; shots **only** from harness Playwright page; require canvas_lum ≥ threshold + BOOTMENU still in console.
+3. Keep Alchemy virt-gated; do not apply CNK soft-arm to Hitman.
+4. After UI visible again: chase post-NTS abort separately.

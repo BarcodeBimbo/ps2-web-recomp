@@ -1,0 +1,1649 @@
+{
+  "summary": {
+    "run_id": "20261107T131057Z",
+    "harness": "cyberarcade_live",
+    "screenshot_to_file_to_analysis": true,
+    "fps_overlay_graph_reading": true,
+    "console_to_logs": true,
+    "muted_chrome": true,
+    "no_visible_mouse": true,
+    "direct_input_pad_wake": true,
+    "no_bootmash": true,
+    "observe_s": 40,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T131057Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\SHOT_MANIFEST.md",
+    "games": [
+      {
+        "name": "Hitman_BM",
+        "label": "Hitman",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=menu booted=True max_prims=787727 end_lum=2.875126162018534 software=False abort=False",
+        "booted": true,
+        "max_prims": 787727,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 58.647999999999996,
+          "min": 20.3,
+          "max": 60.3
+        },
+        "fps_overlay": {
+          "samples": 23,
+          "avg": 54.608695652173914,
+          "min": 16.0,
+          "max": 60.0,
+          "maxMs_peak": 683.0,
+          "graph_trend_avg": -0.03321739130434783,
+          "graph_trend_last": 0.002
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 01_boot canvas_lum=0.17568818362611874 lum=2.9415023240371285",
+          "black_screen 02_observe_start canvas_lum=0.2339071925754064 lum=3.1362734063744466",
+          "black_screen 03_observe_mid canvas_lum=0.12992127941663914 lum=2.8741506474103",
+          "black_screen 04_observe_end canvas_lum=0.13932772621809753 lum=2.875126162018534"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png"
+        ]
+      },
+      {
+        "name": "NFS_MW",
+        "label": "NFS",
+        "ok": true,
+        "goal_ok": true,
+        "goal_note": "expect=gpu_boot booted=True max_prims=52308 end_lum=7.998044488712303 software=False abort=False",
+        "booted": true,
+        "max_prims": 52308,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 19.528000000000006,
+          "min": 8.6,
+          "max": 61.0
+        },
+        "fps_overlay": {
+          "samples": 23,
+          "avg": 20.47826086956522,
+          "min": 9.0,
+          "max": 53.0,
+          "maxMs_peak": 1110.0,
+          "graph_trend_avg": -0.026521739130434784,
+          "graph_trend_last": 0.039
+        },
+        "errors": [
+          "black_screen 03_observe_mid canvas_lum=0.9965550215448018 lum=3.642834412350833",
+          "black_screen 04_observe_end canvas_lum=7.4283618660924775 lum=7.998044488712303"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png"
+        ]
+      },
+      {
+        "name": "GoW_USA",
+        "label": "GoW",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=fps60 booted=True max_prims=27746217 end_lum=36.18280677290761 software=False abort=False",
+        "booted": true,
+        "max_prims": 27746217,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 59.187999999999995,
+          "min": 0.7,
+          "max": 61.0
+        },
+        "fps_overlay": {
+          "samples": 23,
+          "avg": 52.34782608695652,
+          "min": 1.0,
+          "max": 61.0,
+          "maxMs_peak": 53.0,
+          "graph_trend_avg": -0.02421739130434783,
+          "graph_trend_last": -0.014
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 01_boot canvas_lum=6.159596784885648 lum=6.950726095617659",
+          "black_screen 02_observe_start canvas_lum=6.1628510109380175 lum=7.07913072709176"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png"
+        ]
+      },
+      {
+        "name": "CNK",
+        "label": "Crash",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=prims_break booted=True max_prims=2 end_lum=3.1194198207170682 software=False abort=False",
+        "booted": true,
+        "max_prims": 2,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 48.242105263157875,
+          "min": 21.4,
+          "max": 60.7
+        },
+        "fps_overlay": {
+          "samples": 23,
+          "avg": 44.26086956521739,
+          "min": 21.0,
+          "max": 61.0,
+          "maxMs_peak": 131.0,
+          "graph_trend_avg": -0.08773913043478265,
+          "graph_trend_last": 0.026
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 01_boot canvas_lum=6.239241879351707 lum=8.145640189245093",
+          "black_screen 02_observe_start canvas_lum=6.211545160757077 lum=8.196396248342058",
+          "black_screen 03_observe_mid canvas_lum=6.203720003315916 lum=8.190400232405784",
+          "black_screen 04_observe_end canvas_lum=0.17593254888962556 lum=3.1194198207170682"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png"
+        ]
+      },
+      {
+        "name": "Sly1",
+        "label": "Sly",
+        "ok": true,
+        "goal_ok": true,
+        "goal_note": "expect=draw booted=True max_prims=383240 end_lum=12.992630229084018 software=False abort=False",
+        "booted": true,
+        "max_prims": 383240,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 53.094736842105256,
+          "min": 30.8,
+          "max": 62.0
+        },
+        "fps_overlay": {
+          "samples": 23,
+          "avg": 50.65217391304348,
+          "min": 31.0,
+          "max": 60.0,
+          "maxMs_peak": 239.0,
+          "graph_trend_avg": -0.0027391304347826107,
+          "graph_trend_last": 0.002
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png"
+        ]
+      }
+    ],
+    "all_ok": false
+  },
+  "results": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "expect": "menu",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=787727 end_lum=2.875126162018534 software=False abort=False",
+      "boot_snap": {
+        "frames": 89,
+        "prims": 1225,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 20,
+          "frameMs": 49.1,
+          "maxMs": 354,
+          "fpsText": "20",
+          "msText": "49.1 ms",
+          "maxText": "354 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 4358,
+            "series": [
+              0.385,
+              0.744,
+              1,
+              1,
+              0.538,
+              1,
+              1,
+              1,
+              1,
+              0.744,
+              0.692,
+              1,
+              1,
+              1,
+              0.949,
+              1,
+              0.872,
+              0.872,
+              0.59,
+              0.462,
+              0.718,
+              0.846,
+              0.564,
+              0.795,
+              0.821,
+              0.923
+            ],
+            "trend": -0.053,
+            "peak": 1,
+            "mean": 0.828
+          }
+        }
+      },
+      "max_prims": 787727,
+      "fps": {
+        "avg": 58.647999999999996,
+        "min": 20.3,
+        "max": 60.3
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 54.608695652173914,
+        "min": 16.0,
+        "max": 60.0,
+        "maxMs_peak": 683.0,
+        "graph_trend_avg": -0.03321739130434783,
+        "graph_trend_last": 0.002
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=0.17568818362611874 lum=2.9415023240371285",
+        "black_screen 02_observe_start canvas_lum=0.2339071925754064 lum=3.1362734063744466",
+        "black_screen 03_observe_mid canvas_lum=0.12992127941663914 lum=2.8741506474103",
+        "black_screen 04_observe_end canvas_lum=0.13932772621809753 lum=2.875126162018534"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 1515 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 96% gs 89% heap 384 MB audio 88 ms hitch 18.8 ms x0",
+        "log: [intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1",
+        "log: [intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1",
+        "log: [intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1",
+        "log: [stats] frame 1575 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 81 ms hitch 17.8 ms x0",
+        "log: [stats] frame 1636 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 78 ms hitch 18.0 ms x0",
+        "log: [stats] frame 1697 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 73 ms hitch 17.5 ms x0",
+        "log: [stats] frame 1758 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 81 ms hitch 17.4 ms x0",
+        "log: [stats] frame 1819 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 77 ms hitch 17.6 ms x0",
+        "log: [stats] frame 1880 60.0 fps (60 on screen) GPU 22% idle emu 47% vu 97% gs 89% heap 384 MB audio 85 ms hitch 17.7 ms x0",
+        "log: [stats] frame 1941 60.0 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 83 ms hitch 17.5 ms x0",
+        "log: [stats] frame 2001 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.6 ms x0",
+        "log: [stats] frame 2061 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.8 ms x0",
+        "log: [stats] frame 2122 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 78 ms hitch 17.8 ms x0",
+        "log: [stats] frame 2183 60.1 fps (60 on screen) GPU 21% idle emu 46% vu 97% gs 89% heap 384 MB audio 75 ms hitch 17.4 ms x0",
+        "log: [stats] frame 2243 60.0 fps (60 on screen) GPU 21% idle emu 45% vu 97% gs 89% heap 384 MB audio 74 ms hitch 17.9 ms x0",
+        "log: [stats] frame 2304 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 81 ms hitch 18.9 ms x0",
+        "log: [stats] frame 2364 60.0 fps (60 on screen) GPU 22% idle emu 46% vu 97% gs 89% heap 384 MB audio 82 ms hitch 17.7 ms x0",
+        "log: [stats] frame 2425 60.0 fps (60 on screen) GPU 21% idle emu 47% vu 97% gs 89% heap 384 MB audio 77 ms hitch 17.6 ms x0",
+        "log: [stats] frame 2485 60.0 fps (60 on screen) GPU 22% idle emu 45% vu 97% gs 89% heap 384 MB audio 75 ms hitch 17.6 ms x0"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png",
+          "lum": 0.17568818362611874
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png",
+          "lum": 0.2339071925754064
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 0.12992127941663914
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png",
+          "lum": 0.13932772621809753
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png",
+          "lum": 2.9415023240371285,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot_canvas.png",
+          "canvas_lum": 0.17568818362611874,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 16,
+            "frameMs": 62.7,
+            "maxMs": 683,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.617,
+            "graph_peak": 1,
+            "graph_mean": 0.309,
+            "graph_ink": 1376
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1046,
+            "upper_ink": 0.0691,
+            "graph_ink": 0.14,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.18; overlay_fps=16; overlay_maxMs=683; graph_trend=-0.617; shot_fps_tint=warn_bad graph_ink=0.14",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png",
+          "lum": 3.1362734063744466,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start_canvas.png",
+          "canvas_lum": 0.2339071925754064,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 20,
+            "frameMs": 49.1,
+            "maxMs": 354,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.053,
+            "graph_peak": 1,
+            "graph_mean": 0.828,
+            "graph_ink": 4358
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1935,
+            "upper_ink": 0.07,
+            "graph_ink": 0.317,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.23; overlay_fps=20; overlay_maxMs=354; graph_trend=-0.053; shot_fps_tint=warn_bad graph_ink=0.317",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 2.8741506474103,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid_canvas.png",
+          "canvas_lum": 0.12992127941663914,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 18,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0.385,
+            "graph_mean": 0.363,
+            "graph_ink": 2327
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1284,
+            "upper_ink": 0.075,
+            "graph_ink": 0.1818,
+            "tint": "ok",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.13; overlay_fps=60; overlay_maxMs=18; graph_trend=0; shot_fps_tint=ok graph_ink=0.1818",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png",
+          "lum": 2.875126162018534,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end_canvas.png",
+          "canvas_lum": 0.13932772621809753,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 18,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": 0.002,
+            "graph_peak": 0.385,
+            "graph_mean": 0.36,
+            "graph_ink": 2327
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1283,
+            "upper_ink": 0.075,
+            "graph_ink": 0.1816,
+            "tint": "ok",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.14; overlay_fps=60; overlay_maxMs=18; graph_trend=0.002; shot_fps_tint=ok graph_ink=0.1816",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\hitman_bm",
+      "rows_n": 75
+    },
+    {
+      "name": "NFS_MW",
+      "label": "NFS",
+      "id": "60c82f4a111da300ac23bbec85272788",
+      "expect": "gpu_boot",
+      "booted": true,
+      "ok": true,
+      "goal_ok": true,
+      "goal_note": "expect=gpu_boot booted=True max_prims=52308 end_lum=7.998044488712303 software=False abort=False",
+      "boot_snap": {
+        "frames": 77,
+        "prims": 164,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 44,
+          "frameMs": 22.8,
+          "maxMs": 155,
+          "fpsText": "44",
+          "msText": "22.8 ms",
+          "maxText": "155 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 3290,
+            "series": [
+              1,
+              0.513,
+              0.667,
+              1,
+              1,
+              1,
+              0.41,
+              0.41,
+              0.359,
+              1,
+              0.974,
+              0.41,
+              0.359,
+              0.872,
+              0.692,
+              0.333,
+              0.333,
+              0.231,
+              0.974,
+              1,
+              1,
+              0.795,
+              1,
+              0.282,
+              0.333,
+              1
+            ],
+            "trend": -0.02,
+            "peak": 1,
+            "mean": 0.69
+          }
+        }
+      },
+      "max_prims": 52308,
+      "fps": {
+        "avg": 19.528000000000006,
+        "min": 8.6,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 20.47826086956522,
+        "min": 9.0,
+        "max": 53.0,
+        "maxMs_peak": 1110.0,
+        "graph_trend_avg": -0.026521739130434784,
+        "graph_trend_last": 0.039
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "black_screen 03_observe_mid canvas_lum=0.9965550215448018 lum=3.642834412350833",
+        "black_screen 04_observe_end canvas_lum=7.4283618660924775 lum=7.998044488712303"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 493 13.7 fps (14 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 3 ms hitch 508.7 ms x3",
+        "log: [stats] frame 511 13.0 fps (13 on screen) GPU 4% idle emu 5% vu 100% gs 99% heap 384 MB audio 6 ms hitch 552.8 ms x2",
+        "log: [stats] frame 529 13.8 fps (14 on screen) GPU 0% idle emu 4% vu 100% gs 99% heap 384 MB audio 6 ms hitch 502.2 ms x2",
+        "log: [stats] frame 547 13.6 fps (14 on screen) GPU -0% idle emu 5% vu 100% gs 99% heap 384 MB audio 11 ms hitch 515.2 ms x2",
+        "log: [stats] frame 565 13.5 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 510.2 ms x3",
+        "log: [stats] frame 583 12.7 fps (13 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 7 ms hitch 613.3 ms x2",
+        "log: [stats] frame 601 13.6 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 9 ms hitch 517.0 ms x2",
+        "log: [stats] frame 619 13.6 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 507.7 ms x2",
+        "log: [stats] frame 637 13.4 fps (13 on screen) GPU 4% idle emu 3% vu 100% gs 99% heap 384 MB audio 11 ms hitch 518.4 ms x2",
+        "log: [stats] frame 655 13.0 fps (13 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 4 ms hitch 537.7 ms x3",
+        "log: [stats] frame 673 13.7 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 509.3 ms x3",
+        "log: [stats] frame 691 13.8 fps (14 on screen) GPU 1% idle emu 4% vu 100% gs 99% heap 384 MB audio 12 ms hitch 506.1 ms x2",
+        "log: [stats] frame 709 13.7 fps (14 on screen) GPU 3% idle emu 5% vu 100% gs 99% heap 384 MB audio 5 ms hitch 511.9 ms x2",
+        "log: [stats] frame 727 13.7 fps (14 on screen) GPU 8% idle emu 4% vu 100% gs 99% heap 384 MB audio 5 ms hitch 507.3 ms x2",
+        "log: [stats] frame 745 13.7 fps (14 on screen) GPU -1% idle emu 5% vu 100% gs 99% heap 384 MB audio 5 ms hitch 506.0 ms x2",
+        "log: [stats] frame 763 13.5 fps (14 on screen) GPU 2% idle emu 5% vu 100% gs 99% heap 384 MB audio 7 ms hitch 512.9 ms x3",
+        "log: [stats] frame 781 13.8 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 7 ms hitch 501.0 ms x2",
+        "log: [stats] frame 799 13.2 fps (13 on screen) GPU 3% idle emu 4% vu 100% gs 99% heap 384 MB audio 2 ms hitch 549.8 ms x2",
+        "log: [stats] frame 817 13.2 fps (13 on screen) GPU 1% idle emu 3% vu 100% gs 97% heap 384 MB audio 7 ms hitch 519.8 ms x4",
+        "log: [stats] frame 835 13.6 fps (14 on screen) GPU 2% idle emu 4% vu 100% gs 99% heap 384 MB audio 11 ms hitch 513.1 ms x2"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png",
+          "lum": 20.391283891282733
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png",
+          "lum": 20.452350513755388
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png",
+          "lum": 0.9965550215448018
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png",
+          "lum": 7.4283618660924775
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png",
+          "lum": 15.737771995352073,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot_canvas.png",
+          "canvas_lum": 20.391283891282733,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 26,
+            "frameMs": 38.6,
+            "maxMs": 372,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.657,
+            "graph_peak": 1,
+            "graph_mean": 0.328,
+            "graph_ink": 1512
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1116,
+            "upper_ink": 0.0725,
+            "graph_ink": 0.1507,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=20.39; overlay_fps=26; overlay_maxMs=372; graph_trend=-0.657; shot_fps_tint=warn_bad graph_ink=0.1507",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png",
+          "lum": 16.66277025232418,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start_canvas.png",
+          "canvas_lum": 20.452350513755388,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 44,
+            "frameMs": 22.8,
+            "maxMs": 155,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.02,
+            "graph_peak": 1,
+            "graph_mean": 0.69,
+            "graph_ink": 3290
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1632,
+            "upper_ink": 0.0711,
+            "graph_ink": 0.2552,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=20.45; overlay_fps=44; overlay_maxMs=155; graph_trend=-0.02; shot_fps_tint=warn_bad graph_ink=0.2552",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png",
+          "lum": 3.642834412350833,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid_canvas.png",
+          "canvas_lum": 0.9965550215448018,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 11,
+            "frameMs": 92.4,
+            "maxMs": 671,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": 0.207,
+            "graph_peak": 1,
+            "graph_mean": 0.634,
+            "graph_ink": 3250
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1536,
+            "upper_ink": 0.0641,
+            "graph_ink": 0.2432,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=1.00; overlay_fps=11; overlay_maxMs=671; graph_trend=0.207; shot_fps_tint=warn_bad graph_ink=0.2432",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png",
+          "lum": 7.998044488712303,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end_canvas.png",
+          "canvas_lum": 7.4283618660924775,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 13,
+            "frameMs": 75.8,
+            "maxMs": 520,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": 0.039,
+            "graph_peak": 1,
+            "graph_mean": 0.734,
+            "graph_ink": 3473
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1643,
+            "upper_ink": 0.0677,
+            "graph_ink": 0.2609,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=7.43; overlay_fps=13; overlay_maxMs=520; graph_trend=0.039; shot_fps_tint=warn_bad graph_ink=0.2609",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\nfs_mw",
+      "rows_n": 75
+    },
+    {
+      "name": "GoW_USA",
+      "label": "GoW",
+      "id": "695b874b308a4e5353767bb6df8ba697",
+      "expect": "fps60",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=fps60 booted=True max_prims=27746217 end_lum=36.18280677290761 software=False abort=False",
+      "boot_snap": {
+        "frames": 56,
+        "prims": 2,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 1,
+          "frameMs": 1406.8,
+          "maxMs": 0,
+          "fpsText": "1",
+          "msText": "1406.8 ms",
+          "maxText": "0 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 1825,
+            "series": [
+              0.769,
+              0.795,
+              0.359,
+              0.359,
+              0.359,
+              0.436,
+              0.41,
+              1,
+              0.385,
+              0.231,
+              0.359,
+              0.385,
+              0.359,
+              0.462,
+              0.513,
+              0.436,
+              0.359,
+              0.744,
+              0.487,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "trend": -0.247,
+            "peak": 1,
+            "mean": 0.354
+          }
+        }
+      },
+      "max_prims": 27746217,
+      "fps": {
+        "avg": 59.187999999999995,
+        "min": 0.7,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 52.34782608695652,
+        "min": 1.0,
+        "max": 61.0,
+        "maxMs_peak": 53.0,
+        "graph_trend_avg": -0.02421739130434783,
+        "graph_trend_last": -0.014
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=6.159596784885648 lum=6.950726095617659",
+        "black_screen 02_observe_start canvas_lum=6.1628510109380175 lum=7.07913072709176"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 1455 59.7 fps (60 on screen) GPU 22% idle emu 74% vu 67% gs 74% heap 384 MB audio 91 ms hitch 28.2 ms x0",
+        "log: [stats] frame 1516 60.3 fps (60 on screen) GPU 27% idle emu 72% vu 64% gs 72% heap 384 MB audio 87 ms hitch 28.9 ms x0",
+        "log: [stats] frame 1576 59.7 fps (60 on screen) GPU 31% idle emu 74% vu 67% gs 73% heap 384 MB audio 87 ms hitch 28.2 ms x0",
+        "log: [stats] frame 1637 59.6 fps (60 on screen) GPU 17% idle emu 74% vu 66% gs 73% heap 384 MB audio 93 ms hitch 29.1 ms x0",
+        "log: [stats] frame 1697 60.6 fps (61 on screen) GPU 17% idle emu 73% vu 67% gs 74% heap 384 MB audio 93 ms hitch 28.5 ms x0",
+        "log: [stats] frame 1757 60.0 fps (60 on screen) GPU 15% idle emu 75% vu 69% gs 75% heap 384 MB audio 173 ms hitch 29.3 ms x0",
+        "log: [stats] frame 1817 59.0 fps (59 on screen) GPU 29% idle emu 72% vu 65% gs 72% heap 384 MB audio 341 ms hitch 28.9 ms x0",
+        "log: [stats] frame 1877 60.0 fps (57 on screen) GPU 31% idle emu 75% vu 67% gs 72% heap 384 MB audio 341 ms hitch 80.0 ms x1",
+        "log: [intc] pending 0x5 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1",
+        "log: [intc] pending 0x5 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1",
+        "log: [stats] frame 1938 59.8 fps (60 on screen) GPU 22% idle emu 73% vu 63% gs 69% heap 384 MB audio 337 ms hitch 24.5 ms x0",
+        "log: [stats] frame 1999 60.3 fps (60 on screen) GPU 21% idle emu 70% vu 63% gs 69% heap 384 MB audio 341 ms hitch 24.0 ms x0",
+        "log: [stats] frame 2059 59.8 fps (60 on screen) GPU 27% idle emu 73% vu 64% gs 70% heap 384 MB audio 341 ms hitch 21.3 ms x0",
+        "log: [stats] frame 2121 60.2 fps (60 on screen) GPU 30% idle emu 72% vu 64% gs 70% heap 384 MB audio 341 ms hitch 22.7 ms x0",
+        "log: [stats] frame 2180 59.9 fps (60 on screen) GPU 29% idle emu 71% vu 64% gs 70% heap 384 MB audio 341 ms hitch 23.4 ms x0",
+        "log: [stats] frame 2240 59.9 fps (60 on screen) GPU 28% idle emu 72% vu 63% gs 70% heap 384 MB audio 341 ms hitch 23.6 ms x0",
+        "log: [stats] frame 2301 60.2 fps (60 on screen) GPU 29% idle emu 71% vu 63% gs 69% heap 384 MB audio 341 ms hitch 22.3 ms x0",
+        "log: [stats] frame 2361 59.8 fps (60 on screen) GPU 26% idle emu 73% vu 66% gs 71% heap 384 MB audio 341 ms hitch 22.6 ms x0",
+        "log: [stats] frame 2422 59.9 fps (60 on screen) GPU 29% idle emu 72% vu 64% gs 69% heap 384 MB audio 337 ms hitch 28.8 ms x0",
+        "log: [stats] frame 2483 60.3 fps (60 on screen) GPU 30% idle emu 70% vu 63% gs 69% heap 384 MB audio 341 ms hitch 22.7 ms x0"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png",
+          "lum": 6.159596784885648
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png",
+          "lum": 6.1628510109380175
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png",
+          "lum": 46.96490313225051
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png",
+          "lum": 47.537234421613
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png",
+          "lum": 6.950726095617659,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot_canvas.png",
+          "canvas_lum": 6.159596784885648,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 1,
+            "frameMs": 1406.8,
+            "maxMs": 0,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.231,
+            "graph_peak": 0.795,
+            "graph_mean": 0.115,
+            "graph_ink": 561
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0747,
+            "upper_ink": 0.055,
+            "graph_ink": 0.0944,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.16; overlay_fps=1; overlay_maxMs=0; graph_trend=-0.231; shot_fps_tint=warn_bad graph_ink=0.0944",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png",
+          "lum": 7.07913072709176,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start_canvas.png",
+          "canvas_lum": 6.1628510109380175,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 1,
+            "frameMs": 1406.8,
+            "maxMs": 0,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.247,
+            "graph_peak": 1,
+            "graph_mean": 0.354,
+            "graph_ink": 1825
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1144,
+            "upper_ink": 0.0734,
+            "graph_ink": 0.1555,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.16; overlay_fps=1; overlay_maxMs=0; graph_trend=-0.247; shot_fps_tint=warn_bad graph_ink=0.1555",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png",
+          "lum": 34.544499833996966,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid_canvas.png",
+          "canvas_lum": 46.96490313225051,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 18,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": -0.0,
+            "graph_peak": 0.385,
+            "graph_mean": 0.365,
+            "graph_ink": 2325
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.2529,
+            "upper_ink": 0.2104,
+            "graph_ink": 0.2955,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=46.96; overlay_fps=60; overlay_maxMs=18; graph_trend=-0.0; shot_fps_tint=warn_bad graph_ink=0.2955",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png",
+          "lum": 36.18280677290761,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end_canvas.png",
+          "canvas_lum": 47.537234421613,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 29,
+            "className": "warn",
+            "visible": true,
+            "graph_trend": -0.014,
+            "graph_peak": 0.59,
+            "graph_mean": 0.39,
+            "graph_ink": 2364
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.2519,
+            "upper_ink": 0.2056,
+            "graph_ink": 0.2982,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=47.54; overlay_fps=60; overlay_maxMs=29; graph_trend=-0.014; shot_fps_tint=warn_bad graph_ink=0.2982",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\gow_usa",
+      "rows_n": 75
+    },
+    {
+      "name": "CNK",
+      "label": "Crash",
+      "id": "b49f2e769315347e8bda839feb705744",
+      "expect": "prims_break",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=prims_break booted=True max_prims=2 end_lum=3.1194198207170682 software=False abort=False",
+      "boot_snap": {
+        "frames": 59,
+        "prims": 0,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "Starting game\u2026",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 21,
+          "frameMs": 46.7,
+          "maxMs": 131,
+          "fpsText": "21",
+          "msText": "46.7 ms",
+          "maxText": "131 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 3011,
+            "series": [
+              1,
+              0.487,
+              0.846,
+              1,
+              1,
+              1,
+              1,
+              1,
+              0.974,
+              1,
+              1,
+              0.564,
+              0.538,
+              0.487,
+              0.41,
+              0.359,
+              0.41,
+              0.667,
+              0.359,
+              0.359,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "trend": -0.643,
+            "peak": 1,
+            "mean": 0.556
+          }
+        }
+      },
+      "max_prims": 2,
+      "fps": {
+        "avg": 48.242105263157875,
+        "min": 21.4,
+        "max": 60.7
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 44.26086956521739,
+        "min": 21.0,
+        "max": 61.0,
+        "maxMs_peak": 131.0,
+        "graph_trend_avg": -0.08773913043478265,
+        "graph_trend_last": 0.026
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot canvas_lum=6.239241879351707 lum=8.145640189245093",
+        "black_screen 02_observe_start canvas_lum=6.211545160757077 lum=8.196396248342058",
+        "black_screen 03_observe_mid canvas_lum=6.203720003315916 lum=8.190400232405784",
+        "black_screen 04_observe_end canvas_lum=0.17593254888962556 lum=3.1194198207170682"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 1148 60.4 fps (60 on screen) GPU 1% idle emu 96% vu 99% gs 97% heap 256 MB audio 48 ms hitch 23.7 ms x0",
+        "log: [stats] frame 1209 60.0 fps (60 on screen) GPU 5% idle emu 97% vu 100% gs 97% heap 256 MB audio 43 ms hitch 25.3 ms x0",
+        "log: [stats] frame 1269 59.8 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 43 ms hitch 25.6 ms x0",
+        "log: [stats] frame 1329 59.6 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 35 ms hitch 27.5 ms x0",
+        "log: [stats] frame 1390 60.6 fps (61 on screen) GPU 1% idle emu 97% vu 100% gs 97% heap 256 MB audio 41 ms hitch 27.5 ms x0",
+        "log: [stats] frame 1450 59.6 fps (60 on screen) GPU 2% idle emu 97% vu 100% gs 97% heap 256 MB audio 41 ms hitch 28.7 ms x0",
+        "log: [stats] frame 1494 42.4 fps (42 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 84 ms hitch 63.0 ms x7",
+        "log: [stats] frame 1533 38.8 fps (39 on screen) GPU 1% idle emu 97% vu 99% gs 98% heap 256 MB audio 94 ms hitch 63.1 ms x6",
+        "log: [stats] frame 1571 37.6 fps (38 on screen) GPU 2% idle emu 100% vu 101% gs 98% heap 256 MB audio 69 ms hitch 78.0 ms x8",
+        "log: [stats] frame 1612 40.2 fps (40 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 91 ms hitch 62.1 ms x9",
+        "log: [stats] frame 1652 39.4 fps (39 on screen) GPU 8% idle emu 98% vu 100% gs 98% heap 256 MB audio 77 ms hitch 62.3 ms x9",
+        "log: [stats] frame 1691 38.7 fps (39 on screen) GPU 5% idle emu 98% vu 100% gs 98% heap 256 MB audio 58 ms hitch 77.2 ms x7",
+        "log: [stats] frame 1733 40.8 fps (41 on screen) GPU 7% idle emu 98% vu 100% gs 98% heap 256 MB audio 89 ms hitch 67.2 ms x6",
+        "log: [stats] frame 1771 38.7 fps (39 on screen) GPU 6% idle emu 98% vu 100% gs 98% heap 256 MB audio 82 ms hitch 78.1 ms x8",
+        "log: [stats] frame 1810 38.2 fps (38 on screen) GPU 2% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 63.5 ms x8",
+        "log: [stats] frame 1849 38.7 fps (39 on screen) GPU 3% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 63.2 ms x8",
+        "log: [stats] frame 1888 38.9 fps (39 on screen) GPU 7% idle emu 98% vu 100% gs 98% heap 256 MB audio 83 ms hitch 62.3 ms x10",
+        "log: [stats] frame 1927 38.0 fps (38 on screen) GPU 1% idle emu 98% vu 100% gs 98% heap 256 MB audio 82 ms hitch 66.8 ms x9",
+        "log: [stats] frame 1966 38.1 fps (38 on screen) GPU 3% idle emu 98% vu 100% gs 98% heap 256 MB audio 81 ms hitch 70.9 ms x10",
+        "log: [stats] frame 2006 37.7 fps (38 on screen) GPU 2% idle emu 98% vu 100% gs 98% heap 256 MB audio 57 ms hitch 62.7 ms x12"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png",
+          "lum": 6.239241879351707
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png",
+          "lum": 6.211545160757077
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png",
+          "lum": 6.203720003315916
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png",
+          "lum": 0.17593254888962556
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png",
+          "lum": 8.145640189245093,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot_canvas.png",
+          "canvas_lum": 6.239241879351707,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 21,
+            "frameMs": 46.7,
+            "maxMs": 131,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.698,
+            "graph_peak": 1,
+            "graph_mean": 0.349,
+            "graph_ink": 1858
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1203,
+            "upper_ink": 0.0694,
+            "graph_ink": 0.1711,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.24; overlay_fps=21; overlay_maxMs=131; graph_trend=-0.698; shot_fps_tint=warn_bad graph_ink=0.1711; boot=Starting game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png",
+          "lum": 8.196396248342058,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start_canvas.png",
+          "canvas_lum": 6.211545160757077,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 21,
+            "frameMs": 46.7,
+            "maxMs": 131,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.643,
+            "graph_peak": 1,
+            "graph_mean": 0.556,
+            "graph_ink": 3011
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1524,
+            "upper_ink": 0.0694,
+            "graph_ink": 0.2354,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.21; overlay_fps=21; overlay_maxMs=131; graph_trend=-0.643; shot_fps_tint=warn_bad graph_ink=0.2354; boot=Starting game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png",
+          "lum": 8.190400232405784,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid_canvas.png",
+          "canvas_lum": 6.203720003315916,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 36,
+            "frameMs": 27.9,
+            "maxMs": 56,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.0,
+            "graph_peak": 1,
+            "graph_mean": 0.669,
+            "graph_ink": 3764
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1748,
+            "upper_ink": 0.074,
+            "graph_ink": 0.2756,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.20; overlay_fps=36; overlay_maxMs=56; graph_trend=-0.0; shot_fps_tint=warn_bad graph_ink=0.2756; boot=Starting game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png",
+          "lum": 3.1194198207170682,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end_canvas.png",
+          "canvas_lum": 0.17593254888962556,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 38,
+            "frameMs": 26.3,
+            "maxMs": 71,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": 0.026,
+            "graph_peak": 1,
+            "graph_mean": 0.81,
+            "graph_ink": 4273
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1897,
+            "upper_ink": 0.0732,
+            "graph_ink": 0.3061,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.18; overlay_fps=38; overlay_maxMs=71; graph_trend=0.026; shot_fps_tint=warn_bad graph_ink=0.3061",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\cnk",
+      "rows_n": 76
+    },
+    {
+      "name": "Sly1",
+      "label": "Sly",
+      "id": "c0c4527037b6168660829a0eb13df1a3",
+      "expect": "draw",
+      "booted": true,
+      "ok": true,
+      "goal_ok": true,
+      "goal_note": "expect=draw booted=True max_prims=383240 end_lum=12.992630229084018 software=False abort=False",
+      "boot_snap": {
+        "frames": 93,
+        "prims": 8531,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 31,
+          "frameMs": 32.5,
+          "maxMs": 239,
+          "fpsText": "31",
+          "msText": "32.5 ms",
+          "maxText": "239 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 2656,
+            "series": [
+              0.564,
+              0.513,
+              0.41,
+              1,
+              0.359,
+              0.385,
+              0.359,
+              0.487,
+              0.359,
+              0.359,
+              0.359,
+              0.359,
+              0.41,
+              0.718,
+              0.59,
+              0.333,
+              0.333,
+              0.333,
+              0.923,
+              0.949,
+              0.359,
+              0.359,
+              0.718,
+              0.436,
+              0.436,
+              0.359
+            ],
+            "trend": 0.071,
+            "peak": 1,
+            "mean": 0.491
+          }
+        }
+      },
+      "max_prims": 383240,
+      "fps": {
+        "avg": 53.094736842105256,
+        "min": 30.8,
+        "max": 62.0
+      },
+      "fps_overlay": {
+        "samples": 23,
+        "avg": 50.65217391304348,
+        "min": 31.0,
+        "max": 60.0,
+        "maxMs_peak": 239.0,
+        "graph_trend_avg": -0.0027391304347826107,
+        "graph_trend_last": 0.002
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 1366 60.0 fps (60 on screen) GPU 23% idle emu 94% vu 100% gs 93% heap 256 MB audio 79 ms hitch 17.3 ms x0",
+        "log: [stats] frame 1426 60.0 fps (60 on screen) GPU 21% idle emu 92% vu 99% gs 93% heap 256 MB audio 60 ms hitch 17.2 ms x0",
+        "log: [stats] frame 1487 60.0 fps (60 on screen) GPU 22% idle emu 93% vu 100% gs 93% heap 256 MB audio 55 ms hitch 17.2 ms x0",
+        "log: [stats] frame 1548 59.9 fps (60 on screen) GPU 22% idle emu 94% vu 100% gs 93% heap 256 MB audio 72 ms hitch 18.8 ms x0",
+        "log: [stats] frame 1608 60.1 fps (60 on screen) GPU 22% idle emu 92% vu 98% gs 93% heap 256 MB audio 64 ms hitch 18.1 ms x0",
+        "log: [stats] frame 1669 60.0 fps (60 on screen) GPU 21% idle emu 94% vu 100% gs 94% heap 256 MB audio 59 ms hitch 18.8 ms x0",
+        "log: [stats] frame 1726 56.9 fps (57 on screen) GPU 20% idle emu 94% vu 100% gs 94% heap 256 MB audio 79 ms hitch 36.8 ms x1",
+        "log: [stats] frame 1765 38.2 fps (38 on screen) GPU 16% idle emu 96% vu 100% gs 97% heap 256 MB audio 59 ms hitch 62.9 ms x10",
+        "log: [stats] frame 1806 40.2 fps (40 on screen) GPU 16% idle emu 95% vu 100% gs 96% heap 256 MB audio 84 ms hitch 63.8 ms x10",
+        "log: [stats] frame 1845 38.3 fps (38 on screen) GPU 18% idle emu 95% vu 100% gs 96% heap 256 MB audio 83 ms hitch 61.9 ms x12",
+        "log: [stats] frame 1884 38.2 fps (38 on screen) GPU 20% idle emu 95% vu 100% gs 96% heap 256 MB audio 83 ms hitch 77.6 ms x9",
+        "log: [stats] frame 1922 37.9 fps (38 on screen) GPU 20% idle emu 96% vu 100% gs 96% heap 256 MB audio 65 ms hitch 74.0 ms x9",
+        "log: [stats] frame 1962 39.2 fps (39 on screen) GPU 19% idle emu 96% vu 100% gs 96% heap 256 MB audio 84 ms hitch 69.7 ms x10",
+        "log: [stats] frame 2001 38.7 fps (39 on screen) GPU 21% idle emu 96% vu 100% gs 96% heap 256 MB audio 83 ms hitch 63.2 ms x11",
+        "log: [stats] frame 2040 38.7 fps (39 on screen) GPU 23% idle emu 96% vu 100% gs 96% heap 256 MB audio 83 ms hitch 65.8 ms x10",
+        "log: [stats] frame 2077 36.8 fps (37 on screen) GPU 18% idle emu 96% vu 100% gs 96% heap 256 MB audio 59 ms hitch 63.3 ms x12",
+        "log: [stats] frame 2117 39.8 fps (40 on screen) GPU 22% idle emu 94% vu 98% gs 96% heap 256 MB audio 97 ms hitch 74.9 ms x8",
+        "log: [stats] frame 2156 39.0 fps (39 on screen) GPU 18% idle emu 96% vu 100% gs 96% heap 256 MB audio 96 ms hitch 76.2 ms x7",
+        "log: [stats] frame 2196 38.6 fps (39 on screen) GPU 18% idle emu 97% vu 100% gs 96% heap 256 MB audio 83 ms hitch 76.7 ms x9",
+        "log: [stats] frame 2233 36.7 fps (37 on screen) GPU 20% idle emu 96% vu 100% gs 96% heap 256 MB audio 59 ms hitch 63.1 ms x11"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png",
+          "lum": 8.86935076234692
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png",
+          "lum": 14.570603165396331
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png",
+          "lum": 14.699781571097343
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png",
+          "lum": 14.642415727544162
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png",
+          "lum": 2.994827108233657,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot_canvas.png",
+          "canvas_lum": 8.86935076234692,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 31,
+            "frameMs": 32.5,
+            "maxMs": 239,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.602,
+            "graph_peak": 1,
+            "graph_mean": 0.338,
+            "graph_ink": 1699
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1083,
+            "upper_ink": 0.067,
+            "graph_ink": 0.1496,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=8.87; overlay_fps=31; overlay_maxMs=239; graph_trend=-0.602; shot_fps_tint=warn_bad graph_ink=0.1496",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png",
+          "lum": 12.987563413014936,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start_canvas.png",
+          "canvas_lum": 14.570603165396331,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 31,
+            "frameMs": 32.5,
+            "maxMs": 239,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": 0.071,
+            "graph_peak": 1,
+            "graph_mean": 0.491,
+            "graph_ink": 2656
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1362,
+            "upper_ink": 0.0725,
+            "graph_ink": 0.1999,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=14.57; overlay_fps=31; overlay_maxMs=239; graph_trend=0.071; shot_fps_tint=warn_bad graph_ink=0.1999",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png",
+          "lum": 12.837552954847606,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid_canvas.png",
+          "canvas_lum": 14.699781571097343,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 17,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0.359,
+            "graph_mean": 0.359,
+            "graph_ink": 2327
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1278,
+            "upper_ink": 0.075,
+            "graph_ink": 0.1806,
+            "tint": "ok",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=14.70; overlay_fps=60; overlay_maxMs=17; graph_trend=0; shot_fps_tint=ok graph_ink=0.1806",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png",
+          "lum": 12.992630229084018,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end_canvas.png",
+          "canvas_lum": 14.642415727544162,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 39,
+            "frameMs": 25.9,
+            "maxMs": 77,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": 0.002,
+            "graph_peak": 1,
+            "graph_mean": 0.8,
+            "graph_ink": 4139
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1858,
+            "upper_ink": 0.0725,
+            "graph_ink": 0.2992,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=14.64; overlay_fps=39; overlay_maxMs=77; graph_trend=0.002; shot_fps_tint=warn_bad graph_ink=0.2992",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T131057Z\\sly1",
+      "rows_n": 76
+    }
+  ]
+}

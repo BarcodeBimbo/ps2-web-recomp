@@ -1,0 +1,190 @@
+{
+  "summary": {
+    "run_id": "20261107T130832Z",
+    "harness": "cyberarcade_live",
+    "screenshot_to_file_to_analysis": true,
+    "console_to_logs": true,
+    "muted_chrome": true,
+    "no_visible_mouse": true,
+    "direct_input_pad_wake": true,
+    "no_bootmash": true,
+    "observe_s": 12,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T130832Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\SHOT_MANIFEST.md",
+    "games": [
+      {
+        "name": "Hitman_BM",
+        "label": "Hitman",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=menu booted=True max_prims=199259 end_lum=2.888204764276174 software=False abort=False",
+        "booted": true,
+        "max_prims": 199259,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 56.07619047619047,
+          "min": 24.4,
+          "max": 60.1
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 01_boot lum=2.9246431772907817",
+          "black_screen 02_observe_start lum=3.1382676792828073",
+          "black_screen 03_observe_mid lum=2.8872170484727215",
+          "black_screen 04_observe_end lum=2.888204764276174"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png"
+        ]
+      }
+    ],
+    "all_ok": false
+  },
+  "results": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "expect": "menu",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=199259 end_lum=2.888204764276174 software=False abort=False",
+      "boot_snap": {
+        "frames": 90,
+        "prims": 1241,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": ""
+      },
+      "max_prims": 199259,
+      "fps": {
+        "avg": 56.07619047619047,
+        "min": 24.4,
+        "max": 60.1
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 01_boot lum=2.9246431772907817",
+        "black_screen 02_observe_start lum=3.1382676792828073",
+        "black_screen 03_observe_mid lum=2.8872170484727215",
+        "black_screen 04_observe_end lum=2.888204764276174"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 62 24.4 fps (24 on screen) GPU 14% idle emu 5% vu 94% gs 89% heap 384 MB audio 9 ms hitch 311.5 ms x8",
+        "log: [timer] TIM0 compare IRQ count=14988 comp=14988 mode=0x583",
+        "log: [timer] TIM0 compare IRQ count=17088 comp=17088 mode=0x583",
+        "log: [timer] TIM0 compare IRQ count=19188 comp=19188 mode=0x583",
+        "log: [timer] TIM0 compare IRQ count=21288 comp=21288 mode=0x583",
+        "log: [timer] TIM0 compare IRQ count=23388 comp=23388 mode=0x583",
+        "log: [stats] frame 104 40.9 fps (41 on screen) GPU 19% idle emu 4% vu 90% gs 87% heap 384 MB audio 5 ms hitch 41.7 ms x7",
+        "log: [timer] TIM0 compare IRQ count=25488 comp=25488 mode=0x583",
+        "log: [stats] frame 146 41.3 fps (41 on screen) GPU 23% idle emu 3% vu 93% gs 91% heap 384 MB audio 0 ms hitch 56.4 ms x7",
+        "log: [stats] frame 202 55.5 fps (56 on screen) GPU 59% idle emu 29% vu 95% gs 90% heap 384 MB audio 16 ms hitch 62.2 ms x7",
+        "log: [stats] frame 262 60.0 fps (60 on screen) GPU 81% idle emu 46% vu 97% gs 92% heap 384 MB audio 15 ms hitch 19.7 ms x0",
+        "log: [stats] frame 322 60.0 fps (60 on screen) GPU 39% idle emu 40% vu 96% gs 91% heap 384 MB audio 21 ms hitch 23.3 ms x0",
+        "log: [stats] frame 383 60.0 fps (60 on screen) GPU 43% idle emu 48% vu 97% gs 92% heap 384 MB audio 21 ms hitch 24.1 ms x0",
+        "log: [stats] frame 443 59.9 fps (60 on screen) GPU 30% idle emu 48% vu 97% gs 92% heap 384 MB audio 11 ms hitch 19.8 ms x0",
+        "log: [stats] frame 504 60.1 fps (60 on screen) GPU 35% idle emu 45% vu 96% gs 92% heap 384 MB audio 16 ms hitch 20.0 ms x0",
+        "log: [stats] frame 564 60.0 fps (60 on screen) GPU 24% idle emu 46% vu 98% gs 91% heap 384 MB audio 17 ms hitch 19.9 ms x0",
+        "log: [stats] frame 625 60.0 fps (60 on screen) GPU 29% idle emu 46% vu 97% gs 92% heap 384 MB audio 15 ms hitch 20.1 ms x0",
+        "log: [stats] frame 686 60.0 fps (60 on screen) GPU 24% idle emu 49% vu 97% gs 93% heap 384 MB audio 25 ms hitch 18.9 ms x0",
+        "log: [stats] frame 747 60.0 fps (60 on screen) GPU 27% idle emu 50% vu 97% gs 93% heap 384 MB audio 24 ms hitch 18.7 ms x0",
+        "log: [stats] frame 807 59.9 fps (60 on screen) GPU 21% idle emu 49% vu 97% gs 92% heap 384 MB audio 19 ms hitch 21.1 ms x0"
+      ],
+      "shots": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+          "lum": 2.9246431772907817
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+          "lum": 3.1382676792828073
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 2.8872170484727215
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png",
+          "lum": 2.888204764276174
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+          "lum": 2.9246431772907817,
+          "black": true,
+          "abort_ui": false,
+          "verdict": "black_screen",
+          "note": "lum=2.92",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot_canvas.png",
+          "canvas_lum": 0.1567171859463043
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+          "lum": 3.1382676792828073,
+          "black": true,
+          "abort_ui": false,
+          "verdict": "black_screen",
+          "note": "lum=3.14",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start_canvas.png",
+          "canvas_lum": 0.2215355485581708
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 2.8872170484727215,
+          "black": true,
+          "abort_ui": false,
+          "verdict": "black_screen",
+          "note": "lum=2.89",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid_canvas.png",
+          "canvas_lum": 0.14011360623135574
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png",
+          "lum": 2.888204764276174,
+          "black": true,
+          "abort_ui": false,
+          "verdict": "black_screen",
+          "note": "lum=2.89",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png",
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end_canvas.png",
+          "canvas_lum": 0.1382626781571098
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T130832Z\\hitman_bm",
+      "rows_n": 21
+    }
+  ]
+}
