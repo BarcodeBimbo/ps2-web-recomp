@@ -1,7 +1,9 @@
 # Master campaign plan — PS2Recomp / CyberArcade
 
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
-**Updated:** 2026-11-07 ~10:27 local  
+**Updated:** 2026-11-07 ~10:28 local  
+
+**Execution mandate (God ~10:28):** This plan runs **without user input, call, or wait** — full agent control. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  
 **Companion handoff:** `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`, `MASTER-CONTEXT.md`
 
