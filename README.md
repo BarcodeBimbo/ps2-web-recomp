@@ -1,5 +1,9 @@
 # CyberArcade
 
+## AI-assisted development
+
+This project is developed with AI assistance (Cursor). A person directs the work, reviews changes, and owns the result; Cursor helps with drafting, debugging, and edits. Some commits may show **Cursor** (`cursor@users.noreply.github.com`) as the git author so that AI involvement is visible in history. That is transparency, not a claim that the AI replaces the human behind the project.
+
 **Latest runtime fix:** [NFS polling RPC deadlock](NFS_RPC_FIX.md), verified with the uploaded driver snapshot. Broader fixes and test limits: [FIX_REPORT.md](FIX_REPORT.md).
 
 **Start here:** extract to `C:\PS2Recomp` and double-click `Setup.cmd`. It installs the emulator tools, opens the library, and automatically hosts phone access on a private LAN address and free port. The Store now accepts **direct HTTPS file links only**; no browser/solver installation is needed. Existing games must be rebuilt once to receive the Asyncify compatibility runtime and timing fixes. Poster clicks then launch directly and automatically.
