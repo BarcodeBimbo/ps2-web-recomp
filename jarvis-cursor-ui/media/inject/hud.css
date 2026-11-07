@@ -1189,30 +1189,35 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 }
 
 .jcc-nav-item.active .jcc-nav-ico {
-  color: var(--cortana-cyan, #00d4ff);
+  color: var(--cortana-cyan-bright, #4ad1f1);
   opacity: 1;
-  text-shadow: 0 0 6px rgba(0, 242, 255, 0.55);
+  text-shadow: 0 0 5px rgba(74, 209, 241, 0.35);
 }
 
 .jcc-badge {
   margin-left: auto;
-  min-width: var(--CORTANA-badge-size, var(--cortana-badge-size, 18px));
-  height: 16px;
-  padding: 0 6px;
-  border-radius: var(--CORTANA-radius-pill, var(--cortana-radius-pill, 999px));
-  background: rgba(6, 32, 52, 0.92);
+  min-width: var(--cortana-badge-size, 17px);
+  height: 15px;
+  padding: 0 5px;
+  border-radius: var(--cortana-radius-pill, 999px);
+  background: rgba(0, 20, 40, 0.88);
   color: #e8f7ff;
-  font-size: var(--CORTANA-hud-fs-sm, var(--cortana-hud-fs-sm, 9px));
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.02em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 212, 255, 0.55);
-  box-shadow: 0 0 8px rgba(0, 212, 255, 0.28), inset 0 0 6px rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.38);
+  box-shadow: inset 0 0 8px rgba(0, 212, 255, 0.06);
 }
 
-.jcc-badge[data-count]::before {
+.jcc-badge:not([data-count]),
+.jcc-badge[data-count=""] {
+  display: none;
+}
+
+.jcc-badge[data-count]:not([data-count=""])::before {
   content: attr(data-count);
 }
 
@@ -1321,7 +1326,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 16px rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
   animation: cortana-arc-reactor-pulse var(--CORTANA-reactor-ms, var(--cortana-reactor-ms, 2.4s)) ease-in-out infinite;
 }
 
