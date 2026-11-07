@@ -2,13 +2,16 @@
 
 Local Cursor / VS Code extension: **full JARVIS Command Center HUD** with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
 
-**v0.4.0:** Recreates the jarvis.institute Command Center shell (calibrating splash → HUD) and the Jarvis 3D marketplace **PRO feature set** as first-party unlocked modules. Custom CSS / workbench injection is **required**; floating/editor overlays are **not** used.
+**Visual target (locked):** [`media/reference-command-center.png`](media/reference-command-center.png) is both the **Cursor boot/loading screen** and the **exact** full-UI design target — match pixel composition; do not approximate. Custom CSS / workbench **injection is required**; overlays are **definitively out** (caller: that look is impossible via overlay).
+
+**v0.4.0 baseline:** Prior shell shipped PRO modules; rebuild toward injection + exact `reference-command-center.png` match (see plan `jarvis_pro_recreation_a1985356`).
 
 ## Credits & pattern sources
 
 | Source | Link | Role |
 |--------|------|------|
-| **jarvis.institute** | https://jarvis.institute/ | Command Center layout, calibrating splash, Voice Status / Talk to JARVIS composition |
+| **jarvis.institute** | https://jarvis.institute/ | Pattern source for Command Center composition / Voice Status / Talk to JARVIS |
+| **Local reference PNG** | `media/reference-command-center.png` | **Authoritative** boot splash + full UI visual target (exact match) |
 | **Jarvis 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
 
 This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Jarvis 3D or jarvis.institute binaries. Assets and logic are original to this repo.
