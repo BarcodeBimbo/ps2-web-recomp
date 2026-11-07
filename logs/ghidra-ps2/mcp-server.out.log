@@ -2975,3 +2975,120 @@ ERROR Unhandled error on /run_analysis (GhidraMCPHeadlessServer) java.io.IOExcep
 INFO  Reopened existing raw binary from project: cnk_boot.elf (C:\Users\joshy\ghidra_exports\ps2-elves\cnk_boot.elf) (HeadlessProgramProvider)  
 ERROR Invalid PNG data at 20659780 (PngDataType)  
 ERROR Invalid PNG data at 30759780 (PngDataType)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  Reopened existing raw binary from project: hitman_boot.elf (C:\Users\joshy\ghidra_exports\ps2-elves\hitman_boot.elf) (HeadlessProgramProvider)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              1.081 secs
+    Apply Data Archives                        0.736 secs
+    Call Convention ID                         0.093 secs
+    Call-Fixup Installer                       0.133 secs
+    Create Address Tables                      4.945 secs
+    Create Function                            0.029 secs
+    Data Reference                             2.667 secs
+    Decompiler Switch Analysis                 6.264 secs
+    Demangler GNU                              0.066 secs
+    Disassemble Entry Points                   1.303 secs
+    Embedded Media                             0.411 secs
+    External Entry References                  0.033 secs
+    External Symbol Resolver                   0.007 secs
+    Function ID                                0.039 secs
+    Function Start Search                      1.141 secs
+    MIPS-R5900 Constant Reference Analyzer    58.663 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.244 secs
+    Non-Returning Functions - Discovered       4.997 secs
+    Non-Returning Functions - Known            0.421 secs
+    Reference                                  2.889 secs
+    Shared Return Calls                        1.485 secs
+    Stack                                     42.822 secs
+    Subroutine References                      3.222 secs
+-----------------------------------------------------
+     Total Time   133 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+ERROR Unhandled error on /run_analysis (GhidraMCPHeadlessServer) java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542)
+	at jdk.httpserver/sun.net.httpserver.Request$WriteStream.write(Request.java:421)
+	at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.write(FixedLengthOutputStream.java:77)
+	at java.base/java.io.FilterOutputStream.write(FilterOutputStream.java:110)
+	at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.write(ExchangeImpl.java:471)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:741)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$registerEndpoints$3(GhidraMCPHeadlessServer.java:411)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$safeContext$31(GhidraMCPHeadlessServer.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:932)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:908)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: insufficient bytes written to stream
+		at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.close(FixedLengthOutputStream.java:88)
+		at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.close(ExchangeImpl.java:486)
+		at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:740)
+		... 11 more
+ 
+ERROR Unhandled error on /create_function (GhidraMCPHeadlessServer) java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542)
+	at jdk.httpserver/sun.net.httpserver.Request$WriteStream.write(Request.java:421)
+	at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.write(FixedLengthOutputStream.java:77)
+	at java.base/java.io.FilterOutputStream.write(FilterOutputStream.java:110)
+	at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.write(ExchangeImpl.java:471)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:741)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$registerEndpoints$3(GhidraMCPHeadlessServer.java:411)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$safeContext$31(GhidraMCPHeadlessServer.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:932)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:908)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: insufficient bytes written to stream
+		at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.close(FixedLengthOutputStream.java:88)
+		at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.close(ExchangeImpl.java:486)
+		at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:740)
+		... 11 more
+ 
+ERROR Unhandled error on /create_function (GhidraMCPHeadlessServer) java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542)
+	at jdk.httpserver/sun.net.httpserver.Request$WriteStream.write(Request.java:421)
+	at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.write(FixedLengthOutputStream.java:77)
+	at java.base/java.io.FilterOutputStream.write(FilterOutputStream.java:110)
+	at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.write(ExchangeImpl.java:471)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:741)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$registerEndpoints$3(GhidraMCPHeadlessServer.java:411)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$safeContext$31(GhidraMCPHeadlessServer.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:932)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:908)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: insufficient bytes written to stream
+		at jdk.httpserver/sun.net.httpserver.FixedLengthOutputStream.close(FixedLengthOutputStream.java:88)
+		at jdk.httpserver/sun.net.httpserver.PlaceholderOutputStream.close(ExchangeImpl.java:486)
+		at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:740)
+		... 11 more
+ 

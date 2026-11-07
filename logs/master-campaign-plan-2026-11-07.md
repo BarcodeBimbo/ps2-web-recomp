@@ -39,8 +39,8 @@
 
 ### Layer 1 — Near-black clear color
 
-- [ ] Clear sprites / BGCOLOR path mapped to live FBP (Ghidra `FUN_0028f7fc`, black clear `param_2=0`)
-- [ ] Runtime: clears land on correct page (400 vs 288), not only DISPFB display page
+- [x] 2026-11-07 — `FUN_0028f7fc` clears FBP `*(disp+0xd4)>>11` (page **400**); `param_2` color; Ghidra MCP decompile @ `0028f7fc`
+- [x] 2026-11-07 — Capture PPMs on **FBP 288** (`fbp120`) and **400** (`fbp190`); `FUN_0028f6dc`/`f7fc` pair (`05-ghidra-decompiled-gs-init.md`)
 - [ ] Chrome: canvas luminance above harness threshold after menu boot (not near-black PPM)
 
 ### Layer 2 — Pixel format (display setup / PSM)
@@ -61,7 +61,7 @@
 
 ### Layer 4 — Ghidra load hygiene (Raw Binary vs ELF)
 
-- [ ] Phase 0: re-import Hitman `boot.elf` as **ELF** @ `0x00100000`, entry `0x0010001C` (plan Phase 0)
+- [x] 2026-11-07 — `hitman_boot.elf` **ELF** @ `0x00100000`, entry `0x0010001C` via Ghidra MCP `load_program` (14733 fn)
 - [ ] PMODE/DISPFB2/FRAME writer catalog with trusted VAs
 - [x] 2026-11-07 — Not ps2-packer; normal stripped EE (`logs/hitman-boot-elf-packer-check-2026-11-07.md`)
 
@@ -135,10 +135,10 @@
 - [x] 2026-11-07 — Auto T1: `ensure_web_build_readable`, queue web rebuild, post smoke via `autonomous_verify.py`
 - [x] 2026-11-07 — Auto T2: registry quarantine on alchemy pulse
 - [x] 2026-11-07 — `autonomous_verify.py` uses **`disc.iso`** (not `disc/` folder)
-- [ ] Idle-aware web rebuild (poll until not `building`)
-- [ ] Detectors: `canvas_black_harness`, `low_fps`, `matrix_fail`, `fbp_triad_mismatch`
+- [x] 2026-11-07 — Idle-aware web rebuild (`poll_until_build_idle` on successful queue; W-HEAL live Hitman busy-skip while build in flight)
+- [x] 2026-11-07 — Detectors: `canvas_black_harness`, `low_fps`, `matrix_fail`, `fbp_triad_mismatch` stub (`scripts/self_heal.py`; Hitman dry-run symptoms verified)
 - [ ] `proven_fixes[]` in `game-fix-registry.json` when Alchemy/CNK fixes verified
-- [ ] `self_heal.py --library` sweep after global runtime edit
+- [x] 2026-11-07 — `self_heal.py --library --dry-run` (13 native-ready ids; `logs/workers/W-HEAL-report-2026-11-07.md`)
 - [ ] T3 behavioral patches remain board-gated (`allow_discfix_apply=false` for HLE rewrite)
 
 **Docs:** `verification/recovery/self-heal-patch-system-2026-11-07.md`, `game-fix-registry.json`

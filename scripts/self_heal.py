@@ -220,6 +220,28 @@ def poll_until_build_idle(game_id: str) -> dict:
     }
 
 
+def read_matrix_logs(game_id: str) -> str:
+    """Smoke/explore logs only — avoid false matrix_fail from unrelated campaign logs."""
+    chunks: list[str] = []
+    game_dir = GAMES / game_id
+    for name in ("smoke.log", "health_smoke.log", "explore.log"):
+        for base in (game_dir, ROOT / "logs" / "games" / game_id):
+            path = base / name
+            if path.is_file():
+                try:
+                    chunks.append(path.read_text(encoding="utf-8", errors="replace"))
+                except OSError:
+                    pass
+    ap = ROOT / "logs" / "autonomous-pipeline"
+    if ap.is_dir():
+        for path in sorted(ap.glob(f"{game_id}-*.log"), reverse=True)[:1]:
+            try:
+                chunks.append(path.read_text(encoding="utf-8", errors="replace"))
+            except OSError:
+                pass
+    return "\n".join(chunks)
+
+
 def read_logs(game_id: str) -> str:
     chunks: list[str] = []
     game_dir = GAMES / game_id
@@ -240,13 +262,15 @@ def read_logs(game_id: str) -> str:
     meta = load_registry().get("per_game", {}).get(game_id, {})
     mk = meta.get("matrix_key")
     if mk:
-        for path in sorted((ROOT / "logs").glob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True)[:12]:
+        tokens = [t for t in re.split(r"[_\s]+", mk.lower()) if len(t) > 2]
+        for path in sorted((ROOT / "logs").glob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True)[:24]:
+            name = path.name.lower()
+            if not (any(t in name for t in tokens) or mk.replace("_", "") in name.replace("_", "")):
+                continue
             try:
-                sample = path.read_text(encoding="utf-8", errors="replace")[:80000]
+                chunks.append(path.read_text(encoding="utf-8", errors="replace")[:120000])
             except OSError:
                 continue
-            if mk.replace("_", "") in path.name.lower().replace("_", "") or mk in sample[:4000]:
-                chunks.append(sample)
     return "\n".join(chunks)
 
 
@@ -279,7 +303,7 @@ def evaluate_symptoms(game_id: str, text: str, health: dict | None) -> Diagnosis
         dx.symptoms.append("low_fps")
     if detect_fbp_triad_mismatch(text):
         dx.symptoms.append("fbp_triad_mismatch")
-    matrix = score_matrix_text(game_id, text)
+    matrix = score_matrix_text(game_id, read_matrix_logs(game_id) or text[:200000])
     if matrix and matrix.get("verdict") == "fail":
         dx.symptoms.append("matrix_fail")
     if (health.get("primitives") or 0) > 50000:
@@ -355,7 +379,7 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
     health = json.loads(health_path.read_text(encoding="utf-8")) if health_path.is_file() else None
     dx = evaluate_symptoms(game_id, text, health)
     harness = find_harness_entry(game_id)
-    matrix = score_matrix_text(game_id, text)
+    matrix = score_matrix_text(game_id, read_matrix_logs(game_id) or text[:200000])
 
     if "gs_negative_draw_boxes" in dx.symptoms:
         dx.actions_planned.append(
