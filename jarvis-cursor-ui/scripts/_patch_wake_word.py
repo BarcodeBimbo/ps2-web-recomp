@@ -214,9 +214,4 @@ else:
 
 WI.write_text(text, encoding="utf-8")
 print("wrote", WI)
-"""
-# Fix: the WAKE_FN uses a docstring with escaped regex - need to verify the JS string
-# is correct when written. The PHRASE line has \\\\b in the Python raw string which
-# becomes \\b in the file - then in the JS array string "var PHRASE=/\\bhey..." which
-# is correct for the generated script content inside the array element.
 print("done")

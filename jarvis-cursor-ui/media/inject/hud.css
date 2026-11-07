@@ -23,20 +23,26 @@ body.cortana-inject .monaco-workbench,
 
 /*
  * Title bar (God note): reference-command-center(-2).png / Latest_UI_Update
- * is FULL-BLEED navy glass — no stock Windows caption chrome. While HUD is
- * primary (#cortana-cc-hud), the stock title strip is
- * subsumed (transparent) and only themed min/max/close remain elevated into
- * the HUD chrome. Escape hatch: Focus Mode (#cortana-focus-toggle) reveals
- * IDE chrome with the navy title bar rules below. Do not restore a stock
- * Cursor/Win title strip on top of the HUD for PNG QA.
+ * is FULL-BLEED navy glass — no stock Win caption colliding with OC.
+ * While HUD is primary (#cortana-cc-hud / #jarvis-cc-hud):
+ *   - stock .part.titlebar chrome is subsumed (transparent / no-drag passthrough)
+ *   - themed min/max/close live in a dedicated caption strip (--cortana-caption-w)
+ *   - .jcc-header / .jcc-header-tools reserve that width so .jcc-operator is clear
+ * Escape hatch: Focus Mode (#cortana-focus-toggle) restores the full navy strip.
  */
 /* HUD primary: visually hide stock parts until Focus Mode (no pointer-events blank — click-through HUD) (#cortana-focus-toggle) */
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.activitybar,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.activitybar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.sidebar,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.sidebar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.editor,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.editor,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.panel,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.panel,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.statusbar,
-body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar {
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.statusbar,
+body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar,
+body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar {
   opacity: 0 !important;
 }
 
