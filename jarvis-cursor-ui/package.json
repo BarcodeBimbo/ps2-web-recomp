@@ -2,7 +2,7 @@
   "name": "jarvis-cursor-ui",
   "displayName": "Cursor Command Center UI",
   "description": "Command Center–style dark cyan HUD + large project File Map for Cursor. Visual structure inspired by jarvis.institute; voice and copy are Cursor’s coding agent — not JARVIS persona.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"

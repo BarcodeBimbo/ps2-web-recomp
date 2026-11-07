@@ -1,0 +1,7 @@
+.vscode/**
+.git/**
+**/*.vsix
+media/reference-*.png
+media/reference-*.jpg
+**/node_modules/**
+**/*.map

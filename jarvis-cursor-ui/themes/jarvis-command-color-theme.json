@@ -2,11 +2,11 @@
   "name": "JARVIS Command",
   "type": "dark",
   "colors": {
-    "focusBorder": "#00d4ff66",
+    "focusBorder": "#00d9ff66",
     "foreground": "#c8d6e5",
     "descriptionForeground": "#7a8fa3",
-    "errorForeground": "#ff6b7a",
-    "icon.foreground": "#5ce1ff",
+    "errorForeground": "#ff4757",
+    "icon.foreground": "#00d9ff",
 
     "window.activeBorder": "#0a2540",
     "window.inactiveBorder": "#061018",

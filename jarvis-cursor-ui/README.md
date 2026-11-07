@@ -5,6 +5,8 @@ Local Cursor / VS Code extension: **Command Center layout + cyan HUD theme + lar
 Visual structure is inspired by [jarvis.institute](https://jarvis.institute/) (Microsoft Store Windows assistant, ~$9.99 lifetime).  
 **Voice and copy are Cursor’s coding agent** — not JARVIS / Iron Man persona, wake-words, or “Talk to Jarvis” branding.
 
+**v0.3.0:** Full Command Center dashboard (calibrating splash → core orb, agents, gauges, feed, quick commands) aligned to the reference HUD screenshots.
+
 > Note: `jarvis.institution` / `www.jarvis.institution` do **not** resolve. The product site is **`https://jarvis.institute`**.
 
 ## Marketplace research (context)
