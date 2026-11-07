@@ -1,4 +1,4 @@
-/* cortana-HEALTH: tokens+boot+hud */
+/* CORTANA-HEALTH: tokens+boot+hud */
 /* CORTANA — Phase 6 injection design tokens
    Boot splash authority: media/reference-calibrating-splash.png (boot.css owns bloom)
    CC chrome authority: media/reference-command-center.png / -2.png (VISUAL-SPEC §2.1)
@@ -174,9 +174,14 @@ body.CORTANA-inject {
   --cortana-boot-pip-gap: 14px;
   /* Staged sibling beside workbench.html (set by inject engine binding) */
   --cortana-boot-splash: url(./cortana-boot-splash.png);
-  --cortana-rail-w: 220px;
-  --cortana-rail-w-narrow: 180px;
-  --cortana-header-h: 52px;
+  --cortana-rail-w: 208px;
+  --cortana-rail-w-narrow: 176px;
+  --cortana-header-h: 50px;
+  --cortana-header-icon-border: rgba(0, 212, 255, 0.16);
+  --cortana-header-icon-bg: rgba(0, 15, 36, 0.72);
+  --cortana-header-icon: #40a7ca;
+  --cortana-header-icon-hover: #4ad1f1;
+  --cortana-badge-size: 17px;
   --cortana-footer-h: 72px;
   /* Windows/Cursor REAL caption cluster (min/max/close) — functional skin only */
   --cortana-caption-btn: 46px;

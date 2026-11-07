@@ -43,7 +43,10 @@ const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
 /** Cursor product.json checksums key for the patched workbench HTML. */
 const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.html";
 
-/** CSS inlined in this order (Worker A owns boot.css; Worker B owns hud.css). */
+/**
+ * CSS inlined in this order on Enable (tokens first — all chrome uses --cortana-*).
+ * tokens → boot → hud-photo-assets → hud → chrome palette bind (readCssBundle).
+ */
 const CSS_REL_PATHS = [
   path.join("media", "inject", "tokens.css"),
   path.join("media", "inject", "boot.css"),
@@ -501,6 +504,7 @@ const CSS_HEALTH_NEEDLES = [
   "--cortana-cyan",
   "cortana-boot",
   "media/inject/hud.css",
+  "chrome-bind",
 ];
 
 function extractInjectedStyleCss(html) {
