@@ -8,6 +8,8 @@ Local Cursor / VS Code extension: **full JARVIS Command Center HUD** via **Custo
 
 **v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `jarvis.injection.enabled` = **false** until God enables.
 
+**Boot path:** Calibrating splash runs on **Cursor IDE launch via workbench injection** (`media/inject/boot.css` + `jarvis.injection.bootMs`). There is **no** separate Jarvis splash `.exe` and **no** Windows Startup shortcut for splash. See [`docs/STARTUP-IDE-ONLY.md`](docs/STARTUP-IDE-ONLY.md).
+
 ## Credits & pattern sources
 
 | Source | Link | Role |
@@ -85,8 +87,8 @@ Settings (defaults):
 
 | Setting | Default | Notes |
 |---------|---------|--------|
-| `jarvis.injection.enabled` | `false` | Flip via Enable command / after reconcile |
-| `jarvis.injection.bootMs` | `1200` | Calibrating splash settle time |
+| `jarvis.injection.enabled` | `false` | Flip via Enable command / after reconcile (God + Admin); leave false until then |
+| `jarvis.injection.bootMs` | `1200` | Calibrating splash settle time → injected `--jarvis-boot-ms` |
 | `jarvis.injection.fallbackWebview` | `false` | Keep false so injection stays primary HUD |
 
 ## Commands
@@ -112,6 +114,7 @@ Settings (defaults):
 - Activate: `reconcileOnActivate` with warning + Re-enable after verify when disabled-due-to-update or health-fail
 - When injection is primary, Command Center webview is not force-focused as the HUD
 - README locks: calibrating splash = boot **and** UI look; injection required; overlays out; three fail-safes; God support model
+- IDE-only boot: `bootMs` → `--jarvis-boot-ms` in inject bundle; docs `STARTUP-IDE-ONLY.md` (no Startup splash exe)
 
 ### 0.4.0 — Phases 1–5 baseline
 

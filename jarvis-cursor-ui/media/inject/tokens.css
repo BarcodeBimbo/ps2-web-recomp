@@ -1,7 +1,8 @@
 /* JARVIS-HEALTH: tokens+boot+hud */
 /* JARVIS — Phase 6 injection design tokens
    Visual authority: media/reference-calibrating-splash.png
-   Palette: deep charcoal/navy void + electric cyan neon bloom */
+   Palette: deep charcoal/navy void + electric cyan neon bloom
+   Studio polish: deeper glass / 3D elevation + arc-reactor pulse cadence */
 
 :root,
 .monaco-workbench,
@@ -39,22 +40,59 @@ body.jarvis-inject {
   --jarvis-text-percent: #656c73;
   --jarvis-subtitle: #464950;
 
-  /* —— Borders / glass —— */
+  /* —— Borders / glass (Studio depth) —— */
   --jarvis-border: rgba(0, 242, 255, 0.22);
   --jarvis-border-strong: rgba(0, 242, 255, 0.45);
   --jarvis-border-subtle: rgba(0, 212, 255, 0.12);
   --jarvis-border-solid: #0a3852;
-  --jarvis-glass: rgba(8, 14, 22, 0.82);
-  --jarvis-glass-strong: rgba(5, 10, 18, 0.92);
-  --jarvis-glass-soft: rgba(10, 18, 28, 0.55);
-  --jarvis-glass-blur: 12px;
+  --jarvis-glass: rgba(8, 14, 22, 0.78);
+  --jarvis-glass-strong: rgba(4, 8, 16, 0.94);
+  --jarvis-glass-soft: rgba(10, 18, 28, 0.5);
+  --jarvis-glass-edge: rgba(0, 242, 255, 0.08);
+  --jarvis-glass-blur: 16px;
+  --jarvis-glass-blur-strong: 22px;
 
   /* —— Glow / bloom —— */
   --jarvis-glow: 0 0 8px rgba(0, 242, 255, 0.55), 0 0 24px rgba(0, 212, 255, 0.35), 0 0 48px rgba(0, 212, 255, 0.18);
   --jarvis-glow-soft: 0 0 6px rgba(0, 242, 255, 0.35), 0 0 18px rgba(0, 212, 255, 0.2);
   --jarvis-glow-tight: 0 0 4px rgba(0, 242, 255, 0.7);
+  --jarvis-glow-active: 0 0 10px rgba(0, 242, 255, 0.65), 0 0 28px rgba(0, 212, 255, 0.4), 0 0 56px rgba(0, 212, 255, 0.22);
   --jarvis-text-glow: 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55), 0 0 56px rgba(0, 212, 255, 0.28);
   --jarvis-text-glow-soft: 0 0 6px rgba(0, 242, 255, 0.5), 0 0 16px rgba(0, 212, 255, 0.3);
+
+  /* —— 3D elevation / studio shadows —— */
+  --jarvis-shadow-flat: 0 1px 0 rgba(0, 242, 255, 0.06);
+  --jarvis-shadow-raised:
+    0 1px 0 rgba(0, 242, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  --jarvis-shadow-deep:
+    0 1px 0 rgba(0, 242, 255, 0.1),
+    0 12px 40px rgba(0, 0, 0, 0.65),
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(0, 212, 255, 0.08);
+  --jarvis-shadow-inset:
+    inset 0 1px 0 rgba(0, 242, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    inset 0 0 24px rgba(0, 0, 0, 0.35);
+  --jarvis-shadow-inset-glow:
+    inset 0 1px 0 rgba(0, 242, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 28px rgba(0, 212, 255, 0.06);
+  --jarvis-shadow-panel:
+    0 -2px 0 rgba(0, 242, 255, 0.04),
+    0 -8px 32px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(0, 212, 255, 0.06);
+  --jarvis-shadow-tab-active:
+    inset 0 2px 0 var(--jarvis-cyan),
+    0 0 12px rgba(0, 242, 255, 0.22),
+    0 0 28px rgba(0, 212, 255, 0.12),
+    inset 0 -8px 16px rgba(0, 212, 255, 0.04);
+
+  /* —— Arc-reactor pulse cadence —— */
+  --jarvis-reactor-ms: 2.4s;
+  --jarvis-reactor-glow-lo: 0 0 4px rgba(0, 242, 255, 0.45), 0 0 12px rgba(0, 212, 255, 0.22);
+  --jarvis-reactor-glow-hi: 0 0 8px rgba(0, 242, 255, 0.85), 0 0 22px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.22);
 
   /* —— Status —— */
   --jarvis-ok: #2fa58f;
@@ -89,6 +127,31 @@ body.jarvis-inject {
   --vscode-titleBar-activeBackground: var(--jarvis-bg-deep) !important;
   --vscode-panel-background: var(--jarvis-bg-panel) !important;
   --vscode-focusBorder: rgba(0, 242, 255, 0.55) !important;
+}
+
+/* Shared Studio keyframe — status accents / badges / active indicators */
+@keyframes jarvis-arc-reactor-pulse {
+  0%,
+  100% {
+    box-shadow: var(--jarvis-reactor-glow-lo);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: var(--jarvis-reactor-glow-hi);
+    filter: brightness(1.18);
+  }
+}
+
+@keyframes jarvis-arc-reactor-text {
+  0%,
+  100% {
+    text-shadow: var(--jarvis-text-glow-soft);
+    opacity: 1;
+  }
+  50% {
+    text-shadow: var(--jarvis-text-glow);
+    opacity: 0.92;
+  }
 }
 
 /* JARVIS — probe hook (engine string-search + optional class test) */

@@ -1,6 +1,14 @@
 # Phase 6 — Injection build plan
 
-**Source of truth:** plan `jarvis_pro_recreation_a1985356` (Phases 1–5 completed; Phase 6 NEXT). If this doc disagrees with the plan locks, **the plan wins**.
+> ## PAUSED
+>
+> **Phase 6 is PAUSED** at a safe checkpoint: scaffold on disk (`workbenchInject.js`, `media/inject/*`, `package.json` injection commands); full Studio HUD verify **pending**.
+>
+> Do **not** launch Enable injection against Program Files while paused.
+>
+> **Resume / theme authority:** [`JARVIS-THEME-MASTER.md`](./JARVIS-THEME-MASTER.md)
+
+**Source of truth:** plan `jarvis_pro_recreation_a1985356` (Phases 1–5 completed; Phase 6 **PAUSED**). If this doc disagrees with the plan locks, **the plan wins**.
 
 **God feature lock:** [`GOD-REQUIREMENTS-PHASE6.md`](./GOD-REQUIREMENTS-PHASE6.md) — Studio-tier completeness; all God-listed features **YES** on his theme; unlocked locally; **no Gumroad**; **Active support EXCLUDED**.
 
@@ -60,11 +68,11 @@ Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema
 | Title bar **chrome** (colors/buttons) | **YES** when `window.titleBarStyle` is **custom** | Injected CSS — optional **6.J** |
 | Title bar / app **icon** | **NO** (not CSS-alone) | Resource/icon patch or shortcut — optional **6.J** with 6.I |
 
-## Scaffold status — READY FOR GOD ADMIN ENABLE (fast-track)
+## Scaffold status — **PAUSED** (safe checkpoint)
 
-**Workers do not elevate.** Admin Enable is **God-only** and is **not** a worker gate. Core scaffold (inject engine + CSS + commands + fail-safes) is ready; God runs Enable ASAP while parallel workers continue Studio YES polish.
+Scaffold intact on disk; **Enable injection against Program Files is deferred** until Phase 6 resumes per [`JARVIS-THEME-MASTER.md`](./JARVIS-THEME-MASTER.md).
 
-**God runbook:** [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md)
+**Workers do not elevate.** Admin Enable remains **God-only** when resumed — see [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md). Do **not** run Enable during this pause.
 
 ## Exact first build steps
 
@@ -73,12 +81,12 @@ Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema
 3. ~~`media/inject/{tokens,boot,hud}.css`~~ ✓
 4. ~~settings/commands + `extension.js`~~ ✓
 5. ~~Fail-safes 1–3 in engine + God-as-builder docs~~ ✓
-6. **GOD NOW:** Admin Enable per `GOD-ADMIN-ENABLE.md` (workers skip / never elevate)
-7. Parallel (non-blocking): HUD Studio YES polish (3D/anim/arc/tracking)
+6. **PAUSED** — Admin Enable deferred (do not run against Program Files)
+7. On resume: HUD Studio YES polish + full verify (3D/anim/arc/tracking)
 8. Demote webview / package iterate after God confirms splash+chrome live
 9. Optional 6.I / 6.J only if God schedules
 
-**Do not** wait on Admin Enable to continue polish. **Do not** build overlays. **Do not** implement Active support.
+**Do not** Enable while paused. **Do not** build overlays. **Do not** implement Active support.
 
 ## God-only decisions (defaults if silent)
 

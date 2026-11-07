@@ -41,3 +41,7 @@ Workers **cannot elevate**. God runs Admin Enable manually. Scaffold is ready **
 ## Worker rule
 
 Do **not** wait for Enable. Do **not** attempt elevation. Soft-fail with Admin message only.
+
+## IDE-only boot (no Startup exe)
+
+Splash is workbench-injection only. Prefer opening folder `C:\PS2Recomp` (not dual-open with `E:\PS2Recomp.code-workspace`). Details: [`STARTUP-IDE-ONLY.md`](STARTUP-IDE-ONLY.md).

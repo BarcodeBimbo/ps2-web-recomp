@@ -456,6 +456,22 @@ function readEnabledSetting() {
 // CSS + splash
 // ---------------------------------------------------------------------------
 
+function resolveBootMs() {
+  let bootMs = 1200;
+  try {
+    bootMs = Number(vscode.workspace.getConfiguration("jarvis.injection").get("bootMs", 1200));
+  } catch {
+    bootMs = 1200;
+  }
+  if (!Number.isFinite(bootMs) || bootMs < 0) {
+    bootMs = 1200;
+  }
+  if (bootMs > 10000) {
+    bootMs = 10000;
+  }
+  return Math.round(bootMs);
+}
+
 async function readCssBundle(context) {
   const warnings = [];
   const parts = [];
@@ -470,12 +486,18 @@ async function readCssBundle(context) {
     }
   }
 
+  const bootMs = resolveBootMs();
+
   // CSP img-src allows 'self' and data:. Prefer relative sibling next to workbench.
   // Boot CSS uses bare body::before (sheet only present when patched) — bind URL there too.
+  // jarvis.injection.bootMs overrides tokens.css --jarvis-boot-ms for the calibrating cover.
   parts.push(
     [
       "/* === jarvis staged splash binding === */",
-      `:root { --jarvis-boot-splash: url(./${BOOT_STAGED_NAME}); }`,
+      `:root {`,
+      `  --jarvis-boot-splash: url(./${BOOT_STAGED_NAME});`,
+      `  --jarvis-boot-ms: ${bootMs}ms;`,
+      `}`,
       `body::before,`,
       `#jarvis-boot, .jarvis-boot-splash, body.jarvis-booting, body.jarvis-inject::before, body.jarvis-boot::before {`,
       `  background-image: var(--jarvis-boot-splash, url(./${BOOT_STAGED_NAME}));`,
