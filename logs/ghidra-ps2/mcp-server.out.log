@@ -2,7 +2,7 @@ INFO  Using log config file: jar:file:/C:/Users/joshy/ghidra_12.1.2_PUBLIC/Ghidr
 INFO  Using log file: C:\Users\joshy\AppData\Roaming\ghidramcp\ghidramcp_12.1.2_PUBLIC\application.log (LoggingInitialization)  
 INFO  Searching for classes... (ClassSearcher)  
 INFO  Loading user preferences: C:\Users\joshy\AppData\Roaming\ghidramcp\ghidramcp_12.1.2_PUBLIC\preferences (Preferences)  
-INFO  Class search complete (817 ms) (ClassSearcher)  
+INFO  Class search complete (812 ms) (ClassSearcher)  
 INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
 INFO  Initializing Random Number Generator... (SecureRandomFactory)  
 INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
@@ -14,6 +14,8 @@ WARN  Tool supported content class not found: ghidra.trace.model.Trace (GhidraTo
 INFO  Opening project: C:\Users\joshy\ghidra_projects\PS2Elves (DefaultProject)  
 INFO  Opened project: PS2Elves from C:\Users\joshy\ghidra_projects (HeadlessProgramProvider)  
 Opened project: PS2Elves
+INFO  Removed old presave file: C:\Users\joshy\ghidra_projects\PS2Elves.rep\idata\00\~00000000.db\tmp10753712505545489598.ps (LocalBufferFile)  
+INFO  Removed old presave file: C:\Users\joshy\ghidra_projects\PS2Elves.rep\idata\00\~00000001.db\tmp6261490885914292607.ps (LocalBufferFile)  
 Registered 245 REST API endpoints
 HTTP server started on 127.0.0.1:8089
 GhidraMCP Headless Server v6.0.0-headless running on port 8089
@@ -48,32 +50,32 @@ INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabe
 INFO  Packed database cache: C:\Users\joshy\AppData\Local\ghidramcp\packed-db-cache (PackedDatabaseCache)  
 INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
 INFO  -----------------------------------------------------
-    ASCII Strings                              0.800 secs
-    Apply Data Archives                        0.649 secs
-    Call Convention ID                         0.048 secs
-    Call-Fixup Installer                       0.038 secs
-    Create Address Tables                      0.932 secs
-    Create Function                            0.002 secs
-    DVP Overlay Label Sync                     0.008 secs
-    Data Reference                             0.406 secs
-    Decompiler Switch Analysis                 2.983 secs
-    Demangler GNU                              0.070 secs
-    Disassemble Entry Points                   0.234 secs
-    Embedded Media                             0.136 secs
-    External Entry References                  0.000 secs
+    ASCII Strings                              0.746 secs
+    Apply Data Archives                        1.185 secs
+    Call Convention ID                         0.050 secs
+    Call-Fixup Installer                       0.055 secs
+    Create Address Tables                      1.204 secs
+    Create Function                            0.003 secs
+    DVP Overlay Label Sync                     0.009 secs
+    Data Reference                             0.537 secs
+    Decompiler Switch Analysis                 4.046 secs
+    Demangler GNU                              0.109 secs
+    Disassemble Entry Points                   0.277 secs
+    Embedded Media                             0.187 secs
+    External Entry References                  0.001 secs
     External Symbol Resolver                   0.004 secs
-    Function ID                                0.112 secs
-    Function Start Search                      0.178 secs
-    MIPS-R5900 Constant Reference Analyzer    11.883 secs
-    MIPS-R5900 Unaligned Instruction Fix       0.176 secs
-    Non-Returning Functions - Discovered       1.291 secs
-    Non-Returning Functions - Known            0.046 secs
-    Reference                                  0.443 secs
-    Shared Return Calls                        0.416 secs
-    Stack                                     12.307 secs
-    Subroutine References                      0.901 secs
+    Function ID                                0.146 secs
+    Function Start Search                      0.247 secs
+    MIPS-R5900 Constant Reference Analyzer    16.543 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.229 secs
+    Non-Returning Functions - Discovered       1.741 secs
+    Non-Returning Functions - Known            0.066 secs
+    Reference                                  0.615 secs
+    Shared Return Calls                        0.578 secs
+    Stack                                     14.697 secs
+    Subroutine References                      1.091 secs
 -----------------------------------------------------
-     Total Time   34 secs
+     Total Time   44 secs
 -----------------------------------------------------
  (AutoAnalysisManager)  
 INFO  Fixing Properties... (ConsoleTaskMonitor)  
@@ -105,31 +107,122 @@ WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.967.8' is not byte-map
 INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabelSyncAnalyzer)  
 INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
 INFO  -----------------------------------------------------
-    ASCII Strings                              0.257 secs
-    Apply Data Archives                        0.036 secs
-    Call Convention ID                         0.043 secs
-    Call-Fixup Installer                       0.027 secs
-    Create Address Tables                      0.970 secs
-    Create Function                            0.001 secs
-    DVP Overlay Label Sync                     0.008 secs
-    Data Reference                             0.568 secs
-    Decompiler Switch Analysis                 2.925 secs
-    Demangler GNU                              0.026 secs
-    Disassemble Entry Points                   0.057 secs
-    Embedded Media                             0.026 secs
+    ASCII Strings                              0.255 secs
+    Apply Data Archives                        0.030 secs
+    Call Convention ID                         0.045 secs
+    Call-Fixup Installer                       0.025 secs
+    Create Address Tables                      0.984 secs
+    Create Function                            0.002 secs
+    DVP Overlay Label Sync                     0.007 secs
+    Data Reference                             0.378 secs
+    Decompiler Switch Analysis                 2.874 secs
+    Demangler GNU                              0.022 secs
+    Disassemble Entry Points                   0.065 secs
+    Embedded Media                             0.034 secs
     External Entry References                  0.000 secs
     External Symbol Resolver                   0.001 secs
-    Function ID                                0.002 secs
-    Function Start Search                      0.144 secs
-    MIPS-R5900 Constant Reference Analyzer    15.714 secs
-    MIPS-R5900 Unaligned Instruction Fix       0.112 secs
-    Non-Returning Functions - Discovered       1.289 secs
-    Non-Returning Functions - Known            0.010 secs
-    Reference                                  0.380 secs
-    Shared Return Calls                        0.406 secs
-    Stack                                     15.103 secs
-    Subroutine References                      0.639 secs
+    Function ID                                0.001 secs
+    Function Start Search                      0.182 secs
+    MIPS-R5900 Constant Reference Analyzer    15.039 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.244 secs
+    Non-Returning Functions - Discovered       1.149 secs
+    Non-Returning Functions - Known            0.011 secs
+    Reference                                  0.511 secs
+    Shared Return Calls                        0.443 secs
+    Stack                                     14.937 secs
+    Subroutine References                      0.576 secs
 -----------------------------------------------------
-     Total Time   38 secs
+     Total Time   37 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  Loaded program from project: cnk_boot.elf (HeadlessProgramProvider)  
+INFO  Loaded program from project: cnk_boot.elf (HeadlessProgramProvider)  
+INFO  Loaded program from project: gow_boot.elf (HeadlessProgramProvider)  
+WARN  DVP overlay block '.DVP.overlay..0x0.1740474883.314.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.214627.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.3528035.10.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.4126919515.50.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56370531.12.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56610403.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x200.1740474883.451.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x400.1740474883.194.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.1174.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.647.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.106.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.592.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.3935118283.194.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1059.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1609.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.162.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.603.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1361.9' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1708.10' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2086.11' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2421.12' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.470.6' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.497.7' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.967.8' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabelSyncAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.228 secs
+    Apply Data Archives                        0.029 secs
+    Call Convention ID                         0.031 secs
+    Call-Fixup Installer                       0.015 secs
+    Create Address Tables                      0.933 secs
+    Create Function                            0.000 secs
+    DVP Overlay Label Sync                     0.006 secs
+    Data Reference                             0.291 secs
+    Decompiler Switch Analysis                 2.842 secs
+    Demangler GNU                              0.019 secs
+    Disassemble Entry Points                   0.049 secs
+    Embedded Media                             0.024 secs
+    External Entry References                  0.000 secs
+    External Symbol Resolver                   0.001 secs
+    Function ID                                0.000 secs
+    Function Start Search                      0.144 secs
+    MIPS-R5900 Constant Reference Analyzer    14.872 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.066 secs
+    Non-Returning Functions - Discovered       0.858 secs
+    Non-Returning Functions - Known            0.010 secs
+    Reference                                  0.461 secs
+    Shared Return Calls                        0.330 secs
+    Stack                                     14.607 secs
+    Subroutine References                      0.439 secs
+-----------------------------------------------------
+     Total Time   36 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  Loaded program from project: cnk_boot.elf (HeadlessProgramProvider)  
+ERROR Invalid PNG data at 20659780 (PngDataType)  
+ERROR Invalid PNG data at 30759780 (PngDataType)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.839 secs
+    Apply Data Archives                        0.130 secs
+    Call Convention ID                         0.072 secs
+    Call-Fixup Installer                       0.065 secs
+    Create Address Tables                      0.879 secs
+    Create Address Tables - One Time           2.427 secs
+    Create Function                            0.037 secs
+    Data Reference                             2.305 secs
+    Decompiler Switch Analysis                 7.724 secs
+    Demangler GNU                              0.029 secs
+    Disassemble Entry Points                   0.209 secs
+    Embedded Media                             0.149 secs
+    External Entry References                  0.000 secs
+    External Symbol Resolver                   0.001 secs
+    Function ID                                0.000 secs
+    Function Start Search                      0.309 secs
+    MIPS-R5900 Constant Reference Analyzer    50.057 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.152 secs
+    Non-Returning Functions - Discovered       3.780 secs
+    Non-Returning Functions - Known            0.035 secs
+    Reference                                  2.510 secs
+    Shared Return Calls                        1.377 secs
+    Stack                                     33.286 secs
+    Subroutine References                      2.179 secs
+-----------------------------------------------------
+     Total Time   108 secs
 -----------------------------------------------------
  (AutoAnalysisManager)  

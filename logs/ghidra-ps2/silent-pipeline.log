@@ -23,3 +23,6 @@
 [2026-11-07T06:42:18.5436658-05:00] analysis: {"success":true,"duration_ms":38771,"total_functions":5692,"new_functions":0,"program":"gow_boot.elf"}
 [2026-11-07T06:42:18.7083006-05:00] Wrote C:\PS2Recomp\logs\ghidra-ps2\mcp-cnk_boot.elf.json
 [2026-11-07T06:42:18.7118314-05:00] PIPELINE COMPLETE (silent, no .bat, no elevation)
+[2026-11-07T07:02:49.2207131-05:00] r5900.sla OK (43149 bytes)
+[2026-11-07T07:02:50.4184546-05:00] Starting MCP headless on 127.0.0.1:8089 project=C:\Users\joshy\ghidra_projects\PS2Elves.gpr ghidra=C:\Users\joshy\ghidra_12.1.2_PUBLIC
+[2026-11-07T07:02:53.1856494-05:00] MCP healthy pid=3152 version=6.0.0-headless

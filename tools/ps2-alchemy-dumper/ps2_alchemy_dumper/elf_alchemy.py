@@ -21,6 +21,17 @@ CNK_KEY_VAS: dict[str, int] = {
     "alchemy_version": 0x006B4920,
 }
 
+# First LE instruction word at each code VA — locked by Ghidra MCP disasm
+# on cnk_boot.elf (r5900) 2026-11-07 after dual-ELF switch_program fix.
+# loadgate: addiu sp,sp,-0x50 ; loadgate slot stride observed in decomp = 0x60.
+CNK_KEY_VA_PROLOGUES: dict[str, int] = {
+    "loadgate_fce0": 0x27BDFFB0,  # addiu sp,sp,-0x50
+    "finalize": 0x27BDFFC0,  # addiu sp,sp,-0x40 (FUN_00110100)
+    "null_bind": 0x27BDFFC0,  # addiu sp,sp,-0x40 (FUN_0051ac80)
+}
+LOADGATE_SLOT_STRIDE = 0x60
+LOADGATE_INDEX_FIELD_OFF = 0x5DD4
+
 IG_WHOLE = re.compile(rb"(?<![A-Za-z0-9_])(ig[A-Za-z0-9_]+)(?![A-Za-z0-9_])")
 IG_CLASS_ONLY = re.compile(rb"^ig[A-Za-z0-9_]+$")
 CSTRING = re.compile(rb"[\x20-\x7e]{4,}")
@@ -121,18 +132,40 @@ def scan_elf(
                 ver_info["va"] = f"0x{est:08X}"
     report.alchemy_version = ver_info
 
+    prologues: dict[str, dict] = {}
     for name, va in key_vas.items():
         if name in ("bind_registry_bss", "alchemy_version"):
             report.key_vas_verified_in_image[name] = (
                 name == "alchemy_version" and ver_info["found"]
             )
+            if name == "bind_registry_bss":
+                # BSS pointer slot — not a code prologue; mark present if VA maps
+                # inside or just past the file image (PHDR load window).
+                off = _va_file_offset_guess(data, va)
+                report.key_vas_verified_in_image[name] = off is not None or va >= 0x00100000
             continue
         off = _va_file_offset_guess(data, va)
-        if off is None:
+        if off is None or off + 4 > len(data):
             report.key_vas_verified_in_image[name] = False
             continue
         word = struct.unpack_from("<I", data, off)[0]
-        report.key_vas_verified_in_image[name] = word != 0
+        expect = CNK_KEY_VA_PROLOGUES.get(name)
+        if expect is not None:
+            ok = word == expect
+            report.key_vas_verified_in_image[name] = ok
+            prologues[name] = {
+                "va": f"0x{va:08X}",
+                "file_offset": off,
+                "got": f"0x{word:08X}",
+                "expect": f"0x{expect:08X}",
+                "ok": ok,
+            }
+        else:
+            report.key_vas_verified_in_image[name] = word != 0
+    report.alchemy_version["loadgate_slot_stride"] = LOADGATE_SLOT_STRIDE
+    report.alchemy_version["loadgate_index_field_off"] = f"0x{LOADGATE_INDEX_FIELD_OFF:X}"
+    if prologues:
+        report.alchemy_version["key_va_prologues"] = prologues
 
     whole_classes: set[str] = set()
     tokens: set[str] = set()

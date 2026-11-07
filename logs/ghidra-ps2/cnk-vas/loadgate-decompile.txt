@@ -1,0 +1,75 @@
+﻿
+void FUN_0010fce0(int param_1)
+
+{
+  long lVar1;
+  int iVar2;
+  int iVar3;
+  
+  iVar2 = param_1 + *(int *)(param_1 + 0x5dd4) * 0x60;
+  if (*(int *)(iVar2 + 0x54) == 1) {
+    if (*(int *)(iVar2 + 0x50) == 1) {
+      FUN_00110100(param_1,iVar2 + 8);
+      iVar2 = *(int *)(iVar2 + 0x54);
+      goto LAB_0010fe4c;
+    }
+    *(undefined4 *)(iVar2 + 0x54) = 4;
+  }
+  iVar2 = *(int *)(iVar2 + 0x54);
+LAB_0010fe4c:
+  if (iVar2 == 1) {
+LAB_0010fd6c:
+    iVar2 = *(int *)(param_1 + 0x5dd4);
+  }
+  else {
+    if (iRam006f5748 == 0) goto LAB_0010fed0;
+    FUN_0020ada0(iRam006f5748,1);
+    iVar2 = *(int *)(param_1 + 0x5dd4);
+    while (iVar2 < 0xfa) {
+      iVar2 = param_1 + iVar2 * 0x60;
+      if ((*(int *)(iVar2 + 0x54) == 0) && (*(int *)(iVar2 + 0x50) == 1)) {
+        *(undefined4 *)(iVar2 + 0x54) = 1;
+        if (*(int *)(iVar2 + 0x50) == 1) {
+          FUN_0010ff50(param_1);
+        }
+        else {
+          *(undefined4 *)(iVar2 + 0x54) = 4;
+        }
+        goto LAB_0010fd6c;
+      }
+      *(int *)(param_1 + 0x5dd4) = *(int *)(param_1 + 0x5dd4) + 1;
+LAB_0010fed0:
+      iVar2 = *(int *)(param_1 + 0x5dd4);
+    }
+    iVar2 = *(int *)(param_1 + 0x5dd4);
+  }
+  if (0xf9 < iVar2) {
+    if (*(char *)(iRam00725d48 + 0x18) != '\0') {
+      FUN_0051ac80();
+    }
+    iVar3 = 0;
+    iVar2 = param_1;
+    do {
+      if ((*(int *)(iVar2 + 0x50) != 9) && (*(int *)(iVar2 + 0x54) == 2)) {
+        if (*(int *)(iVar2 + 0x50) == 2) {
+          FUN_00110340(param_1,iVar2 + 8);
+        }
+        *(undefined4 *)(iVar2 + 0x54) = 3;
+      }
+      iVar3 = iVar3 + 1;
+      iVar2 = iVar2 + 0x60;
+    } while (iVar3 < 0xfa);
+    *(undefined1 *)(param_1 + 0x5dc8) = 0;
+    lVar1 = FUN_00110da0(param_1);
+    if ((lVar1 != 0) && (*(char *)(param_1 + 0x5dc8) == '\0')) {
+      FUN_0042d770(param_1 + 8,0xfa,0x60,0x10f880);
+      *(undefined1 *)(param_1 + 0x5dc8) = 1;
+      *(undefined4 *)(param_1 + 0x5dd4) = 0;
+      *(undefined1 *)(param_1 + 0x5dd0) = 1;
+      FUN_0023aae0(*(undefined4 *)(param_1 + 0x5dcc),0x10f9e0,2,0,0x4000);
+    }
+  }
+  return;
+}
+
+

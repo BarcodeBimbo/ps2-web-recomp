@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~06:32 local)  
+**Updated:** 2026-11-07 (~07:09 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -22,7 +22,27 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 ## RESUME POINT — pick up here (do not ask the user to re-explain)
 
-**Session cut-off (prior):** 2026-11-06 ~23:51 local. **Unpaused:** 2026-11-07 ~05:26. **Now (~06:30):** Standing instructions LOCKED. **Active stages:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke drew ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) **Custom PS2 Alchemy dumper** — Phase 1–3 **debug-tested** (`verify` **20/20** exit 0 on CNK); schema 1.1 + class-map; optical still stub (see §9). No runtime edits.
+**Session cut-off (prior):** 2026-11-06 ~23:51 local. **Unpaused:** 2026-11-07 ~05:26. **Now (~07:03):** Standing instructions LOCKED. Master was **stale at ~06:32** (no Ghidra/MCP five-todo block) — refreshed here.
+
+**Background still true:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) Custom PS2 Alchemy dumper Phase 1–3 **verify 20/20** on CNK; schema 1.1; optical stub (§9). **No** disc-fix/R5/CNK runtime patches.
+
+### G) Active five-todo chain — Ghidra MCP / Alchemy RE (2026-11-07 ~07:03) — **PRIMARY RESUME**
+
+Cursor agent todos were **0/5** when this refresh started. Live workspace also had an active silent Ghidra script + CNK boot ELF hash-checked against the AI Browser ISO extract.
+
+| ID | Todo | Status @ 07:03 | Done / evidence | Exact resume next |
+|----|------|----------------|-----------------|-------------------|
+| **p0-mcp** | Finish MCP dual-ELF verify (GoW + CNK on USR Ghidra) | **VERIFIED PASS ~07:08** | `logs/ghidra-ps2/dual-elf-verify.json`: `all_pass=true`. GoW **5692** funcs `r5900:LE:32:default`; CNK **19188** funcs same lang. **Required fix:** `GET /switch_program?program=<name>` after `load_program_from_project` (load alone leaves prior program current). Patched `Run-SilentGhidraPs2.ps1`. | Closed. Loop → p1-ghidra-vas. |
+| **p0-iso** | CNK from Downloads ISO; re-import ELF into Ghidra | **DONE** | AI Browser ISO extract ≡ library boot SHA256 `FA37C064…E204`. | Closed unless new ISO appears. |
+| **p1-plan** | Document next-chain plan; start highest-value Alchemy RE | **NEXT after VA dump** | Highest-value = MIPS RE bind/loadgate/IGB. | Write plan md from VA evidence; keep loop on RE depth. |
+| **p1-ghidra-vas** | MCP: disassemble CNK key VAs (loadgate/bind/GFC) | **IN PROGRESS** | Dual-ELF pass unlocked CNK context. Dump job running → `logs/ghidra-ps2/cnk-key-vas.json` for `0x10FCE0` / `0x110100` / `0x508930` / `0x51AC80` / `0x520160` / `0x725F50`. | Verify each VA returns disasm or defined function; debug empty/miss; then alchemy `verify` re-run exit 0. |
+| **p1-docs** | Write handoff report + update MASTER-CONTEXT | **PARTIAL** | This refresh records dual-ELF PASS. | After VA+alchemy verify: handoff md + §F refresh. |
+
+**Continuous loop standing order (God, ~07:08):** debug → run → verify → repeat until 100% operational. No stop/ask. Master is Bible. Sub-agents plan next **iteration**, not an end.
+
+**Abort/resume note (same morning):** user abort killed MCP pid 18316 + watchers; then “do not abort / resume”; then “stop screen share only”; then autonomous resume of all five todos. Do **not** treat abort as final state — MCP is back up.
+
+**Silent pipeline evidence:** `logs/ghidra-ps2/silent-pipeline.log` (PIPELINE COMPLETE ~06:42); restart `mcp-restart` / `resume-todos.log`; ELF dir `C:\Users\joshy\ghidra_exports\ps2-elves\` (`gow_boot.elf`, `cnk_boot.elf`).
 
 ### A) R1–R5 official SDK audit (research only)
 
@@ -128,17 +148,20 @@ Prior pause index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. 
 | CNK-informed PDF quote harvest | **Written** → `sdk-pdf-quote-harvest-cnk-informed-2026-11-07.md` (AlignReadBuffer still absent from PDFs) |
 | **GoW patient-zero 60 FPS** | Native 3600f smoke **completed** (`logs/gow-patientzero-smoke/`, ~19.2M prims) — browser min60 re-verify still open; no disc-fix/R5/CNK patches |
 | **Custom PS2 Alchemy dumper** | **Phase 1–3 VERIFIED** — `python -m ps2_alchemy_dumper verify` on CNK → **20/20 PASS**; schema 1.1 + `class-map.tsv`; optical stub; see §9 |
+| **USR Ghidra 12.1.2 + EE Reloaded + MCP** | **UP** — `Run-SilentGhidraPs2.ps1`; MCP `:8089` pid 3152; dual-ELF re-verify **in flight** (see §G) |
+| **CNK ELF source** | AI Browser `_cnk_extract\Crash Nitro Kart (USA).iso` → SHA256 `FA37C064…E204` ≡ `ghidra_exports\ps2-elves\cnk_boot.elf` (Downloads had no CNK ISO) |
 | No other intentional long-running installs | — |
 
 ### F) One-liner for next agent
 
-1. Read this **RESUME POINT** + **Standing instructions**.  
-2. SDK audit A/B/E complete — see `verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md`.  
-3. Do **not** patch disc-fix/R5 or apply CNK Alchemy host hacks unless asked.  
-4. **Active:** GoW USA patient-zero 60 FPS (`695b874b…`); prior min60 PASS on disk — re-verify/fix without disc-fix/R5/CNK patches.  
-5. Alchemy isolation tool: `tools/ps2-alchemy-dumper/` — Phase 1–3 **verify 20/20**; next = optical Phase 4 (Windows SPTI) or multi-title `--va-profile`.  
-6. Hard bans: disc-fix / R5 / CNK patches. FPS bar ≥60 non-CNK.  
-7. Periodically refresh this file; safe-commit when stage won’t break R1–R4.
+1. Read this **RESUME POINT** — especially **§G five-todo chain** — + **Standing instructions**.  
+2. **Primary now:** finish **p0-mcp** dual-ELF verify (MCP already on `:8089`), then **p1-ghidra-vas** CNK key VAs, then **p1-plan** + **p1-docs**. **p0-iso** already closed (AI Browser ISO ≡ library boot SHA).  
+3. SDK audit A/B/E complete — see `verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md`.  
+4. Do **not** patch disc-fix/R5 or apply CNK Alchemy host hacks unless asked.  
+5. Parallel/parked: GoW USA patient-zero 60 FPS (`695b874b…`) browser min60 re-verify — no disc-fix/R5/CNK patches.  
+6. Alchemy isolation tool: `tools/ps2-alchemy-dumper/` — Phase 1–3 **verify 20/20**; optical Phase 4 later.  
+7. Hard bans: disc-fix / R5 / CNK patches. FPS bar ≥60 non-CNK.  
+8. Periodically refresh this file; safe-commit when stage won’t break R1–R4.
 
 ---
 

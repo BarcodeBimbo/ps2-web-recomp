@@ -42,8 +42,16 @@ def _sidecar_elf(iso: Path) -> Path | None:
     return cand if cand.is_file() else None
 
 
+def _resolve_iso(args: argparse.Namespace) -> Path:
+    """Accept positional ISO or ``--iso`` alias (MASTER / muscle-memory)."""
+    raw = getattr(args, "iso_flag", None) or getattr(args, "iso", None)
+    if not raw:
+        raise SystemExit("error: ISO path required (positional or --iso)")
+    return Path(raw)
+
+
 def cmd_list_iso(args: argparse.Namespace) -> int:
-    iso = Path(args.iso)
+    iso = _resolve_iso(args)
     with DiscAccess(iso) as disc:
         for e in disc.iter_files():
             kind = "DIR" if e.is_dir else "FILE"
@@ -161,7 +169,8 @@ def _run_map(iso: Path, args: argparse.Namespace) -> tuple[dict, list[str] | Non
 
 
 def cmd_map(args: argparse.Namespace) -> int:
-    iso = Path(args.iso)
+    iso = _resolve_iso(args)
+    args.iso = str(iso)
     out_dir = Path(args.output)
     doc, catalog = _run_map(iso, args)
     written = write_outputs(
@@ -223,11 +232,23 @@ def build_parser() -> argparse.ArgumentParser:
     sub = p.add_subparsers(dest="cmd", required=True)
 
     p_list = sub.add_parser("list-iso", help="List ISO9660 paths with LBA/size")
-    p_list.add_argument("iso", help="Path to disc.iso")
+    p_list.add_argument("iso", nargs="?", default=None, help="Path to disc.iso")
+    p_list.add_argument("--iso", dest="iso_flag", default=None, help="Alias for ISO path")
     p_list.set_defaults(func=cmd_list_iso)
 
     def add_map_args(sp: argparse.ArgumentParser) -> None:
-        sp.add_argument("iso", help="Path to disc.iso")
+        sp.add_argument(
+            "iso",
+            nargs="?",
+            default=None,
+            help="Path to disc.iso (or pass --iso)",
+        )
+        sp.add_argument(
+            "--iso",
+            dest="iso_flag",
+            default=None,
+            help="Alias for positional ISO path",
+        )
         sp.add_argument("-o", "--output", default="out", help="Output directory")
         sp.add_argument("--no-tsv", action="store_true", help="Skip TSV sidecars")
         sp.add_argument(

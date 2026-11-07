@@ -1,0 +1,21 @@
+﻿
+void FUN_00520160(void)
+
+{
+  int *piVar1;
+  undefined8 uVar2;
+  
+  uVar2 = FUN_00508930();
+  piRam00725f50 = (int *)FUN_004d2430(uVar2);
+  uVar2 = FUN_00508930();
+  piVar1 = (int *)FUN_004d28e0(uVar2);
+  *(undefined1 *)(piVar1 + 0xb) = 1;
+  (**(code **)(*piVar1 + 0xd0))();
+  (**(code **)(*piRam00725f50 + 0x54))(piRam00725f50,piVar1);
+  if ((piVar1 != (int *)0x0) && (piVar1[1] = piVar1[1] + -1, (piVar1[1] & 0x7fffffU) == 0)) {
+    FUN_00511940();
+  }
+  return;
+}
+
+

@@ -1,0 +1,43 @@
+﻿00520160: addiu sp,sp,-0x20 
+00520164: sd ra,0x0(sp) 
+00520168: jal 0x00508930 
+0052016c: _nop 
+00520170: jal 0x004d2430 
+00520174: _move a0,v0 
+00520178: lui at,0x72 
+0052017c: jal 0x00508930 
+00520180: _sw v0,0x5f50(at) 
+00520184: jal 0x004d28e0 
+00520188: _move a0,v0 
+0052018c: sw v0,0x1c(sp) 
+00520190: li v1,0x1 
+00520194: lw v0,0x1c(sp) 
+00520198: sb v1,0x2c(v0) 
+0052019c: lw a0,0x1c(sp) 
+005201a0: lw t9,0x0(a0) 
+005201a4: lw t9,0xd0(t9) 
+005201a8: jalr t9 
+005201ac: _nop 
+005201b0: lui at,0x72 
+005201b4: lw a0,0x5f50(at) 
+005201b8: lw t9,0x0(a0) 
+005201bc: lw t9,0x54(t9) 
+005201c0: jalr t9 
+005201c4: _lw a1,0x1c(sp) 
+005201c8: lw a0,0x1c(sp) 
+005201cc: beq a0,zero,0x005201fc 
+005201d0: _nop 
+005201d4: lw v1,0x4(a0) 
+005201d8: addiu v1,v1,-0x1 
+005201dc: sw v1,0x4(a0) 
+005201e0: lw v1,0x4(a0) 
+005201e4: dsll32 v1,v1,0x9 
+005201e8: dsrl32 v1,v1,0x9 
+005201ec: bne v1,zero,0x005201fc 
+005201f0: _nop 
+005201f4: jal 0x00511940 
+005201f8: _nop 
+005201fc: ld ra,0x0(sp) 
+00520200: jr ra 
+00520204: _addiu sp,sp,0x20 
+

@@ -1,0 +1,11 @@
+﻿
+void FUN_00508930(void)
+
+{
+                    /* WARNING: Could not recover jumptable at 0x00508944. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(*piRam00725f00 + 8))(piRam00725f00,3);
+  return;
+}
+
+

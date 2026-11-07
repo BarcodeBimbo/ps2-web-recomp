@@ -1,0 +1,30 @@
+{
+    "path":  "/gow_boot.elf",
+    "name":  "gow_boot.elf",
+    "load":  {
+                 "success":  true,
+                 "program":  "gow_boot.elf",
+                 "path":  "/gow_boot.elf"
+             },
+    "switch":  {
+                   "success":  true,
+                   "switched_to":  "gow_boot.elf",
+                   "path":  "/gow_boot.elf"
+               },
+    "health":  {
+                   "status":  "healthy",
+                   "version":  "6.0.0-headless",
+                   "program_loaded":  true,
+                   "program_name":  "gow_boot.elf"
+               },
+    "info_name":  "gow_boot.elf",
+    "language":  "r5900:LE:32:default",
+    "analysis":  {
+                     "success":  true,
+                     "duration_ms":  36260,
+                     "total_functions":  5692,
+                     "new_functions":  0,
+                     "program":  "gow_boot.elf"
+                 },
+    "pass":  true
+}

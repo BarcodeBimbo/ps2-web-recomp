@@ -1,0 +1,154 @@
+﻿0010fce0: addiu sp,sp,-0x50 
+0010fce4: li a1,0x1 
+0010fce8: sd ra,0x40(sp) 
+0010fcec: sq s3,0x30(sp) 
+0010fcf0: sq s2,0x20(sp) 
+0010fcf4: move s3,a0 
+0010fcf8: sq s1,0x10(sp) 
+0010fcfc: sq s0,0x0(sp) 
+0010fd00: lw a2,0x5dd4(a0) 
+0010fd04: sll v1,a2,0x1 
+0010fd08: addu v1,v1,a2 
+0010fd0c: sll v1,v1,0x5 
+0010fd10: addu v1,s3,v1 
+0010fd14: addiu s0,v1,0x8 
+0010fd18: lw v1,0x54(v1) 
+0010fd1c: bne v1,a1,0x0010fe48 
+0010fd20: _nop 
+0010fd24: lw v1,0x48(s0) 
+0010fd28: beq v1,a1,0x0010fd3c 
+0010fd2c: _nop 
+0010fd30: li v1,0x4 
+0010fd34: b 0x0010fe48 
+0010fd38: _sw v1,0x4c(s0) 
+0010fd3c: jal 0x00110100 
+0010fd40: _move a1,s0 
+0010fd44: b 0x0010fe4c 
+0010fd48: _lw a0,0x4c(s0) 
+0010fd4c: lui v1,0x6f 
+0010fd50: lw a0,0x5748(v1) 
+0010fd54: beq a0,zero,0x0010fed0 
+0010fd58: _nop 
+0010fd5c: jal 0x0020ada0 
+0010fd60: _li a1,0x1 
+0010fd64: b 0x0010fed4 
+0010fd68: _lw a0,0x5dd4(s3) 
+0010fd6c: lw v1,0x5dd4(s3) 
+0010fd70: slti v1,v1,0xfa 
+0010fd74: bne v1,zero,0x0010ff34 
+0010fd78: _nop 
+0010fd7c: lui v0,0x72 
+0010fd80: lw a0,0x5d48(v0) 
+0010fd84: lbu v0,0x18(a0) 
+0010fd88: bne v0,zero,0x0010ff10 
+0010fd8c: _nop 
+0010fd90: move s2,zero 
+0010fd94: move s1,s3 
+0010fd98: lw a0,0x50(s1) 
+0010fd9c: li v0,0x9 
+0010fda0: beq a0,v0,0x0010fdcc 
+0010fda4: _addiu s0,s1,0x8 
+0010fda8: lw v1,0x4c(s0) 
+0010fdac: li v0,0x2 
+0010fdb0: bne v1,v0,0x0010fdcc 
+0010fdb4: _nop 
+0010fdb8: beq a0,v0,0x0010ff20 
+0010fdbc: _nop 
+0010fdc0: li v0,0x1 
+0010fdc4: li v0,0x3 
+0010fdc8: sw v0,0x4c(s0) 
+0010fdcc: addiu s2,s2,0x1 
+0010fdd0: slti v0,s2,0xfa 
+0010fdd4: bne v0,zero,0x0010fd98 
+0010fdd8: _addiu s1,s1,0x60 
+0010fddc: move a0,s3 
+0010fde0: jal 0x00110da0 
+0010fde4: _sb zero,0x5dc8(s3) 
+0010fde8: beq v0,zero,0x0010ff34 
+0010fdec: _nop 
+0010fdf0: lbu v1,0x5dc8(s3) 
+0010fdf4: bne v1,zero,0x0010ff34 
+0010fdf8: _nop 
+0010fdfc: lui a3,0x11 
+0010fe00: addiu a0,s3,0x8 
+0010fe04: li a1,0xfa 
+0010fe08: li a2,0x60 
+0010fe0c: jal 0x0042d770 
+0010fe10: _addiu a3,a3,-0x780 
+0010fe14: li v0,0x1 
+0010fe18: lui a1,0x11 
+0010fe1c: sb v0,0x5dc8(s3) 
+0010fe20: addiu a1,a1,-0x620 
+0010fe24: sw zero,0x5dd4(s3) 
+0010fe28: li a2,0x2 
+0010fe2c: sb v0,0x5dd0(s3) 
+0010fe30: move a3,zero 
+0010fe34: lw a0,0x5dcc(s3) 
+0010fe38: jal 0x0023aae0 
+0010fe3c: _li t0,0x4000 
+0010fe40: b 0x0010ff38 
+0010fe44: _ld ra,0x40(sp) 
+0010fe48: lw a0,0x4c(s0) 
+0010fe4c: li v1,0x1 
+0010fe50: beq a0,v1,0x0010fd6c 
+0010fe54: _nop 
+0010fe58: b 0x0010fd4c 
+0010fe5c: _nop 
+0010fe64: addu v1,v1,a0 
+0010fe68: sll v1,v1,0x5 
+0010fe6c: addu v1,s3,v1 
+0010fe70: addiu a1,v1,0x8 
+0010fe74: lw v1,0x54(v1) 
+0010fe78: bne v1,zero,0x0010fefc 
+0010fe7c: _nop 
+0010fe80: lw a0,0x48(a1) 
+0010fe84: li v1,0x1 
+0010fe88: beq a0,v1,0x0010fe98 
+0010fe8c: _nop 
+0010fe90: b 0x0010fea0 
+0010fe94: _nop 
+0010fe98: b 0x0010fea8 
+0010fe9c: _andi v1,v1,0xff 
+0010fea0: move v1,zero 
+0010fea4: nop 
+0010fea8: beq v1,zero,0x0010fefc 
+0010feac: _nop 
+0010feb0: li a0,0x1 
+0010feb4: sw a0,0x4c(a1) 
+0010feb8: lw v1,0x48(a1) 
+0010febc: beq v1,a0,0x0010feec 
+0010fec0: _move a0,s3 
+0010fec4: li v1,0x4 
+0010fec8: b 0x0010fd6c 
+0010fecc: _sw v1,0x4c(a1) 
+0010fed0: lw a0,0x5dd4(s3) 
+0010fed4: slti v1,a0,0xfa 
+0010fed8: bne v1,zero,0x0010fe64 
+0010fedc: _sll v1,a0,0x1 
+0010fee0: b 0x0010fd70 
+0010fee4: _lw v1,0x5dd4(s3) 
+0010feec: jal 0x0010ff50 
+0010fef0: _nop 
+0010fef4: b 0x0010fd6c 
+0010fef8: _nop 
+0010fefc: lw v1,0x5dd4(s3) 
+0010ff00: addiu v1,v1,0x1 
+0010ff04: b 0x0010fed0 
+0010ff08: _sw v1,0x5dd4(s3) 
+0010ff10: jal 0x0051ac80 
+0010ff14: _nop 
+0010ff18: b 0x0010fd94 
+0010ff1c: _move s2,zero 
+0010ff20: move a0,s3 
+0010ff24: jal 0x00110340 
+0010ff28: _move a1,s0 
+0010ff2c: b 0x0010fdc8 
+0010ff30: _li v0,0x3 
+0010ff34: ld ra,0x40(sp) 
+0010ff38: lq s3,0x30(sp) 
+0010ff3c: lq s2,0x20(sp) 
+0010ff40: lq s1,0x10(sp) 
+0010ff44: lq s0,0x0(sp) 
+0010ff48: jr ra 
+0010ff4c: _addiu sp,sp,0x50 
+

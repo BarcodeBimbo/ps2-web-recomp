@@ -1,0 +1,30 @@
+{
+    "path":  "/cnk_boot.elf",
+    "name":  "cnk_boot.elf",
+    "load":  {
+                 "success":  true,
+                 "program":  "cnk_boot.elf",
+                 "path":  "/cnk_boot.elf"
+             },
+    "switch":  {
+                   "success":  true,
+                   "switched_to":  "cnk_boot.elf",
+                   "path":  "/cnk_boot.elf"
+               },
+    "health":  {
+                   "status":  "healthy",
+                   "version":  "6.0.0-headless",
+                   "program_loaded":  true,
+                   "program_name":  "cnk_boot.elf"
+               },
+    "info_name":  "cnk_boot.elf",
+    "language":  "r5900:LE:32:default",
+    "analysis":  {
+                     "success":  true,
+                     "duration_ms":  108750,
+                     "total_functions":  19188,
+                     "new_functions":  57,
+                     "program":  "cnk_boot.elf"
+                 },
+    "pass":  true
+}

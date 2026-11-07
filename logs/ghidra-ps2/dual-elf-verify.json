@@ -1,0 +1,11 @@
+{
+    "at":  "2026-11-07T07:08:36.8828977-05:00",
+    "gow_pass":  true,
+    "cnk_pass":  true,
+    "gow_funcs":  5692,
+    "cnk_funcs":  19188,
+    "gow_lang":  "r5900:LE:32:default",
+    "cnk_lang":  "r5900:LE:32:default",
+    "all_pass":  true,
+    "fix":  "GET /switch_program?program=\u003cname\u003e after load_program_from_project"
+}

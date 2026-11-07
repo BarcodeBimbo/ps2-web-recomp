@@ -1,0 +1,117 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] games/695b874b308a4e5353767bb6df8ba697/disc.iso: 16 files, 4161520 sectors, layer 1 at 2080544
+[mc] card in slot 1: C:\PS2Recomp\logs\live-smoke-695b874b308a4e5353767bb6df8ba697\card.ps2 (new, unformatted)
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[vu0] cfc2 28
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP300.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP300.IMG;1 reports 3000, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP300.IMG;1 reports 3000
+[loadfile] cdrom0:\SIO2MAN.IRX;1
+[loadfile] cdrom0:\DBCMAN.IRX;1
+[loadfile] cdrom0:\SIO2D.IRX;1
+[loadfile] cdrom0:\MC2_D.IRX;1
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[loadfile] cdrom0:\DS2U_D.IRX;1
+[loadfile] cdrom0:\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00031B88)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00031B8C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00031BA8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00031BB8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00031BE4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00031BE8)
+[loadfile] cdrom0:\989NOMID.IRX;1
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000-2003 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v3.1.7
+[iop-tty]                         (built Dec 21 2004 at 14:30:44)
+[iop-tty]                                          (pre-release 12)
+[iop-tty] 
+[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds
+[iop-tty]                   (banks and streams only)
+[iop-tty] 
+[iop-tty]  (build with sce library rev 3.0.1)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 64
+[iop-tty]                         Loading RPC = 65
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty] ==========================================================
+[iop-tty] 
+[loadfile] cdrom0:\SMPD_IOP.IRX;1
+[loadfile] buffer at 0x68800, 857 bytes
+[iop] missing cdvdman #50 called from 0x0005CC14
+[iop-tty] ============================
+[iop-tty] gCollectorLatch    = 1d
+[iop-tty] gDECISemaphore     = 12
+[iop-tty] gStreamerSemaphore = 13
+[iop-tty] gDiscReadSemaphore = 1b
+[iop-tty] gReadLatch         = 19
+[iop-tty] gWriteLatch        = 1a
+[iop-tty] gSynchReadLatch    = 1c
+[iop-tty] ============================
+[iop-tty] gReadThread        = 1b
+[iop-tty] gWriteThread       = 1c
+[iop-tty] gCollectorThread   = 1d
+[iop-tty] ============================
+[io] write 0x1000F590 = 0x10000 (pc 0x0027959C)
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 2 wait 0/12 pc 0x0017A205 ra 0x0017A36C
+[thread]   stack: 0023D8EC 00233B28 0017A8A4 0017A9F8 0017AA40 00138DC8 001001C8
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00293C68 ra 0x00294810
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/9 pc 0x00293C68 ra 0x0027CC08
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 9 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 DBCMAN at 0x00021100
+[iop] module 3 SIO2D at 0x00026300
+[iop] module 4 MC2_D at 0x00029100
+[iop] module 5 DS2U_D at 0x0002DF00
+[iop] module 6 LIBSD at 0x00030600
+[iop] module 7 989NOMID at 0x00036000
+[iop] module 8 SMPD_IOP at 0x0005E200
+[iop] module 9 ck01 at 0x0005CC00
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 20 wait 8/147072 pc 0x00001020
+[iop] thread 5 status 4 prio 20 wait 8/147096 pc 0x00001020
+[iop] thread 6 status 4 prio 20 wait 8/147120 pc 0x00001020
+[iop] thread 7 status 4 prio 20 wait 8/147144 pc 0x00001020
+[iop] thread 8 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 9 status 4 prio 46 wait 7/1 pc 0x00026E10
+[iop] thread 10 status 16 prio 8 wait 0/1 pc 0x00001010
+[iop] thread 11 status 4 prio 104 wait 7/1 pc 0x00029570
+[iop] thread 12 status 16 prio 104 wait 0/0 pc 0x00000000
+[iop] thread 13 status 16 prio 8 wait 0/1 pc 0x00001010
+[iop] thread 14 status 2 prio 46 wait 0/0 pc 0x0002E140
+[iop] thread 15 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 18 status 4 prio 64 wait 8/1964424 pc 0x00001020
+[iop] thread 19 status 4 prio 65 wait 8/1960328 pc 0x00001020
+[iop] thread 20 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 21 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 22 status 4 prio 9 wait 1/0 pc 0x0003D848
+[iop] thread 23 status 4 prio 60 wait 3/21 pc 0x0004CCEC
+[iop] thread 24 status 4 prio 62 wait 3/20 pc 0x00049B64
+[iop] thread 25 status 4 prio 61 wait 3/22 pc 0x0004D0EC
+[iop] thread 26 status 4 prio 63 wait 3/23 pc 0x0004B72C
+[iop] thread 27 status 4 prio 66 wait 3/25 pc 0x00063404
+[iop] thread 28 status 4 prio 66 wait 3/26 pc 0x000637BC
+[iop] thread 29 status 4 prio 80 wait 3/29 pc 0x0005F218
+[iop] thread 30 status 4 prio 80 wait 3/30 pc 0x000622EC
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1568 submits, dispatches: upload 6524 copy_read 0 copy_write 0 load_clut 7686 display 4 raster 62626 resolve 0 snapshot 16896 decode 30395
+[gs] 16264671 primitives drawn, register writes: 00:811853 01:142033 05:16507569 06:37335 07:20028 08:37335 09:2107 0D:21220967 14:37335 15:4218 18:38768 19:11840 1A:2634 1B:5048 34:35233 36:35233 3B:55795 3F:25761 40:38768 41:11769 42:37831 43:23273 45:1126 46:17990 47:59897 48:33883 4C:3375 4D:42548 4E:38768 4F:33883 50:6748 51:6748 52:6748 53:6748 61:2256
+[ipu] commands: 0:12 2:3245 3:11744 4:3846 5:6 6:2 7:4 9:2 stalls 12 out 309360 qwords, busy 0 decoding 0 cmd 0x00000013 in 128 bytes bit 19 out 0
+[dma] starts: ch0=1 ch1=2256 ch2=0 ch3=3249 ch4=19 ch5=0 ch6=0 ch7=0 ch8=1270 ch9=4609
+[gif] path 1 tags: packed 1556078 reglist 0 image 0
+[gif] path 2 tags: packed 107941 reglist 0 image 6748
+[gif] path 3 tags: packed 0 reglist 0 image 0
+[vif0] 00:5 01:1 4A:1 6C:1
+[vif1] 00:5070672 01:1638750 02:164115 03:164115 04:275985 05:642961 06:1 07:2256 10:34569 11:35472 14:743814 20:1 30:311995 4A:34567 50:52424 60:64638 64:3163 65:829476 6A:334118 6C:1667079 6D:741712 6E:686164
+[ee] stopped after 1200 frames, 5901199184 cycles: frame limit reached

@@ -1,0 +1,63 @@
+﻿0051ac80: addiu sp,sp,-0x40 
+0051ac84: sd ra,0x20(sp) 
+0051ac88: sq s1,0x10(sp) 
+0051ac8c: sq s0,0x0(sp) 
+0051ac90: lbu v1,0x18(a0) 
+0051ac94: beq v1,zero,0x0051ad64 
+0051ac98: _move s0,a0 
+0051ac9c: sb zero,0x18(s0) 
+0051aca0: addiu a0,sp,0x3c 
+0051aca4: lw a1,0x1c(s0) 
+0051aca8: move a2,zero 
+0051acac: lw t9,0x0(a1) 
+0051acb0: lw t9,0x5c(t9) 
+0051acb4: jalr t9 
+0051acb8: _li a3,0x1 
+0051acbc: lui at,0x72 
+0051acc0: lw a0,0x5f50(at) 
+0051acc4: lw t9,0x0(a0) 
+0051acc8: lw t9,0x50(t9) 
+0051accc: jalr t9 
+0051acd0: _lw s1,0x20(s0) 
+0051acd4: lw t9,0x0(v0) 
+0051acd8: move a2,s1 
+0051acdc: addiu a0,sp,0x38 
+0051ace0: lw t9,0x54(t9) 
+0051ace4: jalr t9 
+0051ace8: _move a1,v0 
+0051acec: jal 0x005170a0 
+0051acf0: _lw a0,0x1c(s0) 
+0051acf4: lw a0,0x1c(s0) 
+0051acf8: beq a0,zero,0x0051ad28 
+0051acfc: _nop 
+0051ad00: lw v1,0x4(a0) 
+0051ad04: addiu v1,v1,-0x1 
+0051ad08: sw v1,0x4(a0) 
+0051ad0c: lw v1,0x4(a0) 
+0051ad10: dsll32 v1,v1,0x9 
+0051ad14: dsrl32 v1,v1,0x9 
+0051ad18: bne v1,zero,0x0051ad28 
+0051ad1c: _nop 
+0051ad20: jal 0x00511940 
+0051ad24: _nop 
+0051ad28: sw zero,0x1c(s0) 
+0051ad2c: lw a0,0x20(s0) 
+0051ad30: beq a0,zero,0x0051ad60 
+0051ad34: _nop 
+0051ad38: lw v1,0x4(a0) 
+0051ad3c: addiu v1,v1,-0x1 
+0051ad40: sw v1,0x4(a0) 
+0051ad44: lw v1,0x4(a0) 
+0051ad48: dsll32 v1,v1,0x9 
+0051ad4c: dsrl32 v1,v1,0x9 
+0051ad50: bne v1,zero,0x0051ad60 
+0051ad54: _nop 
+0051ad58: jal 0x00511940 
+0051ad5c: _nop 
+0051ad60: sw zero,0x20(s0) 
+0051ad64: ld ra,0x20(sp) 
+0051ad68: lq s1,0x10(sp) 
+0051ad6c: lq s0,0x0(sp) 
+0051ad70: jr ra 
+0051ad74: _addiu sp,sp,0x40 
+

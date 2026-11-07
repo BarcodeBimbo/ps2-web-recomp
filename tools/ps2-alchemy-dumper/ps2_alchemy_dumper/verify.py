@@ -98,6 +98,23 @@ def verify_alchemy_map(doc: dict[str, Any], *, profile: str = "cnk") -> list[dic
         elf.get("igb_raw_hits") == exp["igb_raw_hits"],
         f"got {elf.get('igb_raw_hits')} (A1 raw .igb count)",
     )
+
+    # Ghidra MCP 2026-11-07: code VAs must match locked MIPS prologues in-image.
+    verified = elf.get("key_vas_verified_in_image") or {}
+    for va_name in ("loadgate_fce0", "finalize", "null_bind", "factory", "bind_install"):
+        add(
+            f"key_va_{va_name}",
+            verified.get(va_name) is True,
+            f"verified_in_image={verified.get(va_name)}",
+        )
+    prologues = (elf.get("alchemy_version") or {}).get("key_va_prologues") or {}
+    for va_name in ("loadgate_fce0", "finalize", "null_bind"):
+        info = prologues.get(va_name) or {}
+        add(
+            f"prologue_{va_name}",
+            bool(info.get("ok")),
+            f"got {info.get('got')} expect {info.get('expect')}",
+        )
     add(
         "igb_path_strings",
         (elf.get("igb_path_strings") or 0) >= exp["igb_path_strings_min"],
