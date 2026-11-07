@@ -86,7 +86,7 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **R3 landed (only behavioral CDVD code so far):** set `b1len`/`b2len` when dest1/dest2 fed; unaligned head/tail staging (+16/+80). Did **not** touch CdSync wake, WaitSema, or CNK.
 
-**CDVD ranked path R1–R4 is done.** Next options: parent **joint-stable commit** when asked; optional separate **R5 pad/sound** track; longer soak. Disc-fix will not auto-commit.
+**CDVD ranked path R1–R4 is done.** Joint-stable marker: commit `1e04172` + `verification/recovery/DISCFIX-R1-R4-STABLE.md` (behavioral code already in `cdvdfsv.cpp` from earlier apply). Next: optional **R5 pad/sound**; push when ready.
 
 **Quarantine:** Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.
 
