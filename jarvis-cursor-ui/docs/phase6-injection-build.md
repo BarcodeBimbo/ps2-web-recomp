@@ -60,28 +60,34 @@ Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema
 | Title bar **chrome** (colors/buttons) | **YES** when `window.titleBarStyle` is **custom** | Injected CSS — optional **6.J** |
 | Title bar / app **icon** | **NO** (not CSS-alone) | Resource/icon patch or shortcut — optional **6.J** with 6.I |
 
+## Scaffold status — READY FOR GOD ADMIN ENABLE (fast-track)
+
+**Workers do not elevate.** Admin Enable is **God-only** and is **not** a worker gate. Core scaffold (inject engine + CSS + commands + fail-safes) is ready; God runs Enable ASAP while parallel workers continue Studio YES polish.
+
+**God runbook:** [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md)
+
 ## Exact first build steps
 
-1. Confirm locks (boot = calibrating; chrome = command-center; no overlays; Studio YES; Active support EXCLUDED).
-2. Create `src/workbenchInject.js` skeleton (`onActivateGate`, fingerprint, inject, teardown, health stubs).
-3. Create `media/inject/tokens.css` + `boot.css` (calibrating cover + calibrated “30%” palette tokens).
-4. Add `jarvis.injection.enabled` / `bootMs` / `fallbackWebview` + enable/disable/re-enable/health commands; wire `extension.js`.
-5. Implement fail-safes 1–2 on skeleton; README fail-safe 3 as God-as-builder (**not** active support) + fix boot/chrome wording; keep GOD-REQUIREMENTS synced.
-6. Manual test: enable → boot → disable restores stock; fake fingerprint → auto-disable; break marker → auto-disable.
-7. Then `hud.css` / HUD DOM: 3D depth, animation, arc pulses, tracking, activity-aware responses + bridge Studio YES modules + classic/icon completeness.
-8. Demote `commandCenterView`; package when acceptance passes.
-9. Optional: 6.I / 6.J only if God schedules taskbar/.ico + title-bar work.
+1. ~~Confirm locks~~ ✓
+2. ~~`workbenchInject.js`~~ ✓
+3. ~~`media/inject/{tokens,boot,hud}.css`~~ ✓
+4. ~~settings/commands + `extension.js`~~ ✓
+5. ~~Fail-safes 1–3 in engine + God-as-builder docs~~ ✓
+6. **GOD NOW:** Admin Enable per `GOD-ADMIN-ENABLE.md` (workers skip / never elevate)
+7. Parallel (non-blocking): HUD Studio YES polish (3D/anim/arc/tracking)
+8. Demote webview / package iterate after God confirms splash+chrome live
+9. Optional 6.I / 6.J only if God schedules
 
-**Do not** port entire webview HTML first. **Do not** build overlays. **Do not** implement Active support. Order: scaffold → fail-safes → boot → HUD (Studio YES) → demote → package → optional icons.
+**Do not** wait on Admin Enable to continue polish. **Do not** build overlays. **Do not** implement Active support.
 
 ## God-only decisions (defaults if silent)
 
 | ID | Topic | Default |
 |----|--------|---------|
 | D1 | Boot asset | **Resolved** — calibrating splash |
-| D2 | Inject host | In-repo workbench patch loading our CSS/JS (no required third-party CSS extension) |
+| D2 | Inject host | **Resolved** — Rank-1 Custom CSS Loader in-repo |
 | D3 | Legacy Command Center webview | Fallback only (`jarvis.injection.fallbackWebview` default false) |
-| D4 | Install-dir write / elevation | Soft-fail clear message; never half-patch |
+| D4 | Install-dir write / elevation | **LOCKED:** Workers soft-fail only; **God runs Admin Enable manually** — see `GOD-ADMIN-ENABLE.md` |
 | D5 | Fingerprint | `vscode.version` + product.json version when readable (± workbench hash) |
 | D6 | Studio YES / no Gumroad | **Resolved** — full Studio column YES; unlocked locally |
 | D7 | Active support | **Resolved — EXCLUDED**; fail-safe 3 = God-as-builder only |
