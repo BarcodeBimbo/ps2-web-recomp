@@ -46,14 +46,21 @@ body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbe
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar,
 body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.auxiliarybar {
   opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 #cortana-focus-toggle.jcc-focus-check {
-  position: absolute;
+  position: fixed;
+  left: -10000px;
+  top: auto;
   width: 1px;
   height: 1px;
+  margin: 0;
   opacity: 0;
   pointer-events: none;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 /* FAB restore chip — hidden while HUD primary; never z-fight #cortana-cc-hud (99990).
@@ -81,10 +88,11 @@ body:has(#jarvis-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbe
   box-shadow: 0 0 18px rgba(0, 212, 255, 0.35);
   cursor: pointer;
   text-transform: uppercase;
-  z-index: 100;
+  z-index: 1;
 }
 
-body:has(#cortana-focus-toggle:checked) #cortana-cc-hud {
+body:has(#cortana-focus-toggle:checked) #cortana-cc-hud,
+body:has(#cortana-focus-toggle:checked) #jarvis-cc-hud {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -98,11 +106,11 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   visibility: visible;
   pointer-events: auto;
   position: fixed;
-  right: 16px;
-  bottom: 48px;
-  z-index: 100;
+  right: var(--cortana-focus-fab-right, 16px);
+  bottom: var(--cortana-focus-fab-bottom, 48px);
+  z-index: 100002;
 
-  /* Keep chip-sized; never stretch */
+  /* Keep chip-sized; never stretch — no full-viewport hit target */
   inset: auto;
   width: auto;
   height: auto;
@@ -861,6 +869,7 @@ html.cortana-inject-probe::after {
    ========================================================================== */
 
 #cortana-cc-hud.cortana-cc-hud,
+#jarvis-cc-hud.jarvis-cc-hud,
 .cortana-cc-hud {
   position: fixed;
   inset: 0;
@@ -884,33 +893,85 @@ html.cortana-inject-probe::after {
   animation: cortana-cc-reveal 0.7s ease forwards;
   animation-delay: calc(var(--cortana-boot-ms, 1800ms) * 0.72);
   transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
-  pointer-events: none;
+  /* HUD primary must capture clicks — click-through shell caused dead nav/mic/talk */
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
 }
 
+/* Decorative layers never steal hits */
+#cortana-cc-hud .jcc-particles,
+#jarvis-cc-hud .jcc-particles,
+#cortana-cc-hud .jcc-tech-line,
+#jarvis-cc-hud .jcc-tech-line,
+#cortana-cc-hud .jcc-brand,
+#jarvis-cc-hud .jcc-brand,
+#cortana-cc-hud .jcc-brand-chrome,
+#jarvis-cc-hud .jcc-brand-chrome,
+#cortana-cc-hud .jcc-brand-text,
+#jarvis-cc-hud .jcc-brand-text {
+  pointer-events: none !important;
+}
 
-/* Click-through HUD shell — only interactive chrome captures input */
 #cortana-cc-hud .jcc-rail,
+#jarvis-cc-hud .jcc-rail,
+#cortana-cc-hud .jcc-main,
+#jarvis-cc-hud .jcc-main,
+#cortana-cc-hud .jcc-grid,
+#jarvis-cc-hud .jcc-grid,
 #cortana-cc-hud .jcc-footer,
+#jarvis-cc-hud .jcc-footer,
 #cortana-cc-hud .jcc-header,
+#jarvis-cc-hud .jcc-header,
 #cortana-cc-hud button,
+#jarvis-cc-hud button,
 #cortana-cc-hud a,
-#cortana-cc-hud label,
-#cortana-cc-hud input,
-#cortana-cc-hud select,
-#cortana-cc-hud textarea,
+#jarvis-cc-hud a,
+#cortana-cc-hud label.jcc-focus,
+#jarvis-cc-hud label.jcc-focus,
 #cortana-cc-hud .jcc-talk,
+#jarvis-cc-hud .jcc-talk,
+#cortana-cc-hud .jcc-talk-wrap,
+#jarvis-cc-hud .jcc-talk-wrap,
 #cortana-cc-hud .jcc-nav,
+#jarvis-cc-hud .jcc-nav,
 #cortana-cc-hud .jcc-nav-item,
+#jarvis-cc-hud .jcc-nav-item,
 #cortana-cc-hud .jcc-voice,
+#jarvis-cc-hud .jcc-voice,
 #cortana-cc-hud .jcc-mic,
+#jarvis-cc-hud .jcc-mic,
 #cortana-cc-hud .jcc-mic-hint,
-#cortana-cc-hud .jcc-focus,
+#jarvis-cc-hud .jcc-mic-hint,
 #cortana-cc-hud .jcc-icon-btn,
+#jarvis-cc-hud .jcc-icon-btn,
 #cortana-cc-hud .jcc-search,
+#jarvis-cc-hud .jcc-search,
 #cortana-cc-hud .jcc-panel,
+#jarvis-cc-hud .jcc-panel,
+#cortana-cc-hud .jcc-briefing,
+#jarvis-cc-hud .jcc-briefing,
+#cortana-cc-hud .jcc-status-pill,
+#jarvis-cc-hud .jcc-status-pill,
+#cortana-cc-hud .jcc-operator,
+#jarvis-cc-hud .jcc-operator,
 #cortana-cc-hud [data-cortana-action="voice"],
-.jcc-focus-fab {
+#jarvis-cc-hud [data-cortana-action="voice"],
+body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   pointer-events: auto !important;
+  cursor: default;
+}
+
+#cortana-cc-hud button,
+#jarvis-cc-hud button,
+#cortana-cc-hud a.jcc-nav-item,
+#jarvis-cc-hud a.jcc-nav-item,
+#cortana-cc-hud .jcc-briefing,
+#jarvis-cc-hud .jcc-briefing,
+#cortana-cc-hud label.jcc-focus,
+#jarvis-cc-hud label.jcc-focus,
+body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
+  cursor: pointer;
 }
 
 @keyframes cortana-cc-reveal {
@@ -1067,6 +1128,16 @@ html.cortana-inject-probe::after {
   white-space: nowrap;
 }
 
+.jcc-brand-suite {
+  font-size: clamp(5px, 0.52vw, 7px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(122, 168, 184, 0.85);
+  margin-top: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .jcc-nav {
   display: flex;
   flex-direction: column;
@@ -1159,6 +1230,11 @@ html.cortana-inject-probe::after {
 
 .jcc-badge[data-count]::before {
   content: attr(data-count);
+}
+
+/* Voice + Focus pin to rail bottom (reference photo) */
+.jcc-rail > .jcc-voice {
+  margin-top: auto;
 }
 
 /* Voice status — rail footer block (clickable → Cursor voice) */
@@ -1464,6 +1540,33 @@ html.cortana-inject-probe::after {
   background: rgba(0, 30, 50, 0.5);
   font-size: 10px;
   color: var(--cortana-text);
+}
+
+.jcc-op-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  line-height: 1.1;
+  min-width: 0;
+}
+
+.jcc-op-role {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cortana-text-dim);
+}
+
+.jcc-op-name,
+.jcc-op-stack .jcc-op-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--cortana-text-bright);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .jcc-op-av {

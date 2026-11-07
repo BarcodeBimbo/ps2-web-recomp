@@ -546,6 +546,8 @@ function stripHudMarkup(html) {
     .replace(/<script[^>]*id=["']cortana-hud-wave-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-voice-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-wake-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<script[^>]*id=["']cortana-hud-interact-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<style[^>]*id=["']cortana-hud-interact-css["'][\s\S]*?<\/style>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
 }
 
@@ -789,7 +791,18 @@ async function readHudMarkup(context) {
   const waveScript = buildHudWaveScript();
   const voiceScript = buildHudVoiceScript();
   const wakeScript = buildHudWakeScript();
-  return { markup, clockScript, liveScript, waveScript, voiceScript, wakeScript };
+  const interactStyle = buildHudInteractStyle();
+  const interactScript = buildHudInteractScript();
+  return {
+    markup,
+    clockScript,
+    liveScript,
+    waveScript,
+    voiceScript,
+    wakeScript,
+    interactStyle,
+    interactScript,
+  };
 }
 
 /**
@@ -1118,15 +1131,186 @@ function buildHudWakeScript() {
   return `<script id="cortana-hud-wake-script">${body}</script>`;
 }
 
+/** Mic-driven talk meter + rail/capsule waveform level (pairs with voice/wake publishMic). */
+function buildHudWaveScript() {
+  const body = [
+    "(function(){",
+    "if(window.__cortanaWaveWired)return;window.__cortanaWaveWired=true;",
+    "function meterBar(){return document.getElementById('cortana-talk-meter-bar');}",
+    "function waveNodes(){",
+    "try{return document.querySelectorAll('#cortana-cc-hud .jcc-wave.voice,#cortana-cc-hud .jcc-talk-wave');}",
+    "catch(e){return[];}",
+    "}",
+    "var ctx=null,raf=0;",
+    "function stopLoop(){if(raf){cancelAnimationFrame(raf);raf=0;}}",
+    "function startLoop(stream){",
+    "if(!stream||!stream.active)return;",
+    "stopLoop();",
+    "try{",
+    "var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;",
+    "if(!ctx)ctx=new AC();",
+    "if(ctx.state==='suspended'){try{ctx.resume();}catch(e){}}",
+    "var src=ctx.createMediaStreamSource(stream);",
+    "var an=ctx.createAnalyser();an.fftSize=256;src.connect(an);",
+    "var data=new Uint8Array(an.frequencyBinCount);",
+    "function tick(){",
+    "an.getByteFrequencyData(data);var s=0,i;for(i=0;i<data.length;i++)s+=data[i];",
+    "var n=Math.min(100,Math.round((s/data.length)/1.65));",
+    "var bar=meterBar();if(bar)bar.style.width=n+'%';",
+    "var nodes=waveNodes();for(i=0;i<nodes.length;i++){nodes[i].setAttribute('data-level',String(n));}",
+    "raf=requestAnimationFrame(tick);",
+    "}",
+    "tick();",
+    "}catch(e){}",
+    "}",
+    "window.__cortanaOnMicStream=function(stream,meta){",
+    "if(stream&&stream.active)startLoop(stream);else stopLoop();",
+    "};",
+    "window.addEventListener('cortana-mic-stream',function(ev){",
+    "var d=ev&&ev.detail;if(d&&d.stream)startLoop(d.stream);",
+    "});",
+    "if(window.__cortanaMicStream&&window.__cortanaMicStream.active)startLoop(window.__cortanaMicStream);",
+    "})();",
+  ].join("");
+  return `<script id="cortana-hud-wave-script">${body}</script>`;
+}
 
-function buildHudBlock({ uuid, markup, clockScript, liveScript, voiceScript, wakeScript }) {
+/**
+ * Pointer-events patch: HUD shell is click-through; main column + footer chrome
+ * must explicitly capture input (Worker WIRE — inject engine, not full hud.css rewrite).
+ */
+function buildHudInteractStyle() {
+  return [
+    `<style id="cortana-hud-interact-css">`,
+    "/* CORTANA-HEALTH: interact-pointer */",
+    "#cortana-cc-hud .jcc-main,",
+    "#cortana-cc-hud .jcc-grid,",
+    "#cortana-cc-hud .jcc-footer,",
+    "#cortana-cc-hud .jcc-talk-wrap,",
+    "#cortana-cc-hud .jcc-cmd,",
+    "#cortana-cc-hud .jcc-briefing,",
+    "#cortana-cc-hud .jcc-memory-map,",
+    "#cortana-cc-hud .jcc-operator,",
+    "#cortana-cc-hud .jcc-status-pill,",
+    "#cortana-cc-hud .jcc-clock-wrap,",
+    "#cortana-cc-hud .jcc-brand { pointer-events: auto !important; }",
+    "#cortana-cc-hud button, #cortana-cc-hud .jcc-nav-item, #cortana-cc-hud .jcc-focus { cursor: pointer; }",
+    "</style>",
+  ].join("\n");
+}
+
+/**
+ * HUD bootstrap: focus toggle, nav, quick commands, command: URI bridge to extension host.
+ */
+function buildHudInteractScript() {
+  const body = [
+    "(function(){",
+    "if(window.__cortanaInteractWired)return;window.__cortanaInteractWired=true;",
+    "function hud(){return document.getElementById('cortana-cc-hud');}",
+    "function runExtCommand(id){",
+    "if(!id)return false;",
+    "try{",
+    "var a=document.createElement('a');",
+    "a.href='command:'+id;",
+    "a.setAttribute('draggable','false');",
+    "a.style.cssText='position:fixed;left:-9999px;top:0;opacity:0;pointer-events:none';",
+    "(document.body||document.documentElement).appendChild(a);",
+    "a.click();",
+    "setTimeout(function(){try{a.remove();}catch(e){}},80);",
+    "return true;",
+    "}catch(e){return false;}",
+    "}",
+    "window.__cortanaRunCommand=runExtCommand;",
+    "function wireVoiceBridge(){",
+    "var prev=typeof window.__cortanaVoiceClick==='function'?window.__cortanaVoiceClick:null;",
+    "window.__cortanaVoiceClick=function(meta){",
+    "runExtCommand('cortana.voice.talk');",
+    "if(prev){try{prev(meta);}catch(e){}}",
+    "};",
+    "window.addEventListener('cortana-voice',function(){runExtCommand('cortana.voice.talk');});",
+    "window.addEventListener('message',function(ev){",
+    "var d=ev&&ev.data;if(!d||d.type!=='cortana-voice')return;",
+    "runExtCommand('cortana.voice.talk');",
+    "},false);",
+    "}",
+    "function onDocClick(e){",
+    "var t=e.target;if(!t||!t.closest)return;",
+    "var root=t.closest('#cortana-cc-hud');if(!root)return;",
+    "var cmdEl=t.closest('[data-cortana-cmd]');",
+    "if(cmdEl){",
+    "var cmd=(cmdEl.getAttribute('data-cortana-cmd')||'').toLowerCase();",
+    "if(cmd==='task'){e.preventDefault();runExtCommand('workbench.action.tasks.runTask');return;}",
+    "if(cmd==='calendar'){e.preventDefault();return;}",
+    "if(cmd==='workflow'){e.preventDefault();runExtCommand('workbench.action.showCommands');return;}",
+    "}",
+    "var nav=t.closest('.jcc-nav-item');",
+    "if(nav){e.preventDefault();",
+    "var items=root.querySelectorAll('.jcc-nav-item');",
+    "for(var i=0;i<items.length;i++)items[i].classList.remove('active');",
+    "nav.classList.add('active');",
+    "}",
+    "}",
+    "function boot(){",
+    "if(!hud()){setTimeout(boot,400);return;}",
+    "document.body&&document.body.classList.add('cortana-inject','cortana-boot');",
+    "setTimeout(function(){document.body&&document.body.classList.remove('cortana-boot');},",
+    "parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cortana-boot-ms'),10)||1800);",
+    "wireVoiceBridge();",
+    "document.addEventListener('click',onDocClick,true);",
+    "}",
+    "if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);",
+    "else boot();",
+    "})();",
+  ].join("");
+  return `<script id="cortana-hud-interact-script">${body}</script>`;
+}
+
+/** Crash guard: refuse patches that place HUD markup or scripts after </body>. */
+function validateHudPatchPlacement(html) {
+  const lower = html.toLowerCase();
+  const bodyIdx = lower.lastIndexOf("</body>");
+  if (bodyIdx === -1) {
+    throw new Error("workbench.html missing </body> — refusing to write patch");
+  }
+  const htmlIdx = lower.lastIndexOf("</html>");
+  const tailStart = bodyIdx + "</body>".length;
+  const tail = html.slice(tailStart, htmlIdx === -1 ? undefined : htmlIdx).trim();
+  if (/<script\b/i.test(tail) || /CORTANA-HUD/i.test(tail) || /cortana-cc-hud/i.test(tail)) {
+    throw new Error(
+      "Inject block would sit outside </body> (scripts/HUD after body) — refusing write (Cursor crash guard)"
+    );
+  }
+  const m = parseMarkers(html);
+  if (m.hasHudStart && m.hudStartIndex > bodyIdx) {
+    throw new Error("HUD markers start after </body> — refusing write");
+  }
+  if (m.hasHudEnd && m.hudEndIndex > bodyIdx) {
+    throw new Error("HUD markers end after </body> — refusing write");
+  }
+  return true;
+}
+
+function buildHudBlock({
+  uuid,
+  markup,
+  interactStyle,
+  clockScript,
+  liveScript,
+  waveScript,
+  voiceScript,
+  wakeScript,
+  interactScript,
+}) {
   return [
     `<!-- ${MARKER_HUD_START} uuid=${uuid} -->`,
+    interactStyle || "",
     markup.trim(),
     clockScript,
     liveScript || "",
+    waveScript || "",
     voiceScript || "",
     wakeScript || "",
+    interactScript || "",
     `<!-- ${MARKER_HUD_END} -->`,
   ].join("\n");
 }
