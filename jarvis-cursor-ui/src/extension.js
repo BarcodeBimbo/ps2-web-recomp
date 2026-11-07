@@ -7,7 +7,34 @@ const { getSuit, setSuit, pickSuit } = require("./suitModes");
 const { toggle, bumpKeystroke, getState } = require("./sessionCinema");
 const { savePreset, applyPreset } = require("./workspacePresets");
 const voice = require("./voiceBridge");
-const inject = require("./workbenchInject");
+
+/** Soft-load inject engine (siblings may still be writing workbenchInject.js). */
+let inject;
+try {
+  inject = require("./workbenchInject");
+} catch (err) {
+  console.warn("[jarvis] workbenchInject not loaded yet:", err && err.message ? err.message : err);
+  inject = {
+    async reconcileOnActivate() {
+      return { status: "unavailable", message: "workbenchInject.js missing — injection engine not built yet." };
+    },
+    async enable() {
+      return { ok: false, message: "workbenchInject.js missing — cannot enable injection." };
+    },
+    async disable() {
+      return { ok: false, message: "workbenchInject.js missing — cannot disable injection." };
+    },
+    async status() {
+      return { available: false, reason: "workbenchInject.js missing" };
+    },
+    async healthCheck() {
+      return { ok: false, details: "workbenchInject.js missing" };
+    },
+    async getFingerprint() {
+      return { version: null, commit: null, appRoot: null, workbenchPath: null };
+    },
+  };
+}
 
 function injectionCfg() {
   return vscode.workspace.getConfiguration("jarvis.injection");
@@ -39,28 +66,6 @@ async function suggestReload(prefix) {
 async function activate(context) {
   const fileMap = new FileMapProvider(context);
   const commandCenter = new CommandCenterViewProvider(context, fileMap);
-
-  // Phase 6: reconcile injection state before registering UI / commands
-  try {
-    const reconciled = await inject.reconcileOnActivate(context);
-    if (
-      reconciled &&
-      (reconciled.status === "disabled-due-to-update" ||
-        reconciled.status === "health-fail")
-    ) {
-      const msg =
-        reconciled.message ||
-        `Workbench injection ${reconciled.status}. Verify Cursor install, then re-enable.`;
-      const pick = await vscode.window.showWarningMessage(msg, "Re-enable after verify");
-      if (pick === "Re-enable after verify") {
-        await vscode.commands.executeCommand("jarvis.injection.reenableAfterUpdate");
-      }
-    }
-  } catch (err) {
-    console.warn("[jarvis] reconcileOnActivate failed:", err);
-  }
-
-  const primary = injectionIsPrimary();
 
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("jarvis.commandCenter", commandCenter, {
@@ -140,7 +145,7 @@ async function activate(context) {
     }),
     vscode.commands.registerCommand("jarvis.hud.refresh", () => commandCenter.refresh()),
 
-    // Phase 6 injection commands
+    // Phase 6 injection commands (registered before reconcile so Re-enable button works)
     vscode.commands.registerCommand("jarvis.injection.enable", async () => {
       try {
         const result = await inject.enable(context);
@@ -262,7 +267,27 @@ async function activate(context) {
     })
   );
 
-  if (primary) {
+  // Phase 6: reconcile after providers + commands (Re-enable button → executeCommand)
+  try {
+    const reconciled = await inject.reconcileOnActivate(context);
+    if (
+      reconciled &&
+      (reconciled.status === "disabled-due-to-update" ||
+        reconciled.status === "health-fail")
+    ) {
+      const msg =
+        reconciled.message ||
+        `Workbench injection ${reconciled.status}. Verify Cursor install, then re-enable.`;
+      const pick = await vscode.window.showWarningMessage(msg, "Re-enable after verify");
+      if (pick === "Re-enable after verify") {
+        await vscode.commands.executeCommand("jarvis.injection.reenableAfterUpdate");
+      }
+    }
+  } catch (err) {
+    console.warn("[jarvis] reconcileOnActivate failed:", err);
+  }
+
+  if (injectionIsPrimary()) {
     console.info(
       "[jarvis] Injection is primary HUD; Command Center webview registered as optional fallback only."
     );
