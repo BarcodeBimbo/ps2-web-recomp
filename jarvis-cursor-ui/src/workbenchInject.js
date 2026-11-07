@@ -31,6 +31,8 @@ const BOOT_STAGED_NAME = "jarvis-boot-splash.png";
 const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
 const GLOBAL_BACKUP_NAME = "workbench.jarvis.pristine.html";
+/** Cursor product.json checksums key for the patched workbench HTML. */
+const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.html";
 
 /** CSS inlined in this order (Worker A owns boot.css; Worker B owns hud.css). */
 const CSS_REL_PATHS = [
@@ -87,6 +89,81 @@ function formatWriteError(err) {
 
 function fingerprintString(version, commit, vscodeVersion) {
   return `${version || ""}|${commit || ""}|${vscodeVersion || ""}`;
+}
+
+/** Cursor/VS Code integrity digest: SHA-256 → base64, strip trailing '='. */
+function computeWorkbenchChecksum(buf) {
+  return crypto.createHash("sha256").update(buf).digest("base64").replace(/=+$/, "");
+}
+
+function productJsonPath(appRoot) {
+  return path.join(appRoot, "product.json");
+}
+
+/**
+ * Quiet the "corrupted installation" toast by rewriting product.json checksums
+ * for workbench.html to match the file currently on disk.
+ * Soft-fail on EACCES — inject itself still succeeded.
+ */
+async function syncWorkbenchChecksum(appRoot, workbenchPath) {
+  if (!appRoot || !workbenchPath) {
+    return { ok: false, message: "appRoot/workbenchPath required for checksum sync" };
+  }
+  const productPath = productJsonPath(appRoot);
+  if (!(await pathExists(productPath))) {
+    return { ok: false, message: "product.json not found — cannot quiet integrity toast" };
+  }
+  if (!(await pathExists(workbenchPath))) {
+    return { ok: false, message: "workbench.html missing for checksum sync" };
+  }
+
+  let productRaw;
+  let product;
+  try {
+    productRaw = await fsp.readFile(productPath, "utf8");
+    product = JSON.parse(productRaw);
+  } catch (err) {
+    return { ok: false, message: `Cannot read product.json: ${err.message || err}` };
+  }
+
+  if (!product.checksums || typeof product.checksums !== "object") {
+    return { ok: true, skipped: true, message: "product.json has no checksums map" };
+  }
+
+  let key = WORKBENCH_CHECKSUM_KEY;
+  if (!(key in product.checksums)) {
+    const alt = Object.keys(product.checksums).find(
+      (k) => /workbench\.html$/i.test(k) && /electron-sandbox/i.test(k)
+    );
+    if (!alt) {
+      return { ok: true, skipped: true, message: "workbench.html not listed in checksums" };
+    }
+    key = alt;
+  }
+
+  const buf = await fsp.readFile(workbenchPath);
+  const digest = computeWorkbenchChecksum(buf);
+  if (product.checksums[key] === digest) {
+    return { ok: true, synced: false, key, digest, message: "checksum already matches" };
+  }
+
+  const previous = product.checksums[key];
+  product.checksums[key] = digest;
+  // Preserve Cursor tab indentation.
+  const next = `${JSON.stringify(product, null, "\t")}\n`;
+  try {
+    await writeTextFile(productPath, next);
+  } catch (err) {
+    return { ok: false, message: formatWriteError(err), previous, digest, key };
+  }
+  return {
+    ok: true,
+    synced: true,
+    key,
+    digest,
+    previous,
+    message: "product.json workbench checksum updated (integrity toast suppressed)",
+  };
 }
 
 function inferAppRoot(workbenchPath) {
@@ -771,7 +848,14 @@ async function restoreWorkbenchHtml(context, workbenchPath, backupUuid) {
   }
 
   const splashErr = await removeStagedSplash(workbenchPath);
-  return { method, splashError: splashErr || null };
+  // Keep product.json checksum aligned so Cursor does not toast "corrupt installation".
+  let checksum = null;
+  try {
+    checksum = await syncWorkbenchChecksum(inferAppRoot(workbenchPath), workbenchPath);
+  } catch (err) {
+    checksum = { ok: false, message: formatWriteError(err) };
+  }
+  return { method, splashError: splashErr || null, checksum };
 }
 
 async function clearInjectionState(context, reason) {

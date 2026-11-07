@@ -1097,7 +1097,6 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 </body>
 </html>`;
   }
-}
 
   _fallbackHtml(webview) {
     const nonce = String(Date.now());
