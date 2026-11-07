@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~22:10 local
+Updated: 2026-11-06 ~22:12 local
 
 ## Gate cycle 1 — FAIL
 
@@ -234,4 +234,19 @@ Watching for any next proposal (R4 only if separately posted).
 
 
 **Alive ~22:10:** Cycle 6 PASS confirmed on board; R4/R5 still gated; watching for next proposed_change.
+
+
+---
+
+## Gate cycle 7 — PASS (R4 clear, no code)
+
+Disc-fix proposed `R4_clear_with_evidence`. No `cdvd.cpp` wake. No `host_signal(2)`.
+
+Post-R3 five-phase still green (Hitman 600f/127974; NFS 600f/208253; SIF 0). Hitman `sceCdSync` is ~1854 mode=1 polls vs ~10 mode=0 — not a stuck blocking-waiter case. NFS has little/no sync spam. Leftover sema 2 stays durable parking.
+
+**Ranked now:** R1/R2/R4 cleared_with_evidence; R3 verified_apply; **R5 still gated**.
+
+`allow_discfix_apply`: true for this no-code clear only. Matrix did not unlock R4 preemptively — gated the clear proposal on evidence.
+
+**Alive:** watching for next `proposed_change` (R5 / soak / commit note).
 

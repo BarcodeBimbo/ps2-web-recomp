@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T22:11:30-05:00",
+  "updated": "2026-11-06T22:12:30-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -7,17 +7,18 @@
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
   "step": 7,
-  "phase": "awaiting_matrix",
+  "phase": "watching",
   "prior_cycles": [
     {"step": 1, "id": "R3_generic_complete_path", "verdict": "fail"},
     {"step": 2, "id": "R1_clear_with_evidence", "verdict": "pass"},
     {"step": 3, "id": "R3_readee_length_harden", "verdict": "fail"},
     {"step": 4, "id": "R2_clear_with_evidence", "verdict": "pass"},
     {"step": 5, "id": "R3_readee_length_harden", "verdict": "pass"},
-    {"step": 6, "id": "R3_post_apply_verify", "verdict": "pass", "why": "R3 verified_apply"}
+    {"step": 6, "id": "R3_post_apply_verify", "verdict": "pass", "why": "R3 verified_apply"},
+    {"step": 7, "id": "R4_clear_with_evidence", "verdict": "pass", "why": "CdSync mode=1 polls; post-R3 green; no wake rewrite needed"}
   ],
   "discfix": {
-    "status": "proposed",
+    "status": "idle_after_r4_clear",
     "applied": {
       "R3_readee": {
         "file": "runtime/src/iop/cdvdfsv.cpp",
@@ -49,23 +50,48 @@
     "files_touched": ["runtime/src/iop/cdvdfsv.cpp"]
   },
   "matrix": {
-    "status": "pending",
+    "status": "watching",
     "current_phase": null,
-    "verdict": null,
-    "notes": "Disc-fix cycle 7: R4_clear_with_evidence after R3 verified_apply. No code. Waiting for matrix.",
+    "verdict": "pass",
+    "last_completed": "R4_clear_with_evidence",
+    "notes": "PASS R4_clear_with_evidence (no code). Five-phase post-R3 logs still pass both games. Hitman sceCdSync traffic is ~1854 mode=1 (non-blocking poll) vs ~10 mode=0; NFS has ~0 sync spam. Prims move; SIF drains; leftover sema 2 is R2 durable parking not a CdSync wake target. R4_CdSync = cleared_with_evidence / not-needed. Did NOT land finish_read/wake. R5 still_gated. allow_discfix_apply true for this no-code clear only. Alive watching next (R5 or soak/commit note). No host_signal(2). No CNK. No matrix commits.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
+    "phase_results": {
+      "hitman_bm": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/discfix-r3-hitman-600.log",
+        "frames": 600,
+        "prims": 127974,
+        "sceCdSync_modes": {"mode1_poll": 1854, "mode0": 10}
+      },
+      "nfs_mw": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/discfix-r3-nfs-600.log",
+        "frames": 600,
+        "prims": 208253,
+        "sceCdSync_modes": {}
+      }
+    },
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
-      "R4_CdSync": "proposed_clear",
+      "R4_CdSync": "cleared_with_evidence",
       "R5_pad_sound": "still_gated"
     },
-    "allow_discfix_apply": false
+    "allow_discfix_apply": true
   },
-  "ranked_rewrites_gated": ["R4_CdSync", "R5_pad_sound"],
-  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity"],
+  "ranked_rewrites_gated": ["R5_pad_sound"],
+  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity", "R4_CdSync"],
   "ranked_rewrites_applied": ["R3_readee"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "R3 verified; commit still deferred until parent/matrix call stable (or after R4/R5 gate closes)."
+  "commit_policy": "R3 verified; R4 cleared_with_evidence; commit still deferred until parent/matrix call stable (or after R5 gate closes)."
 }

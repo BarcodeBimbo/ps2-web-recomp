@@ -64,7 +64,7 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 | R1 | SIF end | **cleared_with_evidence** (queue drains to 0) |
 | R2 | WaitSema fidelity | **cleared_with_evidence** (sema 2 = observe parking; never pulse) |
 | R3 | readee lengths / AlignReadBuffer | **verified_apply** in `runtime/src/iop/cdvdfsv.cpp` |
-| R4 | sceCdSync / finish_read wake | **still gated** |
+| R4 | sceCdSync / finish_read wake | **proposed** cycle 7: `R4_clear_with_evidence` (no code) — awaiting matrix |
 | R5 | pad / sound | **still gated** |
 
 ### Matrix protocol
