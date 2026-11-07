@@ -1,0 +1,34 @@
+{
+  "session": "2026-11-06-overnight-cnk-10r",
+  "gid": "b49f2e769315347e8bda839feb705744",
+  "prims": 2,
+  "plant_heads": {
+    "butanim@0x1B00000": "20010000",
+    "intro@0x1B80000": "C4020000"
+  },
+  "plus24008": 1,
+  "runs": {
+    "stream-diag": "logs/cnk-stream-diag-20k.log",
+    "fce0order": "logs/cnk-fce0order-20k.log",
+    "arm45-hard-FCE0": "logs/cnk-arm45-20k.log",
+    "arm45-soft-noFCE0": "logs/cnk-arm45soft-20k.log"
+  },
+  "hypotheses_killed": [
+    "Alchemy never issues BUTANIM/INTROTXR virt reads: killed — 48 sector reads to bounce during file delivery; no post-plant re-reads.",
+    "Plant IGB missing sync/header markers: killed — heads look valid; intro matches BD1000.",
+    "FCE0-before-status-1 was the only bug: killed — fixing order alone leaves +45=0 so 0x110100 takes status=4 fail path.",
+    "Arm obj+45 and host_call FCE0 immediately: killed — reaches vt108 then missing code @0 ra 0x51ACEC (same as prior forced finalize).",
+    "a9 CD callback should be non-zero for UI IGBs: killed — opener 0x2BF980 explicitly passes r9=r10=0.",
+    "Hold intro only while butanim +76==3: killed — shared stream 0x974358/BD1000; need hold across parse, but 0x110100 success leaves +76=3."
+  ],
+  "alive": [
+    "EE copy-out never runs (align dest 0); host ingest fills BD1000 but does not replace the flag/notification the copy-out would raise.",
+    "Soft-arm +45 without host FCE0 is stable (20k frames, prims=2) but guest never completes parse to drawable UI.",
+    "0x51ACEC null is *(vtable+84) after a call through global 0x725F50 — bind/registry object missing or not ready."
+  ],
+  "next": [
+    "Identify what 0x725F50 / vt+80 / returned object's vt+84 should be when stream bind succeeds on retail.",
+    "Find the EE copy-out notifier that sets obj+45 and whether more than +45 is required before FCE0 is safe.",
+    "Avoid host FCE0 until that registry is live; keep +24008 set; keep bounce dst."
+  ]
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "test": "analysis_tailcall",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "elf_bss",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "codegen_fallthrough",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "elf_security",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "disc_archive",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "windows_setup_archive",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "serve_range",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "panel_build_queue",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "security_review",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "mobile_https",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "store_pipeline",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "gpu_arena",
+    "status": "PASS",
+    "exit": 0
+  },
+  {
+    "test": "archive_integration",
+    "status": "FAIL",
+    "exit": 1
+  },
+  {
+    "test": "chd_integration",
+    "status": "SKIP/PARTIAL",
+    "exit": 0
+  },
+  {
+    "test": "browser_store_bridge",
+    "status": "PASS",
+    "exit": 0
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "session": "2026-11-06 overnight CNK 10c",
+  "disk_free_gb": 19.3,
+  "progress": {
+    "freelist_escape": "PASS",
+    "soft_extract_scratch": "PASS",
+    "staged_lookups": "PASS — gob=0x751CD0 cd=0x750100 host=0",
+    "staged_23EEF0": "runs without AV but returns 0 (igctx still 0)",
+    "full_10F2F0": "AV — avoided via staging",
+    "cdvd_gfc_mount": "opt-in only (default miss)",
+    "prims": 2,
+    "screen": "black"
+  },
+  "next": [
+    "Why 0x23EEF0 returns 0 with walk_en=1 (probe 0x2422E0 expect 6)",
+    "Natural EE bind path / sema unblock",
+    "prims >> 2 then rebuild-all slots 0/1"
+  ],
+  "status": "CNK OPEN — binder staged, returns 0",
+  "rebuild_all": "blocked"
+}

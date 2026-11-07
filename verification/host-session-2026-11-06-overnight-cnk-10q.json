@@ -1,0 +1,31 @@
+{
+  "session": "2026-11-06-overnight-cnk-10q",
+  "gid": "b49f2e769315347e8bda839feb705744",
+  "run": "logs/cnk-stream-diag-20k.log",
+  "ram": "logs/cnk-stream-diag.ram",
+  "prims": 2,
+  "plant_heads": {
+    "butanim@0x1B00000": "200100000F000000600600001A000000",
+    "intro@0x1B80000": "C4020000240000006605000016000000"
+  },
+  "plus24008": 1,
+  "plus24008_addr": "0x750078",
+  "findings": [
+    "UI-IGB virt reads happen only during sector delivery to bounce 0x750CC0 (ee_pc=0x1010); Alchemy does not re-request plant LBAs after file-done.",
+    "+24008 set at 0x10F840; briefly cleared before 0x110DA0 (FCE0 tail) and inside FAF0/FCE0 path; re-armed at 0x10FE14 when 0x110DA0 returns nonzero.",
+    "WaitSema(16) early traffic is 0x427494/0x4275F4 (Alchemy timer), not UI CD wait; host_signal from igfileio while gate set.",
+    "slot0 (butanim) and slot3 (introtxr) SHARE stream 0x974358 -> assemble 0xBD1000; intro ingest overwrites butanim bytes in scratch.",
+    "End: both slots +76=3, +50=1, a9/cb=0; BD1000 holds intro head; plants pristine; +24008=1.",
+    "FCE0 parse gate: status==1 && slot+0x50==1 -> 0x110100 (needs live vtable; prior forced finalize crashed)."
+  ],
+  "hypotheses_killed": [
+    "Alchemy never requests BUTANIM/INTROTXR LBAs: FALSE for the initial virt CD path (48 sector reads logged); TRUE that no post-plant re-read/parser pull happens.",
+    "Plant IGB missing stream header/sync: UNLIKELY — heads 0x0120/0x02C4 look like valid Alchemy info-table sizes; plants match BD1000 for intro.",
+    "Hold intro only while butanim +76==3: INSUFFICIENT — status 1 still needs parse before shared scratch can be reused; releasing on 1 lets intro clobber butanim."
+  ],
+  "next": [
+    "Hold intro while butanim +76 in {1,3} until parsed/done (0 or 4).",
+    "While holding, investigate safe 0x110100 entry (obj at slot+0x58=0x97E1B8) without clearing +24008.",
+    "Optional: separate assemble buffer for butanim so shared stream clobber cannot happen."
+  ]
+}

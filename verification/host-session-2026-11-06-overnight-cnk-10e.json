@@ -1,0 +1,27 @@
+{
+  "session": "2026-11-06 overnight CNK 10e",
+  "disk_free_gb": 20.0,
+  "progress": {
+    "freelist_escape": "PASS",
+    "soft_extract_scratch": "PASS",
+    "staged_bind_F0BC": "PASS — walk_en=1 → 0x2422E0=6 → gob+912=1",
+    "post_bind_skip_240350": "PASS — no longer clears gob+912",
+    "post_bind_meta172_23D920_pump": "returns 1",
+    "igctx": 0,
+    "prims": 2,
+    "cdvd_gfc_butanim": "mounts OK but +24008 WaitSema(54) parks EE; clearing +24008 → IO spam 0x428970",
+    "screen": "black"
+  },
+  "code_changes": [
+    "igfileio: post-bind continuation after 0x23EEF0; skip 0x240350 when F0BC attached",
+    "kernel: kKernelStackTop 0x1E00000 for deep binder frames",
+    "cdvdfsv: CDVD-GFC remains opt-in only"
+  ],
+  "next": [
+    "Load butanim/introtxr via Alchemy/GOB host path (not sceCdSearchFile)",
+    "Or complete CDVD virtual-read callback so guest clears +24008 itself",
+    "prims >> 2 then rebuild-all slots 0/1"
+  ],
+  "status": "CNK OPEN — binder attach sticky (gob+912=1); UI IGB CDVD path blocked; rebuild-all blocked",
+  "rebuild_all": "blocked until prims >> 2"
+}

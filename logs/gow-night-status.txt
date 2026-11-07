@@ -1,0 +1,20 @@
+GoW overnight — HARD MIN-60 PASSED (confirmed ×2)
+=================================================
+PASS files: logs/gow-min60-PASS.txt
+Runs: tools/gow-min60-final-run.log, tools/gow-min60-confirm-run.log
+
+Confirmed metrics (mash 90s → hold 200s, gate after 70s):
+- on-screen min = 60 (every sample)
+- fps min = 59.8, avg = 60.0
+- below60 = 0, below45 = 0
+- active and all both pass
+
+What fixed audio + FPS:
+1. Audio worklet was computing samples but never writing left[i]/right[i]
+2. JSPI build (not Asyncify) — major EE headroom on Chrome
+3. IPU: sparse IDCT + YUV LUTs + budgeted IDEC (no Asyncify yields)
+4. Hard Fifo vsync every present
+5. 60.000 Hz pace + spin-wait tail; audio trim only when queue >250ms
+6. 384MB initial heap; no --profiling-funcs
+
+Reload GoW in Chrome to pick up the JSPI wasm. Firefox still later.

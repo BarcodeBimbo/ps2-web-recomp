@@ -1,0 +1,26 @@
+{
+  "session": "2026-11-06 overnight CNK 10h",
+  "disk_free_gb": 20.8,
+  "confirmed": [
+    "F0BC gob+912=1 sticky with walk_en=1 is the good attach path",
+    "clearing walk_en before bind destroys fonts ptr",
+    "0x240350 after F0BC writes gob+912=0xC8 (bad)",
+    "forged host provider lookup hits 0x1BFFC00 — still no igctx",
+    "curReadPos/readee written correctly (ee1=0x65AC00 ee2=0x65ACC0)",
+    "virt plant works: BUTANIM@0x1B00000 INTROTXR@0x1B010A0",
+    "clearing +24008 still IO-spams 0x428970 — never clear it from host"
+  ],
+  "still_open": {
+    "igctx": 0,
+    "prims": 2,
+    "screen": "black",
+    "bounce_copy": "EE never assembles UI IGBs from 0x750CC0",
+    "+24008": "stays 1; guest completion never runs"
+  },
+  "next": [
+    "Why F0BC attach never creates igctx — instrument 0x2422E0 jump_table / post-attach constructors",
+    "Wire planted EE scratch into Alchemy slot dest pointers without clearing +24008",
+    "Consider not setting walk_cur=7FFF so guest walker can produce context"
+  ],
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,1 @@
+FAIL: captured sound worker remains asleep

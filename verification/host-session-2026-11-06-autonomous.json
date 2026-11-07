@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-06",
+  "session": "autonomous-debug-until-playable",
+  "asyncify_queue": {
+    "status": "RE4 ffb47d7e compiling (ninja/clang active); Def Jam 76615f99 queued after",
+    "passed_earlier": ["9ce58de3 GT4", "a2116d2a Hitman BM", "f141051d Hitman 2"],
+    "hot_shots_streamfix": "DONE — host/web.cpp disc fetch 4x25s + 90s wait"
+  },
+  "nfs_mw": {
+    "id": "60c82f4a111da300ac23bbec85272788",
+    "finding": "Prior empty SifIopReset(\"\") x2 were FALSE POSITIVES: dest=0 zero-size SIF DMAs were treated as reboot(). Fix: only reboot on cid 0x80000003; ignore size<16 dest0.",
+    "native_after_fix": "164 GS prims (title), WaitSema(44) ra 0x00497C00 remains; no empty reboot in log",
+    "u2": "c0671389 — 614 prims title, WaitSema(48) family stall; same dest0 fix applied",
+    "web_republish": "deferred until native past-title"
+  },
+  "cnk": {
+    "id": "b49f2e769315347e8bda839feb705744",
+    "hle": {
+      "IGFILEIO": "LoadModule HLE + RPC 0x12114",
+      "IGUMOUSE": "LoadModule HLE + RPC 0x12112",
+      "IGUKBD": "LoadModule HLE + RPC 0x12113",
+      "hle_send_snapshot": "host-side copy before sync_iop (EE buffer was clobbered)"
+    },
+    "progress": "Loads pad/mtap/sio2; finds POOLS.CSV ASSETS.GFC/GOB; heavy VIF1/GIF activity",
+    "gate": "UNRESOLVED — still 2 GS prims, WaitSema 45/47; frame_00500 has legal pixels then black"
+  },
+  "regressions": {
+    "malware_guard": "PASS 8/8",
+    "mobile_auto": "PASS 1/1",
+    "player_crashlog": "PASS 3/3",
+    "iop_rpc_poll": "PASS"
+  },
+  "chrome_smoke": {
+    "hot_shots": "Panel /play/f29093e1… opened; WebGPU init timed out in automation browser (software renderer fallback); status remained Starting game — not a disc-stream regression",
+    "mw_web": "deferred — native still title-blocked"
+  }
+}

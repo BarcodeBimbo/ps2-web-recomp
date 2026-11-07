@@ -1,0 +1,67 @@
+{
+  "session": "2026-11-06 overnight CNK Alchemy attack (continued)",
+  "game": "b49f2e769315347e8bda839feb705744",
+  "title": "Crash Nitro Kart",
+  "disk_free_gb": 19.6,
+  "gates": {
+    "legal_logo_prims": 2,
+    "igctx_7430C0": 0,
+    "stbl0_planted": true,
+    "walker_cur": 2005,
+    "fonts_crc": "C3994BD8"
+  },
+  "findings": [
+    "TIM0 MODE hold must not timer_set_count on high-frequency writes (count froze at 371).",
+    "alchemy_stbl_pending must not require walker flag 0x6F5B20 (guest clears it while WaitSema-parked).",
+    "Repair was skipping: guest want=547 (<0x1000) and tiny cap; now recover size from GFC by CRC.",
+    "STBL0 plant works (65541 bytes, first=2005, mag5=0x30).",
+    "FINISH gap>=3 target-pull advances gate; still does not start UI draw.",
+    "Host-write to dest 0x7AF300 is UNSAFE while STBL pending \u00e2\u20ac\u201d address still holds live objects; overwriting nulls a vtable and EE jalr 0 (ra 0x10C4B8).",
+    "Periodic timer_arm_compare_pulse keeps count advancing (4277 vs frozen 371).",
+    "Delay-sema / full-file fonts / igctx poke gated behind PS2_ALCHEMY_KICK / PS2_ALCHEMY_FONTS.",
+    "Unmasking GS FINISH (IMR bit 0x200) while STBL pending closes FINISH gate gap to 0.",
+    "Delay-sema pulse re-opens gate gap 0->3; kept behind PS2_ALCHEMY_KICK."
+  ],
+  "code_changes": [
+    "runtime/src/hw.cpp \u00e2\u20ac\u201d MODE hold without count snapshot; timer_keep_counting; timer_arm_compare_pulse",
+    "runtime/src/iop/igfileio.cpp \u00e2\u20ac\u201d STBL0 repair with want/cap recovery, dirty re-plant, finish pull default, safe kick gates",
+    "runtime/src/kernel.cpp \u00e2\u20ac\u201d DisableIntc(TIM0/1) hold while Alchemy pending; richer CNK dump",
+    "runtime/src/system.cpp \u00e2\u20ac\u201d service_pending_stblz after frame 200 or >=2 prims"
+  ],
+  "latest_smoke": {
+    "log": "logs/cnk-stable-again-5000.log",
+    "frames": 5000
+  },
+  "regressions": {
+    "malware_guard": "PASS",
+    "installation_flow": "PASS 8/8"
+  },
+  "rebuild_all": "blocked until CNK prims >> 2",
+  "status": "CNK OPEN: legal 2 prims; STBL0 planted; FINISH gate ~healthy; walker cur stuck at first; igctx=0",
+  "safe_defaults": [
+    "TIM0 MODE hold without timer_set_count snapshot",
+    "timer_keep_counting + timer_arm_compare_pulse",
+    "STBL0 fonts repair (want/cap recovered from GFC)",
+    "GS FINISH IMR bit 0x200 unmask while STBL pending",
+    "FINISH target-pull on gap>=3",
+    "Alchemy timer-lock sema 16 pulse"
+  ],
+  "unsafe_gated": [
+    "PS2_ALCHEMY_KICK delay-sema",
+    "PS2_ALCHEMY_FONTS dest write",
+    "PS2_ALCHEMY_WALK host-call",
+    "PS2_ALCHEMY_LOOSE scratch inflate"
+  ],
+  "updated": "2026-11-06T14:16:20.523246+00:00",
+  "unsafe_do_not_enable": [
+    "PS2_ALCHEMY_KICK delay-sema 45/47 (reopens gate gap)",
+    "PS2_ALCHEMY_FONTS / dest 0x7AF300 write (live objects / null vtable)",
+    "PS2_ALCHEMY_WALK host-call (hang or jalr 0)",
+    "PS2_ALCHEMY_LOOSE scratch inflate (corrupt neighbors)"
+  ],
+  "next_leads": [
+    "Who calls vtable+0x228 (0x23ED50 pump)? Main loop never reaches it.",
+    "Dest 0x7AF300 still holds live objects (head 5e65fbc6) \u2014 walker must retarget before fonts copy.",
+    "SIID cmd4 status advances; audio/stream side may be independent."
+  ]
+}

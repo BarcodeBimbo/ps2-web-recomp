@@ -1,0 +1,47 @@
+{
+  "session": "overnight-resume-2026-11-06-post-crash",
+  "ui": {
+    "mobile_library": "PASS — web/mobile.html themed poster grid via scripts/mobile.py",
+    "touch_play": "PASS — /connect -> /play/<id>/?touch; library cards use ?touch; shell #touch + Settings cog",
+    "brand": "CyberArcade (panel/shell/mobile titles; PS2Emu suffix removed from UI chrome)",
+    "phone_access_chrome": "Hidden on panel <=640px; absent from mobile library HTML",
+    "tests": {
+      "mobile_https": "PASS",
+      "mobile_auto": "PASS"
+    }
+  },
+  "asyncify_queue": {
+    "log": "logs/asyncify-queue-run.log",
+    "resume_script": "logs/rebuild_asyncify_queue_resume.ps1",
+    "published_asyncify": [
+      "1e5a12a0 Ratchet",
+      "34402ee3 God of War II",
+      "695b874b God of War",
+      "prior: MW/U2/CNK/Sly/Hot Shots"
+    ],
+    "def_jam_76615f99": {
+      "result": "FAIL",
+      "stage": "em++ link / wasm-opt --asyncify",
+      "exit": "3221226505",
+      "note": "Compile completed through libps2game.a + web.cpp; wasm-opt aborted. Retry scheduled after remaining queue."
+    },
+    "in_progress_at_write": "9ce58de3 Gran Turismo 4 (resume after crash)",
+    "remaining": [
+      "a2116d2a Hitman Blood Money",
+      "f141051d Hitman 2",
+      "ffb47d7e Resident Evil 4",
+      "76615f99 Def Jam (retry)"
+    ]
+  },
+  "malware_guards": {
+    "module": "scripts/malware_guard.py",
+    "gates": ["PE/MZ", "host ELF", "Mach-O", "scripts", "dangerous extensions", "Defender custom scan <=96MiB"],
+    "wired_into": ["panel.import_game", "windows_port.install_disc", "archives.extract_archive"],
+    "tests": "tests/malware_guard.py PASS 8/8"
+  },
+  "open_system_issues": {
+    "nfs_post_title": "UNRESOLVED — WaitSema after empty SifIopReset",
+    "cnk": "UNRESOLVED — missing IGFILEIO.IRX / IG* Alchemy modules",
+    "iop_rpc_snapshot": "FAIL — historical capture SHA still missing"
+  }
+}

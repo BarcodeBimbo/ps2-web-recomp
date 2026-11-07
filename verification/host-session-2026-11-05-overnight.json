@@ -1,0 +1,52 @@
+{
+  "session": "overnight-debug-2026-11-05/06",
+  "panel": {
+    "fix": "scripts/panel.py lacked sys.path bootstrap and if __name__ == '__main__'",
+    "result": "PASS — library at :8620, /play/<id>/ injects browserAsyncMode=asyncify for rebuilt titles, mobile LAN HTTPS link printed"
+  },
+  "mobile_https_test": "PASS (tests/mobile_https.py)",
+  "iop_rpc_poll": "PASS",
+  "iop_rpc_snapshot": "FAIL — games/60c82f4a…/explore_ram.bin SHA-256 94332074… is post-title state; historical capture 2627bb0d… still missing",
+  "asyncify_modes": {
+    "done": ["60c82f4a NFS MW", "c0671389 NFS U2", "b49f2e76 CNK", "c0c45270 Sly", "f29093e1 Hot Shots", "1e5a12a0 Ratchet"],
+    "in_progress": ["34402ee3 God of War II"],
+    "queued": ["695b874b GoW1", "76615f99 Def Jam", "9ce58de3 GT4", "a2116d2a Hitman BM", "f141051d Hitman 2", "ffb47d7e RE4"]
+  },
+  "nfs_mw": {
+    "browser": "Title logo visible (frame ~133+), WebGPU Running",
+    "native": "164 GS primitives (title art), then all EE threads WaitSema; only one SND RPC 0x00534E44 fn0; empty SifIopReset x2 after title",
+    "sif_fixes_landed": [
+      "Handle SIF_CMD_RESET_CMD (0x80000003) when SUBADDR is published",
+      "SMFLAG write-clear semantics + republish SIFINIT/CMDINIT after Reset clears them",
+      "SYSREG SUBADDR/MAINADDR/RPCINIT get/set",
+      "deliver_request always wakes/credits sleeping poll owners"
+    ],
+    "post_title": "UNRESOLVED — WaitSema(44) ra 0x00497C00 after empty IOP reboot; pad not polled while blocked"
+  },
+  "cnk": {
+    "native": "Legal LEGENG.TGA → 2 GS prims then black; EE WaitSema 43/45",
+    "missing_modules": ["IGFILEIO.IRX", "IGUMOUSE.IRX", "IGUKBD.IRX"],
+    "note": "Intrinsic Alchemy modules absent from SLUS-20649 ISO/IOPRP/ASSETS.GOB; VVAA.IRX present but never loaded; ASSETS.GFC/GOB found via cdvdfsv after CRI_ADXI loads"
+  },
+  "browser_qa": {
+    "panel_library": "PASS",
+    "play_mw": "PASS to title",
+    "play_cnk": "shell loads (asyncify); legal/black behavior matches native"
+  },
+  "regressions": {
+    "mobile_https": "PASS",
+    "mobile_auto": "PASS",
+    "installation_flow": "PASS 7/7",
+    "serve_range": "PASS 5/5",
+    "download_controls": "PASS 11/11",
+    "setup_reporting": "PASS",
+    "panel_build_queue": "PASS 3/3",
+    "store_pipeline": "PASS 9/9",
+    "security_review": "PASS 7/7 (1 skipped)",
+    "disc_archive": "FAIL 1 error — optional CHD missing.chd fixture/path",
+    "panel_logic_cjs": "FAIL — node MODULE_NOT_FOUND (deps not installed)",
+    "player_logic_cjs": "FAIL — node MODULE_NOT_FOUND",
+    "iop_rpc_poll": "PASS",
+    "iop_rpc_snapshot": "FAIL missing historical capture"
+  }
+}

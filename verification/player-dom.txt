@@ -1,0 +1,2 @@
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata

@@ -1,0 +1,157 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games\b49f2e769315347e8bda839feb705744\disc.iso: 6394 files, 1566112 sectors, layer 1 at 0
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP255.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP255.IMG;1 reports 2550, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP255.IMG;1 reports 2550
+[fileio] open cdrom0:\LEGENG.TGA -> 3
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B6820
+[dma] gif tag id 3 qwc 20480 addr 0x0072A7D0 data 0x0072A7D0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B68A0
+[dma] gif tag id 0 qwc 15360 addr 0x0077A7D0 data 0x0077A7D0
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021588)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002158C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x000215A8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x000215B8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000215E4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000215E8)
+[loadfile] cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] IGFILEIO HLE online (rpc 0x12114, GFC/GOB)
+[igfileio] init ctx=0x7430C0 (lazy index)
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x000290EC)
+[loadfile] cdrom0:\MODULES\LGDEVW.IRX;1
+[iop-tty] LgDev_tb_rb_Driver Version 1.08( Wheel ), built on Sep 24 2002 at 18:34:09, thpri=42,43
+[cdvdfsv] search \POOLS.CSV;1 -> found
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[loadfile] cdrom0:\MODULES\CRI_ADXI.IRX;1
+[iop-tty] CRI ADX Driver Ver.8.80(Apr 18 2003 15:58:46)
+[iop-tty] CRI ADX Driver : Thread Priority = 39
+[iop-tty] CRI ADX Driver : SPU CORE Number = 0
+[iop-tty] CRI ADX Driver : sceSdInit(SD_INIT_COLD) call.
+[cdvdfsv] search \ASSETS.GFC;1 -> found
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[cdvdfsv] search \ASSETS.GOB;1 -> found
+[dma] gif tag id 1 qwc 9 addr 0x00000000 data 0x017C2B90
+[dma] gif tag id 1 qwc 10 addr 0x00000000 data 0x017C2C30
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x017C2CE0
+[vu0] cfc2 28
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[intc] GS handlers csr=0x551B6002 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[loadfile] cdrom0:\MODULES\IGUMOUSE.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGUMOUSE.IRX;1
+[iop] IGUMOUSE HLE stub online (rpc 0x12112)
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[loadfile] cdrom0:\MODULES\IGUKBD.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGUKBD.IRX;1
+[iop] IGUKBD HLE stub online (rpc 0x12113)
+[loadfile] cdrom0:\MODULES\SIO2MAN.IRX;1
+[loadfile] cdrom0:\MODULES\PADMAN.IRX;1
+[loadfile] cdrom0:\MODULES\MTAPMAN.IRX;1
+[iop-io] read 0x1F808280 = 0x0 (pc 0x0007A884)
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\MCMAN.IRX;1
+[loadfile] cdrom0:\MODULES\MCSERV.IRX;1
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[loadfile] cdrom0:\MODULES\SDRDRV.IRX;1
+[iop-tty] SDR driver version 4.0.1 (C) SCEI
+[iop-tty]  Exit rsd_main 
+[loadfile] cdrom0:\MODULES\VVAA.IRX;1
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[igfileio] walker enable @0x6F2084 (gp=0x6F9BF0)
+[igfileio] repaired first-cluster crc=0xC3994BD8 @0x762390 (65541 bytes STBL0, cur=first=2005 rearm-exhausted)
+[igfileio] finish-clamp 201 <- 204
+[igfileio] forced TIM0 IRQ (df8=2 list=0x705E20)
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[timer] holding TIM0 count-enable through guest MODE 0xE02
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[igfileio] finish-clamp 203 <- 204
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 204 <- 205
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 205 <- 206
+[igfileio] TIM0 complete IRQ (list=0x705E68 gate 205/205)
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 206 <- 207
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 207 <- 208
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 208 <- 209
+[igfileio] pulsed Alchemy timer-lock sema 16
+[igfileio] guest-walker prep dest=0x1A00000 arm635138=0x0 flag=1
+[igfileio] cleared loadgate+24016 @0x74A2B0 (enable font tick)
+[igfileio] gob-extract CRC=0xC3994BD8 -> 0x1A00000 (80812 bytes)
+[igfileio] posted sema2 queue type=1 widx=1
+[igfileio] queued deferred font-bind lg=0x74A2B0 dest=0x1A00000
+[igfileio] deferred font-bind 0x10F2F0 a0=0x74A2B0 dest=0x1A00000

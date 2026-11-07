@@ -1,0 +1,14 @@
+{
+  "session": "2026-11-06 overnight CNK 10i",
+  "disk_free_gb": 20.2,
+  "key_findings": [
+    "0x23EEF0 with walk_en=1 takes F0BC: attach gob+912=1 then returns 0 by design — does NOT create igctx",
+    "F0F4 construct (walk_en=0 path) needs 2425D0==0; walk_en=0 makes 2425D0 return 1 and teardown via 0x242480",
+    "forged host provider works (lookup2 hits) — unrelated to igctx",
+    "virt FULL-file collapse + args patch runs; slots still +76=3; +24008 must stay set",
+    "re-stick gob+912 fought guest (0xCA/202 intermediate) — removed",
+    "PS2_ALCHEMY_NO_BIND also ends igctx=0 prims=2"
+  ],
+  "current": "clean F0BC bind (no restick/F0F4), 25k frames",
+  "rebuild_all": "blocked until prims >> 2"
+}

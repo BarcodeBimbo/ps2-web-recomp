@@ -1,0 +1,56 @@
+2026-11-05 — Emscripten 6.0.11, Clang 24, Linux executor
+
+Configured an actual full player using a synthetic MIPS loop ELF and tiny disc:
+source <sdk>/emsdk_env.sh
+emcmake cmake -S project -B mobile-build-test/build -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release -DPS2_GENERATED=<synthetic-generated> \
+  -DPS2_WEB_ELF=<synthetic-elf> -DPS2_WEB_BOOT_FILE=<boot-text> \
+  -DPS2_WEB_ASYNC_MODE=asyncify
+cmake --build mobile-build-test/build --target ps2web -j4
+
+Result: PASS, complete runtime compile/link. Compiler output below is the final
+incremental rebuild after the worker-safe counters/diagnostics changes. Earlier
+full compile also completed. The asyncify + Wasm EH experiment failed Binaryen
+Flatten; final configuration uses JS exception handling and succeeded.
+
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/ae7ea5fe4a51/mobile-build-test/build
+[0/4] Re-checking globbed directories...
+[1/7] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[2/7] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.o
+[3/7] Linking CXX static library libps2runtime.a
+[4/7] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]
+
+Actual supplied NFS ELF translation:
+build/tools/eerecomp <uploaded-boot-elf> --entries <uploaded-entries> \
+  --unit-bits 12 --out <scratch-generated> --stats
+Result: 1,013,194 instructions, 1,064 generated units.
+Largest unit: 92,000 bytes of C++; compiled successfully with:
+em++ -std=c++20 -O3 -msimd128 -mno-tail-call -fexceptions -pthread \
+  -DPS2_COMPAT_TRAMPOLINE=1 -Iruntime/include -I<generated> \
+  -c unit_0421.cpp -o <scratch-object>
+This is not a complete commercial-game compile or runtime test.
+
+Pinned SDK still emits the expected pthread + ALLOW_MEMORY_GROWTH performance
+warning. It has not been suppressed. GROWABLE_ARRAYBUFFERS remains 0.
+
+Browser rendering: BLOCKED. The environment denies Chromium's process-singleton
+socket before any assertions run. No live Chrome/Firefox/iPhone result claimed.
+
+Final Wasm feature check: PASS, no return_call/try_table or JSPI glue calls.
+Wasm size: 2539424 bytes
+SHA-256: cc7acd75385eabacfdda7368154e450fcbd998556edc0c6eca8acb2b62de6bb3
+
+Last diagnostics metadata adjustment — final rebuild:
+[0/2] Re-checking globbed directories...
+[1/4] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.o
+[2/4] Linking CXX static library libps2runtime.a
+[3/4] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]
+
+Final Wasm SHA-256: 1b92639376bf5f3be8f1676dfe5e57d604481eb86be68f22364c32f805d18bad
+Final forbidden-feature check: PASS

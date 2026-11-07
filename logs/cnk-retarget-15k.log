@@ -1,0 +1,354 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games\b49f2e769315347e8bda839feb705744\disc.iso: 6394 files, 1566112 sectors, layer 1 at 0
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP255.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP255.IMG;1 reports 2550, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP255.IMG;1 reports 2550
+[fileio] open cdrom0:\LEGENG.TGA -> 3
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B6820
+[dma] gif tag id 3 qwc 20480 addr 0x0072A7D0 data 0x0072A7D0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B68A0
+[dma] gif tag id 0 qwc 15360 addr 0x0077A7D0 data 0x0077A7D0
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021588)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002158C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x000215A8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x000215B8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000215E4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000215E8)
+[loadfile] cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] IGFILEIO HLE online (rpc 0x12114, GFC/GOB)
+[igfileio] init ctx=0x7430C0 (lazy index)
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x000290EC)
+[loadfile] cdrom0:\MODULES\LGDEVW.IRX;1
+[iop-tty] LgDev_tb_rb_Driver Version 1.08( Wheel ), built on Sep 24 2002 at 18:34:09, thpri=42,43
+[cdvdfsv] search \POOLS.CSV;1 -> found
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[intc] TIM1 handlers fn=0x00426E60
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[loadfile] cdrom0:\MODULES\CRI_ADXI.IRX;1
+[iop-tty] CRI ADX Driver Ver.8.80(Apr 18 2003 15:58:46)
+[iop-tty] CRI ADX Driver : Thread Priority = 39
+[iop-tty] CRI ADX Driver : SPU CORE Number = 0
+[iop-tty] CRI ADX Driver : sceSdInit(SD_INIT_COLD) call.
+[cdvdfsv] search \ASSETS.GFC;1 -> found
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[timer] TIM0 compare IRQ count=0 comp=0 mode=0x5C2
+[cdvdfsv] search \ASSETS.GOB;1 -> found
+[dma] gif tag id 1 qwc 9 addr 0x00000000 data 0x017C2B90
+[dma] gif tag id 1 qwc 10 addr 0x00000000 data 0x017C2C30
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x017C2CE0
+[vu0] cfc2 28
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[intc] GS handlers csr=0x551B6002 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[loadfile] cdrom0:\MODULES\IGUMOUSE.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGUMOUSE.IRX;1
+[iop] IGUMOUSE HLE stub online (rpc 0x12112)
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[loadfile] cdrom0:\MODULES\IGUKBD.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGUKBD.IRX;1
+[iop] IGUKBD HLE stub online (rpc 0x12113)
+[loadfile] cdrom0:\MODULES\SIO2MAN.IRX;1
+[loadfile] cdrom0:\MODULES\PADMAN.IRX;1
+[loadfile] cdrom0:\MODULES\MTAPMAN.IRX;1
+[iop-io] read 0x1F808280 = 0x0 (pc 0x0007A884)
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\MCMAN.IRX;1
+[loadfile] cdrom0:\MODULES\MCSERV.IRX;1
+[intc] GS handlers csr=0x551B6008 imr=0x7400 mask=0x1 fn=0x00416E40
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[loadfile] cdrom0:\MODULES\SDRDRV.IRX;1
+[iop-tty] SDR driver version 4.0.1 (C) SCEI
+[iop-tty]  Exit rsd_main 
+[loadfile] cdrom0:\MODULES\VVAA.IRX;1
+[intc] GS handlers csr=0x551B4008 imr=0x7400 mask=0x1 fn=0x00416E40
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[gs] FINISH raise csr=0x551B4002 imr=0x7400 pending=0 armed intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[gs] FINISH raise csr=0x551B400A imr=0x7F00 pending=0 MASKED — no intc
+[igfileio] walker enable @0x6F2084 (gp=0x6F9BF0)
+[igfileio] repaired first-cluster crc=0xC3994BD8 @0x762390 (65541 bytes STBL0, cur=first=2005 rearm-exhausted)
+[igfileio] finish-clamp 201 <- 204
+[igfileio] forced TIM0 IRQ (df8=2 list=0x705E20)
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[timer] holding TIM0 count-enable through guest MODE 0xE02
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[timer] holding TIM0 count-enable through guest MODE 0xD42
+[igfileio] finish-clamp 203 <- 204
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 204 <- 205
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 205 <- 206
+[igfileio] TIM0 complete IRQ (list=0x705E68 gate 205/205)
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 206 <- 207
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 207 <- 208
+[sema2] Wait count=0 waiters=0 ra=0x0043D828 thr=2
+[igfileio] finish-clamp 208 <- 209
+[igfileio] pulsed Alchemy timer-lock sema 16
+[igfileio] guest-walker dest=0x7AF300 head=0xC6FB655E arm635138=0x0 flag=1
+[igfileio] signal 16/54/55 while +24008 set (GFC UI)
+[igfileio] cleared loadgate+24016 @0x74A2B0 (enable font tick)
+[igfileio] gob-extract CRC=0xC3994BD8 -> 0x1A00000 (80812 bytes, scratch)
+[igfileio] posted sema2 queue type=1 widx=1
+[igfileio] queued deferred font-bind lg=0x74A2B0 dest=0x1A00000
+[igfileio] staged bind lg=0x74A2B0 slot=0x750090 dest=0x1A00000 walk_en=1
+[igfileio] forged host provider obj=0x1BFFC00 (cloned cd 0x750100)
+[igfileio] lookup0 0x23D7B0 -> 0x751CD0
+[igfileio] lookup1 0x23D7B0(+6824) -> 0x750100
+[igfileio] lookup2 0x23D7B0(+6808) -> 0x1BFFC00
+[igfileio] retarget ptr/dest -> scratch 0x1A00000 before bind
+[igfileio] staged 0x23EEF0 returned 0x0 igctx=0x0 alloc=0x79CF50 gob+1428 1→1 gob+912=0x1
+[igfileio] post-bind meta=0x6CFCA0 fn172=0x23E6C0 f0bc=1
+[igfileio] post-bind meta+172 -> 0x1
+[igfileio] skip 0x240350 (F0bc gob+912=1)
+[igfileio] post-bind 0x23D920 -> 0x1
+[igfileio] registered gob wrap 0x1BFFD00 (*→0x751CD0) at table[0]
+[igfileio] meta+24 0x23FC80 -> 0x0 gob+912=0x3 igctx=0x0
+[igfileio] pump 0x23EC00 -> 0x0 gob+912=0x0 igctx=0x0
+[igfileio] post-bind pump 0x23ED40 -> 0x1
+[igfileio] post-bind tick 0x10FA10 -> 0x0
+[igfileio] post-bind done igctx=0x0 gob+912=0x0
+[igfileio] ready-release after F0BC attach obj=0x74A2B0
+[disc] virtual mount GFX/UI/BUTANIM.IGB lba=0xF0000000 size=4248 head=200100000F000000600600001A000000
+[cdvdfsv] search \GFX\UI\BUTANIM.IGB;1 -> found
+[cdvdfsv] planted virt GFX/UI/BUTANIM.IGB (4248 B) at EE 0x1B00000
+[cdvdfsv] virt FULL-file read GFX/UI/BUTANIM.IGB -> 0x1B00000 (4248 B, 3 sec)
+[cdvdfsv] EE virt write lba=0xF0000000 count=1 dst=0x750CC0 wr=0x1B00000 nbytes=4248 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000001 count=1 off=2048 n=2048
+[cdvdfsv] EE virt write lba=0xF0000001 count=1 dst=0x1B00000 wr=0x1B00800 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000002 count=1 off=4096 n=2048
+[cdvdfsv] EE virt write lba=0xF0000002 count=1 dst=0x1B00000 wr=0x1B01000 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[disc] virtual mount UI/INTROTXR.IGB lba=0xF0000003 size=400437 head=C4020000240000006605000016000000
+[cdvdfsv] search \UI\INTROTXR.IGB;1 -> found
+[cdvdfsv] planted virt UI/INTROTXR.IGB (400437 B) at EE 0x1B010A0
+[cdvdfsv] virt FULL-file read UI/INTROTXR.IGB -> 0x1B010A0 (400437 B, 196 sec)
+[cdvdfsv] EE virt write lba=0xF0000003 count=1 dst=0x1B00000 wr=0x1B010A0 nbytes=400437 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000004 count=1 off=2048 n=2048
+[cdvdfsv] EE virt write lba=0xF0000004 count=1 dst=0x1B010A0 wr=0x1B018A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000005 count=1 off=4096 n=2048
+[cdvdfsv] EE virt write lba=0xF0000005 count=1 dst=0x1B010A0 wr=0x1B020A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000006 count=1 off=6144 n=2048
+[cdvdfsv] EE virt write lba=0xF0000006 count=1 dst=0x1B010A0 wr=0x1B028A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000007 count=1 off=8192 n=2048
+[cdvdfsv] EE virt write lba=0xF0000007 count=1 dst=0x1B010A0 wr=0x1B030A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000008 count=1 off=10240 n=2048
+[cdvdfsv] EE virt write lba=0xF0000008 count=1 dst=0x1B010A0 wr=0x1B038A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF0000009 count=1 off=12288 n=2048
+[cdvdfsv] EE virt write lba=0xF0000009 count=1 dst=0x1B010A0 wr=0x1B040A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[disc] virtual read lba=0xF000000A count=1 off=14336 n=2048
+[cdvdfsv] EE virt write lba=0xF000000A count=1 dst=0x1B010A0 wr=0x1B048A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF000000B count=1 off=16384 n=2048
+[cdvdfsv] EE virt write lba=0xF000000B count=1 dst=0x1B010A0 wr=0x1B050A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF000000C count=1 off=18432 n=2048
+[cdvdfsv] EE virt write lba=0xF000000C count=1 dst=0x1B010A0 wr=0x1B058A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[disc] virtual read lba=0xF000000D count=1 off=20480 n=2048
+[cdvdfsv] EE virt write lba=0xF000000D count=1 dst=0x1B010A0 wr=0x1B060A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF000000E count=1 dst=0x1B010A0 wr=0x1B068A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF000000F count=1 dst=0x1B010A0 wr=0x1B070A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000010 count=1 dst=0x1B010A0 wr=0x1B078A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000011 count=1 dst=0x1B010A0 wr=0x1B080A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000012 count=1 dst=0x1B010A0 wr=0x1B088A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000013 count=1 dst=0x1B010A0 wr=0x1B090A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000014 count=1 dst=0x1B010A0 wr=0x1B098A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000015 count=1 dst=0x1B010A0 wr=0x1B0A0A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000016 count=1 dst=0x1B010A0 wr=0x1B0A8A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[cdvdfsv] EE virt write lba=0xF0000017 count=1 dst=0x1B010A0 wr=0x1B0B0A0 nbytes=2048 ee1=0x65AC00 ee2=0x65ACC0
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 2 wait 2/16 pc 0x0043CB28 ra 0x00427494
+[thread]   stack: 00427224 0053AEB4 0023AFA0 0010F610 0010F5F4 00109FBC 0010999C 001090AC 00108EE0 00108EC0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0043CB28 ra 0x0043D828
+[thread]   stack:
+[thread] 3 status 4 prio 1 wait 2/16 pc 0x0043CB28 ra 0x00427494
+[thread]   stack: 00427224 0042833C
+[thread] 4 status 4 prio 127 wait 2/16 pc 0x0043CB28 ra 0x00427494
+[thread]   stack: 00427224 0053AEB4 0023AF40 002405B4 002404E4 00240F40 0023EC4C 0026F23C 00507FA4 00503704 005030BC 0051B534 0051AAC8
+[sema] 2 count 0 waiters 1
+[sema] 16 count 0 waiters 3
+[cnk] skip@0x702BA0=0 sema45_id@0x705C18=45 sema47_id@0x705C10=46 csr=0x551B4008 imr=0x7400 intc_pend=0x1 cop0.sr=0x70010C01 ie=1 in_handler=0 current=0
+[cnk] gate 705BF0=0 705C00=250 6542A0=251 6542D8=2 705BE0=00000000 705C20=259 654290=1 705DF8=0 705F10=00000000
+[cnk] T0 mode=0x142 comp=50465 count=50465 pending=0x1 mask=0x601
+[cnk] TIM0 handler id=3 fn=0x00426EF0 arg=0x748D58
+[cnk] asset STBL@762390=4C425453 fonts_crc@7B3638=C3994BD8 siid@155F940=00000004/00007868 igctx@7430C0=00000000 walk flag=1 first=2005 cur=2005 want=80812 cap=155648 ptr=0x1A00000 mag5=0x1D
+[cnk] loadgate 6F2540=0074A2B0 6F35E0=007522F0 6F2538=0078AB50 6F5AB8=01A00000 635138=00000000
+[iop] module 1 LIBSD at 0x00020000
+[iop] module 2 IGFILEIO at 0x00000000
+[iop] module 3 USBD at 0x00025A00
+[iop] module 4 LGDEVW at 0x00033100
+[iop] module 5 CRI_ADXI at 0x0003C300
+[iop] module 6 USBD at 0x0004E700
+[iop] module 7 IGUMOUSE at 0x00000000
+[iop] module 8 USBD at 0x00064700
+[iop] module 9 IGUKBD at 0x00000000
+[iop] module 10 SIO2MAN at 0x0007A700
+[iop] module 11 PADMAN at 0x0007B700
+[iop] module 12 MTAPMAN at 0x00085500
+[iop] module 13 MCMAN at 0x00087500
+[iop] module 14 MCSERV at 0x000AE700
+[iop] module 15 LIBSD at 0x000B1F00
+[iop] module 16 SDRDRV at 0x000B7900
+[iop] module 17 VVAA at 0x000B9400
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 30 wait 4/2 pc 0x0002A404
+[iop] thread 4 status 4 prio 36 wait 4/3 pc 0x0002A464
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 4 prio 42 wait 8/2015112 pc 0x00001020
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 39 wait 7/1 pc 0x0003C46C
+[iop] thread 9 status 4 prio 49 wait 8/1994680 pc 0x00001020
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 30 wait 4/8 pc 0x00053104
+[iop] thread 12 status 4 prio 36 wait 4/9 pc 0x00053164
+[iop] thread 13 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 14 status 4 prio 30 wait 4/11 pc 0x00069104
+[iop] thread 15 status 4 prio 36 wait 4/12 pc 0x00069164
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 17 status 4 prio 16 wait 4/13 pc 0x0007AAC4
+[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 19 status 4 prio 46 wait 8/545332 pc 0x00001020
+[iop] thread 20 status 4 prio 46 wait 8/545556 pc 0x00001020
+[iop] thread 21 status 2 prio 20 wait 0/15 pc 0x0007B794
+[iop] thread 22 status 4 prio 46 wait 4/15 pc 0x0007B794
+[iop] thread 23 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 24 status 4 prio 46 wait 8/553392 pc 0x00001020
+[iop] thread 25 status 4 prio 46 wait 8/553416 pc 0x00001020
+[iop] thread 26 status 4 prio 46 wait 8/553440 pc 0x00001020
+[iop] thread 27 status 4 prio 46 wait 8/553464 pc 0x00001020
+[iop] thread 28 status 4 prio 46 wait 8/553488 pc 0x00001020
+[iop] thread 29 status 4 prio 20 wait 4/16 pc 0x00085D10
+[iop] thread 30 status 4 prio 46 wait 4/17 pc 0x0007B794
+[iop] thread 31 status 16 prio 46 wait 0/17 pc 0x0007E214
+[iop] thread 32 status 16 prio 46 wait 0/17 pc 0x0007E350
+[iop] thread 33 status 16 prio 46 wait 0/17 pc 0x0007E488
+[iop] thread 34 status 16 prio 46 wait 0/17 pc 0x0007E628
+[iop] thread 35 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 36 status 4 prio 46 wait 4/18 pc 0x0007B794
+[iop] thread 37 status 4 prio 46 wait 4/18 pc 0x0007B794
+[iop] thread 38 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 39 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 40 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 41 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 42 status 4 prio 46 wait 4/19 pc 0x0007B794
+[iop] thread 43 status 4 prio 46 wait 4/19 pc 0x0007B794
+[iop] thread 44 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 45 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 46 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 47 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 48 status 4 prio 46 wait 4/20 pc 0x0007B794
+[iop] thread 49 status 4 prio 46 wait 4/20 pc 0x0007B794
+[iop] thread 50 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 51 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 52 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 53 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 54 status 4 prio 46 wait 4/21 pc 0x0007B794
+[iop] thread 55 status 4 prio 46 wait 4/21 pc 0x0007B794
+[iop] thread 56 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 57 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 58 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 59 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 60 status 4 prio 46 wait 4/22 pc 0x0007B794
+[iop] thread 61 status 4 prio 46 wait 4/22 pc 0x0007B794
+[iop] thread 62 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 63 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 64 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 65 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 66 status 4 prio 46 wait 4/23 pc 0x0007B794
+[iop] thread 67 status 4 prio 46 wait 4/23 pc 0x0007B794
+[iop] thread 68 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 69 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 70 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 71 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 72 status 4 prio 46 wait 4/24 pc 0x0007B794
+[iop] thread 73 status 4 prio 46 wait 4/24 pc 0x0007B794
+[iop] thread 74 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 75 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 76 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 77 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 78 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 79 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 80 status 4 prio 104 wait 8/728576 pc 0x00001020
+[iop] thread 81 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 82 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 83 status 4 prio 24 wait 8/1677192 pc 0x00001020
+[iop] thread 84 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 85 status 4 prio 98 wait 8/1658840 pc 0x00001020
+[iop] thread 86 status 4 prio 97 wait 3/28 pc 0x000BA35C
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 5 submits, dispatches: upload 1 copy_read 0 copy_write 0 load_clut 0 display 3 raster 2 resolve 0 snapshot 0 decode 0
+[gs] 2 primitives drawn, register writes: 00:3 01:2 05:2 0D:2 18:2 1A:3 1B:4 22:2 40:2 47:2 4C:262 4D:260 4E:4 4F:2 50:2 51:2 52:2 53:2 61:259 62:260
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=260 ch2=3 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 779 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 5 reglist 0 image 2
+[vif0]
+[vif1] 00:1636 01:3 02:3 03:3 04:2 05:2 06:3 07:1565 10:35 13:1558 14:779 20:2 4A:6 68:24 6C:784 6E:2
+[ee] stopped after 15000 frames, 73729312456 cycles: frame limit reached

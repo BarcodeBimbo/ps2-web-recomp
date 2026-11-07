@@ -1,0 +1,20 @@
+{
+  "session": "2026-11-06 overnight CNK 10g",
+  "disk_free_gb": 21.0,
+  "tried": [
+    "cdvdfsv curReadPos/readee (ee1/ee2 now written; still bounce race)",
+    "sema 16/54/55 on each virt FsvRead complete — still no IGB headers in RAM",
+    "PS2_ALCHEMY_NO_CDVD_GFC — searches miss, still igctx=0 prims=2",
+    "host t2 alias to cd — binder still returns 0",
+    "ready-release after F0BC — no freelist hang, still igctx=0",
+    "clear walk_en before 23EEF0 — WORSE (gob+912=0xC8, fonts ptr=0)"
+  ],
+  "current": "forge host provider into stream slot (count 2→3, clone cd) so lookup2 hits",
+  "progress": {
+    "gob912_sticky_f0bc": "PASS with walk_en=1",
+    "igctx": 0,
+    "prims": 2,
+    "host_lookup": "was 0 — forging"
+  },
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,36 @@
+Setup started: Thu 11/05/2026  8:06:45.28
+Working dir: C:\PS2Recomp
+User: joshy@POORSKID
+
+----------------------------------------------------------------
+STAGE 1/6: Locate Python runtime
+----------------------------------------------------------------
+[OK] Bundled Python: tools\python-3.14.10\python.exe
+[OK] Using: tools\python-3.14.10\python.exe
+[--] Skipping install stages - already set up
+
+----------------------------------------------------------------
+STAGE 4/6: Detect private LAN IPv4
+----------------------------------------------------------------
+[WARN] Could not detect LAN IPv4 - using 127.0.0.1 (local only)
+
+----------------------------------------------------------------
+STAGE 5/6: Pick a random free TCP port
+----------------------------------------------------------------
+[OK] Port: 23939 (attempt 1)
+
+----------------------------------------------------------------
+STAGE 6/6: Prepare mobile.py arguments
+----------------------------------------------------------------
+[--] First run - will ask for mobile.py values once
+[OK] Game ID: SLUS-20002
+[OK] Hostname: 0.0.0.0
+[OK] Cert: y
+[OK] Key: y
+[OK] Saved config to mobile.conf
+--- Launching mobile.py at  8:09:06.79 ---
+Python: tools\python-3.14.10\python.exe
+Host:   127.0.0.1
+Port:   23939
+Mode:   config
+--- mobile.py exited at  8:09:07.01 with code 2 ---

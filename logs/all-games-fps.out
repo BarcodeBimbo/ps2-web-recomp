@@ -1,0 +1,39 @@
+== 1e5a12a0 (1e5a12a0)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': None, 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': None, 'ready': True}
+== 34402ee3 (34402ee3)
+  avg=46.78 min=22.1 on_min=19 h33=22 api=True ok=False
+== 60c82f4a (60c82f4a)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': 'GPU nvidia ampere (high performance)', 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': 'fifo', 'ready': True}
+== 695b874b (695b874b)
+  avg=59.85 min=58.8 on_min=52 h33=3 api=True ok=True
+== 76615f99 (76615f99)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': None, 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': None, 'ready': True}
+== 9ce58de3 (9ce58de3)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': None, 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': None, 'ready': True}
+== a2116d2a (a2116d2a)
+  avg=50.84 min=31.9 on_min=32 h33=13 api=False ok=False
+== b49f2e76 (b49f2e76)
+  avg=53.75 min=37.0 on_min=37 h33=9 api=False ok=False
+== c0671389 (c0671389)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': None, 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': None, 'ready': True}
+== c0c45270 (c0c45270)
+  FAIL boot {'running': False, 'started': False, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': None, 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': None, 'ready': True}
+== d4ce5120 (d4ce5120)
+  FAIL boot {'error': 'Page.evaluate: ReferenceError: Module is not defined\n    at eval (eval at evaluate (:226:30), <anonymous>:2:45)\n    at UtilityScript.evaluate (<anonymous>:233:1'}
+== f141051d (f141051d)
+  FAIL boot {'running': False, 'started': True, 'frames': 0, 'prims': 0, 'halted': True, 'block': False, 'gpu': 'GPU nvidia ampere (high performance)', 'hasFpsApi': 'undefined', 'liveFps': None, 'liveVs': None, 'present': 'fifo', 'ready': True}
+== f29093e1 (f29093e1)
+  avg=51.74 min=37.0 on_min=37 h33=13 api=False ok=False
+== ffb47d7e (ffb47d7e)
+  avg=60.0 min=60.0 on_min=60 h33=0 api=False ok=True
+{
+  "n": 14,
+  "ok": 2,
+  "fail": 12,
+  "missing_gfx_api": [
+    "a2116d2ac08a7be4db4e8455ad58d2e5",
+    "b49f2e769315347e8bda839feb705744",
+    "f29093e1f939f924fb11cc605b592b11",
+    "ffb47d7e14cf9f5c02425d9158c29b76"
+  ]
+}

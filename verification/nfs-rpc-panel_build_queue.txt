@@ -1,0 +1,8 @@
+test_blank_archive_password_is_normalized_to_none (__main__.PanelQueueTests.test_blank_archive_password_is_normalized_to_none) ... ok
+test_concurrent_enqueues_reserve_distinct_slots (__main__.PanelQueueTests.test_concurrent_enqueues_reserve_distinct_slots) ... ok
+test_unexpected_worker_exception_marks_game_failed (__main__.PanelQueueTests.test_unexpected_worker_exception_marks_game_failed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.014s
+
+OK

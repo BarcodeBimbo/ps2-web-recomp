@@ -1,0 +1,2 @@
+PASS: resizable and growable backing stores, typed-element offsets, DataView/ArrayBuffer, growth, zero size, fixed fast path and worker-safe installation
+PASS: dynamic offset slices on compute/render/bundle encoders, shared growth, native invalid-input handling and idempotence

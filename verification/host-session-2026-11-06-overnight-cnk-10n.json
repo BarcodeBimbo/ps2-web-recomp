@@ -1,0 +1,8 @@
+{
+  "session": "2026-11-06 overnight CNK 10n",
+  "hypothesis": "+24008 WaitSema(16) starves the EE thread that sceCdSync→memcpy needs between virt bounce sectors",
+  "change": "clear loadgate+24008 as soon as first pristine UI plant appears; stop 0x110340/0x110100 finalize (obj destroy / heap trash)",
+  "plants": "side-channel wells remain pristine (no dst retarget)",
+  "ee1": "AlignReadBuffer dest always 0 — not the copy path for these reads",
+  "rebuild_all": "blocked until prims >> 2"
+}

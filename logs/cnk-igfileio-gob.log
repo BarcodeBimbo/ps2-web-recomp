@@ -1,0 +1,66 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/b49f2e769315347e8bda839feb705744/disc.iso: 6394 files, 1566112 sectors, layer 1 at 0
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP255.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP255.IMG;1 reports 2550, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP255.IMG;1 reports 2550
+[fileio] open cdrom0:\LEGENG.TGA -> 3
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B6820
+[dma] gif tag id 3 qwc 20480 addr 0x0072A7D0 data 0x0072A7D0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B68A0
+[dma] gif tag id 0 qwc 15360 addr 0x0077A7D0 data 0x0077A7D0
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021588)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002158C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x000215A8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x000215B8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000215E4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000215E8)
+[loadfile] cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] IGFILEIO HLE online (rpc 0x12114, GFC/GOB)
+[loadfile] cdrom0:\MODULES\USBD.IRX;1
+[iop-tty] USB Driver (Version 1.1.0)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x000290EC)
+[loadfile] cdrom0:\MODULES\LGDEVW.IRX;1
+[iop-tty] LgDev_tb_rb_Driver Version 1.08( Wheel ), built on Sep 24 2002 at 18:34:09, thpri=42,43
+[cdvdfsv] search \POOLS.CSV;1 -> found
+[loadfile] cdrom0:\MODULES\CRI_ADXI.IRX;1
+[iop-tty] CRI ADX Driver Ver.8.80(Apr 18 2003 15:58:46)
+[iop-tty] CRI ADX Driver : Thread Priority = 39
+[iop-tty] CRI ADX Driver : SPU CORE Number = 0
+[iop-tty] CRI ADX Driver : sceSdInit(SD_INIT_COLD) call.
+[cdvdfsv] search \ASSETS.GFC;1 -> found
+[cdvdfsv] search \ASSETS.GOB;1 -> found
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/42 pc 0x002608A9 ra 0x002608DC
+[thread]   stack: 00260C70 00260C50 002608C4 00260C70 00260C50 002608C4 00260C08 00260BE8 0012D8F4 00109FB0 0010999C 001090AC 00108EE0 00108EC0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0043CB28 ra 0x0043D828
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[iop] module 1 LIBSD at 0x00020000
+[iop] module 2 IGFILEIO at 0x00000000
+[iop] module 3 USBD at 0x00025A00
+[iop] module 4 LGDEVW at 0x00033100
+[iop] module 5 CRI_ADXI at 0x0003C300
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 3 status 4 prio 30 wait 4/2 pc 0x0002A404
+[iop] thread 4 status 4 prio 36 wait 4/3 pc 0x0002A464
+[iop] thread 5 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 6 status 4 prio 42 wait 8/2015112 pc 0x00001020
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 39 wait 7/1 pc 0x0003C46C
+[iop] thread 9 status 4 prio 49 wait 8/1994680 pc 0x00001020
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1 submits, dispatches: upload 1 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 decode 0
+[gs] 0 primitives drawn, register writes: 50:2 51:2 52:2 53:2
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=1 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 2 reglist 0 image 2
+[vif0]
+[vif1] 01:1 02:1 03:1 04:1 05:1 06:1 20:1
+[ee] stopped after 400 frames, 1967141107 cycles: frame limit reached

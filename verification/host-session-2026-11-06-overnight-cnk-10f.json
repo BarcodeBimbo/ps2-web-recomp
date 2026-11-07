@@ -1,0 +1,13 @@
+{
+  "session": "2026-11-06 overnight CNK 10f",
+  "disk_free_gb": 19.0,
+  "finding": "sceCdRead NCMD never wrote eeaddr1 (_rd_intr_data readee) or eeaddr2 (curReadPos). Retail cdvdfsv does; without curReadPos Alchemy loadgate slots stick at +76=3 and +24008 never clears. Headers absent from EE RAM despite bounce writes to 0x750CC0.",
+  "code_changes": [
+    "cdvdfsv: read_to_ee writes zeroed 144B readee to args+16 and nbytes to args+20",
+    "cdvdfsv: stash eeaddrs for async FsvRead job; paced virt delay",
+    "state version 9 for new cdvdfsv fields"
+  ],
+  "test": "cnk-gfc12-30k",
+  "status": "IN PROGRESS — curReadPos/readee fix under test",
+  "rebuild_all": "blocked until prims >> 2"
+}

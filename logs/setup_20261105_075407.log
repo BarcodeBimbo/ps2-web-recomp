@@ -1,0 +1,14 @@
+Setup started: Thu 11/05/2026  7:54:07.96
+Working dir: C:\PS2Recomp
+User: joshy@POORSKID
+
+
+----------------------------------------------------------------
+STAGE 1/6: Locate Python runtime
+----------------------------------------------------------------
+[OK] Bundled Python: tools\python-3.14.10\python.exe
+[OK] Using: tools\python-3.14.10\python.exe
+
+----------------------------------------------------------------
+STAGE 4/6: Detect private LAN IPv4
+----------------------------------------------------------------

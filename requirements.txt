@@ -1,0 +1,3 @@
+# The local library server and mobile HTTPS server use only Python's standard library.
+# Python 3.11+ is required; the Windows bundled runtime is provisioned by Setup.cmd.
+# Do not install the unrelated PyPI "panel" package.

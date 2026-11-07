@@ -1,0 +1,68 @@
+﻿ps2run.exe : [gpu] NVIDIA GeForce RTX 3050 (617.42)
+At line:4 char:1
++ & "build\native-$cnk\ps2run.exe" "games\$cnk\disc\boot.elf" --disc "g ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([gpu] NVIDIA GeForce RTX 3050 (617.42):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[disc] games\b49f2e769315347e8bda839feb705744\disc.iso: 6394 files, 1566112 sectors, layer 1 at 0
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP255.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP255.IMG;1 reports 2550, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP255.IMG;1 reports 2550
+[sif] reboot: sif0 held until SifInitCmd, outgoing=0
+[io] open cdrom0:\LEGENG.TGA -> 3
+[fileio] open cdrom0:\LEGENG.TGA -> 3
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B6820
+[dma] gif tag id 3 qwc 20480 addr 0x0072A7D0 data 0x0072A7D0
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x007B68A0
+[dma] gif tag id 0 qwc 15360 addr 0x0077A7D0 data 0x0077A7D0
+[loadfile] cdrom0:\MODULES\LIBSD.IRX;1
+[iop-hle] intrman:CpuSuspendIntr(001FFFE0, 00025A00, 00000000, 00000000) ra 0x000200C4 thread 1
+[iop-hle] loadcore:RegisterLibraryEntries(00020000, 00025A00, 00000000, 00000000) ra 0x000200D4 thread 1
+[iop-hle] intrman:CpuResumeIntr(00000001, 00025A00, 00000000, 00000000) ra 0x000200E0 thread 1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021588)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002158C)
+[iop-hle] intrman:CpuSuspendIntr(001FFFC0, BF80140C, BF801404, 00000000) ra 0x00021594 thread 1
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x000215A8)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x000215B8)
+[iop-hle] intrman:CpuResumeIntr(00000001, BF801570, BF801404, 00000000) ra 0x000215C8 thread 1
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000215E4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000215E8)
+[loadfile] cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] cannot read module cdrom0:\MODULES\IGFILEIO.IRX;1
+[iop] IGFILEIO HLE stub online
+[sif] bind to 0x00012114 waits for the server
+[sif] bind to 0x00012114 timed out
+[sif] bind to 0x00012114 waits for the server
+[sif] bind to 0x00012114 timed out
+[sif] bind to 0x00012114 waits for the server
+[sif] bind to 0x00012114 timed out
+[sif] bind to 0x00012114 waits for the server
+[sif] bind to 0x00012114 timed out
+[sif] bind to 0x00012114 waits for the server
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 1 wait 2/11 pc 0x0043CB28 ra 0x0043FA70
+[thread]   stack: 005390B0 00539764 00511CF8 00511CD4 00511380 0050FA0C 004EBBD4 004ED818 004ECBD0 004ECBB0 004ECB88 
+0010907C 00108EE0 00108EC0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0043CB28 ra 0x0043D828
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 11 count 0 waiters 1
+[iop] module 1 LIBSD at 0x00020000
+[iop] module 2 IGFILEIO at 0x00000000
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[sif] bind to 0x00012114 is waiting
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1 submits, dispatches: upload 1 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 
+decode 0
+[gs] 0 primitives drawn, register writes: 50:2 51:2 52:2 53:2
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=1 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 2 reglist 0 image 2
+[vif0]
+[vif1] 01:1 02:1 03:1 04:1 05:1 06:1 20:1
+[ee] stopped after 1200 frames, 5899223739 cycles: frame limit reached

@@ -1,0 +1,208 @@
+$ python tests/downloader_setup.py
+test_changed_lockfile_reinstalls_dependencies (__main__.DownloaderSetup.test_changed_lockfile_reinstalls_dependencies) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Installing locked Store downloader dependencies...
+Store downloader ready.
+ok
+test_failed_install_is_not_stamped (__main__.DownloaderSetup.test_failed_install_is_not_stamped) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+ok
+test_first_start_installs_everything_then_reuses (__main__.DownloaderSetup.test_first_start_installs_everything_then_reuses) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Store downloader ready.
+ok
+test_missing_browser_is_repaired_without_npm_reinstall (__main__.DownloaderSetup.test_missing_browser_is_repaired_without_npm_reinstall) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Installing the Store browser...
+Store downloader ready.
+ok
+test_browser_install_timeout_still_starts_the_host (__main__.StartupFallback.test_browser_install_timeout_still_starts_the_host) ...
+>>> 1/5 Native build tools
+<<< 1/5 Native build tools: complete (0.0s)
+
+>>> 2/5 Emscripten SDK
+<<< 2/5 Emscripten SDK: complete (0.0s)
+
+>>> 3/5 WebGPU libraries
+<<< 3/5 WebGPU libraries: complete (0.0s)
+
+>>> 4/5 Store runtime and browser
+<<< 4/5 Store runtime and browser: failed (0.0s)
+Store browser is unavailable: fixture browser timeout
+Opening the library with direct-link downloads available. Re-run Setup.cmd to repair browser search/downloads; see tools/setup.log.
+
+>>> 5/5 CHD tool
+<<< 5/5 CHD tool: complete (0.0s)
+
+SETUP FINISHED WITH WARNINGS. Starting the desktop library and automatic LAN mobile service.
+Setup report: tools/setup-report.json | Detailed downloader log: tools/setup.log
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.048s
+
+OK
+
+$ python tests/setup_reporting.py
+test_output_failure_timeout_and_report (__main__.Reporting.test_output_failure_timeout_and_report) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.441s
+
+OK
+
+$ python tests/mobile_auto.py
+test_auto_listener_uses_random_port_and_keeps_admin_private (__main__.Automatic.test_auto_listener_uses_random_port_and_keeps_admin_private) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.685s
+
+OK
+
+$ python tests/mobile_https.py
+PASS: HTTPS trust, authentication, secure cookie, live shell, COOP/COEP, disc ranges, blocked admin/other games, token rotation
+
+$ python tests/installation_flow.py
+test_browser_catalog_uses_real_subprocess_contract (__main__.Flow.test_browser_catalog_uses_real_subprocess_contract) ... ok
+test_catalog_home_pagination_and_existing_search_endpoint (__main__.Flow.test_catalog_home_pagination_and_existing_search_endpoint) ... ok
+test_cleanup_never_deletes_originals (__main__.Flow.test_cleanup_never_deletes_originals) ... ok
+test_cross_container_disc_identity_and_concurrent_claims (__main__.Flow.test_cross_container_disc_identity_and_concurrent_claims) ... ok
+test_existing_ready_disc_is_backfilled (__main__.Flow.test_existing_ready_disc_is_backfilled) ... ok
+test_failed_download_retry_reuses_the_same_game (__main__.Flow.test_failed_download_retry_reuses_the_same_game) ... ok
+test_translation_repair_rejects_dynamic_and_unaligned_targets (__main__.Flow.test_translation_repair_rejects_dynamic_and_unaligned_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.048s
+
+OK
+
+$ python tests/store_pipeline.py
+test_compile_failure_keeps_old_player (__main__.PipelineTests.test_compile_failure_keeps_old_player) ... ok
+test_complete_build_publishes_together_and_versions_assets (__main__.PipelineTests.test_complete_build_publishes_together_and_versions_assets) ... ok
+test_download_finishes_before_import_and_password_is_not_persisted (__main__.PipelineTests.test_download_finishes_before_import_and_password_is_not_persisted) ... ok
+test_import_failure_preserves_completed_download (__main__.PipelineTests.test_import_failure_preserves_completed_download) ... ok
+test_local_download_destinations_are_rejected (__main__.PipelineTests.test_local_download_destinations_are_rejected) ... ok
+test_provider_denial_has_a_useful_local_import_recovery (__main__.PipelineTests.test_provider_denial_has_a_useful_local_import_recovery) ... ok
+test_store_default_password_and_explicit_override (__main__.PipelineTests.test_store_default_password_and_explicit_override) ... ok
+test_truncated_download_never_enters_library (__main__.PipelineTests.test_truncated_download_never_enters_library) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.008s
+
+OK
+
+$ python tests/browser_store_bridge.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.039s
+
+OK
+
+$ python tests/panel_build_queue.py
+test_blank_archive_password_is_normalized_to_none (__main__.PanelQueueTests.test_blank_archive_password_is_normalized_to_none) ... ok
+test_concurrent_enqueues_reserve_distinct_slots (__main__.PanelQueueTests.test_concurrent_enqueues_reserve_distinct_slots) ... ok
+test_unexpected_worker_exception_marks_game_failed (__main__.PanelQueueTests.test_unexpected_worker_exception_marks_game_failed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.014s
+
+OK
+
+$ python tests/security_review.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+OK
+
+$ python tests/serve_range.py
+test_existing_player_glue_gets_compatibility_prefix_in_workers (__main__.ServeRangeTests.test_existing_player_glue_gets_compatibility_prefix_in_workers) ... ok
+test_full_range_returns_requested_slice (__main__.ServeRangeTests.test_full_range_returns_requested_slice) ... ok
+test_head_advertises_ranges_and_exact_length (__main__.ServeRangeTests.test_head_advertises_ranges_and_exact_length) ... ok
+test_single_byte_range_returns_exact_206_response (__main__.ServeRangeTests.test_single_byte_range_returns_exact_206_response) ... ok
+test_unsatisfiable_range_returns_416 (__main__.ServeRangeTests.test_unsatisfiable_range_returns_416) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.539s
+
+OK
+
+$ python tests/windows_setup_archive.py
+test_bootstrap_uses_immutable_revision_not_moving_main (__main__.EmsdkBootstrapPinTests.test_bootstrap_uses_immutable_revision_not_moving_main) ... ok
+test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk (__main__.EmsdkBootstrapPinTests.test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk) ... ok
+test_chdman_installer_pins_hash_and_runs_silent_mame_installer (__main__.SafeZipExtractionTests.test_chdman_installer_pins_hash_and_runs_silent_mame_installer) ... ok
+test_enforces_uncompressed_size_cap (__main__.SafeZipExtractionTests.test_enforces_uncompressed_size_cap) ... ok
+test_extracts_normal_archive (__main__.SafeZipExtractionTests.test_extracts_normal_archive) ... ok
+test_rejects_parent_traversal (__main__.SafeZipExtractionTests.test_rejects_parent_traversal) ... ok
+test_rejects_symbolic_link_entries (__main__.SafeZipExtractionTests.test_rejects_symbolic_link_entries) ... ok
+test_rejects_windows_drive_and_alternate_stream_paths (__main__.SafeZipExtractionTests.test_rejects_windows_drive_and_alternate_stream_paths) ... ok
+test_rejects_windows_reserved_device_names (__main__.SafeZipExtractionTests.test_rejects_windows_reserved_device_names) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.055s
+
+OK
+
+$ python tests/disc_archive.py
+test_chd_and_seven_zip_dependencies_are_reported (__main__.DiscArchiveTests.test_chd_and_seven_zip_dependencies_are_reported) ... ok
+test_cue_cannot_escape_its_folder (__main__.DiscArchiveTests.test_cue_cannot_escape_its_folder) ... ok
+test_iso_trailing_period_is_readable_during_optional_core_scan (__main__.DiscArchiveTests.test_iso_trailing_period_is_readable_during_optional_core_scan) ... ok
+test_malformed_directory_record_is_rejected (__main__.DiscArchiveTests.test_malformed_directory_record_is_rejected) ... ok
+test_oversized_sparse_image_is_rejected_before_open (__main__.DiscArchiveTests.test_oversized_sparse_image_is_rejected_before_open) ... ok
+test_password_protected_zip_and_wrong_password (__main__.DiscArchiveTests.test_password_protected_zip_and_wrong_password) ... ok
+test_project_managed_7zip_is_discovered_without_path (__main__.DiscArchiveTests.test_project_managed_7zip_is_discovered_without_path) ... ok
+test_seven_zip_does_not_prompt_for_an_optional_password (__main__.DiscArchiveTests.test_seven_zip_does_not_prompt_for_an_optional_password) ... ok
+test_seven_zip_password_is_sent_only_when_supplied (__main__.DiscArchiveTests.test_seven_zip_password_is_sent_only_when_supplied) ... ok
+test_unsupported_zip_compression_falls_back_to_seven_zip (__main__.DiscArchiveTests.test_unsupported_zip_compression_falls_back_to_seven_zip) ... ok
+test_valid_iso_directory (__main__.DiscArchiveTests.test_valid_iso_directory) ... ok
+test_windows_device_name_can_be_read_but_not_exported (__main__.DiscArchiveTests.test_windows_device_name_can_be_read_but_not_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.024s
+
+OK
+
+$ python tests/analysis_tailcall.py
+External tail-call discovery regression passed
+
+$ python tests/elf_bss.py
+Executable BSS regression passed
+
+$ python tests/codegen_fallthrough.py
+/tmp/ps2-codegen-test-frvmfaww/generated/unit_0000.cpp: In function ‘void gen::unit_0000(ps2::Cpu&, uint32_t, uint32_t)’:
+/tmp/ps2-codegen-test-frvmfaww/generated/unit_0000.cpp:148:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  148 |     c.pc = 0x00100008u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-frvmfaww/generated/unit_0000.cpp:151:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  151 |     c.pc = 0x00100008u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-frvmfaww/generated/unit_0000.cpp:155:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  155 |     c.pc = 0x00100014u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+Untranslated fallthrough regression passed
+
+$ node tests/panel_logic.cjs
+PASS: panel execution; library/store/downloads navigation, catalog cards, encrypted-password entry, request-failure retry and successful submission clearing
+
+$ node tests/player_logic.cjs
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata
+
+$ node tests/gpu_upload_compat.cjs
+PASS: resizable and growable backing stores, typed-element offsets, DataView/ArrayBuffer, growth, zero size, fixed fast path and worker-safe installation
+PASS: dynamic offset slices on compute/render/bundle encoders, shared growth, native invalid-input handling and idempotence
+
+$ node tests/downloader_contract.mjs
+{"event":"progress","bytes":4,"total":4,"speed":4}
+{"event":"complete","path":"/tmp/ps2-downloader-CcetTu/complete.iso","bytes":4,"total":4}
+{"event":"progress","bytes":1,"total":5,"speed":1}
+PASS: downloader URL/version/stream/completion/redirect contract
+
+$ node tests/solver_contract.mjs
+PASS: supplied search endpoint/PS2 matching, pagination and optional solver task/callback/user-agent contract; no paid API calls

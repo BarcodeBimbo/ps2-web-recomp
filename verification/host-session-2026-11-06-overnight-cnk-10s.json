@@ -1,0 +1,32 @@
+{
+  "session": "2026-11-06-overnight-cnk-10s",
+  "gid": "b49f2e769315347e8bda839feb705744",
+  "prims": 2,
+  "gate": "red",
+  "rebuild_all": "blocked",
+  "plant_heads": {
+    "butanim@0x1B00000": "20010000",
+    "intro@0x1B80000": "C4020000"
+  },
+  "plus24008": 1,
+  "baseline_run": "logs/cnk-softarm-hold-20k.log",
+  "status": [
+    "Instrumentation landed: UI-IGB read logs, sema16 Wait/Signal/hostSignal, PS2_WATCH for +24008.",
+    "Soft-arm obj+45 after plant ingest (no host FCE0). Timed intro hold until parse window.",
+    "Host FCE0 (immediate or deferred) with butanim in BD1000 → missing code @0 ra 0x51ACEC. Reverted."
+  ],
+  "hypotheses_killed": [
+    "Alchemy never requests UI IGB LBAs after plant",
+    "Plant missing IGB stream sync/header",
+    "FCE0-before-status-1 alone fixes parse",
+    "Arm +45 + host FCE0 is safe when vt108 live",
+    "UI slots should have nonzero a9 callback",
+    "Deferred host FCE0 after warm-up avoids 0x51ACEC"
+  ],
+  "alive": [
+    "EE align dest=0 so copy-out never arms +45; soft-arm substitutes.",
+    "Shared stream 0x974358→BD1000; intro must wait for butanim parse.",
+    "0x51ACEC null is bind-registry follow-on (vt+84) — needs deeper registry init, not more FCE0 forcing.",
+    "+24008 stays set by design; clearing remains forbidden."
+  ]
+}

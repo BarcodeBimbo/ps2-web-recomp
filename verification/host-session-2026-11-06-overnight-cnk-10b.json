@@ -1,0 +1,20 @@
+{
+  "session": "2026-11-06 overnight CNK 10b",
+  "disk_free_gb": 19.9,
+  "progress": {
+    "freelist_escape": "PASS",
+    "soft_extract_scratch": "PASS — GIF path1 packed can exceed 100k tags; screen still black/2 prims",
+    "probe_23D7B0": "PASS — returns 0x751CD0 with a0=*(lg+4) a1=0x611AD0",
+    "bind_10F2F0": "AV after probe — isolated to later steps in 0x10F2F0 (VEH+cleanup works)",
+    "prims": 2,
+    "igctx": 0,
+    "frame": "solid black at 20k"
+  },
+  "next": [
+    "Step through 0x10F2F0 after 0x23D7B0 (0x23EEF0 binder / vtable +172) with Ghidra or staged host_calls",
+    "Unblock natural EE 0x109840 path (thread cycles WaitSema but never binds)",
+    "prims >> 2 then rebuild-all"
+  ],
+  "status": "CNK OPEN — binder AV isolated past first lookup",
+  "rebuild_all": "blocked"
+}

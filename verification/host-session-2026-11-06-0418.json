@@ -1,0 +1,48 @@
+{
+  "when": "2026-11-06T04:18:03",
+  "session": "all-game-install-detect-sly-textures",
+  "done": {
+    "nfs_mw_overlay": {
+      "game": "60c82f4a111da300ac23bbec85272788",
+      "missing_code": "0x01A5BEA4",
+      "result": "PASS native 500f 134911 prims after synthetic RAM overlay capture",
+      "generic_fix": "scripts/windows.py capture now synthesizes overlays when ELF has no BSS windows"
+    },
+    "nfs_u2": {
+      "native_prior": "252642 prims / 600f",
+      "web": "republish started"
+    },
+    "install_health": {
+      "files": [
+        "scripts/install_health.py",
+        "scripts/windows_port.py",
+        "scripts/panel.py",
+        "tests/installation_flow.py"
+      ],
+      "result": "health.json gate; full install fails on missing_code/near_zero_prims"
+    },
+    "sly_textures": {
+      "game": "c0c4527037b6168660829a0eb13df1a3",
+      "finding": "GPU==software 0% diff even on broken gameplay frames; bug is shared GS path",
+      "fix": "CSM2 8-bit CLUT load corrected to 16x16 block in gs.cpp + gs.wgsl + gpu.cpp",
+      "visual": "intro OK-ish; gameplay rooftops still black dither/noise \u2014 further TEX/ATE work needed"
+    },
+    "cnk_igfileio": {
+      "game": "b49f2e769315347e8bda839feb705744",
+      "result": "GFC/GOB host reader + open/read HLE methods; still 2 prims (only method 19 called)",
+      "health": "fail near_zero_prims:2"
+    },
+    "tests": {
+      "malware_guard": "PASS",
+      "mobile_auto": "PASS",
+      "player_crashlog": "PASS (updated for auto crash logs)",
+      "installation_flow": "PASS"
+    }
+  },
+  "open": [
+    "CNK past 2-prim WaitSema",
+    "Sly rooftop texture noise",
+    "MW/U2/HotShots web publish finish + Chrome smoke",
+    "RE4 asyncify timeout / Def Jam retry"
+  ]
+}

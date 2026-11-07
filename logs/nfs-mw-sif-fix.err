@@ -1,0 +1,71 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games\60c82f4a111da300ac23bbec85272788\disc.iso: 25 files, 1807840 sectors, layer 1 at 0
+[mc] card in slot 1: games\60c82f4a111da300ac23bbec85272788\siffix.ps2 (new, unformatted)
+[sif] command 0x80000002: 00000014 00000000 80000002 00000000 005CDB40 00000002 205CDB40 205CDBC0 0001E000 005CDC40 00000020 00000000 00000000 005CDDC0
+[sif] command 0x80000002: 00000010 00000000 80000002 00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[sif] to EE: command 0x80000001: 00000018 00000000 80000001 00000000 00000000 00000001
+[sif] bind 0x80000592
+[sif] to EE: command 0x80000008: 00000030 00000000 80000008 00000000 00000005 205CDE40 00000002 005D53A8 80000009 2CACA93E DEADBEF0 DEADCAFE
+[sif] call server 0x80000592 fn 0 send 4 recv 16 mode 1 args 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[sif] to EE: command 0x80000008: 00000030 DEADBEF0 80000008 00000000 00000005 205CDE40 00000003 005D53A8 8000000A 00000000 00000000 00000000
+[sif] bind 0x80000593
+[sif] to EE: command 0x80000008: 00000030 00000000 80000008 00000000 00000005 205CDE40 00000004 005AA600 80000009 2CACA93F DEADBEF0 DEADCAFE
+[sif] call server 0x80000593 fn 3 send 0 recv 4 mode 1 args 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[sif] to EE: command 0x80000008: 00000030 00000000 80000008 00000000 00000005 205CDE40 00000005 005AA600 8000000A 00000000 00000000 00000000
+[sif] call server 0x80000593 fn 34 send 4 recv 4 mode 1 args 00000002 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[sif] to EE: command 0x80000008: 00000030 DEADBEF0 80000008 00000000 00000005 205CDE40 00000006 005AA600 8000000A 00000000 00000000 00000000
+[sif] command 0x80000003: 00000068 00000000 80000003 00000000 00000021 00000000 306D6F72 4E44553A 6463204C 3A6D6F72 53464E5C 504F495C 38325052 4D492E30
+[sif] command 0x80000003 has no handler (from ee buffer 0x005D12C0)
+[frame] 25 prims 0
+[frame] 50 prims 0
+[frame] 75 prims 0
+[frame] 100 prims 0
+[frame] 125 prims 0
+[frame] 150 prims 0
+[frame] 175 prims 0
+[frame] 200 prims 0
+[frame] 225 prims 0
+[frame] 250 prims 0
+[frame] 275 prims 0
+[frame] 300 prims 0
+[frame] 325 prims 0
+[frame] 350 prims 0
+[frame] 375 prims 0
+[frame] 400 prims 0
+[frame] 425 prims 0
+[frame] 450 prims 0
+[frame] 475 prims 0
+[frame] 500 prims 0
+[frame] 525 prims 0
+[frame] 550 prims 0
+[frame] 575 prims 0
+[frame] 600 prims 0
+[frame] 625 prims 0
+[frame] 650 prims 0
+[frame] 675 prims 0
+[frame] 700 prims 0
+[frame] 725 prims 0
+[frame] 750 prims 0
+[frame] 775 prims 0
+[frame] 800 prims 0
+[frame] 825 prims 0
+[frame] 850 prims 0
+[frame] 875 prims 0
+[frame] 900 prims 0
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/10 pc 0x00386619 ra 0x00386620
+[thread]   stack: 004961D0 00500000 00496A80 00385EC8 001615D4 00385F44 00312C3C 003134F4 004362C8
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00495528 ra 0x00495DE8
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 0 submits, dispatches: upload 0 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 decode 0
+[gs] 0 primitives drawn, register writes:
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=0 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 0 reglist 0 image 0
+[vif0]
+[vif1]
+[ee] stopped after 900 frames, 5308503832 cycles: frame limit reached

@@ -1,0 +1,24 @@
+08:37:36 waiting for free web build slot…
+08:37:37 slot free — rebuilding GoW (JSPI)
+copy C:\PS2Recomp\build\web-695b874b308a4e5353767bb6df8ba697 -> C:\PS2Recomp\build\web-695b874b308a4e5353767bb6df8ba697-next
+RUN C:\PS2Recomp\tools\msys64\clang64\bin\cmake.exe --build build\web-695b874b308a4e5353767bb6df8ba697-next --parallel 1 --target ps2web
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Configuring done (1.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/PS2Recomp/build/web-695b874b308a4e5353767bb6df8ba697-next
+[0/4] Re-checking globbed directories...
+[1/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[2/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[3/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[4/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.o
+[5/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.o
+[6/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.o
+[7/13] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/igfileio.cpp.o
+[8/13] Linking CXX static library libps2runtime.a
+[9/13] Building CXX object CMakeFiles/ps2web.dir/host/web.cpp.o
+[10/13] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]
+build exit=0 in 58.9s
+published C:\PS2Recomp\build\web-695b874b308a4e5353767bb6df8ba697
+08:38:40 rebuild exit=0

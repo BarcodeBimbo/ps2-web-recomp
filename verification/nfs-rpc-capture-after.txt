@@ -1,0 +1,8 @@
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)
+PASS: captured NFS sound RPC fn0 executed and replied after 377 slices
+worker pc=0x935b0

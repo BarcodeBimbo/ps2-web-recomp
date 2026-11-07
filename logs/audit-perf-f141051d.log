@@ -1,0 +1,97 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] c:\PS2Recomp\games\f141051d9b9fae0fb48deced01311f44\disc.iso: 331 files, 1017744 sectors, layer 1 at 0
+[io] write 0x1000F180 = 0x23 (pc 0x00104178)
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[ee] halted: program asked to run another executable
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[sys] unhandled syscall 0x56 from 0x00105904
+[thread] 1 status 1 prio 1 wait 0/0 pc 0x00105AD9 ra 0x00105AF0
+[thread]   stack: 001059C4 00104DB4 001000EC 001000AC
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x00103368 ra 0x001051E0
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 0 submits, dispatches: upload 0 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 decode 0
+[gs] 0 primitives drawn, register writes:
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=0 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 0 reglist 0 image 0
+[vif0]
+[vif1]
+[ee] stopped after 0 frames, 61834 cycles: program asked to run another executable

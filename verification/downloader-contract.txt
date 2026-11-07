@@ -1,0 +1,4 @@
+{"event":"progress","bytes":4,"total":4,"speed":4}
+{"event":"complete","path":"/tmp/ps2-downloader-VZLcCf/complete.iso","bytes":4,"total":4}
+{"event":"progress","bytes":1,"total":5,"speed":1}
+PASS: downloader URL/version/stream/completion/redirect contract

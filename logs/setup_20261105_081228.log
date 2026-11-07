@@ -1,0 +1,11 @@
+Setup started: Thu 11/05/2026  8:12:28.11
+Working dir: C:\PS2Recomp
+User: joshy@POORSKID
+
+----------------------------------------------------------------
+STAGE 1/3: Check for existing Python runtime
+----------------------------------------------------------------
+[OK] Bundled Python found: tools\python-3.14.10\python.exe
+[OK] Using: tools\python-3.14.10\python.exe
+[--] Already installed - nothing to download.
+Setup complete.

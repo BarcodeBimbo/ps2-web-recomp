@@ -1,0 +1,7 @@
+Test project /workspace/scratch/ae7ea5fe4a51/rpc-test-clang
+    Start 1: iop_rpc_poll
+1/1 Test #1: iop_rpc_poll .....................   Passed    0.03 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.04 sec

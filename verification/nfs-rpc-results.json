@@ -1,0 +1,72 @@
+{
+  "baseline_capture": {
+    "exit": 1,
+    "expected_failure": "captured sound worker remains asleep"
+  },
+  "current_capture": {
+    "status": "PASS",
+    "rpc_server": "0x00534E44",
+    "function": 0,
+    "send_bytes": 20,
+    "reply_client": "0x005C0080",
+    "slices": 377,
+    "worker_pc": "0x000935B0"
+  },
+  "native_ctest": "PASS",
+  "focused_sif_asan_ubsan": "PASS",
+  "web_runtime_asyncify": "PASS",
+  "web_feature_validation": "PASS",
+  "limitations": [
+    "Captured IOP worker replay, not a complete machine restore.",
+    "No full disc/gameplay/browser/Windows verification.",
+    "Sanitizers instrumented SIF/test translation unit, not the entire linked runtime."
+  ],
+  "inputs": {
+    "explore_ram(1).bin": {
+      "bytes": 37748736,
+      "sha256": "2627bb0dfa32590b02fc254e486c7401482b276645d3fe89681095d7f7393e00"
+    },
+    "IRX281A.BUN": {
+      "bytes": 154620,
+      "sha256": "5f3d186a4089ca84d326a982349fcc1a038ef85ae1a5d6e52054337deb99ff78"
+    },
+    "IRX281B.BUN": {
+      "bytes": 207744,
+      "sha256": "0c46ae5220cad2e6aaf54e500904359b06e1c4ba02a764c793b6a5695c13192a"
+    },
+    "boot(1).elf": {
+      "bytes": 4918740,
+      "sha256": "aa58f301c7215ab2885ab93dff68de9cb66371a139977e53d0c1b181a61bad14"
+    },
+    "explore(1).log": {
+      "bytes": 4636,
+      "sha256": "109cc14e0c4ee0bc2438238dbb12eb315ed249436c9023bbff361f5c2feef385"
+    }
+  },
+  "sdk_reference": {
+    "url": "https://github.com/ps2dev/ps2sdk/blob/master/iop/system/sifcmd/src/sifrpc.c",
+    "sha256": "cfa192f82f024a0ebd234c14dc197fac359d29559b513116aaa223fb52d5853e"
+  },
+  "web_wasm_sha256": "a62008c8a8a601344b2b40ecae3b194bf45373310a06985341ff0c485c25524c",
+  "installation_flow.py": {
+    "command": [
+      "python3",
+      "tests/installation_flow.py"
+    ],
+    "exit": 0
+  },
+  "panel_build_queue.py": {
+    "command": [
+      "python3",
+      "tests/panel_build_queue.py"
+    ],
+    "exit": 0
+  },
+  "panel_logic.cjs": {
+    "command": [
+      "node",
+      "tests/panel_logic.cjs"
+    ],
+    "exit": 0
+  }
+}

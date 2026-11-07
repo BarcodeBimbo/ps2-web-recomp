@@ -1,0 +1,5 @@
+usage: ps2run <elf> [--boot path] [--arg text]... [--frames n] [--run n] [--ntsc] [--misses file]
+              [--disc image.iso] [--memcard card.ps2] [--pal | --ntsc] [--trace-syscalls] [--trace-io] [--trace-threads]
+              [--trace-iop] [--trace-iop-hle] [--frames-dir dir] [--frame-every n]
+              [--press frame:button[+button][:frames]]... [--window] [--fullscreen]
+              [--save-state frame:file] [--load-state file] [--widescreen] [--patches file]

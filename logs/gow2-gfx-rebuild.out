@@ -1,0 +1,32 @@
+copy C:\PS2Recomp\build\web-34402ee3c1917272f971028b4fb24868 -> C:\PS2Recomp\build\web-34402ee3c1917272f971028b4fb24868-next
+RUN C:\PS2Recomp\tools\msys64\clang64\bin\cmake.exe --build build\web-34402ee3c1917272f971028b4fb24868-next --parallel 1 --target ps2web
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Configuring done (1.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/PS2Recomp/build/web-34402ee3c1917272f971028b4fb24868-next
+[0/4] Re-checking globbed directories...
+[1/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/memory.cpp.o
+[2/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[3/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[4/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[5/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.o
+[6/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dmac.cpp.o
+[7/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.o
+[8/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
+[9/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/ipu/ipu.cpp.o
+[10/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.o
+[11/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gif.cpp.o
+[12/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/raster.cpp.o
+[13/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/libs.cpp.o
+[14/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/spu2.cpp.o
+[15/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvd.cpp.o
+[16/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.o
+[17/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/igfileio.cpp.o
+[18/24] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gpu/gpu.cpp.o
+[19/24] Linking CXX static library libps2runtime.a
+[20/24] Building CXX object CMakeFiles/ps2web.dir/host/web.cpp.o
+[21/24] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]
+build exit=0 in 564.2s
+published C:\PS2Recomp\build\web-34402ee3c1917272f971028b4fb24868

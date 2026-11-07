@@ -1,0 +1,127 @@
+[gpu] NVIDIA GeForce RTX 3050 (621.14)
+[disc] c:\PS2Recomp\games\76615f9956b13094771e370c883c7170\disc.iso: 138 files, 2292272 sectors, layer 1 at 0
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOP\IOPRP280.IMG;1"
+[sif] FILEIO from cdrom0:\IOP\IOPRP280.IMG;1 reports 2800, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOP\IOPRP280.IMG;1 reports 2800
+[loadfile] buffer at 0x20000, 6641 bytes
+[loadfile] buffer at 0x22B00, 43813 bytes
+[loadfile] buffer at 0x22B00, 11013 bytes
+[loadfile] buffer at 0x37100, 95909 bytes
+[loadfile] buffer at 0x22B00, 7417 bytes
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)
+[loadfile] buffer at 0x37100, 28605 bytes
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)
+[loadfile] buffer at 0x75B00, 83408 bytes
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 100 wait 2/25 pc 0x003537A8 ra 0x00356600
+[thread]   stack: 00327964 0023D89C 0023EE98 00240000 0023D8C0 0022E69C 0022E0D4 0022EBC0 0010C5F8 0011F91C 00119F8C 0011A258 0022B658 00109248 00213FE8 002203F0 00362E8C 0036302C 00119F8C 0010170C
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x003537A8 ra 0x00354228
+[thread]   stack:
+[thread] 3 status 4 prio 12 wait 2/15 pc 0x003537A8 ra 0x00325470
+[thread]   stack: 002F5354
+[thread] 4 status 4 prio 11 wait 2/12 pc 0x003537A8 ra 0x0033BD08
+[thread]   stack:
+[thread] 5 status 4 prio 98 wait 2/21 pc 0x003537A8 ra 0x003309B0
+[thread]   stack: 001E4E58 001E4BB8 003309FC 001E4BA8
+[thread] 6 status 4 prio 6 wait 2/24 pc 0x003537A8 ra 0x0023E638
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 12 count 0 waiters 1
+[sema] 15 count 0 waiters 1
+[sema] 21 count 0 waiters 1
+[sema] 24 count 0 waiters 1
+[sema] 25 count 0 waiters 1
+[iop] module 1 sio2man at 0x00021A00
+[iop] module 2 padman at 0x0002D700
+[iop] module 3 multitap_manager at 0x00025700
+[iop] module 4 mcman at 0x0004E800
+[iop] module 5 mcserv at 0x00027700
+[iop] module 6 Sound_Device_Library at 0x0003E100
+[iop] module 7 SND_Library_EE_Driver at 0x0008A100
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x00021DC4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/224852 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/225076 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 4 prio 46 wait 8/160688 pc 0x00001020
+[iop] thread 8 status 4 prio 46 wait 8/160712 pc 0x00001020
+[iop] thread 9 status 4 prio 46 wait 8/160736 pc 0x00001020
+[iop] thread 10 status 4 prio 46 wait 8/160760 pc 0x00001020
+[iop] thread 11 status 4 prio 46 wait 8/160784 pc 0x00001020
+[iop] thread 12 status 4 prio 20 wait 4/3 pc 0x00025F10
+[iop] thread 13 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 14 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 15 status 4 prio 104 wait 8/175616 pc 0x00001020
+[iop] thread 16 status 2 prio 20 wait 0/5 pc 0x0002D794
+[iop] thread 17 status 4 prio 46 wait 4/5 pc 0x0002D794
+[iop] thread 18 status 4 prio 46 wait 4/6 pc 0x0002D794
+[iop] thread 19 status 16 prio 46 wait 0/6 pc 0x00030168
+[iop] thread 20 status 16 prio 46 wait 0/6 pc 0x000302A4
+[iop] thread 21 status 16 prio 46 wait 0/6 pc 0x000303DC
+[iop] thread 22 status 16 prio 46 wait 0/6 pc 0x0003057C
+[iop] thread 23 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 24 status 4 prio 46 wait 4/7 pc 0x0002D794
+[iop] thread 25 status 4 prio 46 wait 4/7 pc 0x0002D794
+[iop] thread 26 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 27 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 29 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 30 status 4 prio 46 wait 4/8 pc 0x0002D794
+[iop] thread 31 status 4 prio 46 wait 4/8 pc 0x0002D794
+[iop] thread 32 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 33 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 35 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 36 status 4 prio 46 wait 4/9 pc 0x0002D794
+[iop] thread 37 status 4 prio 46 wait 4/9 pc 0x0002D794
+[iop] thread 38 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 39 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 40 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 41 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 42 status 4 prio 46 wait 4/10 pc 0x0002D794
+[iop] thread 43 status 4 prio 46 wait 4/10 pc 0x0002D794
+[iop] thread 44 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 45 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 46 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 47 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 48 status 4 prio 46 wait 4/11 pc 0x0002D794
+[iop] thread 49 status 4 prio 46 wait 4/11 pc 0x0002D794
+[iop] thread 50 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 51 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 52 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 53 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 54 status 4 prio 46 wait 4/12 pc 0x0002D794
+[iop] thread 55 status 4 prio 46 wait 4/12 pc 0x0002D794
+[iop] thread 56 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 57 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 58 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 59 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 60 status 4 prio 46 wait 4/13 pc 0x0002D794
+[iop] thread 61 status 4 prio 46 wait 4/13 pc 0x0002D794
+[iop] thread 62 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 63 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 64 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 65 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 66 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 67 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 68 status 4 prio 15 wait 1/0 pc 0x00093104
+[iop] thread 69 status 4 prio 9 wait 1/0 pc 0x0009300C
+[sif] queue 0x000A1F28 has 1 requests
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 85 submits, dispatches: upload 87 copy_read 0 copy_write 0 load_clut 22 display 0 raster 68 resolve 0 snapshot 0 decode 0
+[gs] 1009 primitives drawn, register writes: 00:528 01:484 03:920 04:88 05:1382 06:67 08:68 09:1 0C:88 0D:460 14:68 15:1 18:48 19:24 1A:25 22:24 34:44 36:44 3B:45 3F:68 40:69 41:23 42:91 43:1 44:1 45:48 46:1 47:92 48:1 49:24 4A:68 4B:1 4C:92 4D:1 4E:138 4F:24 50:90 51:90 52:90 53:90
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=23 ch2=71 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 176 reglist 0 image 0
+[gif] path 2 tags: packed 160 reglist 460 image 0
+[gif] path 3 tags: packed 136 reglist 0 image 90
+[vif0]
+[vif1] 00:2442 01:441 02:1 03:1 05:486 10:23 11:184 13:44 14:1 17:44 20:486 4A:2 50:160 6C:309 6E:176
+[ee] stopped after 900 frames, 4473817253 cycles: frame limit reached

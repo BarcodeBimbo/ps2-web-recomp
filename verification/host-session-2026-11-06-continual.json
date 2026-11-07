@@ -1,0 +1,25 @@
+{
+  "session": "continual-debug-2026-11-06-01xx",
+  "panel": "PASS http://127.0.0.1:8620/",
+  "tests": {
+    "malware_guard": "PASS 8/8",
+    "mobile_https": "PASS",
+    "mobile_auto": "PASS",
+    "security_review": "PASS",
+    "installation_flow": "PASS 7/7 (fixed hashlib.file_digest for Py3.10)",
+    "panel_build_queue": "PASS",
+    "windows_setup_archive": "PASS",
+    "setup_reporting": "PASS",
+    "iop_rpc_poll": "PASS (needs wgpu PATH)"
+  },
+  "asyncify": {
+    "gt4_9ce58de3": "PASS async_mode=asyncify published 2026-11-06T01:11:53-05:00",
+    "in_progress": "a2116d2a Hitman Blood Money",
+    "remaining_after": ["Hitman 2 f141051d", "RE4 ffb47d7e", "Def Jam 76615f99 retry"]
+  },
+  "nfs_mw": {
+    "repro": "164 GS prims then empty SifIopReset x2 then WaitSema(44) ra 0x00497C00",
+    "attempt_empty_reboot_keep_rpc": "landed in sif.cpp; stall unchanged",
+    "trace_note": "after empty reboot IOP only emits sif cmd 0x1 SREG spam; no further EE CallRpc end packets"
+  }
+}

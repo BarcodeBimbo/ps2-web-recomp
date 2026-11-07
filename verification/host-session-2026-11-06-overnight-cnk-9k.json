@@ -1,0 +1,25 @@
+{
+  "session": "2026-11-06 overnight CNK Alchemy attack (9k)",
+  "game": "b49f2e769315347e8bda839feb705744",
+  "title": "Crash Nitro Kart",
+  "disk_free_gb": 20.9,
+  "progress": {
+    "host_call_cap": "PASS — g_limit_host_call forces preempt unwind; cycle-limit fires at freelist 0x239A80",
+    "0x242480": "IDENTIFIED as teardown (arm==-1), not inflate — was causing freelist hang",
+    "ready_plus96": "ready==1 means destroy loaders (0x109C28); poking early frees scratch dest → freelist hang. Reverted.",
+    "font_tick_24016": "clearing loadgate+24016 advances into BUTANIM/INTROTXR CDVD searches",
+    "pump_addr": "0x23ED50 is NOT an entry; trampoline is 0x23ED40 → 0x23DF20",
+    "soft_extract": "plant fonts bytes without cur=7FFF / walk-flag clear",
+    "prims": 2,
+    "igctx_7430C0": 0,
+    "walk_cur": "still first=2005 without teardown"
+  },
+  "next": [
+    "Prove pump 0x23ED40 advances walk_cur / sets igctx",
+    "Map BUTANIM.IGB / INTROTXR.IGB through GFC if present",
+    "Natural ready 10→1 only after binder live",
+    "prims >> 2 then rebuild-all slots 0/1"
+  ],
+  "status": "CNK OPEN — freelist root-caused; binder still blocked",
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,49 @@
+test_changed_lockfile_reinstalls_dependencies (__main__.DownloaderSetup.test_changed_lockfile_reinstalls_dependencies) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Installing locked Store downloader dependencies...
+Store downloader ready.
+ok
+test_failed_install_is_not_stamped (__main__.DownloaderSetup.test_failed_install_is_not_stamped) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+ok
+test_first_start_installs_everything_then_reuses (__main__.DownloaderSetup.test_first_start_installs_everything_then_reuses) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Store downloader ready.
+ok
+test_missing_browser_is_repaired_without_npm_reinstall (__main__.DownloaderSetup.test_missing_browser_is_repaired_without_npm_reinstall) ... Installing the private Node.js runtime for Store downloads...
+Installing locked Store downloader dependencies...
+Installing the Store browser...
+Store downloader ready.
+Installing the Store browser...
+Store downloader ready.
+ok
+test_browser_install_timeout_still_starts_the_host (__main__.StartupFallback.test_browser_install_timeout_still_starts_the_host) ...
+>>> 1/5 Native build tools
+<<< 1/5 Native build tools: complete (0.0s)
+
+>>> 2/5 Emscripten SDK
+<<< 2/5 Emscripten SDK: complete (0.0s)
+
+>>> 3/5 WebGPU libraries
+<<< 3/5 WebGPU libraries: complete (0.0s)
+
+>>> 4/5 Store runtime and browser
+<<< 4/5 Store runtime and browser: failed (0.0s)
+Store browser is unavailable: fixture browser timeout
+Opening the library with direct-link downloads available. Re-run Setup.cmd to repair browser search/downloads; see tools/setup.log.
+
+>>> 5/5 CHD tool
+<<< 5/5 CHD tool: complete (0.0s)
+
+SETUP FINISHED WITH WARNINGS. Starting the desktop library and automatic LAN mobile service.
+Setup report: tools/setup-report.json | Detailed downloader log: tools/setup.log
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.080s
+
+OK

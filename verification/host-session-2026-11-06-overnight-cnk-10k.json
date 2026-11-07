@@ -1,0 +1,29 @@
+{
+  "session": "2026-11-06 overnight CNK 10k",
+  "disk_free_gb": 19.4,
+  "stable_baseline": {
+    "F0BC": "gob+912=1 sticky",
+    "STBL0": "repair @0x762390 65541B; scratch @0x1A00000 with STBL0 prepend",
+    "host_forge": "lookup2 hits",
+    "virt_plant": "BUTANIM+INTROTXR at 0x1Bxxxxx",
+    "igctx": 0,
+    "prims": 2,
+    "screen": "black",
+    "GIF": "~43k path1 tags"
+  },
+  "do_not_repeat": [
+    "clear walk_en before bind (wipes fonts ptr)",
+    "0x240350 after F0BC (gob+912=0xC8)",
+    "clear +24008 (IO spam 0x428970)",
+    "re-stick gob+912 (fights guest 0xCA)",
+    "forge gob into 0x6F58F8 + EC00/meta+24 (gob+912=3, GIF collapse)",
+    "expand ptr with full 80817B STBL0 (jalr null ra 0x239E98)",
+    "retarget ptr to raw extract scratch without STBL0 magic"
+  ],
+  "open": [
+    "What creates igctx after F0BC? Binder returns 0 by design",
+    "UI slots stuck +76=3 despite FULL-file virt reads",
+    "0x7430C0 never written by generated code as constant — confirm address"
+  ],
+  "rebuild_all": "blocked until prims >> 2"
+}

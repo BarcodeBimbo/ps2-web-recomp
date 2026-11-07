@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberArcade - Home</title>
+<style>
+:root{color-scheme:dark;font:15px system-ui;color:#f1eee8;background:#101113;--gold:#e7bd70;--line:#343336;--muted:#aaa6a2}
+*{box-sizing:border-box}body{margin:0}button,input,select,a.action{font:inherit}
+.top{border-bottom:1px solid var(--line);background:#17181b}
+.top>div,main{max-width:1320px;margin:auto;padding-inline:clamp(18px,4vw,56px)}
+.top>div{height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.02em}
+.brand{color:inherit;text-decoration:none}.brand span{min-width:0;line-height:1.2}.brand svg{color:var(--gold)}main{padding-top:48px;padding-bottom:48px}
+.heading{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+h1{font-size:clamp(38px,6vw,64px);letter-spacing:-.06em;line-height:1;margin:0 0 8px}
+h2,h3,p{margin:0}.muted,small,label,summary{color:var(--muted)}
+button,input,select,a.action{border:1px solid var(--line);background:#202125;border-radius:8px;color:inherit;padding:9px 12px}
+button,a.action{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none}
+button:hover,a.action:hover{background:#303136}button:disabled{opacity:.55;cursor:wait}
+button.primary,a.primary{background:var(--gold);color:#241a0b;font-weight:700;border-color:var(--gold)}
+button.primary:hover,a.primary:hover{background:#f4cc85}
+svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#games{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,196px),1fr));gap:20px}
+article{min-width:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#18191c}
+.cover{position:relative;aspect-ratio:3/4;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 72% 22%,#70542d,#302824 50%,#17181b 82%);color:#e4c490}
+.cover>svg{width:56px;height:56px;opacity:.8}.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.more{position:absolute;right:9px;top:9px;background:#17181bea;padding:7px;color:#fff}
+.card-body{display:grid;gap:9px;padding:13px}.card-body h3{font-size:15px;line-height:20px;height:40px;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.badge{font-size:12px;color:var(--muted);text-transform:capitalize}.badge.ready{color:#9ed3a7}.badge.failed,.danger{color:#f5a0a0}
+.card-body .action{justify-self:start}.progress{height:6px;width:100%;accent-color:var(--gold)}
+.empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:12px;padding:42px;text-align:center;color:var(--muted)}
+dialog{width:min(560px,calc(100vw - 28px));border:1px solid var(--line);border-radius:14px;background:#18191d;color:inherit;padding:22px}
+dialog::backdrop{background:#000a}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+#log-dialog{width:min(1000px,calc(100vw - 28px))}
+form,label{display:grid;gap:8px}form{gap:14px}.row,.path-row,.options{display:flex;gap:8px;flex-wrap:wrap}.path-row input{flex:1;min-width:130px}
+.options{margin-top:8px}.options input{width:9rem}summary{cursor:pointer}
+pre{background:#101113;border:1px solid var(--line);border-radius:8px;padding:14px;height:min(54vh,520px);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.55 Consolas,monospace}
+#message{min-height:22px;color:var(--gold);margin-bottom:12px}
+#context{position:fixed;z-index:2;padding:6px;background:#202125;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px #0009;min-width:190px}
+#context button{display:flex;width:100%;justify-content:flex-start;background:none;border:none}
+#context button:hover{background:#36363b}[hidden]{display:none!important}
+
+.tabs{display:flex;gap:12px}.tabs button.selected{background:#34343a}.pager{align-items:center;margin:28px 0}.download-heading{display:flex;align-items:center;gap:20px;margin:30px 0 20px}#store-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:20px}#store-message{min-height:28px;color:var(--gold);margin:20px 0}.download-row{padding:18px;display:grid;gap:10px;margin:12px 0}#store-versions{display:grid;gap:6px;margin-bottom:16px;max-height:min(50vh,360px);overflow:auto}.version-list label{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#16161c;cursor:pointer;font-size:14px}.version-list label.selected{border-color:var(--gold);background:#1d1b16}.version-list input{accent-color:var(--gold)}
+
+:root{background:#101014;--line:#2b2b33;--muted:#9a9aa5}body{background:#101014;color:#eeeeF2}.top{position:fixed;inset:0 auto 0 0;width:220px;background:#101014;border:0;z-index:2}.top>div{min-height:100%;height:auto;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:30px 16px;gap:24px}.brand{font-size:13px;font-weight:650;padding:0 12px;height:auto;min-height:32px;align-items:center;gap:8px;white-space:nowrap}.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25}.brand svg{color:#dddde5;width:18px;height:18px;flex:none}.tabs{display:flex;flex-direction:column;gap:8px;margin:0}.tabs button{display:flex;align-items:center;justify-content:flex-start;gap:12px;border:0;background:transparent;padding:12px;text-align:left;color:#a5a5b0;font-weight:600;border-radius:9px;width:100%}.tabs button.selected{background:#ffffff12;color:#f5f5f7}.tabs svg{width:22px;height:22px;flex:none}.tabs button:hover{background:#ffffff0a}.top #open-add{margin:0 12px;justify-content:center;font-size:13px}#download-count{margin-left:auto;color:var(--gold)}
+main{margin:0 0 0 220px;max-width:none;padding:0 46px 46px}.workspace-top{height:64px;display:flex;align-items:center;justify-content:flex-end;color:#a5a5b1;border-bottom:1px solid #ffffff08;margin-bottom:24px}.workspace-top .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:0;border-radius:10px;background:transparent;color:#a5a5b1;cursor:pointer}.workspace-top .icon-btn:hover,.workspace-top .icon-btn.selected{background:#ffffff12;color:#f5f5f7}.workspace-top .icon-btn svg{width:22px;height:22px}.workspace-device{font-size:12px;color:#72727f}.heading{align-items:center;margin-bottom:24px;gap:16px}.heading h1{font-size:36px;font-weight:730;letter-spacing:-1.4px;margin:0 0 8px}.heading p{font-size:13px;margin:0}.heading input{width:240px;border-radius:24px;background:#202026;border-color:transparent;padding:12px 18px}
+#quick-launch{margin:8px 12px 0}#quick-launch>p{text-transform:uppercase;font-size:11px;font-weight:700;color:#888895;letter-spacing:.08em;margin:0 0 18px}#quick-games{display:grid;gap:15px}#quick-games a{display:flex;align-items:center;gap:10px;color:#b7b7c2;text-decoration:none;font-size:12px;min-width:0}#quick-games img{width:32px;height:43px;object-fit:cover;border-radius:4px}#quick-games span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}#quick-games svg{margin:0 7px}.sidebar-footer{display:grid;gap:4px;margin:auto 12px 0;padding-top:16px;border-top:1px solid #ffffff0c;font-size:11px;line-height:1.35;color:#656571}.sidebar-footer strong{font-size:12px;font-weight:650;color:#9a9aa5;letter-spacing:.01em}.sidebar-footer span{display:block;color:#555560;letter-spacing:.02em}
+.library-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}.library-filters{display:flex;gap:18px}.library-filters button{background:transparent;border:0;border-radius:0;padding:12px 0;color:#9696a3}.library-filters .selected{color:#eeeef3;border-bottom:2px solid var(--gold)}.library-controls select{font-size:12px;background:transparent;border-color:transparent;color:#a7a7b5}.library-controls .row>button{padding:7px;border-color:transparent;background:transparent}.library-controls .row>button.selected{background:#ffffff12;color:#eee}.library-controls .row{align-items:center}.library-bulk{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}.library-bulk button{font-size:12px;font-weight:600;min-height:34px;padding:0 12px;border-radius:8px;border:1px solid #ffffff14;background:#ffffff08;color:#d8d8e0}.library-bulk button:hover{background:#ffffff12}.library-bulk button.danger{border-color:#5a3030;background:#2a1717;color:#f0b4b4}.library-bulk button.danger:hover{background:#3a1f1f}
+#games,#store-games{grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:28px 24px;align-items:start}article{border:0;background:transparent;border-radius:8px;overflow:hidden}.cover,.store-cover{aspect-ratio:2/3;background:#202026;border-radius:8px;color:#93939e}.cover img{object-fit:contain}.cover>svg{opacity:.4}.store-cover img{object-fit:cover}.card-body{padding:12px 0;gap:8px}.card-body h3{min-height:40px;height:auto;overflow-wrap:anywhere;margin:0;font-size:14px;line-height:20px;font-weight:600}.badge{font-size:11px;letter-spacing:.015em}.card-body .action,.card-body>button{font-size:12px;min-height:32px;padding:7px 12px;border-radius:5px}.more{right:8px;top:8px;border:0;border-radius:6px;opacity:.8}.more:hover{opacity:1}
+button.primary,a.primary{background:#e4e4e9;color:#17171c;border-color:#e4e4e9}button.primary:hover,a.primary:hover{background:#fff}#message:empty{display:none}#message{font-size:13px}.store-search input{border-radius:24px;padding-left:18px}.download-heading{margin-top:0;border:0;padding-top:0}.download-job{border:1px solid #2b2b34;background:#19191f}.list-view{display:block!important}.list-view>article{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;margin-bottom:14px;padding:10px;background:#19191f}.list-view .cover{width:72px;height:96px;aspect-ratio:auto}.list-view .cover .more{right:0;top:0;padding:3px}.list-view .card-body{grid-template-columns:minmax(0,1fr) auto;align-content:center}.list-view .card-body h3{grid-column:1}.list-view .card-body .action{grid-column:2;grid-row:1/3}.list-view .card-body .badge{grid-column:1}
+@media(min-width:1700px){main{padding-inline:65px}#games,#store-games{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+@media(max-width:900px){.top{width:178px}.top>div{padding-inline:10px}.brand{font-size:12px}.tabs button{padding:14px;gap:10px}main{margin-left:178px;padding-inline:24px}.heading{align-items:flex-start}.heading input{width:190px}#games,#store-games{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 14px}.sidebar-footer{display:none}}
+@media(max-width:640px){.top{position:sticky;inset:0 0 auto;width:auto;border-bottom:1px solid var(--line)}.top>div{min-height:0;height:auto;flex-direction:row;align-items:center;padding:12px;gap:8px}.brand{padding:0;font-size:0}.brand svg{width:24px;height:24px}.tabs{flex-direction:row;gap:3px;flex:1;justify-content:center}.tabs button{font-size:11px;padding:10px 8px;gap:5px}.tabs svg{width:17px;height:17px}.top #open-add{font-size:11px;margin:0;padding:9px}#quick-launch{display:none}main{margin:0;padding:0 16px 24px}.workspace-top{height:48px;margin-bottom:12px;border:0}.heading{margin-bottom:18px}.heading h1{font-size:28px}.heading input{width:min(100%,180px);font-size:12px}#games,#store-games{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}.library-filters{gap:12px;overflow-x:auto}.library-filters button{font-size:12px;flex:none}.library-controls{gap:10px}.library-controls .row{gap:2px}.library-controls select{max-width:100px}.workspace-device{font-size:11px}.card-body h3{font-size:13px;line-height:18px;min-height:36px}}
+@media(max-width:400px){#games,#store-games{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}.heading h1{font-size:24px}.tabs button span:not(:empty){display:none}}
+.brand span{white-space:nowrap}.brand svg{flex-shrink:0}.cover .poster-play{position:absolute;inset:0;z-index:1;border-radius:8px}.cover .poster-play:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}.cover .more{z-index:2}
+html{scroll-behavior:smooth}article{transition:transform .18s ease,background .18s ease}.cover{transition:box-shadow .18s ease,transform .18s ease}article:hover .cover{transform:translateY(-3px);box-shadow:0 10px 26px #0005}.poster-open{position:absolute;inset:0;z-index:1;background:transparent!important;border:0;border-radius:8px}.poster-open:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}.card-body h3[role=button]{cursor:pointer}#game-info-body{display:grid;gap:16px;overflow-wrap:anywhere}#game-info-body>img{width:140px;border-radius:8px}#game-info-body .action{justify-self:start}#store-downloads{display:grid;gap:16px;max-width:1000px}.download-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:22px;background:#19191f;border:1px solid var(--line);border-radius:12px}.download-row progress,.download-row small{grid-column:1/-1}.download-row button{justify-self:start;min-width:0}.download-row h3{font-size:17px}#settings-view .heading{margin-bottom:18px}#settings-view .heading h1{margin-bottom:4px}.settings-hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,.7fr);gap:14px;margin-bottom:14px;align-items:stretch}.settings-stat{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:14px;background:linear-gradient(160deg,#1c1c24 0%,#14141a 100%);border:1px solid #ffffff10;min-width:0;min-height:118px}.settings-stat-kicker{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7d7d8a}.settings-stat strong{font-size:22px;font-weight:700;letter-spacing:-.03em;color:#f2f2f6}.settings-stat p{margin:0;margin-top:auto;font-size:13px;line-height:1.45;color:#8f8f9c}.settings-stat[data-on="1"]{border-color:#2f4a36;background:linear-gradient(160deg,#18241c 0%,#121814 100%)}.settings-stat[data-on="1"] strong{color:#c8ecc8}.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}.settings-card{display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:14px;background:#15151b;border:1px solid #ffffff0e;min-width:0;height:100%;box-sizing:border-box}.settings-card-wide{grid-column:1/-1;height:auto}.settings-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:52px}.settings-card-head>div{display:grid;gap:4px;min-width:0}.settings-card-head h2{margin:0;font-size:18px;font-weight:700;letter-spacing:-.02em;color:#f0f0f4;line-height:1.2}.settings-card-head p{margin:0;font-size:13px;line-height:1.45;color:#8f8f9c}.settings-badge{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#ffffff0d;color:#a8a8b4;flex:none}.settings-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.settings-badge[data-on="1"]{background:#1d3324;color:#8fd49a}.settings-badge[data-on="0"]{background:#2a2418;color:#d0b074}.settings-steps{display:flex;flex-wrap:wrap;gap:8px}.settings-steps span{display:inline-flex;align-items:center;height:30px;padding:0 11px;border-radius:999px;background:#ffffff08;border:1px solid #ffffff0c;font-size:12px;color:#b0b0bc}.settings-url-row{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}.settings-phone-url{display:flex;align-items:center;flex:1 1 280px;min-height:42px;padding:10px 12px;border-radius:10px;background:#0f0f14;border:1px solid #ffffff12;color:#e7bd70;font:12.5px/1.4 Consolas,ui-monospace,monospace;overflow-wrap:anywhere;user-select:all;text-decoration:none}.settings-phone-url[hidden]{display:none!important}.settings-url-row .ghost{flex:none}.settings-card-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto;min-height:42px}.settings-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.settings-ghost,.settings-actions .ghost,.settings-url-row .ghost,.settings-card-foot .ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 14px;border:1px solid #ffffff14;background:#ffffff08;color:#ececf2;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;box-sizing:border-box;cursor:pointer}.settings-ghost:hover,.settings-actions .ghost:hover,.settings-url-row .ghost:hover,.settings-card-foot .ghost:hover{background:#ffffff12;color:#fff;text-decoration:none}.settings-help{margin:0;font-size:13px;line-height:1.5;color:#8f8f9c}#vpn-status{margin:0;font-size:13px;line-height:1.45;color:#c8c8d0}#vpn-status[data-on="1"]{color:#b7e0bf}.settings-form{display:flex;flex-direction:column;gap:14px;margin:0;flex:1;min-height:0}.settings-form>label{display:grid;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7d7d8a}.settings-secret{display:flex;align-items:stretch;min-height:42px;border:1px solid #ffffff14;border-radius:10px;background:#0f0f14;overflow:hidden}.settings-secret:focus-within{border-color:#ffffff2a}.settings-secret input{flex:1;min-width:0;border:0;border-radius:0;background:transparent;padding:0 14px;color:#eeeef2;font:13px/1.4 Consolas,ui-monospace,monospace}.settings-secret input:focus{outline:none}.settings-secret button{border:0;border-left:1px solid #ffffff10;border-radius:0;background:transparent;color:#a8a8b4;padding:0 16px;min-width:68px;cursor:pointer;font-size:12px;font-weight:700}.settings-secret button:hover{background:#ffffff08;color:#fff}#settings-message{font-size:13px;color:#9a9aa5;min-height:1.2em}#settings-message[data-ok="1"]{color:#8fd49a}#settings-view .settings-card-foot .primary{min-height:42px;padding:0 16px;border-radius:10px}.settings-cover-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.settings-cover-fields{display:grid;gap:12px}.settings-path-row{display:flex;gap:8px;align-items:stretch}.settings-path-row input{flex:1;min-width:0;min-height:42px;padding:0 14px;border:1px solid #ffffff14;border-radius:10px;background:#0f0f14;color:#eeeef2;font:13px/1.4 Consolas,ui-monospace,monospace}.settings-form select,.settings-cover-fields input[type=text]{min-height:42px;padding:0 14px;border:1px solid #ffffff14;border-radius:10px;background:#0f0f14;color:#eeeef2;font:13px/1.4 inherit;width:100%;box-sizing:border-box}.settings-form select{cursor:pointer}#covers-message{font-size:13px;color:#9a9aa5;min-height:1.2em}#covers-message[data-ok="1"]{color:#8fd49a}.settings-help code{font:12px Consolas,ui-monospace,monospace;color:#c9c9d4}@media(max-width:980px){.settings-hero,.settings-grid{grid-template-columns:1fr}.settings-card-wide{grid-column:auto}.settings-phone-url{flex-basis:100%}.settings-cover-row{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}article,.cover{transition:none}article:hover .cover{transform:none}}
+</style>
+</head>
+<body>
+<header class="top"><div>
+  <a class="brand" id="brand" href="/" aria-label="CyberArcade - Home"><span>CyberArcade</span></a>
+<nav class="tabs"><button id="tab-library" class="selected" type="button">Library</button><button id="tab-store" type="button">Store</button><button id="tab-downloads" type="button">Downloads <span id="download-count"></span></button></nav>
+  <button class="primary" id="open-add" type="button">Add game</button>
+  <div id="quick-launch"><p>Quick launch</p><div id="quick-games"></div></div>
+  <small class="sidebar-footer"><strong>CyberArcade</strong><span>v0.1.0 · PS2 Emu</span></small>
+</div></header>
+<main>
+<div class="workspace-top"><button type="button" id="open-settings" class="icon-btn" aria-label="Settings"></button></div>
+<section id="library-view">
+  <div class="heading"><div><h1>Game library</h1><p class="muted" id="counts">Loading library</p></div>
+    <input id="search" type="search" placeholder="Search games" aria-label="Search games"></div>
+  <div class="library-controls"><div class="library-filters"><button class="selected" data-library-filter="all" type="button">All games</button><button data-library-filter="ready" type="button">Ready</button><button data-library-filter="building" type="button">In progress</button></div>
+    <div class="library-bulk"><button id="rebuild-all" type="button">Rebuild all</button><button id="delete-all" class="danger" type="button">Delete all</button></div>
+    <div class="row"><select id="library-sort" aria-label="Sort games"><option value="az">Title: A–Z</option><option value="za">Title: Z–A</option></select><button id="view-grid" class="selected" type="button" aria-label="Grid view"></button><button id="view-list" type="button" aria-label="List view"></button></div></div>
+  <p id="message" role="status"></p>
+  <div id="games"></div>
+</section>
+<section id="store-view" hidden>
+ <div class="heading"><div><h1>Store</h1></div></div>
+ <form class="store-search row" id="store-search-form">
+  <input id="store-search" type="search" placeholder="Search PS2 games" aria-label="Search PS2 games" maxlength="120">
+  <button class="primary" type="submit">Search</button>
+ </form>
+ <p id="store-message" role="status"></p>
+ <div id="store-games"></div>
+ <div class="row pager"><button id="store-prev" type="button" disabled>Previous</button><span id="store-page-label" class="muted">Page 1</span><button id="store-next" type="button" disabled>Next</button></div>
+</section><section id="downloads-view" hidden><div class="heading"><h1>Downloads</h1></div>
+ <div class="download-heading"><h2>Transfers</h2><span class="muted">Downloads finish before the game enters the build queue.</span></div><div id="store-downloads"></div>
+</section>
+<section id="settings-view" hidden>
+  <div class="heading"><div><h1>Settings</h1><p class="muted">Host controls for phone play and store downloads.</p></div></div>
+  <div class="settings-hero">
+    <div class="settings-stat" id="vpn-stat" data-on="0">
+      <span class="settings-stat-kicker">Download tunnel</span>
+      <strong id="vpn-stat-label">Checking VPN…</strong>
+      <p id="vpn-status">Checking…</p>
+    </div>
+    <div class="settings-stat">
+      <span class="settings-stat-kicker">Build</span>
+      <strong>v0.1.0</strong>
+      <p>CyberArcade · PS2 Emu · Windows host</p>
+    </div>
+  </div>
+  <div class="settings-grid">
+    <div class="settings-card settings-card-wide">
+      <div class="settings-card-head">
+        <div>
+          <h2>Phone play</h2>
+          <p>Open the same game on your phone over LAN. Same Wi‑Fi required.</p>
+        </div>
+        <span class="settings-badge" id="phone-badge" data-on="0">Offline</span>
+      </div>
+      <div class="settings-steps">
+        <span>1. Same Wi‑Fi</span>
+        <span>2. Trust certificate</span>
+        <span>3. Open link on phone</span>
+      </div>
+      <p id="phone-status" class="settings-help">Configuring LAN access…</p>
+      <div class="settings-url-row">
+        <a id="phone-link" class="settings-phone-url" hidden rel="noreferrer"></a>
+        <button class="ghost" id="copy-phone-link" type="button" hidden>Copy link</button>
+        <button class="ghost" id="refresh-phone" type="button">Refresh</button>
+      </div>
+      <div class="settings-card-foot">
+        <a class="ghost" href="/api/mobile/certificate">Trust certificate</a>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-card-head">
+        <div>
+          <h2>VPN</h2>
+          <p>Any system VPN works. Downloads follow the tunnel automatically.</p>
+        </div>
+        <span class="settings-badge" id="vpn-badge" data-on="0">Off</span>
+      </div>
+      <p class="settings-help">Connect your VPN in its own app. Nothing is proxied from this page.</p>
+      <div class="settings-card-foot">
+        <button class="ghost" id="refresh-vpn" type="button">Recheck</button>
+      </div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-card-head">
+        <div>
+          <h2>Captcha</h2>
+          <p>Optional 2Captcha key for store challenge pages.</p>
+        </div>
+      </div>
+      <form id="settings-form" class="settings-form">
+        <label>API key
+          <div class="settings-secret">
+            <input id="settings-twocaptcha" name="twocaptcha_api_key" type="password" autocomplete="new-password" spellcheck="false" maxlength="512" placeholder="Paste key">
+            <button id="toggle-twocaptcha" type="button" aria-pressed="false" aria-label="Show 2Captcha key">Show</button>
+          </div>
+        </label>
+        <div class="settings-card-foot">
+          <button class="primary" id="settings-save" type="submit">Save key</button>
+          <span id="settings-message" role="status"></span>
+        </div>
+      </form>
+    </div>
+    <div class="settings-card settings-card-wide">
+      <div class="settings-card-head">
+        <div>
+          <h2>Game covers</h2>
+          <p>Remote cover URLs or a local PCSX2-style folder named by disc serial. R2 hosting can replace this later.</p>
+        </div>
+      </div>
+      <form id="covers-form" class="settings-form">
+        <div class="settings-cover-row">
+          <label>Source
+            <select id="cover-source" name="cover_source">
+              <option value="remote">Remote URLs</option>
+              <option value="local">Local folder</option>
+            </select>
+          </label>
+          <label>Prefer
+            <select id="cover-prefer" name="cover_prefer">
+              <option value="3d">3D box</option>
+              <option value="2d">2D cover</option>
+            </select>
+          </label>
+        </div>
+        <div id="cover-remote-fields" class="settings-cover-fields">
+          <label>2D URL template
+            <input id="cover-2d-url" name="cover_2d_url" type="text" spellcheck="false" maxlength="512" placeholder="https://…/default/${serial}.jpg" autocomplete="off">
+          </label>
+          <label>3D URL template
+            <input id="cover-3d-url" name="cover_3d_url" type="text" spellcheck="false" maxlength="512" placeholder="https://…/3d/${serial}.png" autocomplete="off">
+          </label>
+        </div>
+        <div id="cover-local-fields" class="settings-cover-fields" hidden>
+          <label>Local covers folder
+            <div class="settings-path-row">
+              <input id="cover-local-path" name="cover_local_path" type="text" spellcheck="false" maxlength="512" placeholder="C:\Covers\PS2" autocomplete="off">
+              <button class="ghost" id="cover-browse" type="button">Browse</button>
+            </div>
+          </label>
+          <p class="settings-help">Files should be named like <code>SLUS-20001.png</code> or <code>SLUS-20001.jpg</code>.</p>
+        </div>
+        <p class="settings-help">Missing remote covers fall back to webstore art automatically.</p>
+        <div class="settings-card-foot">
+          <button class="primary" id="covers-save" type="submit">Save covers</button>
+          <button class="ghost" id="covers-reset" type="button">Reset URLs</button>
+          <span id="covers-message" role="status"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<dialog id="game-info"><div class="dialog-head"><h2 id="game-info-title"></h2><button type="button" data-close="game-info">Close</button></div><div id="game-info-body"></div></dialog>
+<dialog id="store-dialog"><div class="dialog-head"><h2 id="store-title">Choose a version</h2><button type="button" data-close="store-dialog">Close</button></div><div id="store-versions" class="version-list"></div><p id="version-message" role="status"></p><label>Archive password (optional)<input id="store-password" type="password" autocomplete="off" maxlength="1024" value="romsfun.com"></label><small>Store default: romsfun.com. Change it if this archive uses another password.</small><div class="row" style="margin-top:16px"><button class="primary" id="store-download" type="button" disabled>Download</button></div></dialog>
+<div id="context" hidden aria-label="Game actions"></div>
+<input id="poster-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+<dialog id="add-dialog">
+  <div class="dialog-head"><h2>Add a game</h2><button type="button" data-close="add-dialog">Close</button></div>
+  <div class="row library-filters" id="add-mode">
+    <button type="button" class="selected" data-add-mode="local">Local file</button>
+    <button type="button" data-add-mode="network">Download link</button>
+  </div>
+  <form id="add">
+    <div id="add-local">
+      <label for="disc-path">Disc image path</label>
+      <div class="path-row">
+        <input id="disc-path" name="path" required placeholder="C:\Games\My Game.iso">
+        <button id="browse" type="button">Browse</button>
+      </div>
+      <small>ISO, BIN, CUE, IMG, CHD, ZIP, 7z, RAR, TAR, GZip, BZip2, XZ, Zstd, CAB and other 7-Zip archives are supported.</small>
+      <label id="password-field">Archive password <input name="password" type="password" maxlength="1024" autocomplete="off" placeholder="Only for encrypted ZIP / 7z / RAR"></label>
+      <small id="archive-status" role="status">Optional for encrypted archives. Passwords stay in memory for this import and are cleared when it is queued.</small>
+      <label>Display name <input name="title" maxlength="120" placeholder="Defaults to the disc filename"></label>
+      <details><summary>Exploration settings</summary><div class="options">
+        <label>Frames per round <input name="frames" type="number" min="1" max="36000" value="3600" required></label>
+        <label>Maximum rounds <input name="rounds" type="number" min="0" max="20" value="8" required></label>
+      </div></details>
+      <button class="primary" id="submit">Add and build</button>
+    </div>
+    <div id="add-network" hidden>
+      <label>HTTPS disc or archive link<input id="network-url" name="network_url" type="url" placeholder="https://example.com/game.zip"></label>
+      <label>Game title<input id="network-title" name="network_title" maxlength="120"></label>
+      <label>Archive password (optional)<input id="network-password" name="network_password" type="password" maxlength="1024" autocomplete="off" value="romsfun.com"></label>
+      <small>Provider pages use the built-in browser CF bypass. Direct file links also work.</small>
+      <button class="primary" id="network-submit" type="button">Queue download</button>
+    </div>
+    <small id="add-message" role="status"></small>
+  </form>
+</dialog>
+<dialog id="log-dialog">
+  <div class="dialog-head"><h2 id="log-title">Build logs</h2><button type="button" data-close="log-dialog">Close</button></div>
+  <div class="row">
+    <select id="log-kind" aria-label="Log type"><option value="build">Build</option><option value="explore">Exploration</option><option value="desktop">Desktop</option></select>
+    <a class="action" id="download" download>Download full log</a>
+  </div>
+  <pre id="log-output"></pre><small>Live tail of the selected log</small>
+</dialog>
+<script>
+const token = '__PANEL_TOKEN__';
+const form = document.querySelector('#add');
+const message = document.querySelector('#message');
+const list = document.querySelector('#games');
+const submit = document.querySelector('#submit');
+let lastGames = '';
+let games = [], openLog = null, posterGame = null, menuGame = null;
+const context = document.querySelector('#context');
+const addDialog = document.querySelector('#add-dialog');
+const logDialog = document.querySelector('#log-dialog');
+const logKind = document.querySelector('#log-kind');
+const search = document.querySelector('#search');
+const addMessage = document.querySelector('#add-message');
+const iconPaths = {
+  library: '<path d="M4 4v16m5-16v16m5-16 6 15"/>',
+  store: '<path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  list: '<path d="M8 5h13M8 12h13M8 19h13M3 5h.1M3 12h.1M3 19h.1"/>',
+  disc: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="m15 5 2 3M7 16l2 3"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+  play: '<path d="m8 5 11 7-11 7z"/>',
+  desktop: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/>',
+  log: '<path d="M6 3h9l3 3v15H6zM9 10h6m-6 4h6m-6 3h4"/>',
+  download: '<path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1"/><path d="m4 17 5-5 4 4 3-3 4 4"/>',
+  rebuild: '<path d="M20 10a8 8 0 1 0-1 7M20 4v6h-6"/>',
+  trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13m-7 3v6m2-6v6"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 13a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852 1.01 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'
+};
+function icon(name) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.innerHTML = iconPaths[name];
+  return svg;
+}
+document.querySelector('#brand').prepend(icon('disc'));
+for(const [id,name] of [['tab-library','library'],['tab-store','store'],['tab-downloads','download'],['view-grid','grid'],['view-list','list']])document.getElementById(id).prepend(icon(name));
+document.getElementById('open-settings').append(icon('settings'));
+let libraryFilter='all';
+for(const button of document.querySelectorAll('[data-library-filter]'))button.onclick=()=>{
+  libraryFilter=button.dataset.libraryFilter;
+  document.querySelectorAll('[data-library-filter]').forEach(b=>b.classList.toggle('selected',b===button));render();
+};
+document.getElementById('library-sort').onchange=()=>render();
+for(const [id,mode] of [['view-grid',false],['view-list',true]])document.getElementById(id).onclick=()=>{
+  list.classList.toggle('list-view',mode);
+  document.getElementById('view-grid').classList.toggle('selected',!mode);document.getElementById('view-list').classList.toggle('selected',mode);
+};
+document.getElementById('rebuild-all').onclick=async()=>{
+  const button=document.getElementById('rebuild-all');
+  if(!confirm('Queue a browser rebuild for every ready or failed game? In-progress builds are skipped.'))return;
+  button.disabled=true;message.textContent='Queuing rebuilds…';
+  try{
+    const result=await request('/api/games/rebuild-all',{});
+    message.textContent=`Queued ${result.queued||0} rebuild${result.queued===1?'':'s'}`+(result.skipped?` · skipped ${result.skipped}`:'')+'.';
+    lastGames='';await refresh();
+  }catch(error){report(error);}
+  finally{button.disabled=false;}
+};
+document.getElementById('delete-all').onclick=async()=>{
+  const button=document.getElementById('delete-all');
+  if(!confirm('Delete ALL games and their managed files, including desktop saves? Export browser memory cards first. In-progress builds are skipped.'))return;
+  if(!confirm('This cannot be undone. Delete the entire library?'))return;
+  button.disabled=true;message.textContent='Deleting library…';
+  try{
+    const result=await request('/api/games/delete-all',{});
+    message.textContent=`Deleted ${result.deleted||0}`+(result.skipped?` · skipped ${result.skipped} in progress`:'')+'.';
+    lastGames='';await refresh();
+  }catch(error){report(error);}
+  finally{button.disabled=false;}
+};
+
+document.querySelector('#open-add').prepend(icon('plus'));
+document.querySelector('#download').prepend(icon('download'));
+document.querySelector('#open-add').onclick = () => { addMessage.textContent = ''; setAddMode('local'); addDialog.showModal(); };
+for (const close of document.querySelectorAll('[data-close]')) close.onclick = () => document.getElementById(close.dataset.close).close();
+logDialog.addEventListener('close', () => { openLog = null; });
+logKind.onchange = () => showLog().catch(report);
+
+async function request(path, data) {
+  const response = await fetch(path, data === undefined ? {} : {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'X-Panel-Token': token},
+    body: JSON.stringify(data)
+  });
+  if (!response.headers.get('Content-Type')?.includes('application/json')) {
+    throw new Error('Request failed (' + response.status + '). Refresh the panel and try again.');
+  }
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error || 'Request failed.');
+  return result;
+}
+function element(tag, label, className) {
+  const node = document.createElement(tag);
+  node.textContent = label;
+  if (className) node.className = className;
+  return node;
+}
+function button(label, handler, className) {
+  const node = element('button', label, className);
+  node.type = 'button';
+  node.addEventListener('click', async () => {
+    node.disabled = true;
+    try { await handler(); } catch (error) { message.textContent = error.message; }
+    finally { node.disabled = false; }
+  });
+  return node;
+}
+function report(error) { message.textContent = error.message; }
+function active(game) { return ['queued', 'building'].includes(game.status); }
+function actionsFor(game) {
+  const path = '/api/games/' + game.id;
+  const actions = [];
+  actions.push(['log','Game information',()=>showGameInfo(game)]);
+  if(game.status==='queued')actions.push(['trash','Remove from queue',async()=>{await request(path+'/dequeue',{});await refresh();}]);
+  if (game.status === 'ready') actions.push(['play', 'Play in browser', () => window.open('/play/' + game.id + '/', '_blank', 'noopener')]);
+  if (game.rebuild && ['ready', 'failed'].includes(game.status)) {
+    actions.push(['rebuild', game.status === 'ready' ? 'Rebuild browser player' : 'Retry build', async () => {
+      await request(path + '/retry', {});
+      await refresh();
+    }]);
+    actions.push(['rebuild', 'Re-explore and rebuild', async () => {
+      await request(path + '/reexplore', {});
+      await refresh();
+    }]);
+  }
+  actions.push(['log', 'View logs', () => {
+    openLog = game.id;
+    document.querySelector('#log-title').textContent = game.title;
+    logKind.value = 'build';
+    document.querySelector('#log-output').textContent = 'Loading…';
+    logDialog.showModal();
+    return showLog();
+  }]);
+  actions.push(['image', game.poster ? 'Change poster' : 'Add poster', () => {
+    posterGame = game.id;
+    document.querySelector('#poster-file').click();
+  }]);
+  if (!active(game)) actions.push(['trash', 'Delete game', async () => {
+    if (!confirm('Delete ' + game.title + ' and its managed files, including the desktop save? Export your browser memory card first.')) return;
+    await request(path + '/delete', {});
+    await refresh();
+  }]);
+  return actions;
+}
+function closeContext() { context.hidden = true; menuGame = null; }
+function openContext(game, x, y) {
+  menuGame = game.id;
+  context.replaceChildren();
+  for (const [symbol, label, action] of actionsFor(game)) {
+    const item = button(label, () => { closeContext(); return action(); }, symbol === 'trash' ? 'danger' : '');
+    item.prepend(icon(symbol));
+    context.append(item);
+  }
+  context.hidden = false;
+  context.style.left = Math.max(4, Math.min(x, innerWidth - context.offsetWidth - 4)) + 'px';
+  context.style.top = Math.max(4, Math.min(y, innerHeight - context.offsetHeight - 4)) + 'px';
+  context.firstElementChild.focus();
+}
+document.addEventListener('pointerdown', (e) => { if (!context.contains(e.target)) closeContext(); });
+document.addEventListener('keydown', (e) => {
+  if (context.hidden) return;
+  if (e.key === 'Escape') closeContext();
+  if (!['ArrowUp', 'ArrowDown'].includes(e.key)) return;
+  e.preventDefault();
+  const items = [...context.children];
+  const next = items.indexOf(document.activeElement) + (e.key === 'ArrowDown' ? 1 : -1);
+  items[(next + items.length) % items.length].focus();
+});
+window.addEventListener('resize', closeContext);
+document.querySelector('#poster-file').onchange = async (event) => {
+  const file = event.target.files[0], id = posterGame;
+  event.target.value = '';
+  if (!file || !id) return;
+  if (file.size > 5 * 1024 * 1024) return report(new Error('Choose a poster under 5 MB.'));
+  const reader = new FileReader();
+  reader.onerror = () => report(new Error('Could not read poster.'));
+  reader.onload = async () => {
+    try {
+      await request('/api/games/' + id + '/poster', {image: reader.result.split(',')[1]});
+      lastGames = '';
+      await refresh();
+    } catch (error) { report(error); }
+  };
+  reader.readAsDataURL(file);
+};
+let retryDownloadId=null;
+addDialog.addEventListener('close',()=>{retryDownloadId=null;});
+let quickSnapshot = '';
+function updateBuildProgress(card, game) {
+  if (game.status !== 'building') return;
+  const {step = 0, total = 6, done = 0, count, stage} = game.progress || {};
+  const progress = card.querySelector('progress');
+  progress.max = total;
+  progress.value = Math.max(0, step - 1) + (count ? Math.min(.99, done / count) : 0);
+  card.querySelector('.build-stage').textContent = [stage, count ? done + '/' + count : ''].filter(Boolean).join(' · ');
+}
+function render() {
+  const shown = games.filter(game => game.title.toLowerCase().includes(search.value.trim().toLowerCase()) && (libraryFilter==='all' || (libraryFilter==='building' ? active(game) : game.status===libraryFilter)));
+  const readySnapshot=JSON.stringify(games.filter(g=>g.status==='ready').map(g=>[g.id,g.title,g.poster]));
+  if(readySnapshot!==quickSnapshot){
+  quickSnapshot=readySnapshot;
+  const quick=document.getElementById('quick-games');quick.replaceChildren();
+  for(const game of games.filter(g=>g.status==='ready').slice(0,5)){
+    const link=document.createElement('a');link.href='/play/'+game.id+'/';link.target='_blank';link.rel='noopener';
+    if(game.poster){const image=document.createElement('img');image.src='/api/games/'+game.id+'/poster';image.alt='';link.append(image);}else link.append(icon('disc'));
+    const title=document.createElement('span');title.textContent=game.title;link.append(title);quick.append(link);
+  }
+  }
+  const existing = new Map([...list.querySelectorAll('article')].map(card => [card.dataset.id, card]));
+  for (const node of [...list.children]) if (node.tagName !== 'ARTICLE') node.remove();
+  const desired = [];
+  const running = games.filter(game => game.status === 'building').length;
+  const queued = games.filter(game => game.status === 'queued').length;
+  document.querySelector('#counts').textContent = [
+    games.length + (games.length === 1 ? ' game' : ' games'),
+    running ? running + ' building' : '', queued ? queued + ' queued' : ''
+  ].filter(Boolean).join(' · ');
+  if (!shown.length) list.append(element('p', games.length ? 'No games match your search.' : 'Add a disc image to start your collection.', 'empty'));
+  for (const game of shown.sort((a,b) => a.title.localeCompare(b.title)*(document.getElementById('library-sort').value==='za'?-1:1))) {
+    const signature = JSON.stringify([game.title, game.status, game.poster, game.error]);
+    const previous = existing.get(game.id);
+    if (previous && previous.dataset.signature === signature) {
+      updateBuildProgress(previous, game);
+      desired.push(previous);
+      continue;
+    }
+    const card = element('article', '');
+    card.dataset.id = game.id;
+    card.dataset.signature = signature;
+    const cover = element('div', '', 'cover');
+    const body = element('div', '', 'card-body');
+    cover.append(icon('disc'));
+    if (game.poster) {
+      const img = element('img', '');
+      img.alt = '';
+      img.loading = 'lazy';
+      img.src = '/api/games/' + game.id + '/poster';
+      img.onerror = () => img.remove();
+      cover.append(img);
+    }
+    const more = button('', () => {
+      const box = more.getBoundingClientRect();
+      openContext(game, box.left, box.bottom + 4);
+    }, 'more');
+    more.prepend(icon('more'));
+    more.setAttribute('aria-label', 'Actions for ' + game.title);
+    cover.append(more);
+    card.addEventListener('contextmenu', (e) => { e.preventDefault(); openContext(game, e.clientX, e.clientY); });
+    const title = element('h3', game.title);
+    title.title = game.title;
+    body.append(title);if(game.status!=='ready')body.append(element('span',friendlyState(game.status),'badge '+game.status));
+    title.tabIndex=0;title.setAttribute('role','button');title.onclick=()=>{if(game.status==='ready')window.open('/play/'+game.id+'/', '_blank', 'noopener');};title.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();title.click();}};
+    if (game.status === 'building') {
+      const {step = 0, total = 6, done, count, stage} = game.progress || {};
+      const progress = element('progress', '', 'progress');
+      progress.max = total;
+      progress.value = Math.max(0, step - 1) + (count ? Math.min(.99, done / count) : 0);
+      progress.setAttribute('aria-label', 'Estimated build progress');
+      body.append(progress, element('small', [stage, count ? done + '/' + count : ''].filter(Boolean).join(' · '), 'build-stage'));
+    }
+    if (game.error) body.append(element('small', game.error));
+    if(game.status==='ready'){
+      const playLink=element('a','','poster-open');
+      playLink.href='/play/'+game.id+'/';playLink.target='_blank';playLink.rel='noopener';
+      playLink.setAttribute('aria-label','Play '+game.title);cover.append(playLink);
+    }
+    card.append(cover, body);
+    desired.push(card);
+  }
+  const keep = new Set(desired);
+  for (const card of existing.values()) if (!keep.has(card)) card.remove();
+  desired.forEach((card, index) => {
+    if (list.children[index] !== card) list.insertBefore(card, list.children[index] || null);
+  });
+}
+search.addEventListener('input', () => { closeContext(); render(); });
+async function showLog() {
+  if (!openLog) return;
+  const path = '/api/games/' + openLog + '/' + logKind.value;
+  document.querySelector('#download').href = path + '/download';
+  const result = await request(path);
+  if (path !== '/api/games/' + openLog + '/' + logKind.value) return;
+  const out = document.querySelector('#log-output');
+  const follow = !out.textContent || out.scrollHeight - out.scrollTop - out.clientHeight < 30;
+  if (out.textContent !== result.log) out.textContent = result.log;
+  if (follow) out.scrollTop = out.scrollHeight;
+}
+async function refresh() {
+  games = await request('/api/games');
+  const snapshot = JSON.stringify(games);
+  if (snapshot !== lastGames && !menuGame) {
+    lastGames = snapshot;
+    render();
+  }
+  await showLog();
+}
+const browse = document.querySelector('#browse');
+browse.addEventListener('click', async () => {
+  browse.disabled = true;
+  try {
+    const {path} = await request('/api/pick-disc', {});
+    if (path) { form.elements.path.value = path; await checkArchive(); }
+  } catch (error) {
+    addMessage.textContent = error.message;
+  } finally {
+    browse.disabled = false;
+  }
+});
+let checkedPath = '', archiveNeedsPassword = false;
+async function checkArchive() {
+  const path = form.elements.path.value.trim();
+  if (!path) return;
+  const result = await request('/api/archive-check', {path});
+  // Discard a response if the user picked a different file while it was pending.
+  if (form.elements.path.value.trim() !== path) return;
+  checkedPath = path;
+  archiveNeedsPassword = !!result.needs_password;
+  document.querySelector('#password-field').hidden = false;
+  document.querySelector('#archive-status').textContent = archiveNeedsPassword
+    ? 'This archive is encrypted. Enter its password to continue.'
+    : result.archive ? 'Disc detected: ' + (result.member || 'disc image') + '. No password required.' : 'Disc image selected. No archive password required.';
+
+}
+form.elements.path.addEventListener('change', () => {
+  checkedPath = '';
+  checkArchive().catch(error => { document.querySelector('#archive-status').textContent = error.message; });
+});
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  submit.disabled = true;
+  addMessage.textContent = '';
+  const data = Object.fromEntries(new FormData(form));
+  data.frames = Number(data.frames);
+  data.rounds = Number(data.rounds);
+  try {
+    if (checkedPath !== form.elements.path.value.trim()) await checkArchive();
+    if (archiveNeedsPassword && !form.elements.password.value) {
+      form.elements.password.focus();
+      throw new Error('Enter the password for this encrypted archive.');
+    }
+    data.password = form.elements.password.value;
+    if (!data.password) delete data.password;
+    if(retryDownloadId)await request('/api/store/import',{id:retryDownloadId,password:data.password||''});
+    else await request('/api/games', data);
+    form.reset();
+    checkedPath = "";
+    document.querySelector("#password-field").hidden = false;
+    addDialog.close();
+    message.textContent = 'Game added to the build queue.';
+  } catch (error) {
+    addMessage.textContent = error.message;
+  } finally {
+    submit.disabled = false;
+  }
+  await refresh().catch(error => { message.textContent = error.message; });
+});
+
+let storePage=1,storeQuery='',storeVisited=false,storeBusy=false,storeCatalogLoaded=false,storePages=1,storeSource='web';
+const storeMessage=document.getElementById('store-message'),storeDialog=document.getElementById('store-dialog');
+const storeGames=document.getElementById('store-games'),storeSearch=document.getElementById('store-search');
+const storePrev=document.getElementById('store-prev'),storeNext=document.getElementById('store-next'),storePageLabel=document.getElementById('store-page-label');
+function storeError(error){storeMessage.textContent=error.message;}
+function selectView(view) {
+  for(const name of ['library','store','downloads','settings']){
+    document.querySelector('#'+name+'-view').hidden=view!==name;
+  }
+  for(const name of ['library','store','downloads']){
+    document.querySelector('#tab-'+name).classList.toggle('selected',view===name);
+  }
+  document.getElementById('open-settings').classList.toggle('selected',view==='settings');
+  const label={library:'Library',store:'Store',downloads:'Downloads',settings:'Settings'}[view];
+  document.title='CyberArcade - '+label;
+  if(view==='store'||view==='downloads'){storeVisited=true;refreshDownloads().catch(storeError);}
+  if(view==='store' && !storeCatalogLoaded) loadCatalog().catch(storeError);
+  if(view==='settings'){refreshPhone().catch(()=>{});loadSettings().catch(()=>{});}
+}
+document.getElementById('tab-library').onclick=()=>selectView('library');
+document.getElementById('tab-store').onclick=()=>selectView('store');
+document.getElementById('tab-downloads').onclick=()=>selectView('downloads');
+document.getElementById('open-settings').onclick=()=>selectView('settings');
+function setVpnUi(data){
+  const on=!!data.vpn_connected;
+  const detail=data.vpn_detail||(on?'VPN connected.':'VPN not detected.');
+  const status=document.getElementById('vpn-status');
+  const stat=document.getElementById('vpn-stat');
+  const badge=document.getElementById('vpn-badge');
+  const label=document.getElementById('vpn-stat-label');
+  status.dataset.on=on?'1':'0';
+  status.textContent=detail;
+  stat.dataset.on=on?'1':'0';
+  badge.dataset.on=on?'1':'0';
+  badge.textContent=on?'Connected':'Off';
+  label.textContent=on?(data.vpn_name?String(data.vpn_name).slice(0,42):'VPN connected'):'VPN offline';
+}
+let coverDefaults={
+  cover_source:'remote',
+  cover_prefer:'3d',
+  cover_2d_url:'https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/${serial}.jpg',
+  cover_3d_url:'https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/3d/${serial}.png',
+  cover_local_path:''
+};
+function syncCoverSourceUi(){
+  const remote=document.getElementById('cover-source').value!=='local';
+  document.getElementById('cover-remote-fields').hidden=!remote;
+  document.getElementById('cover-local-fields').hidden=remote;
+}
+function applyCoverSettings(data){
+  if(data.cover_defaults&&typeof data.cover_defaults==='object')coverDefaults={...coverDefaults,...data.cover_defaults};
+  document.getElementById('cover-source').value=data.cover_source==='local'?'local':'remote';
+  document.getElementById('cover-prefer').value=data.cover_prefer==='2d'?'2d':'3d';
+  document.getElementById('cover-2d-url').value=data.cover_2d_url||coverDefaults.cover_2d_url;
+  document.getElementById('cover-3d-url').value=data.cover_3d_url||coverDefaults.cover_3d_url;
+  document.getElementById('cover-local-path').value=data.cover_local_path||'';
+  syncCoverSourceUi();
+}
+async function loadSettings(){
+  const data=await request('/api/settings');
+  document.getElementById('settings-twocaptcha').value=data.twocaptcha_api_key||'';
+  applyCoverSettings(data);
+  setVpnUi(data);
+}
+document.getElementById('toggle-twocaptcha').onclick=()=>{
+  const input=document.getElementById('settings-twocaptcha');
+  const button=document.getElementById('toggle-twocaptcha');
+  const show=input.type==='password';
+  input.type=show?'text':'password';
+  button.textContent=show?'Hide':'Show';
+  button.setAttribute('aria-pressed',show?'true':'false');
+  button.setAttribute('aria-label',show?'Hide 2Captcha key':'Show 2Captcha key');
+};
+document.getElementById('refresh-vpn').onclick=()=>loadSettings().catch(error=>{
+  document.getElementById('vpn-status').textContent=error.message;
+});
+document.getElementById('cover-source').onchange=syncCoverSourceUi;
+document.getElementById('covers-reset').onclick=()=>{
+  document.getElementById('cover-2d-url').value=coverDefaults.cover_2d_url;
+  document.getElementById('cover-3d-url').value=coverDefaults.cover_3d_url;
+  document.getElementById('covers-message').dataset.ok='1';
+  document.getElementById('covers-message').textContent='URLs restored. Save to apply.';
+};
+document.getElementById('cover-browse').onclick=async()=>{
+  const button=document.getElementById('cover-browse');
+  const message=document.getElementById('covers-message');
+  button.disabled=true;message.dataset.ok='0';message.textContent='';
+  try{
+    const {path}=await request('/api/pick-folder',{});
+    if(path)document.getElementById('cover-local-path').value=path;
+  }catch(error){message.dataset.ok='0';message.textContent=error.message;}
+  finally{button.disabled=false;}
+};
+document.getElementById('settings-form').onsubmit=async(event)=>{
+  event.preventDefault();
+  const message=document.getElementById('settings-message');
+  const button=document.getElementById('settings-save');
+  button.disabled=true;message.dataset.ok='0';message.textContent='Saving…';
+  try{
+    await request('/api/settings',{twocaptcha_api_key:document.getElementById('settings-twocaptcha').value.trim()});
+    message.dataset.ok='1';message.textContent='Saved.';
+    await loadSettings();
+  }catch(error){message.dataset.ok='0';message.textContent=error.message;}
+  finally{button.disabled=false;}
+};
+document.getElementById('covers-form').onsubmit=async(event)=>{
+  event.preventDefault();
+  const message=document.getElementById('covers-message');
+  const button=document.getElementById('covers-save');
+  button.disabled=true;message.dataset.ok='0';message.textContent='Saving…';
+  try{
+    await request('/api/settings',{
+      cover_source:document.getElementById('cover-source').value,
+      cover_prefer:document.getElementById('cover-prefer').value,
+      cover_2d_url:document.getElementById('cover-2d-url').value.trim(),
+      cover_3d_url:document.getElementById('cover-3d-url').value.trim(),
+      cover_local_path:document.getElementById('cover-local-path').value.trim()
+    });
+    message.dataset.ok='1';message.textContent='Saved. Covers will refresh on the next library update.';
+    await loadSettings();
+  }catch(error){message.dataset.ok='0';message.textContent=error.message;}
+  finally{button.disabled=false;}
+};
+let addMode='local';
+function setAddMode(mode){
+  addMode=mode;
+  for(const button of document.querySelectorAll('[data-add-mode]'))button.classList.toggle('selected',button.dataset.addMode===mode);
+  document.getElementById('add-local').hidden=mode!=='local';
+  document.getElementById('add-network').hidden=mode!=='network';
+  const path=document.getElementById('disc-path');
+  path.required=mode==='local';
+  addMessage.textContent='';
+}
+for(const button of document.querySelectorAll('[data-add-mode]'))button.onclick=()=>setAddMode(button.dataset.addMode);
+document.getElementById('network-submit').onclick=async()=>{
+  const button=document.getElementById('network-submit');button.disabled=true;addMessage.textContent='';
+  try{
+    const url=document.getElementById('network-url').value.trim();
+    new URL(url);
+    await request('/api/store/download',{
+      url,
+      title:document.getElementById('network-title').value.trim(),
+      password:document.getElementById('network-password').value
+    });
+    addDialog.close();selectView('downloads');await refreshDownloads();
+  }catch(error){addMessage.textContent=error.message;}
+  finally{button.disabled=false;}
+};
+async function loadCatalog(page=storePage,query=storeQuery){
+  if(storeBusy)return;storeBusy=true;storeMessage.textContent='Loading catalog…';
+  storePrev.disabled=true;storeNext.disabled=true;
+  try{
+    const params=new URLSearchParams({page:String(page||1),source:storeSource});
+    if(query)params.set('q',query);
+    const result=await request('/api/store/catalog?'+params.toString());
+    storePage=result.page||page||1;storePages=result.pages||1;storeQuery=result.query||'';storeCatalogLoaded=true;
+    storeSearch.value=storeQuery;storePageLabel.textContent='Page '+storePage+(storePages>1?' / '+storePages:'');
+    storePrev.disabled=storePage<=1;storeNext.disabled=storePage>=storePages;
+    storeGames.replaceChildren();
+    if(!result.games?.length){storeGames.append(element('p','No PS2 games matched that search.','empty'));storeMessage.textContent='';return;}
+    for(const game of result.games){
+      const card=element('article','');
+      const cover=element('div','','store-cover cover');
+      if(game.poster){const image=document.createElement('img');image.src=game.poster;image.alt=game.title;image.loading='lazy';cover.append(image);}
+      else cover.append(icon('disc'));
+      const body=element('div','','card-body');
+      body.append(element('h3',game.title));
+      const meta=[game.size,game.downloads].filter(Boolean).join(' · ');
+      if(meta)body.append(element('span',meta,'badge'));
+      body.append(button('Download',()=>openStoreGame(game),'primary'));
+      card.append(cover,body);storeGames.append(card);
+    }
+    const total=result.total!=null?result.total+' in collection · ':'';
+    storeMessage.textContent=total+result.games.length+' shown'+(storeQuery?' for “'+storeQuery+'”':'');
+  }catch(error){storeError(error);storeGames.replaceChildren(element('p',error.message,'empty'));}
+  finally{storeBusy=false;}
+}
+async function openStoreGame(game){
+  if(game.source==='torrent' || String(game.url||'').startsWith('torrent:')){
+    storeMessage.textContent='Queuing download…';
+    await request('/api/store/download',{url:game.url,title:game.title,password:document.getElementById('store-password').value});
+    selectView('downloads');await refreshDownloads();return;
+  }
+  const versionsBox=document.getElementById('store-versions');
+  const versionMessage=document.getElementById('version-message');
+  const downloadBtn=document.getElementById('store-download');
+  document.getElementById('store-title').textContent=game.title;
+  versionsBox.replaceChildren(element('p','Loading versions…','muted'));
+  versionMessage.textContent='';downloadBtn.disabled=true;downloadBtn.onclick=null;
+  storeDialog.showModal();
+  try{
+    const versions=await request('/api/store/versions',{url:game.url});
+    versionsBox.replaceChildren();
+    if(!versions.length){versionsBox.append(element('p','No download versions found.','muted'));return;}
+    let selected=versions.find(v=>/usa|\(u\)/i.test(v.title))||versions[0];
+    const pick=version=>{
+      selected=version;
+      for(const node of versionsBox.querySelectorAll('label'))node.classList.toggle('selected',node.dataset.url===version.url);
+    };
+    for(const version of versions){
+      const row=document.createElement('label');row.dataset.url=version.url;
+      const radio=document.createElement('input');radio.type='radio';radio.name='store-version';radio.checked=version.url===selected.url;
+      radio.onchange=()=>pick(version);row.append(radio,document.createTextNode(version.title));
+      row.onclick=()=>{radio.checked=true;pick(version);};
+      if(version.url===selected.url)row.classList.add('selected');
+      versionsBox.append(row);
+    }
+    downloadBtn.disabled=false;
+    downloadBtn.onclick=async()=>{
+      downloadBtn.disabled=true;versionMessage.textContent='Queuing download…';
+      try{
+        await request('/api/store/download',{url:selected.url,title:game.title,password:document.getElementById('store-password').value});
+        storeDialog.close();selectView('downloads');await refreshDownloads();
+      }catch(error){versionMessage.textContent=error.message;downloadBtn.disabled=false;}
+    };
+  }catch(error){versionsBox.replaceChildren();versionMessage.textContent=error.message;}
+}
+document.getElementById('store-search-form').onsubmit=async event=>{
+  event.preventDefault();storePage=1;storeQuery=storeSearch.value.trim();await loadCatalog(1,storeQuery);
+};
+storePrev.onclick=()=>{if(storePage>1)loadCatalog(storePage-1,storeQuery).catch(storeError);};
+storeNext.onclick=()=>{if(storePage<storePages)loadCatalog(storePage+1,storeQuery).catch(storeError);};
+let lastDownloads='';
+async function refreshDownloads(){
+ const jobs=await request('/api/store/jobs'),snapshot=JSON.stringify(jobs);
+ document.getElementById('download-count').textContent=jobs.filter(j=>['queued','downloading','importing'].includes(j.status)).length||'';
+ if(snapshot===lastDownloads)return;lastDownloads=snapshot;
+ const target=document.getElementById('store-downloads');
+ const previous=new Map([...target.querySelectorAll('article')].map(row=>[row.dataset.id,row]));
+ for(const node of [...target.children])if(node.tagName!=='ARTICLE')node.remove();
+ const desired=[];
+ if(!jobs.length)target.append(element('p','No downloads yet.','muted'));
+ for(const job of jobs){
+  const signature=JSON.stringify([job.title,job.status,job.path,job.error,job.game_id,job.duplicate]);
+  const old=previous.get(job.id);
+  if(old && old.dataset.signature===signature){
+   updateDownloadProgress(old,job);desired.push(old);continue;
+  }
+  const row=element('article','','download-row');row.dataset.id=job.id;row.dataset.signature=signature;row.append(element('h3',job.title),element('span',friendlyState(job.status),'badge '+job.status));
+  row.append(element('progress','','progress'),element('small','','download-progress'),element('small','','download-detail'));
+  updateDownloadProgress(row,job);
+if(job.error)row.append(element('small',job.error,'danger'));
+  for(const [action,label] of (job.status==='paused'?[['resume','Resume'],['cancel','Cancel']]:job.status==='downloading'?[['pause','Pause'],['cancel','Cancel']]:job.status==='queued'&&!job.game_id?[['pause','Pause'],['cancel','Remove from queue']]:['complete','failed','cancelled'].includes(job.status)?[['remove','Dismiss']]:[])){
+    row.append(button(label,async()=>{try{await request('/api/store/control',{id:job.id,action});await refreshDownloads();}catch(error){storeError(error);}}));
+  }
+  if(job.game_id && job.status==='queued')row.append(button('Remove from build queue',async()=>{try{await request('/api/games/'+job.game_id+'/dequeue',{});await refreshDownloads();await refresh();}catch(error){storeError(error);}}));
+  if(job.game_id)row.append(button(job.duplicate?'Already in library':'View in library',()=>selectView('library')));
+  desired.push(row);
+ }
+ const keep=new Set(desired);for(const row of previous.values())if(!keep.has(row))row.remove();
+ desired.forEach((row,index)=>{if(target.children[index]!==row)target.insertBefore(row,target.children[index]||null);});
+}
+function friendlyState(state){return {paused:'Paused',cancelled:'Cancelled',queued:'Queued',downloading:'Downloading',importing:'Installing',building:'Building',complete:'Installed',ready:'Installed',failed:'Needs attention',verifying:'Verifying'}[state]||state;}
+function formatBytes(n){
+ const v=Math.max(0,Number(n)||0);
+ if(v<1024)return v+' B';
+ if(v<1048576)return (v/1024).toFixed(1)+' KB';
+ if(v<1073741824)return (v/1048576).toFixed(1)+' MB';
+ return (v/1073741824).toFixed(2)+' GB';
+}
+function formatSpeed(n){
+ const v=Math.max(0,Number(n)||0);
+ if(!v)return '';
+ if(v<1048576)return (v/1024).toFixed(0)+' KB/s';
+ return (v/1048576).toFixed(1)+' MB/s';
+}
+function updateDownloadProgress(row,job){
+ const progress=row.querySelector('progress'),build=job.build_progress;
+ if(['building','importing','verifying'].includes(job.status) && build && build.step){
+  progress.max=build.total||6;progress.value=Math.max(0,(build.step||1)-1)+(build.count?Math.min(.99,(build.done||0)/build.count):0);
+ }else if(job.status==='importing' || job.status==='verifying'){progress.removeAttribute('value');}else if(job.total){progress.max=job.total;progress.value=job.bytes||0;}else progress.removeAttribute('value');
+ const speed=formatSpeed(job.speed);
+ row.querySelector('.download-progress').textContent=job.status==='downloading'
+  ? formatBytes(job.bytes)+(job.total?' / '+formatBytes(job.total):'')+(speed?' · '+speed:'')
+  : job.status==='complete'?(job.duplicate?'Matching disc already installed':'Ready to play')
+  : friendlyState(job.status);
+ row.querySelector('.download-detail').textContent=['building','importing','verifying'].includes(job.status)?(build?.stage||'Preparing player')+(build?.count?' · '+build.done+'/'+build.count:''):(job.detail||'');
+}
+function showGameInfo(game){
+ const dialog=document.getElementById('game-info'),body=document.getElementById('game-info-body');
+ document.getElementById('game-info-title').textContent=game.title;body.replaceChildren();
+ if(game.poster){const image=element('img','');image.src='/api/games/'+game.id+'/poster';image.alt=game.title;body.append(image);}
+ body.append(element('p',friendlyState(game.status)),element('p','PlayStation 2 · Browser / Desktop'));
+ if(game.serial)body.append(element('p','Disc ID: '+game.serial));
+ if(game.disc_bytes)body.append(element('p','Installed disc: '+(game.disc_bytes/1073741824).toFixed(2)+' GB'));
+ if(game.added_at)body.append(element('p','Added: '+new Date(game.added_at*1000).toLocaleDateString()));
+ if(game.disc_sha256)body.append(element('small','Disc SHA-256: '+game.disc_sha256));
+ if(game.error)body.append(element('p',game.error,'danger'));
+ if(game.status==='ready'){
+  const launch=element('a','Launch game','action primary');launch.href='/play/'+game.id+'/';launch.target='_blank';launch.rel='noopener';body.append(launch);
+ }
+ let missing=null;try{missing=JSON.parse(localStorage.getItem('ps2-missing:/play/'+game.id+'/')||'null');}catch{}
+ if(missing?.address && !active(game)){
+  body.append(element('p','Missing translated code at 0x'+missing.address.toString(16).toUpperCase()));
+  body.append(button('Repair translation and rebuild',async()=>{
+   try{await request('/api/games/'+game.id+'/repair',{address:missing.address});dialog.close();await refresh();}
+   catch(error){body.append(element('p',error.message,'danger'));}
+  }));
+ }
+ body.append(button('Build log',()=>{dialog.close();openLog=game.id;document.getElementById('log-dialog').showModal();showLog().catch(report);}));
+ dialog.showModal();
+}
+async function refreshPhone(){
+ try{
+  const info=await request('/api/mobile');if(!info?.status)return;
+  const ready=!!info.url;
+  const badge=document.getElementById('phone-badge');
+  badge.dataset.on=ready?'1':'0';
+  badge.textContent=ready?'Ready':'Offline';
+  document.getElementById('phone-status').textContent=ready
+    ?('LAN host ready'+(info.address?` · ${info.address}`+(info.port?`:${info.port}`:''):''))
+    :(info.help||'Configuring LAN access…');
+  const link=document.getElementById('phone-link');
+  const copy=document.getElementById('copy-phone-link');
+  link.hidden=!ready;copy.hidden=!ready;
+  if(ready){link.href=info.url;link.textContent=info.url;}
+ }catch{}
+}
+document.getElementById('refresh-phone').onclick=()=>refreshPhone().catch(()=>{});
+document.getElementById('copy-phone-link').onclick=async()=>{
+  const link=document.getElementById('phone-link');
+  if(!link.href)return;
+  const button=document.getElementById('copy-phone-link');
+  try{
+    await navigator.clipboard.writeText(link.href);
+    button.textContent='Copied';
+    setTimeout(()=>{button.textContent='Copy link';},1200);
+  }catch{
+    button.textContent='Select URL above';
+    link.focus();
+  }
+};
+
+let connectionMessage='';
+async function poll() {
+  let delay=2000;
+  try {
+    await refresh();await refreshPhone();
+    if(storeVisited){
+      await refreshDownloads();
+      const active=document.getElementById('download-count')?.textContent;
+      if(active && active!=='0')delay=250;
+      if(!document.getElementById('downloads-view')?.hidden)delay=Math.min(delay,250);
+    }
+    if(connectionMessage && message.textContent===connectionMessage)message.textContent='';
+    connectionMessage='';
+  } catch (error) { connectionMessage='Connection interrupted. Retrying automatically… '+error.message;message.textContent=connectionMessage; }
+  setTimeout(poll, delay);
+}
+poll();
+</script>
+</body>
+</html>

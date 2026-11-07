@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-05",
+  "host": "Windows 10 local inventory under C:\\PS2Recomp",
+  "game_ids": {
+    "nfs_most_wanted": "60c82f4a111da300ac23bbec85272788",
+    "nfs_underground_2": "c0671389c296be6afe9e5224c97d30df",
+    "crash_nitro_kart": "b49f2e769315347e8bda839feb705744",
+    "gran_turismo_4": "9ce58de36f3fbe96fb260a3221d91f20"
+  },
+  "results": {
+    "iop_rpc_poll": "PASS",
+    "iop_rpc_snapshot_current_explore_ram": "FAIL assert on server_data — explore_ram.bin was overwritten by post-fix explore; historical SHA-256 2627bb0dfa32590b02fc254e486c7401482b276645d3fe89681095d7f7393e00 no longer on disk",
+    "iop_rpc_snapshot_historical": "PASS recorded in verification/nfs-rpc-results.json (377 slices, worker 0x935B0)",
+    "mobile_https_async_mode_inference": "PASS",
+    "installation_flow": "PASS (7 tests)",
+    "nfs_mw_native_explore": {
+      "status": "PASS_DRAWING",
+      "frames": 3600,
+      "gpu_submits": 16,
+      "gs_primitives": 164,
+      "shot_nonzero_R_pct": 13.44,
+      "sif_queue_stuck": false
+    },
+    "nfs_u2_native_explore": {
+      "status": "PASS_DRAWING",
+      "frames": 3600,
+      "gpu_submits": 92,
+      "gs_primitives": 614,
+      "shot_nonzero_R_pct": 100.0,
+      "sif_queue_stuck": false
+    },
+    "nfs_mw_web_asyncify": {
+      "build.json_async_mode": "asyncify",
+      "resolve_async_mode": "asyncify",
+      "command": "python -u scripts/windows_port.py --web-only 60c82f4a111da300ac23bbec85272788"
+    },
+    "nfs_u2_web_asyncify": {
+      "build.json_async_mode": "asyncify",
+      "resolve_async_mode": "asyncify",
+      "command": "python -u scripts/windows_port.py --web-only c0671389c296be6afe9e5224c97d30df"
+    },
+    "cnk_missing_code": {
+      "addresses_file_backed": ["0x006C7B50", "0x006C7D50", "0x006C7D90", "0x006C8180", "0x006CB3A0"],
+      "jump_table": "0x006CB750-0x006CB8FC plus short table at 0x006CB900",
+      "caller": "jalr loop at 0x004BA8E8 returning to 0x004BA8F4",
+      "after_repair_explore": {
+        "frames": 3600,
+        "gs_primitives": 2,
+        "misses": "none",
+        "next_issue": "EE threads WaitSema; earlier unhandled EnableCache 0x61 now treated as explicit no-op",
+        "shots": "black (0% nonzero)"
+      }
+    },
+    "gt4_0x00281360": {
+      "status": "NOT_A_LIVE_HALT",
+      "file_backed_in": "games/9ce58de36f3fbe96fb260a3221d91f20/core.elf",
+      "present_in_generated": "unit_0060.cpp",
+      "explore_primitives": 1110858
+    }
+  },
+  "blocked": [
+    "Physical iPhone Safari trust/play not exercised in this session",
+    "Live Chrome/Firefox WebGPU gameplay launch not automated here",
+    "Historical NFS explore_ram capture overwritten; restore SHA-256 2627bb0d… to re-run iop_rpc_snapshot locally"
+  ]
+}

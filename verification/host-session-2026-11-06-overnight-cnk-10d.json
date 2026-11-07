@@ -1,0 +1,31 @@
+{
+  "session": "2026-11-06 overnight CNK 10d",
+  "disk_free_gb": 20.7,
+  "progress": {
+    "freelist_escape": "PASS — force r3>=heap_end so goto-loop exits (PC jump overwritten by unwind)",
+    "soft_extract_scratch": "PASS — fonts @0x1A00000; never overwrite 0x7AF300 (jalr0)",
+    "ready_without_bind": "FAIL — teardown jalr0",
+    "cdvd_gfc_virtual": "implemented, default OFF (arms +24008 → hang/jalr0)",
+    "host_call_SEH": "PASS — VEH+host_call_cleanup survives AV",
+    "staged_bind": "lookups gob/cd OK; host=0 OK; 0x23EEF0 runs no AV but returns 0; igctx stays 0",
+    "walk_en_clear": "tried — still return 0",
+    "probe_2422E0": "returns 6 when walk_en=1",
+    "prims": 2,
+    "screen": "black (identical frames)",
+    "gif": "path1 packed tens of thousands; 4C reg writes up to ~60k under low-power"
+  },
+  "code_changes": [
+    "runtime/src/system.cpp — freelist-escape via r3=end",
+    "runtime/src/disc.cpp — mount_memory virtual LBAs",
+    "runtime/src/iop/cdvdfsv.cpp — opt-in GFC fallback (PS2_ALCHEMY_CDVD_GFC)",
+    "runtime/src/iop/igfileio.cpp — scratch extract, staged bind, deferred poll",
+    "runtime/src/kernel.cpp — host_call a1/a2/a3, host_call_t, abort/cleanup"
+  ],
+  "next": [
+    "Trace why 0x23EEF0 returns 0 after alloc (path to L_0023F118 sets r2=1)",
+    "Ghidra on 0x23EEF0 / 0x2422E0 float-init path when walk_en=0",
+    "prims >> 2 then rebuild-all slots 0/1 only"
+  ],
+  "status": "CNK OPEN — binder staged but unsuccessful; rebuild-all blocked",
+  "rebuild_all": "blocked until prims >> 2"
+}

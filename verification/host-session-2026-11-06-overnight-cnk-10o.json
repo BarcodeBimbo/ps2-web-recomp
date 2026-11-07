@@ -1,0 +1,16 @@
+{
+  "session": "2026-11-06 overnight CNK 10o",
+  "blocked": [
+    "clearing +24008 (even pulsed) → IO spam 0x428970",
+    "0x110100 clears slot obj; 0x110340 zeros butanim obj",
+    "ee1 AlignReadBuffer dest always 0",
+    "UI slots init with null callback (a9=0) so 0x110DA0 cannot complete +76=3"
+  ],
+  "working": [
+    "pristine plant wells at 0x1B00000/0x1B80000 (no dst retarget)",
+    "F0BC sticky gob+912=1",
+    "host forge, STBL0 extract, CDVD-GFC mounts"
+  ],
+  "current": "on last virt sector, retarget bounce global / CD req +8 to plant",
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,298 @@
+[
+  {
+    "name": "disc_archive",
+    "command": [
+      "python3",
+      "tests/disc_archive.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.38,
+    "status": "PASS"
+  },
+  {
+    "name": "elf_security",
+    "command": [
+      "python3",
+      "tests/elf_security.py",
+      "--recompiler",
+      "build/tools/eerecomp"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.09,
+    "invocation_corrected": true,
+    "status": "PASS"
+  },
+  {
+    "name": "serve_range",
+    "command": [
+      "python3",
+      "tests/serve_range.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 2.99,
+    "status": "PASS"
+  },
+  {
+    "name": "windows_setup_archive",
+    "command": [
+      "python3",
+      "tests/windows_setup_archive.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.74,
+    "status": "PASS"
+  },
+  {
+    "name": "security_review",
+    "command": [
+      "python3",
+      "tests/security_review.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.98,
+    "status": "PASS"
+  },
+  {
+    "name": "mobile_https",
+    "command": [
+      "python3",
+      "tests/mobile_https.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 1.11,
+    "status": "PASS"
+  },
+  {
+    "name": "mobile_auto",
+    "command": [
+      "python3",
+      "tests/mobile_auto.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 2.56,
+    "status": "PASS"
+  },
+  {
+    "name": "setup_reporting",
+    "command": [
+      "python3",
+      "tests/setup_reporting.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 1.09,
+    "status": "PASS"
+  },
+  {
+    "name": "download_controls",
+    "command": [
+      "python3",
+      "tests/download_controls.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.31,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "store_pipeline",
+    "command": [
+      "python3",
+      "tests/store_pipeline.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.32,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "installation_flow",
+    "command": [
+      "python3",
+      "tests/installation_flow.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.51,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "panel_build_queue",
+    "command": [
+      "python3",
+      "tests/panel_build_queue.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.33,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "gpu_arena",
+    "command": [
+      "python3",
+      "tests/gpu_arena.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 6.87,
+    "status": "PASS"
+  },
+  {
+    "name": "analysis_tailcall",
+    "command": [
+      "python3",
+      "tests/analysis_tailcall.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.2,
+    "status": "PASS"
+  },
+  {
+    "name": "elf_bss",
+    "command": [
+      "python3",
+      "tests/elf_bss.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.13,
+    "status": "PASS"
+  },
+  {
+    "name": "codegen_fallthrough",
+    "command": [
+      "python3",
+      "tests/codegen_fallthrough.py"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 1.09,
+    "status": "PASS"
+  },
+  {
+    "name": "gpu_upload_compat",
+    "command": [
+      "node",
+      "tests/gpu_upload_compat.cjs"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.14,
+    "status": "PASS"
+  },
+  {
+    "name": "mobile_controls",
+    "command": [
+      "node",
+      "tests/mobile_controls.cjs"
+    ],
+    "env": {},
+    "exit": 1,
+    "seconds": 2.82,
+    "invocation_corrected": true,
+    "status": "BLOCKED",
+    "reason": "Chromium launch aborted because the environment denies its process-singleton socket; no live browser assertions ran."
+  },
+  {
+    "name": "panel_logic",
+    "command": [
+      "node",
+      "tests/panel_logic.cjs"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.44,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "player_logic",
+    "command": [
+      "node",
+      "tests/player_logic.cjs"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.46,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "player_without_JSPI",
+    "command": [
+      "node",
+      "tests/player_logic.cjs"
+    ],
+    "env": {
+      "PS2_TEST_ASYNC_MODE": "asyncify",
+      "PS2_TEST_NO_JSPI": "1"
+    },
+    "exit": 0,
+    "seconds": 0.7,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "frame_clock",
+    "command": [
+      "bash",
+      "-c",
+      "g++ -std=c++17 -Wall -Wextra -Werror tests/frame_clock.cpp -o /tmp/frame-clock-test && /tmp/frame-clock-test"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 0.65,
+    "status": "PASS"
+  },
+  {
+    "name": "compat_trampoline_sanitized",
+    "command": [
+      "bash",
+      "-c",
+      "g++ -std=c++20 -DPS2_COMPAT_TRAMPOLINE -Iruntime/include -fsanitize=address,undefined -g tests/compat_trampoline.cpp runtime/src/dispatch.cpp -o /tmp/compat-trampoline && ASAN_OPTIONS=detect_leaks=0 /tmp/compat-trampoline"
+    ],
+    "env": {},
+    "exit": 0,
+    "seconds": 11.0,
+    "status": "PASS"
+  },
+  {
+    "name": "queue_sanitized",
+    "command": [
+      "/tmp/console-queue-stress"
+    ],
+    "env": {
+      "ASAN_OPTIONS": "detect_leaks=0"
+    },
+    "exit": 0,
+    "seconds": 1.06,
+    "status": "PASS",
+    "final_rerun": true
+  },
+  {
+    "name": "memory_sanitized",
+    "command": [
+      "/tmp/console-memory-bounds"
+    ],
+    "env": {
+      "ASAN_OPTIONS": "detect_leaks=0"
+    },
+    "exit": 0,
+    "seconds": 0.01,
+    "status": "PASS",
+    "final_rerun": true
+  }
+]

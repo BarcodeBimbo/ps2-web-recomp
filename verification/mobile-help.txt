@@ -1,0 +1,16 @@
+usage: mobile.py [-h] --host HOST --hostname HOSTNAME [--port PORT] --cert
+                 CERT --key KEY
+                 game_id
+
+Read-only HTTPS access to one ready game. Desktop administration stays local.
+
+positional arguments:
+  game_id              32-character ID from the game URL
+
+options:
+  -h, --help           show this help message and exit
+  --host HOST          PC LAN IPv4 address to bind, e.g. 192.168.1.20
+  --hostname HOSTNAME  DNS hostname or IPv4 address on the TLS certificate
+  --port PORT
+  --cert CERT          PEM certificate trusted by the phone
+  --key KEY            PEM private key; keep on the PC

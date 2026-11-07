@@ -1,0 +1,31 @@
+Setup started: Thu 11/05/2026  8:01:12.51
+Working dir: C:\PS2Recomp
+User: joshy@POORSKID
+
+----------------------------------------------------------------
+STAGE 1/6: Locate Python runtime
+----------------------------------------------------------------
+[OK] Bundled Python: tools\python-3.14.10\python.exe
+[OK] Using: tools\python-3.14.10\python.exe
+[--] skipping install stages - already set up
+
+----------------------------------------------------------------
+STAGE 4/6: Detect private LAN IPv4
+----------------------------------------------------------------
+[] No LAN IPv4 detected - using 127.0.0.1 (local only)
+
+----------------------------------------------------------------
+STAGE 5/6: Pick a random free TCP port
+----------------------------------------------------------------
+[OK] Port: 22855 (attempt 1)
+[--] Phone URL: http://127.0.0.1:22855/
+[--] Local URL: http://127.0.0.1:22855/
+
+----------------------------------------------------------------
+STAGE 6/6: Launch scripts\mobile.py
+----------------------------------------------------------------
+[OK] Python:   tools\python-3.14.10\python.exe
+[OK] Listening: 0.0.0.0:22855
+--- Launching mobile.py at  8:01:12.80 ---
+--- mobile.py exited at  8:01:13.04 with code 2 ---
+mobile.py exit: 2

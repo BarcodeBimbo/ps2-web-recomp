@@ -1,0 +1,9 @@
+{
+  "session": "2026-11-06 overnight CNK 10m",
+  "plant_clobber_root_cause": "FULL-file patched g_read_args dst to plant; follow-up sector mirrors wrote into plant base (butanim well got intro header; intro well ended as 0x0f padding)",
+  "fix": "plant is side-channel only; bounce dst kept; plants verified pristine (2001/C402 heads)",
+  "ee1_hypothesis": "memset(eeaddr1,144,0) may wipe AlignReadBuffer dest pointers — now preserve +8/+12 and memcpy sector to dest1 when armed",
+  "ui_finalize": "0x110340 only (st=2,+76=2); no 0x110100 (it clears obj); park +76=3",
+  "gate": "prims still 2 as of plantok; ee1 run in flight",
+  "rebuild_all": "blocked until prims >> 2"
+}

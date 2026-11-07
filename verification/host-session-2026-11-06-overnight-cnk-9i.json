@@ -1,0 +1,20 @@
+{
+  "session": "2026-11-06 overnight CNK Alchemy attack (9i)",
+  "game": "b49f2e769315347e8bda839feb705744",
+  "title": "Crash Nitro Kart",
+  "disk_free_gb": 19.0,
+  "results": {
+    "prims": 2,
+    "igctx_7430C0": 0,
+    "stbl0_planted": true,
+    "gob_extract_1A00000": 80812,
+    "tim0_df8_drains": true,
+    "tim0_handler": "0x426EF0",
+    "finish_gate": "often gap 2-3; target-pull fires",
+    "sema2": "Wait loop at 0x43D7E0; zero guest SignalSema(2)",
+    "host_pump_walk": "unsafe (jalr0 / hang) — env gated",
+    "non_cnk_smoke": "34402ee3 1000f = 5.7M prims OK"
+  },
+  "status": "CNK OPEN — TIM0/FINISH/STBL0/extract healthy; EE still legal-splash only",
+  "rebuild_all": "blocked until prims >> 2"
+}

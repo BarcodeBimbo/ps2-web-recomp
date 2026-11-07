@@ -1,0 +1,23 @@
+{
+  "session": "2026-11-06 overnight CNK Alchemy attack (9j)",
+  "game": "b49f2e769315347e8bda839feb705744",
+  "title": "Crash Nitro Kart",
+  "disk_free_gb": 19.0,
+  "progress": {
+    "finish_clamp": "PASS — tgt clamped to ctr after gate>200; thread 1 leaves WaitSema(45)",
+    "loadgate_6F2540": "non-null 0x74A2B0 — 0x10F2F0 path is reachable",
+    "dest_retarget": "0x7AF300 live heap → 0x1A00000 scratch + arm635138=-1",
+    "ready_flag_poke": "FAIL — *(*(0x6F35B8)+96)=1 releases into pump then freelist hang at 0x239A80",
+    "host_call_walker": "unsafe — run_guest sets EXL/g_in_handler so WaitSema cannot block",
+    "prims": 2,
+    "igctx_7430C0": 0,
+    "walk_cur": "stuck at first=2005 without ready poke; 7FFF with extract"
+  },
+  "next": [
+    "Find what naturally sets *(0x6F35B8 obj)+96 from 10 → 1 (fonts complete)",
+    "Or fix freelist hang at 0x239A80 when entering pump early",
+    "Or host_call variant that allows WaitSema + IRQ service without EXL"
+  ],
+  "status": "CNK OPEN — FINISH gate solved; binder still blocked on ready/freelist",
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,19 @@
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Configuring done (1.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/ae7ea5fe4a51/mobile-build-test/build
+[0/4] Re-checking globbed directories...
+[1/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cpu.cpp.o
+[2/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/kernel.cpp.o
+[3/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[4/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/hw.cpp.o
+[5/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/io.cpp.o
+[6/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/spu2.cpp.o
+[7/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvd.cpp.o
+[8/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cdvdfsv.cpp.o
+[9/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/libs.cpp.o
+[10/15] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/sif.cpp.o
+[11/15] Linking CXX static library libps2runtime.a
+[12/15] Linking CXX executable ps2web.html
+em++: warning: -pthread + ALLOW_MEMORY_GROWTH may run non-wasm code slowly, consider -sGROWABLE_ARRAYBUFFERS=2 [-Wpthreads-mem-growth]

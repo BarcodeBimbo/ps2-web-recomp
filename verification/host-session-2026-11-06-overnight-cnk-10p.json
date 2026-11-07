@@ -1,0 +1,23 @@
+{
+  "session": "2026-11-06 overnight CNK 10p",
+  "prims": 2,
+  "plant_heads": {"butanim@0x1B00000": "20010000", "introtxr@0x1B80000": "C4020000"},
+  "stream_scratch": "0xBD1000 gets full IGB via host sector ingest (intro head C402 present)",
+  "plus24008": 1,
+  "hypothesis_killed": [
+    "SearchFile/req +8 → plant diverted assemble away from stream+0x48; undiverted",
+    "force +76 3→0 without parse — guest restarts to +76=3",
+    "obj+44=0/+45=1 then host_call 0x110100 — jalr null ra 0x51ACEC, GIF collapse",
+    "FCE0 drain while +76=1 — returns immediately (FD6C→FF34) without advancing"
+  ],
+  "working_now": [
+    "side-channel plants pristine",
+    "per-sector + file-done memcpy plant → loadgate stream+0x48 (0xBD1000)",
+    "progress-snap 6F5A24/2C/30 → dest=BD1000 size=pos=filesize",
+    "post-ingest FCE0/FAF0 reaches slot +76=1 (CD-done) with head_ok",
+    "intro virt read held while butanim +76=3"
+  ],
+  "stuck": "CD-done (+76=1) with bytes in BD1000 but IGB never parsed into drawable UI; 0x110100 needs live vtable+108; null a9; +24008 stays 1",
+  "next": "find real IGB parse entry that consumes stream+0x48 after status 1 (not flag-faked 0x110100)",
+  "rebuild_all": "blocked until prims >> 2"
+}

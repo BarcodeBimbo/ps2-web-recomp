@@ -1,0 +1,1526 @@
+#include "gs.hpp"
+
+#include "gif.hpp"
+#include "queue.hpp"
+#include "raster.hpp"
+#include "../hw.hpp"
+#include "../kernel.hpp"
+#ifdef PS2_GPU
+#include "gpu/gpu.hpp"
+#endif
+
+#include "ps2/state.hpp"
+#include "ps2/system.hpp"
+
+#include <algorithm>
+#include <atomic>
+#include <chrono>
+#include <limits>
+#include <stdexcept>
+#include <string>
+#include <functional>
+#include <mutex>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <vector>
+
+namespace ps2::gs {
+
+State g_state;
+std::uint32_t g_setup_generation = 0;
+
+void serve_state(const void *payload);
+
+namespace {
+
+alignas(64) std::uint8_t g_memory[kMemorySize];
+
+std::uint64_t g_pmode, g_smode1, g_smode2, g_srfsh, g_synch1, g_synch2, g_syncv;
+std::uint64_t g_dispfb[2], g_display[2], g_extbuf, g_extdata, g_extwrite, g_bgcolor;
+std::uint64_t g_csr = 0x551B4000ull, g_imr = 0x7F00ull, g_busdir, g_siglblid;
+std::uint32_t g_finish_pending = 0;
+// Render-thread FINISH writes (queue path) accumulate here; the EE drains them so
+// CSR/IMR updates stay on the emulation thread. scan() must not early-raise FINISH
+// or Alchemy's FINISH callback is armed after the interrupt already fired.
+std::atomic<std::uint32_t> g_finish_deferred{0};
+std::uint64_t g_primitives = 0;
+std::atomic<std::uint64_t> g_observed_primitives{0};
+
+#ifdef PS2_GPU
+bool gpu_on() { return gpu::mode() != gpu::Mode::off; }
+bool cpu_raster() { return gpu::mode() != gpu::Mode::primary; }
+#else
+constexpr bool cpu_raster() { return true; }
+#endif
+
+bool trace_display() {
+    static const bool enabled = std::getenv("PS2_TRACE_DISPLAY") != nullptr;
+    return enabled;
+}
+std::uint64_t g_writes[128];
+std::vector<std::uint32_t> g_gpu_frame;
+bool g_odd_field = false;
+
+struct Transfer {
+    bool active = false;
+    std::uint32_t x = 0, y = 0;
+    std::uint32_t pending_bits = 0, pending = 0;
+} g_transfer;
+
+std::uint32_t g_off32[32][64], g_offz32[32][64];
+std::uint32_t g_off16[64][64], g_off16s[64][64], g_offz16[64][64], g_offz16s[64][64];
+std::uint32_t g_off8[64][128], g_off4[128][128];
+
+const int kBlock32[4][8] = {{0, 1, 4, 5, 16, 17, 20, 21}, {2, 3, 6, 7, 18, 19, 22, 23}, {8, 9, 12, 13, 24, 25, 28, 29}, {10, 11, 14, 15, 26, 27, 30, 31}};
+const int kBlockZ32[4][8] = {{24, 25, 28, 29, 8, 9, 12, 13}, {26, 27, 30, 31, 10, 11, 14, 15}, {16, 17, 20, 21, 0, 1, 4, 5}, {18, 19, 22, 23, 2, 3, 6, 7}};
+const int kColumn32[2][8] = {{0, 1, 4, 5, 8, 9, 12, 13}, {2, 3, 6, 7, 10, 11, 14, 15}};
+const int kBlock16[8][4] = {{0, 2, 8, 10}, {1, 3, 9, 11}, {4, 6, 12, 14}, {5, 7, 13, 15}, {16, 18, 24, 26}, {17, 19, 25, 27}, {20, 22, 28, 30}, {21, 23, 29, 31}};
+const int kBlock16S[8][4] = {{0, 2, 16, 18}, {1, 3, 17, 19}, {8, 10, 24, 26}, {9, 11, 25, 27}, {4, 6, 20, 22}, {5, 7, 21, 23}, {12, 14, 28, 30}, {13, 15, 29, 31}};
+const int kBlockZ16[8][4] = {{24, 26, 16, 18}, {25, 27, 17, 19}, {28, 30, 20, 22}, {29, 31, 21, 23}, {8, 10, 0, 2}, {9, 11, 1, 3}, {12, 14, 4, 6}, {13, 15, 5, 7}};
+const int kBlockZ16S[8][4] = {{24, 26, 8, 10}, {25, 27, 9, 11}, {16, 18, 0, 2}, {17, 19, 1, 3}, {28, 30, 12, 14}, {29, 31, 13, 15}, {20, 22, 4, 6}, {21, 23, 5, 7}};
+const int kColumn16[2][16] = {{0, 2, 8, 10, 16, 18, 24, 26, 1, 3, 9, 11, 17, 19, 25, 27}, {4, 6, 12, 14, 20, 22, 28, 30, 5, 7, 13, 15, 21, 23, 29, 31}};
+const int kColumnWord[2][2][8] = {{{0, 1, 4, 5, 8, 9, 12, 13}, {2, 3, 6, 7, 10, 11, 14, 15}}, {{8, 9, 12, 13, 0, 1, 4, 5}, {10, 11, 14, 15, 2, 3, 6, 7}}};
+
+void build_tables() {
+    for (int y = 0; y < 32; ++y)
+        for (int x = 0; x < 64; ++x) {
+            const int column = (y & 7) / 2, cy = y & 1, cx = x & 7;
+            g_off32[y][x] = static_cast<std::uint32_t>(kBlock32[y / 8][x / 8] * 256 + column * 64 + kColumn32[cy][cx] * 4);
+            g_offz32[y][x] = static_cast<std::uint32_t>(kBlockZ32[y / 8][x / 8] * 256 + column * 64 + kColumn32[cy][cx] * 4);
+        }
+    for (int y = 0; y < 64; ++y)
+        for (int x = 0; x < 64; ++x) {
+            const int column = (y & 7) / 2, cy = y & 1, cx = x & 15;
+            const int inner = column * 64 + kColumn16[cy][cx] * 2;
+            g_off16[y][x] = static_cast<std::uint32_t>(kBlock16[y / 8][x / 16] * 256 + inner);
+            g_off16s[y][x] = static_cast<std::uint32_t>(kBlock16S[y / 8][x / 16] * 256 + inner);
+            g_offz16[y][x] = static_cast<std::uint32_t>(kBlockZ16[y / 8][x / 16] * 256 + inner);
+            g_offz16s[y][x] = static_cast<std::uint32_t>(kBlockZ16S[y / 8][x / 16] * 256 + inner);
+        }
+    for (int y = 0; y < 64; ++y)
+        for (int x = 0; x < 128; ++x) {
+            const int block = kBlock32[(y / 16) & 3][(x / 16) & 7];
+            int wx = x % 16, wy = y % 16;
+            const int column = wy / 4;
+            wy %= 4;
+            std::uint32_t table = static_cast<std::uint32_t>((wy & 2) >> 1);
+            const std::uint32_t byte = static_cast<std::uint32_t>(((wx & 8) >> 2) + ((wy & 2) >> 1));
+            table ^= static_cast<std::uint32_t>((y / 4) & 1);
+            g_off8[y][x] = static_cast<std::uint32_t>(block * 256 + column * 64 + kColumnWord[table][wy & 1][wx & 7] * 4) + byte;
+        }
+    for (int y = 0; y < 128; ++y)
+        for (int x = 0; x < 128; ++x) {
+            const int block = kBlock16[(y / 16) & 7][(x / 32) & 3];
+            int wx = x % 32, wy = y % 16;
+            const int column = wy / 4;
+            wy %= 4;
+            const std::uint32_t shift = static_cast<std::uint32_t>((wx & 0x18) + ((wy & 2) << 1));
+            const std::uint32_t nibble = shift / 4;
+            std::uint32_t table = static_cast<std::uint32_t>((wy & 2) >> 1);
+            table ^= static_cast<std::uint32_t>(column & 1);
+            g_off4[y][x] = static_cast<std::uint32_t>((column * 64 + block * 256 + kColumnWord[table][wy & 1][wx & 7] * 4) * 2) + nibble;
+        }
+}
+
+std::uint32_t wrap(std::uint32_t a) { return a & (kMemorySize - 1); }
+
+template <typename T>
+T get(std::uint32_t a) {
+    T v;
+    std::memcpy(&v, g_memory + wrap(a), sizeof v);
+    return v;
+}
+
+template <typename T>
+void put(std::uint32_t a, T v) { std::memcpy(g_memory + wrap(a), &v, sizeof v); }
+
+std::uint32_t page_address(std::uint32_t bp, std::uint32_t bw, std::uint32_t x, std::uint32_t y, std::uint32_t pw, std::uint32_t ph) {
+    const std::uint32_t per_row = std::max<std::uint32_t>(1, bw * 64 / pw);
+    return bp * 256 + ((x / pw) + (y / ph) * per_row) * 8192;
+}
+
+void raise(std::uint32_t bit) {
+    g_csr |= bit;
+    const bool masked = (g_imr & (static_cast<std::uint64_t>(bit) << 8)) != 0;
+    if (!masked) hw::intc_raise(0);
+    static int s_vsint_log = 0, s_finish_log = 0;
+    if (bit == 8u && s_vsint_log < 8) {
+        std::fprintf(stderr, "[gs] VSINT raise csr=0x%llX imr=0x%llX %s intc\n",
+                     static_cast<unsigned long long>(g_csr), static_cast<unsigned long long>(g_imr),
+                     masked ? "MASKED — no" : "armed");
+        ++s_vsint_log;
+    }
+    if (bit == 2u && s_finish_log < 16) {
+        std::fprintf(stderr, "[gs] FINISH raise csr=0x%llX imr=0x%llX pending=%u %s intc\n",
+                     static_cast<unsigned long long>(g_csr), static_cast<unsigned long long>(g_imr),
+                     g_finish_pending, masked ? "MASKED — no" : "armed");
+        ++s_finish_log;
+    }
+}
+
+std::uint32_t bits_per_pixel(std::uint32_t psm) {
+    switch (psm) {
+    case PSMCT24: case PSMZ24: return 24;
+    case PSMCT16: case PSMCT16S: case PSMZ16: case PSMZ16S: return 16;
+    case PSMT8: return 8;
+    case PSMT4: return 4;
+    case PSMT8H: return 8;
+    case PSMT4HL: case PSMT4HH: return 4;
+    default: return 32;
+    }
+}
+
+struct DownloadKey {
+    std::uint64_t buf, pos, reg;
+    std::uint32_t offset, qwords;
+    bool operator==(const DownloadKey &) const = default;
+};
+
+struct CachedDownload {
+    DownloadKey key;
+    std::vector<std::uint8_t> data;
+    std::uint64_t used;
+};
+
+std::mutex g_cache_mutex;
+std::vector<CachedDownload> g_download_cache;
+std::uint64_t g_cache_clock = 0;
+DownloadKey g_shadow{};
+
+void remember(const DownloadKey &key, const std::uint8_t *data, std::size_t bytes) {
+    std::lock_guard lock(g_cache_mutex);
+    auto it = std::find_if(g_download_cache.begin(), g_download_cache.end(), [&](const CachedDownload &c) { return c.key == key; });
+    if (it == g_download_cache.end()) {
+        if (g_download_cache.size() >= 16)
+            g_download_cache.erase(std::min_element(g_download_cache.begin(), g_download_cache.end(),
+                                                    [](const CachedDownload &a, const CachedDownload &b) { return a.used < b.used; }));
+        it = g_download_cache.insert(g_download_cache.end(), CachedDownload{key, {}, 0});
+    }
+    it->data.assign(data, data + bytes);
+    it->used = ++g_cache_clock;
+}
+
+void forget(const DownloadKey &key) {
+    std::lock_guard lock(g_cache_mutex);
+    std::erase_if(g_download_cache, [&](const CachedDownload &c) { return c.key == key; });
+}
+
+#ifdef PS2_GPU
+std::vector<std::pair<std::uint32_t, std::uint32_t>> g_seen_ranges;
+std::uint32_t g_transfer_serial = 0, g_stale_first = 0, g_stale_bytes = 0;
+bool g_transfer_stale = false;
+
+void download_source(const State &s) {
+    const std::uint32_t sbp = static_cast<std::uint32_t>(s.bitbltbuf) & 0x3FFFu, sbw = static_cast<std::uint32_t>(s.bitbltbuf >> 16) & 0x3Fu;
+    const std::uint32_t spsm = static_cast<std::uint32_t>(s.bitbltbuf >> 24) & 0x3Fu;
+    const std::uint32_t x = static_cast<std::uint32_t>(s.trxpos) & 0x7FFu, y = static_cast<std::uint32_t>(s.trxpos >> 16) & 0x7FFu;
+    const std::uint32_t w = static_cast<std::uint32_t>(s.trxreg) & 0xFFFu, h = static_cast<std::uint32_t>(s.trxreg >> 32) & 0xFFFu;
+    const bool half = bits_per_pixel(spsm) == 16;
+    const std::uint32_t pw = spsm == PSMT8 || spsm == PSMT4 ? 128 : 64, ph = spsm == PSMT4 ? 128 : spsm == PSMT8 || half ? 64 : 32;
+    const std::uint32_t first = page_address(sbp, sbw, x, y, pw, ph);
+    const std::uint32_t end = page_address(sbp, sbw, x + w - 1, y + h - 1, pw, ph) + 8192;
+    ++g_transfer_serial;
+    g_transfer_stale = false;
+    if (!w || !h || x + w > 2048 || y + h > 2048 || end > kMemorySize) {
+        gpu::download(g_memory);
+        return;
+    }
+    const std::pair<std::uint32_t, std::uint32_t> range{first, end - first};
+    if (queue::active() && std::find(g_seen_ranges.begin(), g_seen_ranges.end(), range) != g_seen_ranges.end()) {
+        gpu::download_async(g_memory, first, end - first, g_transfer_serial);
+        g_transfer_stale = true;
+        g_stale_first = first;
+        g_stale_bytes = end - first;
+        return;
+    }
+    gpu::download(g_memory, first, end - first);
+    g_seen_ranges.push_back(range);
+    if (g_seen_ranges.size() > 8) g_seen_ranges.erase(g_seen_ranges.begin());
+}
+#endif
+
+void exact_download() {
+#ifdef PS2_GPU
+    if (!g_transfer_stale) return;
+    g_transfer_stale = false;
+    if (!gpu::finish_download(g_transfer_serial)) gpu::download(g_memory, g_stale_first, g_stale_bytes);
+#endif
+}
+
+void transfer_pixel(std::uint32_t value) {
+    const std::uint64_t buf = g_state.bitbltbuf, pos = g_state.trxpos, reg = g_state.trxreg;
+    const std::uint32_t dbp = static_cast<std::uint32_t>(buf >> 32) & 0x3FFFu;
+    const std::uint32_t dbw = static_cast<std::uint32_t>(buf >> 48) & 0x3Fu;
+    const std::uint32_t dpsm = static_cast<std::uint32_t>(buf >> 56) & 0x3Fu;
+    const std::uint32_t dsax = static_cast<std::uint32_t>(pos >> 32) & 0x7FFu;
+    const std::uint32_t dsay = static_cast<std::uint32_t>(pos >> 48) & 0x7FFu;
+    const std::uint32_t rrw = static_cast<std::uint32_t>(reg) & 0xFFFu;
+    const std::uint32_t rrh = static_cast<std::uint32_t>(reg >> 32) & 0xFFFu;
+    if (!g_transfer.active || !rrw) return;
+    write_pixel(dpsm, dbp, dbw, (dsax + g_transfer.x) & 0x7FFu, (dsay + g_transfer.y) & 0x7FFu, value);
+    if (++g_transfer.x >= rrw) {
+        g_transfer.x = 0;
+        if (++g_transfer.y >= rrh) g_transfer.active = false;
+    }
+}
+
+std::uint8_t g_carry[4];
+std::size_t g_carried = 0;
+
+void feed_image(const std::uint8_t *data, std::size_t bytes) {
+#ifdef PS2_GPU
+    if (gpu_on() && (g_state.trxdir & 3u) == 0) gpu::image_data(data, bytes);
+#endif
+    if (!cpu_raster()) return;
+    if (!g_transfer.active || (g_state.trxdir & 3u) != 0) return;
+    const std::uint32_t psm = static_cast<std::uint32_t>(g_state.bitbltbuf >> 56) & 0x3Fu;
+    const std::uint32_t bits = bits_per_pixel(psm);
+    if (bits == 24) {
+        for (std::size_t i = 0; i < bytes && g_transfer.active; ++i) {
+            g_carry[g_carried++] = data[i];
+            if (g_carried == 3) {
+                transfer_pixel(g_carry[0] | (g_carry[1] << 8) | (g_carry[2] << 16));
+                g_carried = 0;
+            }
+        }
+        return;
+    }
+    for (std::size_t bit = 0; bit + bits <= bytes * 8 && g_transfer.active; bit += bits) {
+        std::uint32_t v = 0;
+        if (bits == 4) v = (data[bit / 8] >> (bit & 4)) & 15u;
+        else std::memcpy(&v, data + bit / 8, bits / 8);
+        transfer_pixel(v);
+    }
+}
+
+void local_copy() {
+    const std::uint64_t buf = g_state.bitbltbuf, pos = g_state.trxpos, reg = g_state.trxreg;
+    const std::uint32_t sbp = static_cast<std::uint32_t>(buf) & 0x3FFFu, sbw = static_cast<std::uint32_t>(buf >> 16) & 0x3Fu, spsm = static_cast<std::uint32_t>(buf >> 24) & 0x3Fu;
+    const std::uint32_t dbp = static_cast<std::uint32_t>(buf >> 32) & 0x3FFFu, dbw = static_cast<std::uint32_t>(buf >> 48) & 0x3Fu, dpsm = static_cast<std::uint32_t>(buf >> 56) & 0x3Fu;
+    const std::uint32_t ssax = static_cast<std::uint32_t>(pos) & 0x7FFu, ssay = static_cast<std::uint32_t>(pos >> 16) & 0x7FFu;
+    const std::uint32_t dsax = static_cast<std::uint32_t>(pos >> 32) & 0x7FFu, dsay = static_cast<std::uint32_t>(pos >> 48) & 0x7FFu;
+    const std::uint32_t dir = static_cast<std::uint32_t>(pos >> 59) & 3u;
+    const std::uint32_t rrw = static_cast<std::uint32_t>(reg) & 0xFFFu, rrh = static_cast<std::uint32_t>(reg >> 32) & 0xFFFu;
+    std::vector<std::uint32_t> pixels(static_cast<std::size_t>(rrw) * rrh);
+    for (std::uint32_t y = 0; y < rrh; ++y)
+        for (std::uint32_t x = 0; x < rrw; ++x)
+            pixels[y * rrw + x] = read_pixel(spsm, sbp, sbw, (ssax + x) & 0x7FFu, (ssay + y) & 0x7FFu);
+    for (std::uint32_t y = 0; y < rrh; ++y) {
+        const std::uint32_t sy = (dir & 2u) ? rrh - 1 - y : y;
+        for (std::uint32_t x = 0; x < rrw; ++x) {
+            const std::uint32_t sx = (dir & 1u) ? rrw - 1 - x : x;
+            write_pixel(dpsm, dbp, dbw, (dsax + x) & 0x7FFu, (dsay + y) & 0x7FFu, pixels[sy * rrw + sx]);
+        }
+    }
+}
+
+void load_clut(std::uint64_t tex0) {
+    const std::uint32_t cld = static_cast<std::uint32_t>(tex0 >> 61) & 7u;
+    static std::uint32_t cbp0 = ~0u, cbp1 = ~0u;
+    const std::uint32_t cbp = static_cast<std::uint32_t>(tex0 >> 37) & 0x3FFFu;
+    switch (cld) {
+    case 0: return;
+    case 1: break;
+    case 2: cbp0 = cbp; break;
+    case 3: cbp1 = cbp; break;
+    case 4: if (cbp0 == cbp) return; cbp0 = cbp; break;
+    case 5: if (cbp1 == cbp) return; cbp1 = cbp; break;
+    default: return;
+    }
+    const std::uint32_t psm = static_cast<std::uint32_t>(tex0 >> 20) & 0x3Fu;
+    const std::uint32_t cpsm = static_cast<std::uint32_t>(tex0 >> 51) & 0xFu;
+    const std::uint32_t csm = static_cast<std::uint32_t>(tex0 >> 55) & 1u;
+    const std::uint32_t csa = static_cast<std::uint32_t>(tex0 >> 56) & 0x1Fu;
+#ifdef PS2_GPU
+    if (gpu_on()) gpu::load_clut(tex0, g_state.texclut);
+#endif
+    if (!cpu_raster()) return;
+    const bool eight = psm == PSMT8 || psm == PSMT8H;
+    const std::uint32_t entries = eight ? 256u : 16u;
+    const std::uint32_t texclut = static_cast<std::uint32_t>(g_state.texclut);
+    for (std::uint32_t i = 0; i < entries; ++i) {
+        std::uint32_t x, y;
+        if (csm) {
+            // CSM2: TEXCLUT places a column of palette entries. 8-bit is a 16x16
+            // block (not one 256-wide row); 4-bit stays a single 16-wide row.
+            const std::uint32_t cbw = texclut & 0x3Fu, cou = (texclut >> 6) & 0x3Fu, cov = (texclut >> 12) & 0x3FFu;
+            if (eight) {
+                x = cou * 16u + (i & 15u);
+                y = cov + (i >> 4);
+            } else {
+                x = cou * 16u + i;
+                y = cov;
+            }
+            const std::uint32_t c = read_pixel(cpsm == 0 ? PSMCT32 : cpsm, cbp, cbw, x, y);
+            const std::uint32_t slot = eight ? i : ((csa * 16u + i) & 511u);
+            g_state.clut[slot] = c;
+            continue;
+        }
+        if (eight) {
+            const std::uint32_t j = (i & ~0x18u) | ((i & 0x08u) << 1) | ((i & 0x10u) >> 1);
+            x = j & 15u;
+            y = j >> 4;
+        } else {
+            x = i & 7u;
+            y = i >> 3;
+        }
+        const std::uint32_t c = read_pixel(cpsm == 0 ? PSMCT32 : cpsm, cbp, 1, x, y);
+        const std::uint32_t slot = eight ? i : ((csa & 15u) * 16u + i) & 255u;
+        g_state.clut[slot] = c;
+    }
+}
+
+}
+
+std::uint8_t *memory() { return g_memory; }
+
+void swizzle_tables(std::vector<std::uint32_t> &out) {
+    out.clear();
+    for (auto &row : g_off32) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_offz32) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_off16) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_off16s) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_offz16) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_offz16s) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_off8) out.insert(out.end(), std::begin(row), std::end(row));
+    for (auto &row : g_off4) out.insert(out.end(), std::begin(row), std::end(row));
+}
+
+std::uint32_t address32(std::uint32_t bp, std::uint32_t bw, std::uint32_t x, std::uint32_t y) {
+    return wrap(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]);
+}
+
+std::uint32_t read_pixel(std::uint32_t psm, std::uint32_t bp, std::uint32_t bw, std::uint32_t x, std::uint32_t y) {
+    switch (psm) {
+    case PSMCT32: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]);
+    case PSMCT24: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]) & 0xFFFFFFu;
+    case PSMZ32: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_offz32[y & 31][x & 63]);
+    case PSMZ24: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_offz32[y & 31][x & 63]) & 0xFFFFFFu;
+    case PSMCT16: return get<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_off16[y & 63][x & 63]);
+    case PSMCT16S: return get<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_off16s[y & 63][x & 63]);
+    case PSMZ16: return get<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_offz16[y & 63][x & 63]);
+    case PSMZ16S: return get<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_offz16s[y & 63][x & 63]);
+    case PSMT8: return get<std::uint8_t>(page_address(bp, bw, x, y, 128, 64) + g_off8[y & 63][x & 127]);
+    case PSMT4: {
+        const std::uint32_t n = g_off4[y & 127][x & 127];
+        const std::uint8_t b = get<std::uint8_t>(page_address(bp, bw, x, y, 128, 128) + n / 2);
+        return (n & 1u) ? b >> 4 : b & 15u;
+    }
+    case PSMT8H: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]) >> 24;
+    case PSMT4HL: return (get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]) >> 24) & 15u;
+    case PSMT4HH: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]) >> 28;
+    default: return get<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63]);
+    }
+}
+
+void write_pixel(std::uint32_t psm, std::uint32_t bp, std::uint32_t bw, std::uint32_t x, std::uint32_t y, std::uint32_t value) {
+    switch (psm) {
+    case PSMCT32: put<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63], value); break;
+    case PSMZ32: put<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_offz32[y & 31][x & 63], value); break;
+    case PSMCT24: {
+        const std::uint32_t a = page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63];
+        put<std::uint32_t>(a, (get<std::uint32_t>(a) & 0xFF000000u) | (value & 0xFFFFFFu));
+        break;
+    }
+    case PSMZ24: {
+        const std::uint32_t a = page_address(bp, bw, x, y, 64, 32) + g_offz32[y & 31][x & 63];
+        put<std::uint32_t>(a, (get<std::uint32_t>(a) & 0xFF000000u) | (value & 0xFFFFFFu));
+        break;
+    }
+    case PSMCT16: put<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_off16[y & 63][x & 63], static_cast<std::uint16_t>(value)); break;
+    case PSMCT16S: put<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_off16s[y & 63][x & 63], static_cast<std::uint16_t>(value)); break;
+    case PSMZ16: put<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_offz16[y & 63][x & 63], static_cast<std::uint16_t>(value)); break;
+    case PSMZ16S: put<std::uint16_t>(page_address(bp, bw, x, y, 64, 64) + g_offz16s[y & 63][x & 63], static_cast<std::uint16_t>(value)); break;
+    case PSMT8: put<std::uint8_t>(page_address(bp, bw, x, y, 128, 64) + g_off8[y & 63][x & 127], static_cast<std::uint8_t>(value)); break;
+    case PSMT4: {
+        const std::uint32_t n = g_off4[y & 127][x & 127];
+        const std::uint32_t a = page_address(bp, bw, x, y, 128, 128) + n / 2;
+        std::uint8_t b = get<std::uint8_t>(a);
+        b = (n & 1u) ? static_cast<std::uint8_t>((b & 0x0Fu) | ((value & 15u) << 4)) : static_cast<std::uint8_t>((b & 0xF0u) | (value & 15u));
+        put<std::uint8_t>(a, b);
+        break;
+    }
+    case PSMT8H: {
+        const std::uint32_t a = page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63];
+        put<std::uint32_t>(a, (get<std::uint32_t>(a) & 0x00FFFFFFu) | (value << 24));
+        break;
+    }
+    case PSMT4HL: {
+        const std::uint32_t a = page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63];
+        put<std::uint32_t>(a, (get<std::uint32_t>(a) & 0xF0FFFFFFu) | ((value & 15u) << 24));
+        break;
+    }
+    case PSMT4HH: {
+        const std::uint32_t a = page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63];
+        put<std::uint32_t>(a, (get<std::uint32_t>(a) & 0x0FFFFFFFu) | ((value & 15u) << 28));
+        break;
+    }
+    default: put<std::uint32_t>(page_address(bp, bw, x, y, 64, 32) + g_off32[y & 31][x & 63], value); break;
+    }
+}
+
+void init() {
+    static bool built = false;
+    if (built) return;
+    build_tables();
+    built = true;
+#ifdef PS2_GPU
+    const char *backend = std::getenv("PS2_GS");
+    const gpu::Mode wanted = !backend || std::strcmp(backend, "gpu") == 0 ? gpu::Mode::primary : std::strcmp(backend, "both") == 0 ? gpu::Mode::mirror : gpu::Mode::off;
+    if (wanted != gpu::Mode::off && !gpu::init(wanted)) std::fprintf(stderr, "[gs] WebGPU unavailable, using the software renderer\n");
+#endif
+}
+
+void render_reset() {
+#ifdef PS2_GPU
+    g_seen_ranges.clear();
+    g_transfer_stale = false;
+#endif
+    init();
+    std::memset(&g_state, 0, sizeof g_state);
+    std::memset(g_memory, 0, sizeof g_memory);
+    ++g_setup_generation;
+    g_transfer = Transfer{};
+    g_primitives = 0;
+    g_observed_primitives.store(0, std::memory_order_relaxed);
+    raster::reset();
+}
+
+// A reset through CSR clears the drawing environment, not just the vertex queue,
+// as PCSX2 does: Downhill Domination's movie player leaves SCANMSK set for it.
+void soft_reset() {
+    std::uint32_t clut[512];
+    std::memcpy(clut, g_state.clut, sizeof clut);
+    std::memset(&g_state, 0, sizeof g_state);
+    std::memcpy(g_state.clut, clut, sizeof clut);
+    ++g_setup_generation;
+}
+
+void reset() {
+    g_shadow = DownloadKey{};
+    {
+        std::lock_guard lock(g_cache_mutex);
+        g_download_cache.clear();
+    }
+    g_csr = 0x551B4000ull;
+    g_imr = 0x7F00ull;
+    g_finish_pending = 0;
+    g_finish_deferred.store(0, std::memory_order_relaxed);
+    if (queue::active()) queue::post(queue::kReset, 0, 0, nullptr, 0);
+    else render_reset();
+}
+
+namespace capture {
+
+struct Batch {
+    bool open = false;
+    std::uint64_t prim = 0, frame = 0, zbuf = 0, tex0 = 0, tex1 = 0, clamp = 0, alpha = 0, test = 0;
+    int ctx = 0;
+    std::uint64_t first = 0, count = 0;
+    float x0 = 0, y0 = 0, x1 = 0, y1 = 0, u0 = 0, v0 = 0, u1 = 0, v1 = 0;
+};
+
+std::FILE *g_log = nullptr;
+std::string g_dir;
+std::uint64_t g_from = 0, g_frames = 1, g_draws = 0, g_images = 0;
+bool g_every = false, g_done = false;
+#ifdef __EMSCRIPTEN__
+std::atomic<int> g_prompt_capture{0}; // 0 idle, 1 requested, 2 recording, 3 ready, -1 failed
+bool g_live = false;
+#endif
+Batch g_batch;
+std::uint64_t g_target = ~0ull;
+int g_target_rows = 0;
+
+bool active() {
+#ifdef __EMSCRIPTEN__
+    if (g_live) return g_log != nullptr;
+#endif
+    static bool parsed = false;
+    if (!parsed) {
+        parsed = true;
+        const char *spec = std::getenv("PS2_CAPTURE");
+        if (!spec) {
+            g_done = true;
+            return false;
+        }
+        const std::string text = spec;
+        const auto first = text.find(','), second = text.find(',', first + 1);
+        if (first == std::string::npos) {
+            g_done = true;
+            return false;
+        }
+        g_from = std::strtoull(text.c_str(), nullptr, 10);
+        g_dir = text.substr(first + 1, second == std::string::npos ? std::string::npos : second - first - 1);
+        if (second != std::string::npos) g_frames = std::max<std::uint64_t>(1, std::strtoull(text.c_str() + second + 1, nullptr, 10));
+        g_every = std::getenv("PS2_CAPTURE_EVERY") != nullptr;
+    }
+    if (g_done) return false;
+    const std::uint64_t frame = frame_count();
+    if (frame < g_from || frame >= g_from + g_frames) return false;
+    if (!g_log) {
+        g_log = std::fopen((g_dir + "/draws.tsv").c_str(), "w");
+        if (!g_log) {
+            g_done = true;
+            return false;
+        }
+        std::fprintf(g_log, "draw\tprims\tfirst\tctx\tprim\tframe\tzbuf\ttex0\ttex1\tclamp\talpha\ttest\tbox\ttexels\n");
+    }
+    return true;
+}
+
+void dump_target(std::uint64_t frame, int rows, const char *why) {
+#ifdef __EMSCRIPTEN__
+    if (g_live) return;
+#endif
+    const std::uint32_t fbp = static_cast<std::uint32_t>(frame) & 0x1FFu, fbw = static_cast<std::uint32_t>(frame >> 16) & 0x3Fu, psm = static_cast<std::uint32_t>(frame >> 24) & 0x3Fu;
+    if (!fbw || rows <= 0) return;
+#ifdef PS2_GPU
+    if (gpu_on() && !cpu_raster()) gpu::download(g_memory);
+#endif
+    const std::uint32_t w = std::min<std::uint32_t>(fbw * 64u, 2048u), h = static_cast<std::uint32_t>(std::min(rows, 2048));
+    char name[96];
+    std::snprintf(name, sizeof name, "%06llu_fbp%03X_psm%02X.ppm", static_cast<unsigned long long>(g_images++), fbp, psm);
+    if (std::FILE *f = std::fopen((g_dir + "/" + name).c_str(), "wb")) {
+        std::fprintf(f, "P6\n%u %u\n255\n", w, h);
+        std::vector<std::uint8_t> row(w * 3);
+        for (std::uint32_t y = 0; y < h; ++y) {
+            for (std::uint32_t x = 0; x < w; ++x) {
+                const std::uint32_t c = read_pixel(psm, fbp * 32u, fbw, x, y);
+                row[x * 3] = static_cast<std::uint8_t>(c);
+                row[x * 3 + 1] = static_cast<std::uint8_t>(c >> 8);
+                row[x * 3 + 2] = static_cast<std::uint8_t>(c >> 16);
+            }
+            std::fwrite(row.data(), 1, row.size(), f);
+        }
+        std::fclose(f);
+    }
+    std::fprintf(g_log, "image\t%s\t%s\n", name, why);
+}
+
+std::uint64_t target_of(std::uint64_t frame) { return frame & 0x3F3F01FFull; }
+
+void flush() {
+    Batch &b = g_batch;
+    if (!b.open) return;
+    b.open = false;
+    std::fprintf(g_log, "%llu\t%llu\t%llu\t%d\t%03llX\t%016llX\t%016llX\t%016llX\t%016llX\t%016llX\t%016llX\t%016llX\t%.1f,%.1f-%.1f,%.1f\t%.1f,%.1f-%.1f,%.1f\n",
+                 static_cast<unsigned long long>(g_draws++), static_cast<unsigned long long>(b.count), static_cast<unsigned long long>(b.first), b.ctx,
+                 static_cast<unsigned long long>(b.prim & 0x7FFu), static_cast<unsigned long long>(b.frame), static_cast<unsigned long long>(b.zbuf),
+                 static_cast<unsigned long long>(b.tex0), static_cast<unsigned long long>(b.tex1), static_cast<unsigned long long>(b.clamp),
+                 static_cast<unsigned long long>(b.alpha), static_cast<unsigned long long>(b.test), b.x0, b.y0, b.x1, b.y1, b.u0, b.v0, b.u1, b.v1);
+    if (g_every) dump_target(b.frame, g_target_rows, "after draw");
+}
+
+void switch_target(std::uint64_t frame) {
+    if (target_of(frame) == g_target) return;
+    flush();
+    if (g_target != ~0ull) dump_target(g_target, g_target_rows, "before another target");
+    g_target = target_of(frame);
+    g_target_rows = 0;
+}
+
+void prim(const State &s, int needed) {
+    if (!active()) return;
+    const std::uint64_t prim = (s.prmodecont & 1u) ? s.prim : ((s.prim & 7u) | (s.prmode & ~7ull));
+    const int c = static_cast<int>(prim >> 9) & 1;
+    const Context &x = s.ctx[c];
+    Batch &b = g_batch;
+    switch_target(x.frame);
+    if (!b.open || b.prim != (prim & 0x7FFu) || b.ctx != c || b.frame != x.frame || b.zbuf != x.zbuf || b.tex0 != x.tex0 || b.tex1 != x.tex1 ||
+        b.clamp != x.clamp || b.alpha != x.alpha || b.test != x.test) {
+        flush();
+        b = Batch{};
+        b.open = true;
+        b.prim = prim & 0x7FFu;
+        b.ctx = c;
+        b.frame = x.frame;
+        b.zbuf = x.zbuf;
+        b.tex0 = x.tex0;
+        b.tex1 = x.tex1;
+        b.clamp = x.clamp;
+        b.alpha = x.alpha;
+        b.test = x.test;
+        b.first = g_primitives;
+        b.x0 = b.y0 = b.u0 = b.v0 = 1e30f;
+        b.x1 = b.y1 = b.u1 = b.v1 = -1e30f;
+    }
+    ++b.count;
+    const float ox = static_cast<float>(x.xyoffset & 0xFFFFu) / 16.0f, oy = static_cast<float>((x.xyoffset >> 32) & 0xFFFFu) / 16.0f;
+    const float tw = static_cast<float>(1u << ((x.tex0 >> 26) & 15u)), th = static_cast<float>(1u << ((x.tex0 >> 30) & 15u));
+    for (int i = 0; i < needed; ++i) {
+        const Vertex &v = s.queue[i];
+        const float px = static_cast<float>(v.x) / 16.0f - ox, py = static_cast<float>(v.y) / 16.0f - oy;
+        b.x0 = std::min(b.x0, px);
+        b.y0 = std::min(b.y0, py);
+        b.x1 = std::max(b.x1, px);
+        b.y1 = std::max(b.y1, py);
+        float u = static_cast<float>(v.u) / 16.0f, w = static_cast<float>(v.v) / 16.0f;
+        if (!(prim & 0x100u)) {
+            const float q = v.q == 0.0f ? 1.0f : v.q;
+            u = v.s / q * tw;
+            w = v.t / q * th;
+        }
+        b.u0 = std::min(b.u0, u);
+        b.v0 = std::min(b.v0, w);
+        b.u1 = std::max(b.u1, u);
+        b.v1 = std::max(b.v1, w);
+        g_target_rows = std::max(g_target_rows, static_cast<int>(py) + 1);
+    }
+}
+
+void transfer(const State &s, std::uint64_t dir) {
+    if (!active()) return;
+    flush();
+    std::fprintf(g_log, "transfer\tdir %llu\tbitbltbuf %016llX\ttrxpos %016llX\ttrxreg %016llX\n", static_cast<unsigned long long>(dir & 3u),
+                 static_cast<unsigned long long>(s.bitbltbuf), static_cast<unsigned long long>(s.trxpos), static_cast<unsigned long long>(s.trxreg));
+    if ((dir & 3u) == 2u && g_target != ~0ull) {
+        dump_target(g_target, g_target_rows, "before a local copy");
+        g_target = ~0ull;
+    }
+}
+
+void vblank(std::uint64_t frame) {
+#ifdef __EMSCRIPTEN__
+    if (g_live) {
+        flush();
+        std::fprintf(g_log, "vblank\t%llu\n", static_cast<unsigned long long>(frame));
+        const bool log_ok = std::fclose(g_log) == 0;
+        g_log = nullptr;
+        g_live = false;
+#ifdef PS2_GPU
+        if (gpu_on() && !cpu_raster()) gpu::download(g_memory);
+#endif
+        bool vram_ok = false;
+        if (std::FILE *file = std::fopen("/prompt-vram.bin", "wb")) {
+            const bool written = std::fwrite(g_memory, 1, kMemorySize, file) == kMemorySize;
+            vram_ok = std::fclose(file) == 0 && written;
+        }
+        g_prompt_capture.store(log_ok && vram_ok ? 3 : -1);
+        return;
+    }
+    if (g_prompt_capture.load() == 1) {
+        g_log = std::fopen("/prompt-draws.tsv", "w");
+        if (!g_log) {
+            g_prompt_capture.store(-1);
+            return;
+        }
+        g_batch = {};
+        g_target = ~0ull;
+        g_target_rows = 0;
+        g_draws = 0;
+        g_live = true;
+        std::fprintf(g_log, "draw\tprims\tfirst\tctx\tprim\tframe\tzbuf\ttex0\ttex1\tclamp\talpha\ttest\tbox\ttexels\n");
+        g_prompt_capture.store(2);
+        return;
+    }
+#endif
+    if (g_done) return;
+    const bool was = g_log != nullptr;
+    if (active()) {
+        flush();
+        std::fprintf(g_log, "vblank\t%llu\n", static_cast<unsigned long long>(frame));
+    } else if (was) {
+        flush();
+        if (g_target != ~0ull) dump_target(g_target, g_target_rows, "end of capture");
+        std::fclose(g_log);
+        g_log = nullptr;
+        g_done = true;
+        std::fprintf(stderr, "[gs] captured %llu draws and %llu images in %s\n", static_cast<unsigned long long>(g_draws), static_cast<unsigned long long>(g_images), g_dir.c_str());
+    }
+}
+
+}
+
+#ifdef __EMSCRIPTEN__
+bool request_prompt_capture() {
+    if (std::getenv("PS2_CAPTURE")) return false;
+    int status = capture::g_prompt_capture.load();
+    return (status <= 0 || status == 3) && capture::g_prompt_capture.compare_exchange_strong(status, 1);
+}
+int prompt_capture_status() { return capture::g_prompt_capture.load(); }
+#endif
+
+void kick(bool draw) {
+    State &s = g_state;
+    const std::uint32_t prim = static_cast<std::uint32_t>(s.prim) & 7u;
+    const int needed = prim == 0 ? 1 : (prim == 1 || prim == 2 || prim == 6) ? 2 : prim == 7 ? 1 : 3;
+    if (s.count < needed) return;
+    if (draw) {
+        if (cpu_raster()) raster::draw(s, s.queue, needed);
+#ifdef PS2_GPU
+        if (gpu_on()) gpu::draw(s, s.queue, needed);
+#endif
+        capture::prim(s, needed);
+        ++g_primitives;
+    }
+    switch (prim) {
+    case 2:
+        s.queue[0] = s.queue[1];
+        s.count = 1;
+        break;
+    case 4:
+        s.queue[0] = s.queue[1];
+        s.queue[1] = s.queue[2];
+        s.count = 2;
+        break;
+    case 5:
+        s.queue[1] = s.queue[2];
+        s.count = 2;
+        break;
+    default:
+        s.count = 0;
+        break;
+    }
+}
+
+void vertex(std::uint32_t x, std::uint32_t y, std::uint32_t z, std::uint8_t f, bool draw) {
+    State &s = g_state;
+    if (s.count >= 3) s.count = 2;
+    Vertex &v = s.queue[s.count++];
+    v.x = x;
+    v.y = y;
+    v.z = z;
+    v.f = f;
+    v.r = static_cast<std::uint8_t>(s.rgbaq);
+    v.g = static_cast<std::uint8_t>(s.rgbaq >> 8);
+    v.b = static_cast<std::uint8_t>(s.rgbaq >> 16);
+    v.a = static_cast<std::uint8_t>(s.rgbaq >> 24);
+    // Q is a sticky GS internal register (updated by PACKED STQ and by RGBAQ),
+    // not the possibly-stale copy latched into RGBAQ alone.
+    v.q = s.q;
+    std::uint32_t sbits = static_cast<std::uint32_t>(s.st), tbits = static_cast<std::uint32_t>(s.st >> 32);
+    std::memcpy(&v.s, &sbits, 4);
+    std::memcpy(&v.t, &tbits, 4);
+    v.u = static_cast<std::uint32_t>(s.uv) & 0x3FFFu;
+    v.v = static_cast<std::uint32_t>(s.uv >> 16) & 0x3FFFu;
+    kick(draw);
+}
+
+void write(std::uint32_t reg, std::uint64_t value) {
+    State &s = g_state;
+    ++g_writes[reg & 127u];
+    constexpr std::uint64_t kVertexRegs = (1ull << 0x01) | (1ull << 0x02) | (1ull << 0x03) | (1ull << 0x04) | (1ull << 0x05) | (1ull << 0x0A) | (1ull << 0x0C) | (1ull << 0x0D);
+    if (reg >= 64 || !((kVertexRegs >> reg) & 1u)) ++g_setup_generation;
+    static const char *seq = std::getenv("PS2_TRACE_GSSEQ");
+    if (seq) {
+        static std::uint64_t n = 0, start = std::strtoull(seq, nullptr, 10);
+        if (++n >= start && n < start + 100000) std::fprintf(stderr, "[gs] w %02X %016llX\n", reg, static_cast<unsigned long long>(value));
+    }
+    switch (reg) {
+    case 0x00:
+        s.prim = value;
+        s.count = 0;
+        break;
+    case 0x01: {
+        s.rgbaq = value;
+        const std::uint32_t qbits = static_cast<std::uint32_t>(value >> 32);
+        std::memcpy(&s.q, &qbits, 4);
+        break;
+    }
+    case 0x02: s.st = value; break;
+    case 0x03: s.uv = value; break;
+    case 0x04: vertex(static_cast<std::uint32_t>(value) & 0xFFFFu, static_cast<std::uint32_t>(value >> 16) & 0xFFFFu,
+                      static_cast<std::uint32_t>(value >> 32) & 0xFFFFFFu, static_cast<std::uint8_t>(value >> 56), true); break;
+    case 0x05: vertex(static_cast<std::uint32_t>(value) & 0xFFFFu, static_cast<std::uint32_t>(value >> 16) & 0xFFFFu,
+                      static_cast<std::uint32_t>(value >> 32), static_cast<std::uint8_t>(s.fog >> 56), true); break;
+    case 0x06: case 0x07:
+        s.ctx[reg - 6].tex0 = value;
+        load_clut(value);
+        break;
+    case 0x08: case 0x09: s.ctx[reg - 8].clamp = value; break;
+    case 0x0A: s.fog = value; break;
+    case 0x0C: vertex(static_cast<std::uint32_t>(value) & 0xFFFFu, static_cast<std::uint32_t>(value >> 16) & 0xFFFFu,
+                      static_cast<std::uint32_t>(value >> 32) & 0xFFFFFFu, static_cast<std::uint8_t>(value >> 56), false); break;
+    case 0x0D: vertex(static_cast<std::uint32_t>(value) & 0xFFFFu, static_cast<std::uint32_t>(value >> 16) & 0xFFFFu,
+                      static_cast<std::uint32_t>(value >> 32), static_cast<std::uint8_t>(s.fog >> 56), false); break;
+    case 0x14: case 0x15: s.ctx[reg - 0x14].tex1 = value; break;
+    case 0x16: case 0x17: {
+        Context &c = s.ctx[reg - 0x16];
+        const std::uint64_t mask = 0xFFFFFFE0'03F00000ull;
+        c.tex0 = (c.tex0 & ~mask) | (value & mask);
+        load_clut(c.tex0);
+        break;
+    }
+    case 0x18: case 0x19: s.ctx[reg - 0x18].xyoffset = value; break;
+    case 0x1A: s.prmodecont = value; break;
+    case 0x1B: s.prmode = value; break;
+    case 0x1C: s.texclut = value; break;
+    case 0x22: s.scanmsk = value; break;
+    case 0x34: case 0x35: s.ctx[reg - 0x34].miptbp1 = value; break;
+    case 0x36: case 0x37: s.ctx[reg - 0x36].miptbp2 = value; break;
+    case 0x3B: s.texa = value; break;
+    case 0x3D: s.fogcol = value; break;
+    case 0x3F:
+#ifdef PS2_GPU
+        if (gpu_on()) gpu::texflush();
+#endif
+        break;
+    case 0x40: case 0x41: s.ctx[reg - 0x40].scissor = value; break;
+    case 0x42: case 0x43: s.ctx[reg - 0x42].alpha = value; break;
+    case 0x44: s.dimx = value; break;
+    case 0x45: s.dthe = value; break;
+    case 0x46: s.colclamp = value; break;
+    case 0x47: case 0x48: s.ctx[reg - 0x47].test = value; break;
+    case 0x49: s.pabe = value; break;
+    case 0x4A: case 0x4B: s.ctx[reg - 0x4A].fba = value; break;
+    case 0x4C: case 0x4D: s.ctx[reg - 0x4C].frame = value; break;
+    case 0x4E: case 0x4F: s.ctx[reg - 0x4E].zbuf = value; break;
+    case 0x50: s.bitbltbuf = value; break;
+    case 0x51: s.trxpos = value; break;
+    case 0x52: s.trxreg = value; break;
+    case 0x53:
+        if (trace_display()) {
+            std::fprintf(stderr, "[gs] trx dir %llu buf 0x%016llX pos 0x%016llX reg 0x%016llX\n", static_cast<unsigned long long>(value & 3u),
+                         static_cast<unsigned long long>(s.bitbltbuf), static_cast<unsigned long long>(s.trxpos), static_cast<unsigned long long>(s.trxreg));
+        }
+        capture::transfer(s, value);
+        s.trxdir = value;
+        g_transfer = Transfer{};
+        g_carried = 0;
+#ifdef PS2_GPU
+        if (gpu_on()) {
+            if ((value & 3u) == 0) gpu::image_begin(s);
+            else if ((value & 3u) == 2) gpu::local_copy(s);
+            else if ((value & 3u) == 1 && !cpu_raster()) download_source(s);
+        }
+#endif
+        if ((value & 3u) == 0) g_transfer.active = true;
+        else if ((value & 3u) == 2) { if (cpu_raster()) local_copy(); }
+        else if ((value & 3u) == 1) g_transfer.active = true;
+        break;
+    case 0x54:
+        feed_image(reinterpret_cast<const std::uint8_t *>(&value), 8);
+        break;
+    case 0x60: case 0x62:
+        if (!queue::active()) signal(reg, value);
+        break;
+    case 0x61:
+        // With the render queue, FINISH must land when the GS actually retires the
+        // write — not when the EE posts the packet (scan). Early raise races ahead of
+        // AddIntcHandler / Alchemy's FINISH callback registration.
+        if (!queue::active()) signal(reg, value);
+        else {
+            g_finish_deferred.fetch_add(1, std::memory_order_relaxed);
+            kernel::wake_idle();
+        }
+        break;
+    default:
+        break;
+    }
+}
+
+void signal(std::uint32_t reg, std::uint64_t value) {
+    const std::uint32_t mask = static_cast<std::uint32_t>(value >> 32), id = static_cast<std::uint32_t>(value);
+    switch (reg) {
+    case 0x60:
+        g_siglblid = (g_siglblid & ~static_cast<std::uint64_t>(mask)) | (id & mask);
+        raise(1);
+        break;
+    case 0x61:
+        // The GS here finishes a whole chain at once, where the real one
+        // spaces its FINISH events out over the drawing. A game that counts
+        // them would lose those landing before its handler cleared the last,
+        // so they wait and are raised one by one as CSR.FINISH is cleared.
+        if (g_csr & 2u) ++g_finish_pending;
+        else raise(2);
+        break;
+    case 0x62: {
+        const std::uint64_t label = (g_siglblid >> 32 & ~static_cast<std::uint64_t>(mask)) | (id & mask);
+        g_siglblid = (g_siglblid & 0xFFFFFFFFull) | (label << 32);
+        break;
+    }
+    default: break;
+    }
+}
+
+void write_packed(std::uint32_t reg, const Reg128 &q) {
+    State &s = g_state;
+    static const char *const seq = std::getenv("PS2_TRACE_GSSEQ");
+    if (seq) [[unlikely]] {
+        static std::uint64_t n = 0, start = std::strtoull(seq, nullptr, 10);
+        if (++n >= start && n < start + 100000) std::fprintf(stderr, "[gs] w %02X %016llX\n", reg, static_cast<unsigned long long>(q.d[0]));
+    }
+    switch (reg) {
+    case 0x0: write(0x00, q.d[0] & 0x7FFu); break;
+    case 0x1: {
+        // PACKED RGBA leaves Q unchanged (Q comes from STQ / RGBAQ).
+        std::uint32_t qbits;
+        std::memcpy(&qbits, &s.q, 4);
+        s.rgbaq = (q.w[0] & 0xFFu) | ((q.w[1] & 0xFFu) << 8) | ((q.w[2] & 0xFFu) << 16) | ((q.w[3] & 0xFFu) << 24) |
+                  (static_cast<std::uint64_t>(qbits) << 32);
+        break;
+    }
+    case 0x2: {
+        // PACKED STQ writes S/T and the sticky Q register (RGBAQ.Q).
+        s.st = q.d[0];
+        std::memcpy(&s.q, &q.w[2], 4);
+        // Match GS/PCSX2: treat Q=0 as a tiny value so S/Q and T/Q stay defined.
+        if (s.q == 0.0f) s.q = std::numeric_limits<float>::min();
+        std::uint32_t qbits;
+        std::memcpy(&qbits, &s.q, 4);
+        s.rgbaq = (s.rgbaq & 0xFFFFFFFFull) | (static_cast<std::uint64_t>(qbits) << 32);
+        break;
+    }
+    case 0x3: s.uv = (q.w[0] & 0x3FFFu) | ((q.w[1] & 0x3FFFu) << 16); break;
+    case 0x4: {
+        const std::uint64_t v = (q.w[0] & 0xFFFFu) | (static_cast<std::uint64_t>(q.w[1] & 0xFFFFu) << 16) |
+                                (static_cast<std::uint64_t>((q.w[2] >> 4) & 0xFFFFFFu) << 32) |
+                                (static_cast<std::uint64_t>((q.w[3] >> 4) & 0xFFu) << 56);
+        write(((q.d[1] >> 47) & 1u) ? 0x0C : 0x04, v);
+        break;
+    }
+    case 0x5: {
+        const std::uint64_t v = (q.w[0] & 0xFFFFu) | (static_cast<std::uint64_t>(q.w[1] & 0xFFFFu) << 16) | (static_cast<std::uint64_t>(q.w[2]) << 32);
+        write(((q.d[1] >> 47) & 1u) ? 0x0D : 0x05, v);
+        break;
+    }
+    case 0xA: s.fog = static_cast<std::uint64_t>((q.w[3] >> 4) & 0xFFu) << 56; break;
+    case 0xC: write(0x0C, (q.w[0] & 0xFFFFu) | (static_cast<std::uint64_t>(q.w[1] & 0xFFFFu) << 16) |
+                              (static_cast<std::uint64_t>((q.w[2] >> 4) & 0xFFFFFFu) << 32) |
+                              (static_cast<std::uint64_t>((q.w[3] >> 4) & 0xFFu) << 56)); break;
+    case 0xD: write(0x0D, (q.w[0] & 0xFFFFu) | (static_cast<std::uint64_t>(q.w[1] & 0xFFFFu) << 16) | (static_cast<std::uint64_t>(q.w[2]) << 32)); break;
+    case 0xE: write(static_cast<std::uint32_t>(q.d[1] & 0xFFu), q.d[0]); break;
+    case 0xF: break;
+    default: write(reg, q.d[0]); break;
+    }
+}
+
+void write_image(const std::uint8_t *data, std::uint32_t qwords) { feed_image(data, static_cast<std::size_t>(qwords) * 16); }
+
+std::atomic<std::uint32_t> g_downloads{0};
+
+void read_image(std::uint8_t *data, std::uint32_t qwords) {
+    if (!queue::active()) {
+        render_read_image(data, qwords);
+        return;
+    }
+    DownloadKey key = g_shadow;
+    key.qwords = qwords;
+    g_shadow.offset += qwords * 16;
+    const std::size_t bytes = static_cast<std::size_t>(qwords) * 16;
+    {
+        std::lock_guard lock(g_cache_mutex);
+        const auto it = std::find_if(g_download_cache.begin(), g_download_cache.end(), [&](const CachedDownload &c) { return c.key == key; });
+        if (it != g_download_cache.end() && it->data.size() == bytes) {
+            std::memcpy(data, it->data.data(), bytes);
+            it->used = ++g_cache_clock;
+            queue::post(queue::kDownloadAsync, qwords, 0, &key, sizeof key);
+            return;
+        }
+    }
+    const std::uint32_t seen = g_downloads.load();
+    const std::uintptr_t target = reinterpret_cast<std::uintptr_t>(data);
+    queue::post(queue::kDownload, qwords, 0, &target, sizeof target);
+    while (g_downloads.load() == seen) queue::wait(g_downloads, seen);
+    remember(key, data, bytes);
+}
+
+void note_transfer(std::uint32_t reg, std::uint64_t value) {
+    switch (reg) {
+    case 0x50: g_shadow.buf = value; break;
+    case 0x51: g_shadow.pos = value; break;
+    case 0x52: g_shadow.reg = value; break;
+    default: g_shadow.offset = 0; break;
+    }
+}
+
+void render_read_image(std::uint8_t *data, std::uint32_t qwords) {
+    const std::size_t bytes = static_cast<std::size_t>(qwords) * 16;
+    std::memset(data, 0, bytes);
+    if (!g_transfer.active || (g_state.trxdir & 3u) != 1) return;
+    const std::uint64_t buf = g_state.bitbltbuf, pos = g_state.trxpos, reg = g_state.trxreg;
+    const std::uint32_t sbp = static_cast<std::uint32_t>(buf) & 0x3FFFu, sbw = static_cast<std::uint32_t>(buf >> 16) & 0x3Fu;
+    const std::uint32_t spsm = static_cast<std::uint32_t>(buf >> 24) & 0x3Fu;
+    const std::uint32_t ssax = static_cast<std::uint32_t>(pos) & 0x7FFu, ssay = static_cast<std::uint32_t>(pos >> 16) & 0x7FFu;
+    const std::uint32_t rrw = static_cast<std::uint32_t>(reg) & 0xFFFu, rrh = static_cast<std::uint32_t>(reg >> 32) & 0xFFFu;
+    const std::uint32_t bits = bits_per_pixel(spsm);
+    auto next = [&]() {
+        const std::uint32_t v = read_pixel(spsm, sbp, sbw, (ssax + g_transfer.x) & 0x7FFu, (ssay + g_transfer.y) & 0x7FFu);
+        if (++g_transfer.x >= rrw) {
+            g_transfer.x = 0;
+            if (++g_transfer.y >= rrh) g_transfer.active = false;
+        }
+        return v;
+    };
+    if (bits == 24) {
+        for (std::size_t i = 0; i < bytes && (g_transfer.active || g_carried); ++i) {
+            if (!g_carried) {
+                const std::uint32_t v = next();
+                g_carry[0] = static_cast<std::uint8_t>(v);
+                g_carry[1] = static_cast<std::uint8_t>(v >> 8);
+                g_carry[2] = static_cast<std::uint8_t>(v >> 16);
+                g_carried = 3;
+            }
+            data[i] = g_carry[3 - g_carried--];
+        }
+        return;
+    }
+    for (std::size_t bit = 0; bit + bits <= bytes * 8 && g_transfer.active; bit += bits) {
+        const std::uint32_t v = next();
+        if (bits == 4) data[bit / 8] |= static_cast<std::uint8_t>((v & 15u) << (bit & 4));
+        else std::memcpy(data + bit / 8, &v, bits / 8);
+    }
+}
+
+std::uint64_t read_privileged(std::uint32_t address) {
+    switch (address & 0x1FFFu) {
+    case 0x1000: return g_csr | (g_odd_field ? 0x2000u : 0u);
+    case 0x1010: return g_imr;
+    case 0x1040: return g_busdir;
+    case 0x1080: return g_siglblid;
+    default: return 0;
+    }
+}
+
+void write_privileged(std::uint32_t address, std::uint64_t value) {
+    switch (address & 0x1FF0u) {
+    case 0x0000:
+        if (trace_display() && value != g_pmode) std::fprintf(stderr, "[gs] pmode 0x%llX\n", static_cast<unsigned long long>(value));
+        g_pmode = value;
+        break;
+    case 0x0010: g_smode1 = value; break;
+    case 0x0020:
+        if (trace_display() && value != g_smode2) std::fprintf(stderr, "[gs] smode2 0x%llX\n", static_cast<unsigned long long>(value));
+        g_smode2 = value;
+        break;
+    case 0x0030: g_srfsh = value; break;
+    case 0x0040: g_synch1 = value; break;
+    case 0x0050: g_synch2 = value; break;
+    case 0x0060: g_syncv = value; break;
+    case 0x0070:
+        if (trace_display() && value != g_dispfb[0]) std::fprintf(stderr, "[gs] dispfb1 0x%llX\n", static_cast<unsigned long long>(value));
+        g_dispfb[0] = value;
+        break;
+    case 0x0080:
+        if (trace_display() && value != g_display[0]) std::fprintf(stderr, "[gs] display1 0x%llX\n", static_cast<unsigned long long>(value));
+        g_display[0] = value;
+        break;
+    case 0x0090:
+        if (trace_display() && value != g_dispfb[1]) std::fprintf(stderr, "[gs] dispfb2 0x%llX\n", static_cast<unsigned long long>(value));
+        g_dispfb[1] = value;
+        break;
+    case 0x00A0:
+        if (trace_display() && value != g_display[1]) std::fprintf(stderr, "[gs] display2 0x%llX\n", static_cast<unsigned long long>(value));
+        g_display[1] = value;
+        break;
+    case 0x00B0: g_extbuf = value; break;
+    case 0x00C0: g_extdata = value; break;
+    case 0x00D0: g_extwrite = value; break;
+    case 0x00E0: g_bgcolor = value; break;
+    case 0x1000:
+        g_csr &= ~(value & 0x1Fu);
+        if ((value & 2u) && g_finish_pending) {
+            --g_finish_pending;
+            raise(2);
+        }
+        if (value & 0x200u) {
+            g_finish_pending = 0;
+            g_csr = 0x551B4000ull;
+            if (queue::active()) queue::post(queue::kSoftReset, 0, 0, nullptr, 0);
+            else soft_reset();
+        }
+        break;
+    case 0x1010:
+        // GS IMR only implements bits 8..12 (+ two always-1 undefined bits); match PCSX2.
+        g_imr = (value & 0x1F00ull) | 0x6000ull;
+        if (g_csr & ~(g_imr >> 8) & 0x1Fu) hw::intc_raise(0);
+        break;
+    case 0x1040: g_busdir = value; break;
+    case 0x1080: g_siglblid = value; break;
+    default: break;
+    }
+}
+
+void drain_deferred_finish() {
+    while (g_finish_deferred.load(std::memory_order_relaxed)) {
+        g_finish_deferred.fetch_sub(1, std::memory_order_relaxed);
+        signal(0x61, 0);
+    }
+    // Replays coalesced FINISH that never got a W1C drain (CSR already clear).
+    if (g_finish_pending && !(g_csr & 2u)) {
+        --g_finish_pending;
+        raise(2);
+    }
+}
+
+void vblank(bool start) {
+    if (start) {
+        g_odd_field = !g_odd_field;
+        // Deliver deferred/queued FINISH before VSINT so Alchemy's FINISH→VSINT
+        // handshake (callback sets a flag that the VSINT handler consumes) can complete
+        // in one GS interrupt.
+        drain_deferred_finish();
+        raise(8);
+        if (queue::active()) queue::post(queue::kVblank, static_cast<std::uint32_t>(frame_count()), 0, nullptr, 0);
+        else {
+            capture::vblank(frame_count());
+#ifdef PS2_GPU
+            if (gpu_on()) gpu::flush();
+#endif
+        }
+    }
+}
+
+bool interlaced_odd_field() { return g_odd_field; }
+
+bool attach_window(int kind, void *display, std::uint64_t window, void *surface, const char *selector, std::uint32_t width, std::uint32_t height) {
+#ifdef PS2_GPU
+    if (gpu::mode() != gpu::Mode::primary) return false;
+    const gpu::SurfaceTarget target{static_cast<gpu::SurfaceTarget::Kind>(kind), display, window, surface, selector, width, height};
+    return gpu::attach_surface(target);
+#else
+    (void)kind, (void)display, (void)window, (void)surface, (void)selector, (void)width, (void)height;
+    return false;
+#endif
+}
+
+void resize_window(std::uint32_t width, std::uint32_t height) {
+#ifdef PS2_GPU
+    gpu::resize_surface(width, height);
+#else
+    (void)width, (void)height;
+#endif
+}
+
+double gpu_busy_ms() {
+#ifdef PS2_GPU
+    return gpu::busy_ms();
+#else
+    return 0.0;
+#endif
+}
+
+std::uint32_t shown_lines(std::uint32_t dh, std::uint32_t dy, std::uint64_t smode2) {
+    const std::uint32_t scale = (smode2 & 1u) ? 2u : 1u;
+    const std::uint32_t lines = (ps2::g_options.pal ? 288u : 240u) * scale;
+    const std::uint32_t top = (ps2::g_options.pal ? 36u : 25u) * scale, span = (ps2::g_options.pal ? 256u : 224u) * scale;
+    const std::uint32_t below = dy > top ? std::min(dy - top, span) : 0u;
+    return std::min({dh, lines, below ? span - below : lines});
+}
+
+DisplayRegs display_regs() { return DisplayRegs{g_pmode, g_smode2, {g_dispfb[0], g_dispfb[1]}, {g_display[0], g_display[1]}}; }
+
+bool present() { return present(display_regs()); }
+
+bool present(const DisplayRegs &r) {
+#ifdef PS2_GPU
+    if (!gpu::has_surface()) return false;
+    const int circuit = (r.pmode & 2u) ? 1 : (r.pmode & 1u) ? 0 : -1;
+    if (circuit < 0) return true;
+    const std::uint64_t fb = r.dispfb[circuit], disp = r.display[circuit];
+    const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
+    const std::uint32_t width = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh, height = shown_lines((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1, static_cast<std::uint32_t>(disp >> 12) & 0x7FFu, r.smode2) / magv;
+    if (!width || !height || width > 2048 || height > 2048) return true;
+    const gpu::DisplaySource src{(static_cast<std::uint32_t>(fb) & 0x1FFu) * 32, static_cast<std::uint32_t>(fb >> 9) & 0x3Fu, static_cast<std::uint32_t>(fb >> 15) & 0x1Fu,
+                                 static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, static_cast<std::uint32_t>(fb >> 43) & 0x7FFu, width, height, (r.smode2 & 3u) == 3u};
+    return gpu::present(src);
+#else
+    (void)r;
+    return false;
+#endif
+}
+
+bool display(std::vector<std::uint32_t> &rgba, std::uint32_t &width, std::uint32_t &height) { return display(display_regs(), rgba, width, height); }
+
+bool display(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uint32_t &width, std::uint32_t &height) {
+    const int circuit = (r.pmode & 2u) ? 1 : (r.pmode & 1u) ? 0 : -1;
+    if (circuit < 0) return false;
+    const std::uint64_t fb = r.dispfb[circuit], disp = r.display[circuit];
+    const std::uint32_t fbp = static_cast<std::uint32_t>(fb) & 0x1FFu, fbw = static_cast<std::uint32_t>(fb >> 9) & 0x3Fu;
+    const std::uint32_t psm = static_cast<std::uint32_t>(fb >> 15) & 0x1Fu;
+    const std::uint32_t dbx = static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, dby = static_cast<std::uint32_t>(fb >> 43) & 0x7FFu;
+    const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
+    const std::uint32_t dw = (static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1, dh = shown_lines((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1, static_cast<std::uint32_t>(disp >> 12) & 0x7FFu, r.smode2);
+    width = dw / magh;
+    height = dh / magv;
+    if (!width || !height || width > 2048 || height > 2048) return false;
+    const bool halved = (r.smode2 & 3u) == 3u;
+#ifdef PS2_GPU
+    if (gpu_on()) {
+        const gpu::DisplaySource src{fbp * 32, fbw, psm, dbx, dby, width, height, halved};
+        if (!cpu_raster()) return gpu::display(src, rgba, width, height);
+        static const bool compare = std::getenv("PS2_GS_COMPARE") != nullptr;
+        std::uint32_t gw = 0, gh = 0;
+        if (compare) g_gpu_frame.clear(), gpu::display(src, g_gpu_frame, gw, gh);
+    }
+#endif
+    rgba.resize(static_cast<std::size_t>(width) * height);
+    for (std::uint32_t y = 0; y < height; ++y)
+        for (std::uint32_t x = 0; x < width; ++x) {
+            std::uint32_t c = read_pixel(psm, fbp * 32, fbw, dbx + x, dby + (halved ? y / 2 : y));
+            if (psm == PSMCT16 || psm == PSMCT16S)
+                c = ((c & 0x1Fu) << 3) | ((c & 0x3E0u) << 6) | ((c & 0x7C00u) << 9) | 0xFF000000u;
+            rgba[static_cast<std::size_t>(y) * width + x] = c | 0xFF000000u;
+        }
+#ifdef PS2_GPU
+    if (!g_gpu_frame.empty() && g_gpu_frame.size() == rgba.size()) {
+        std::size_t differ = 0;
+        int worst = 0;
+        for (std::size_t i = 0; i < rgba.size(); ++i) {
+            int delta = 0;
+            for (int ch = 0; ch < 24; ch += 8)
+                delta = std::max(delta, std::abs(static_cast<int>((rgba[i] >> ch) & 0xFFu) - static_cast<int>((g_gpu_frame[i] >> ch) & 0xFFu)));
+            if (delta > 2) ++differ;
+            worst = std::max(worst, delta);
+        }
+        std::fprintf(stderr, "[gs] gpu differs in %zu of %zu pixels (max %d)\n", differ, rgba.size(), worst);
+        if (std::strcmp(std::getenv("PS2_GS_COMPARE"), "show") == 0) rgba.swap(g_gpu_frame);
+    }
+#endif
+    return true;
+}
+
+bool copy_frame(std::vector<std::uint32_t> &rgba, std::uint32_t &width, std::uint32_t &height) { return copy_frame(display_regs(), rgba, width, height); }
+
+bool copy_frame(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uint32_t &width, std::uint32_t &height) {
+    static std::vector<std::uint32_t> previous;
+    bool got = false;
+#ifdef PS2_GPU
+    if (gpu_on() && !cpu_raster()) {
+        const int circuit = (r.pmode & 2u) ? 1 : (r.pmode & 1u) ? 0 : -1;
+        if (circuit < 0) return false;
+        const std::uint64_t fb = r.dispfb[circuit], disp = r.display[circuit];
+        const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
+        const std::uint32_t w = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh, h = ((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1) / magv;
+        if (!w || !h || w > 2048 || h > 2048) return false;
+        const gpu::DisplaySource src{(static_cast<std::uint32_t>(fb) & 0x1FFu) * 32, static_cast<std::uint32_t>(fb >> 9) & 0x3Fu, static_cast<std::uint32_t>(fb >> 15) & 0x1Fu,
+                                     static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, static_cast<std::uint32_t>(fb >> 43) & 0x7FFu, w, h, (r.smode2 & 3u) == 3u};
+        got = gpu::display_async(src, rgba, width, height);
+    } else
+#endif
+        got = display(r, rgba, width, height);
+    if (!got) return false;
+    if (previous.size() != rgba.size()) {
+        previous = rgba;
+        return true;
+    }
+#ifdef __EMSCRIPTEN__
+    static const bool weave_off = std::getenv("PS2_DEINTERLACE") == nullptr;
+#else
+    static const bool weave_off = std::getenv("PS2_NO_DEINTERLACE") != nullptr;
+#endif
+    const bool blend = (r.smode2 & 3u) == 3u && !weave_off;
+    for (std::size_t i = 0; i < rgba.size(); ++i) {
+        const std::uint32_t c = rgba[i];
+        if (blend) rgba[i] = (c & previous[i]) + (((c ^ previous[i]) & 0xFEFEFEFEu) >> 1);
+        previous[i] = c;
+    }
+    return true;
+}
+
+std::atomic<std::uint32_t> g_presented{0};
+std::uint32_t g_posted_presents = 0;
+
+void flush_and_wait() {
+#ifdef PS2_GPU
+    if (gpu_on()) gpu::wait_idle();
+#endif
+}
+
+void start_thread() { queue::render().start(32u << 20); }
+
+std::uint32_t presents_queued() {
+    return g_posted_presents - g_presented.load();
+}
+
+void post_present() {
+    const DisplayRegs regs = display_regs();
+    queue::post(queue::kPresent, 0, 0, &regs, sizeof regs);
+    ++g_posted_presents;
+    // Allow a slightly deeper present backlog before stalling the EE. Waiting at
+    // depth 2 under Asyncify/WebGPU made gameplay feel laggy when the render
+    // thread briefly fell behind vsync.
+#ifdef __EMSCRIPTEN__
+    constexpr std::uint32_t kMaxBehind = 4;
+#else
+    constexpr std::uint32_t kMaxBehind = 3;
+#endif
+    for (std::uint32_t done = g_presented.load(); g_posted_presents - done > kMaxBehind; done = g_presented.load())
+        queue::wait(g_presented, done);
+}
+
+Rendered render_pending(const std::function<void(const DisplayRegs &)> &on_present, double budget_ms) {
+    queue::role() = queue::Role::Render;
+    queue::Header h;
+    const std::uint8_t *payload = nullptr;
+    const auto start = std::chrono::steady_clock::now();
+    for (std::uint32_t n = 1; queue::render().peek(h, payload); ++n) {
+        if (!(n & 7u) && std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count() > budget_ms) return Rendered::busy;
+        bool presented = false;
+        switch (h.type) {
+        case queue::kGif: gif::render(static_cast<int>(h.arg0), payload, h.arg1); break;
+        case queue::kGifReset: gif::render_reset(); break;
+        case queue::kReset: render_reset(); break;
+        case queue::kSoftReset: soft_reset(); break;
+        case queue::kVblank:
+            capture::vblank(h.arg0);
+#ifdef PS2_GPU
+            if (gpu_on()) gpu::flush();
+#endif
+            break;
+        case queue::kPresent: {
+            DisplayRegs regs;
+            std::memcpy(&regs, payload, sizeof regs);
+            on_present(regs);
+            presented = true;
+            break;
+        }
+        case queue::kState: serve_state(payload); break;
+        case queue::kDownload: {
+            std::uintptr_t target;
+            std::memcpy(&target, payload, sizeof target);
+            exact_download();
+            render_read_image(reinterpret_cast<std::uint8_t *>(target), h.arg0);
+            g_downloads.fetch_add(1);
+            queue::notify(g_downloads);
+            break;
+        }
+        case queue::kDownloadAsync: {
+            DownloadKey key;
+            std::memcpy(&key, payload, sizeof key);
+            std::vector<std::uint8_t> fresh(static_cast<std::size_t>(h.arg0) * 16);
+            render_read_image(fresh.data(), h.arg0);
+            if (key.buf == g_state.bitbltbuf && key.pos == g_state.trxpos && key.reg == g_state.trxreg) remember(key, fresh.data(), fresh.size());
+            else forget(key);
+            break;
+        }
+        default: break;
+        }
+        g_observed_primitives.store(g_primitives, std::memory_order_relaxed);
+        queue::render().pop(h);
+        if (presented) {
+            g_presented.fetch_add(1);
+            queue::notify(g_presented);
+            return Rendered::presented;
+        }
+    }
+    return Rendered::idle;
+}
+
+std::uint64_t primitives_drawn() { return g_observed_primitives.load(std::memory_order_relaxed); }
+
+void dump_region(const char *spec) {
+#ifdef PS2_GPU
+    if (gpu_on() && !cpu_raster()) gpu::download(g_memory);
+#endif
+    unsigned bp = 0, bw = 0, psm = 0, w = 0, h = 0;
+    char path[256] = {};
+    if (std::sscanf(spec, "%x,%u,%u,%u,%u,%255s", &bp, &bw, &psm, &w, &h, path) != 6) return;
+    std::FILE *f = std::fopen(path, "wb");
+    if (!f) return;
+    std::fprintf(f, "P6\n%u %u\n255\n", w, h);
+    for (unsigned y = 0; y < h; ++y)
+        for (unsigned x = 0; x < w; ++x) {
+            const std::uint32_t c = read_pixel(psm, bp, bw, x, y);
+            const std::uint8_t px[3] = {static_cast<std::uint8_t>(c), static_cast<std::uint8_t>(c >> 8), static_cast<std::uint8_t>(c >> 16)};
+            std::fwrite(px, 1, 3, f);
+        }
+    std::fclose(f);
+}
+
+void stats() {
+    if (const char *spec = std::getenv("PS2_DUMP_VRAM")) dump_region(spec);
+#ifdef PS2_GPU
+    gpu::stats();
+#endif
+    std::fprintf(stderr, "[gs] %llu primitives drawn, register writes:", static_cast<unsigned long long>(g_primitives));
+    for (int r = 0; r < 128; ++r)
+        if (g_writes[r]) std::fprintf(stderr, " %02X:%llu", r, static_cast<unsigned long long>(g_writes[r]));
+    std::fprintf(stderr, "\n");
+}
+
+}
+
+namespace ps2::gs {
+
+namespace {
+
+std::atomic<std::uint32_t> g_state_done{0};
+std::string g_state_error;
+
+void render_state(ps2::state::Stream &s) {
+    flush_and_wait();
+    s.pod(g_state);
+    ++g_setup_generation;
+    s.pod(g_pmode);
+    s.pod(g_smode1);
+    s.pod(g_smode2);
+    s.pod(g_srfsh);
+    s.pod(g_synch1);
+    s.pod(g_synch2);
+    s.pod(g_syncv);
+    s.pod(g_dispfb);
+    s.pod(g_display);
+    s.pod(g_extbuf);
+    s.pod(g_extdata);
+    s.pod(g_extwrite);
+    s.pod(g_bgcolor);
+    s.pod(g_csr);
+    s.pod(g_imr);
+    s.pod(g_busdir);
+    s.pod(g_siglblid);
+    if (s.version() >= 6) s.pod(g_finish_pending);
+    else g_finish_pending = 0;
+    if (s.loading()) g_finish_deferred.store(0, std::memory_order_relaxed);
+    s.pod(g_primitives);
+    g_observed_primitives.store(g_primitives, std::memory_order_relaxed);
+    s.pod(g_odd_field);
+    s.pod(g_transfer);
+    s.pod(g_carry);
+    s.size(g_carried);
+    std::vector<std::uint32_t> vram, clut;
+    std::uint32_t scale = 1;
+#ifdef PS2_GPU
+    if (s.saving() && gpu_on()) {
+        gpu::download(g_memory);
+        gpu::read_state(vram, scale, clut);
+    }
+#endif
+    s.bytes(g_memory, kMemorySize);
+    s.pod(scale);
+    s.vec(vram);
+    s.vec(clut);
+#ifdef PS2_GPU
+    if (s.loading() && gpu_on()) {
+        if (vram.empty()) {
+            vram.resize(kMemorySize / 4);
+            std::memcpy(vram.data(), g_memory, kMemorySize);
+            clut.assign(g_state.clut, g_state.clut + 512);
+            scale = 1;
+        }
+        gpu::write_state(vram, scale, clut);
+    }
+#endif
+}
+
+}
+
+void serve_state(const void *payload) {
+    std::uintptr_t target;
+    std::memcpy(&target, payload, sizeof target);
+    try {
+        render_state(*reinterpret_cast<ps2::state::Stream *>(target));
+    } catch (const std::exception &e) {
+        g_state_error = e.what();
+    }
+    g_state_done.fetch_add(1);
+    queue::notify(g_state_done);
+}
+
+void state(ps2::state::Stream &s) {
+    s.tag("gs");
+    if (!queue::active()) {
+        render_state(s);
+        return;
+    }
+    g_state_error.clear();
+    const std::uint32_t seen = g_state_done.load();
+    const std::uintptr_t target = reinterpret_cast<std::uintptr_t>(&s);
+    queue::post(queue::kState, 0, 0, &target, sizeof target);
+    while (g_state_done.load() == seen) queue::wait(g_state_done, seen);
+    if (!g_state_error.empty()) throw std::runtime_error(g_state_error);
+}
+
+}

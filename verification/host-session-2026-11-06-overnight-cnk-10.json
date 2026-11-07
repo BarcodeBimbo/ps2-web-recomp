@@ -1,0 +1,22 @@
+{
+  "session": "2026-11-06 overnight CNK continue",
+  "disk_free_gb": 19.9,
+  "progress": {
+    "freelist_escape": "PASS — set r3=end so goto loop exits (PC jump was overwritten by unwind)",
+    "soft_extract_scratch": "PASS — fonts at 0x1A00000; GIF 4C can reach ~34k",
+    "guest_dest_7AF300": "FAIL — overwrites live state → jalr 0 ra 0x1FEC04",
+    "ready_without_bind": "FAIL — teardown jalr 0 ra 0x506648",
+    "host_call_bind_10F2F0": "FAIL — ACCESS_VIOLATION even deferred/top-level",
+    "cdvd_gfc_mount": "FAIL as default — arms +24008 → WaitSema/jalr0; opt-in PS2_ALCHEMY_CDVD_GFC",
+    "prims": 2,
+    "igctx": 0
+  },
+  "next": [
+    "Find safe heap alloc for fonts dest (not 0x7AF300, not scratch)",
+    "Map 0x10F2F0 AV (first bad vtable load) via Ghidra when available",
+    "Natural EE bind path: unblock sema that gates 0x109840",
+    "prims >> 2 then rebuild-all slots 0/1"
+  ],
+  "status": "CNK OPEN — stable scratch+escape+tick; binder still blocked",
+  "rebuild_all": "blocked until prims >> 2"
+}

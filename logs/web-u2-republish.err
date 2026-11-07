@@ -1,0 +1,35 @@
+CMake Error:
+  Running
+
+   'C:\PS2Recomp\tools\msys64\clang64\bin\ninja.exe' '-C' 'C:/PS2Recomp/build/tools-windows-1' '-t' 'restat' 'build.ninja' 'C:/PS2Recomp/build/tools-windows-1/cmake_install.cmake'
+
+  failed with:
+
+   ninja: error: failed recompaction: Permission denied
+
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+Traceback (most recent call last):
+  File "C:\PS2Recomp\scripts\windows_port.py", line 266, in <module>
+    build_web(game_id)
+    ~~~~~~~~~^^^^^^^^^
+  File "C:\PS2Recomp\scripts\windows_port.py", line 106, in build_web
+    refresh_translation(game_id,elf,web_env)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\PS2Recomp\scripts\windows_port.py", line 83, in refresh_translation
+    cmake(tools,f'-DCMAKE_CXX_COMPILER={BIN / "clang++.exe"}',target='eerecomp',env=env)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\PS2Recomp\scripts\windows_port.py", line 31, in cmake
+    subprocess.run([BIN / 'cmake.exe', '-S', '.', '-B', relative(folder),
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '-G', 'Ninja', '-DCMAKE_BUILD_TYPE=Release',
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    f'-DCMAKE_MAKE_PROGRAM={BIN / "ninja.exe"}', *options],
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   check=True, cwd=ROOT, env=env, timeout=180)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\PS2Recomp\tools\msys64\clang64\lib\python3.14\subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '[WindowsPath('C:/PS2Recomp/tools/msys64/clang64/bin/cmake.exe'), '-S', '.', '-B', 'build/tools-windows-1', '-G', 'Ninja', '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_MAKE_PROGRAM=C:\\PS2Recomp\\tools\\msys64\\clang64\\bin\\ninja.exe', '-DCMAKE_CXX_COMPILER=C:\\PS2Recomp\\tools\\msys64\\clang64\\bin\\clang++.exe']' returned non-zero exit status 1.

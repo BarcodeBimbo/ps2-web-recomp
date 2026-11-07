@@ -1,0 +1,91 @@
+﻿ps2run.exe : [gpu] NVIDIA GeForce RTX 3050 (617.42)
+At line:4 char:1
++ & "build\native-$cnk\ps2run.exe" "games\$cnk\disc\boot.elf" --disc "g ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([gpu] NVIDIA GeForce RTX 3050 (617.42):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[disc] games\b49f2e769315347e8bda839feb705744\disc.iso: 6394 files, 1566112 sectors, layer 1 at 0
+[sif] command 0x80000000: 00000014 00000000 80000000 00000000 00708100 00000001 20708100 20708180 0001E000 00708200 
+00000020 00000000 00000000 00708300
+[sif] command 0x80000000 has no handler (from ee buffer 0x007081C0)
+[sif] bind 0x80000592
+[frame] 25 prims 0
+[frame] 50 prims 0
+[frame] 75 prims 0
+[frame] 100 prims 0
+[frame] 125 prims 0
+[frame] 150 prims 0
+[frame] 175 prims 0
+[frame] 200 prims 0
+[frame] 225 prims 0
+[frame] 250 prims 0
+[frame] 275 prims 0
+[frame] 300 prims 0
+[frame] 325 prims 0
+[frame] 350 prims 0
+[frame] 375 prims 0
+[frame] 400 prims 0
+[frame] 425 prims 0
+[frame] 450 prims 0
+[frame] 475 prims 0
+[frame] 500 prims 0
+[frame] 525 prims 0
+[frame] 550 prims 0
+[frame] 575 prims 0
+[frame] 600 prims 0
+[frame] 625 prims 0
+[frame] 650 prims 0
+[frame] 675 prims 0
+[frame] 700 prims 0
+[frame] 725 prims 0
+[frame] 750 prims 0
+[frame] 775 prims 0
+[frame] 800 prims 0
+[frame] 825 prims 0
+[frame] 850 prims 0
+[frame] 875 prims 0
+[frame] 900 prims 0
+[frame] 925 prims 0
+[frame] 950 prims 0
+[frame] 975 prims 0
+[frame] 1000 prims 0
+[frame] 1025 prims 0
+[frame] 1050 prims 0
+[frame] 1075 prims 0
+[frame] 1100 prims 0
+[frame] 1125 prims 0
+[frame] 1150 prims 0
+[frame] 1175 prims 0
+[frame] 1200 prims 0
+[frame] 1225 prims 0
+[frame] 1250 prims 0
+[frame] 1275 prims 0
+[frame] 1300 prims 0
+[frame] 1325 prims 0
+[frame] 1350 prims 0
+[frame] 1375 prims 0
+[frame] 1400 prims 0
+[frame] 1425 prims 0
+[frame] 1450 prims 0
+[frame] 1475 prims 0
+[frame] 1500 prims 0
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 1 wait 2/3 pc 0x0043CB28 ra 0x0043FA70
+[thread]   stack: 0045C0CC 00108FA4 00108EE0 00445AD0 00108EC0
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x0043CB28 ra 0x0043D828
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 3 count 0 waiters 1
+[sif] 1 packets wait for the EE (processed 1)
+[gpu] 0 submits, dispatches: upload 0 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 
+decode 0
+[gs] 0 primitives drawn, register writes:
+[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0
+[dma] starts: ch0=0 ch1=0 ch2=0 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 0 reglist 0 image 0
+[gif] path 3 tags: packed 0 reglist 0 image 0
+[vif0]
+[vif1]
+[ee] stopped after 1500 frames, 8847360000 cycles: frame limit reached

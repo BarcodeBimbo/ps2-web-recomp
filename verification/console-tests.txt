@@ -1,0 +1,375 @@
+{"name": "disc_archive", "command": ["python3", "tests/disc_archive.py"], "env": {}, "exit": 0, "seconds": 0.38}
+test_chd_and_seven_zip_dependencies_are_reported (__main__.DiscArchiveTests.test_chd_and_seven_zip_dependencies_are_reported) ... ok
+test_cue_cannot_escape_its_folder (__main__.DiscArchiveTests.test_cue_cannot_escape_its_folder) ... ok
+test_iso_trailing_period_is_readable_during_optional_core_scan (__main__.DiscArchiveTests.test_iso_trailing_period_is_readable_during_optional_core_scan) ... ok
+test_malformed_directory_record_is_rejected (__main__.DiscArchiveTests.test_malformed_directory_record_is_rejected) ... ok
+test_oversized_sparse_image_is_rejected_before_open (__main__.DiscArchiveTests.test_oversized_sparse_image_is_rejected_before_open) ... ok
+test_password_protected_zip_and_wrong_password (__main__.DiscArchiveTests.test_password_protected_zip_and_wrong_password) ... ok
+test_project_managed_7zip_is_discovered_without_path (__main__.DiscArchiveTests.test_project_managed_7zip_is_discovered_without_path) ... ok
+test_seven_zip_does_not_prompt_for_an_optional_password (__main__.DiscArchiveTests.test_seven_zip_does_not_prompt_for_an_optional_password) ... ok
+test_seven_zip_password_is_sent_only_when_supplied (__main__.DiscArchiveTests.test_seven_zip_password_is_sent_only_when_supplied) ... ok
+test_unsupported_zip_compression_falls_back_to_seven_zip (__main__.DiscArchiveTests.test_unsupported_zip_compression_falls_back_to_seven_zip) ... ok
+test_valid_iso_directory (__main__.DiscArchiveTests.test_valid_iso_directory) ... ok
+test_windows_device_name_can_be_read_but_not_exported (__main__.DiscArchiveTests.test_windows_device_name_can_be_read_but_not_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.026s
+
+OK
+
+{"name": "elf_security", "command": ["python3", "tests/elf_security.py"], "env": {}, "exit": 2, "seconds": 0.09}
+usage: elf_security.py [-h] --recompiler RECOMPILER
+elf_security.py: error: the following arguments are required: --recompiler
+
+{"name": "serve_range", "command": ["python3", "tests/serve_range.py"], "env": {}, "exit": 0, "seconds": 2.99}
+test_existing_player_glue_gets_compatibility_prefix_in_workers (__main__.ServeRangeTests.test_existing_player_glue_gets_compatibility_prefix_in_workers) ... ok
+test_full_range_returns_requested_slice (__main__.ServeRangeTests.test_full_range_returns_requested_slice) ... ok
+test_head_advertises_ranges_and_exact_length (__main__.ServeRangeTests.test_head_advertises_ranges_and_exact_length) ... ok
+test_single_byte_range_returns_exact_206_response (__main__.ServeRangeTests.test_single_byte_range_returns_exact_206_response) ... ok
+test_unsatisfiable_range_returns_416 (__main__.ServeRangeTests.test_unsatisfiable_range_returns_416) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.651s
+
+OK
+
+{"name": "windows_setup_archive", "command": ["python3", "tests/windows_setup_archive.py"], "env": {}, "exit": 0, "seconds": 0.74}
+test_bootstrap_uses_immutable_revision_not_moving_main (__main__.EmsdkBootstrapPinTests.test_bootstrap_uses_immutable_revision_not_moving_main) ... ok
+test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk (__main__.EmsdkBootstrapPinTests.test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk) ... ok
+test_chdman_installer_pins_hash_and_runs_silent_mame_installer (__main__.SafeZipExtractionTests.test_chdman_installer_pins_hash_and_runs_silent_mame_installer) ... ok
+test_enforces_uncompressed_size_cap (__main__.SafeZipExtractionTests.test_enforces_uncompressed_size_cap) ... ok
+test_extracts_normal_archive (__main__.SafeZipExtractionTests.test_extracts_normal_archive) ... ok
+test_rejects_parent_traversal (__main__.SafeZipExtractionTests.test_rejects_parent_traversal) ... ok
+test_rejects_symbolic_link_entries (__main__.SafeZipExtractionTests.test_rejects_symbolic_link_entries) ... ok
+test_rejects_windows_drive_and_alternate_stream_paths (__main__.SafeZipExtractionTests.test_rejects_windows_drive_and_alternate_stream_paths) ... ok
+test_rejects_windows_reserved_device_names (__main__.SafeZipExtractionTests.test_rejects_windows_reserved_device_names) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.170s
+
+OK
+
+{"name": "security_review", "command": ["python3", "tests/security_review.py"], "env": {}, "exit": 0, "seconds": 0.98}
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.040s
+
+OK
+
+{"name": "mobile_https", "command": ["python3", "tests/mobile_https.py"], "env": {}, "exit": 0, "seconds": 1.11}
+PASS: HTTPS trust, authentication, secure cookie, live shell, COOP/COEP, disc ranges, blocked admin/other games, token rotation
+
+{"name": "mobile_auto", "command": ["python3", "tests/mobile_auto.py"], "env": {}, "exit": 0, "seconds": 2.56}
+test_auto_listener_uses_random_port_and_keeps_admin_private (__main__.Automatic.test_auto_listener_uses_random_port_and_keeps_admin_private) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.965s
+
+OK
+
+{"name": "setup_reporting", "command": ["python3", "tests/setup_reporting.py"], "env": {}, "exit": 0, "seconds": 1.09}
+test_output_failure_timeout_and_report (__main__.Reporting.test_output_failure_timeout_and_report) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.670s
+
+OK
+
+{"name": "download_controls", "command": ["python3", "tests/download_controls.py"], "env": {}, "exit": 0, "seconds": 0.49}
+test_cancel_in_read_deletes_files (__main__.Transfers.test_cancel_in_read_deletes_files) ... ok
+test_cancel_queued_never_opens_network_or_imports (__main__.Transfers.test_cancel_queued_never_opens_network_or_imports) ... ok
+test_changed_validator_never_imports (__main__.Transfers.test_changed_validator_never_imports) ... ok
+test_pause_resume_validates_range_and_preserves_bytes (__main__.Transfers.test_pause_resume_validates_range_and_preserves_bytes) ... ok
+test_server_ignoring_range_restarts_instead_of_appending (__main__.Transfers.test_server_ignoring_range_restarts_instead_of_appending) ... ok
+test_terminal_errors_auto_expire_and_install_cannot_be_cancelled (__main__.Transfers.test_terminal_errors_auto_expire_and_install_cannot_be_cancelled) ... ok
+test_wrong_range_never_imports (__main__.Transfers.test_wrong_range_never_imports) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.046s
+
+OK
+
+{"name": "store_pipeline", "command": ["python3", "tests/store_pipeline.py"], "env": {}, "exit": 0, "seconds": 0.52}
+test_compile_failure_keeps_old_player (__main__.PipelineTests.test_compile_failure_keeps_old_player) ... ok
+test_complete_build_publishes_together_and_versions_assets (__main__.PipelineTests.test_complete_build_publishes_together_and_versions_assets) ... ok
+test_download_finishes_before_import_and_password_is_not_persisted (__main__.PipelineTests.test_download_finishes_before_import_and_password_is_not_persisted) ... ok
+test_import_failure_removes_completed_download (__main__.PipelineTests.test_import_failure_removes_completed_download) ... ok
+test_local_download_destinations_are_rejected (__main__.PipelineTests.test_local_download_destinations_are_rejected) ... ok
+test_provider_denial_has_a_useful_local_import_recovery (__main__.PipelineTests.test_provider_denial_has_a_useful_local_import_recovery) ... ok
+test_rebuild_refreshes_old_generated_tail_calls (__main__.PipelineTests.test_rebuild_refreshes_old_generated_tail_calls) ... ok
+test_store_default_password_and_explicit_override (__main__.PipelineTests.test_store_default_password_and_explicit_override) ... ok
+test_truncated_download_never_enters_library (__main__.PipelineTests.test_truncated_download_never_enters_library) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.016s
+
+OK
+
+{"name": "installation_flow", "command": ["python3", "tests/installation_flow.py"], "env": {}, "exit": 0, "seconds": 0.55}
+test_cleanup_never_deletes_originals (__main__.Flow.test_cleanup_never_deletes_originals) ... ok
+test_cross_container_disc_identity_and_concurrent_claims (__main__.Flow.test_cross_container_disc_identity_and_concurrent_claims) ... ok
+test_existing_ready_disc_is_backfilled (__main__.Flow.test_existing_ready_disc_is_backfilled) ... ok
+test_failed_download_retry_reuses_the_same_game (__main__.Flow.test_failed_download_retry_reuses_the_same_game) ... ok
+test_remove_build_queue_keeps_other_games_and_original_source (__main__.Flow.test_remove_build_queue_keeps_other_games_and_original_source) ... ok
+test_translation_repair_rejects_dynamic_and_unaligned_targets (__main__.Flow.test_translation_repair_rejects_dynamic_and_unaligned_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.097s
+
+OK
+
+{"name": "panel_build_queue", "command": ["python3", "tests/panel_build_queue.py"], "env": {}, "exit": 0, "seconds": 0.3}
+test_blank_archive_password_is_normalized_to_none (__main__.PanelQueueTests.test_blank_archive_password_is_normalized_to_none) ... ok
+test_concurrent_enqueues_reserve_distinct_slots (__main__.PanelQueueTests.test_concurrent_enqueues_reserve_distinct_slots) ... ok
+test_unexpected_worker_exception_marks_game_failed (__main__.PanelQueueTests.test_unexpected_worker_exception_marks_game_failed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.014s
+
+OK
+
+{"name": "gpu_arena", "command": ["python3", "tests/gpu_arena.py"], "env": {}, "exit": 0, "seconds": 6.87}
+PASS: empty, unaligned and growing WebGPU uploads under ASan/UBSan
+
+{"name": "analysis_tailcall", "command": ["python3", "tests/analysis_tailcall.py"], "env": {}, "exit": 0, "seconds": 0.2}
+External tail-call discovery regression passed
+
+{"name": "elf_bss", "command": ["python3", "tests/elf_bss.py"], "env": {}, "exit": 0, "seconds": 0.13}
+Executable BSS regression passed
+
+{"name": "codegen_fallthrough", "command": ["python3", "tests/codegen_fallthrough.py"], "env": {}, "exit": 0, "seconds": 1.09}
+In file included from /tmp/ps2-codegen-test-g73yn9qh/generated/units.hpp:3,
+                 from /tmp/ps2-codegen-test-g73yn9qh/generated/unit_0000.cpp:1:
+/tmp/ps2-codegen-test-g73yn9qh/generated/unit_0000.cpp: In function ‘void gen::unit_0000(ps2::Cpu&, uint32_t, uint32_t)’:
+/workspace/scratch/ae7ea5fe4a51/project/runtime/include/ps2/generated.hpp:18:10: warning: attributes at the beginning of statement are ignored [-Wattributes]
+   18 |     do { [[clang::musttail]] return CALLEE(CPU, ENTRY, DEPTH); } while (false)
+      |          ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-g73yn9qh/generated/unit_0000.cpp:148:25: note: in expansion of macro ‘PS2_TAIL_TRANSFER’
+  148 |     c.pc = 0x00100008u; PS2_TAIL_TRANSFER(c, c.pc, dispatch, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~
+/workspace/scratch/ae7ea5fe4a51/project/runtime/include/ps2/generated.hpp:18:10: warning: attributes at the beginning of statement are ignored [-Wattributes]
+   18 |     do { [[clang::musttail]] return CALLEE(CPU, ENTRY, DEPTH); } while (false)
+      |          ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-g73yn9qh/generated/unit_0000.cpp:151:25: note: in expansion of macro ‘PS2_TAIL_TRANSFER’
+  151 |     c.pc = 0x00100008u; PS2_TAIL_TRANSFER(c, c.pc, dispatch, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~
+/workspace/scratch/ae7ea5fe4a51/project/runtime/include/ps2/generated.hpp:18:10: warning: attributes at the beginning of statement are ignored [-Wattributes]
+   18 |     do { [[clang::musttail]] return CALLEE(CPU, ENTRY, DEPTH); } while (false)
+      |          ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-g73yn9qh/generated/unit_0000.cpp:155:25: note: in expansion of macro ‘PS2_TAIL_TRANSFER’
+  155 |     c.pc = 0x00100014u; PS2_TAIL_TRANSFER(c, c.pc, dispatch, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~
+Untranslated fallthrough regression passed
+
+{"name": "gpu_upload_compat", "command": ["node", "tests/gpu_upload_compat.cjs"], "env": {}, "exit": 0, "seconds": 0.14}
+PASS: resizable and growable backing stores, typed-element offsets, DataView/ArrayBuffer, growth, zero size, fixed fast path and worker-safe installation
+PASS: dynamic offset slices on compute/render/bundle encoders, shared growth, native invalid-input handling and idempotence
+
+{"name": "mobile_controls", "command": ["node", "tests/mobile_controls.cjs"], "env": {}, "exit": 1, "seconds": 2.82}
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-KIjv5n --remote-debugging-pipe --no-startup-window
+<launched> pid=121
+[pid=121][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator
+[pid=121][err] [121:121:1105/180833.641689:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)
+[pid=121][err] [1105/180833.651978:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)
+Call log:
+[2m  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-KIjv5n --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=121[22m
+[2m  - [pid=121][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator[22m
+[2m  - [pid=121][err] [121:121:1105/180833.641689:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)[22m
+[2m  - [pid=121][err] [1105/180833.651978:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)[22m
+[2m  - [pid=121] <gracefully close start>[22m
+[2m  - [pid=121] <kill>[22m
+[2m  - [pid=121] <will force kill>[22m
+[2m  - [pid=121] <process did exit: exitCode=null, signal=SIGABRT>[22m
+[2m  - [pid=121] starting temporary directories cleanup[22m
+[2m  - [pid=121] finished temporary directories cleanup[22m
+[2m  - [pid=121] <gracefully close end>[22m
+
+    at /workspace/scratch/ae7ea5fe4a51/project/tests/mobile_controls.cjs:7:34
+    at Object.<anonymous> (/workspace/scratch/ae7ea5fe4a51/project/tests/mobile_controls.cjs:79:3) {
+  log: [
+    '  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-KIjv5n --remote-debugging-pipe --no-startup-window',
+    '  - <launched> pid=121',
+    '  - [pid=121][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator',
+    '  - [pid=121][err] [121:121:1105/180833.641689:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)',
+    '  - [pid=121][err] [1105/180833.651978:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)',
+    '  - [pid=121] <gracefully close start>',
+    '  - [pid=121] <kill>',
+    '  - [pid=121] <will force kill>',
+    '  - [pid=121] <process did exit: exitCode=null, signal=SIGABRT>',
+    '  - [pid=121] starting temporary directories cleanup',
+    '  - [pid=121] finished temporary directories cleanup',
+    '  - [pid=121] <gracefully close end>'
+  ]
+}
+
+{"name": "panel_logic", "command": ["node", "tests/panel_logic.cjs"], "env": {}, "exit": 0, "seconds": 2.0}
+PASS: panel execution; library/store/downloads navigation, direct poster launch, encrypted-password entry, request-failure retry and successful submission clearing
+
+{"name": "player_logic", "command": ["node", "tests/player_logic.cjs"], "env": {}, "exit": 0, "seconds": 3.01}
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata
+PASS: automatic startup with suspended audio; first drawing dismisses boot
+
+{"name": "player_without_JSPI", "command": ["node", "tests/player_logic.cjs"], "env": {"PS2_TEST_ASYNC_MODE": "asyncify", "PS2_TEST_NO_JSPI": "1"}, "exit": 0, "seconds": 1.32}
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata
+PASS: automatic startup with suspended audio; first drawing dismisses boot
+
+{"name": "frame_clock", "command": ["bash", "-c", "g++ -std=c++17 -Wall -Wextra -Werror tests/frame_clock.cpp -o /tmp/frame-clock-test && /tmp/frame-clock-test"], "env": {}, "exit": 0, "seconds": 0.65}
+
+{"name": "compat_trampoline_sanitized", "command": ["bash", "-c", "g++ -std=c++20 -DPS2_COMPAT_TRAMPOLINE -Iruntime/include -fsanitize=address,undefined -g tests/compat_trampoline.cpp runtime/src/dispatch.cpp -o /tmp/compat-trampoline && ASAN_OPTIONS=detect_leaks=0 /tmp/compat-trampoline"], "env": {}, "exit": 0, "seconds": 11.0}
+
+
+Corrected invocation ['python3', 'tests/elf_security.py', '--recompiler', 'build/tools/eerecomp']
+PASS: 8 malformed ELF bounds and string fixtures
+
+Corrected invocation ['node', 'tests/mobile_controls.cjs']
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-6Iv9j7 --remote-debugging-pipe --no-startup-window
+<launched> pid=28
+[pid=28][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator
+[pid=28][err] [28:28:1105/180957.845861:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)
+[pid=28][err] [1105/180957.846261:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)
+Call log:
+[2m  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-6Iv9j7 --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=28[22m
+[2m  - [pid=28][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator[22m
+[2m  - [pid=28][err] [28:28:1105/180957.845861:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)[22m
+[2m  - [pid=28][err] [1105/180957.846261:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)[22m
+[2m  - [pid=28] <gracefully close start>[22m
+[2m  - [pid=28] <kill>[22m
+[2m  - [pid=28] <will force kill>[22m
+[2m  - [pid=28] <process did exit: exitCode=null, signal=SIGABRT>[22m
+[2m  - [pid=28] starting temporary directories cleanup[22m
+[2m  - [pid=28] finished temporary directories cleanup[22m
+[2m  - [pid=28] <gracefully close end>[22m
+
+    at /workspace/scratch/ae7ea5fe4a51/project/tests/mobile_controls.cjs:7:34
+    at Object.<anonymous> (/workspace/scratch/ae7ea5fe4a51/project/tests/mobile_controls.cjs:79:3) {
+  log: [
+    '  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-6Iv9j7 --remote-debugging-pipe --no-startup-window',
+    '  - <launched> pid=28',
+    '  - [pid=28][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator',
+    '  - [pid=28][err] [28:28:1105/180957.845861:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)',
+    '  - [pid=28][err] [1105/180957.846261:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)',
+    '  - [pid=28] <gracefully close start>',
+    '  - [pid=28] <kill>',
+    '  - [pid=28] <will force kill>',
+    '  - [pid=28] <process did exit: exitCode=null, signal=SIGABRT>',
+    '  - [pid=28] starting temporary directories cleanup',
+    '  - [pid=28] finished temporary directories cleanup',
+    '  - [pid=28] <gracefully close end>'
+  ]
+}
+
+Final affected-group rerun: download_controls
+test_cancel_in_read_deletes_files (__main__.Transfers.test_cancel_in_read_deletes_files) ... ok
+test_cancel_queued_never_opens_network_or_imports (__main__.Transfers.test_cancel_queued_never_opens_network_or_imports) ... ok
+test_changed_validator_never_imports (__main__.Transfers.test_changed_validator_never_imports) ... ok
+test_connection_uses_validated_address_instead_of_reresolving_host (__main__.Transfers.test_connection_uses_validated_address_instead_of_reresolving_host) ... ok
+test_malformed_control_is_a_useful_error (__main__.Transfers.test_malformed_control_is_a_useful_error) ... ok
+test_pause_resume_validates_range_and_preserves_bytes (__main__.Transfers.test_pause_resume_validates_range_and_preserves_bytes) ... ok
+test_server_ignoring_range_restarts_instead_of_appending (__main__.Transfers.test_server_ignoring_range_restarts_instead_of_appending) ... ok
+test_terminal_errors_auto_expire_and_install_cannot_be_cancelled (__main__.Transfers.test_terminal_errors_auto_expire_and_install_cannot_be_cancelled) ... ok
+test_wrong_range_never_imports (__main__.Transfers.test_wrong_range_never_imports) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.036s
+
+OK
+
+Final affected-group rerun: store_pipeline
+test_compile_failure_keeps_old_player (__main__.PipelineTests.test_compile_failure_keeps_old_player) ... ok
+test_complete_build_publishes_together_and_versions_assets (__main__.PipelineTests.test_complete_build_publishes_together_and_versions_assets) ... ok
+test_download_finishes_before_import_and_password_is_not_persisted (__main__.PipelineTests.test_download_finishes_before_import_and_password_is_not_persisted) ... ok
+test_import_failure_removes_completed_download (__main__.PipelineTests.test_import_failure_removes_completed_download) ... ok
+test_local_download_destinations_are_rejected (__main__.PipelineTests.test_local_download_destinations_are_rejected) ... ok
+test_provider_denial_has_a_useful_local_import_recovery (__main__.PipelineTests.test_provider_denial_has_a_useful_local_import_recovery) ... ok
+test_rebuild_refreshes_old_generated_tail_calls (__main__.PipelineTests.test_rebuild_refreshes_old_generated_tail_calls) ... ok
+test_store_default_password_and_explicit_override (__main__.PipelineTests.test_store_default_password_and_explicit_override) ... ok
+test_truncated_download_never_enters_library (__main__.PipelineTests.test_truncated_download_never_enters_library) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.013s
+
+OK
+
+Final affected-group rerun: installation_flow
+test_cleanup_never_deletes_originals (__main__.Flow.test_cleanup_never_deletes_originals) ... ok
+test_cross_container_disc_identity_and_concurrent_claims (__main__.Flow.test_cross_container_disc_identity_and_concurrent_claims) ... ok
+test_existing_ready_disc_is_backfilled (__main__.Flow.test_existing_ready_disc_is_backfilled) ... ok
+test_failed_download_retry_reuses_the_same_game (__main__.Flow.test_failed_download_retry_reuses_the_same_game) ... ok
+test_remove_build_queue_keeps_other_games_and_original_source (__main__.Flow.test_remove_build_queue_keeps_other_games_and_original_source) ... ok
+test_translation_repair_rejects_dynamic_and_unaligned_targets (__main__.Flow.test_translation_repair_rejects_dynamic_and_unaligned_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.011s
+
+OK
+
+Final affected-group rerun: panel_build_queue
+test_blank_archive_password_is_normalized_to_none (__main__.PanelQueueTests.test_blank_archive_password_is_normalized_to_none) ... ok
+test_concurrent_enqueues_reserve_distinct_slots (__main__.PanelQueueTests.test_concurrent_enqueues_reserve_distinct_slots) ... ok
+test_unexpected_worker_exception_marks_game_failed (__main__.PanelQueueTests.test_unexpected_worker_exception_marks_game_failed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.011s
+
+OK
+
+Final affected-group rerun: player_logic
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata
+PASS: automatic startup with suspended audio; first drawing dismisses boot
+
+Final affected-group rerun: player_without_JSPI
+PASS: full shell execution; dual sticks, multitouch, Start, cancellation, remapping, modal isolation, key repeat, X/Y inversion, cheat validation, halt recovery
+PASS: GPU default-adapter fallback and privacy-scrubbed adapter metadata
+PASS: automatic startup with suspended audio; first drawing dismisses boot
+
+Final affected-group rerun: panel_logic
+PASS: panel execution; library/store/downloads navigation, direct poster launch, encrypted-password entry, request-failure retry and successful submission clearing
+
+{"name": "queue_sanitized", "command": ["/tmp/console-queue-stress"], "env": {"ASAN_OPTIONS": "detect_leaks=0"}, "exit": 0, "seconds": 1.06, "status": "PASS", "final_rerun": true}
+
+{"name": "memory_sanitized", "command": ["/tmp/console-memory-bounds"], "env": {"ASAN_OPTIONS": "detect_leaks=0"}, "exit": 0, "seconds": 0.01, "status": "PASS", "final_rerun": true}
+
+{"name": "download_controls", "command": ["python3", "tests/download_controls.py"], "env": {}, "exit": 0, "seconds": 0.31, "status": "PASS", "final_rerun": true}
+test_cancel_in_read_deletes_files (__main__.Transfers.test_cancel_in_read_deletes_files) ... ok
+test_cancel_queued_never_opens_network_or_imports (__main__.Transfers.test_cancel_queued_never_opens_network_or_imports) ... ok
+test_changed_validator_never_imports (__main__.Transfers.test_changed_validator_never_imports) ... ok
+test_connection_uses_validated_address_instead_of_reresolving_host (__main__.Transfers.test_connection_uses_validated_address_instead_of_reresolving_host) ... ok
+test_malformed_control_is_a_useful_error (__main__.Transfers.test_malformed_control_is_a_useful_error) ... ok
+test_pause_resume_validates_range_and_preserves_bytes (__main__.Transfers.test_pause_resume_validates_range_and_preserves_bytes) ... ok
+test_paused_transfer_releases_queue_for_next_download (__main__.Transfers.test_paused_transfer_releases_queue_for_next_download) ... ok
+test_resume_without_entity_validator_restarts_safely (__main__.Transfers.test_resume_without_entity_validator_restarts_safely) ... ok
+test_server_ignoring_range_restarts_instead_of_appending (__main__.Transfers.test_server_ignoring_range_restarts_instead_of_appending) ... ok
+test_terminal_errors_auto_expire_and_install_cannot_be_cancelled (__main__.Transfers.test_terminal_errors_auto_expire_and_install_cannot_be_cancelled) ... ok
+test_wrong_range_never_imports (__main__.Transfers.test_wrong_range_never_imports) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.047s
+
+OK
+
+{"name": "store_pipeline", "command": ["python3", "tests/store_pipeline.py"], "env": {}, "exit": 0, "seconds": 0.32, "status": "PASS", "final_rerun": true}
+test_compile_failure_keeps_old_player (__main__.PipelineTests.test_compile_failure_keeps_old_player) ... ok
+test_complete_build_publishes_together_and_versions_assets (__main__.PipelineTests.test_complete_build_publishes_together_and_versions_assets) ... ok
+test_download_finishes_before_import_and_password_is_not_persisted (__main__.PipelineTests.test_download_finishes_before_import_and_password_is_not_persisted) ... ok
+test_import_failure_removes_completed_download (__main__.PipelineTests.test_import_failure_removes_completed_download) ... ok
+test_local_download_destinations_are_rejected (__main__.PipelineTests.test_local_download_destinations_are_rejected) ... ok
+test_provider_denial_has_a_useful_local_import_recovery (__main__.PipelineTests.test_provider_denial_has_a_useful_local_import_recovery) ... ok
+test_rebuild_refreshes_old_generated_tail_calls (__main__.PipelineTests.test_rebuild_refreshes_old_generated_tail_calls) ... ok
+test_store_default_password_and_explicit_override (__main__.PipelineTests.test_store_default_password_and_explicit_override) ... ok
+test_truncated_download_never_enters_library (__main__.PipelineTests.test_truncated_download_never_enters_library) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.017s
+
+OK

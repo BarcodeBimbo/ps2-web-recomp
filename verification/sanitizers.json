@@ -1,0 +1,26 @@
+[
+  {
+    "binary": "/tmp/memory-bounds",
+    "status": "PASS",
+    "runs": 1,
+    "leak_detection": false
+  },
+  {
+    "binary": "/tmp/queue-stress",
+    "status": "PASS",
+    "runs": 10,
+    "leak_detection": false
+  },
+  {
+    "binary": "/tmp/queue-cv-stress",
+    "status": "PASS",
+    "runs": 10,
+    "leak_detection": false
+  },
+  {
+    "binary": "/tmp/live-patches",
+    "status": "PASS",
+    "runs": 1,
+    "leak_detection": false
+  }
+]

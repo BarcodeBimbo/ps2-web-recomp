@@ -1,0 +1,13 @@
+{
+  "session": "2026-11-06 overnight CNK 10j",
+  "disk_free_gb": 20.2,
+  "breakthroughs": [
+    "Pump table 0x6F58F8 only had cd wrap — gob never registered",
+    "0x23EC00 with null a1/a2 AVs; with cd+string args runs but clears +912 without work",
+    "meta+24 0x23FC80 sets gob+912=3 (error) — wrong args or missing stream data link",
+    "F0BC does not create igctx — only sets gob+912 via 0x23E070 store"
+  ],
+  "current": "retarget ptr/dest to 0x1A00000 scratch before bind + meta+24/EC00",
+  "still": {"igctx": 0, "prims": 2, "screen": "black", "+24008": 1},
+  "rebuild_all": "blocked"
+}

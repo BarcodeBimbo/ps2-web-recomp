@@ -1,0 +1,162 @@
+[
+  {
+    "command": [
+      "python",
+      "tests/downloader_setup.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/setup_reporting.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/mobile_auto.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/mobile_https.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/installation_flow.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/store_pipeline.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/browser_store_bridge.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/panel_build_queue.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/security_review.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/serve_range.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/windows_setup_archive.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/disc_archive.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/analysis_tailcall.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/elf_bss.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "python",
+      "tests/codegen_fallthrough.py"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "node",
+      "tests/panel_logic.cjs"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "node",
+      "tests/player_logic.cjs"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "node",
+      "tests/gpu_upload_compat.cjs"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "node",
+      "tests/downloader_contract.mjs"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  },
+  {
+    "command": [
+      "node",
+      "tests/solver_contract.mjs"
+    ],
+    "exit": 0,
+    "status": "PASS"
+  }
+]

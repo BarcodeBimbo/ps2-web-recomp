@@ -1,0 +1,8 @@
+[0/1] Re-running CMake...
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: /workspace/scratch/ae7ea5fe4a51/rpc-test-clang
+ninja: no work to do.

@@ -1,0 +1,94 @@
+[gpu] NVIDIA GeForce RTX 3050 (617.42)
+[disc] games/c0c4527037b6168660829a0eb13df1a3/disc.iso: 9 files, 1368320 sectors, layer 1 at 0
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[dma] gif tag id 4 qwc 44 addr 0x002BE1A0 data 0x002BE1A0
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0064C280
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP243.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP243.IMG;1 reports 2430, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP243.IMG;1 reports 2430
+[loadfile] cdrom0:\SIO2MAN.IRX;1
+[loadfile] cdrom0:\PADMAN.IRX;1
+[loadfile] cdrom0:\MCMAN.IRX;1
+[loadfile] cdrom0:\MCSERV.IRX;1
+[loadfile] cdrom0:\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00054B08)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00054B0C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00054B28)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00054B38)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00054B64)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00054B68)
+[loadfile] cdrom0:\989SND.IRX;1
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v2.9.3
+[iop-tty]                         (built Aug 21 2002 at 21:30:44)
+[iop-tty]                                          (pre-release 8)
+[iop-tty]  (build with sce library rev 2.4.3)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 58
+[iop-tty]                         Loading RPC = 59
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty] ==========================================================
+[iop-tty] 
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[io] write 0x1000F590 = 0x10000 (pc 0x0020ADB0)
+[ee] halted: frame limit reached
+[thread] 1 status 4 prio 4 wait 2/10 pc 0x001F6B68 ra 0x0015EA1C
+[thread]   stack: 00185894 001000AC
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x001F6B68 ra 0x001F7068
+[thread]   stack:
+[thread] 3 status 4 prio 2 wait 2/4 pc 0x001F6B68 ra 0x001683D8
+[thread]   stack: 00168404 0015EF80
+[thread] 4 status 4 prio 2 wait 2/13 pc 0x001F6B68 ra 0x0018E594
+[thread]   stack:
+[sema] 2 count 0 waiters 1
+[sema] 4 count 0 waiters 1
+[sema] 10 count 0 waiters 1
+[sema] 13 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00021000
+[iop] module 3 MCMAN at 0x0002AE00
+[iop] module 4 MCSERV at 0x00050500
+[iop] module 5 LIBSD at 0x00053D00
+[iop] module 6 989SND at 0x00058800
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/174900 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/175124 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/342992 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 58 wait 8/1982344 pc 0x00001020
+[iop] thread 12 status 4 prio 59 wait 8/1980296 pc 0x00001020
+[iop] thread 13 status 2 prio 20 wait 0/6 pc 0x00021094
+[iop] thread 14 status 4 prio 46 wait 4/6 pc 0x00021094
+[iop] thread 15 status 4 prio 46 wait 4/7 pc 0x00021094
+[iop] thread 16 status 16 prio 46 wait 0/7 pc 0x00023B14
+[iop] thread 17 status 16 prio 46 wait 0/7 pc 0x00023C50
+[iop] thread 18 status 16 prio 46 wait 0/7 pc 0x00023D88
+[iop] thread 19 status 16 prio 46 wait 0/7 pc 0x00023F28
+[iop] thread 20 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 21 status 4 prio 9 wait 1/0 pc 0x0005F0E8
+[iop] thread 22 status 4 prio 60 wait 3/13 pc 0x0006ACFC
+[iop] thread 23 status 4 prio 62 wait 3/12 pc 0x00068DA0
+[iop] thread 24 status 4 prio 61 wait 3/14 pc 0x0006B0B8
+[iop] thread 25 status 4 prio 63 wait 3/15 pc 0x00069B14
+[sif] 0 packets wait for the EE (processed 1)
+[gpu] 1948 submits, dispatches: upload 5333 copy_read 0 copy_write 0 load_clut 3642 display 6 raster 61389 resolve 0 snapshot 38302 decode 116817
+[gs] 4061228 primitives drawn, register writes: 00:1623972 01:70810 03:65206 04:4712750 05:45416 06:209127 07:21824 08:208325 09:21120 0C:6957603 14:208325 15:21824 18:1723 19:704 1A:1723 3D:207994 3F:7467 40:3497 41:1408 42:248793 43:21824 45:1723 46:1723 47:816226 48:22528 4C:1723 4D:704 4E:3497 4F:704 50:8024 51:498415 52:8024 53:498415 61:3910
+[ipu] commands: 0:932 2:229473 3:1061154 4:2110257 5:58 6:1 7:818 9:1 stalls 2081 out 42425904 qwords, busy 0 decoding 0 cmd 0x00000078 in 0 bytes bit 0 out 0
+[dma] starts: ch0=887 ch1=888 ch2=5452 ch3=230291 ch4=3011 ch5=0 ch6=0 ch7=0 ch8=4100 ch9=472974
+[gif] path 1 tags: packed 1123095 reglist 0 image 0
+[gif] path 2 tags: packed 5294 reglist 0 image 0
+[gif] path 3 tags: packed 509489 reglist 847 image 498415
+[vif0] 00:2128 14:1 4A:1 6C:706
+[vif1] 00:925319 01:557441 02:129838 03:129838 04:1 05:1 06:1 10:104276 11:3031 13:704 14:469587 15:71484 20:6039 30:72085 4A:18467 50:3182 60:5958 64:9562 68:187803 69:736 6C:1058084 6D:126285 6E:171468 70:38 74:2554 78:3446
+[ee] stopped after 1800 frames, 8848466619 cycles: frame limit reached

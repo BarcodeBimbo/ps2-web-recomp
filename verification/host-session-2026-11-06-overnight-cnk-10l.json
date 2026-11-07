@@ -1,0 +1,7 @@
+{
+  "session": "2026-11-06 overnight CNK 10l",
+  "critical_correction": "0x7430C0 is Alchemy FileIO ctx BASE from method 19, NOT scene igctx. Gating alchemy_stbl_pending/repair on *0x7430C0==0 was wrong; seeding the ctx caused jalr-null ra 0x506648.",
+  "stable_path": "F0BC gob+912=1 + STBL0 repair + host forge + virt plant; prims still 2",
+  "gate_fix": "pending no longer uses 0x7430C0; FileIO seed reverted",
+  "rebuild_all": "blocked until prims >> 2"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "cyberarcade-store-downloader",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "install-browser": "node node_modules/phantomwright-driver/cli.js install chromium"
+  },
+  "dependencies": {
+    "ipaddr.js": "2.2.0",
+    "phantomwright": "1.59.3",
+    "undici": "^6.29.1",
+    "webtorrent": "^3.0.21"
+  }
+}

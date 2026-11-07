@@ -1,0 +1,168 @@
+
+$ python tests/analysis_tailcall.py
+External tail-call discovery regression passed
+
+
+$ python tests/elf_bss.py
+Executable BSS regression passed
+
+
+$ python tests/codegen_fallthrough.py
+/tmp/ps2-codegen-test-_jkmqfj4/generated/unit_0000.cpp: In function ‘void gen::unit_0000(ps2::Cpu&, uint32_t, uint32_t)’:
+/tmp/ps2-codegen-test-_jkmqfj4/generated/unit_0000.cpp:148:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  148 |     c.pc = 0x00100008u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-_jkmqfj4/generated/unit_0000.cpp:151:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  151 |     c.pc = 0x00100008u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+/tmp/ps2-codegen-test-_jkmqfj4/generated/unit_0000.cpp:155:25: warning: attributes at the beginning of statement are ignored [-Wattributes]
+  155 |     c.pc = 0x00100014u; [[clang::musttail]] return dispatch(c, 0u, depth);
+      |                         ^~~~~~~~~~~~~~~~~~~
+Untranslated fallthrough regression passed
+
+
+$ python tests/elf_security.py --recompiler build/tools/eerecomp
+PASS: 8 malformed ELF bounds and string fixtures
+
+
+$ python tests/disc_archive.py
+test_chd_and_seven_zip_dependencies_are_reported (__main__.DiscArchiveTests.test_chd_and_seven_zip_dependencies_are_reported) ... ok
+test_cue_cannot_escape_its_folder (__main__.DiscArchiveTests.test_cue_cannot_escape_its_folder) ... ok
+test_iso_trailing_period_is_readable_during_optional_core_scan (__main__.DiscArchiveTests.test_iso_trailing_period_is_readable_during_optional_core_scan) ... ok
+test_malformed_directory_record_is_rejected (__main__.DiscArchiveTests.test_malformed_directory_record_is_rejected) ... ok
+test_oversized_sparse_image_is_rejected_before_open (__main__.DiscArchiveTests.test_oversized_sparse_image_is_rejected_before_open) ... ok
+test_password_protected_zip_and_wrong_password (__main__.DiscArchiveTests.test_password_protected_zip_and_wrong_password) ... ok
+test_project_managed_7zip_is_discovered_without_path (__main__.DiscArchiveTests.test_project_managed_7zip_is_discovered_without_path) ... ok
+test_seven_zip_does_not_prompt_for_an_optional_password (__main__.DiscArchiveTests.test_seven_zip_does_not_prompt_for_an_optional_password) ... ok
+test_seven_zip_password_is_sent_only_when_supplied (__main__.DiscArchiveTests.test_seven_zip_password_is_sent_only_when_supplied) ... ok
+test_unsupported_zip_compression_falls_back_to_seven_zip (__main__.DiscArchiveTests.test_unsupported_zip_compression_falls_back_to_seven_zip) ... ok
+test_valid_iso_directory (__main__.DiscArchiveTests.test_valid_iso_directory) ... ok
+test_windows_device_name_can_be_read_but_not_exported (__main__.DiscArchiveTests.test_windows_device_name_can_be_read_but_not_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.010s
+
+OK
+
+
+$ python tests/windows_setup_archive.py
+test_bootstrap_uses_immutable_revision_not_moving_main (__main__.EmsdkBootstrapPinTests.test_bootstrap_uses_immutable_revision_not_moving_main) ... ok
+test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk (__main__.EmsdkBootstrapPinTests.test_install_emsdk_extracts_pinned_bootstrap_and_installs_pinned_sdk) ... ok
+test_chdman_installer_pins_hash_and_runs_silent_mame_installer (__main__.SafeZipExtractionTests.test_chdman_installer_pins_hash_and_runs_silent_mame_installer) ... ok
+test_enforces_uncompressed_size_cap (__main__.SafeZipExtractionTests.test_enforces_uncompressed_size_cap) ... ok
+test_extracts_normal_archive (__main__.SafeZipExtractionTests.test_extracts_normal_archive) ... ok
+test_rejects_parent_traversal (__main__.SafeZipExtractionTests.test_rejects_parent_traversal) ... ok
+test_rejects_symbolic_link_entries (__main__.SafeZipExtractionTests.test_rejects_symbolic_link_entries) ... ok
+test_rejects_windows_drive_and_alternate_stream_paths (__main__.SafeZipExtractionTests.test_rejects_windows_drive_and_alternate_stream_paths) ... ok
+test_rejects_windows_reserved_device_names (__main__.SafeZipExtractionTests.test_rejects_windows_reserved_device_names) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.033s
+
+OK
+
+
+$ python tests/serve_range.py
+test_existing_player_glue_gets_compatibility_prefix_in_workers (__main__.ServeRangeTests.test_existing_player_glue_gets_compatibility_prefix_in_workers) ... ok
+test_full_range_returns_requested_slice (__main__.ServeRangeTests.test_full_range_returns_requested_slice) ... ok
+test_head_advertises_ranges_and_exact_length (__main__.ServeRangeTests.test_head_advertises_ranges_and_exact_length) ... ok
+test_single_byte_range_returns_exact_206_response (__main__.ServeRangeTests.test_single_byte_range_returns_exact_206_response) ... ok
+test_unsatisfiable_range_returns_416 (__main__.ServeRangeTests.test_unsatisfiable_range_returns_416) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.522s
+
+OK
+
+
+$ python tests/panel_build_queue.py
+test_blank_archive_password_is_normalized_to_none (__main__.PanelQueueTests.test_blank_archive_password_is_normalized_to_none) ... ok
+test_concurrent_enqueues_reserve_distinct_slots (__main__.PanelQueueTests.test_concurrent_enqueues_reserve_distinct_slots) ... ok
+test_unexpected_worker_exception_marks_game_failed (__main__.PanelQueueTests.test_unexpected_worker_exception_marks_game_failed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK
+
+
+$ python tests/security_review.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.008s
+
+OK
+
+
+$ python tests/mobile_https.py
+PASS: HTTPS trust, authentication, secure cookie, live shell, COOP/COEP, disc ranges, blocked admin/other games, token rotation
+
+
+$ python tests/store_pipeline.py
+test_compile_failure_keeps_old_player (__main__.PipelineTests.test_compile_failure_keeps_old_player) ... ok
+test_complete_build_publishes_together_and_versions_assets (__main__.PipelineTests.test_complete_build_publishes_together_and_versions_assets) ... ok
+test_download_finishes_before_import_and_password_is_not_persisted (__main__.PipelineTests.test_download_finishes_before_import_and_password_is_not_persisted) ... ok
+test_import_failure_preserves_completed_download (__main__.PipelineTests.test_import_failure_preserves_completed_download) ... ok
+test_local_download_destinations_are_rejected (__main__.PipelineTests.test_local_download_destinations_are_rejected) ... ok
+test_provider_denial_has_a_useful_local_import_recovery (__main__.PipelineTests.test_provider_denial_has_a_useful_local_import_recovery) ... ok
+test_store_default_password_and_explicit_override (__main__.PipelineTests.test_store_default_password_and_explicit_override) ... ok
+test_truncated_download_never_enters_library (__main__.PipelineTests.test_truncated_download_never_enters_library) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK
+
+
+$ python tests/gpu_arena.py
+PASS: empty, unaligned and growing WebGPU uploads under ASan/UBSan
+
+
+$ python tests/archive_integration.py
+test_aes_zip_import_uses_sevenzip_fallback (__main__.ArchiveIntegration.test_aes_zip_import_uses_sevenzip_fallback) ... ok
+test_encrypted_headers (__main__.ArchiveIntegration.test_encrypted_headers) ... ok
+test_encrypted_zip_and_sevenzip (__main__.ArchiveIntegration.test_encrypted_zip_and_sevenzip) ... ok
+test_ignores_unsafe_unrelated_members (__main__.ArchiveIntegration.test_ignores_unsafe_unrelated_members) ... ok
+test_multiple_discs_require_selection (__main__.ArchiveIntegration.test_multiple_discs_require_selection) ... ok
+test_plain_zip_and_sevenzip (__main__.ArchiveIntegration.test_plain_zip_and_sevenzip) ... ok
+test_rar_stored_member (__main__.ArchiveIntegration.test_rar_stored_member) ... ERROR
+test_tar_and_tar_gz (__main__.ArchiveIntegration.test_tar_and_tar_gz) ... ok
+
+======================================================================
+ERROR: test_rar_stored_member (__main__.ArchiveIntegration.test_rar_stored_member)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/ae7ea5fe4a51/project/tests/archive_integration.py", line 83, in test_rar_stored_member
+    self.check(archive)
+  File "/workspace/scratch/ae7ea5fe4a51/project/tests/archive_integration.py", line 34, in check
+    output=self.root/'out.iso';extract_archive(archive,output,password)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ae7ea5fe4a51/project/scripts/archives.py", line 128, in extract_archive
+    tool, entries = _listed(source, password)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ae7ea5fe4a51/project/scripts/archives.py", line 69, in _listed
+    raise ValueError('Archive listing failed. Check its format, integrity, and multipart files.')
+ValueError: Archive listing failed. Check its format, integrity, and multipart files.
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.619s
+
+FAILED (errors=1)
+
+
+$ python tests/chd_integration.py
+test_cd_roundtrip (__main__.ChdIntegration.test_cd_roundtrip) ... skipped 'Set CHDMAN to a real chdman executable'
+test_dvd_roundtrip (__main__.ChdIntegration.test_dvd_roundtrip) ... skipped 'Set CHDMAN to a real chdman executable'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK (skipped=2)
+
+
+$ python tests/browser_store_bridge.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+OK

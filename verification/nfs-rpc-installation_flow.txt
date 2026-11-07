@@ -1,0 +1,12 @@
+test_cleanup_never_deletes_originals (__main__.Flow.test_cleanup_never_deletes_originals) ... ok
+test_cross_container_disc_identity_and_concurrent_claims (__main__.Flow.test_cross_container_disc_identity_and_concurrent_claims) ... ok
+test_existing_ready_disc_is_backfilled (__main__.Flow.test_existing_ready_disc_is_backfilled) ... ok
+test_failed_download_retry_reuses_the_same_game (__main__.Flow.test_failed_download_retry_reuses_the_same_game) ... ok
+test_reexplore_reuses_installed_disc_and_runs_native_discovery (__main__.Flow.test_reexplore_reuses_installed_disc_and_runs_native_discovery) ... ok
+test_remove_build_queue_keeps_other_games_and_original_source (__main__.Flow.test_remove_build_queue_keeps_other_games_and_original_source) ... ok
+test_translation_repair_rejects_dynamic_and_unaligned_targets (__main__.Flow.test_translation_repair_rejects_dynamic_and_unaligned_targets) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.010s
+
+OK
