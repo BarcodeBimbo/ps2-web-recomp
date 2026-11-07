@@ -1,0 +1,43 @@
+{
+  "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+  "updated": "2026-11-07T16:14:15Z",
+  "symptoms": [
+    "gs_negative_draw_boxes",
+    "canvas_black_harness",
+    "low_fps",
+    "matrix_fail"
+  ],
+  "features": [
+    "high_prim_throughput",
+    "track:gs_black_canvas",
+    "track:disc_fix_stable"
+  ],
+  "actions_planned": [
+    {
+      "fix": "global_gs_xyoffset_11bit",
+      "note": "runtime patch; rebuild native if stale"
+    },
+    {
+      "fix": "chrome_canvas_gs_invariants",
+      "note": "harness end_lum; web rebuild if stale"
+    },
+    {
+      "fix": "matrix_phase_reprobe",
+      "auto": false
+    },
+    {
+      "fix": "fps_optimize_pass",
+      "auto": false,
+      "note": "stub \u2014 measure only"
+    }
+  ],
+  "actions_taken": [],
+  "dry_run": false,
+  "detectors": {
+    "harness_goal_ok": false,
+    "harness_end_lum": 2.9001153718458914,
+    "matrix_verdict": "fail",
+    "min_fps_target": 60.0,
+    "min_canvas_lum": 5.0
+  }
+}

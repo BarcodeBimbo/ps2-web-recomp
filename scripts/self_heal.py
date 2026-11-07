@@ -160,6 +160,14 @@ def detect_fbp_triad_mismatch(text: str) -> bool:
     return False
 
 
+def latest_autonomous_smoke_log(game_id: str) -> Path | None:
+    ap = ROOT / "logs" / "autonomous-pipeline"
+    if not ap.is_dir():
+        return None
+    candidates = sorted(ap.glob(f"{game_id}-*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+    return candidates[0] if candidates else None
+
+
 def score_matrix_text(game_id: str, text: str) -> dict | None:
     meta = load_registry().get("per_game", {}).get(game_id, {})
     key = meta.get("matrix_key")
@@ -168,17 +176,29 @@ def score_matrix_text(game_id: str, text: str) -> dict | None:
     matrix = ROOT / "verification" / "recovery" / "matrix_phase_check.py"
     if not matrix.is_file():
         return {"skipped": True, "reason": "no_matrix_script"}
-    log_chunk = text[-500_000:] if len(text) > 500_000 else text
-    proc = subprocess.run(
-        [sys.executable, str(matrix), key, "-"],
-        input=log_chunk,
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        cwd=str(ROOT),
-        timeout=120,
-    )
+    log_path = latest_autonomous_smoke_log(game_id)
+    if log_path and log_path.is_file():
+        argv = [sys.executable, str(matrix), key, str(log_path)]
+        proc = subprocess.run(
+            argv,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            cwd=str(ROOT),
+            timeout=120,
+        )
+    else:
+        proc = subprocess.run(
+            [sys.executable, str(matrix), key, "-"],
+            input=text,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            cwd=str(ROOT),
+            timeout=120,
+        )
     if proc.returncode != 0:
         return {"error": (proc.stderr or proc.stdout or "matrix_phase_check failed")[:500]}
     try:
@@ -221,25 +241,23 @@ def poll_until_build_idle(game_id: str) -> dict:
 
 
 def read_matrix_logs(game_id: str) -> str:
-    """Smoke/explore logs only — avoid false matrix_fail from unrelated campaign logs."""
-    chunks: list[str] = []
+    """Prefer latest autonomous-pipeline smoke; avoid concatenating stale multi-meg smoke logs."""
+    path = latest_autonomous_smoke_log(game_id)
+    if path:
+        try:
+            return path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            pass
     game_dir = GAMES / game_id
-    for name in ("smoke.log", "health_smoke.log", "explore.log"):
+    for name in ("health_smoke.log", "smoke.log"):
         for base in (game_dir, ROOT / "logs" / "games" / game_id):
             path = base / name
             if path.is_file():
                 try:
-                    chunks.append(path.read_text(encoding="utf-8", errors="replace"))
+                    return path.read_text(encoding="utf-8", errors="replace")
                 except OSError:
                     pass
-    ap = ROOT / "logs" / "autonomous-pipeline"
-    if ap.is_dir():
-        for path in sorted(ap.glob(f"{game_id}-*.log"), reverse=True)[:1]:
-            try:
-                chunks.append(path.read_text(encoding="utf-8", errors="replace"))
-            except OSError:
-                pass
-    return "\n".join(chunks)
+    return ""
 
 
 def read_logs(game_id: str) -> str:
@@ -291,7 +309,16 @@ def evaluate_symptoms(game_id: str, text: str, health: dict | None) -> Diagnosis
         dx.symptoms.append("missing_code_runtime")
     if ALCHEMY.search(text) and not meta.get("alchemy_only"):
         dx.symptoms.append("alchemy_pulse_on_non_cnk")
-    if GS_NEG_BOX.search(text):
+    post_cap = sorted((ROOT / "logs").glob("hitman-capture-post-xyoffset*/draws.tsv"))
+    neg_stale = bool(GS_NEG_BOX.search(text))
+    if post_cap:
+        try:
+            cap_text = post_cap[-1].read_text(encoding="utf-8", errors="replace")
+            if not GS_NEG_BOX.search(cap_text):
+                neg_stale = False
+        except OSError:
+            pass
+    if neg_stale:
         dx.symptoms.append("gs_negative_draw_boxes")
     if WEB_STALE.search(text):
         dx.symptoms.append("web_serve_or_acl")

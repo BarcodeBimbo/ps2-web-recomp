@@ -136,7 +136,7 @@
 - [x] 2026-11-07 — Auto T1: `ensure_web_build_readable`, queue web rebuild, post smoke via `autonomous_verify.py`
 - [x] 2026-11-07 — Auto T2: registry quarantine on alchemy pulse
 - [x] 2026-11-07 — `autonomous_verify.py` uses **`disc.iso`** (not `disc/` folder)
-- [x] 2026-11-07 — Idle-aware web rebuild (`poll_until_build_idle` on successful queue; W-HEAL live Hitman busy-skip while build in flight)
+- [x] 2026-11-07 — Idle-aware web rebuild + post-web live heal (`matrix_verdict` **pass** after log-path fix; `install_issues.json`)
 - [x] 2026-11-07 — Detectors: `canvas_black_harness`, `low_fps`, `matrix_fail`, `fbp_triad_mismatch` stub (`scripts/self_heal.py`; Hitman dry-run symptoms verified)
 - [ ] `proven_fixes[]` in `game-fix-registry.json` when Alchemy/CNK fixes verified
 - [x] 2026-11-07 — `self_heal.py --library --dry-run` (13 native-ready ids; `logs/workers/W-HEAL-report-2026-11-07.md`)
