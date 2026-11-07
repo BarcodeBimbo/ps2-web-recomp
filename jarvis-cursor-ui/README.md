@@ -2,7 +2,7 @@
 
 Local Cursor / VS Code extension: **full JARVIS Command Center HUD** with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
 
-**v0.4.0:** Recreates the jarvis.institute Command Center shell (calibrating splash → HUD) and the Jarvis 3D marketplace **PRO feature set** as first-party unlocked modules. Webview-first — no Custom CSS workbench injection.
+**v0.4.0:** Recreates the jarvis.institute Command Center shell (calibrating splash → HUD) and the Jarvis 3D marketplace **PRO feature set** as first-party unlocked modules. Custom CSS / workbench injection is **required**; floating/editor overlays are **not** used.
 
 ## Credits & pattern sources
 
@@ -26,7 +26,7 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 | F.R.I.D.A.Y. | Tools toggle + chrome rename |
 | Voice TTS | Talk to JARVIS → Cursor Voice/Chat; Web Speech announcements |
 | Sound Design | Optional UI beeps (mute in Tools) |
-| Session Cinema | Timed overlay + keystroke energy |
+| Session Cinema | Timed HUD (injected chrome / Command Center) + keystroke energy |
 | Stream Pack | Dense HUD + optional watermark |
 | Focus Fortress | Dims nonessential panels |
 | Threat Fix Hints | Problems API → Threats panel |
@@ -38,7 +38,7 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 ### Intentionally different / stripped vs upstreams
 
 - No Gumroad license, trial, or soft-lock paywall
-- No Custom CSS editor-wide injection (Cursor-safe webviews only)
+- Custom CSS / workbench injection required; no floating/editor overlays
 - Calendar / Knowledge / Workflows panels are stubs until wired
 - CPU/Disk gauges remain illustrative; RAM is live from the host
 - Voice channel opens **Cursor** voice/chat (not a separate LLM runtime)
