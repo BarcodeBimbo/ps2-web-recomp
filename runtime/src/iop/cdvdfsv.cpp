@@ -275,7 +275,17 @@ void install_cdvdfsv() {
                 g_butanim_hold = 0;
             }
         }
+        // Sony order: payload + readee + curReadPos inside read_to_ee, then complete.
         read_to_ee(j.a, j.b, j.c, g_read_eeaddr1, g_read_eeaddr2);
+        if (g_trace_hle) {
+            const std::uint32_t nbytes = j.b * disc::kSector;
+            std::uint32_t pos = 0;
+            if (g_read_eeaddr2 && (g_read_eeaddr2 & (ps2::kRamSize - 1)) + 4u <= ps2::kRamSize)
+                pos = ee32(g_read_eeaddr2);
+            std::fprintf(stderr,
+                         "[cdvdfsv] complete_after_read lba=%u count=%u dst=0x%X readee=0x%X curReadPos@0x%X=%u (expect %u)\n",
+                         j.a, j.b, j.c, g_read_eeaddr1, g_read_eeaddr2, pos, nbytes);
+        }
         sif::complete_call(0x80000595u);
         // Alchemy parks the UI loadgate on WaitSema(16). Do NOT clear +24008
         // (IO-spams at 0x428970). Wake the waiter; plants hold pristine bytes.
