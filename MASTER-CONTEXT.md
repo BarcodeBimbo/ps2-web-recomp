@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:42 local)  
+**Updated:** 2026-11-07 (~10:20 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -23,6 +23,9 @@ Also still true:
 4. **FPS bar:** **≥60 ALL games** (GoW, CNK, Hitman, NFS, Sly, …). Chrome + Edge. Live FPS in IDE/Chrome.
 5. Evidence in `verification/recovery/` + `logs/`. Quarantine: never apply CNK Alchemy host hacks to Hitman/NFS disc path.
 6. **Verify-each-fix (God ~07:35):** Implement → run real game/component → check pass/fail → debug/retry. **No unverified ship** (CNK 2-prims, disc-fix SDK, matrix, Alchemy, Sly Ghidra map, 60 FPS).
+7. **Context rollover (God ~10:20):** When chat context is too large, **do not** trim/summarize in place. Spawn a **new agent** with clean context; carry state only via `MASTER-CONTEXT.md` + `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`. Continue executing without pause. Rule: `.cursor/rules/agent-context-rollover.mdc`.
+
+**Campaign add-ons (God ~10:18):** Chrome-flawless every game; store→downloader→patch pipeline (`autonomous-pipeline-2026-11-07.md`); self-heal per install (`self_heal.py`, `self-heal-patch-system-2026-11-07.md`). Hitman wave-1: GS XYOFFSET 11-bit applied; web rebuild in flight for Chrome.
 
 ---
 

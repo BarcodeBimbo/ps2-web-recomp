@@ -1,0 +1,33 @@
+---
+description: When chat context is too large, spawn a fresh agent with campaign handoff — never summarize in place.
+alwaysApply: true
+---
+
+# Agent context rollover (automatic)
+
+## Trigger
+
+When the conversation or window context is **too large** (slow turns, truncation, or loss of earlier evidence), **do not** compress, trim, or “summarize in place” and keep going in the same thread.
+
+## Required behavior
+
+1. **Open a brand-new agent** with a clean context (parent spawns subagent or user starts new chat — same mandate).
+2. **Carry forward only essential state**, not chat prose. Sources of truth:
+   - `MASTER-CONTEXT.md` — update before rollover
+   - `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md` — compact campaign state (mandates, plan, evidence, open leads)
+   - `verification/recovery/game-fix-registry.json`, `discfix-matrix-board.json`
+3. **First action in the new agent:** read snapshot + MASTER RESUME POINT; continue executing **without** asking the user to re-explain.
+4. **Full control** inherited: autonomous continuous mode, no idling, no waiting for approval on routine work (same as standing God instructions).
+
+## Snapshot must include
+
+- Active **campaign mandates** (Chrome-flawless every game; ≥60 FPS, 30 only when required; store→downloader→patch pipeline; self-healing per install; Alchemy → self-heal when proven; verify-each-fix).
+- **Latest evidence** from workers (paths under `logs/`, `verification/recovery/`, key metrics).
+- **Current execution plan** and step status (what passed, what’s in flight).
+- **Open leads** only (not full history).
+
+## Forbidden
+
+- Replacing detailed evidence in chat with a long inline summary instead of rollover
+- Stopping work because context is full
+- Dropping quarantine rules (CNK Alchemy vs Hitman/NFS disc path)
