@@ -1,6 +1,6 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 ~22:43 local
+Updated: 2026-11-06 ~22:59 local
 
 ## Status
 
@@ -45,3 +45,7 @@ Idle watch: board still idle_r4_pass_awaiting_parent, proposed_change=null, R5 s
 ## Heartbeat 22:43
 
 Idle watch: board unchanged — proposed_change=null, R5 still_gated, no soak/R5 parent ask. No commit. No CdSync wake. Still alive.
+
+## Heartbeat 22:59
+
+Idle watch: still no parent R5 proposal or soak request on board. R5 gated. No commit. No CdSync wake.
