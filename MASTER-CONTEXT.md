@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:09 local)  
+**Updated:** 2026-11-07 (~07:18 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -32,11 +32,13 @@ Cursor agent todos were **0/5** when this refresh started. Live workspace also h
 
 | ID | Todo | Status @ 07:03 | Done / evidence | Exact resume next |
 |----|------|----------------|-----------------|-------------------|
-| **p0-mcp** | Finish MCP dual-ELF verify (GoW + CNK on USR Ghidra) | **VERIFIED PASS ~07:08** | `logs/ghidra-ps2/dual-elf-verify.json`: `all_pass=true`. GoW **5692** funcs `r5900:LE:32:default`; CNK **19188** funcs same lang. **Required fix:** `GET /switch_program?program=<name>` after `load_program_from_project` (load alone leaves prior program current). Patched `Run-SilentGhidraPs2.ps1`. | Closed. Loop → p1-ghidra-vas. |
-| **p0-iso** | CNK from Downloads ISO; re-import ELF into Ghidra | **DONE** | AI Browser ISO extract ≡ library boot SHA256 `FA37C064…E204`. | Closed unless new ISO appears. |
-| **p1-plan** | Document next-chain plan; start highest-value Alchemy RE | **NEXT after VA dump** | Highest-value = MIPS RE bind/loadgate/IGB. | Write plan md from VA evidence; keep loop on RE depth. |
-| **p1-ghidra-vas** | MCP: disassemble CNK key VAs (loadgate/bind/GFC) | **IN PROGRESS** | Dual-ELF pass unlocked CNK context. Dump job running → `logs/ghidra-ps2/cnk-key-vas.json` for `0x10FCE0` / `0x110100` / `0x508930` / `0x51AC80` / `0x520160` / `0x725F50`. | Verify each VA returns disasm or defined function; debug empty/miss; then alchemy `verify` re-run exit 0. |
-| **p1-docs** | Write handoff report + update MASTER-CONTEXT | **PARTIAL** | This refresh records dual-ELF PASS. | After VA+alchemy verify: handoff md + §F refresh. |
+| **p0-mcp** | Finish MCP dual-ELF verify (GoW + CNK on USR Ghidra) | **DONE ~07:08** | `logs/ghidra-ps2/dual-elf-verify.json` `all_pass=true`. GoW **5692** / CNK **19188** funcs, `r5900:LE:32:default`. Fix: `GET /switch_program?program=<name>` after load. | Closed. |
+| **p0-iso** | CNK from Downloads ISO; re-import ELF into Ghidra | **DONE** | AI Browser ISO extract ≡ library boot SHA256 `FA37C064…E204`. | Closed. |
+| **p1-ghidra-vas** | MCP: disassemble CNK key VAs (loadgate/bind/GFC) | **DONE ~07:10** | `cnk-key-vas-summary.json`: **6/6** `all_code_vas_pass=true`; per-VA dumps under `logs/ghidra-ps2/cnk-vas/`. Durable script: `ghidra_exports\ps2-elves\Dump-CnkKeyVas.ps1`. | Closed. Next = p1-plan RE depth + alchemy verify regression. |
+| **p1-plan** | Highest-value Alchemy RE from VA evidence | **NEXT** | Rank: (1) loadgate `0x10FCE0` (2) bind/`0x725F50` (3) IGB consumers (4) dumper automation. No optical Phase 4 / no CNK host patches. | Code+verify only: prologue locks in dumper `elf_alchemy.py`; deepen RE via MCP while games smoke. |
+| **p1-docs** | Write handoff report + update MASTER-CONTEXT | **THIS REFRESH** | §G reconciled with dual-ELF + VA pass + DLL restore notes. Formal handoff md still optional. | Keep §G current each loop. |
+
+**DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).
 
 **Continuous loop standing order (God, ~07:08):** debug → run → verify → repeat until 100% operational. No stop/ask. Master is Bible. Sub-agents plan next **iteration**, not an end.
 
