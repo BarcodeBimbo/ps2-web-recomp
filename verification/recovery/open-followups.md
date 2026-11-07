@@ -23,3 +23,4 @@ See `cnk-nullbind-51ACEC-live-report.md`: forced FCE0 dies because registry **vt
 - `cnk-elf-alchemy-full-redo-report.md` — ELF bind path / loadgate map
 - `alchemy-sdk-research-report.md` — Intrinsic Alchemy 3.0 / Velocity web+ELF
 - Matrix cycle 1 **FAIL** on bundled R3; disc-fix now proposes **R1 clear with evidence** (board step 2)
+- `sly-gs-vu-live-report.md` — strict VU no building restore; soft vs GPU ~28% differ @1800 but buildings missing in **both**; next shared STQ/texturing (parked 0% claim outdated)
