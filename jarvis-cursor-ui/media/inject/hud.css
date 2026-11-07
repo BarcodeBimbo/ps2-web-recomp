@@ -1712,17 +1712,17 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .jcc-overview .jcc-ov-title {
   position: absolute;
   z-index: 1;
-  top: 1.6%;
-  left: 7%;
-  right: 6%;
+  top: 1.55%;
+  left: 6.5%;
+  right: 5%;
   margin: 0;
   padding: 0;
-  font-size: clamp(7px, 1.55vw, 9px);
-  letter-spacing: 0.18em;
+  font-size: clamp(7px, 1.5vw, 9px);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #b9ebf4;
-  font-weight: 650;
-  text-shadow: 0 0 8px rgba(0, 212, 255, 0.35);
+  color: #7ec8e3;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1748,39 +1748,39 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .jcc-ov-row {
   display: grid;
   /* Icon column reserved for photo glyphs; text sits in scrubbed well */
-  grid-template-columns: 24% 1fr;
+  grid-template-columns: 23% 1fr;
   grid-template-rows: auto auto;
   align-content: center;
   column-gap: 0;
-  row-gap: 1px;
+  row-gap: 0;
   min-height: 0;
-  padding: 0 6% 0 0;
+  padding: 0 5% 0 0;
   border: 0;
-  font-size: clamp(9px, 1.7vw, 11px);
+  font-size: clamp(9px, 1.65vw, 11px);
 }
 
 .jcc-ov-k {
   grid-column: 2;
   grid-row: 1;
-  color: #e8f0f6;
-  font-weight: 650;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
+  color: #eef6fc;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.12;
 }
 
 .jcc-ov-v {
   grid-column: 2;
   grid-row: 2;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 650;
+  letter-spacing: 0.02em;
   text-align: left;
   white-space: nowrap;
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
   min-width: 0;
-  font-size: 0.92em;
-  line-height: 1.15;
+  font-size: 0.9em;
+  line-height: 1.12;
   color: var(--cortana-text-dim, #7a8fa3);
 }
 
@@ -1836,15 +1836,16 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 8px 10px 10px;
   background:
-    radial-gradient(circle at 50% 42%, rgba(0, 180, 220, 0.18) 0%, transparent 58%),
-    linear-gradient(165deg, rgba(26, 43, 60, 0.42) 0%, rgba(0, 15, 36, 0.78) 48%, rgba(0, 11, 20, 0.88) 100%);
+    radial-gradient(ellipse at 50% 38%, rgba(0, 200, 235, 0.14) 0%, transparent 62%),
+    linear-gradient(168deg, rgba(20, 36, 52, 0.55) 0%, rgba(0, 14, 32, 0.88) 100%);
 }
 
 .jcc-globe {
   position: relative;
-  width: min(248px, 82%);
-  aspect-ratio: 180 / 187;
+  width: min(280px, 94%);
+  aspect-ratio: 304 / 222;
   display: grid;
   place-items: center;
   overflow: visible;
@@ -1859,12 +1860,13 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
  */
 .jcc-globe.jcc-globe-photo,
 .jcc-globe > .jcc-globe-photo {
-  background-image: var(--cortana-hero-globe, url(./jcc-hero-globe.png));
+  background-image: var(--cortana-hero-globe, var(--jcc-photo-hero-globe, url(./jcc-hero-globe.png)));
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center center;
+  background-position: center 42%;
   pointer-events: none;
   will-change: transform, filter;
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.35));
   animation:
     cortana-globe-breathe var(--cortana-globe-breathe-ms, 3.2s) ease-in-out infinite,
     cortana-globe-parallax 14s ease-in-out infinite;
@@ -1973,12 +1975,14 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .jcc-feed-item {
   display: flex;
   gap: 10px;
-  align-items: center;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: rgba(4, 22, 38, 0.72);
-  border: 1px solid rgba(0, 180, 220, 0.18);
-  box-shadow: inset 0 1px 0 rgba(0, 242, 255, 0.04);
+  align-items: flex-start;
+  padding: 9px 11px;
+  border-radius: 7px;
+  background: rgba(3, 18, 32, 0.78);
+  border: 1px solid rgba(0, 160, 200, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(0, 242, 255, 0.05),
+    0 1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .jcc-tag {
@@ -2061,18 +2065,23 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: none;
 }
 
-/* Agents */
+/* Agents — 3×2 vs reference-command-center-2.png */
 .jcc-agent-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 7px;
+}
+
+.jcc-agent-grid[data-state="chrome"] .jcc-feed-empty {
+  display: none;
 }
 
 .jcc-agent {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid var(--cortana-border-subtle);
-  background: rgba(0, 20, 40, 0.5);
+  padding: 7px 8px 6px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 100, 140, 0.35);
+  background: linear-gradient(165deg, rgba(0, 28, 48, 0.72) 0%, rgba(0, 14, 28, 0.88) 100%);
+  min-height: 0;
 }
 
 .jcc-agent.active {

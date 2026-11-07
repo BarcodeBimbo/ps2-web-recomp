@@ -958,7 +958,16 @@ function buildHudVoiceScript() {
     "if(cb&&!cb.checked){cb.checked=true;try{cb.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}return true;}",
     "return false;",
     "}",
+    "function runExtCommand(id){",
+    "if(typeof window.__cortanaRunCommand==='function')return window.__cortanaRunCommand(id);",
+    "try{",
+    "var a=document.createElement('a');a.href='command:'+id;",
+    "a.style.cssText='position:fixed;left:-9999px;opacity:0';",
+    "document.body.appendChild(a);a.click();setTimeout(function(){try{a.remove();}catch(e){}},80);",
+    "return true;}catch(e){return false;}",
+    "}",
     "function startVoice(){",
+    "runExtCommand('cortana.voice.talk');",
     "signal();",
     "window.__cortanaVoiceLive(true);",
     "ensureTalkMic({source:'mic',live:true});",
@@ -973,7 +982,7 @@ function buildHudVoiceScript() {
     "window.__cortanaStartVoice=startVoice;",
     "function isVoiceTarget(el){",
     "if(!el||!el.closest)return null;",
-    "return el.closest('[data-cortana-action=\"voice\"],[data-cortana-voice],#cortana-mic-btn,.jcc-mic,.jcc-voice,#cortana-talk-cta,.jcc-talk');",
+    "return el.closest('[data-cortana-action=\"voice\"],[data-cortana-voice],#cortana-mic-btn,.jcc-mic,.jcc-mic-hint,.jcc-voice,#cortana-talk-cta,.jcc-talk,.jcc-talk-wrap');",
     "}",
     "function onActivate(e){",
     "var t=isVoiceTarget(e.target);",
@@ -1815,16 +1824,20 @@ async function enable(context) {
   const hudBlock = buildHudBlock({
     uuid: markerUuid,
     markup: hudBundle.markup,
+    interactStyle: hudBundle.interactStyle,
     clockScript: hudBundle.clockScript,
     liveScript: hudBundle.liveScript,
+    waveScript: hudBundle.waveScript,
     voiceScript: hudBundle.voiceScript,
     wakeScript: hudBundle.wakeScript,
+    interactScript: hudBundle.interactScript,
   });
 
   let patched;
   try {
     patched = insertBeforeHeadClose(html, block);
     patched = insertBeforeBodyClose(patched, hudBlock);
+    validateHudPatchPlacement(patched);
   } catch (err) {
     const message = err.message || String(err);
     await writeState(context, { lastError: message });

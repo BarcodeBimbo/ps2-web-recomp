@@ -77,7 +77,7 @@
   }
   70%,
   100% {
-    --cortana-boot-bar-w: var(--cortana-boot-bar-px, 282px);
+    --cortana-boot-bar-w: 282px;
   }
 }
 
