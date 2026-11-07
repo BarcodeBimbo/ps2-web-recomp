@@ -1,0 +1,516 @@
+Visual finding 1. Capture resolution differs — LIVE 1598×899 vs REF 1024×573 (different pixel density and scale).
+Visual finding 2. LIVE shows Windows OS chrome (title-bar min/max/close) at top-right; REF has none.
+Visual finding 3. LIVE shows Windows 11 taskbar under the HUD footer; REF footer sits on a clean dark field with no OS taskbar.
+Visual finding 4. Brand primary text is "CORTANA" (LIVE) vs "JARVIS" (REF).
+Visual finding 5. Brand secondary text is "WORKSTATION" (LIVE) vs "COMMAND CENTER" (REF).
+Visual finding 6. Brand block reads as two-line "CORTANA / WORKSTATION" (LIVE) vs "JARVIS / COMMAND CENTER" (REF).
+Visual finding 7. Brand icon: LIVE reactor/eye is smaller and sharper; REF icon is larger with softer multi-ring bloom.
+Visual finding 8. Brand panel fill: LIVE uses stronger top-to-bottom cyan gradient; REF uses deeper teal with less vertical gradient punch.
+Visual finding 9. Brand panel right edge skew angle differs (LIVE shallower chamfer vs REF steeper parallelogram cut).
+Visual finding 10. Brand title letter-spacing: LIVE "CORTANA" tracks tighter; REF "JARVIS" tracks wider.
+Visual finding 11. Brand title weight: LIVE heavier/bolder white; REF lighter cyan-tinted white.
+Visual finding 12. SYSTEM STATUS placement: LIVE sits immediately right of brand; REF sits further right with a larger brand→status gutter.
+Visual finding 13. SYSTEM STATUS copy: LIVE reads "SYSTEM STATUS: OPTIMAL" / "SYSTEM STATUS - OPTIMAL"; REF separates "SYSTEM STATUS" from green-dot "OPTIMAL".
+Visual finding 14. STATUS indicator: LIVE uses a flat green disc (sometimes left of copy); REF uses a glowing green disc between STATUS and OPTIMAL.
+Visual finding 15. STATUS container: LIVE is a simpler pill/parallelogram; REF is a nested chamfered frame with thicker cyan stroke and stronger bloom.
+Visual finding 16. STATUS glow intensity is weaker/sharper on LIVE; REF has heavier outer bloom.
+Visual finding 17. Clock position: LIVE is true header-center; REF clock cluster is more center-right relative to brand/search.
+Visual finding 18. Date string: LIVE "Saturday, November 7, 2026"; REF "Monday, 15 June 2026" (day-month order and comma style differ).
+Visual finding 19. Time string: LIVE "4:33:21 AM" (uppercase AM); REF "11:18:21 am" (lowercase am).
+Visual finding 20. Clock font: LIVE thinner geometric sans; REF thicker blocky tech/digital face.
+Visual finding 21. Clock letter-spacing: LIVE time is more open; REF time is tighter.
+Visual finding 22. LIVE time sits inside a faint cyan elliptical capsule/ring; REF time has no hard capsule, only open bloom.
+Visual finding 23. Clock bloom: LIVE glow is tighter to the glyph; REF bloom is larger and more atmospheric.
+Visual finding 24. Date font size: LIVE date is smaller/thinner relative to time; REF date is larger/heavier.
+Visual finding 25. Search bar position: LIVE farther right (near operator); REF more mid-right before utility icons.
+Visual finding 26. Search bar width: LIVE noticeably wider; REF shorter/narrower pill.
+Visual finding 27. Search corner radius: LIVE nearer square/sharp; REF more pill-rounded ends.
+Visual finding 28. Search placeholder "Search..." is brighter/taller on LIVE; darker/more subdued on REF.
+Visual finding 29. Search left magnifier: LIVE brighter neon cyan; REF muted blue-cyan.
+Visual finding 30. Search right adornment differs (LIVE focus/bracket-style glyph vs REF dual-vertical-line / different end control).
+Visual finding 31. Gap search→utility icons is wider on LIVE than REF.
+Visual finding 32. Utility icon count/set differs (LIVE shows grid/bell/gear cluster; REF includes additional/layout icons with different packing).
+Visual finding 33. Utility icon containers: LIVE has more visible rectangular fills; REF icons sit darker/more floating.
+Visual finding 34. Grid utility icon: LIVE sharp square tiles; REF rounder/smaller squares.
+Visual finding 35. Bell icon stroke weight differs (LIVE thinner/sharper; REF softer/bolder).
+Visual finding 36. Gear icon size/detail differs (LIVE smaller/more intricate; REF larger/simpler).
+Visual finding 37. Operator pill avatar: LIVE double concentric cyan rings; REF single thicker glowing ring.
+Visual finding 38. Operator name line: LIVE shows "joshy"/"jcatty"-style handle; REF shows "Commander".
+Visual finding 39. Operator label "Operator" weight is heavier on LIVE than REF.
+Visual finding 40. Operator text↔avatar gap is tighter on LIVE; more padded on REF.
+Visual finding 41. Header bottom rule: LIVE sharper cyan hairline; REF softer glass-edge fade.
+Visual finding 42. Header ambient texture: LIVE stronger scanline/grid; REF smoother navy haze.
+Visual finding 43. Overall header height proportion differs (LIVE taller relative to content; REF more condensed).
+Visual finding 44. Sidebar width proportion differs (LIVE sidebar proportionally different vs main grid than REF).
+Visual finding 45. Sidebar "Command Center" active chrome: LIVE active treatment is weaker/flatter; REF has strong cyan pill + L-bracket glow.
+Visual finding 46. LIVE nav items lack pill containers; REF each nav row sits in a rounded dark pill.
+Visual finding 47. LIVE nav vertical pitch is tighter; REF nav row height/spacing is taller.
+Visual finding 48. LIVE left margin to icons is wider; REF pills start closer to the left edge.
+Visual finding 49. Icon→label horizontal gap is wider on LIVE than REF.
+Visual finding 50. Nav label color: LIVE flatter grey/white; REF labels carry cyan bloom.
+Visual finding 51. LIVE nav has no numeric badges; REF shows Tasks "3", Conversations "12", Tools & Skills "18".
+Visual finding 52. Badge shape: REF circular cyan/dark pills; LIVE missing entirely.
+Visual finding 53. Knowledge Base icon geometry differs (LIVE simpler molecule; REF more complex linked spheres).
+Visual finding 54. Tools & Skills icon fill differs (LIVE outline wrench; REF more solid/filled wrench).
+Visual finding 55. Workflows icon differs (LIVE S/path glyph; REF linked-nodes glyph).
+Visual finding 56. AI Core nav icon differs (LIVE capsule/core variant vs REF circle+line power glyph).
+Visual finding 57. Sidebar right divider: LIVE thin cyan rule; REF thicker glowing vertical edge.
+Visual finding 58. Sidebar ambient glow: LIVE flatter matte; REF stronger blue ambient wash behind nav.
+Visual finding 59. VOICE STATUS header chevron placement differs (LIVE beside title vs REF far-right of header row).
+Visual finding 60. Voice waveform enclosure: LIVE in dark boxed frame with border glow; REF freestanding without box.
+Visual finding 61. Voice wave bars: LIVE thinner/denser; REF thicker/more spaced.
+Visual finding 62. Voice status copy: LIVE "Standby"; REF "Listening...".
+Visual finding 63. Voice status typography: LIVE plain sans; REF more HUD-matched face.
+Visual finding 64. Voice status vertical position: LIVE closer under waveform; REF lower near mic.
+Visual finding 65. Mic button diameter: LIVE smaller; REF larger.
+Visual finding 66. Mic ring treatment: LIVE multiple dark concentric rings; REF stronger soft cyan radial bloom.
+Visual finding 67. LIVE mic area shows ghosted overlapping text layers ("Listening..."/"Tap to Speak" bleed); REF is clean.
+Visual finding 68. Bottom prompt casing: LIVE "TAP TO SPEAK"; REF "Tap to Speak".
+Visual finding 69. Bottom prompt vertical inset from panel bottom differs (LIVE higher; REF lower).
+Visual finding 70. Voice panel corner radius: LIVE sharper; REF rounder.
+Visual finding 71. Voice panel internal vertical spacing is tighter on LIVE than REF.
+Visual finding 72. Focus Mode control: LIVE/REF both present but LIVE Focus chrome is flatter/thinner-bordered; REF thicker glow border and stronger inner fill.
+Visual finding 73. Focus Mode icon: LIVE star/focus glyph rendering differs in size/glow vs REF four-point star.
+Visual finding 74. Focus Mode text alignment: LIVE more left-biased in pill; REF more centered icon+label.
+Visual finding 75. Main grid column proportions differ (LIVE left/center/right widths not matching REF ratios).
+Visual finding 76. Inter-panel gutters: LIVE/REF both ~10–15px class but LIVE gutters read less uniform across rows than REF.
+Visual finding 77. Panel outer glow: LIVE sharper high-sat cyan; REF softer deeper blue-cyan bloom.
+Visual finding 78. Panel fill: LIVE more opaque/flat; REF more glass/transparent with background bleed.
+Visual finding 79. Background behind grid: LIVE stronger dotted grid; REF subtler grid + more atmospheric fog.
+Visual finding 80. AI CORE OVERVIEW header: LIVE often reads clipped/short ("CORE OVERVIEW" / incomplete); REF full "AI CORE OVERVIEW".
+Visual finding 81. AI Core Overview row count: LIVE shows ~3 rows; REF shows 6 status rows.
+Visual finding 82. LIVE missing Agents / LLMs / System overview rows present in REF.
+Visual finding 83. LIVE AI Core value "Cursor 3.29.9"; REF value "Active".
+Visual finding 84. LIVE Memory value is dash/empty ("—"); REF "3,380 Stored".
+Visual finding 85. LIVE Voice value "Standby"; REF "Online".
+Visual finding 86. LIVE overview lacks color-coded circular icons; REF has cyan/blue/teal/purple/amber/green icon discs.
+Visual finding 87. LIVE overview lacks per-row rounded status cards; REF each row is a bordered pill card.
+Visual finding 88. LIVE overview vertical gaps between remaining rows are oversized vs REF tight stack.
+Visual finding 89. LIVE overview lacks right-side faint orbital/graphic wash seen beside REF list.
+Visual finding 90. LIVE overview card inner glow/depth missing vs REF.
+Visual finding 91. Center hero brand overlay text "CORTANA" (LIVE) vs "JARVIS" (REF).
+Visual finding 92. Hero version: LIVE "v2.0.0" (per full capture); REF "v3.0.0".
+Visual finding 93. LIVE "CORTANA" has a thin cyan strike/line through mid-glyphs; REF "JARVIS" has no strike.
+Visual finding 94. Hero title color: LIVE nearer pure white; REF cyan-tinted.
+Visual finding 95. Hero title tracking: LIVE tighter; REF wider.
+Visual finding 96. Hero title weight: LIVE heavier; REF medium.
+Visual finding 97. Gap title→"AI CORE" smaller on LIVE than REF.
+Visual finding 98. "AI CORE" face: LIVE standard sans; REF more mono/wide-tracked HUD face.
+Visual finding 99. Version string size smaller/harder to read on LIVE vs REF.
+Visual finding 100. Hero text block sits higher on the globe in LIVE; more vertically centered in REF.
+Visual finding 101. LIVE globe orbital rings clipped by panel mask; REF rings extend freer with less crop.
+Visual finding 102. LIVE globe nodes are smaller/sharper dots; REF nodes have softer bloom flares.
+Visual finding 103. LIVE base ripple under globe flatter/weaker; REF brighter elliptical ripple platform.
+Visual finding 104. LIVE globe scale slightly smaller/compressed in panel; REF globe fills hero more.
+Visual finding 105. LIVE hero panel shows stronger rectangular mask edge; REF sphere blends more seamlessly.
+Visual finding 106. LIVE Intelligence Feed cards use IDE/status content ("Cortana Workstation online · No folder open", "Problems panel clear", "48 Cursor models in catalog"); REF uses Meeting/Overdue/Github/Focus/System narrative items.
+Visual finding 107. LIVE feed card sublabels are category chips ("Status", "Diagnostics", "LLMs"); REF uses semantic subtitles ("Meeting", "Overdue", "Github", "Focus", …).
+Visual finding 108. LIVE feed lacks right-side INFO/WARN/TIP/LIVE tags present on REF cards.
+Visual finding 109. REF includes red "View Tasks" action pill on a bottom overdue card; LIVE has no in-card action button.
+Visual finding 110. LIVE feed icons are large solid rounded squares with heavy glow; REF icons are smaller darker rounded tiles with thin-line glyphs.
+Visual finding 111. LIVE feed icon set is simplified/blocky; REF uses calendar, warning triangle, GitHub/branch, lightbulb, chip glyphs.
+Visual finding 112. LIVE feed cards are taller; REF cards are shorter/compact.
+Visual finding 113. LIVE card corner radius smaller; REF more rounded.
+Visual finding 114. LIVE vertical gap between feed cards larger than REF.
+Visual finding 115. LIVE shows a visible thick cyan scrollbar in the feed; REF feed shows no scrollbar.
+Visual finding 116. LIVE footer link "View All Intelligence >"; REF lacks that exact link (uses in-card actions / different footer).
+Visual finding 117. LIVE feed titles generally untruncated; REF titles heavily ellipsized ("…").
+Visual finding 118. LIVE "LIVE" badge is larger green pill top-right; REF "● LIVE" badge is smaller/tighter.
+Visual finding 119. LIVE feed card drop-shadow depth weaker/flatter than REF.
+Visual finding 120. ACTIVE AGENTS header: LIVE often truncated/partial ("AGENTS"/"NTS"); REF full "ACTIVE AGENTS".
+Visual finding 121. LIVE agent name truncation ("Research Ag…", "Memory Ag…"); REF shows fuller names in-frame.
+Visual finding 122. LIVE agent activity meters are sharp vertical equalizer bars; REF uses soft horizontal waveform glows.
+Visual finding 123. LIVE Coding Agent meter reads bright green; REF Coding meter is cyan-blue soft wave.
+Visual finding 124. LIVE status dots sit top-right of cards; REF status dots sit under/near status text.
+Visual finding 125. LIVE status copy layout differs (Standby/Active placement under icon vs under name).
+Visual finding 126. LIVE Research/Memory cards show nested ghost/picture-in-picture warped UI strips; REF cards are clean.
+Visual finding 127. LIVE agent grid shows translucent ghosted background text bleed; REF does not.
+Visual finding 128. LIVE agent card radius tighter; REF larger rounded cards.
+Visual finding 129. LIVE inter-card gutters wider/less even; REF tighter consistent grid gaps.
+Visual finding 130. LIVE agent icon boxes are harder bordered squares; REF icons sit in softer glowing rounded squares.
+Visual finding 131. LIVE Task Agent bottom uses dotted square row; REF Task Agent uses low-amp wave / different activity graphic.
+Visual finding 132. LIVE Coding icon treatment differs from REF `</>` code glyph styling/glow.
+Visual finding 133. LIVE Browser Agent yellow status vs REF amber Standby treatment differs in hue/placement.
+Visual finding 134. LIVE System Agent present with shield-like glyph; REF System Agent uses checkmark-in-circle and large green check graphic.
+Visual finding 135. LIVE Active Agents outer L-brackets read brighter/sharper; REF brackets softer/integrated.
+Visual finding 136. MISSION TIMELINE content: LIVE "4:33 AM · Inject live…", "5:03 AM · No git repo", "6:03 AM · Problems clear…"; REF "09:30 am Daily Standup", "12:00 pm Finalize HUD", "Deep-work…", "Design Revie…".
+Visual finding 137. LIVE timeline secondary line repeats "Cursor live"; REF has no such secondary stamp.
+Visual finding 138. LIVE timeline nodes are uniform bright green dots; REF uses multi-color cyan/blue/amber dots.
+Visual finding 139. LIVE timeline uses full-width horizontal rules under entries; REF uses short colored underlines under event titles.
+Visual finding 140. LIVE timeline times are left-of-dot with middle-dot separators; REF times are discrete left column with 12-hour lowercase am/pm.
+Visual finding 141. LIVE "View Full Schedule >" is tiny/edge-biased; REF "View All" / schedule link is larger and clearer under timeline.
+Visual finding 142. LIVE timeline rail fades/ghosts near bottom; REF rail stays structured with colored nodes.
+Visual finding 143. QUICK COMMANDS button count: LIVE shows 3 (Start New Task, Open Calendar, Start Voice Chat); REF shows 4 including "Run Workflow".
+Visual finding 144. LIVE missing Run Workflow row entirely (or fully clipped out of panel).
+Visual finding 145. LIVE quick-command buttons have thinner sharp borders and near-black fills; REF buttons have thicker soft glow and gradient fills.
+Visual finding 146. LIVE vertical gaps between quick commands larger; REF packing tighter.
+Visual finding 147. LIVE quick-command icon wells smaller relative to row; REF icon wells larger vs button height.
+Visual finding 148. LIVE quick-command label color nearer pure white; REF labels slightly cyan-tinted.
+Visual finding 149. LIVE quick panel header has a stronger under-header separator bar; REF separator weaker/absent.
+Visual finding 150. SYSTEM MONITOR values: LIVE CPU 3% / RAM 62% / DISK 94%; REF CPU 15% / RAM 54% / Disk 40%.
+Visual finding 151. LIVE DISK label all-caps "DISK"; REF title-case "Disk".
+Visual finding 152. LIVE gauge text order is large % above small label; REF label above %.
+Visual finding 153. LIVE DISK arc nearly closed with intense bloom; REF Disk ~40% milder bloom.
+Visual finding 154. LIVE CPU arc almost empty; REF CPU ~quarter fill.
+Visual finding 155. LIVE System Monitor header clipping/weight differs vs REF clear wide-tracked "SYSTEM MONITOR".
+Visual finding 156. LIVE System Monitor L-bracket/footer chrome interacts with footer widgets differently than REF self-contained panel.
+Visual finding 157. MEMORY INSIGHTS viz: LIVE sparse floating particle dots (few nodes, no edges); REF constellation with connecting lines.
+Visual finding 158. LIVE memory stats show dashes/empty ("—"); REF shows Memories 3,380 / Session Turns 22 / Tool Calls 14.
+Visual finding 159. LIVE missing "View Memory Map >" link present in REF.
+Visual finding 160. LIVE memory stats typography hierarchy collapsed; REF large cyan numbers + small grey labels.
+Visual finding 161. LIVE Memory Insights reads emptier/blacker in center; REF filled with graph + stats column.
+Visual finding 162. LLM STATUS grid shape: LIVE ~2×3 Cursor-model cards; REF ~2×4 provider cards (more cells).
+Visual finding 163. LIVE models: Auto / Grok 4.7 / Grok 4.6 / Composer 2.5 / Claude Opus 5.5 / Claude Opus 5…; REF providers: Claude / OpenAI / Gemini / Groq / OpenRouter / Ollama / Claude Code / Cursor / Copilot.
+Visual finding 164. LIVE status text mostly green "Default"; REF statuses "Connected" / "Not Linked" / "No Models".
+Visual finding 165. LIVE uses Cursor/Grok/Composer brand glyphs (# / X / cursor); REF uses provider logos (OpenAI, Gemini star, Ollama, Copilot, etc.).
+Visual finding 166. LIVE LLM panel has visible scrollbar; REF grid fits without scrollbar.
+Visual finding 167. LIVE Claude rows clipped at bottom of panel; REF cards fully framed (or differently clipped).
+Visual finding 168. REF LLM header area shows "4 Connected"; LIVE equivalent header badge absent/different.
+Visual finding 169. LIVE "Manage Providers ›" left-aligned under cards; REF "Manage Providers >" more centered under grid.
+Visual finding 170. LIVE LLM card borders sharper thin cyan; REF cards softer blue glow borders.
+Visual finding 171. Footer left location: LIVE "Manhattan, New York"; REF "Bhimber, Pak…" (truncated).
+Visual finding 172. Footer weather: LIVE shows Weather with dash/empty value treatment; REF "28°C Overcast".
+Visual finding 173. Footer network: LIVE Network with dash/empty; REF "Excellent".
+Visual finding 174. Footer left widget icons: LIVE sun/Wi‑Fi coloring differs (orange sun / green Wi‑Fi) vs REF unified cyan icon set.
+Visual finding 175. Footer left widgets on LIVE sometimes read as detached pills under System Monitor; REF sits cleanly in footer strip.
+Visual finding 176. Central talk CTA label: LIVE "TALK TO CORTANA"; REF "TALK TO JARVIS".
+Visual finding 177. LIVE talk pill secondary "I am listening..." present but overall pill composition/wave flanking differs from REF diamond-shaped mirrored waveforms.
+Visual finding 178. REF talk waveforms are diamond/peak mirrored with connector lines; LIVE waves are simpler vertical bar clusters.
+Visual finding 179. REF talk pill outer cyan bloom heavier; LIVE bloom weaker / partially obscured by taskbar overlap.
+Visual finding 180. LIVE talk control visually collides with / sits above Windows taskbar; REF talk control is fully unobstructed.
+Visual finding 181. Ornamental cyan dot rails flanking talk pill are clearer/longer on REF; LIVE weaker/interrupted.
+Visual finding 182. Executive Briefing: LIVE arrow+label pill with lighter glow; REF play-triangle icon + stronger bordered pill.
+Visual finding 183. Executive Briefing horizontal placement/padding from right edge differs between LIVE and REF.
+Visual finding 184. Footer overall height: LIVE compressed against OS taskbar; REF has cleaner reserved footer band.
+Visual finding 185. Global accent saturation: LIVE more electric #00FFFF; REF slightly deeper steel-cyan.
+Visual finding 186. Global black level: LIVE deeper/cleaner black voids; REF more navy atmospheric fill in empty regions.
+Visual finding 187. Multiple LIVE panels show large empty/black interior regions where REF has filled content (AI Overview, Memory Insights especially).
+Visual finding 188. LIVE has more overlapping/ghosted z-order artifacts inside agent/voice regions; REF layering is clean.
+Visual finding 189. LIVE panel L-brackets generally brighter and more discontinuous; REF L-brackets softer and more consistently applied on Agents/Memory/LLM.
+Visual finding 190. LIVE scanline texture stronger across panels; REF smoother glass panels.
+Visual finding 191. LIVE overall composition includes desktop wallpaper/taskbar context around the HUD; REF is a self-contained framed command-center composition.
+Visual finding 192. LIVE hero/center column vertical stacking (globe→timeline→memory) proportions differ from REF (globe taller relative to timeline/memory).
+Visual finding 193. LIVE right column (intel→quick→llm) heights differ — Quick Commands taller/emptier, LLM more cramped — vs REF balanced stack.
+Visual finding 194. LIVE Active Agents 2×3 card contents/status colors do not match REF agent status palette mapping.
+Visual finding 195. LIVE Intelligence Feed semantic color coding is weaker (mostly cyan/green icon washes); REF uses strong per-row semantic border/tag colors (cyan/yellow/teal/green/red).
+Visual finding 196. LIVE Mission Timeline lacks multi-color priority encoding present in REF.
+Visual finding 197. LIVE Memory Insights lacks REF’s right-side numeric column alignment.
+Visual finding 198. LIVE LLM "Default" mint-green status hue differs from REF teal "Connected" / grey "Not Linked" system.
+Visual finding 199. LIVE brand/header SYSTEM STATUS and clock compete for left-center mass differently than REF’s brand | status | clock | search | ops rhythm.
+Visual finding 200. LIVE capture time/date and live metrics (CPU/RAM/DISK, feed, timeline) are session-real values; REF uses designed mock values — every numeric/text datum above that differs is a visible content delta, not only chrome.
+Voice finding 1. Program Files `workbench.html` is stock (1824 bytes); no Cortana patch.
+Voice finding 2. `cortana-hud-voice-script` absent.
+Voice finding 3. `cortana-hud-wake-script` absent.
+Voice finding 4. `SpeechRecognition` / `webkitSpeechRecognition` absent.
+Voice finding 5. `Manhattan` absent.
+Voice finding 6. `cortana-cc-hud` absent.
+Voice finding 7. All voice/wake/live/wave/Talk DOM + bridge markers absent.
+Voice finding 8. `cortana.injection.enabled` is `false`.
+Voice finding 9. Last Admin Enable refused by crash guard; probes all false; `wbBytes` 1824.
+Voice finding 10. That run targeted missing install `…cortana-cursor-ui-0.5.5`.
+Voice finding 11. `admin-enable-elevated.js` still hardcodes EXT_DEFAULT → dead `0.5.5`.
+Voice finding 12. SOURCE_FALLBACK junction OK; prefer-path still dead `0.5.5`.
+Voice finding 13. Live install is `0.5.6`, not `0.5.5`.
+Voice finding 14. Without inject, wake script never boots → Hey Cortana never arms.
+Voice finding 15. Without inject, Talk/mic DOM missing → HUD click path dead.
+Voice finding 16. `__cortanaStartVoice` / `__cortanaVoiceLive` / `__cortanaEnsureTalkMic` never defined.
+Voice finding 17. `wireVoiceBridge()` never runs → no command bridge from HUD.
+Voice finding 18. Source builds voice/wake into HUD block, but Enable never writes them.
+Voice finding 19. Workbench CSP `script-src` has no `'unsafe-inline'` — inline inject scripts would not execute.
+Voice finding 20. CSP `require-trusted-types-for 'script'` further blocks dynamic voice/wake IIFEs.
+Voice finding 21. Voice/wake/live/wave/interact are all inline `<script>` tags, not `'self'` `.js` files → CSP/Trusted Types kill runtime even if HTML write succeeds.
+Voice finding 22. `cortana.voice.talk` is registered — registration OK; invoke is broken.
+Voice finding 23. `cortana.voice.wakeListen` only calls `startVoice()`; does not arm SpeechRecognition.
+Voice finding 24. WakeListen toast admits inject inactive, then still hits broken native voice try-list.
+Voice finding 25. `voiceBridge.startVoice()` tries obsolete `*startVoiceChat` IDs.
+Voice finding 26. Cursor `workbench.desktop.main.js` has zero `startVoiceChat` matches.
+Voice finding 27. Live Cursor voice command is `composer.toggleVoiceDictation` — not in voiceBridge tries.
+Voice finding 28. Failed `executeCommand` calls swallowed empty → silent failure.
+Voice finding 29. After all tries fail, falls back to `openChat()` only — no mic.
+Voice finding 30. `openChat()` can also miss; final toast-only dead end.
+Voice finding 31. Hayes/Cursor native voice and Cortana wake STT fail independently.
+Voice finding 32. HUD `command:` links from sandbox HTML are not a reliable extension-host bridge.
+Voice finding 33. `cortana-voice` CustomEvent/postMessage stay in renderer; extension has no listener.
+Voice finding 34. `__cortanaVoiceClick` same dead `command:` bridge.
+Voice finding 35. DOM mic selectors for “Start voice chat” only run if inject exists and chrome is clickable.
+Voice finding 36. Non-Focus HUD hides IDE parts (`opacity:0; pointer-events:none`) → Cursor mic unclickable while HUD primary.
+Voice finding 37. `revealIde()` only helps after Talk already activates — does not fix missing inject / wrong IDs.
+Voice finding 38. DOM mic miss → toast-only, no recognition start.
+Voice finding 39. No keybindings for `cortana.voice.*`.
+Voice finding 40. `cortana.voice.chat` contributed but omitted from commandPalette menu.
+Voice finding 41. Command Center webview `talk`/`chat` call `openChat()` not `startVoice()`.
+Voice finding 42. Webview `post("voice")` still dies at obsolete IDs.
+Voice finding 43. `fallbackWebview` default false; when inject off, webview still uses broken bridge.
+Voice finding 44. Static markup: status `Standby`, hint `I am listening…` — misleading without live mic.
+Voice finding 45. `syncTalkHint()` maps Standby → `I am listening…` — false listening UI.
+Voice finding 46. Overview Voice can show Standby while hint says listening — contradictory.
+Voice finding 47. Real `Listening…` only after SpeechRecognition `onstart`; never without inject/SR.
+Voice finding 48. Focus Mode pauses wake (`hudPrimaryVisible` false).
+Voice finding 49. Focus Mode hides HUD + `pointer-events:none` → Talk/mic unreachable.
+Voice finding 50. `data-cortana-mute` never set anywhere (dead path).
+Voice finding 51. `data-cortana-wake="on"` irrelevant while HUD not injected.
+Voice finding 52. No SpeechRecognition → Offline + soft toast; no answering path.
+Voice finding 53. getUserMedia denial → Offline + mic-permission toast.
+Voice finding 54. SR `not-allowed` / `service-not-allowed` → Offline; `want=false` stops re-arm.
+Voice finding 55. `ensureTalkMic` getUserMedia failure silent (`cb(null)`).
+Voice finding 56. Mic stream only drives wave meter — no ASR → agent reply pipeline.
+Voice finding 57. Wake match only fires Talk bridge — cannot start Cursor voice; no local NLU/TTS answer.
+Voice finding 58. Webview TTS announce-only (“Systems online…”); not speech-input answering.
+Voice finding 59. No path synthesizes/answers wake transcripts beyond Talk bridge.
+Voice finding 60. Installed 0.5.6 voice/inject source hashes match repo — not stale vs source.
+Voice finding 61. `package.json` INST vs SRC hashes differ (packaging drift); voice contribs still present.
+Voice finding 62. Soft-load stub if workbenchInject fail-to-require remains a failure mode (not live break).
+Voice finding 63. Health/reconcile can keep injection disabled across reloads.
+Voice finding 64. Pristine backups also 1824-byte stock — no recoverable injected voice scripts.
+Voice finding 65. Cursor Realtime Voice / MintRealtimeVoiceSecret unused by Cortana.
+Voice finding 66. `aichat.*` has no `startVoice*` — `aichat.startVoiceChat` try structurally invalid.
+Theming finding 1. Without inject: theme hex only; no tokens/glass/HUD.
+Theming finding 2. Themes vs inject independent; no forced `workbench.colorTheme`.
+Theming finding 3. ~84 `--vscode-*` bridges vs ~626 theme keys (~85% unbridged).
+Theming finding 4. Theme hex vs inject token palette drift.
+Theming finding 5. Suit modes swap theme only; inject stays cyan forever.
+Theming finding 6. Endgame/Stealth leftovers still navy stock wells.
+Theming finding 7. Chrome palette bind skips widgets/menus/dialogs/settings.
+Theming finding 8. Command Center/File Map webviews own older palette.
+Theming finding 9. Focus Fortress does not theme revealed IDE.
+Theming finding 10. Focus Mode hides HUD → exposes partial IDE theming.
+Theming finding 11. HUD-primary hides IDE; theming gaps only verified in Focus.
+Theming finding 12. Only 12 tokenColors scopes; no semantic tokens.
+Theming finding 13. Gray-killers = flat navy fill, not glass hierarchy.
+Theming finding 14. Inject selectors not fully gated on `.cortana-inject`.
+Theming finding 15. No `workbench.colorCustomizations` contribution.
+Theming finding 16. Titlebar navy fill only; no glass language.
+Theming finding 17. Menubar: no inject styling in Focus.
+Theming finding 18. Menubar dropdowns: shell glass; items/checkmarks unstyled.
+Theming finding 19. Command-center pill partial; inner icons stock.
+Theming finding 20. Appicon/title: color only; stock glyph/layout.
+Theming finding 21. Stock captions hidden, never Cortana-restyled.
+Theming finding 22. Win-chrome vs Focus title strip mismatch.
+Theming finding 23. Titlebar action-labels: hover color only.
+Theming finding 24. Native OS frame outside inject.
+Theming finding 25. Drag-region voids unthemed in Focus.
+Theming finding 26. Activity bar: color/pulse only; no glass wells.
+Theming finding 27. Top activity bar: no inject selectors.
+Theming finding 28. Sidebar titles partial; pane toolbars stock.
+Theming finding 29. Tree twisties/indent guides stock.
+Theming finding 30. Explorer/Outline/Timeline toolbars stock.
+Theming finding 31. Auxiliary bar / agent rail mostly stock.
+Theming finding 32. Sidebar section headers weak.
+Theming finding 33. List filter widgets: theme only.
+Theming finding 34. DND overlays: theme drop only.
+Theming finding 35. Tabs: fill/glow; close/dirty/pin stock.
+Theming finding 36. Editor-actions toolbar stock.
+Theming finding 37. Empty editor watermark stock.
+Theming finding 38. Split/sash chrome stock beyond hover.
+Theming finding 39. Breadcrumbs partial.
+Theming finding 40. Breadcrumb picker: no glass inject.
+Theming finding 41. Pinned/sticky tab states inject-weak.
+Theming finding 42. Unfocused group tabs: theme only.
+Theming finding 43. Glyph margin/folding/breakpoints: theme only.
+Theming finding 44. Line numbers: theme only.
+Theming finding 45. Overview ruler: theme only.
+Theming finding 46. Minimap: no inject.
+Theming finding 47. Sticky scroll incomplete.
+Theming finding 48. Line/selection highlights partial.
+Theming finding 49. Indent guides/rulers: theme only.
+Theming finding 50. Bracket guides: theme only.
+Theming finding 51. CodeLens/inlays/ghost text: theme only.
+Theming finding 52. Lightbulb: theme only.
+Theming finding 53. Diff editor: no inject.
+Theming finding 54. Multi-diff: no inject.
+Theming finding 55. Merge editor: theme only.
+Theming finding 56. `editorActionList.*` absent → stock.
+Theming finding 57. Multi-cursor colors absent → stock.
+Theming finding 58. Comment glyphs absent → stock.
+Theming finding 59. Unicode/unnecessary highlight: theme only.
+Theming finding 60. Linked editing: theme only.
+Theming finding 61. Suggest widget: no dedicated inject.
+Theming finding 62. Suggest details/docs: unthemed.
+Theming finding 63. Parameter hints: gray-killer only.
+Theming finding 64. Hover: gray-killer; content partial.
+Theming finding 65. Find widget: gray-killer; controls stock.
+Theming finding 66. Simple find sash: theme only.
+Theming finding 67. Rename box: gray-killer; validation stock.
+Theming finding 68. Peek view: not glass.
+Theming finding 69. Goto-line/outline overlays stock.
+Theming finding 70. Zone widget stock.
+Theming finding 71. Inline completions toolbar stock.
+Theming finding 72. Widget sash: theme only.
+Theming finding 73. Quick input: shell good; rows/icons stock.
+Theming finding 74. Quick input title/progress: theme only.
+Theming finding 75. Quick input focus/icon partial.
+Theming finding 76. Picker groups: theme only.
+Theming finding 77. Quick pick checkboxes/buttons stock.
+Theming finding 78. Input validation banners: theme only.
+Theming finding 79. Cursor palette extras: no selectors.
+Theming finding 80. Context-view: glass shell only.
+Theming finding 81. Menu items: no hover glass.
+Theming finding 82. Nested submenus unthemed.
+Theming finding 83. Keybinding labels: no inject.
+Theming finding 84. Native OS context menus unthemeable.
+Theming finding 85. Menu separators/checkmarks stock.
+Theming finding 86. Notification toasts: shell yes; actions partial.
+Theming finding 87. Notifications center: gray-killer.
+Theming finding 88. Notification buttons/progress stock.
+Theming finding 89. Banner: gray-killer.
+Theming finding 90. Modal dialogs: MISS inject.
+Theming finding 91. Trust/reload/corrupt dialogs stock.
+Theming finding 92. Toast severity icons: theme only.
+Theming finding 93. Inputs: bg/border; validation partial.
+Theming finding 94. Buttons: closest match; secondary incomplete.
+Theming finding 95. Select-box/dropdown: MISS inject.
+Theming finding 96. Checkbox: weak inherit.
+Theming finding 97. Radio: theme only.
+Theming finding 98. Custom toggle stock.
+Theming finding 99. Split/dropdown buttons stock.
+Theming finding 100. InputOption toggles: theme only.
+Theming finding 101. Scrollbar track stock.
+Theming finding 102. Scrollbar corner/shadow: theme only.
+Theming finding 103. Sash idle stock.
+Theming finding 104. Corner/grid sashes unthemed.
+Theming finding 105. Progress container stock.
+Theming finding 106. Badges outside activity partial.
+Theming finding 107. Status bar item variants mostly generic.
+Theming finding 108. Status debugging: theme only.
+Theming finding 109. Panel tabs: active underline only.
+Theming finding 110. Panel section headers: theme only.
+Theming finding 111. Terminal: gray-killer bg; xterm chrome stock.
+Theming finding 112. Terminal ANSI/cursor: theme only.
+Theming finding 113. Terminal tabs/split: no inject.
+Theming finding 114. Problems filters/icons stock.
+Theming finding 115. Output/Debug Console not glass.
+Theming finding 116. Ports: theme icon only.
+Theming finding 117. Settings editor: gray-killer; controls stock.
+Theming finding 118. Settings form controls: theme only.
+Theming finding 119. Settings modified/focus: theme only.
+Theming finding 120. Keybindings editor stock.
+Theming finding 121. Profiles UI partial; sashBorder absent.
+Theming finding 122. Accounts/extensions settings stock.
+Theming finding 123. Extensions list/editor stock beyond fill.
+Theming finding 124. SCM: fill only.
+Theming finding 125. Debug toolbar: gray-killer.
+Theming finding 126. Debug exception/console: theme only.
+Theming finding 127. Testing: theme only.
+Theming finding 128. Notebook: gray-killer; cells theme-only.
+Theming finding 129. Welcome: gray-killer; tiles theme-only.
+Theming finding 130. Walkthrough embedded editor: theme only.
+Theming finding 131. Markdown preview webview isolated.
+Theming finding 132. Comments: theme only.
+Theming finding 133. Chat containers: fragile attribute selectors.
+Theming finding 134. Composer bar: many nodes unmatched.
+Theming finding 135. Inline Chat: bridges only; incomplete.
+Theming finding 136. Chat bubbles: keys absent.
+Theming finding 137. Model picker: no inject.
+Theming finding 138. Agent plan/build panes partial.
+Theming finding 139. MCP/tools/computer-use: no theming.
+Theming finding 140. AI apply/reject toolbars stock.
+Theming finding 141. Cursor Settings UI stock.
+Theming finding 142. Anysphere class hooks fragile.
+Theming finding 143. Action bars: no glass icon buttons.
+Theming finding 144. Codicons: inherit only.
+Theming finding 145. Tree indent/tables: theme only.
+Theming finding 146. Filtered/toggled views: theme only.
+Theming finding 147. Pane toolbar overflow stock.
+Theming finding 148. Workbench tooltips partial.
+Theming finding 149. Aria alerts unthemed.
+Theming finding 150. Drag/DND feedback stock.
+Theming finding 151. Resize overlays stock.
+Theming finding 152. No-folder status: generic.
+Theming finding 153. Charts: theme only.
+Theming finding 154. Markdown text links: theme only.
+Theming finding 155. `textPreformat.background` absent.
+Theming finding 156. Extension webviews outside tokens.
+Theming finding 157. File Map webview separate palette.
+Theming finding 158. Simple Browser stock.
+Theming finding 159. Custom editors stock.
+Theming finding 160. Third-party viewlets accidental only.
+Theming finding 161. Boot/HUD Cortana → Focus Mode stock grade break.
+Theming finding 162. Focus FAB themed; surrounding IDE not.
+Theming finding 163. Session/Stream classes not on Focus IDE.
+Theming finding 164. “CORTANA Command” theme unused by suits.
+Theming finding 165. Suit vs tokens unison not achieved.
+Theming finding 166. Chat bubble theme keys absent.
+Theming finding 167. editorActionList keys absent.
+Theming finding 168. stickyScrollGutter absent.
+Theming finding 169. multiCursor colors absent.
+Theming finding 170. tab.unfocusedActiveBorder absent.
+Theming finding 171. comment glyph keys absent.
+Theming finding 172. sideBarActivityBarTop.background absent.
+Theming finding 173. profiles.sashBorder absent.
+Theming finding 174. Many bridge families have 0 inject overrides.
+Theming finding 175. Parts: navy fills missing glass hierarchy.
+Theming finding 176. Gray-killers flat across ~30 surfaces.
+Theming finding 177. Chat selectors occasional match only.
+Theming finding 178. Buttons/inputs closest but incomplete states.
+Theming finding 179. Context menu shell yes; contents no.
+Theming finding 180. Notification shell yes; content/actions no.
+Focus finding 1. Intent vs impl: no Focus layout/frame/skin; only HUD vs stock visibility.
+Focus finding 2. Path is label/`#cortana-focus-toggle` only; no Focus JS state machine.
+Focus finding 3. Interact boot never wires focus toggle (no change handler / body class / theme call).
+Focus finding 4. Wake listens to focus only to pause Hey Cortana.
+Focus finding 5. Voice `revealIde()` can auto-check Focus with zero Focus skin.
+Focus finding 6. Focus Fortress is a different feature; no bridge to HUD Focus.
+Focus finding 7. Focus ON drops IDE-hide rules → stock parts pop in full.
+Focus finding 8. HUD hide = opacity/visibility/scale only; no `display:none` / Focus chrome.
+Focus finding 9. HUD stays fixed full-screen z 99990 while “hidden”; weak stack contract.
+Focus finding 10. Reveal animation vs Focus `opacity:0 !important` cascade fight.
+Focus finding 11. No `body.cortana-focus` / data attribute Focus hooks.
+Focus finding 12. Checked-state rules only hide HUD / show FAB — no IDE restyle.
+Focus finding 13. Always-on `.part { background: transparent }` → blue void hole-punch.
+Focus finding 14. Shell radial cyan/navy without HUD glass reads as stock blue.
+Focus finding 15. Focus restores stock titlebar strip (menubar/command-center/appicon).
+Focus finding 16. Stock captions stay hidden; Cortana win-chrome opacity-0 until hover.
+Focus finding 17. FAB is only Focus affordance; reads as overlay glitch.
+Focus finding 18. Focus state not persisted across reload.
+Focus finding 19. No default `workbench.colorTheme` → Cortana in package defaults.
+Focus finding 20. Enable never applies Suit/color theme.
+Focus finding 21. Focus does not force Cortana theme when HUD hides.
+Focus finding 22. Syntax/tokens depend on theme JSON; Focus exposes wrong-theme unreadable code.
+Focus finding 23. Incomplete `--vscode-*` bridges leave stock surfaces.
+Focus finding 24. Chrome palette bind not Focus-scoped; incomplete → stock look.
+Focus finding 25. No Focus-specific tabs/breadcrumbs/minimap/AI panes.
+Focus finding 26. Chat/session forced transparent → unreadable on blue void.
+Focus finding 27. Empty-editor/agent home often bypass gray-killer selectors.
+Focus finding 28. Weird circles: activity-bar icons/avatar/badges/glow.
+Focus finding 29. Weird circles: empty editor / welcome / loading / profile rings.
+Focus finding 30. Possible HUD gauge/mic ring leak if hide partial.
+Focus finding 31. Boot splash spinning rings can overlap Focus entry.
+Focus finding 32. HUD particles are circular but should hide with HUD.
+Focus finding 33. Unreadable contrast: dim Cortana text on transparent/blue.
+Focus finding 34. `.codicon` / `.action-label { color: inherit }` without readable ancestors.
+Focus finding 35. Syntax/line numbers wash out without Cortana theme.
+Focus finding 36. Mixed sidebar title cyan vs stock row fg.
+Focus finding 37. Focus dumps full stock chrome, not a focused Cortana coding surface.
+Focus finding 38. No Focus Mode command in package.json (checkbox only).
+Focus finding 39. No Focus IDE layering / hit-target policy.
+Focus finding 40. Duplicate Focus CSS selector pairs (maintenance risk).
+Focus finding 41. Docs never specify a Cortana IDE focus surface.
+Focus finding 42. Net chain: check Focus → hide HUD → unmask Monaco → transparent parts + blue shell + circles + unreadability.
+Window controls finding 1. Stock min/max/close still visible (extreme top-right).
+Window controls finding 2. Unthemed grey/white Win glyphs (no cyan Cortana chrome).
+Window controls finding 3. Wrong identity: OS/Monaco captions, not 30×30 `.jcc-win-btn` squircles.
+Window controls finding 4. Wrong position: flush native strip vs designed fixed Cortana reveal zone.
+Window controls finding 5. Size mismatch: stock ~46×32-class vs designed 30×30 + 6px gap.
+Window controls finding 6. Cortana captions opacity-0 at rest; static LIVE shows stock only.
+Window controls finding 7. No visible MINIMIZE/MAXIMIZE/CLOSE HUD text labels.
+Window controls finding 8. Transparent `#cortana-win-chrome` overlay; stock shows through.
+Window controls finding 9. Titlebar z-index 99999 > HUD 99990 → stock paints over HUD.
+Window controls finding 10. Hide selectors only `.window-controls-container` / `.codicon-chrome-*` inside it; click path queries broader — leak risk.
+Window controls finding 11. Titlebar opacity pass omits `.window-controls-container`.
+Window controls finding 12. `.part.titlebar` stays mounted in HUD mode (not fully removed).
+Window controls finding 13. Specificity/override gap: no bare `.codicon-chrome-*` hide.
+Window controls finding 14. Palette-bind duplicate hide has same narrow coverage.
+Window controls finding 15. Interact CSS forces `pointer-events: auto` on invisible win-btns (hit-model fight).
+Window controls finding 16. Win-chrome outside HUD so Focus keeps it; stock hide must stay unconditional.
+Window controls finding 17. Focus Mode does not fix LIVE stock leak.
+Window controls finding 18. Focus ON restores themed titlebar path; if hide fails, stock more obvious.
+Window controls finding 19. Caption reserve tokens = 0; slot does not cover stock strip.
+Window controls finding 20. Header tools abut stock cluster in LIVE corner.
+Window controls finding 21. Markup for Cortana win-chrome exists; failure is hide + opacity-0, not missing HTML.
+Window controls finding 22. Click path prefers stock nodes then command fallback (coupled to hide).
+Window controls finding 23. Maximize fallback uses `toggleFullScreen` (wrong action).
+Window controls finding 24. `titleBarStyle: custom` contributed; LIVE runtime not proven here.
+Window controls finding 25. REF: no OS captions; LIVE fails both (stock visible + themed captions not at rest).
+Window controls finding 26. Close hover cyan never applies to visible stock Close.
+Window controls finding 27. Z-stack: HUD < titlebar < transparent win-chrome.
+Window controls finding 28. Possible stale Program Files inject vs repo hide rules.
