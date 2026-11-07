@@ -865,7 +865,14 @@ void write(std::uint32_t reg, std::uint64_t value) {
     case 0x44: s.dimx = value; break;
     case 0x45: s.dthe = value; break;
     case 0x46: s.colclamp = value; break;
-    case 0x47: case 0x48: s.ctx[reg - 0x47].test = value; break;
+    case 0x47: case 0x48: {
+        // Hitman live TEST often 0x5002D (ATE=1, ATST=GREATER, AREF=2). Opt-in: clear ATE
+        // to see whether alpha reject is emptying the draw page.
+        static const bool no_ate = std::getenv("PS2_GS_NO_ATE") != nullptr;
+        if (no_ate) value &= ~1ull;
+        s.ctx[reg - 0x47].test = value;
+        break;
+    }
     case 0x49: s.pabe = value; break;
     case 0x4A: case 0x4B: s.ctx[reg - 0x4A].fba = value; break;
     case 0x4C: case 0x4D:
@@ -1227,8 +1234,18 @@ PresentSource resolve_present_source(std::uint64_t dispfb) {
     const std::uint32_t f1 = static_cast<std::uint32_t>(g_state.ctx[1].frame) & 0x1FFu;
     static std::uint64_t logs = 0;
     if (trace_display() && (++logs % 60u) == 1u) {
+        const auto &c0 = g_state.ctx[0], &c1 = g_state.ctx[1];
         std::fprintf(stderr, "[gs] present fb: dispfb=%u frame0=%u frame1=%u last_ctx=%d fbw=%u psm=%u\n",
                      disp_fbp, f0, f1, g_last_frame_ctx, out.bw, out.psm);
+        std::fprintf(stderr,
+                     "[gs] drawenv0 xy=0x%llX sc=0x%llX test=0x%llX alpha=0x%llX frame=0x%llX\n"
+                     "[gs] drawenv1 xy=0x%llX sc=0x%llX test=0x%llX alpha=0x%llX frame=0x%llX\n",
+                     static_cast<unsigned long long>(c0.xyoffset), static_cast<unsigned long long>(c0.scissor),
+                     static_cast<unsigned long long>(c0.test), static_cast<unsigned long long>(c0.alpha),
+                     static_cast<unsigned long long>(c0.frame),
+                     static_cast<unsigned long long>(c1.xyoffset), static_cast<unsigned long long>(c1.scissor),
+                     static_cast<unsigned long long>(c1.test), static_cast<unsigned long long>(c1.alpha),
+                     static_cast<unsigned long long>(c1.frame));
     }
     // Mode B page split is real (Hitman: dispfb==frame1==400, frame0==288, last_ctx=0),
     // but presenting last FRAME made dumps worse (GPU page 288 empty at present).

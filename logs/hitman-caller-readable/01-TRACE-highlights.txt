@@ -1,0 +1,22 @@
+﻿=== PCRTC setup (from hitman-drawenv-run.log) ===
+[gs] SetGsCrt interlace 1 mode 0x2 field 0
+[gs] smode2 0x1
+[gs] pmode 0x66
+[gs] dispfb2 0x1190
+[gs] display2 0x1BF9FF0203227C
+
+=== Present + drawenv (from hitman-drawenv-run.log) ===
+[gs] captured 3 draws and 4 images in logs\hitman-drawenv-cap
+[gs] present fb: dispfb=400 frame0=288 frame1=400 last_ctx=0 fbw=8 psm=0
+[gs] drawenv0 xy=0x720000007000 sc=0x1BF000001FF0000 test=0x5002D alpha=0x0 frame=0xFF00000000080120
+[gs] drawenv1 xy=0x0 sc=0x1BF000001FF0000 test=0x20000 alpha=0x800000002A frame=0xFF00000000080190
+
+=== Capture summary (from hitman-drawenv-run2.log) ===
+ps2run.exe : [gpu] NVIDIA GeForce RTX 3050 (621.14)
+    + CategoryInfo          : NotSpecified: ([gpu] NVIDIA GeForce RTX 3050 (621.14):String) [], RemoteException
+[gs] captured 371 draws and 493 images in logs\hitman-drawenv-cap2
+[gpu] 1153 submits, dispatches: upload 3241 copy_read 0 copy_write 0 load_clut 2413 display 0 raster 3572 resolve 0 
+[gs] 36455 primitives drawn, register writes: 00:709297 01:379 04:40260 05:6016 06:377 07:20091 08:20279 09:20281 
+
+=== Present + drawenv (from hitman-drawenv-run2.log / modeB-run3) ===
+[gs] present fb: dispfb=400 frame0=288 frame1=400 last_ctx=0 fbw=8 psm=0
