@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~22:25 local
+Updated: 2026-11-06 23:51:01 -05:00 (PAUSED)
 
 ## Gate cycle 1 — FAIL
 
@@ -252,4 +252,14 @@ Post-R3 five-phase still green (Hitman 600f/127974; NFS 600f/208253; SIF 0). Hit
 
 
 **Alive ~22:25:** Cycle 6+7 PASS confirmed; disc-fix idle (4_pass_acknowledged); R5 still gated; no new proposed_change yet — still watching.
+
+
+---
+
+## PAUSED — Cursor reload (~2026-11-06 23:51:01 -05:00)
+
+- Last matrix status: `watching` / verdict `pass`; `last_completed` = `R4_clear_with_evidence`; disc-fix `r4_pass_acknowledged`; `proposed_change` = null; step 7.
+- Ranked: R1/R2/R4 cleared_with_evidence; R3 verified_apply; **R5 still gated**.
+- Matrix did **not** unlock R5. No commits. No CNK. No `host_signal(2)`.
+- Board watch **stopped** for Cursor reload (SAFE PAUSE).
 

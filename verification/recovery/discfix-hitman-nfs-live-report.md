@@ -1,10 +1,10 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 ~23:31 local
+Updated: 2026-11-06 23:51 (PAUSED)
 
 ## Status
 
-**Alive.** Cycle 7 **`R4_clear_with_evidence` → PASS**. No CdSync wake code landed. Disc CDVD ranked path R1–R4 is done. **No commit** (waiting on parent for joint-stable call). R5 pad/sound still gated.
+**PAUSED.** Cycle 7 **`R4_clear_with_evidence` → PASS**. No CdSync wake code landed. Disc CDVD ranked path R1–R4 is done. **No commit** (waiting on parent for joint-stable call). R5 pad/sound still gated.
 
 ## Cycle summary
 
@@ -57,3 +57,14 @@ Idle watch: board still idle (no R5/soak proposed_change). DISCFIX-R1-R4-STABLE.
 ## Heartbeat 23:31
 
 Idle watch: no R5 proposal, no soak request, board unchanged. No commit. No CdSync wake. Alive.
+
+## PAUSED
+
+**Paused:** 2026-11-06 23:51 (Cursor reload — safe pause)
+
+- Board phase/status: idle_r4_pass_awaiting_parent / discfix 
+4_pass_acknowledged
+- proposed_change: **null**
+- Ranked: R1 cleared_with_evidence · R2 cleared_with_evidence · R3 verified_apply · R4 cleared_with_evidence · **R5 still_gated** (no unlock)
+- Joint-stable commit note: 1e04172 — *disc-fix: mark Hitman/NFS R1–R4 joint-stable (readee lengths only).*
+- Pausing with **no R5 unlock**, no further board watches, no commits, no code, no CNK, no host_signal(2).
