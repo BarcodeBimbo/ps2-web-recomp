@@ -9,3 +9,17 @@
 [2026-11-07T06:34:04.6979225-05:00] AnalyzeHeadless java args count=25 log=import-gow-java
 [2026-11-07T06:35:13.1147625-05:00] AnalyzeHeadless exit=0 log=import-gow-java
 [2026-11-07T06:35:13.1227967-05:00] AnalyzeHeadless java args count=25 log=import-cnk-java
+[2026-11-07T06:40:59.3644318-05:00] AnalyzeHeadless exit=0 log=import-cnk-java
+[2026-11-07T06:41:00.5372621-05:00] Starting MCP headless on 127.0.0.1:8089 project=C:\Users\joshy\ghidra_projects\PS2Elves.gpr ghidra=C:\Users\joshy\ghidra_12.1.2_PUBLIC
+[2026-11-07T06:41:02.8811309-05:00] MCP healthy pid=18316 version=6.0.0-headless
+[2026-11-07T06:41:02.8861439-05:00] MCP load_program_from_project /gow_boot.elf
+[2026-11-07T06:41:04.9011330-05:00] load result: {"success":true,"program":"gow_boot.elf","path":"/gow_boot.elf"}
+[2026-11-07T06:41:04.9081509-05:00] MCP run_analysis
+[2026-11-07T06:41:39.4341398-05:00] analysis: {"success":true,"duration_ms":34518,"total_functions":5692,"new_functions":0,"program":"gow_boot.elf"}
+[2026-11-07T06:41:39.7299783-05:00] Wrote C:\PS2Recomp\logs\ghidra-ps2\mcp-gow_boot.elf.json
+[2026-11-07T06:41:39.7325638-05:00] MCP load_program_from_project /cnk_boot.elf
+[2026-11-07T06:41:39.7643759-05:00] load result: {"success":true,"program":"cnk_boot.elf","path":"/cnk_boot.elf"}
+[2026-11-07T06:41:39.7668858-05:00] MCP run_analysis
+[2026-11-07T06:42:18.5436658-05:00] analysis: {"success":true,"duration_ms":38771,"total_functions":5692,"new_functions":0,"program":"gow_boot.elf"}
+[2026-11-07T06:42:18.7083006-05:00] Wrote C:\PS2Recomp\logs\ghidra-ps2\mcp-cnk_boot.elf.json
+[2026-11-07T06:42:18.7118314-05:00] PIPELINE COMPLETE (silent, no .bat, no elevation)

@@ -1,0 +1,135 @@
+INFO  Using log config file: jar:file:/C:/Users/joshy/ghidra_12.1.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\joshy\AppData\Roaming\ghidramcp\ghidramcp_12.1.2_PUBLIC\application.log (LoggingInitialization)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Loading user preferences: C:\Users\joshy\AppData\Roaming\ghidramcp\ghidramcp_12.1.2_PUBLIC\preferences (Preferences)  
+INFO  Class search complete (817 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+Ghidra initialized in headless mode
+No credentials configured - server connection will use anonymous/default auth
+WARN  Tool supported content class not found: ghidra.trace.model.Trace (GhidraToolTemplate)  
+WARN  Tool supported content class not found: ghidra.trace.model.Trace (GhidraToolTemplate)  
+INFO  Opening project: C:\Users\joshy\ghidra_projects\PS2Elves (DefaultProject)  
+INFO  Opened project: PS2Elves from C:\Users\joshy\ghidra_projects (HeadlessProgramProvider)  
+Opened project: PS2Elves
+Registered 245 REST API endpoints
+HTTP server started on 127.0.0.1:8089
+GhidraMCP Headless Server v6.0.0-headless running on port 8089
+Press Ctrl+C to stop
+INFO  Fixing Properties... (ConsoleTaskMonitor)  
+INFO  Loaded program from project: gow_boot.elf (HeadlessProgramProvider)  
+WARN  DVP overlay block '.DVP.overlay..0x0.1740474883.314.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.214627.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.3528035.10.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.4126919515.50.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56370531.12.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56610403.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x200.1740474883.451.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x400.1740474883.194.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.1174.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.647.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.106.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.592.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.3935118283.194.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1059.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1609.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.162.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.603.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1361.9' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1708.10' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2086.11' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2421.12' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.470.6' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.497.7' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.967.8' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabelSyncAnalyzer)  
+INFO  Packed database cache: C:\Users\joshy\AppData\Local\ghidramcp\packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.800 secs
+    Apply Data Archives                        0.649 secs
+    Call Convention ID                         0.048 secs
+    Call-Fixup Installer                       0.038 secs
+    Create Address Tables                      0.932 secs
+    Create Function                            0.002 secs
+    DVP Overlay Label Sync                     0.008 secs
+    Data Reference                             0.406 secs
+    Decompiler Switch Analysis                 2.983 secs
+    Demangler GNU                              0.070 secs
+    Disassemble Entry Points                   0.234 secs
+    Embedded Media                             0.136 secs
+    External Entry References                  0.000 secs
+    External Symbol Resolver                   0.004 secs
+    Function ID                                0.112 secs
+    Function Start Search                      0.178 secs
+    MIPS-R5900 Constant Reference Analyzer    11.883 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.176 secs
+    Non-Returning Functions - Discovered       1.291 secs
+    Non-Returning Functions - Known            0.046 secs
+    Reference                                  0.443 secs
+    Shared Return Calls                        0.416 secs
+    Stack                                     12.307 secs
+    Subroutine References                      0.901 secs
+-----------------------------------------------------
+     Total Time   34 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  Fixing Properties... (ConsoleTaskMonitor)  
+INFO  Loaded program from project: cnk_boot.elf (HeadlessProgramProvider)  
+WARN  DVP overlay block '.DVP.overlay..0x0.1740474883.314.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.214627.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.3528035.10.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.4126919515.50.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56370531.12.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x0.56610403.23.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x200.1740474883.451.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..0x400.1740474883.194.0' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.1174.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.1589607611.647.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.106.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.2942285115.592.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.3935118283.194.1' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1059.4' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.1609.5' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.162.2' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4115049307.603.3' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1361.9' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.1708.10' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2086.11' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.2421.12' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.470.6' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.497.7' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+WARN  DVP overlay block '.DVP.overlay..unknvma.4126919515.967.8' is not byte-mapped, skipping (DvpOverlayLabelSyncAnalyzer)  
+INFO  DVP Overlay Label Sync: No overlay blocks found to process (DvpOverlayLabelSyncAnalyzer)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.257 secs
+    Apply Data Archives                        0.036 secs
+    Call Convention ID                         0.043 secs
+    Call-Fixup Installer                       0.027 secs
+    Create Address Tables                      0.970 secs
+    Create Function                            0.001 secs
+    DVP Overlay Label Sync                     0.008 secs
+    Data Reference                             0.568 secs
+    Decompiler Switch Analysis                 2.925 secs
+    Demangler GNU                              0.026 secs
+    Disassemble Entry Points                   0.057 secs
+    Embedded Media                             0.026 secs
+    External Entry References                  0.000 secs
+    External Symbol Resolver                   0.001 secs
+    Function ID                                0.002 secs
+    Function Start Search                      0.144 secs
+    MIPS-R5900 Constant Reference Analyzer    15.714 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.112 secs
+    Non-Returning Functions - Discovered       1.289 secs
+    Non-Returning Functions - Known            0.010 secs
+    Reference                                  0.380 secs
+    Shared Return Calls                        0.406 secs
+    Stack                                     15.103 secs
+    Subroutine References                      0.639 secs
+-----------------------------------------------------
+     Total Time   38 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  

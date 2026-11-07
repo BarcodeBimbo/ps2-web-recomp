@@ -62,3 +62,38 @@ ERROR Invalid PNG data at 20659780 (PngDataType)
 ERROR Invalid PNG data at 30759780 (PngDataType)  
 INFO  Packed database cache: C:\Users\joshy\AppData\Local\ghidra\packed-db-cache (PackedDatabaseCache)  
 INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              1.816 secs
+    Apply Data Archives                        0.683 secs
+    Call Convention ID                         0.370 secs
+    Call-Fixup Installer                       0.609 secs
+    Create Address Tables                      1.047 secs
+    Create Address Tables - One Time           7.672 secs
+    Create Function                            7.423 secs
+    Data Reference                             7.320 secs
+    Decompiler Switch Analysis                48.019 secs
+    Demangler GNU                              0.101 secs
+    Disassemble                               22.631 secs
+    Disassemble Entry Points                   6.006 secs
+    Embedded Media                             0.269 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.121 secs
+    Function Start Search                      0.492 secs
+    Function Start Search delayed - One Time   0.002 secs
+    MIPS-R5900 Constant Reference Analyzer   173.786 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.906 secs
+    Non-Returning Functions - Discovered       4.307 secs
+    Non-Returning Functions - Known            0.009 secs
+    Reference                                  9.471 secs
+    Shared Return Calls                        2.517 secs
+    Stack                                     35.747 secs
+    Subroutine References                      6.211 secs
+    Subroutine References - One Time           0.001 secs
+-----------------------------------------------------
+     Total Time   337 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///C:/Users/joshy/ghidra_exports/ps2-elves/cnk_boot.elf (HeadlessAnalyzer)  
+INFO  /cnk_boot.elf: file created (joshy) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /cnk_boot.elf (PS2Elves:/cnk_boot.elf) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  
