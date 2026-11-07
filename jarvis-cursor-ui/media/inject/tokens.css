@@ -120,6 +120,8 @@ body.CORTANA-inject {
   --cortana-wave-ms: 0.9s;
   --cortana-wave-ms-fast: 0.75s;
   --cortana-talk-wave-ms: 0.85s;
+  /* Live mic amplitude settle (AnalyserNode sibling sets --h / --cortana-bar-h / --cortana-voice-amp) */
+  --cortana-talk-live-ms: 48ms;
   --cortana-mini-wave-ms: 1s;
   --cortana-tl-glow-ms: 2.2s;
   --cortana-tl-sheen-ms: 2.8s;
@@ -379,6 +381,7 @@ body.CORTANA-inject {
   --CORTANA-wave-ms: var(--cortana-wave-ms);
   --CORTANA-wave-ms-fast: var(--cortana-wave-ms-fast);
   --CORTANA-talk-wave-ms: var(--cortana-talk-wave-ms);
+  --CORTANA-talk-live-ms: var(--cortana-talk-live-ms);
   --CORTANA-mini-wave-ms: var(--cortana-mini-wave-ms);
   --CORTANA-tl-glow-ms: var(--cortana-tl-glow-ms);
   --CORTANA-tl-sheen-ms: var(--cortana-tl-sheen-ms);

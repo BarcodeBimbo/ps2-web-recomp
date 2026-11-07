@@ -543,6 +543,7 @@ function stripHudMarkup(html) {
     .replace(/<!--\s*CORTANA-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*CORTANA-HUD-END\s*-->\s*/g, "")
     .replace(/<script[^>]*id=["']cortana-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-live-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<script[^>]*id=["']cortana-hud-wave-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-voice-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/<script[^>]*id=["']cortana-hud-wake-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
@@ -621,8 +622,59 @@ function escapeHudText(s) {
     .replace(/"/g, "&quot;");
 }
 
-/** Honest inject-time facts only — never invent weather, missions, or Optimal. */
-function collectHudLiveFacts() {
+/** @param {unknown} n @returns {number | null} */
+function clampHudPct(n) {
+  if (typeof n !== "number" || !Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
+}
+
+function sampleCpuTimes() {
+  const cpus = os.cpus();
+  if (!cpus || !cpus.length) return null;
+  let idle = 0;
+  let total = 0;
+  for (const c of cpus) {
+    const t = c.times;
+    idle += t.idle;
+    total += t.user + t.nice + t.sys + t.idle + t.irq;
+  }
+  return { idle, total };
+}
+
+/** Instantaneous CPU % via two os.cpus() samples; null if unavailable. */
+async function sampleCpuPct() {
+  const a = sampleCpuTimes();
+  if (!a) return null;
+  await new Promise((r) => setTimeout(r, 120));
+  const b = sampleCpuTimes();
+  if (!b) return null;
+  const dTotal = b.total - a.total;
+  const dIdle = b.idle - a.idle;
+  if (dTotal <= 0) return null;
+  return clampHudPct(100 * (1 - dIdle / dTotal));
+}
+
+/** Workspace volume used % via fs.statfsSync; null if unavailable. */
+function sampleDiskPct() {
+  try {
+    if (typeof fs.statfsSync !== "function") return null;
+    const root =
+      vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || process.cwd();
+    if (!root) return null;
+    const s = fs.statfsSync(root);
+    const bsize = Number(s.bsize) || Number(s.frsize) || 0;
+    const blocks = Number(s.blocks) || 0;
+    const avail = Number(s.bavail != null ? s.bavail : s.bfree) || 0;
+    const total = blocks * bsize;
+    if (!total) return null;
+    return clampHudPct(((total - avail * bsize) / total) * 100);
+  } catch {
+    return null;
+  }
+}
+
+/** Honest inject-time facts only — never invent weather, missions, or dummy gauges. */
+async function collectHudLiveFacts() {
   let user = "—";
   let initials = "—";
   try {
@@ -651,18 +703,44 @@ function collectHudLiveFacts() {
   try {
     const total = os.totalmem();
     const free = os.freemem();
-    if (total > 0) ramPct = Math.round(((total - free) / total) * 100);
+    if (total > 0) ramPct = clampHudPct(((total - free) / total) * 100);
   } catch {
     ramPct = null;
   }
-  return { user, initials, host, workspace, ramPct };
+  let cpuPct = null;
+  try {
+    cpuPct = await sampleCpuPct();
+  } catch {
+    cpuPct = null;
+  }
+  const diskPct = sampleDiskPct();
+  return { user, initials, host, workspace, ramPct, cpuPct, diskPct };
+}
+
+/**
+ * Stamp a System Monitor gauge with a real percent, or leave blank (—).
+ * @param {string} markup
+ * @param {string} id e.g. cortana-gauge-ram
+ * @param {string} lab
+ * @param {number | null} pct
+ * @param {string} title
+ */
+function stampHudGauge(markup, id, lab, metric, pct, title) {
+  const p = clampHudPct(pct);
+  const open =
+    p == null
+      ? `<div class="jcc-gauge jcc-gauge-await" style="--p:0" id="${id}" data-lab="${lab}" data-metric="${metric}" title="${title}">`
+      : `<div class="jcc-gauge" style="--p:${p}" data-pct="${p}" id="${id}" data-lab="${lab}" data-metric="${metric}" title="${title}">`;
+  const re = new RegExp(`<div\\b[^>]*\\bid="${id}"[^>]*>`, "i");
+  if (!re.test(markup)) return markup;
+  return markup.replace(re, open);
 }
 
 async function readHudMarkup(context) {
   const full = path.join(context.extensionUri.fsPath, HUD_MARKUP_REL);
   let markup = await fsp.readFile(full, "utf8");
   const { date, clock } = formatHudClock();
-  const live = collectHudLiveFacts();
+  const live = await collectHudLiveFacts();
   markup = markup
     .replace(/id="cortana-hud-date">[^<]*</, `id="cortana-hud-date">${escapeHudText(date)}<`)
     .replace(/id="cortana-hud-clock">[^<]*</, `id="cortana-hud-clock">${escapeHudText(clock)}<`)
@@ -675,13 +753,30 @@ async function readHudMarkup(context) {
       `id="cortana-system-status-text">SYSTEM STATUS · INJECT ON<`
     )
     .replace(/id="cortana-ov-system">[^<]*</, `id="cortana-ov-system">Inject on<`);
-  if (live.ramPct != null) {
-    const p = live.ramPct;
-    markup = markup.replace(
-      /<div class="jcc-gauge jcc-gauge-await" style="--p:0" id="cortana-gauge-ram"[^>]*>/,
-      `<div class="jcc-gauge" style="--p:${p}" data-pct="${p}" data-lab="RAM" id="cortana-gauge-ram" title="RAM from os.freemem at inject">`
-    );
-  }
+  markup = stampHudGauge(
+    markup,
+    "cortana-gauge-cpu",
+    "CPU",
+    "cpu",
+    live.cpuPct,
+    "CPU from os.cpus sample at inject"
+  );
+  markup = stampHudGauge(
+    markup,
+    "cortana-gauge-ram",
+    "RAM",
+    "ram",
+    live.ramPct,
+    "RAM from os.freemem at inject"
+  );
+  markup = stampHudGauge(
+    markup,
+    "cortana-gauge-disk",
+    "Disk",
+    "disk",
+    live.diskPct,
+    "Disk from fs.statfs at inject"
+  );
   const clockScript = [
     `<script id="cortana-hud-clock-script">`,
     `(function(){function t(){var d=new Date(),c=document.getElementById("cortana-hud-clock"),a=document.getElementById("cortana-hud-date");`,
@@ -691,9 +786,10 @@ async function readHudMarkup(context) {
     `</script>`,
   ].join("");
   const liveScript = buildHudLiveScript();
+  const waveScript = buildHudWaveScript();
   const voiceScript = buildHudVoiceScript();
   const wakeScript = buildHudWakeScript();
-  return { markup, clockScript, liveScript, voiceScript, wakeScript };
+  return { markup, clockScript, liveScript, waveScript, voiceScript, wakeScript };
 }
 
 /**
@@ -811,11 +907,16 @@ function buildHudVoiceScript() {
     "else{el.classList.remove('is-live');el.removeAttribute('data-voice-live');}",
     "}",
     "if(hint)hint.textContent=live?'Listening\\u2026':'Tap to speak';",
-    "try{window.dispatchEvent(new CustomEvent('cortana-voice-live',{detail:{live:live}}));}catch(e){}",
-    "try{window.postMessage({type:'cortana-voice-live',live:live},'*');}catch(e){}",
+    "try{window.dispatchEvent(new CustomEvent('cortana-voice-live',{detail:{live:live,source:'hud'}}));}catch(e){}",
+    "try{window.postMessage({type:'cortana-voice-live',live:live,source:'hud'},'*');}catch(e){}",
     "return live;",
     "}",
-    "window.__cortanaVoiceLive=markVoiceLive;",
+    "var _prevVoiceLive=typeof window.__cortanaVoiceLive==='function'?window.__cortanaVoiceLive:null;",
+    "window.__cortanaVoiceLive=function(on){",
+    "var live=markVoiceLive(on);",
+    "if(_prevVoiceLive){try{_prevVoiceLive(on);}catch(e){}}",
+    "return live;",
+    "};",
     "function tryVoiceDom(){return !!clickFirst(VOICE_SELS);}",
     "function tryOpenChatDom(){return !!clickFirst(CHAT_SELS);}",
     "function revealIde(){",
@@ -825,7 +926,7 @@ function buildHudVoiceScript() {
     "}",
     "function startVoice(){",
     "signal();",
-    "markVoiceLive(true);",
+    "window.__cortanaVoiceLive(true);",
     "revealIde();",
     "if(tryVoiceDom()){toast('Voice channel — Cursor mic engaged');return;}",
     "tryOpenChatDom();",

@@ -1567,127 +1567,143 @@ html.cortana-inject-probe::after {
   text-shadow: var(--cortana-text-glow-soft);
 }
 
-/* Overview — Workstation Overview (functional: real values or blank; no dummies) */
+/* Overview — pixel face from reference-command-center-2.png + text overlays.
+   Icons/chrome/pills = photo. Copy = HTML. Counts = real --ov-* or honest "—". */
 .jcc-overview {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 12px 14px 10px;
-  background: rgba(5, 22, 34, 0.82);
-  border-color: rgba(0, 212, 255, 0.28);
-  box-shadow:
-    var(--cortana-shadow-card),
-    inset 0 0 24px rgba(0, 212, 255, 0.04);
+  --ov-tone-cyan: #00e5ff;
+  --ov-tone-blue: #5b9fff;
+  --ov-tone-teal: #2dd4bf;
+  --ov-tone-purple: #c084fc;
+  --ov-tone-amber: #fbbf24;
+  --ov-tone-green: #34d399;
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 170 / 216;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  clip-path: none;
+  border-radius: 4px;
+}
+
+.jcc-overview.jcc-panel::before,
+.jcc-overview.jcc-panel::after {
+  display: none;
+}
+
+.jcc-ov-face {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--jcc-photo-overview);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
 }
 
 .jcc-overview .jcc-ov-title {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 12px;
-  font-size: 9px;
-  letter-spacing: 0.2em;
+  position: absolute;
+  z-index: 1;
+  top: 1.6%;
+  left: 7%;
+  right: 6%;
+  margin: 0;
+  padding: 0;
+  font-size: clamp(7px, 1.55vw, 9px);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--cortana-cyan);
-  font-weight: 700;
-  text-shadow: var(--cortana-text-glow-soft);
-}
-
-.jcc-ov-title-ico {
-  display: inline-grid;
-  place-items: center;
-  color: var(--cortana-cyan);
-  opacity: 0.9;
-  flex-shrink: 0;
+  color: #b9ebf4;
+  font-weight: 650;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 .jcc-ov-list {
+  position: absolute;
+  z-index: 1;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  left: 0;
+  right: 0;
+  top: 10.2%;
+  bottom: 14.5%;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
   gap: 0;
-  flex: 1;
+  pointer-events: none;
 }
 
 .jcc-ov-row {
   display: grid;
-  grid-template-columns: 28px 1fr auto;
-  gap: 10px;
-  align-items: center;
-  min-height: 34px;
-  padding: 5px 0;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.07);
-  font-size: 11px;
-}
-
-.jcc-ov-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.jcc-ov-ico {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  background: rgba(0, 28, 48, 0.85);
-  border: 1px solid rgba(0, 212, 255, 0.22);
-  color: var(--cortana-cyan-soft);
-  box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.08);
-  flex-shrink: 0;
-}
-
-.jcc-ov-ico[data-tone="ok"] {
-  color: var(--cortana-ok-bright);
-  border-color: rgba(61, 214, 140, 0.35);
-  box-shadow: inset 0 0 10px rgba(61, 214, 140, 0.1);
-}
-
-.jcc-ov-ico[data-tone="cyan"] {
-  color: var(--cortana-cyan-soft);
-}
-
-.jcc-ov-ico svg {
-  display: block;
+  /* Icon column reserved for photo glyphs; text sits in scrubbed well */
+  grid-template-columns: 24% 1fr;
+  grid-template-rows: auto auto;
+  align-content: center;
+  column-gap: 0;
+  row-gap: 1px;
+  min-height: 0;
+  padding: 0 6% 0 0;
+  border: 0;
+  font-size: clamp(9px, 1.7vw, 11px);
 }
 
 .jcc-ov-k {
-  color: var(--cortana-text-dim, #7a8fa3);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  grid-column: 2;
+  grid-row: 1;
+  color: #e8f0f6;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
 }
 
 .jcc-ov-v {
-  font-weight: 650;
-  letter-spacing: 0.02em;
-  text-align: right;
+  grid-column: 2;
+  grid-row: 2;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: left;
   white-space: nowrap;
   display: inline-flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 4px;
   min-width: 0;
+  font-size: 0.92em;
+  line-height: 1.15;
   color: var(--cortana-text-dim, #7a8fa3);
 }
 
-.jcc-ov-v:empty {
-  min-width: 0;
+.jcc-ov-v:empty::before {
+  content: "—";
+  opacity: 0.85;
 }
 
-.jcc-ov-v[data-tone="ok"] {
-  color: var(--cortana-ok-bright, #3dd68c);
-  text-shadow: 0 0 8px rgba(61, 214, 140, 0.35);
-}
+.jcc-ov-row[data-tone="cyan"] .jcc-ov-v { color: var(--ov-tone-cyan); text-shadow: 0 0 8px rgba(0, 229, 255, 0.35); }
+.jcc-ov-row[data-tone="blue"] .jcc-ov-v { color: var(--ov-tone-blue); text-shadow: 0 0 8px rgba(91, 159, 255, 0.3); }
+.jcc-ov-row[data-tone="teal"] .jcc-ov-v { color: var(--ov-tone-teal); text-shadow: 0 0 8px rgba(45, 212, 191, 0.3); }
+.jcc-ov-row[data-tone="purple"] .jcc-ov-v { color: var(--ov-tone-purple); text-shadow: 0 0 8px rgba(192, 132, 252, 0.35); }
+.jcc-ov-row[data-tone="amber"] .jcc-ov-v { color: var(--ov-tone-amber); text-shadow: 0 0 8px rgba(251, 191, 36, 0.3); }
+.jcc-ov-row[data-tone="green"] .jcc-ov-v { color: var(--ov-tone-green); text-shadow: 0 0 8px rgba(52, 211, 153, 0.3); }
 
 .jcc-ov-num {
-  color: var(--cortana-cyan-soft, #00f2ff);
   font-weight: 700;
-  text-shadow: var(--cortana-text-glow-soft);
+  color: inherit;
+  text-shadow: inherit;
 }
 
-/* Live fill only: set --ov-* on .jcc-overview when real counts exist */
+/* Honest placeholder until real --ov-* is set on .jcc-overview */
+.jcc-ov-num[data-ov-num]::before {
+  content: "—";
+}
+
 .jcc-overview[style*="--ov-memory"] .jcc-ov-num[data-ov-num="memory"]::before {
   content: var(--ov-memory);
 }
@@ -1701,18 +1717,13 @@ html.cortana-inject-probe::after {
 }
 
 .jcc-ov-unit {
-  color: var(--cortana-text-dim, #7a8fa3);
-  font-weight: 500;
+  color: inherit;
+  font-weight: 550;
+  opacity: 0.92;
 }
 
 .jcc-ov-unit:empty {
   display: none;
-}
-
-.jcc-ov-unit.ok {
-  color: var(--cortana-ok-bright, #3dd68c);
-  font-weight: 650;
-  text-shadow: 0 0 8px rgba(61, 214, 140, 0.3);
 }
 
 
@@ -2243,12 +2254,14 @@ html.cortana-inject-probe::after {
   stroke-dashoffset: 0;
 }
 
-.jcc-gauge:not([data-pct]) .jcc-gauge-prog {
+.jcc-gauge:not([data-pct]) .jcc-gauge-prog,
+.jcc-gauge.jcc-gauge-await .jcc-gauge-prog {
   stroke: transparent;
   filter: none;
 }
 
-.jcc-gauge:not([data-pct]) .jcc-gauge-ring {
+.jcc-gauge:not([data-pct]) .jcc-gauge-ring,
+.jcc-gauge.jcc-gauge-await .jcc-gauge-ring {
   filter: none;
   animation: none;
 }
@@ -2604,7 +2617,12 @@ html.cortana-inject-probe::after {
     0 0 96px rgba(0, 180, 255, 0.45);
 }
 
-/* Live voice session — AnalyserNode sibling drives --cortana-voice-amp / bar heights */
+/*
+ * Live voice session hooks — AnalyserNode sibling owns capture.
+ * Sets .jcc-talk.is-live / [data-voice-live="1"] and drives:
+ *   --cortana-voice-amp (0..1 overall level)
+ *   --h / --amp / --cortana-bar-h per .jcc-talk-wave i (bar height)
+ */
 .jcc-talk.is-live,
 .jcc-talk[data-voice-live="1"],
 .jcc-talk-wrap.is-live .jcc-talk,
@@ -2620,24 +2638,46 @@ html.cortana-inject-probe::after {
 
 .jcc-talk.is-live .jcc-talk-wave,
 .jcc-talk[data-voice-live="1"] .jcc-talk-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
   transform: scaleY(max(0.35, var(--cortana-voice-amp, 0.55)));
-  transform-origin: center;
+  transform-origin: center bottom;
   filter: drop-shadow(0 0 10px rgba(0, 242, 255, calc(0.4 + 0.6 * var(--cortana-voice-amp, 0.55))));
-  transition: transform 60ms linear, filter 60ms linear;
+  transition:
+    transform var(--cortana-talk-live-ms, 48ms) linear,
+    filter var(--cortana-talk-live-ms, 48ms) linear;
+}
+
+/* Photo art yields to live bars while capturing */
+.jcc-talk.is-live .jcc-talk-wave.jcc-talk-wave-photo,
+.jcc-talk[data-voice-live="1"] .jcc-talk-wave.jcc-talk-wave-photo {
+  background-image: none;
 }
 
 .jcc-talk.is-live .jcc-talk-wave i,
 .jcc-talk[data-voice-live="1"] .jcc-talk-wave i {
-  display: inline-block;
+  display: inline-block !important;
+  animation: none !important;
   width: 3px;
-  margin: 0 1px;
-  height: var(--cortana-bar-h, 40%);
+  margin: 0;
+  /* Prefer per-bar --h / --amp; fall back to --cortana-bar-h or overall amp */
+  height: var(
+    --h,
+    var(--amp, var(--cortana-bar-h, calc(var(--cortana-voice-amp, 0.4) * 100%)))
+  );
   min-height: 15%;
   max-height: 100%;
   border-radius: 1px;
   background: linear-gradient(180deg, #7af0ff, #00b8e0);
-  transform-origin: bottom;
+  box-shadow: 0 0 4px rgba(0, 242, 255, 0.7);
+  transform-origin: bottom center;
+  transform: scaleY(1);
   vertical-align: bottom;
+  transition: height var(--cortana-talk-live-ms, 48ms) linear;
+  will-change: height;
+  pointer-events: none;
 }
 
 .jcc-talk-wrap.is-live .jcc-talk-meter,
@@ -2650,7 +2690,7 @@ html.cortana-inject-probe::after {
 .jcc-talk-wrap.is-live .jcc-talk-meter i,
 .jcc-talk-wrap[data-voice-live="1"] .jcc-talk-meter i {
   width: calc(var(--cortana-voice-amp, 0.2) * 100%) !important;
-  transition: width 70ms linear;
+  transition: width var(--cortana-talk-live-ms, 48ms) linear;
 }
 
 .jcc-voice.is-live,
@@ -2725,8 +2765,10 @@ html.cortana-inject-probe::after {
   filter: drop-shadow(0 0 6px rgba(0, 242, 255, 0.55));
 }
 
-.jcc-talk-wave i {
+/* Idle: hide structural bars (photo art shows). Live: .is-live rules win with !important. */
+.jcc-talk:not(.is-live):not([data-voice-live="1"]) .jcc-talk-wave i {
   display: none !important;
+  animation: none !important;
 }
 
 .jcc-briefing {

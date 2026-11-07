@@ -269,10 +269,16 @@ class CommandCenterViewProvider {
     const threats = data.threats || { total: 0, errors: 0, warnings: 0, hints: 0, items: [] };
     const folders = vscode.workspace.workspaceFolders || [];
     const ws = folders.length ? folders.map((f) => f.name).join(", ") : "No folder open";
+    const editors = vscode.window.visibleTextEditors.length;
     const ram = this._ramPct ?? this._memPct();
     const cpu = this._cpuPct ?? null;
     const disk = this._diskPct ?? null;
     const host = os.hostname();
+    const systemStatus = threats.errors
+      ? { label: "DEGRADED", tone: "danger" }
+      : threats.warnings
+        ? { label: "WARN", tone: "warn" }
+        : { label: "LIVE", tone: "ok" };
     const platform = `${os.type()} ${os.release()}`;
     const ver = this.context.extension.packageJSON.version || "1.0.0";
     const uptime = this._uptime();
@@ -701,7 +707,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
   <div class="top">
     <img src="${icon}" alt=""/>
     <div class="brand">CORTANA Command Center</div>
-    <div class="pill">Optimal</div>
+    <div class="pill">SYSTEM · ${escapeHtml(systemStatus.label)}</div>
     <div class="clock-wrap">
       <div class="clock" id="clock">—</div>
       <div class="date" id="date">—</div>
@@ -712,7 +718,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     <button class="active" data-panel="home">Command Center</button>
     <button data-panel="core">Workstation</button>
     <button data-panel="agents">Agents</button>
-    <button data-panel="tasks">Tasks <span class="badge">3</span></button>
+    <button data-panel="tasks">Tasks</button>
     <button data-panel="map" id="navMap">File Map</button>
     <button data-panel="threats">Threats <span class="badge">${threats.total || 0}</span></button>
     <button data-panel="calendar">Calendar</button>
@@ -739,31 +745,27 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card keep">
         <h2>Workstation Overview</h2>
         <div class="row"><span class="k">Assistant</span><span class="v ok">${escapeHtml(assistant)}</span></div>
-        <div class="row"><span class="k">Voice</span><span class="v ok">Online</span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">Standby</span></div>
         <div class="row"><span class="k">Mapped files</span><span class="v cyan">${stats.files || 0}</span></div>
         <div class="row"><span class="k">Open editors</span><span class="v cyan">${editors}</span></div>
         <div class="row"><span class="k">Threats</span><span class="v ${threats.errors ? "danger" : threats.warnings ? "warn" : "ok"}">${threats.total || 0}</span></div>
-        <div class="row"><span class="k">System</span><span class="v ok">Optimal</span></div>
+        <div class="row"><span class="k">System</span><span class="v ${systemStatus.tone}">${escapeHtml(systemStatus.label)}</span></div>
       </div>
 
       <div class="card">
         <h2>Active agents</h2>
-        <div class="agents">
-          ${agentCard("<>", "Coding Agent", true)}
-          ${agentCard("R", "Research Agent", true)}
-          ${agentCard("M", "Memory Agent", false)}
-          ${agentCard("B", "Browser Agent", false)}
-          ${agentCard("T", "Task Agent", false)}
-          ${agentCard("S", "System Agent", false)}
-        </div>
+        <div class="empty">Awaiting data — no live agent roster wired yet.</div>
       </div>
 
       <div class="card keep">
         <h2>Mission timeline</h2>
         <div class="timeline">
-          <div class="tl done"><div class="t">Workspace indexed</div><div class="m">Done · ${stats.files || 0} files</div></div>
-          <div class="tl"><div class="t">Suit ${escapeHtml(suit.label)} online</div><div class="m">PRO features unlocked locally</div></div>
-          <div class="tl"><div class="t">Deep-work block: Voice pipeline</div><div class="m">Talk to CORTANA when ready</div></div>
+          ${
+            stats.files
+              ? `<div class="tl done"><div class="t">Workspace indexed</div><div class="m">${stats.files || 0} files · ${stats.folders || 0} dirs</div></div>`
+              : `<div class="empty">Awaiting data</div>`
+          }
+          <div class="tl"><div class="t">Suit ${escapeHtml(suit.label)}</div><div class="m">Selected locally</div></div>
         </div>
       </div>
 
@@ -782,10 +784,10 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card">
         <h2>Live intelligence feed</h2>
         <div class="feed">
-          <div class="item ok">${escapeHtml(assistant)} Command Center online.<span>Status · Optimal · ${escapeHtml(suit.label)}</span></div>
-          <div class="item">File Map indexed this workspace.<span>${stats.files || 0} files · ${stats.folders || 0} dirs</span></div>
-          <div class="item ${threats.errors ? "danger" : threats.warnings ? "warn" : "ok"}">Threat scan: ${threats.errors || 0} errors · ${threats.warnings || 0} warnings.<span>Threat Fix Hints</span></div>
-          <div class="item">Data streams + arc pulse FX active in HUD.<span>Glow ${glow}×</span></div>
+          <div class="item ok">${escapeHtml(assistant)} Command Center online.<span>Status · ${escapeHtml(systemStatus.label)} · ${escapeHtml(suit.label)}</span></div>
+          <div class="item">File Map<span>${stats.files || 0} files · ${stats.folders || 0} dirs · ${escapeHtml(ws)}</span></div>
+          <div class="item ${threats.errors ? "danger" : threats.warnings ? "warn" : "ok"}">Threat scan: ${threats.errors || 0} errors · ${threats.warnings || 0} warnings.<span>Problems panel</span></div>
+          <div class="item">Git · ${escapeHtml(git.branch)}<span>${escapeHtml(git.detail)}</span></div>
         </div>
         <div class="streams" id="streams"></div>
       </div>
@@ -819,14 +821,8 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card">
         <h2>LLM / agent status</h2>
         <div class="llm">
-          <div class="chip on"><span>Auto</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Composer 2.5</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Grok 4.7</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Grok 4.6</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Claude Opus 5.5</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Claude Sonnet 5.5</span><span class="st">Available</span></div>
-          <div class="chip on"><span>GPT-5.6 Sol</span><span class="st">Available</span></div>
-          <div class="chip on"><span>Gemini 4 Argon</span><span class="st">Available</span></div>
+          <div class="chip on"><span>Cursor</span><span class="st">Host IDE</span></div>
+          <div class="chip"><span>Models</span><span class="st">—</span></div>
         </div>
       </div>
     </div>
@@ -863,14 +859,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     <div class="grid">
       <div class="card">
         <h2>Agent roster</h2>
-        <div class="agents">
-          ${agentCard("<>", "Coding", true)}
-          ${agentCard("R", "Research", true)}
-          ${agentCard("M", "Memory", false)}
-          ${agentCard("B", "Browser", false)}
-          ${agentCard("T", "Task", false)}
-          ${agentCard("S", "System", false)}
-        </div>
+        <div class="empty">Awaiting data — no live agent roster wired yet.</div>
       </div>
     </div>
   </div>
@@ -879,11 +868,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     <div class="grid">
       <div class="card keep">
         <h2>Tasks</h2>
-        <div class="timeline">
-          <div class="tl done"><div class="t">Install CORTANA Command Center</div><div class="m">Done</div></div>
-          <div class="tl"><div class="t">Apply suit theme</div><div class="m">Workstation → Suit Modes</div></div>
-          <div class="tl"><div class="t">Talk to CORTANA</div><div class="m">Bottom bar / Start Voice Chat</div></div>
-        </div>
+        <div class="empty">Awaiting data</div>
       </div>
     </div>
   </div>
@@ -972,7 +957,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     </div>
     <button class="cta" id="btnCta">
       <span class="wavebar"><i></i><i></i><i></i><i></i><i></i></span>
-      <span>Talk to CORTANA<span class="subline" id="listenHint">I am listening…</span></span>
+      <span>Talk to CORTANA<span class="subline" id="listenHint">Tap to speak</span></span>
       <span class="wavebar"><i></i><i></i><i></i><i></i><i></i></span>
     </button>
   </div>
