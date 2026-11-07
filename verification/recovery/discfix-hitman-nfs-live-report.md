@@ -1,6 +1,6 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 ~22:12 local
+Updated: 2026-11-06 ~22:26 local
 
 ## Status
 
@@ -37,3 +37,7 @@ Updated: 2026-11-06 ~22:12 local
 ## Hard rules held
 
 No CNK Alchemy · no CdSync wake · no host_signal(2) · no commit
+
+## Heartbeat 22:26
+
+Idle watch: board still idle_r4_pass_awaiting_parent, proposed_change=null, R5 still_gated. No soak request. No commit. No CdSync wake.
