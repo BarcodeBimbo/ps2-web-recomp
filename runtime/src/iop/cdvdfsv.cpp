@@ -177,18 +177,55 @@ void read_to_ee(std::uint32_t sector, std::uint32_t count, std::uint32_t dst, st
             set_ee32(a1 + 8u, dest1);
             set_ee32(a1 + 12u, dest2);
         }
-        // If EE already armed a dest, feed this sector through AlignReadBuffer
-        // style: count at +0, payload at +16 (max 64B before +80). For full
-        // sectors the real payload is at bounce dst; when dest1 looks like a
-        // heap buffer, also memcpy the sector there directly.
+        // Sony AlignReadBuffer contract: lengths at +0/+4 must be non-zero when
+        // dest1/dest2 are fed. Previously we restored dest pointers after memset
+        // but left b1len/b2len at 0, so the EE callback saw a dest with no count.
+        bool fed_dest = false;
         if (dest1 > 0x100000u && dest1 + nbytes < ps2::kRamSize && write_dst &&
             write_dst + nbytes <= ps2::kRamSize) {
             std::memcpy(ps2::g_ram + dest1, ps2::g_ram + (write_dst & (ps2::kRamSize - 1)), nbytes);
             ps2::watch_span(dest1, nbytes, "cdvd:ee1-dest");
+            if (a1 + 4u <= ps2::kRamSize) set_ee32(a1, nbytes);
+            fed_dest = true;
             static int s_d1 = 0;
             if (s_d1 < 8) {
-                std::fprintf(stderr, "[cdvdfsv] ee1 dest1=0x%X <- 0x%X (%u B)\n", dest1, write_dst, nbytes);
+                std::fprintf(stderr, "[cdvdfsv] ee1 dest1=0x%X <- 0x%X (%u B) b1len=%u\n", dest1, write_dst, nbytes,
+                             nbytes);
                 ++s_d1;
+            }
+        }
+        if (dest2 > 0x100000u && dest2 + nbytes < ps2::kRamSize && write_dst &&
+            write_dst + nbytes <= ps2::kRamSize && dest2 != dest1) {
+            std::memcpy(ps2::g_ram + dest2, ps2::g_ram + (write_dst & (ps2::kRamSize - 1)), nbytes);
+            ps2::watch_span(dest2, nbytes, "cdvd:ee1-dest2");
+            if (a1 + 8u <= ps2::kRamSize) set_ee32(a1 + 4u, nbytes);
+            fed_dest = true;
+        }
+        // Unaligned bounce dst without an EE-staged dest: stage head/tail in the
+        // readee block (payload at +16, optional tail at +80) so AlignReadBuffer
+        // can finish copy-out. Full sector bytes already live at write_dst.
+        if (!fed_dest && write_dst && nbytes && a1 + 16u <= ps2::kRamSize) {
+            const std::uint32_t mis = write_dst & 0xFu;
+            if (mis != 0) {
+                const std::uint32_t head = std::min(nbytes, 16u - mis);
+                const std::uint32_t src = write_dst & (ps2::kRamSize - 1);
+                set_ee32(a1, head);
+                const std::uint32_t head_copy = std::min(head, 64u);
+                if (a1 + 16u + head_copy <= ps2::kRamSize)
+                    std::memcpy(ps2::g_ram + a1 + 16u, ps2::g_ram + src, head_copy);
+                const std::uint32_t end_mis = (write_dst + nbytes) & 0xFu;
+                if (nbytes > head && end_mis != 0 && a1 + 8u <= ps2::kRamSize) {
+                    const std::uint32_t tail = end_mis;
+                    set_ee32(a1 + 4u, tail);
+                    if (a1 + 80u + tail <= ps2::kRamSize && src + nbytes >= tail)
+                        std::memcpy(ps2::g_ram + a1 + 80u, ps2::g_ram + src + nbytes - tail, tail);
+                }
+                static int s_un = 0;
+                if (s_un < 8) {
+                    std::fprintf(stderr, "[cdvdfsv] readee unaligned dst=0x%X head=%u tail=%u\n", write_dst, head,
+                                 (nbytes > head && end_mis) ? end_mis : 0u);
+                    ++s_un;
+                }
             }
         }
         ps2::watch_span(a1, static_cast<std::uint32_t>(n), "cdvd:readee");

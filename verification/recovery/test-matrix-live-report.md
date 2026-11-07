@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~22:03 local
+Updated: 2026-11-06 ~22:09 local
 
 ## Gate cycle 1 — FAIL
 
@@ -165,4 +165,70 @@ Re-post **unbundled `R3_readee_length_harden`** (readee lengths only; no sceCdSy
 ### Matrix posture
 
 Watching board for the R3 re-post.
+
+
+---
+
+## Gate cycle 5 — PASS (unbundled R3 allowed to apply)
+
+Disc-fix re-posted `R3_readee_length_harden` after R1+R2 clears. No R4. No WaitSema rewrite. No CNK.
+
+### Prove-before-swap
+
+R1 and R2 are cleared_with_evidence → unbundled R3 code change is allowed.
+
+### Five-phase pre-apply smokes
+
+| Game | Log | Frames | Prims | Disc | SIF end | Alchemy | Phases |
+|------|-----|--------|-------|------|---------|---------|--------|
+| Hitman | matrix-c5-hitman-600 | 600 | 78118 | 19 searches / 288 streams | 0 wait | none | all pass |
+| NFS | matrix-c5-nfs-600 | 600 | 49750 | 67 streams | 0 wait | none | all pass |
+
+Leftover WaitSema 2 remains (durable parking — OK).
+
+### Apply
+
+`allow_discfix_apply`: **true**. Disc-fix may land readee length harden in `cdvdfsv.cpp` only (b1len/b2len + unaligned head/tail). Do **not** add sceCdSync wake. Do **not** pulse semas. No commit until post-apply verify is green.
+
+### Ranked locks now
+
+- R1 / R2 — cleared
+- R3 — **allowed_apply_pending_verify**
+- R4 / R5 — still gated
+
+### Next
+
+Disc-fix applies the patch, then posts verify evidence (or matrix will re-smoke both games).
+
+
+---
+
+## Gate cycle 6 — PASS (R3 post-apply verified)
+
+Disc-fix applied unbundled readee-length harden and posted `R3_post_apply_verify`.
+
+### Verified
+
+| | Hitman (`discfix-r3-hitman-600`) | NFS (`discfix-r3-nfs-600`) |
+|--|--|--|
+| Frames / prims | 600 / 127974 | 600 / 208253 |
+| Unaligned readee | `dst=0x52C098 head=8 tail=8` | n/a this run |
+| curReadPos exact | 35/35 | continues matching |
+| SIF end | 0 packets wait | 0 packets wait |
+| Alchemy | none | none |
+| Five phases | all pass | all pass |
+
+R4 not unlocked. No sceCdSync wake. No `host_signal(2)`.
+
+### Ranked locks now
+
+- R1 / R2 / R3 — cleared / verified
+- R4 CdSync — still gated
+- R5 pad/sound — still gated
+
+`allow_discfix_apply`: **false** (verify-only). Joint commit OK when disc-fix is ready.
+
+### Matrix posture
+
+Watching for any next proposal (R4 only if separately posted).
 

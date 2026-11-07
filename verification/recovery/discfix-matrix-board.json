@@ -1,121 +1,113 @@
 {
-  "updated": "2026-11-06T22:03:30-05:00",
+  "updated": "2026-11-06T22:10:30-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 4,
-  "phase": "matrix_verdict",
+  "step": 6,
+  "phase": "watching",
   "prior_cycles": [
-    {
-      "step": 1,
-      "id": "R3_generic_complete_path",
-      "verdict": "fail",
-      "why": "R1/R2 locked; bundled R4"
-    },
-    {
-      "step": 2,
-      "id": "R1_clear_with_evidence",
-      "verdict": "pass",
-      "why": "SIF drains to 0; R1 cleared_with_evidence"
-    },
-    {
-      "step": 3,
-      "id": "R3_readee_length_harden",
-      "verdict": "fail",
-      "why": "R2 still gated — prove-before-swap blocks any R3 code until R2 clear"
-    }
+    {"step": 1, "id": "R3_generic_complete_path", "verdict": "fail"},
+    {"step": 2, "id": "R1_clear_with_evidence", "verdict": "pass"},
+    {"step": 3, "id": "R3_readee_length_harden", "verdict": "fail", "why": "R2 gated"},
+    {"step": 4, "id": "R2_clear_with_evidence", "verdict": "pass"},
+    {"step": 5, "id": "R3_readee_length_harden", "verdict": "pass", "why": "allow_discfix_apply; behavioral patch landed"}
   ],
   "discfix": {
-    "status": "proposed",
+    "status": "idle_after_r3_verify",
+    "applied": {
+      "id": "R3_readee_length_harden",
+      "file": "runtime/src/iop/cdvdfsv.cpp",
+      "what": "Set readee b1len/b2len when dest1/dest2 fed; unaligned head/tail (+16/+80) when bounce dst misaligned and no staged dest",
+      "not_touched": ["cdvd.cpp sceCdSync wake", "WaitSema", "host_signal", "CNK Alchemy"]
+    },
     "proposed_change": {
-      "id": "R2_clear_with_evidence",
-      "summary": "Clear R2 (WaitSema fidelity) with ownership evidence only — no WaitSema rewrite, no host_signal(2), no code change. Leftover sema 2 on Hitman+NFS is durable libcdvd-class parking (init=0 max=255, create once, never deleted). Not a missing wake on the CDVD complete path. Unlocks prove-before-swap so unbundled R3 can be re-posted next.",
+      "id": "R3_post_apply_verify",
+      "summary": "Verify-only: mark R3 landed and stable from post-patch 600f smokes on both games. No new code. After pass, R4 stays gated until a separate proposal.",
       "files": [],
       "code_change": false,
       "details": [
-        "Do NOT change WaitSema / iSignalSema semantics.",
-        "Do NOT host_signal(2) or any CNK-style pulse (16/54/55).",
-        "Do NOT land R3 or R4 in this step.",
-        "Ask matrix to mark R2_WaitSema_fidelity cleared_with_evidence / not-needed for Hitman+NFS disc-fix, same style as R1 clear.",
-        "After R2 clear pass, disc-fix will re-post unbundled R3_readee_length_harden (readee lengths only; no R4)."
+        "Confirm Hitman+NFS post-R3 smokes: frame limit, prims move, SIF drain 0, no Alchemy.",
+        "Confirm Hitman unaligned readee path fired: dst=0x52C098 head=8 tail=8.",
+        "Confirm curReadPos still matches before complete_call.",
+        "Do NOT unlock R4 or land sceCdSync wake in this cycle.",
+        "Do NOT host_signal(2)."
       ],
-      "success_bar": "Matrix clears R2 lock; no binary change this cycle."
+      "success_bar": "Matrix marks R3 verified / cleared_apply; allow next ranked item later."
     },
     "evidence": {
-      "ownership_report": "verification/recovery/waitsema-createsema-trace-live-report.md",
-      "ownership_logs": [
-        "logs/waitsema-createsema-hitman-2k.log",
-        "logs/waitsema-createsema-nfs-2k.log"
-      ],
-      "sema_2": {
-        "class": "durable libcdvd-class parking",
+      "post_apply_smokes": {
         "hitman": {
-          "init": 0,
-          "max": 255,
-          "creates": 1,
-          "deletes": 0,
-          "create_ra": "0x001038CC",
-          "wait_ra": "0x001037F8"
+          "log": "logs/discfix-r3-hitman-600.log",
+          "frames": 600,
+          "prims": 127974,
+          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
+          "unaligned": "[cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8",
+          "curReadPos": "complete_after_read matches continue",
+          "leftover_sema": [2, 7],
+          "alchemy": "none"
         },
         "nfs": {
-          "init": 0,
-          "max": 255,
-          "creates": 1,
-          "deletes": 0,
-          "create_ra": "0x00495EA8",
-          "wait_ra": "0x00495DE8"
-        },
-        "id_coincidence": "Same numeric id, different create RAs — not one shared object and not temp RPC reuse",
-        "contrast_temp_rpc": "Hitman sema 13 had 140 create/delete cycles; sema 2 has zero deletes"
-      },
-      "private_leftovers": {
-        "hitman": {"7": "init=0 max=1 create_ra 0x001008FC"},
-        "nfs": {
-          "17_23_32": "factory create_ra 0x00490224 init=0 max=1",
-          "29": "create_ra 0x0046A208 max=3",
-          "30": "final create_ra 0x0046B748 max=253"
+          "log": "logs/discfix-r3-nfs-600.log",
+          "frames": 600,
+          "prims": 208253,
+          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
+          "curReadPos": "complete_after_read matches continue",
+          "leftover_sema": [2, 17, 23, 29, 30, 32],
+          "alchemy": "none"
         }
       },
-      "why_not_rewrite": [
-        "Blind host_signal(2) would fake CD cmd completion — unsafe",
-        "Leftovers are side-thread parks after prims already move and SIF drains",
-        "R2 fidelity rewrite is not the active disc-fix blocker; observe-only clear matches R1 pattern"
-      ],
-      "r1_status": "cleared_with_evidence",
-      "r3_note": "Behavioral readee-length patch still waiting; will re-propose after this clear",
-      "r4_note": "Not bundled",
-      "quarantine": "No CNK Alchemy pulses"
+      "rebuild": {
+        "hitman": "logs/discfix-r3-rebuild-hitman.log",
+        "nfs": "logs/discfix-r3-rebuild-nfs.log",
+        "note": "Sequential -j2; both linked with b1len string present"
+      }
     },
-    "files_touched": []
+    "files_touched": ["runtime/src/iop/cdvdfsv.cpp"]
   },
   "matrix": {
     "status": "complete",
     "current_phase": "sustained_run",
     "verdict": "pass",
-    "notes": "PASS R2_clear_with_evidence. Verified ownership logs: Hitman/NFS sema 2 create once init=0 max=255 delete never; create_ra Hitman 0x001038CC / NFS 0x00495EA8 (ID coincidence); end dump waiters=1; SIF drains to 0; prims move (Hitman 586k@2k, NFS 1.15M@2k); no Alchemy; no host_signal. R2 fidelity rewrite is not the active disc-fix blocker — cleared_with_evidence / not-needed. Never host_signal(2). R3 now unblocked for a fresh unbundled readee-length proposal (still no R4). allow_discfix_apply true for this no-code clear only. Quarantine holds. No commit.",
+    "notes": "PASS R3_post_apply_verify. Independent check of discfix-r3-*-600.log: Hitman 600f/127974 prims, unaligned readee dst=0x52C098 head=8 tail=8 fired, curReadPos 35/35 exact, SIF 0, phases all pass, leftover sema 2/7, no Alchemy. NFS 600f/208253 prims, 60 streams, SIF 0, phases all pass, leftover sema 2/17/23/29/30/32, no Alchemy. Patch scoped to cdvdfsv readee lengths only — R4 not unlocked. R3_readee = verified_apply. allow_discfix_apply false (verify-only). Quarantine holds. Commit still only when jointly stable — matrix OK with R3 verified if disc-fix wants a later commit after any soak.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
-    "evidence_spotcheck": {
-      "hitman_log": "logs/waitsema-createsema-hitman-2k.log",
-      "nfs_log": "logs/waitsema-createsema-nfs-2k.log",
-      "hitman_sema2": "creates=1 deletes=0 init=0 max=255 create_ra=0x001038CC",
-      "nfs_sema2": "creates=1 deletes=0 init=0 max=255 create_ra=0x00495EA8",
-      "sif_end_both": "0 packets wait",
-      "alchemy": "none"
+    "phase_results": {
+      "hitman_bm": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/discfix-r3-hitman-600.log",
+        "frames": 600,
+        "prims": 127974,
+        "unaligned": "dst=0x52C098 head=8 tail=8",
+        "curReadPos_exact": "35/35"
+      },
+      "nfs_mw": {
+        "boot": "pass",
+        "menu": "pass",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/discfix-r3-nfs-600.log",
+        "frames": 600,
+        "prims": 208253
+      }
     },
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "cleared_with_evidence",
-      "R3_readee": "unlocked_for_unbundled_proposal",
+      "R3_readee": "verified_apply",
       "R4_CdSync": "still_gated",
       "R5_pad_sound": "still_gated"
     },
-    "allow_discfix_apply": true
+    "allow_discfix_apply": false
   },
-  "ranked_rewrites_gated": ["R3_readee", "R4_CdSync", "R5_pad_sound"],
-  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity"],
+  "ranked_rewrites_gated": ["R4_CdSync", "R5_pad_sound"],
+  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "No commits until stable build; then commit freely."
+  "commit_policy": "No commits until stable build; then commit freely. R3 verified — joint commit OK when disc-fix ready."
 }

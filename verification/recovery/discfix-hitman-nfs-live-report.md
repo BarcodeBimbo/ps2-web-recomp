@@ -1,45 +1,45 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 ~22:02 local
+Updated: 2026-11-06 ~22:08 local
 
 ## Status
 
-**Alive.** Cycle 3 R3 **FAIL** (R2 still gated). Posted cycle 4 **`R2_clear_with_evidence`** (no code). Waiting on matrix. No behavioral CDVD patch applied.
-
-## Confirmed (parallel)
-
-| | Hitman BM | NFS MW |
-|--|--|--|
-| ID | `a2116d2ac08a7be4db4e8455ad58d2e5` | `60c82f4a111da300ac23bbec85272788` |
-| Path | N 0x1 → `read_to_ee` → `complete_call` | same |
-| Leftover WaitSema | 2, 7 | 2, 17/23/29/30/32 |
-| Alchemy | none | none |
+**Alive.** R3 readee-length harden **applied** and both games re-smoked green. Posted cycle 6 `R3_post_apply_verify` for matrix. No commit yet (waiting post-verify).
 
 ## Board cycles
 
-1. **FAIL** — bundled R3 (+ R4) while R1/R2 locked  
-2. **PASS** — `R1_clear_with_evidence` (SIF drains to 0)  
-3. **FAIL** — `R3_readee_length_harden` blocked: R2 still gated (prove-before-swap). CurReadPos evidence accepted; do not apply patch.  
-4. **Posted** — `R2_clear_with_evidence` (observe-only)
+1. FAIL — bundled R3 (+R4)  
+2. PASS — R1 clear (SIF drain)  
+3. FAIL — R3 blocked by R2  
+4. PASS — R2 clear (sema 2 durable parking; never host_signal(2))  
+5. PASS — R3 allow → **patched `cdvdfsv.cpp`**  
+6. **Posted** — post-apply verify (no new code)
 
-## R2 clear evidence (cycle 4)
+## What landed (R3)
 
-From `waitsema-createsema-trace-live-report.md` + ownership logs:
+In `runtime/src/iop/cdvdfsv.cpp` `read_to_ee`:
 
-- Sema **2** on both = durable libcdvd-class parking (init=0, max=255, create once, never deleted)
-- Different create RAs → ID coincidence, not one shared object / not temp RPC
-- **Never** `host_signal(2)` — would fake CD cmd completion
-- Hitman 7 / NFS 17+ = per-game private leftovers
+- When dest1/dest2 are fed, write matching **b1len/b2len**
+- When bounce dst is **unaligned** and no staged dest, stage head/tail in readee (+16 / +80)
+- Kept curReadPos-before-complete + HLE evidence logs  
+- Did **not** touch cdvd.cpp CdSync wake, WaitSema, or CNK Alchemy
 
-Ask matrix to clear R2 the same way as R1, then disc-fix will re-post unbundled R3.
+## Post-apply smokes (600f)
 
-## curReadPos (still true)
+| | Hitman | NFS |
+|--|--|--|
+| Log | `logs/discfix-r3-hitman-600.log` | `logs/discfix-r3-nfs-600.log` |
+| Prims | 127974 | 208253 |
+| Frame limit | yes | yes |
+| SIF end | 0 packets | 0 packets |
+| Unaligned | `dst=0x52C098 head=8 tail=8` | n/a this run |
+| Alchemy | none | none |
+| Leftover sema 2 | still (durable parking) | still |
 
-Hitman 35/35 exact before complete; NFS matches. Remaining R3 gap = readee length fields / unaligned dst — waiting for R2 clear.
+## Next
+
+Matrix verify of R3 apply. Then a separate cycle may propose R4 CdSync (not bundled here). Commit only after stable verify.
 
 ## Hard rules held
 
-- No CNK Alchemy on Hitman/NFS  
-- No R4 with R3  
-- No WaitSema rewrite / no host_signal(2)  
-- No commit yet
+No CNK Alchemy · no R4 with R3 · no host_signal(2) · no commit yet
