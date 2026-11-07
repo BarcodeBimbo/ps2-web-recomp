@@ -14,13 +14,13 @@ const fsp = fs.promises;
 const path = require("path");
 const crypto = require("crypto");
 
-const MARKER_START = "CORTANA-INJECT-START";
-const MARKER_END = "CORTANA-INJECT-END";
-const STYLE_ID = "CORTANA-workbench-css";
-const BOOT_STAGED_NAME = "CORTANA-boot-splash.png";
+const MARKER_START = "JARVIS-INJECT-START";
+const MARKER_END = "JARVIS-INJECT-END";
+const STYLE_ID = "jarvis-workbench-css";
+const BOOT_STAGED_NAME = "jarvis-boot-splash.png";
 /** Authoritative boot still: Command Center frame (same as reference-command-center.png). */
 const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
-const GLOBAL_BACKUP_NAME = "workbench.CORTANA.pristine.html";
+const GLOBAL_BACKUP_NAME = "workbench.jarvis.pristine.html";
 
 const CSS_REL_PATHS = [
   path.join("media", "inject", "tokens.css"),
@@ -69,7 +69,7 @@ function formatWriteError(err) {
   if (code === "EACCES" || code === "EPERM") {
     return (
       "EACCES: Cannot write Cursor workbench files under Program Files. " +
-      "Run this script (or Cursor) as Administrator once to Enable CORTANA injection."
+      "Run this script (or Cursor) as Administrator once to Enable JARVIS injection."
     );
   }
   return err.message || String(err);
@@ -80,7 +80,7 @@ function inferAppRoot(workbenchPath) {
 }
 
 function backupBesideWorkbench(workbenchPath, uuid) {
-  return path.join(path.dirname(workbenchPath), `workbench.CORTANA.${uuid}.bak.html`);
+  return path.join(path.dirname(workbenchPath), `workbench.jarvis.${uuid}.bak.html`);
 }
 
 function stagedSplashPath(workbenchPath) {
@@ -97,7 +97,7 @@ async function safeUnlink(filePath) {
 
 async function writeTextFile(target, content) {
   const dir = path.dirname(target);
-  const tmp = path.join(dir, `.CORTANA-write-${process.pid}-${Date.now()}.tmp`);
+  const tmp = path.join(dir, `.jarvis-write-${process.pid}-${Date.now()}.tmp`);
   try {
     await fsp.writeFile(tmp, content, "utf8");
     try {
@@ -138,9 +138,9 @@ function isAlreadyPatched(html) {
 
 function parseMarkers(html) {
   const startRe =
-    /<!--\s*CORTANA-INJECT-START\s+uuid=([^\s]+)\s+cursorVersion=([^\s]+)\s+cursorCommit=([^\s>]*)\s*-->/;
-  const endRe = /<!--\s*CORTANA-INJECT-END\s*-->/;
-  const styleRe = /<style\s+id=["']CORTANA-workbench-css["'][\s\S]*?<\/style>/i;
+    /<!--\s*JARVIS-INJECT-START\s+uuid=([^\s]+)\s+cursorVersion=([^\s]+)\s+cursorCommit=([^\s>]*)\s*-->/;
+  const endRe = /<!--\s*JARVIS-INJECT-END\s*-->/;
+  const styleRe = /<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>/i;
   const startMatch = html.match(startRe);
   const endMatch = html.match(endRe);
   const styleMatch = html.match(styleRe);
@@ -163,9 +163,9 @@ function stripPatch(html) {
     return `${html.slice(0, from)}${html.slice(to)}`.replace(/\n{3,}/g, "\n\n");
   }
   return html
-    .replace(/<!--\s*CORTANA-INJECT-START[\s\S]*?-->\s*/g, "")
-    .replace(/<style\s+id=["']CORTANA-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
-    .replace(/<!--\s*CORTANA-INJECT-END\s*-->\s*/g, "")
+    .replace(/<!--\s*JARVIS-INJECT-START[\s\S]*?-->\s*/g, "")
+    .replace(/<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
+    .replace(/<!--\s*JARVIS-INJECT-END\s*-->\s*/g, "")
     .replace(/\n{3,}/g, "\n\n");
 }
 
@@ -221,10 +221,10 @@ async function readCssBundle(extRoot, bootMs) {
   // Vars only — boot.css owns multi-layer PNG + progress + particle stacks.
   parts.push(
     [
-      "/* === CORTANA staged splash binding === */",
+      "/* === jarvis staged splash binding === */",
       `:root {`,
-      `  --CORTANA-boot-splash: url(./${BOOT_STAGED_NAME});`,
-      `  --CORTANA-boot-ms: ${bootMs}ms;`,
+      `  --jarvis-boot-splash: url(./${BOOT_STAGED_NAME});`,
+      `  --jarvis-boot-ms: ${bootMs}ms;`,
       `}`,
     ].join("\n")
   );
@@ -238,7 +238,7 @@ function resolveExtRoot() {
     process.env.USERPROFILE || "",
     ".cursor",
     "extensions",
-    "ps2recomp-local.jarvis-cursor-ui-0.5.0"
+    "ps2recomp-local.jarvis-cursor-ui-0.5.2"
   );
   const source = path.join("C:", "PS2Recomp", "jarvis-cursor-ui");
   if (fs.existsSync(path.join(installed, "src", "workbenchInject.js"))) return installed;
@@ -280,7 +280,7 @@ function resolveBootMs() {
         .replace(/\/\*[\s\S]*?\*\//g, "")
         .replace(/^\s*\/\/.*$/gm, "");
       const j = JSON.parse(stripped);
-      const n = Number(j["CORTANA.injection.bootMs"]);
+      const n = Number(j["jarvis.injection.bootMs"]);
       if (Number.isFinite(n) && n >= 0) return Math.min(10000, Math.round(n));
     }
   } catch {
@@ -310,7 +310,7 @@ async function main() {
     appRoot,
     globalStorage,
     bootMs,
-    isAdminProbe: process.env.CORTANA_ENABLE_ELEVATED === "1",
+    isAdminProbe: process.env.JARVIS_ENABLE_ELEVATED === "1",
   };
 
   console.log(JSON.stringify({ phase: "start", ...report.meta }, null, 2));
