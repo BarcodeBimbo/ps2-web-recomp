@@ -1,267 +1,267 @@
-/* JARVIS-HEALTH: tokens+boot+hud */
-/* JARVIS — Phase 6 injection design tokens
-   Boot splash authority: media/reference-command-center-2.png (staged as jarvis-boot-splash.png)
+/* CORTANA-HEALTH: tokens+boot+hud */
+/* CORTANA — Phase 6 injection design tokens
+   Boot splash authority: media/reference-command-center-2.png (staged as cortana-boot-splash.png)
    Archive (optional): media/reference-calibrating-splash.png
    CC chrome authority: media/reference-command-center.png / -2.png (VISUAL-SPEC §2.1)
    Studio polish: glass depth + arc-reactor pulse cadence */
 
 :root,
 .monaco-workbench,
-.monaco-workbench.jarvis-inject,
-body.jarvis-inject {
+.monaco-workbench.cortana-inject,
+body.cortana-inject {
   /* —— Void / surfaces (CC deep navy) —— */
-  --jarvis-bg: #050d16;
-  --jarvis-bg-deep: #020817;
-  --jarvis-bg-elevated: #091d35;
-  --jarvis-bg-panel: #000f24;
-  --jarvis-bg-sidebar: #001020;
-  --jarvis-bg-activity: #030a12;
-  --jarvis-bg-editor: #050d16;
-  --jarvis-bg-input: #021018;
-  --jarvis-bg-hover: rgba(0, 212, 255, 0.07);
-  --jarvis-bg-active: rgba(0, 212, 255, 0.14);
-  --jarvis-bg-void: #020817;
-  --jarvis-bg-well: #061729;
+  --cortana-bg: #050d16;
+  --cortana-bg-deep: #020817;
+  --cortana-bg-elevated: #091d35;
+  --cortana-bg-panel: #000f24;
+  --cortana-bg-sidebar: #001020;
+  --cortana-bg-activity: #030a12;
+  --cortana-bg-editor: #050d16;
+  --cortana-bg-input: #021018;
+  --cortana-bg-hover: rgba(0, 212, 255, 0.07);
+  --cortana-bg-active: rgba(0, 212, 255, 0.14);
+  --cortana-bg-void: #020817;
+  --cortana-bg-well: #061729;
 
   /* —— Cyan spectrum (CC sampled) —— */
-  --jarvis-cyan: #00d4ff;
-  --jarvis-cyan-bright: #4ad1f1;
-  --jarvis-cyan-mid: #40a7ca;
-  --jarvis-cyan-soft: #00f2ff;
-  --jarvis-cyan-brand: #00d9ff;
-  --jarvis-cyan-clock: #4ad1f1;
-  --jarvis-cyan-dim: #0c79a0;
-  --jarvis-cyan-muted: #57a3c3;
-  --jarvis-cyan-deep: #0a3852;
-  --jarvis-cyan-ghost: rgba(0, 212, 255, 0.16);
-  --jarvis-cyan-wash: rgba(0, 212, 255, 0.1);
+  --cortana-cyan: #00d4ff;
+  --cortana-cyan-bright: #4ad1f1;
+  --cortana-cyan-mid: #40a7ca;
+  --cortana-cyan-soft: #00f2ff;
+  --cortana-cyan-brand: #00d9ff;
+  --cortana-cyan-clock: #4ad1f1;
+  --cortana-cyan-dim: #0c79a0;
+  --cortana-cyan-muted: #57a3c3;
+  --cortana-cyan-deep: #0a3852;
+  --cortana-cyan-ghost: rgba(0, 212, 255, 0.16);
+  --cortana-cyan-wash: rgba(0, 212, 255, 0.1);
 
   /* —— Text —— */
-  --jarvis-text: #becedb;
-  --jarvis-text-bright: #e8f7ff;
-  --jarvis-text-dim: #7a8fa3;
-  --jarvis-text-muted: #52565e;
-  --jarvis-text-calibrating: #b9ebf4;
-  --jarvis-text-percent: #656c73;
-  --jarvis-subtitle: #464950;
+  --cortana-text: #becedb;
+  --cortana-text-bright: #e8f7ff;
+  --cortana-text-dim: #7a8fa3;
+  --cortana-text-muted: #52565e;
+  --cortana-text-calibrating: #b9ebf4;
+  --cortana-text-percent: #656c73;
+  --cortana-subtitle: #464950;
 
   /* —— Borders / glass (CC glassmorphism) —— */
-  --jarvis-border: rgba(0, 212, 255, 0.22);
-  --jarvis-border-strong: rgba(0, 212, 255, 0.4);
-  --jarvis-border-subtle: rgba(0, 212, 255, 0.14);
-  --jarvis-border-solid: #0a3852;
-  --jarvis-glass: rgba(0, 15, 36, 0.82);
-  --jarvis-glass-strong: rgba(0, 10, 28, 0.94);
-  --jarvis-glass-soft: rgba(0, 18, 40, 0.55);
-  --jarvis-glass-edge: rgba(0, 212, 255, 0.1);
-  --jarvis-glass-blur: 18px;
-  --jarvis-glass-blur-strong: 28px;
-  --jarvis-panel-glass: rgba(0, 15, 36, 0.88);
+  --cortana-border: rgba(0, 212, 255, 0.22);
+  --cortana-border-strong: rgba(0, 212, 255, 0.4);
+  --cortana-border-subtle: rgba(0, 212, 255, 0.14);
+  --cortana-border-solid: #0a3852;
+  --cortana-glass: rgba(0, 15, 36, 0.82);
+  --cortana-glass-strong: rgba(0, 10, 28, 0.94);
+  --cortana-glass-soft: rgba(0, 18, 40, 0.55);
+  --cortana-glass-edge: rgba(0, 212, 255, 0.1);
+  --cortana-glass-blur: 18px;
+  --cortana-glass-blur-strong: 28px;
+  --cortana-panel-glass: rgba(0, 15, 36, 0.88);
 
   /* —— Talk capsule (CC footer) —— */
-  --jarvis-talk-fill: #001e32;
-  --jarvis-talk-rim: #0c79a0;
-  --jarvis-talk-glow:
+  --cortana-talk-fill: #001e32;
+  --cortana-talk-rim: #0c79a0;
+  --cortana-talk-glow:
     0 0 12px rgba(0, 212, 255, 0.55),
     0 0 36px rgba(12, 121, 160, 0.45),
     0 0 72px rgba(0, 212, 255, 0.28);
 
   /* —— Glow / bloom —— */
-  --jarvis-glow: 0 0 8px rgba(0, 212, 255, 0.55), 0 0 24px rgba(0, 212, 255, 0.35), 0 0 48px rgba(0, 212, 255, 0.18);
-  --jarvis-glow-soft: 0 0 6px rgba(0, 212, 255, 0.35), 0 0 18px rgba(0, 212, 255, 0.2);
-  --jarvis-glow-tight: 0 0 4px rgba(0, 242, 255, 0.7);
-  --jarvis-glow-active: 0 0 10px rgba(0, 242, 255, 0.65), 0 0 28px rgba(0, 212, 255, 0.4), 0 0 56px rgba(0, 212, 255, 0.22);
-  --jarvis-text-glow: 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55), 0 0 56px rgba(0, 212, 255, 0.28);
-  --jarvis-text-glow-soft: 0 0 6px rgba(0, 242, 255, 0.5), 0 0 16px rgba(0, 212, 255, 0.3);
+  --cortana-glow: 0 0 8px rgba(0, 212, 255, 0.55), 0 0 24px rgba(0, 212, 255, 0.35), 0 0 48px rgba(0, 212, 255, 0.18);
+  --cortana-glow-soft: 0 0 6px rgba(0, 212, 255, 0.35), 0 0 18px rgba(0, 212, 255, 0.2);
+  --cortana-glow-tight: 0 0 4px rgba(0, 242, 255, 0.7);
+  --cortana-glow-active: 0 0 10px rgba(0, 242, 255, 0.65), 0 0 28px rgba(0, 212, 255, 0.4), 0 0 56px rgba(0, 212, 255, 0.22);
+  --cortana-text-glow: 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55), 0 0 56px rgba(0, 212, 255, 0.28);
+  --cortana-text-glow-soft: 0 0 6px rgba(0, 242, 255, 0.5), 0 0 16px rgba(0, 212, 255, 0.3);
 
   /* —— 3D elevation / studio shadows —— */
-  --jarvis-shadow-flat: 0 1px 0 rgba(0, 242, 255, 0.06);
-  --jarvis-shadow-raised:
+  --cortana-shadow-flat: 0 1px 0 rgba(0, 242, 255, 0.06);
+  --cortana-shadow-raised:
     0 1px 0 rgba(0, 242, 255, 0.08),
     0 8px 24px rgba(0, 0, 0, 0.55),
     0 2px 6px rgba(0, 0, 0, 0.4);
-  --jarvis-shadow-deep:
+  --cortana-shadow-deep:
     0 1px 0 rgba(0, 242, 255, 0.1),
     0 12px 40px rgba(0, 0, 0, 0.65),
     0 4px 12px rgba(0, 0, 0, 0.5),
     0 0 32px rgba(0, 212, 255, 0.08);
-  --jarvis-shadow-inset:
+  --cortana-shadow-inset:
     inset 0 1px 0 rgba(0, 242, 255, 0.1),
     inset 0 -1px 0 rgba(0, 0, 0, 0.45),
     inset 0 0 24px rgba(0, 0, 0, 0.35);
-  --jarvis-shadow-inset-glow:
+  --cortana-shadow-inset-glow:
     inset 0 1px 0 rgba(0, 242, 255, 0.14),
     inset 0 -1px 0 rgba(0, 0, 0, 0.5),
     inset 0 0 28px rgba(0, 212, 255, 0.06);
-  --jarvis-shadow-panel:
+  --cortana-shadow-panel:
     0 -2px 0 rgba(0, 242, 255, 0.04),
     0 -8px 32px rgba(0, 0, 0, 0.45),
     0 0 24px rgba(0, 212, 255, 0.06);
-  --jarvis-shadow-tab-active:
-    inset 0 2px 0 var(--jarvis-cyan),
+  --cortana-shadow-tab-active:
+    inset 0 2px 0 var(--cortana-cyan),
     0 0 12px rgba(0, 242, 255, 0.22),
     0 0 28px rgba(0, 212, 255, 0.12),
     inset 0 -8px 16px rgba(0, 212, 255, 0.04);
-  --jarvis-shadow-card:
+  --cortana-shadow-card:
     0 0 0 1px rgba(0, 212, 255, 0.18),
     0 8px 28px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 rgba(0, 242, 255, 0.1);
 
   /* —— Arc-reactor pulse cadence —— */
-  --jarvis-reactor-ms: 2.4s;
-  --jarvis-reactor-glow-lo: 0 0 4px rgba(0, 242, 255, 0.45), 0 0 12px rgba(0, 212, 255, 0.22);
-  --jarvis-reactor-glow-hi: 0 0 8px rgba(0, 242, 255, 0.85), 0 0 22px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.22);
+  --cortana-reactor-ms: 2.4s;
+  --cortana-reactor-glow-lo: 0 0 4px rgba(0, 242, 255, 0.45), 0 0 12px rgba(0, 212, 255, 0.22);
+  --cortana-reactor-glow-hi: 0 0 8px rgba(0, 242, 255, 0.85), 0 0 22px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.22);
 
   /* —— Status —— */
-  --jarvis-ok: #2fa58f;
-  --jarvis-ok-bright: #3dd68c;
-  --jarvis-warn: #ffc94d;
-  --jarvis-danger: #ff4757;
-  --jarvis-info: #4ad1f1;
-  --jarvis-tip: #7ec8ff;
-  --jarvis-live: #3dd68c;
-  --jarvis-bar-track: #151626;
-  --jarvis-dot-off: #292d35;
+  --cortana-ok: #2fa58f;
+  --cortana-ok-bright: #3dd68c;
+  --cortana-warn: #ffc94d;
+  --cortana-danger: #ff4757;
+  --cortana-info: #4ad1f1;
+  --cortana-tip: #7ec8ff;
+  --cortana-live: #3dd68c;
+  --cortana-bar-track: #151626;
+  --cortana-dot-off: #292d35;
 
   /* —— Geometry —— */
-  --jarvis-radius: 10px;
-  --jarvis-radius-sm: 6px;
-  --jarvis-radius-lg: 12px;
-  --jarvis-radius-pill: 999px;
-  --jarvis-line: 1px;
-  --jarvis-boot-ms: 1800ms;
-  --jarvis-boot-hold: 70%;
-  --jarvis-boot-stream-ms: 4.8s;
-  --jarvis-boot-parallax-scale: 1.05;
-  --jarvis-boot-bar-height: 3px;
-  --jarvis-boot-bar-width: min(420px, 52vw);
+  --cortana-radius: 10px;
+  --cortana-radius-sm: 6px;
+  --cortana-radius-lg: 12px;
+  --cortana-radius-pill: 999px;
+  --cortana-line: 1px;
+  --cortana-boot-ms: 1800ms;
+  --cortana-boot-hold: 70%;
+  --cortana-boot-stream-ms: 4.8s;
+  --cortana-boot-parallax-scale: 1.05;
+  --cortana-boot-bar-height: 3px;
+  --cortana-boot-bar-width: min(420px, 52vw);
   /* Staged sibling beside workbench.html (set by inject engine binding) */
-  --jarvis-boot-splash: url(./jarvis-boot-splash.png);
-  --jarvis-rail-w: 220px;
-  --jarvis-header-h: 52px;
-  --jarvis-footer-h: 72px;
+  --cortana-boot-splash: url(./cortana-boot-splash.png);
+  --cortana-rail-w: 220px;
+  --cortana-header-h: 52px;
+  --cortana-footer-h: 72px;
 
   /* —— Typography —— */
-  --jarvis-font-ui: "Segoe UI Condensed", "Arial Narrow", "Helvetica Neue Condensed", "Franklin Gothic Medium", "Segoe UI", Tahoma, sans-serif;
-  --jarvis-font-display: "Orbitron", "Rajdhani", "Segoe UI Condensed", "Arial Narrow", "Eurostile", Impact, sans-serif;
-  --jarvis-font-mono: "Cascadia Mono", "Consolas", "SF Mono", "Courier New", monospace;
-  --jarvis-tracking-wide: 0.28em;
-  --jarvis-tracking-mid: 0.18em;
-  --jarvis-tracking-cal: 0.4em;
+  --cortana-font-ui: "Segoe UI Condensed", "Arial Narrow", "Helvetica Neue Condensed", "Franklin Gothic Medium", "Segoe UI", Tahoma, sans-serif;
+  --cortana-font-display: "Orbitron", "Rajdhani", "Segoe UI Condensed", "Arial Narrow", "Eurostile", Impact, sans-serif;
+  --cortana-font-mono: "Cascadia Mono", "Consolas", "SF Mono", "Courier New", monospace;
+  --cortana-tracking-wide: 0.28em;
+  --cortana-tracking-mid: 0.18em;
+  --cortana-tracking-cal: 0.4em;
 
   /* —— VS Code workbench CSS var bridges (gray killers) —— */
-  --vscode-editor-background: var(--jarvis-bg-editor) !important;
-  --vscode-editor-foreground: var(--jarvis-text) !important;
+  --vscode-editor-background: var(--cortana-bg-editor) !important;
+  --vscode-editor-foreground: var(--cortana-text) !important;
   --vscode-editor-selectionBackground: rgba(10, 74, 106, 0.4) !important;
   --vscode-editor-inactiveSelectionBackground: rgba(10, 53, 80, 0.33) !important;
   --vscode-editor-lineHighlightBackground: rgba(10, 30, 48, 0.55) !important;
-  --vscode-editorGutter-background: var(--jarvis-bg-editor) !important;
-  --vscode-editorGroupHeader-tabsBackground: var(--jarvis-bg-activity) !important;
-  --vscode-editorPane-background: var(--jarvis-bg-editor) !important;
-  --vscode-sideBar-background: var(--jarvis-bg-sidebar) !important;
-  --vscode-sideBar-foreground: var(--jarvis-text) !important;
-  --vscode-sideBar-border: var(--jarvis-border-solid) !important;
-  --vscode-sideBarTitle-foreground: var(--jarvis-cyan-bright) !important;
-  --vscode-sideBarSectionHeader-background: var(--jarvis-bg-well) !important;
-  --vscode-sideBarSectionHeader-foreground: var(--jarvis-cyan) !important;
-  --vscode-activityBar-background: var(--jarvis-bg-activity) !important;
-  --vscode-activityBar-foreground: var(--jarvis-cyan-bright) !important;
-  --vscode-activityBar-inactiveForeground: var(--jarvis-text-dim) !important;
-  --vscode-activityBar-border: var(--jarvis-border-solid) !important;
-  --vscode-activityBarBadge-background: var(--jarvis-cyan) !important;
+  --vscode-editorGutter-background: var(--cortana-bg-editor) !important;
+  --vscode-editorGroupHeader-tabsBackground: var(--cortana-bg-activity) !important;
+  --vscode-editorPane-background: var(--cortana-bg-editor) !important;
+  --vscode-sideBar-background: var(--cortana-bg-sidebar) !important;
+  --vscode-sideBar-foreground: var(--cortana-text) !important;
+  --vscode-sideBar-border: var(--cortana-border-solid) !important;
+  --vscode-sideBarTitle-foreground: var(--cortana-cyan-bright) !important;
+  --vscode-sideBarSectionHeader-background: var(--cortana-bg-well) !important;
+  --vscode-sideBarSectionHeader-foreground: var(--cortana-cyan) !important;
+  --vscode-activityBar-background: var(--cortana-bg-activity) !important;
+  --vscode-activityBar-foreground: var(--cortana-cyan-bright) !important;
+  --vscode-activityBar-inactiveForeground: var(--cortana-text-dim) !important;
+  --vscode-activityBar-border: var(--cortana-border-solid) !important;
+  --vscode-activityBarBadge-background: var(--cortana-cyan) !important;
   --vscode-activityBarBadge-foreground: #021018 !important;
-  --vscode-statusBar-background: var(--jarvis-bg-deep) !important;
+  --vscode-statusBar-background: var(--cortana-bg-deep) !important;
   --vscode-statusBar-foreground: #7ab0c8 !important;
-  --vscode-statusBar-border: var(--jarvis-border-solid) !important;
-  --vscode-statusBarItem-hoverBackground: var(--jarvis-bg-hover) !important;
-  --vscode-titleBar-activeBackground: var(--jarvis-bg-deep) !important;
-  --vscode-titleBar-activeForeground: var(--jarvis-text) !important;
+  --vscode-statusBar-border: var(--cortana-border-solid) !important;
+  --vscode-statusBarItem-hoverBackground: var(--cortana-bg-hover) !important;
+  --vscode-titleBar-activeBackground: var(--cortana-bg-deep) !important;
+  --vscode-titleBar-activeForeground: var(--cortana-text) !important;
   --vscode-titleBar-inactiveBackground: #01060e !important;
-  --vscode-titleBar-inactiveForeground: var(--jarvis-text-muted) !important;
-  --vscode-titleBar-border: var(--jarvis-border-solid) !important;
-  --vscode-panel-background: var(--jarvis-bg-panel) !important;
-  --vscode-panel-border: var(--jarvis-border-solid) !important;
-  --vscode-panelTitle-activeForeground: var(--jarvis-cyan-bright) !important;
-  --vscode-panelTitle-inactiveForeground: var(--jarvis-text-dim) !important;
-  --vscode-panelTitle-activeBorder: var(--jarvis-cyan) !important;
-  --vscode-tab-activeBackground: var(--jarvis-bg-well) !important;
-  --vscode-tab-inactiveBackground: var(--jarvis-bg-activity) !important;
-  --vscode-tab-activeForeground: var(--jarvis-text-bright) !important;
-  --vscode-tab-inactiveForeground: var(--jarvis-text-dim) !important;
-  --vscode-tab-border: var(--jarvis-bg-deep) !important;
-  --vscode-tab-activeBorderTop: var(--jarvis-cyan) !important;
-  --vscode-breadcrumb-background: var(--jarvis-bg-editor) !important;
-  --vscode-breadcrumb-foreground: var(--jarvis-text-dim) !important;
-  --vscode-breadcrumb-focusForeground: var(--jarvis-text) !important;
-  --vscode-breadcrumb-activeSelectionForeground: var(--jarvis-cyan) !important;
-  --vscode-terminal-background: var(--jarvis-bg-panel) !important;
-  --vscode-terminal-foreground: var(--jarvis-text) !important;
-  --vscode-terminal-border: var(--jarvis-border-solid) !important;
-  --vscode-input-background: var(--jarvis-bg-input) !important;
-  --vscode-input-foreground: var(--jarvis-text-bright) !important;
-  --vscode-input-border: var(--jarvis-border-solid) !important;
-  --vscode-dropdown-background: var(--jarvis-bg-elevated) !important;
-  --vscode-dropdown-foreground: var(--jarvis-text) !important;
-  --vscode-dropdown-border: var(--jarvis-border-solid) !important;
-  --vscode-list-hoverBackground: var(--jarvis-bg-hover) !important;
-  --vscode-list-activeSelectionBackground: var(--jarvis-bg-active) !important;
+  --vscode-titleBar-inactiveForeground: var(--cortana-text-muted) !important;
+  --vscode-titleBar-border: var(--cortana-border-solid) !important;
+  --vscode-panel-background: var(--cortana-bg-panel) !important;
+  --vscode-panel-border: var(--cortana-border-solid) !important;
+  --vscode-panelTitle-activeForeground: var(--cortana-cyan-bright) !important;
+  --vscode-panelTitle-inactiveForeground: var(--cortana-text-dim) !important;
+  --vscode-panelTitle-activeBorder: var(--cortana-cyan) !important;
+  --vscode-tab-activeBackground: var(--cortana-bg-well) !important;
+  --vscode-tab-inactiveBackground: var(--cortana-bg-activity) !important;
+  --vscode-tab-activeForeground: var(--cortana-text-bright) !important;
+  --vscode-tab-inactiveForeground: var(--cortana-text-dim) !important;
+  --vscode-tab-border: var(--cortana-bg-deep) !important;
+  --vscode-tab-activeBorderTop: var(--cortana-cyan) !important;
+  --vscode-breadcrumb-background: var(--cortana-bg-editor) !important;
+  --vscode-breadcrumb-foreground: var(--cortana-text-dim) !important;
+  --vscode-breadcrumb-focusForeground: var(--cortana-text) !important;
+  --vscode-breadcrumb-activeSelectionForeground: var(--cortana-cyan) !important;
+  --vscode-terminal-background: var(--cortana-bg-panel) !important;
+  --vscode-terminal-foreground: var(--cortana-text) !important;
+  --vscode-terminal-border: var(--cortana-border-solid) !important;
+  --vscode-input-background: var(--cortana-bg-input) !important;
+  --vscode-input-foreground: var(--cortana-text-bright) !important;
+  --vscode-input-border: var(--cortana-border-solid) !important;
+  --vscode-dropdown-background: var(--cortana-bg-elevated) !important;
+  --vscode-dropdown-foreground: var(--cortana-text) !important;
+  --vscode-dropdown-border: var(--cortana-border-solid) !important;
+  --vscode-list-hoverBackground: var(--cortana-bg-hover) !important;
+  --vscode-list-activeSelectionBackground: var(--cortana-bg-active) !important;
   --vscode-list-inactiveSelectionBackground: rgba(10, 40, 64, 0.55) !important;
-  --vscode-list-focusBackground: var(--jarvis-bg-active) !important;
-  --vscode-list-highlightForeground: var(--jarvis-cyan-soft) !important;
-  --vscode-badge-background: var(--jarvis-cyan) !important;
+  --vscode-list-focusBackground: var(--cortana-bg-active) !important;
+  --vscode-list-highlightForeground: var(--cortana-cyan-soft) !important;
+  --vscode-badge-background: var(--cortana-cyan) !important;
   --vscode-badge-foreground: #021018 !important;
-  --vscode-progressBar-background: var(--jarvis-cyan) !important;
+  --vscode-progressBar-background: var(--cortana-cyan) !important;
   --vscode-scrollbarSlider-background: rgba(0, 212, 255, 0.18) !important;
   --vscode-scrollbarSlider-hoverBackground: rgba(0, 212, 255, 0.32) !important;
   --vscode-scrollbarSlider-activeBackground: rgba(0, 229, 255, 0.45) !important;
-  --vscode-menu-background: var(--jarvis-glass-strong) !important;
-  --vscode-menu-foreground: var(--jarvis-text) !important;
-  --vscode-menu-selectionBackground: var(--jarvis-bg-active) !important;
-  --vscode-quickInput-background: var(--jarvis-glass-strong) !important;
-  --vscode-quickInput-foreground: var(--jarvis-text) !important;
-  --vscode-quickInputList-focusBackground: var(--jarvis-bg-active) !important;
-  --vscode-widget-border: var(--jarvis-border-solid) !important;
+  --vscode-menu-background: var(--cortana-glass-strong) !important;
+  --vscode-menu-foreground: var(--cortana-text) !important;
+  --vscode-menu-selectionBackground: var(--cortana-bg-active) !important;
+  --vscode-quickInput-background: var(--cortana-glass-strong) !important;
+  --vscode-quickInput-foreground: var(--cortana-text) !important;
+  --vscode-quickInputList-focusBackground: var(--cortana-bg-active) !important;
+  --vscode-widget-border: var(--cortana-border-solid) !important;
   --vscode-focusBorder: rgba(0, 212, 255, 0.55) !important;
   --vscode-sash-hoverBorder: rgba(0, 212, 255, 0.4) !important;
-  --vscode-commandCenter-background: var(--jarvis-bg-well) !important;
-  --vscode-commandCenter-foreground: var(--jarvis-text) !important;
-  --vscode-commandCenter-activeBackground: var(--jarvis-bg-active) !important;
-  --vscode-commandCenter-border: var(--jarvis-border-solid) !important;
-  --vscode-chat-requestBackground: var(--jarvis-bg-well) !important;
-  --vscode-chat-requestBorder: var(--jarvis-border-solid) !important;
-  --vscode-inlineChat-background: var(--jarvis-glass-strong) !important;
-  --vscode-inlineChat-border: var(--jarvis-border-solid) !important;
-  --vscode-problemsErrorIcon-foreground: var(--jarvis-danger) !important;
-  --vscode-problemsWarningIcon-foreground: var(--jarvis-warn) !important;
-  --vscode-problemsInfoIcon-foreground: var(--jarvis-cyan) !important;
+  --vscode-commandCenter-background: var(--cortana-bg-well) !important;
+  --vscode-commandCenter-foreground: var(--cortana-text) !important;
+  --vscode-commandCenter-activeBackground: var(--cortana-bg-active) !important;
+  --vscode-commandCenter-border: var(--cortana-border-solid) !important;
+  --vscode-chat-requestBackground: var(--cortana-bg-well) !important;
+  --vscode-chat-requestBorder: var(--cortana-border-solid) !important;
+  --vscode-inlineChat-background: var(--cortana-glass-strong) !important;
+  --vscode-inlineChat-border: var(--cortana-border-solid) !important;
+  --vscode-problemsErrorIcon-foreground: var(--cortana-danger) !important;
+  --vscode-problemsWarningIcon-foreground: var(--cortana-warn) !important;
+  --vscode-problemsInfoIcon-foreground: var(--cortana-cyan) !important;
 }
 
 /* Shared Studio keyframe — status accents / badges / active indicators */
-@keyframes jarvis-arc-reactor-pulse {
+@keyframes cortana-arc-reactor-pulse {
   0%,
   100% {
-    box-shadow: var(--jarvis-reactor-glow-lo);
+    box-shadow: var(--cortana-reactor-glow-lo);
     filter: brightness(1);
   }
   50% {
-    box-shadow: var(--jarvis-reactor-glow-hi);
+    box-shadow: var(--cortana-reactor-glow-hi);
     filter: brightness(1.18);
   }
 }
 
-@keyframes jarvis-arc-reactor-text {
+@keyframes cortana-arc-reactor-text {
   0%,
   100% {
-    text-shadow: var(--jarvis-text-glow-soft);
+    text-shadow: var(--cortana-text-glow-soft);
     opacity: 1;
   }
   50% {
-    text-shadow: var(--jarvis-text-glow);
+    text-shadow: var(--cortana-text-glow);
     opacity: 0.92;
   }
 }
 
-@keyframes jarvis-wave-bar {
+@keyframes cortana-wave-bar {
   0%,
   100% {
     transform: scaleY(0.35);
@@ -271,19 +271,19 @@ body.jarvis-inject {
   }
 }
 
-@keyframes jarvis-orbit-spin {
+@keyframes cortana-orbit-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-@keyframes jarvis-orbit-spin-rev {
+@keyframes cortana-orbit-spin-rev {
   to {
     transform: rotate(-360deg);
   }
 }
 
-@keyframes jarvis-globe-breathe {
+@keyframes cortana-globe-breathe {
   0%,
   100% {
     filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.35));
@@ -295,7 +295,7 @@ body.jarvis-inject {
   }
 }
 
-@keyframes jarvis-particle-drift {
+@keyframes cortana-particle-drift {
   0% {
     transform: translate3d(0, 0, 0);
     opacity: 0.15;
@@ -309,7 +309,7 @@ body.jarvis-inject {
   }
 }
 
-@keyframes jarvis-mic-ring {
+@keyframes cortana-mic-ring {
   0%,
   100% {
     box-shadow:
@@ -323,7 +323,7 @@ body.jarvis-inject {
   }
 }
 
-@keyframes jarvis-status-dot {
+@keyframes cortana-status-dot {
   0%,
   100% {
     box-shadow: 0 0 4px rgba(61, 214, 140, 0.6);
@@ -335,7 +335,7 @@ body.jarvis-inject {
   }
 }
 
-@keyframes jarvis-gauge-glow {
+@keyframes cortana-gauge-glow {
   0%,
   100% {
     filter: brightness(1);
@@ -345,8 +345,8 @@ body.jarvis-inject {
   }
 }
 
-/* JARVIS — probe hook (engine string-search + optional class test) */
-html.jarvis-inject-probe::before {
-  content: "jarvis-ok";
+/* CORTANA — probe hook (engine string-search + optional class test) */
+html.cortana-inject-probe::before {
+  content: "cortana-ok";
   display: none;
 }

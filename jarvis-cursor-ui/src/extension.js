@@ -13,7 +13,7 @@ let inject;
 try {
   inject = require("./workbenchInject");
 } catch (err) {
-  console.warn("[jarvis] workbenchInject not loaded yet:", err && err.message ? err.message : err);
+  console.warn("[cortana] workbenchInject not loaded yet:", err && err.message ? err.message : err);
   inject = {
     async reconcileOnActivate() {
       return { status: "unavailable", message: "workbenchInject.js missing — injection engine not built yet." };
@@ -37,7 +37,7 @@ try {
 }
 
 function injectionCfg() {
-  return vscode.workspace.getConfiguration("jarvis.injection");
+  return vscode.workspace.getConfiguration("cortana.injection");
 }
 
 /** Injection is primary HUD when enabled and fallback webview is off. */
@@ -68,32 +68,32 @@ async function activate(context) {
   const commandCenter = new CommandCenterViewProvider(context, fileMap);
 
   context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider("jarvis.commandCenter", commandCenter, {
+    vscode.window.registerWebviewViewProvider("cortana.commandCenter", commandCenter, {
       webviewOptions: { retainContextWhenHidden: true },
     }),
-    vscode.window.registerWebviewViewProvider("jarvis.fileMap", fileMap, {
+    vscode.window.registerWebviewViewProvider("cortana.fileMap", fileMap, {
       webviewOptions: { retainContextWhenHidden: true },
     }),
-    vscode.commands.registerCommand("jarvis.fileMap.refresh", () => {
+    vscode.commands.registerCommand("cortana.fileMap.refresh", () => {
       fileMap.refresh();
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.fileMap.focus", async () => {
-      await vscode.commands.executeCommand("workbench.view.extension.jarvisCommand");
+    vscode.commands.registerCommand("cortana.fileMap.focus", async () => {
+      await vscode.commands.executeCommand("workbench.view.extension.cortanaCommand");
       if (typeof fileMap.reveal === "function") fileMap.reveal();
     }),
-    vscode.commands.registerCommand("jarvis.commandCenter.focus", async () => {
+    vscode.commands.registerCommand("cortana.commandCenter.focus", async () => {
       // When injection is primary, do not force-focus webview as the HUD surface
       if (injectionIsPrimary()) {
         vscode.window.showInformationMessage(
-          "Workbench injection is primary HUD. Command Center webview is optional fallback (set jarvis.injection.fallbackWebview)."
+          "Workbench injection is primary HUD. Command Center webview is optional fallback (set cortana.injection.fallbackWebview)."
         );
         return;
       }
-      await vscode.commands.executeCommand("workbench.view.extension.jarvisCommand");
+      await vscode.commands.executeCommand("workbench.view.extension.cortanaCommand");
       if (typeof commandCenter.reveal === "function") commandCenter.reveal();
     }),
-    vscode.commands.registerCommand("jarvis.theme.applyHints", async () => {
+    vscode.commands.registerCommand("cortana.theme.applyHints", async () => {
       const suit = getSuit(context);
       const cfg = vscode.workspace.getConfiguration();
       await cfg.update("workbench.colorTheme", suit.theme, vscode.ConfigurationTarget.Global);
@@ -105,49 +105,49 @@ async function activate(context) {
         );
       } else {
         vscode.window.showInformationMessage(
-          `${suit.theme} applied. Open Command Center for JARVIS HUD + File Map.`
+          `${suit.theme} applied. Open Command Center for CORTANA HUD + File Map.`
         );
       }
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.suit.pick", async () => {
+    vscode.commands.registerCommand("cortana.suit.pick", async () => {
       await pickSuit(context);
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.suit.set", async (id) => {
+    vscode.commands.registerCommand("cortana.suit.set", async (id) => {
       await setSuit(context, id || "mark1");
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.voice.talk", () => voice.startVoice()),
-    vscode.commands.registerCommand("jarvis.voice.chat", () => voice.openChat()),
-    vscode.commands.registerCommand("jarvis.toggle.focusFortress", async () => {
+    vscode.commands.registerCommand("cortana.voice.talk", () => voice.startVoice()),
+    vscode.commands.registerCommand("cortana.voice.chat", () => voice.openChat()),
+    vscode.commands.registerCommand("cortana.toggle.focusFortress", async () => {
       await toggle(context, "focusFortress");
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.toggle.cinema", async () => {
+    vscode.commands.registerCommand("cortana.toggle.cinema", async () => {
       await toggle(context, "cinema");
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.toggle.streamPack", async () => {
+    vscode.commands.registerCommand("cortana.toggle.streamPack", async () => {
       await toggle(context, "streamPack");
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.toggle.friday", async () => {
+    vscode.commands.registerCommand("cortana.toggle.friday", async () => {
       await toggle(context, "friday");
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.preset.save", async () => {
+    vscode.commands.registerCommand("cortana.preset.save", async () => {
       await savePreset(context);
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.preset.apply", async () => {
+    vscode.commands.registerCommand("cortana.preset.apply", async () => {
       await applyPreset(context);
       commandCenter.refresh();
     }),
-    vscode.commands.registerCommand("jarvis.hud.refresh", () => commandCenter.refresh()),
+    vscode.commands.registerCommand("cortana.hud.refresh", () => commandCenter.refresh()),
 
     // Phase 6 injection commands (registered before reconcile so Re-enable button works)
-    vscode.commands.registerCommand("jarvis.injection.enable", async () => {
+    vscode.commands.registerCommand("cortana.injection.enable", async () => {
       try {
         const result = await inject.enable(context);
         if (result && result.ok) {
@@ -169,7 +169,7 @@ async function activate(context) {
         vscode.window.showErrorMessage(`Enable injection failed: ${msg}${adminNote}`);
       }
     }),
-    vscode.commands.registerCommand("jarvis.injection.disable", async () => {
+    vscode.commands.registerCommand("cortana.injection.disable", async () => {
       try {
         const result = await inject.disable(context);
         if (result && result.ok) {
@@ -187,7 +187,7 @@ async function activate(context) {
         );
       }
     }),
-    vscode.commands.registerCommand("jarvis.injection.reenableAfterUpdate", async () => {
+    vscode.commands.registerCommand("cortana.injection.reenableAfterUpdate", async () => {
       // Explicit God intent: re-patch after Cursor update / health fail
       try {
         const result = await inject.enable(context);
@@ -211,7 +211,7 @@ async function activate(context) {
         vscode.window.showErrorMessage(`Re-enable injection failed: ${msg}${adminNote}`);
       }
     }),
-    vscode.commands.registerCommand("jarvis.injection.healthCheck", async () => {
+    vscode.commands.registerCommand("cortana.injection.healthCheck", async () => {
       try {
         const result = await inject.healthCheck(context);
         const details =
@@ -235,7 +235,7 @@ async function activate(context) {
         );
       }
     }),
-    vscode.commands.registerCommand("jarvis.injection.status", async () => {
+    vscode.commands.registerCommand("cortana.injection.status", async () => {
       try {
         const status = await inject.status(context);
         const summary =
@@ -249,7 +249,7 @@ async function activate(context) {
           { label: "Copy full JSON", description: "clipboard" },
         ];
         const pick = await vscode.window.showQuickPick(items, {
-          placeHolder: "JARVIS injection status",
+          placeHolder: "CORTANA injection status",
           matchOnDetail: true,
         });
         if (pick && pick.description === "clipboard") {
@@ -283,11 +283,11 @@ async function activate(context) {
         `Workbench injection ${reconciled.status}. Verify Cursor install, then re-enable.`;
       const pick = await vscode.window.showWarningMessage(msg, "Re-enable after verify");
       if (pick === "Re-enable after verify") {
-        await vscode.commands.executeCommand("jarvis.injection.reenableAfterUpdate");
+        await vscode.commands.executeCommand("cortana.injection.reenableAfterUpdate");
       }
     }
   } catch (err) {
-    console.warn("[jarvis] reconcileOnActivate failed:", err);
+    console.warn("[cortana] reconcileOnActivate failed:", err);
   }
 
   // Soft re-probe while enabled (~60s). On fail → teardown + disable + notify; never auto-re-enable.
@@ -307,24 +307,24 @@ async function activate(context) {
           : "health probe failed";
       const disabled = await inject.disable(
         context,
-        `Periodic health-fail: ${issues} — JARVIS injection disabled.`
+        `Periodic health-fail: ${issues} — CORTANA injection disabled.`
       );
       const msg =
         (disabled && disabled.message) ||
         `Injection health-fail: ${issues}. Re-enable after verify.`;
       const pick = await vscode.window.showWarningMessage(msg, "Re-enable after verify");
       if (pick === "Re-enable after verify") {
-        await vscode.commands.executeCommand("jarvis.injection.reenableAfterUpdate");
+        await vscode.commands.executeCommand("cortana.injection.reenableAfterUpdate");
       }
     } catch (err) {
-      console.warn("[jarvis] periodic healthCheck failed:", err);
+      console.warn("[cortana] periodic healthCheck failed:", err);
     }
   }, 60000);
   context.subscriptions.push({ dispose: () => clearInterval(healthTimer) });
 
   if (injectionIsPrimary()) {
     console.info(
-      "[jarvis] Injection is primary HUD; Command Center webview registered as optional fallback only."
+      "[cortana] Injection is primary HUD; Command Center webview registered as optional fallback only."
     );
   }
 

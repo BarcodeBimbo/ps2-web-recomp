@@ -1,7 +1,7 @@
 {
-  "name": "jarvis-cursor-ui",
-  "displayName": "JARVIS Command Center UI",
-  "description": "Full JARVIS Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
+  "name": "cortana-cursor-ui",
+  "displayName": "CORTANA Command Center UI",
+  "description": "Full CORTANA Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
   "version": "0.5.2",
   "publisher": "ps2recomp-local",
   "engines": {
@@ -12,7 +12,7 @@
     "Other"
   ],
   "keywords": [
-    "jarvis",
+    "cortana",
     "command center",
     "hud",
     "iron man",
@@ -36,184 +36,184 @@
     },
     "themes": [
       {
-        "label": "JARVIS Command",
+        "label": "CORTANA Command",
         "uiTheme": "vs-dark",
-        "path": "./themes/jarvis-command-color-theme.json"
+        "path": "./themes/cortana-command-color-theme.json"
       },
       {
-        "label": "JARVIS Mark I",
+        "label": "CORTANA Mark I",
         "uiTheme": "vs-dark",
-        "path": "./themes/jarvis-mark1-color-theme.json"
+        "path": "./themes/cortana-mark1-color-theme.json"
       },
       {
-        "label": "JARVIS Mark 50",
+        "label": "CORTANA Mark 50",
         "uiTheme": "vs-dark",
-        "path": "./themes/jarvis-mark50-color-theme.json"
+        "path": "./themes/cortana-mark50-color-theme.json"
       },
       {
-        "label": "JARVIS Endgame",
+        "label": "CORTANA Endgame",
         "uiTheme": "vs-dark",
-        "path": "./themes/jarvis-endgame-color-theme.json"
+        "path": "./themes/cortana-endgame-color-theme.json"
       },
       {
-        "label": "JARVIS Stealth",
+        "label": "CORTANA Stealth",
         "uiTheme": "vs-dark",
-        "path": "./themes/jarvis-stealth-color-theme.json"
+        "path": "./themes/cortana-stealth-color-theme.json"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "jarvisCommand",
-          "title": "JARVIS",
-          "icon": "media/jarvis-activity.svg"
+          "id": "cortanaCommand",
+          "title": "CORTANA",
+          "icon": "media/cortana-activity.svg"
         }
       ]
     },
     "views": {
-      "jarvisCommand": [
+      "cortanaCommand": [
         {
           "type": "webview",
-          "id": "jarvis.commandCenter",
+          "id": "cortana.commandCenter",
           "name": "Command Center",
-          "icon": "media/jarvis-activity.svg"
+          "icon": "media/cortana-activity.svg"
         },
         {
           "type": "webview",
-          "id": "jarvis.fileMap",
+          "id": "cortana.fileMap",
           "name": "File Map",
-          "icon": "media/jarvis-activity.svg"
+          "icon": "media/cortana-activity.svg"
         }
       ]
     },
     "commands": [
       {
-        "command": "jarvis.fileMap.refresh",
-        "title": "JARVIS: Refresh File Map",
+        "command": "cortana.fileMap.refresh",
+        "title": "CORTANA: Refresh File Map",
         "icon": "$(refresh)"
       },
       {
-        "command": "jarvis.fileMap.focus",
-        "title": "JARVIS: Focus File Map"
+        "command": "cortana.fileMap.focus",
+        "title": "CORTANA: Focus File Map"
       },
       {
-        "command": "jarvis.commandCenter.focus",
-        "title": "JARVIS: Focus Command Center"
+        "command": "cortana.commandCenter.focus",
+        "title": "CORTANA: Focus Command Center"
       },
       {
-        "command": "jarvis.theme.applyHints",
-        "title": "JARVIS: Apply Active Suit Theme"
+        "command": "cortana.theme.applyHints",
+        "title": "CORTANA: Apply Active Suit Theme"
       },
       {
-        "command": "jarvis.suit.pick",
-        "title": "JARVIS: Suit Mode…"
+        "command": "cortana.suit.pick",
+        "title": "CORTANA: Suit Mode…"
       },
       {
-        "command": "jarvis.voice.talk",
-        "title": "JARVIS: Talk / Start Voice"
+        "command": "cortana.voice.talk",
+        "title": "CORTANA: Talk / Start Voice"
       },
       {
-        "command": "jarvis.voice.chat",
-        "title": "JARVIS: Open Chat"
+        "command": "cortana.voice.chat",
+        "title": "CORTANA: Open Chat"
       },
       {
-        "command": "jarvis.toggle.focusFortress",
-        "title": "JARVIS: Toggle Focus Fortress"
+        "command": "cortana.toggle.focusFortress",
+        "title": "CORTANA: Toggle Focus Fortress"
       },
       {
-        "command": "jarvis.toggle.cinema",
-        "title": "JARVIS: Toggle Session Cinema"
+        "command": "cortana.toggle.cinema",
+        "title": "CORTANA: Toggle Session Cinema"
       },
       {
-        "command": "jarvis.toggle.streamPack",
-        "title": "JARVIS: Toggle Stream Pack"
+        "command": "cortana.toggle.streamPack",
+        "title": "CORTANA: Toggle Stream Pack"
       },
       {
-        "command": "jarvis.toggle.friday",
-        "title": "JARVIS: Toggle F.R.I.D.A.Y. Mode"
+        "command": "cortana.toggle.friday",
+        "title": "CORTANA: Toggle F.R.I.D.A.Y. Mode"
       },
       {
-        "command": "jarvis.preset.save",
-        "title": "JARVIS: Save Workspace Preset"
+        "command": "cortana.preset.save",
+        "title": "CORTANA: Save Workspace Preset"
       },
       {
-        "command": "jarvis.preset.apply",
-        "title": "JARVIS: Apply Workspace Preset"
+        "command": "cortana.preset.apply",
+        "title": "CORTANA: Apply Workspace Preset"
       },
       {
-        "command": "jarvis.hud.refresh",
-        "title": "JARVIS: Refresh HUD"
+        "command": "cortana.hud.refresh",
+        "title": "CORTANA: Refresh HUD"
       },
       {
-        "command": "jarvis.injection.enable",
-        "title": "JARVIS: Enable Workbench Injection"
+        "command": "cortana.injection.enable",
+        "title": "CORTANA: Enable Workbench Injection"
       },
       {
-        "command": "jarvis.injection.disable",
-        "title": "JARVIS: Disable Workbench Injection"
+        "command": "cortana.injection.disable",
+        "title": "CORTANA: Disable Workbench Injection"
       },
       {
-        "command": "jarvis.injection.reenableAfterUpdate",
-        "title": "JARVIS: Re-enable Injection After Update"
+        "command": "cortana.injection.reenableAfterUpdate",
+        "title": "CORTANA: Re-enable Injection After Update"
       },
       {
-        "command": "jarvis.injection.healthCheck",
-        "title": "JARVIS: Injection Health Check"
+        "command": "cortana.injection.healthCheck",
+        "title": "CORTANA: Injection Health Check"
       },
       {
-        "command": "jarvis.injection.status",
-        "title": "JARVIS: Injection Status"
+        "command": "cortana.injection.status",
+        "title": "CORTANA: Injection Status"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "jarvis.fileMap.refresh",
-          "when": "view == jarvis.fileMap || view == jarvis.commandCenter",
+          "command": "cortana.fileMap.refresh",
+          "when": "view == cortana.fileMap || view == cortana.commandCenter",
           "group": "navigation"
         }
       ],
       "commandPalette": [
         {
-          "command": "jarvis.suit.pick"
+          "command": "cortana.suit.pick"
         },
         {
-          "command": "jarvis.voice.talk"
+          "command": "cortana.voice.talk"
         },
         {
-          "command": "jarvis.preset.save"
+          "command": "cortana.preset.save"
         },
         {
-          "command": "jarvis.preset.apply"
+          "command": "cortana.preset.apply"
         },
         {
-          "command": "jarvis.injection.enable"
+          "command": "cortana.injection.enable"
         },
         {
-          "command": "jarvis.injection.disable"
+          "command": "cortana.injection.disable"
         },
         {
-          "command": "jarvis.injection.reenableAfterUpdate"
+          "command": "cortana.injection.reenableAfterUpdate"
         },
         {
-          "command": "jarvis.injection.healthCheck"
+          "command": "cortana.injection.healthCheck"
         },
         {
-          "command": "jarvis.injection.status"
+          "command": "cortana.injection.status"
         }
       ]
     },
     "configuration": {
-      "title": "JARVIS Command Center",
+      "title": "CORTANA Command Center",
       "properties": {
-        "jarvis.fileMap.maxEntries": {
+        "cortana.fileMap.maxEntries": {
           "type": "number",
           "default": 4000,
           "minimum": 200,
           "maximum": 20000,
           "description": "Max files/folders to scan into the File Map."
         },
-        "jarvis.fileMap.ignore": {
+        "cortana.fileMap.ignore": {
           "type": "array",
           "default": [
             ".git",
@@ -231,26 +231,26 @@
           },
           "description": "Directory names skipped while building the File Map."
         },
-        "jarvis.hud.glowDefault": {
+        "cortana.hud.glowDefault": {
           "type": "number",
           "default": 1,
           "minimum": 0.4,
           "maximum": 2,
           "description": "Default glow intensity for HUD FX."
         },
-        "jarvis.injection.enabled": {
+        "cortana.injection.enabled": {
           "type": "boolean",
           "default": false,
           "description": "Enable Custom CSS workbench injection (primary HUD). Requires Admin once to write under Program Files."
         },
-        "jarvis.injection.bootMs": {
+        "cortana.injection.bootMs": {
           "type": "number",
           "default": 1200,
           "minimum": 0,
           "maximum": 10000,
           "description": "Boot / calibrating splash duration in milliseconds before injected chrome settles."
         },
-        "jarvis.injection.fallbackWebview": {
+        "cortana.injection.fallbackWebview": {
           "type": "boolean",
           "default": false,
           "description": "When false and injection is active, Command Center webview is demoted (injection is primary). When true, keep webview as optional fallback HUD."

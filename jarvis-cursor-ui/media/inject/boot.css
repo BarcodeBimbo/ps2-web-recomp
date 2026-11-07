@@ -1,10 +1,10 @@
-/* JARVIS-HEALTH: tokens+boot+hud
-   JARVIS — Command Center boot cover (PNG-first)
+/* CORTANA-HEALTH: tokens+boot+hud
+   CORTANA — Command Center boot cover (PNG-first)
    Visual authority: media/reference-command-center-2.png
    (same frame as media/reference-command-center.png)
-   Staged beside workbench.html as ./jarvis-boot-splash.png on enable.
+   Staged beside workbench.html as ./cortana-boot-splash.png on enable.
 
-   TIMING (boot lifecycle — driven by --jarvis-boot-ms / jarvis.injection.bootMs):
+   TIMING (boot lifecycle — driven by --cortana-boot-ms / cortana.injection.bootMs):
    - 0% → 70%: full opacity cover held; progress bar + % animate 0→100%
    - 70% → 100%: fade out into injected HUD
    - animation-fill-mode: forwards → opacity:0; visibility:hidden; pointer-events:none
@@ -18,7 +18,7 @@
 
 /* ========== Shared keyframes ========== */
 
-@keyframes jarvis-boot-lifecycle {
+@keyframes cortana-boot-lifecycle {
   0%,
   70% {
     opacity: 1;
@@ -32,7 +32,7 @@
   }
 }
 
-@keyframes jarvis-boot-parallax {
+@keyframes cortana-boot-parallax {
   0% {
     transform: scale(1.04) translate3d(0, 0, 0);
   }
@@ -44,7 +44,7 @@
   }
 }
 
-@keyframes jarvis-boot-streams {
+@keyframes cortana-boot-streams {
   0% {
     background-position:
       center center,
@@ -66,25 +66,25 @@
 }
 
 /* Length (not % of viewport) so fill matches the track width */
-@property --jarvis-boot-bar-w {
+@property --cortana-boot-bar-w {
   syntax: "<length>";
   inherits: false;
   initial-value: 0px;
 }
 
-@keyframes jarvis-boot-bar-grow {
+@keyframes cortana-boot-bar-grow {
   0% {
-    --jarvis-boot-bar-w: 0px;
+    --cortana-boot-bar-w: 0px;
   }
   70% {
-    --jarvis-boot-bar-w: 420px;
+    --cortana-boot-bar-w: 420px;
   }
   100% {
-    --jarvis-boot-bar-w: 420px;
+    --cortana-boot-bar-w: 420px;
   }
 }
 
-@keyframes jarvis-boot-bar-glow {
+@keyframes cortana-boot-bar-glow {
   0%,
   100% {
     filter: brightness(1);
@@ -94,7 +94,7 @@
   }
 }
 
-@keyframes jarvis-boot-percent-text {
+@keyframes cortana-boot-percent-text {
   0% {
     content: "0%";
   }
@@ -143,64 +143,64 @@
   }
 }
 
-@keyframes jarvis-boot-pip-step {
+@keyframes cortana-boot-pip-step {
   0%,
   13% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-dot-off, #292d35),
-      -14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      0 0 0 0 var(--jarvis-dot-off, #292d35),
-      14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+      -28px 0 0 0 var(--cortana-dot-off, #292d35),
+      -14px 0 0 0 var(--cortana-dot-off, #292d35),
+      0 0 0 0 var(--cortana-dot-off, #292d35),
+      14px 0 0 0 var(--cortana-dot-off, #292d35),
+      28px 0 0 0 var(--cortana-dot-off, #292d35);
   }
   14%,
   27% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      -14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      0 0 0 0 var(--jarvis-dot-off, #292d35),
-      14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+      -28px 0 0 0 var(--cortana-cyan, #00f2ff),
+      -14px 0 0 0 var(--cortana-dot-off, #292d35),
+      0 0 0 0 var(--cortana-dot-off, #292d35),
+      14px 0 0 0 var(--cortana-dot-off, #292d35),
+      28px 0 0 0 var(--cortana-dot-off, #292d35);
   }
   28%,
   41% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      0 0 0 0 var(--jarvis-dot-off, #292d35),
-      14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+      -28px 0 0 0 var(--cortana-cyan, #00f2ff),
+      -14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      0 0 0 0 var(--cortana-dot-off, #292d35),
+      14px 0 0 0 var(--cortana-dot-off, #292d35),
+      28px 0 0 0 var(--cortana-dot-off, #292d35);
   }
   42%,
   55% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      0 0 0 0 var(--jarvis-cyan, #00f2ff),
-      14px 0 0 0 var(--jarvis-dot-off, #292d35),
-      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+      -28px 0 0 0 var(--cortana-cyan, #00f2ff),
+      -14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      0 0 0 0 var(--cortana-cyan, #00f2ff),
+      14px 0 0 0 var(--cortana-dot-off, #292d35),
+      28px 0 0 0 var(--cortana-dot-off, #292d35);
   }
   56%,
   69% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      0 0 0 0 var(--jarvis-cyan, #00f2ff),
-      14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+      -28px 0 0 0 var(--cortana-cyan, #00f2ff),
+      -14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      0 0 0 0 var(--cortana-cyan, #00f2ff),
+      14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      28px 0 0 0 var(--cortana-dot-off, #292d35);
   }
   70%,
   100% {
     box-shadow:
-      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      0 0 0 0 var(--jarvis-cyan, #00f2ff),
-      14px 0 0 0 var(--jarvis-cyan, #00f2ff),
-      28px 0 0 0 var(--jarvis-cyan, #00f2ff);
+      -28px 0 0 0 var(--cortana-cyan, #00f2ff),
+      -14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      0 0 0 0 var(--cortana-cyan, #00f2ff),
+      14px 0 0 0 var(--cortana-cyan, #00f2ff),
+      28px 0 0 0 var(--cortana-cyan, #00f2ff);
   }
 }
 
-@keyframes jarvis-boot-bar-fill-width {
+@keyframes cortana-boot-bar-fill-width {
   0% {
     width: 0%;
   }
@@ -213,13 +213,13 @@
 /* ========== Base navy field (behind PNG) ========== */
 
 body,
-body.jarvis-inject,
-body.jarvis-boot,
-html.jarvis-inject body,
-html:has(#jarvis-workbench-css) body,
+body.cortana-inject,
+body.cortana-boot,
+html.cortana-inject body,
+html:has(#cortana-workbench-css) body,
 .monaco-workbench,
-.monaco-workbench.jarvis-inject {
-  background-color: var(--jarvis-bg, #0b0e14) !important;
+.monaco-workbench.cortana-inject {
+  background-color: var(--cortana-bg, #0b0e14) !important;
   background-image:
     radial-gradient(ellipse 80% 50% at 50% 40%, rgba(0, 212, 255, 0.07), transparent 70%),
     repeating-linear-gradient(
@@ -240,29 +240,29 @@ html:has(#jarvis-workbench-css) body,
     220px 220px,
     160px 160px,
     100% 100%;
-  animation: jarvis-boot-streams var(--jarvis-boot-stream-ms, 4.8s) linear infinite;
+  animation: cortana-boot-streams var(--cortana-boot-stream-ms, 4.8s) linear infinite;
 }
 
 /* ========== PNG full-bleed cover ========== */
 
 body::before,
-body.jarvis-inject::before,
-body.jarvis-boot::before,
-html:has(#jarvis-workbench-css) body::before,
-.monaco-workbench.jarvis-inject::before {
+body.cortana-inject::before,
+body.cortana-boot::before,
+html:has(#cortana-workbench-css) body::before,
+.monaco-workbench.cortana-inject::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 2147483000;
-  background-color: var(--jarvis-bg-deep, #0e121a);
-  background-image: var(--jarvis-boot-splash, url(./jarvis-boot-splash.png));
+  background-color: var(--cortana-bg-deep, #0e121a);
+  background-image: var(--cortana-boot-splash, url(./cortana-boot-splash.png));
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   transform-origin: 50% 42%;
   animation:
-    jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards,
-    jarvis-boot-parallax calc(var(--jarvis-boot-ms, 1800ms) * 1.15) ease-in-out infinite;
+    cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards,
+    cortana-boot-parallax calc(var(--cortana-boot-ms, 1800ms) * 1.15) ease-in-out infinite;
   pointer-events: auto;
   will-change: opacity, transform;
 }
@@ -271,9 +271,9 @@ html:has(#jarvis-workbench-css) body::before,
    Not a fake calibrating splash — PNG remains the visual. */
 
 body::after,
-body.jarvis-inject::after,
-body.jarvis-boot::after,
-html:has(#jarvis-workbench-css) body::after {
+body.cortana-inject::after,
+body.cortana-boot::after,
+html:has(#cortana-workbench-css) body::after {
   content: "0%";
   position: fixed;
   inset: 0;
@@ -284,23 +284,23 @@ html:has(#jarvis-workbench-css) body::after {
   justify-content: flex-end;
   padding-bottom: max(48px, 7vh);
   box-sizing: border-box;
-  font-family: var(--jarvis-font-mono, Consolas, monospace);
+  font-family: var(--cortana-font-mono, Consolas, monospace);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.12em;
-  color: var(--jarvis-text-percent, #a8c0d0);
+  color: var(--cortana-text-percent, #a8c0d0);
   text-align: center;
   text-shadow: 0 0 8px rgba(0, 242, 255, 0.45);
   pointer-events: none;
-  --jarvis-boot-bar-w: 0px;
+  --cortana-boot-bar-w: 0px;
   background-image:
     linear-gradient(
       90deg,
-      var(--jarvis-cyan-soft, #0fdeff) 0%,
-      var(--jarvis-cyan, #00f2ff) 70%,
+      var(--cortana-cyan-soft, #0fdeff) 0%,
+      var(--cortana-cyan, #00f2ff) 70%,
       #7af0ff 100%
     ),
-    linear-gradient(90deg, var(--jarvis-bar-track, #151626) 0 100%),
+    linear-gradient(90deg, var(--cortana-bar-track, #151626) 0 100%),
     radial-gradient(circle, rgba(0, 242, 255, 0.55) 0 1px, transparent 2px),
     radial-gradient(circle, rgba(15, 222, 255, 0.4) 0 1px, transparent 2px),
     radial-gradient(circle, rgba(0, 212, 255, 0.35) 0 1.5px, transparent 2.5px),
@@ -310,7 +310,7 @@ html:has(#jarvis-workbench-css) body::after {
     linear-gradient(180deg, transparent 52%, rgba(6, 9, 15, 0.62) 100%);
   background-repeat: no-repeat;
   background-size:
-    min(var(--jarvis-boot-bar-w), 52vw) 3px,
+    min(var(--cortana-boot-bar-w), 52vw) 3px,
     min(420px, 52vw) 3px,
     3px 3px,
     2px 2px,
@@ -332,44 +332,44 @@ html:has(#jarvis-workbench-css) body::after {
   /* lifecycle owns opacity end-state; pulse runs only during hold via shorter composite —
      use filter pulse so it does not fight lifecycle opacity */
   animation:
-    jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards,
-    jarvis-boot-bar-grow var(--jarvis-boot-ms, 1800ms) linear forwards,
-    jarvis-boot-bar-glow 1.1s ease-in-out infinite,
-    jarvis-boot-percent-text var(--jarvis-boot-ms, 1800ms) linear forwards;
+    cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards,
+    cortana-boot-bar-grow var(--cortana-boot-ms, 1800ms) linear forwards,
+    cortana-boot-bar-glow 1.1s ease-in-out infinite,
+    cortana-boot-percent-text var(--cortana-boot-ms, 1800ms) linear forwards;
   will-change: opacity, filter;
 }
 
-/* ========== Optional #jarvis-boot-root (if engine adds host later) ========== */
+/* ========== Optional #cortana-boot-root (if engine adds host later) ========== */
 
-#jarvis-boot-root {
+#cortana-boot-root {
   position: fixed !important;
   inset: 0 !important;
   z-index: 2147483100 !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
-  background-color: var(--jarvis-bg-deep, #0e121a) !important;
-  background-image: var(--jarvis-boot-splash, url(./jarvis-boot-splash.png));
+  background-color: var(--cortana-bg-deep, #0e121a) !important;
+  background-image: var(--cortana-boot-splash, url(./cortana-boot-splash.png));
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  animation: jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards;
+  animation: cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards;
   pointer-events: auto;
 }
 
-body:has(#jarvis-boot-root)::before,
-body.jarvis-inject:has(#jarvis-boot-root)::before,
-body.jarvis-boot:has(#jarvis-boot-root)::before,
-body:has(#jarvis-boot-root)::after,
-body.jarvis-inject:has(#jarvis-boot-root)::after,
-body.jarvis-boot:has(#jarvis-boot-root)::after {
+body:has(#cortana-boot-root)::before,
+body.cortana-inject:has(#cortana-boot-root)::before,
+body.cortana-boot:has(#cortana-boot-root)::before,
+body:has(#cortana-boot-root)::after,
+body.cortana-inject:has(#cortana-boot-root)::after,
+body.cortana-boot:has(#cortana-boot-root)::after {
   content: none !important;
   display: none !important;
   animation: none !important;
   background: none !important;
 }
 
-#jarvis-boot-root .jarvis-boot-progress {
+#cortana-boot-root .cortana-boot-progress {
   position: absolute;
   left: 50%;
   bottom: max(36px, 5.5vh);
@@ -383,16 +383,16 @@ body.jarvis-boot:has(#jarvis-boot-root)::after {
   pointer-events: none;
 }
 
-#jarvis-boot-root .jarvis-boot-bar {
+#cortana-boot-root .cortana-boot-bar {
   position: relative;
   width: 100%;
   height: 3px;
-  border-radius: var(--jarvis-radius-pill, 999px);
-  background: var(--jarvis-bar-track, #151626);
+  border-radius: var(--cortana-radius-pill, 999px);
+  background: var(--cortana-bar-track, #151626);
   overflow: hidden;
 }
 
-#jarvis-boot-root .jarvis-boot-bar::before {
+#cortana-boot-root .cortana-boot-bar::before {
   content: "";
   position: absolute;
   left: 0;
@@ -400,30 +400,30 @@ body.jarvis-boot:has(#jarvis-boot-root)::after {
   bottom: 0;
   width: 0%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--jarvis-cyan-soft, #0fdeff), var(--jarvis-cyan, #00f2ff));
-  box-shadow: var(--jarvis-reactor-glow-lo, var(--jarvis-glow-tight));
+  background: linear-gradient(90deg, var(--cortana-cyan-soft, #0fdeff), var(--cortana-cyan, #00f2ff));
+  box-shadow: var(--cortana-reactor-glow-lo, var(--cortana-glow-tight));
   animation:
-    jarvis-boot-bar-fill-width var(--jarvis-boot-ms, 1800ms) linear forwards,
-    jarvis-boot-bar-glow 1.1s ease-in-out infinite;
+    cortana-boot-bar-fill-width var(--cortana-boot-ms, 1800ms) linear forwards,
+    cortana-boot-bar-glow 1.1s ease-in-out infinite;
 }
 
-#jarvis-boot-root .jarvis-boot-percent {
-  font-family: var(--jarvis-font-mono, Consolas, monospace);
+#cortana-boot-root .cortana-boot-percent {
+  font-family: var(--cortana-font-mono, Consolas, monospace);
   font-size: 11px;
-  color: var(--jarvis-text-percent, #a8c0d0);
+  color: var(--cortana-text-percent, #a8c0d0);
   letter-spacing: 0.12em;
 }
 
-#jarvis-boot-root .jarvis-boot-percent::after {
+#cortana-boot-root .cortana-boot-percent::after {
   content: "0%";
-  animation: jarvis-boot-percent-text var(--jarvis-boot-ms, 1800ms) linear forwards;
+  animation: cortana-boot-percent-text var(--cortana-boot-ms, 1800ms) linear forwards;
 }
 
-#jarvis-boot-root .jarvis-boot-pips {
+#cortana-boot-root .cortana-boot-pips {
   width: 6px;
   height: 6px;
   border-radius: 1px;
-  background: var(--jarvis-cyan, #00f2ff);
+  background: var(--cortana-cyan, #00f2ff);
   margin-top: 4px;
-  animation: jarvis-boot-pip-step var(--jarvis-boot-ms, 1800ms) linear forwards;
+  animation: cortana-boot-pip-step var(--cortana-boot-ms, 1800ms) linear forwards;
 }

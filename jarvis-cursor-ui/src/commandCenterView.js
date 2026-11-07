@@ -10,7 +10,7 @@ const { listPresets } = require("./workspacePresets");
 const voice = require("./voiceBridge");
 
 /**
- * JARVIS Command Center — jarvis.institute layout + PRO feature modules (unlocked).
+ * CORTANA Command Center — jarvis.institute layout + PRO feature modules (unlocked).
  */
 class CommandCenterViewProvider {
   /** @param {vscode.ExtensionContext} context @param {import("./fileMapProvider").FileMapProvider} fileMap */
@@ -84,10 +84,10 @@ class CommandCenterViewProvider {
         await this.refresh({ full: true });
         break;
       case "openFileMap":
-        vscode.commands.executeCommand("jarvis.fileMap.focus");
+        vscode.commands.executeCommand("cortana.fileMap.focus");
         break;
       case "applyTheme":
-        vscode.commands.executeCommand("jarvis.theme.applyHints");
+        vscode.commands.executeCommand("cortana.theme.applyHints");
         break;
       case "runCommand":
         if (msg.command) vscode.commands.executeCommand(msg.command);
@@ -119,7 +119,7 @@ class CommandCenterViewProvider {
         break;
       case "savePreset":
         await savePreset(this.context, msg.name);
-        vscode.window.showInformationMessage("JARVIS preset saved.");
+        vscode.window.showInformationMessage("CORTANA preset saved.");
         await this.refresh({ full: true });
         break;
       case "applyPreset":
@@ -168,7 +168,7 @@ class CommandCenterViewProvider {
 
   _injectionPrimary() {
     try {
-      const cfg = vscode.workspace.getConfiguration("jarvis.injection");
+      const cfg = vscode.workspace.getConfiguration("cortana.injection");
       return cfg.get("enabled") === true && cfg.get("fallbackWebview") !== true;
     } catch {
       return false;
@@ -602,7 +602,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 </head>
 <body class="${bodyClass}${session.watermark ? " show-mark" : ""}" data-glow="${glow}">
 <canvas id="fx"></canvas>
-<div class="watermark">JARVIS STREAM</div>
+<div class="watermark">CORTANA STREAM</div>
 <div class="cinema" id="cinema">
   <span>Session Cinema · <span id="cineMin">${session.minutes || 0}</span>m</span>
   <span class="energy">Energy <span id="cineEnergy">${session.keystrokes || 0}</span></span>
@@ -624,7 +624,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 <div class="shell">
   <div class="top">
     <img src="${icon}" alt=""/>
-    <div class="brand">JARVIS Command Center</div>
+    <div class="brand">CORTANA Command Center</div>
     <div class="pill">Optimal</div>
     <div class="clock-wrap">
       <div class="clock" id="clock">—</div>
@@ -687,7 +687,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
         <div class="timeline">
           <div class="tl done"><div class="t">Workspace indexed</div><div class="m">Done · ${stats.files || 0} files</div></div>
           <div class="tl"><div class="t">Suit ${escapeHtml(suit.label)} online</div><div class="m">PRO features unlocked locally</div></div>
-          <div class="tl"><div class="t">Deep-work block: Voice pipeline</div><div class="m">Talk to JARVIS when ready</div></div>
+          <div class="tl"><div class="t">Deep-work block: Voice pipeline</div><div class="m">Talk to CORTANA when ready</div></div>
         </div>
       </div>
 
@@ -802,9 +802,9 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       <div class="card keep">
         <h2>Tasks</h2>
         <div class="timeline">
-          <div class="tl done"><div class="t">Install JARVIS Command Center</div><div class="m">Done</div></div>
+          <div class="tl done"><div class="t">Install CORTANA Command Center</div><div class="m">Done</div></div>
           <div class="tl"><div class="t">Apply suit theme</div><div class="m">AI Core → Suit Modes</div></div>
-          <div class="tl"><div class="t">Talk to JARVIS</div><div class="m">Bottom bar / Start Voice Chat</div></div>
+          <div class="tl"><div class="t">Talk to CORTANA</div><div class="m">Bottom bar / Start Voice Chat</div></div>
         </div>
       </div>
     </div>
@@ -894,7 +894,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
     </div>
     <button class="cta" id="btnCta">
       <span class="wavebar"><i></i><i></i><i></i><i></i><i></i></span>
-      <span>Talk to JARVIS<span class="subline" id="listenHint">I am listening…</span></span>
+      <span>Talk to CORTANA<span class="subline" id="listenHint">I am listening…</span></span>
       <span class="wavebar"><i></i><i></i><i></i><i></i><i></i></span>
     </button>
   </div>
@@ -929,7 +929,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
       clearInterval(tick);
       setTimeout(() => {
         document.getElementById("splash").classList.add("hide");
-        announce("Systems online. JARVIS ready.");
+        announce("Systems online. CORTANA ready.");
         beep(880, 0.06);
       }, 220);
     }
@@ -1105,7 +1105,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 <html lang="en"><head>
 <meta charset="UTF-8"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'nonce-${nonce}';"/>
-<title>JARVIS Command Center (fallback)</title>
+<title>CORTANA Command Center (fallback)</title>
 <style>
 body{margin:0;padding:20px;background:#020817;color:#becedb;font:12px/1.45 "Segoe UI Condensed","Segoe UI",sans-serif}
 h1{margin:0 0 8px;font-size:13px;letter-spacing:.18em;color:#4ad1f1;text-transform:uppercase}
@@ -1116,8 +1116,8 @@ code{color:#00d4ff}
 </head>
 <body>
   <h1>Injected HUD is primary</h1>
-  <p>Command Center chrome lives in workbench injection (<code>#jarvis-cc-hud</code>), matching the reference PNGs.</p>
-  <p>This sidebar webview is optional fallback only. Set <code>jarvis.injection.fallbackWebview</code> to restore the in-view dashboard.</p>
+  <p>Command Center chrome lives in workbench injection (<code>#cortana-cc-hud</code>), matching the reference PNGs.</p>
+  <p>This sidebar webview is optional fallback only. Set <code>cortana.injection.fallbackWebview</code> to restore the in-view dashboard.</p>
   <div class="pill">SYSTEM STATUS · INJECT ON</div>
   <script nonce="${nonce}">acquireVsCodeApi().postMessage({type:"ready"});</script>
 </body></html>`;

@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * JARVIS workbench injection engine (phase 6).
+ * CORTANA workbench injection engine (phase 6).
  *
  * First-party Custom CSS Loader / CSS Injector pattern (Rank 1):
  * locate Cursor workbench.html → backup pristine → insert marked inline <style>
@@ -21,16 +21,16 @@ const path = require("path");
 const crypto = require("crypto");
 const vscode = require("vscode");
 
-const MARKER_START = "JARVIS-INJECT-START";
-const MARKER_END = "JARVIS-INJECT-END";
-const MARKER_HUD_START = "JARVIS-HUD-START";
-const MARKER_HUD_END = "JARVIS-HUD-END";
-const STYLE_ID = "jarvis-workbench-css";
-const BOOT_STAGED_NAME = "jarvis-boot-splash.png";
+const MARKER_START = "CORTANA-INJECT-START";
+const MARKER_END = "CORTANA-INJECT-END";
+const MARKER_HUD_START = "CORTANA-HUD-START";
+const MARKER_HUD_END = "CORTANA-HUD-END";
+const STYLE_ID = "cortana-workbench-css";
+const BOOT_STAGED_NAME = "cortana-boot-splash.png";
 /** Authoritative boot still: Command Center frame (same as reference-command-center.png). */
 const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
-const GLOBAL_BACKUP_NAME = "workbench.jarvis.pristine.html";
+const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
 /** Cursor product.json checksums key for the patched workbench HTML. */
 const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.html";
 
@@ -42,14 +42,14 @@ const CSS_REL_PATHS = [
 ];
 
 const GS = {
-  enabled: "jarvis.injection.enabled",
-  active: "jarvis.injection.active",
-  cursorVersion: "jarvis.injection.cursorVersion",
-  cursorCommit: "jarvis.injection.cursorCommit",
-  backupUuid: "jarvis.injection.backupUuid",
-  markerUuid: "jarvis.injection.markerUuid",
-  lastError: "jarvis.injection.lastError",
-  lastOkFingerprint: "jarvis.injection.lastOkFingerprint",
+  enabled: "cortana.injection.enabled",
+  active: "cortana.injection.active",
+  cursorVersion: "cortana.injection.cursorVersion",
+  cursorCommit: "cortana.injection.cursorCommit",
+  backupUuid: "cortana.injection.backupUuid",
+  markerUuid: "cortana.injection.markerUuid",
+  lastError: "cortana.injection.lastError",
+  lastOkFingerprint: "cortana.injection.lastOkFingerprint",
 };
 
 // ---------------------------------------------------------------------------
@@ -81,7 +81,7 @@ function formatWriteError(err) {
   if (code === "EACCES" || code === "EPERM") {
     return (
       "EACCES: Cannot write Cursor workbench files under Program Files. " +
-      "Run Cursor as Administrator once to Enable/Disable JARVIS injection."
+      "Run Cursor as Administrator once to Enable/Disable CORTANA injection."
     );
   }
   return err.message || String(err);
@@ -172,7 +172,7 @@ function inferAppRoot(workbenchPath) {
 }
 
 function backupBesideWorkbench(workbenchPath, uuid) {
-  return path.join(path.dirname(workbenchPath), `workbench.jarvis.${uuid}.bak.html`);
+  return path.join(path.dirname(workbenchPath), `workbench.cortana.${uuid}.bak.html`);
 }
 
 function stagedSplashPath(workbenchPath) {
@@ -203,7 +203,7 @@ async function safeUnlink(filePath) {
  */
 async function writeTextFile(target, content) {
   const dir = path.dirname(target);
-  const tmp = path.join(dir, `.jarvis-write-${process.pid}-${Date.now()}.tmp`);
+  const tmp = path.join(dir, `.cortana-write-${process.pid}-${Date.now()}.tmp`);
   try {
     await fsp.writeFile(tmp, content, "utf8");
     try {
@@ -390,11 +390,11 @@ async function getFingerprint() {
 
 function parseMarkers(html) {
   const startRe =
-    /<!--\s*JARVIS-INJECT-START\s+uuid=([^\s]+)\s+cursorVersion=([^\s]+)\s+cursorCommit=([^\s>]*)\s*-->/;
-  const endRe = /<!--\s*JARVIS-INJECT-END\s*-->/;
-  const styleRe = /<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>/i;
-  const hudStartRe = /<!--\s*JARVIS-HUD-START\s+uuid=([^\s]+)\s*-->/;
-  const hudEndRe = /<!--\s*JARVIS-HUD-END\s*-->/;
+    /<!--\s*CORTANA-INJECT-START\s+uuid=([^\s]+)\s+cursorVersion=([^\s]+)\s+cursorCommit=([^\s>]*)\s*-->/;
+  const endRe = /<!--\s*CORTANA-INJECT-END\s*-->/;
+  const styleRe = /<style\s+id=["']cortana-workbench-css["'][\s\S]*?<\/style>/i;
+  const hudStartRe = /<!--\s*CORTANA-HUD-START\s+uuid=([^\s]+)\s*-->/;
+  const hudEndRe = /<!--\s*CORTANA-HUD-END\s*-->/;
 
   const startMatch = html.match(startRe);
   const endMatch = html.match(endRe);
@@ -408,7 +408,7 @@ function parseMarkers(html) {
     hasStyle: Boolean(styleMatch),
     hasHudStart: Boolean(hudStartMatch),
     hasHudEnd: Boolean(hudEndMatch),
-    hasHudRoot: html.includes('id="jarvis-cc-hud"') || html.includes("id='jarvis-cc-hud'"),
+    hasHudRoot: html.includes('id="cortana-cc-hud"') || html.includes("id='cortana-cc-hud'"),
     uuid: startMatch ? startMatch[1] : null,
     hudUuid: hudStartMatch ? hudStartMatch[1] : null,
     cursorVersion: startMatch ? startMatch[2] : null,
@@ -429,7 +429,7 @@ function isAlreadyPatched(html) {
     html.includes(MARKER_HUD_START) ||
     html.includes(`id="${STYLE_ID}"`) ||
     html.includes(`id='${STYLE_ID}'`) ||
-    html.includes('id="jarvis-cc-hud"')
+    html.includes('id="cortana-cc-hud"')
   );
 }
 
@@ -451,7 +451,7 @@ function markersValid(html, expectedUuid) {
     return { ok: false, reason: "marker order corrupt", markers: m };
   }
   if (!m.hasStyle) {
-    return { ok: false, reason: "missing style id jarvis-workbench-css", markers: m };
+    return { ok: false, reason: "missing style id cortana-workbench-css", markers: m };
   }
   if (expectedUuid && m.uuid !== expectedUuid) {
     return { ok: false, reason: "wrong marker uuid", markers: m };
@@ -467,7 +467,7 @@ function markersValid(html, expectedUuid) {
       return { ok: false, reason: "HUD marker order corrupt", markers: m };
     }
     if (!m.hasHudRoot) {
-      return { ok: false, reason: "missing jarvis-cc-hud root", markers: m };
+      return { ok: false, reason: "missing cortana-cc-hud root", markers: m };
     }
     if (expectedUuid && m.hudUuid && m.hudUuid !== expectedUuid) {
       return { ok: false, reason: "wrong HUD marker uuid", markers: m };
@@ -483,14 +483,14 @@ function markersValid(html, expectedUuid) {
  * after sibling A–C CSS polish. Soft: only when a style block is present.
  */
 const CSS_HEALTH_NEEDLES = [
-  "JARVIS-HEALTH",
-  "--jarvis-cyan",
-  "jarvis-boot",
+  "CORTANA-HEALTH",
+  "--cortana-cyan",
+  "cortana-boot",
   "media/inject/hud.css",
 ];
 
 function extractInjectedStyleCss(html) {
-  const styleRe = /<style\s+id=["']jarvis-workbench-css["']>([\s\S]*?)<\/style>/i;
+  const styleRe = /<style\s+id=["']cortana-workbench-css["']>([\s\S]*?)<\/style>/i;
   const match = html.match(styleRe);
   return match ? match[1] : "";
 }
@@ -510,7 +510,7 @@ function probeInjectedCssHealth(html) {
     }
   }
   // Require health tag + at least boot + cyan token; HUD path comment is soft-preferred
-  const required = ["JARVIS-HEALTH", "--jarvis-cyan", "jarvis-boot"];
+  const required = ["CORTANA-HEALTH", "--cortana-cyan", "cortana-boot"];
   const missingRequired = required.filter((n) => !css.includes(n));
   if (missingRequired.length) {
     return {
@@ -531,8 +531,8 @@ function stripHudMarkup(html) {
     return `${html.slice(0, from)}${html.slice(to)}`.replace(/\n{3,}/g, "\n\n");
   }
   return html
-    .replace(/<!--\s*JARVIS-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*JARVIS-HUD-END\s*-->\s*/g, "")
-    .replace(/<script[^>]*id=["']jarvis-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
+    .replace(/<!--\s*CORTANA-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*CORTANA-HUD-END\s*-->\s*/g, "")
+    .replace(/<script[^>]*id=["']cortana-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
 }
 
@@ -545,9 +545,9 @@ function stripPatch(html) {
     out = `${out.slice(0, from)}${out.slice(to)}`;
   } else {
     out = out
-      .replace(/<!--\s*JARVIS-INJECT-START[\s\S]*?-->\s*/g, "")
-      .replace(/<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
-      .replace(/<!--\s*JARVIS-INJECT-END\s*-->\s*/g, "");
+      .replace(/<!--\s*CORTANA-INJECT-START[\s\S]*?-->\s*/g, "")
+      .replace(/<style\s+id=["']cortana-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
+      .replace(/<!--\s*CORTANA-INJECT-END\s*-->\s*/g, "");
   }
   out = stripHudMarkup(out);
   return out.replace(/\n{3,}/g, "\n\n");
@@ -609,8 +609,8 @@ async function readHudMarkup(context) {
     .replace(/>Monday, 15 June 2026</, `>${date}<`)
     .replace(/>11:18:21 am</i, `>${clock}<`);
   const clockScript = [
-    `<script id="jarvis-hud-clock-script">`,
-    `(function(){function t(){var d=new Date(),c=document.getElementById("jarvis-hud-clock"),a=document.getElementById("jarvis-hud-date");`,
+    `<script id="cortana-hud-clock-script">`,
+    `(function(){function t(){var d=new Date(),c=document.getElementById("cortana-hud-clock"),a=document.getElementById("cortana-hud-date");`,
     `if(c)c.textContent=d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit",second:"2-digit",hour12:true});`,
     `if(a)a.textContent=d.toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});}`,
     `t();setInterval(t,1000);}());`,
@@ -677,7 +677,7 @@ async function writeState(context, patch) {
 
 async function mirrorEnabledSetting(enabled) {
   try {
-    const cfg = vscode.workspace.getConfiguration("jarvis.injection");
+    const cfg = vscode.workspace.getConfiguration("cortana.injection");
     await cfg.update("enabled", Boolean(enabled), vscode.ConfigurationTarget.Global);
   } catch {
     // package.json contribution may land from a sibling agent; ignore mirror failures.
@@ -686,7 +686,7 @@ async function mirrorEnabledSetting(enabled) {
 
 function readEnabledSetting() {
   try {
-    return Boolean(vscode.workspace.getConfiguration("jarvis.injection").get("enabled", false));
+    return Boolean(vscode.workspace.getConfiguration("cortana.injection").get("enabled", false));
   } catch {
     return false;
   }
@@ -699,7 +699,7 @@ function readEnabledSetting() {
 function resolveBootMs() {
   let bootMs = 1200;
   try {
-    bootMs = Number(vscode.workspace.getConfiguration("jarvis.injection").get("bootMs", 1200));
+    bootMs = Number(vscode.workspace.getConfiguration("cortana.injection").get("bootMs", 1200));
   } catch {
     bootMs = 1200;
   }
@@ -733,10 +733,10 @@ async function readCssBundle(context) {
   // Do NOT override background-image here (would wipe multi-layer boot.css stacks).
   parts.push(
     [
-      "/* === jarvis staged splash binding === */",
+      "/* === cortana staged splash binding === */",
       `:root {`,
-      `  --jarvis-boot-splash: url(./${BOOT_STAGED_NAME});`,
-      `  --jarvis-boot-ms: ${bootMs}ms;`,
+      `  --cortana-boot-splash: url(./${BOOT_STAGED_NAME});`,
+      `  --cortana-boot-ms: ${bootMs}ms;`,
       `}`,
     ].join("\n")
   );
@@ -776,7 +776,7 @@ async function removeStagedSplash(workbenchPath) {
 
 /**
  * Never backup an already-patched file (classic Custom CSS poison).
- * Primary: workbench.jarvis.<uuid>.bak.html beside workbench.
+ * Primary: workbench.cortana.<uuid>.bak.html beside workbench.
  * Secondary: globalStorage pristine copy for update-wipe recovery.
  */
 async function createPristineBackup(context, workbenchPath, pristineHtml, uuid) {
@@ -803,12 +803,12 @@ async function loadBackupHtml(context, workbenchPath, backupUuid) {
     }
   }
 
-  // Scan directory for any jarvis bak if uuid lost
+  // Scan directory for any cortana bak if uuid lost
   if (workbenchPath) {
     try {
       const dir = path.dirname(workbenchPath);
       const names = await fsp.readdir(dir);
-      const bak = names.filter((n) => /^workbench\.jarvis\..+\.bak\.html$/i.test(n)).sort();
+      const bak = names.filter((n) => /^workbench\.cortana\..+\.bak\.html$/i.test(n)).sort();
       if (bak.length) {
         const full = path.join(dir, bak[bak.length - 1]);
         return { html: await fsp.readFile(full, "utf8"), source: "beside-workbench-scan" };
@@ -903,12 +903,12 @@ async function reconcileOnActivate(context) {
     if (state.lastOkFingerprint) {
       if (state.lastOkFingerprint !== currentFp) {
         mismatch = true;
-        mismatchReason = `Cursor updated (${state.lastOkFingerprint} → ${currentFp}) — JARVIS injection disabled. Re-enable after verify.`;
+        mismatchReason = `Cursor updated (${state.lastOkFingerprint} → ${currentFp}) — CORTANA injection disabled. Re-enable after verify.`;
       }
     } else if (state.cursorVersion || state.cursorCommit) {
       if (state.cursorVersion !== fp.version || state.cursorCommit !== fp.commit) {
         mismatch = true;
-        mismatchReason = `Cursor updated (${state.cursorVersion}/${state.cursorCommit} → ${fp.version}/${fp.commit}) — JARVIS injection disabled. Re-enable after verify.`;
+        mismatchReason = `Cursor updated (${state.cursorVersion}/${state.cursorCommit} → ${fp.version}/${fp.commit}) — CORTANA injection disabled. Re-enable after verify.`;
       }
     }
 
@@ -935,7 +935,7 @@ async function reconcileOnActivate(context) {
     if (state.active || isAlreadyPatched(html)) {
       const validity = markersValid(html, expectedUuid);
       if (!validity.ok) {
-        const reason = `Patch detection failed: ${validity.reason} — JARVIS injection disabled.`;
+        const reason = `Patch detection failed: ${validity.reason} — CORTANA injection disabled.`;
         try {
           await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
         } catch (err) {
@@ -951,7 +951,7 @@ async function reconcileOnActivate(context) {
       // CSS sheet probe: HUD/tokens health markers must survive A–C rebuilds
       const styleProbe = probeInjectedCssHealth(html);
       if (!styleProbe.ok) {
-        const reason = `Health probe failed: ${styleProbe.reason} — JARVIS injection disabled.`;
+        const reason = `Health probe failed: ${styleProbe.reason} — CORTANA injection disabled.`;
         try {
           await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
         } catch (err) {
@@ -1075,9 +1075,9 @@ async function enable(context) {
     await writeState(context, { lastError: message });
     return { ok: false, message };
   }
-  if (!css.includes("JARVIS-HEALTH")) {
+  if (!css.includes("CORTANA-HEALTH")) {
     const message =
-      "Inject CSS missing JARVIS-HEALTH marker (tokens.css / hud.css) — refusing Enable";
+      "Inject CSS missing CORTANA-HEALTH marker (tokens.css / hud.css) — refusing Enable";
     await writeState(context, { lastError: message });
     return { ok: false, message };
   }
@@ -1090,8 +1090,8 @@ async function enable(context) {
     await writeState(context, { lastError: message });
     return { ok: false, message };
   }
-  if (!hudBundle.markup || !hudBundle.markup.includes("jarvis-cc-hud")) {
-    const message = "HUD markup invalid — missing jarvis-cc-hud root";
+  if (!hudBundle.markup || !hudBundle.markup.includes("cortana-cc-hud")) {
+    const message = "HUD markup invalid — missing cortana-cc-hud root";
     await writeState(context, { lastError: message });
     return { ok: false, message };
   }
@@ -1352,7 +1352,7 @@ async function healthCheck(context) {
     sourcePresent: await pathExists(path.join(context.extensionUri.fsPath, BOOT_SOURCE_REL)),
   };
   if (state.active && !details.splash.present) {
-    details.issues.push("active but jarvis-boot-splash.png not staged beside workbench");
+    details.issues.push("active but cortana-boot-splash.png not staged beside workbench");
   }
   if (state.active && !details.splash.sourcePresent) {
     details.issues.push("boot source PNG missing (reference-command-center-2.png)");
@@ -1379,7 +1379,7 @@ async function healthCheck(context) {
     details.issues.push(`HUD markup missing: ${details.hudMarkup.path}`);
   }
   if (state.active && !details.hudMarkup.injected) {
-    details.issues.push("active but jarvis-cc-hud not present in workbench.html");
+    details.issues.push("active but cortana-cc-hud not present in workbench.html");
   }
 
   // Content probe against live workbench style + on-disk sheets
@@ -1395,7 +1395,7 @@ async function healthCheck(context) {
     }
     try {
       const text = await fsp.readFile(full, "utf8");
-      const hasHealth = text.includes("JARVIS-HEALTH");
+      const hasHealth = text.includes("CORTANA-HEALTH");
       details.css.push({
         path: `${rel.replace(/\\/g, "/")}:health`,
         present: hasHealth,
