@@ -486,9 +486,65 @@ bool assemble_holds_butanim() {
     return std::memcmp(g_ram + dst, g_ram + kPlant, 8) == 0;
 }
 
+// Restore obj+0x20 if it was cleared since soft-arm. vt+108 needs *(+0x20)+0x24≠0
+// to run the 0x51C100 ingest path. Must be called BEFORE vt+108 runs.
+// Returns true if restoration happened.
+bool try_restore_butanim_o20() {
+    if (!g_butanim_soft_obj || g_butanim_soft_obj + 0x100u > kRamSize) return false;
+    if (!g_butanim_soft_o20 || g_butanim_soft_o20 >= kRamSize) return false;
+    // Already restored enough times — don't thrash.
+    if (g_butanim_o20_restore_count >= 12) return false;
+
+    std::uint32_t cur_o20 = 0;
+    std::memcpy(&cur_o20, g_ram + g_butanim_soft_obj + 0x20u, 4);
+
+    // +0x20 still live — nothing to do.
+    if (cur_o20 != 0) return false;
+
+    // +0xFF already set means vt+108 already ran with +0x20=0, skipping 0x51C100.
+    // Clear +0xFF so the next guest tick can retry vt+108 with restored +0x20.
+    // This is safe: we are NOT re-arming status (that crashed ra=0x110224).
+    const bool ff_set = g_ram[g_butanim_soft_obj + 0xffu] != 0;
+    if (ff_set && g_butanim_o20_restore_count < 4) {
+        // Clear +0xFF so guest vt+108 path can run again with live +0x20.
+        g_ram[g_butanim_soft_obj + 0xffu] = 0;
+        g_butanim_saw_ff_clear = true; // Re-arm our own detection.
+    }
+
+    // Restore +0x20 from soft-arm capture.
+    std::memcpy(g_ram + g_butanim_soft_obj + 0x20u, &g_butanim_soft_o20, 4);
+    // Also restore +0x14 if captured.
+    if (g_butanim_soft_o14 && g_butanim_soft_o14 < kRamSize) {
+        std::memcpy(g_ram + g_butanim_soft_obj + 0x14u, &g_butanim_soft_o14, 4);
+    }
+    ++g_butanim_o20_restore_count;
+
+    // Verify the attach chain: *(obj+0x20)+0x24 should be non-zero for 0x51C100.
+    std::uint32_t attach = 0;
+    if (g_butanim_soft_o20 + 0x28u <= kRamSize) {
+        std::memcpy(&attach, g_ram + g_butanim_soft_o20 + 0x24u, 4);
+    }
+
+    static int s_log = 0;
+    if (s_log < 12) {
+        std::fprintf(stderr,
+                     "[igfileio] restored butanim obj+0x20=0x%X +0x14=0x%X (was 0, +0xFF=%d→%d, "
+                     "*(+0x20)+0x24=0x%X, count=%d)\n",
+                     g_butanim_soft_o20, g_butanim_soft_o14, ff_set ? 1 : 0,
+                     g_ram[g_butanim_soft_obj + 0xffu], attach, g_butanim_o20_restore_count);
+        ++s_log;
+    }
+    return true;
+}
+
 void poll_butanim_parse_complete() {
     if (g_ui_igb_parse_attempted || g_butanim_parsed_ok) return;
     if (!g_butanim_soft_obj || g_butanim_soft_obj + 0x100u > kRamSize) return;
+
+    // BEFORE checking +0xFF: restore +0x20 if it was cleared. This gives vt+108
+    // a chance to run the 0x51C100 ingest path on its next iteration.
+    try_restore_butanim_o20();
+
     if (!g_ram[g_butanim_soft_obj + 0xffu]) {
         g_butanim_saw_ff_clear = true;
         return;
@@ -516,13 +572,13 @@ void poll_butanim_parse_complete() {
             ++s_false;
         }
     } else if (g_butanim_saw_ff_clear && plant_ok && o20 == 0) {
-        // vt+108 ran with good bytes but skipped 0x51C100 (+20==0). Keep hold;
-        // do not poke status/obj (that crashed ra 0x110224). Wait for guest or
-        // intro-hold backstop.
+        // vt+108 ran with good bytes but skipped 0x51C100 (+20==0). +20 was
+        // restored above; if it got cleared again, wait and let the next
+        // guest tick retry. Do NOT re-arm status (crashed ra 0x110224).
         static int s_weak = 0;
-        if (s_weak < 4) {
+        if (s_weak < 8) {
             std::fprintf(stderr,
-                         "[igfileio] butanim vt+108 weak (+20=0, plant ok); hold intro, no re-arm\n");
+                         "[igfileio] butanim vt+108 weak (+20=0 after restore, plant ok); holding\n");
             ++s_weak;
         }
     }
@@ -772,6 +828,11 @@ bool try_kick_alchemy_font_tick() {
     // the delay returns and CDVD completion can clear +24008 itself.
     // Alchemy/CNK only — Hitman/NFS never plant STBL0 here.
     if (!alchemy_stbl_pending()) return false;
+    // Restore obj+0x20 BEFORE guest FCE0/vt+108 runs. vt+108 needs *(+0x20)+0x24≠0
+    // to run the 0x51C100 ingest path; something clears +0x20 between soft-arm and
+    // the guest tick. Restoring it here gives the next guest FCE0 iteration a live
+    // pointer so 0x51C100 ingest sticks and prims >> 2.
+    try_restore_butanim_o20();
     // Do NOT re-stick gob+912: guest writes 0xCA/202 as a real intermediate;
     // forcing 1 fought the native path (seen under PS2_ALCHEMY_NO_BIND too).
     std::uint32_t lg = 0;
@@ -1359,10 +1420,16 @@ void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim) {
         g_butanim_saw_ff_clear = true;
         g_ui_igb_parse_attempted = false;
         g_butanim_parsed_ok = false;
+        g_butanim_o20_restore_count = 0;
         std::uint32_t o14 = 0, o20 = 0, o8 = 0;
         std::memcpy(&o8, g_ram + obj + 8u, 4);
         std::memcpy(&o14, g_ram + obj + 0x14u, 4);
         std::memcpy(&o20, g_ram + obj + 0x20u, 4);
+        // Capture +0x14/+0x20 for restoration. vt+108's 0x51C100 ingest path
+        // requires *(obj+0x20)+0x24≠0; something clears +0x20 before guest
+        // FCE0/vt+108 runs. We restore it so the ingest sticks and prims >> 2.
+        g_butanim_soft_o14 = o14;
+        g_butanim_soft_o20 = o20;
         std::fprintf(stderr,
                      "[igfileio] noted butanim soft-arm obj=0x%X (cleared +0xFF) +8=%u +14=0x%X +20=0x%X "
                      "assemble_butanim=%d\n",
@@ -1385,8 +1452,11 @@ void reset() {
     g_ui_igb_parse_attempted = false;
     g_butanim_soft_obj = 0;
     g_butanim_plant_size = 0;
+    g_butanim_soft_o14 = 0;
+    g_butanim_soft_o20 = 0;
     g_butanim_saw_ff_clear = false;
     g_butanim_parsed_ok = false;
+    g_butanim_o20_restore_count = 0;
 }
 
 bool handle(std::uint32_t method, std::uint32_t args, std::uint32_t size, std::uint32_t ret, std::uint32_t ret_size) {

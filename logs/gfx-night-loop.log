@@ -29,3 +29,9 @@
 2026-11-06 09:01:18 END min60 exit=0 in 213.8s
 2026-11-06 09:01:18 PASS min60
 2026-11-06 09:01:23 DONE fails=0
+2026-11-07 07:57:04 night-loop py=C:\Users\joshy\AppData\Local\Programs\Python\Python310\python.exe rounds=1 observe=60 (no BootMash)
+2026-11-07 07:57:04 ==== round 1/1 ====
+2026-11-07 07:57:04 START smoke
+2026-11-07 07:57:16 END smoke exit=0 in 12.1s
+2026-11-07 07:57:16 PASS smoke
+2026-11-07 07:57:16 START uncap
