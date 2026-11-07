@@ -8,6 +8,11 @@
 
 /generated/
 /tools/
+# Track custom Alchemy dumper source (still ignore its local out/ + caches)
+!/tools/ps2-alchemy-dumper/
+/tools/ps2-alchemy-dumper/out/
+/tools/ps2-alchemy-dumper/**/__pycache__/
+/tools/ps2-alchemy-dumper/**/*.pyc
 /build/
 
 *.ppm

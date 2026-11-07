@@ -1,32 +1,42 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-06 (~23:51 local)  
+**Updated:** 2026-11-07 (~06:25 local)  
 **Repo root:** `C:\PS2Recomp`  
-**Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely.
+**Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
 This file is the single handoff for humans and agents. Detailed evidence lives under `verification/recovery/` and `logs/`. Prefer those reports over re-deriving.
 
-**Stasis:** Leave work in place until the user returns. Do not start new tracks unless they ask. **Safe to reload Cursor.**
+**Stasis lifted:** 2026-11-07 ~05:26 — paused workers + SDK audit tracks restarted (research/observe only; no disc-fix/R5/CNK patches). Theme UI folder `jarvis-cursor-ui` removed separately. **Safe to reload Cursor.**
+
+### Standing instructions (agents) — LOCKED 2026-11-07 ~06:05
+
+1. **Execute the next stage now.** Prepare, plan, and **start executing immediately**. Do **not** stop until that stage is **working**. Keep the caller updated on **every move** as it happens.
+2. **Full control / full direction.** Do **not** ask for approval on routine decisions. Bring something up only if it is truly important and needs discussion; after discussion, the **agent still makes the final call**.
+3. **Keep this file current.** Periodically update MASTER-CONTEXT with steps **completed** and **in progress** (workers, audits, downloads, blockers) so a crash or reload can resume without re-asking.
+4. **Safe commits.** When a stage reaches a point where committing to GitHub is appropriate and **will not break** existing stable functionality, **commit** (user standing order). Still no force-push / no hook skips unless explicitly asked.
+5. **Hard bans this stage:** Do **not** patch **disc-fix**, **R5**, or **CNK** (including Alchemy host hacks). Research/observe for those tracks only.
+6. **FPS bar:** **60 FPS minimum** for non-CNK games (higher preferred). **God of War is patient zero** for the FPS track.
+7. **Evidence first.** Prefer `verification/recovery/` + `logs/` over re-deriving. Product browser target remains **Chrome + Edge**.
 
 ---
 
 ## RESUME POINT — pick up here (do not ask the user to re-explain)
 
-**Session cut-off:** 2026-11-06 ~23:51 local. MASTER-CONTEXT + RESUME POINT written; four named workers safely paused — **no new work**.
+**Session cut-off (prior):** 2026-11-06 ~23:51 local. **Unpaused:** 2026-11-07 ~05:26. **Now (~06:30):** Standing instructions LOCKED. **Active stages:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke drew ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) **Custom PS2 Alchemy dumper** — Phase 1–3 **debug-tested** (`verify` **20/20** exit 0 on CNK); schema 1.1 + class-map; optical still stub (see §9). No runtime edits.
 
 ### A) R1–R5 official SDK audit (research only)
 
 | Item | Product status | SDK audit status | Where left off |
 |------|----------------|------------------|----------------|
-| **R1** SIF end | `cleared_with_evidence` (joint-stable `1e04172`) | **Pending formal compliance write-up** | Compared informally to EE/IOP SIF PDFs + `sif.cpp` orphan/end-packet path; no signed compliance report filed yet |
-| **R2** WaitSema fidelity | `cleared_with_evidence` (never `host_signal(2)`) | **Pending** | Ownership already in `waitsema-createsema-trace-live-report.md`; not yet line-audited vs IOP Kernel PDF WaitSema sections |
-| **R3** readee / AlignReadBuffer | **`verified_apply`** in `runtime/src/iop/cdvdfsv.cpp` | **In progress / partial** | Code + comments claim Sony b1len/b2len + unaligned +16/+80; public `libcdvd.h` has no AlignReadBuffer (internal EE). Need Device PDF + samples vs `read_to_ee` (~L49–236) |
-| **R4** sceCdSync / finish_read | `cleared_with_evidence` (no wake code) | **Partial** | IOP HLE in `runtime/src/iop/cdvd.cpp` L108–116 (`mode==1\|\|17` poll busy; else block). SDK: `sceCdSync` / `sceCdDiskReady` in `E:\usr\local\sce\common\include\libcdvd.h` L279–282; sample poll in `ee\sample\cdvd\smp_ee\main.c`. DiskReady HLE always returns `2` — flag if audit finds wrong constant |
-| **R5** pad / sound | **still gated** (no disc-fix apply) | **Not started as HLE audit** | SDK assets present: `padman.irx`, `libpad.h`, `libsd.irx`, `libsd.h`, `libsdr.h`. Runtime has SIO2/pad trace env, **no** padman/libsd HLE module set comparable to CDVD. PDF sound/device extracts ready for when R5 opens |
+| **R1** SIF end | `cleared_with_evidence` (joint-stable `1e04172`) | **Notes written** → `sdk-compliance-r1-sif.md` | Orphan end-packet HLE may synthesize success REND on soft reset (flagged; queue drains) |
+| **R2** WaitSema fidelity | `cleared_with_evidence` (never `host_signal(2)`) | **Notes written** → `sdk-compliance-r2-waitsema.md` | Never `host_signal(2)` on Hitman/NFS; CNK igfileio pulse quarantined |
+| **R3** readee / AlignReadBuffer | **`verified_apply`** in `runtime/src/iop/cdvdfsv.cpp` | **Notes written** → `sdk-compliance-r3-readee.md` | AlignReadBuffer absent from public `libcdvd.h`; Device PDF = 64B align compensation; CNK virt/Alchemy paths quarantined |
+| **R4** sceCdSync / finish_read | `cleared_with_evidence` (no wake code) | **Notes written** → `sdk-compliance-r4-cdsync.md` | `sceCdDiskReady` HLE always returns `2` (SCECdComplete), ignores mode — flag if titles need NotReady |
+| **R5** pad / sound | **still gated** (no disc-fix apply) | **Inventory written** (2026-11-07) — still not an apply/HLE rewrite | See `verification/recovery/sdk-compliance-r5-pad-sound-inventory.md`. SDK assets present; runtime has SIO2/SPU2 + `PS2_TRACE_PAD`, **no** padman/libsd HLE module set comparable to CDVD. Board step 8 observe-only; do not apply |
 
 **Audit rules:** research only; **flag deviations, do not patch** unless user asks. Official tree: **`E:\usr\local\sce` only**.
 
-**Next resume action for audit:** finish Device Reference text hunt for `sceCdSync` mode meanings + AlignReadBuffer / readee layout; write per-R compliance notes; then R5 API surface inventory only (still gated).
+**Next resume action for audit:** Compliance rollup complete. Research-only flags stand; do not patch unless user asks. R5 remains gated.
 
 ### B) PDF extraction (`verification/recovery/_sdk_pdf_extract/`)
 
@@ -49,28 +59,44 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 | `PS2_IOP-Reference-Device-3.0.2.pdf.txt` | sceCdSync, DiskReady, sceCdRead |
 | `PS2_EE-Overview-Kernel-3.0.2.pdf.txt` | WaitSema |
 
-**Hunt status:** extractor keyword pass done. **No Alchemy / Intrinsic hits** in those extracts. **Deep read / quote harvest for CDVD AlignReadBuffer, sceCdSync modes, padman, libsd stack not finished** — interrupted by cleanup / UI / MASTER-CONTEXT.
+**Hunt status:** extractor keyword pass done. **No Alchemy / Intrinsic hits** in those extracts.  
+**Quote harvests:**  
+- Round 1 → `sdk-pdf-quote-harvest-r1r5.md` (~35 blocks).  
+- **CNK-informed round (2026-11-07 ~06:00)** → `sdk-pdf-quote-harvest-cnk-informed-2026-11-07.md` — re-scan + CNK coupling notes (GFC/GOB via CDVDFSV; padman/libsd = retail MODULES, not Alchemy).  
+**Confirmed gaps:** no PDF prose for AlignReadBuffer / b1len / b2len / +16 / +80 (closest: 64-byte compensation + `libcdvd.a` `_sceCd_rd_intr_data` / `_sceCd_Read_cur_pos`). Strong: sceCdSync modes, DiskReady=`2`, padman load order, libsd/libsdr.
 
-**Not extracted yet (optional later):** graphics/movie/network EE+IOP overviews/refs, Docs&Training PDFs under `E:\usr\local\sce\Docs&Training\`, tips beyond `cdvdtips`.
+**Not extracted yet (optional later):** graphics/movie/network EE+IOP overviews/refs, Docs&Training PDFs under `E:\usr\local\sce\Docs&Training\`, tips beyond `cdvdtips` (only if hunting AlignReadBuffer prose further).
 
 **Helper script:** `verification/recovery/_extract_sdk_pdfs.py` (needs Python 3.10 + `pypdf`).
 
-**Next resume action:** grep/read Device Reference + Sound extracts; produce the deferred R1–R5 compliance report.
+**Next resume action (audit):** Harvests + compliance report complete. Do not patch unless asked. R5 remains gated.
 
-### C) Active workers — last known state (**PAUSED** for reload)
+### C) Active workers — last known state (**RESUMED** 2026-11-07)
 
 | ID | Track | Last known |
 |----|--------|------------|
-| w1 / `76656af6` | Disc-fix Hitman/NFS | **PAUSED** — R1–R4 done; R5 gated; `1e04172`; see `worker-pause-discfix-76656af6.md` |
-| w2 / `11558b0f` | Test-matrix | **PAUSED** — board step 7 / R4 ack; R5 gated; see `worker-pause-matrix-11558b0f.md` |
-| w3 | CNK null-bind `51ACEC` | Observe-only; soft-arm still 2 prims; next live vtable dump |
-| w4 | Sly GS/VU | **Completed** research; next STQ/PATH3/CLUT when prioritized |
-| w4b | Sly asset bin-walk | **Done** |
-| w5 | WaitSema / CreateSema | Ownership report done; observe-only |
-| w6 / `2fa08b23` | BIOS zip reference | **PAUSED** (already complete); see `worker-pause-bios-2fa08b23.md` |
-| w7 / `8c36c5b2` | CNK ELF Alchemy redo | **PAUSED** (report written); see `worker-pause-cnk-elf-8c36c5b2.md` |
+| w1 | Disc-fix Hitman/NFS | **RESUMED** idle watcher — R1–R4 `1e04172`; board **step 8** `R5_pad_sound_observe` (observe-only; `allow_discfix_apply=false`); see `worker-resume-discfix-w1-2026-11-07.md` |
+| w2 | Test-matrix | **RESUMED** idle watcher — same board step 8; no smokes/R5 apply; see `worker-resume-matrix-w2-2026-11-07.md` |
+| w3 | CNK null-bind `51ACEC` | **RESUMED** observe — offline live vtable dump done; soft-arm still 2 prims; `worker-resume-cnk-nullbind-w3-2026-11-07.md` |
+| w4 / w4b | Sly GS/VU + asset bin-walk | **RESUMED-as-complete/parked** — next STQ/PATH3/CLUT when prioritized; `worker-resume-sly-w4-w4b-2026-11-07.md` |
+| w5 | WaitSema / CreateSema | **RESUMED** observe-only; `worker-resume-waitsema-w5-2026-11-07.md` |
+| w6 | BIOS zip reference | **RESUMED-as-complete**; `worker-resume-bios-w6-2026-11-07.md` |
+| w7 | CNK ELF Alchemy redo | **RESUMED** complete/quarantined research owner; `worker-resume-cnk-elf-w7-2026-11-07.md` |
 
-Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rule: no new launches until user unpauses.
+#### CNK Alchemy rebuild research (launched 2026-11-07 ~05:45) — observe only
+
+**Target game:** Crash Nitro Kart only — id `b49f2e769315347e8bda839feb705744` (**not** Hitman). No disc-fix/R5/CNK patches.
+
+| Worker | Track | Status |
+|--------|--------|--------|
+| A1 | CNK ELF Alchemy walk (strings / symbols / VAs) | **DONE** → `alchemy-rebuild-w1-cnk-elf-walk-2026-11-07.md` (~595 `ig*` whole-string classes; v3.0-0909; stripped; key VAs confirmed). Prior deep map: `cnk-elf-alchemy-full-redo-report.md` |
+| A2 | CNK disc binwalk / Alchemy TOC (GFC·GOB·IGB) | **DONE** → `alchemy-rebuild-w2-cnk-binwalk-toc-2026-11-07.md` — GFC 1830 files / 4327 STBL / 520 `.igb`; IGB `DA FA` / `0x80000005` |
+| A3 | Cross-ref vs Alchemy 5.0 kit + ps2tek mirror | **DONE** → `alchemy-rebuild-w3-kit-ps2tek-xref-2026-11-07.md` — kit=concepts only; gaps loadgate / igFileIO name / `0x725F50` |
+| A4 | Alchemy-related IOP modules + EE syscall inventory | **DONE** → `alchemy-rebuild-w4-iop-ee-inventory-2026-11-07.md` — ig* absent from MODULES (HLE); blocker = bind/loadgate/IGB |
+
+**Synthesis written** → `alchemy-rebuild-synthesis-a1-a4-2026-11-07.md`. Still **no** CNK Alchemy host patches unless asked.
+
+Prior pause index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Tracks A + B + E **done** (`SDK-R1-R5-COMPLIANCE-REPORT.md`).
 
 ### D) cortana-cursor-ui (drivers; junction from former jarvis-cursor-ui name)
 
@@ -95,15 +121,24 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | PDF extract job | **Succeeded** (14 docs) |
 | cursor.cmd locate | Found: `C:\Program Files\cursor\resources\app\bin\cursor.cmd` |
 | VSIX install | **Succeeded** exit 0 |
-| R1–R5 compliance report | **Not written** (audit incomplete) |
+| R1–R5 compliance report | **Written** → `verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md` (R1–R4 no blocking Hitman/NFS gaps; DiskReady always-2 observe flag; R5 gated) |
+| Alchemy 5.0 eval kit (`C:\usr\alchemy`) | **Complete** — all **44** Internet Archive `alchemy-kit` files (~**265 MB** / 277,806,630 B item payload); includes `AlchemyKit.zip`, `Alchemy_Docs.zip`, `AlchemysReset.zip`, `GOBtools.zip`, Maya artist pack `.exe`, torrent, sqlite/xml, translated PDFs + CHOCR/HOCR/full text, JPEGs; extracted `AlchemyEvalKit\` |
+| ps2tek mirror (`C:\usr\alchemy\ps2tek`) | **Complete** — **277** files (~3.2 MB); live HTML mirror + GitHub markdown sources (`index.html`, `PS2/**/*.md` + split `.html`) |
+| CNK Alchemy research A1–A4 | **DONE + synthesized** → `alchemy-rebuild-synthesis-a1-a4-2026-11-07.md` |
+| CNK-informed PDF quote harvest | **Written** → `sdk-pdf-quote-harvest-cnk-informed-2026-11-07.md` (AlignReadBuffer still absent from PDFs) |
+| **GoW patient-zero 60 FPS** | Native 3600f smoke **completed** (`logs/gow-patientzero-smoke/`, ~19.2M prims) — browser min60 re-verify still open; no disc-fix/R5/CNK patches |
+| **Custom PS2 Alchemy dumper** | **Phase 1–3 VERIFIED** — `python -m ps2_alchemy_dumper verify` on CNK → **20/20 PASS**; schema 1.1 + `class-map.tsv`; optical stub; see §9 |
 | No other intentional long-running installs | — |
 
 ### F) One-liner for next agent
 
-1. Read this **RESUME POINT**.  
-2. Continue **SDK PDF deep-read → R1–R5 compliance flags** (research only) using `E:\usr\local\sce` + `_sdk_pdf_extract/`.  
-3. Remind user to **reload** if Command Center UI missing.  
-4. Do **not** patch disc-fix/R5 or touch CNK quarantine unless asked.
+1. Read this **RESUME POINT** + **Standing instructions**.  
+2. SDK audit A/B/E complete — see `verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md`.  
+3. Do **not** patch disc-fix/R5 or apply CNK Alchemy host hacks unless asked.  
+4. **Active:** GoW USA patient-zero 60 FPS (`695b874b…`); prior min60 PASS on disk — re-verify/fix without disc-fix/R5/CNK patches.  
+5. Alchemy isolation tool: `tools/ps2-alchemy-dumper/` — Phase 1–3 **verify 20/20**; next = optical Phase 4 (Windows SPTI) or multi-title `--va-profile`.  
+6. Hard bans: disc-fix / R5 / CNK patches. FPS bar ≥60 non-CNK.  
+7. Periodically refresh this file; safe-commit when stage won’t break R1–R4.
 
 ---
 
@@ -120,7 +155,7 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | Priority | Track | Status |
 |----------|--------|--------|
 | **Main** | Hitman Blood Money + NFS Most Wanted **disc-fix** (shared CDVD / `cdvdfsv`) | R1–R4 joint-stable; R5 gated; SDK compliance audit in progress |
-| **Patient zero (fps)** | God of War **60 fps** | Keep in mind; not the current disc-fix pair |
+| **Patient zero (fps)** | God of War (USA) **60 fps** — `695b874b308a4e5353767bb6df8ba697` | **ACTIVE STAGE** — restore/verify; hard ban disc-fix/R5/CNK patches |
 | **Main game choice** | NFS **or** CNK as long-term flagship | Undecided; CNK Alchemy research continues in quarantine |
 | **Parked** | CNK deep play / Crash Bandicoot / software-renderer ×10 / mobile UI | Do not launch unless unparked |
 | **Parked research** | Sly Cooper texture / GS (buildings) | Research done; implementation next is shared GS STQ/PATH3/CLUT |
@@ -130,7 +165,8 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | **Proposed** | Install-time ELF walking | Proposed; not landed as product default |
 | **Future** | Linux back-compat with fixes | Logged — not started |
 | **Future** | Full TypeScript rewrite; C++ (+ inline ASM) for hot paths | Logged — not started |
-| **Future** | Alchemy 3.0 rebuild from ELF knowledge (no source available) | Logged — research only until source appears |
+| **Future** | Alchemy 3.0 rebuild from ELF knowledge (no source available) | Logged — research only; isolation map tool scaffolded (`tools/ps2-alchemy-dumper/`) |
+| **Tooling** | Custom Windows PS2 Alchemy dumper (ISO→`alchemy-map.json`) | **SCAFFOLDED** — see §9; not a disc-fix/R5 track |
 
 **Standing rule:** Workers stay up until the user says done (no self-dismiss after one step). Currently **stasis**.
 
@@ -206,15 +242,22 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 
 ## 6. CNK / Alchemy (quarantined from Hitman/NFS)
 
-**Reports:** `cnk-elf-alchemy-full-redo-report.md`, `alchemy-sdk-research-report.md`, `cnk-nullbind-51ACEC-live-report.md`  
+**Prior reports:** `cnk-elf-alchemy-full-redo-report.md`, `alchemy-sdk-research-report.md`, `cnk-nullbind-51ACEC-live-report.md`  
+**A1–A4 + synthesis (2026-11-07):** `alchemy-rebuild-w1-…` … `w4-…`, **`alchemy-rebuild-synthesis-a1-a4-2026-11-07.md`**  
+**Isolation tool:** `tools/ps2-alchemy-dumper/` → ISO `alchemy-map.json` (see §9)  
 **Overnight crumbs:** `verification/host-session-2026-11-06-overnight-cnk-10p.json` / `10s.json`
 
-### Engine identity
+### Combined picture (A1–A4)
 
-- **Intrinsic Alchemy v3.0 -0909** (Static/Release), Sep 2003 — Vicarious Visions; studio pipeline nicknamed **Velocity**.  
-- ~**673** `ig*` class-name strings in ELF.  
-- Assets: **IGB** scenes inside **ASSETS.GFC** / **ASSETS.GOB** (STBL / zlib framing).  
-- IOP helper name: `igFileIO.irx` (host often cannot load as ELF IRX; HLE around it).
+| Layer | What CNK has |
+|-------|----------------|
+| **EE / “imports”** | Stripped `boot.elf`; **Intrinsic Alchemy v3.0 -0909 Static/Release**; ~**595** whole-string `ig*` classes (~717 tokens); no dyn imports |
+| **Vtables / bind** | Factory `0x508930` (`*0x725F00` vt+8); bind registry BSS `*0x725F50`; null-bind `0x51AC80`→**vt+80**(tid)→**vt+84**; loadgate `0x10FCE0` (250×96) → finalize `0x110100` |
+| **TOC** | ISO-only `ASSETS.GFC` (1830 files / 4327 blocks / **520 `.igb`**) → `ASSETS.GOB` STBLz/0 → IGB `@+0x28 DA FA`, `@+0x2C 0x80000005` |
+| **IOP** | `igFileIO`/`igU*` **not on MODULES** → name-HLE (`0x12114` / stubs); retail **PADMAN**, **LIBSD**, CRI, … load as real IRX |
+| **EE syscalls** | WaitSema/iSignalSema (2/16/45/47), GetThreadId, Sif* for LoadModule/RPC; CRT0 SetupThread/Heap |
+| **Blocker** | EE bind/loadgate/IGB completion — **not** missing CreateSema |
+| **5.0 kit** | Vocabulary only (skew vs 3.0); gaps: loadgate, igFileIO name, `0x725F50` tid map |
 
 ### Key addresses
 
@@ -232,7 +275,8 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 
 - Forced FCE0 / `0x110100` without a live binder → lookup via `*0x725F50` **vt+80** returns null → **jalr vt+84** → `missing code @0`, `ra=0x51ACEC`.  
 - Soft-arm without host FCE0: often **stuck at prims=2**.  
-- **Next:** dump **live vtable** at `*ee32(0x725F50)` under soft-arm vs forced-FCE0 — **no pointer stuffing**.
+- **Live vtable dump (2026-11-07, offline RAM):** registry vt `0x6DF110` vt+80/`+84` **non-null** when installed; crash is **tid map miss** (`r2=0`), not stuffed slots. Soft-arm-hold clears `0x725F50`; arm45soft can keep registry with tid1 only.  
+- **Next (observe only):** mid-site GetThreadId/`g_current` vs map at `0x51ACD4` only with explicit diagnostic approval — **no pointer stuffing** / no Alchemy host patches.
 
 ### Web / SDK research
 
@@ -241,8 +285,8 @@ Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rul
 | [YacaloX-Studios/cnk-decomp](https://github.com/YacaloX-Studios/cnk-decomp) | Best public CNK RE |
 | TCRF CNK page | Exact Alchemy version strings |
 | [mateon1 IGB gist](https://gist.github.com/mateon1/b123a53d824305767989ebc2ba3e5814) | Alchemy **3.2** IGB parser |
-| [archive.org alchemy-kit](https://archive.org/details/alchemy-kit) | Alchemy **5.0** eval — concepts only |
-| Official SCE 3.0.3 PDFs | **No Alchemy** strings in extracted device/sound/SIF set |
+| [archive.org alchemy-kit](https://archive.org/details/alchemy-kit) | Alchemy **5.0** eval — concepts only (`C:\usr\alchemy`) |
+| Official SCE 3.0.3 PDFs | **No Alchemy** strings; CDVD/pad/libsd harvest = shared HLE only (`sdk-pdf-quote-harvest-cnk-informed-2026-11-07.md`) |
 
 **Not found:** Alchemy **3.0 PS2 SDK** source. Future goal: rebuild Alchemy 3.0 understanding from ELF knowledge only.
 
@@ -295,7 +339,32 @@ README (every update) must:
 5. State **Windows** primary target (CyberArcade Windows branch).
 
 Rules: `.cursor/rules/ps2-disc-dumper-toolkit.mdc`, `.cursor/rules/redumper-derivative-readme.mdc`.  
-Local tools already at `E:\AI games\mkps2iso-win64\` (reference only — not the product core).
+Local tools already at `E:\AI games\mkps2iso-win64\` (reference only — not the product core).  
+Scratch refs only: `tools/_refs/` (not product).
+
+### Status (2026-11-07 ~06:25) — **Phase 1–3 DONE (ISO + GOB/IGB)**
+
+| Item | Value |
+|------|--------|
+| Path | **`tools/ps2-alchemy-dumper/`** |
+| Docs | `README.md` (credits/GPL/divergences/Windows), `LICENSE` (GPL-3.0), `DESIGN.md`, `docs/SCHEMA.md`, `docs/RESEARCH.md` |
+| CLI | `python -m ps2_alchemy_dumper map\|list-iso\|optical` — own ISO9660 + GFC + GOB STBL + ELF scanners |
+| Schema | `alchemy-map.json` v1.0 + `disc-toc.tsv` / `gfc-files.tsv` + optional `igb_samples/*.head.bin` |
+| CNK smoke | `games/b49f2e…/disc.iso` → GFC **1830** (520 `.igb`); GOB verify **11/11** STBL (`STBLz`×10 + `STBL0`×1); IGB inflate **16/16** with `DA FA` @+0x28; ELF **595** `ig*` / 47 `.igb` paths; MODULES **12** IRX, **no** `igFileIO` on disc |
+| Artifact | `tools/ps2-alchemy-dumper/out/cnk-phase3/` — `verify` **20/20** PASS (schema 1.1) |
+| Optical | **Stub only** (`optical` subcommand) — redumper-inspired SPTI plan; no drive I/O yet |
+| Constraints | Own Windows code; **no** upstream binary wrap; **no** `runtime/` / disc-fix / R5 / CNK game-file edits |
+
+**Research summary (adopt / strip):**
+
+- **redumper:** adopt sector/LBA + rip-vs-analyze + Windows drive-letter mindset; **strip** CDDA/scram/C2/refine/split/firmware/OmniDrive and any binary wrap.  
+- **mkps2iso/dumps2iso:** adopt ISO-first path+LBA+size tables; **strip** XML rebuild, boot-logo crypto, Master Disc authoring, binary wrap. ISO9660 PVD walk first (UDF FID later if needed).
+
+**Next implementation steps:**
+
+1. Phase 4 — Windows SPTI DVD sector rip → `.iso` (own I/O).  
+2. Multi-title `--va-profile` beyond CNK template.  
+3. Optional fuller `.igb` extract / deeper IGB structure walk beyond heads.
 
 ---
 
@@ -399,7 +468,9 @@ Does not modify PS2 recomp runtime sources.
 6. **No commits** until a stable build — then commit freely (user may pre-approve stable disc-fix commits).  
 7. Simple-language status when reporting to the user.  
 8. PCSX2 oracle path is dropped.  
-9. **Custom PS2 disc dumper:** credit redumper + mkps2iso/dumps2iso; document all changes including stripped; Windows target; own code not wrappers. See `.cursor/rules/ps2-disc-dumper-toolkit.mdc`.
+9. **Custom PS2 disc dumper:** credit redumper + mkps2iso/dumps2iso; document all changes including stripped; Windows target; own code not wrappers. See `.cursor/rules/ps2-disc-dumper-toolkit.mdc`.  
+10. **Periodically update this MASTER-CONTEXT** with completed and in-progress steps (crash / reload resilience).  
+11. **Agent decides:** full authority to proceed without asking approval on every action; discuss only when needed; after discussion the agent still makes the final call.
 
 ---
 
@@ -416,6 +487,11 @@ Does not modify PS2 recomp runtime sources.
 | Null-bind | `verification/recovery/cnk-nullbind-51ACEC-live-report.md` |
 | Sly assets / GS | `verification/recovery/sly-asset-binwalk-report.md`, `sly-gs-vu-live-report.md` |
 | WaitSema ownership | `verification/recovery/waitsema-createsema-trace-live-report.md` |
+| Alchemy 5.0 eval kit (local) | `C:\usr\alchemy\` (44 IA files) |
+| ps2tek mirror (local) | `C:\usr\alchemy\ps2tek\` |
+| CNK Alchemy A1–A4 + synthesis | `alchemy-rebuild-w*-2026-11-07.md`, `alchemy-rebuild-synthesis-a1-a4-2026-11-07.md` |
+| CNK-informed PDF harvest | `sdk-pdf-quote-harvest-cnk-informed-2026-11-07.md` |
+| Custom Alchemy ISO dumper | `tools/ps2-alchemy-dumper/` (`README.md`, `DESIGN.md`, `docs/SCHEMA.md`) |
 
 ---
 
