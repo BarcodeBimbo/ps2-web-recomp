@@ -2,7 +2,7 @@
   "name": "cortana-cursor-ui",
   "displayName": "Cortana Workstation",
   "description": "Full Cortana Workstation HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Hey Cortana wake word, Voice TTS hooks, and File Map. Inspired by cortana.institute + Cortana 3D PRO patterns — custom local reimplementation, all features unlocked.",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"
@@ -113,10 +113,6 @@
         "title": "Cortana Workstation: Talk / Start Voice"
       },
       {
-        "command": "cortana.voice.talk",
-        "title": "Cortana Workstation: Talk / Start Voice"
-      },
-      {
         "command": "cortana.voice.chat",
         "title": "Cortana Workstation: Open Chat"
       },
@@ -151,10 +147,6 @@
       {
         "command": "cortana.hud.refresh",
         "title": "Cortana Workstation: Refresh HUD"
-      },
-      {
-        "command": "cortana.injection.enable",
-        "title": "Cortana Workstation: Enable Workbench Injection"
       },
       {
         "command": "cortana.injection.enable",
@@ -203,12 +195,6 @@
         },
         {
           "command": "cortana.injection.enable"
-        },
-        {
-          "command": "cortana.injection.enable"
-        },
-        {
-          "command": "cortana.voice.talk"
         },
         {
           "command": "cortana.injection.disable"

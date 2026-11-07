@@ -119,7 +119,6 @@ async function activate(context) {
       commandCenter.refresh();
     }),
     vscode.commands.registerCommand("cortana.voice.talk", () => voice.startVoice()),
-    vscode.commands.registerCommand("cortana.voice.talk", () => voice.startVoice()),
     vscode.commands.registerCommand("cortana.voice.chat", () => voice.openChat()),
     vscode.commands.registerCommand("cortana.voice.wakeListen", async () => {
       // Continuous Hey Cortana wake is inject-HUD SpeechRecognition; command starts voice now.
@@ -183,9 +182,6 @@ async function activate(context) {
           : "";
         vscode.window.showErrorMessage(`Enable injection failed: ${msg}${adminNote}`);
       }
-    }),
-    vscode.commands.registerCommand("cortana.injection.enable", async () => {
-      await vscode.commands.executeCommand("cortana.injection.enable");
     }),
     vscode.commands.registerCommand("cortana.injection.disable", async () => {
       try {
