@@ -1,5 +1,9 @@
 # Open follow-ups
 
+## SDK R1–R5 compliance report (2026-11-07)
+
+Formal roll-up now exists: `verification/recovery/SDK-R1-R5-COMPLIANCE-REPORT.md` (Track E). Merges quote harvest + per-R notes (`sdk-pdf-quote-harvest-r1r5.md`, `sdk-compliance-r1-sif.md` … `r4-cdsync.md`, `sdk-compliance-r5-pad-sound-inventory.md`). Research only — no runtime patches. R5 still gated; primary observe flag = DiskReady always-`2`.
+
 ## Cut off (2026-11-06 evening)
 
 The user started to say they were working on fixing something else, then got cut off. **Pick this up when they say what it was.**

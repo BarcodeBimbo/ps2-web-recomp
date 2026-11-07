@@ -104,3 +104,57 @@ Likely aggravator for **host** FCE0: `kernel::host_call` / `run_guest` keeps `g_
 4. Keep CNK Alchemy soft-arm/FCE0/+24008 work **quarantined** from Hitman/NFS.
 
 Gate stays red until `prims >> 2` without a null jalr.
+
+---
+
+## RESUMED 2026-11-07 — worker w3 OBSERVE ONLY
+
+**Status:** observe resumed; **no** host_signal 16/54/55, soft-arm, FCE0-force, virt-LBA, or +24008 code changes this pass.  
+**Prims:** still **2** (`logs/cnk-softarm-hold-20k.log`, `logs/cnk-arm45soft-20k.log`; forced arm45 dies earlier with same prims=2).  
+**Ack (null-bind model):** `*0x725F50` → **jalr vt+80** → if `v0==0` then `*(0->vtable+84)` → **jalr PC0** with **`ra=0x51ACEC`**. Soft-arm alone does not finish parse.
+
+### Live vtable dump — DONE from existing end-of-run RAM (no new run / no patch)
+
+Snaps still on disk under `logs/ram/`. Offline dump compared soft-arm vs forced-FCE0 (and siblings).
+
+| Snap | `*0x725F50` | list count(+08) | tid map (`entry+0x3C`) | Notes |
+|------|-------------|-----------------|------------------------|-------|
+| `cnk-softarm-hold.ram` | **0** | — | — | Registry cleared/absent; corpse @`0x735638` also zeroed |
+| `cnk-arm45soft.ram` | `0x735638` | **1** | tid **1** only (`0x735C18`) | Soft-arm, no host FCE0; 20k frames, prims=2 |
+| `cnk-arm45.ram` (forced FCE0) | `0x735638` | **2** | tid **1** + **4** (`0x735C18`, `0x1859D28`) | Crash `ra=0x51ACEC`; regs `r2=0`, `r25=0`, `s1/a2=0x1859D28` |
+| `cnk-deferred-fce0.ram` / `deferred2` | `0x735638` | **1** | tid **1** | Same registry vt as soft variants |
+| `cnk-holdparse.ram` | `0x735638` | **2** | tid **1** + **4** | Same objects as arm45 crash snap |
+
+**Registry object** (when live @`0x735638`):
+
+| Field | Value |
+|-------|-------|
+| vtable | `0x6DF110` |
+| vt+80 | `0x53B940` (lookup — **non-null**) |
+| vt+84 | `0x53BA50` (bind follow-on — **non-null**) |
+| vt+88 | `0x53BB10` |
+| vt+108 | `0x5111F0` |
+| +8 list | `0x735658` → array `0x735C98`, cap=4 |
+
+**Per-thread bind entry** (class vt `0x6DF170`): vt+80=`0x53AD20`, vt+84=`0x53ADE0`, vt+108=`0x53B520` — all **non-null**. Stuffing registry or entry method slots remains the wrong fix.
+
+**UI loadgate** `0x97E5A8` vt+108 = `0x5032E0` (live) on arm45 / arm45soft / holdparse snaps.
+
+**Crash-reg cross-check** (`cnk-arm45-20k.log`): after null jalr, `r2=0`, `r25=0`, `r17/r6=0x1859D28` (key = tid-4 map entry, **not** lookup return), `ra=0x51ACEC`; post-halt `current=0`. Lookup miss is **GetThreadId / `g_current` vs map**, not a zeroed vt+84 slot on a good object.
+
+**Nuance vs earlier one-liner:** “soft-arm ⇒ `0x725F50=0`” is true for **`cnk-softarm-hold`**, but **`cnk-arm45soft`** end-RAM still has the registry installed (count=1, tid1 only). Soft-arm still never finishes parse (`prims=2`); absence of host FCE0 avoids the null jalr.
+
+### Mid-call-site dump recipe (blocked without new instrumentation — DO NOT PATCH here)
+
+Offline end-RAM already answers “what does the live registry vtable look like?”  
+Capturing **GetThreadId / `g_current` / `r2` at `0x51ACCC→0x51ACD4` the instant of the null jalr** still needs a diagnostic-only probe (or debugger break). That is **not** done this resume; **banned** to land as host_signal/FCE0/soft-arm production changes.
+
+Ready-to-run **research** recipe when a future diagnostic build is explicitly allowed:
+
+1. Break / log once at `0x51ACD0` (post vt+80 delay): print `ee32(0x725F50)`, `v0`, `s1`/`*(obj+32)`, `g_current` / GetThreadId, list count @`registry+8+0x08`, and each `entry+0x3C`.
+2. Compare: soft-arm path (may never hit) vs any guest-driven FCE0 on tid **1** or **4**.
+3. Re-dump end-RAM with the same offline script pattern used above (`*0x725F50` → vt slots → list walk) — no pointer stuffing.
+
+**Blockers for “live at jalr” without code changes:** existing logs already have crash regs; they do **not** record GetThreadId at call time. End-of-run RAM cannot recover the exact tid used inside the failed `host_call`.
+
+**Resume crumb:** `verification/recovery/worker-resume-cnk-nullbind-w3-2026-11-07.md`

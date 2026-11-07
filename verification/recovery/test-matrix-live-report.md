@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 23:51:01 -05:00 (PAUSED)
+Updated: 2026-11-07 (RESUMED w2 idle watcher)
 
 ## Gate cycle 1 — FAIL
 
@@ -262,4 +262,14 @@ Post-R3 five-phase still green (Hitman 600f/127974; NFS 600f/208253; SIF 0). Hit
 - Ranked: R1/R2/R4 cleared_with_evidence; R3 verified_apply; **R5 still gated**.
 - Matrix did **not** unlock R5. No commits. No CNK. No `host_signal(2)`.
 - Board watch **stopped** for Cursor reload (SAFE PAUSE).
+
+---
+
+## RESUMED — w2 idle watcher (2026-11-07)
+
+- **RESUMED** as idle board watcher. No proposal invented. No smokes. No patches. No R5 apply.
+- Board live: step **8** / `awaiting_matrix`; discfix `proposed` `R5_pad_sound_observe` (code_change false); matrix `pending`; `allow_discfix_apply` false; R5 still gated for apply.
+- Differs from pause snapshot (step 7 / null proposal) — disc-fix posted observe gate while matrix was paused.
+- Full note: `verification/recovery/worker-resume-matrix-w2-2026-11-07.md`.
+- Awaiting: process observe gate when directed, or next disc-fix proposal / optional R5 when ungated.
 

@@ -1,6 +1,0 @@
-/* Auto-derived crop helpers for --cortana-boot-splash (1024x573) */
-/* hero (352, 48, 688, 308) */
-.jcc-globe-photo {
-  --jcc-crop-x: 352; --jcc-crop-y: 48; --jcc-crop-w: 336; --jcc-crop-h: 260;
-  --jcc-img-w: 1024; --jcc-img-h: 573;
-}

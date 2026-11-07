@@ -1,0 +1,2220 @@
+{
+  "iso_files": [
+    {
+      "name": "SYSTEM.CNF",
+      "lba": 7150,
+      "size": 57,
+      "flags": 0
+    },
+    {
+      "name": "SLUS_206.49",
+      "lba": 7151,
+      "size": 6234672,
+      "flags": 0
+    },
+    {
+      "name": "LEGGERP.TGA",
+      "lba": 10196,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC",
+      "lba": 262,
+      "size": 5500,
+      "flags": 2
+    },
+    {
+      "name": "MUSIC/ARENA1.L",
+      "lba": 10517,
+      "size": 3645952,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA1.R",
+      "lba": 12298,
+      "size": 3645952,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA1F.L",
+      "lba": 14079,
+      "size": 3949776,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA1F.R",
+      "lba": 16008,
+      "size": 3949776,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA2.L",
+      "lba": 17937,
+      "size": 3581136,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA2.R",
+      "lba": 19686,
+      "size": 3581136,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA2F.L",
+      "lba": 21435,
+      "size": 3315840,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA2F.R",
+      "lba": 23055,
+      "size": 3315840,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA3.L",
+      "lba": 24675,
+      "size": 3889936,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA3.R",
+      "lba": 26575,
+      "size": 3889936,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA3F.L",
+      "lba": 28475,
+      "size": 3565776,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA3F.R",
+      "lba": 30217,
+      "size": 3565776,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA4.L",
+      "lba": 31959,
+      "size": 3310304,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA4.R",
+      "lba": 33576,
+      "size": 3310304,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA4F.L",
+      "lba": 35193,
+      "size": 3416032,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA4F.R",
+      "lba": 36861,
+      "size": 3416032,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA5.L",
+      "lba": 38529,
+      "size": 3364640,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA5.R",
+      "lba": 40172,
+      "size": 3364640,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA5F.L",
+      "lba": 41815,
+      "size": 3028192,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/ARENA5F.R",
+      "lba": 43294,
+      "size": 3028192,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN1.L",
+      "lba": 44773,
+      "size": 3581136,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN1.R",
+      "lba": 46522,
+      "size": 3581136,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN1F.L",
+      "lba": 48271,
+      "size": 3315840,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN1F.R",
+      "lba": 49891,
+      "size": 3315840,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN2.L",
+      "lba": 51511,
+      "size": 3620624,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN2.R",
+      "lba": 53279,
+      "size": 3620624,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN2F.L",
+      "lba": 55047,
+      "size": 3407616,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN2F.R",
+      "lba": 56711,
+      "size": 3407616,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN3.L",
+      "lba": 58375,
+      "size": 3456048,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN3.R",
+      "lba": 60063,
+      "size": 3456048,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN3F.L",
+      "lba": 61751,
+      "size": 3252736,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/BARIN3F.R",
+      "lba": 63340,
+      "size": 3252736,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/CITADEL.L",
+      "lba": 64929,
+      "size": 3793792,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/CITADEL.R",
+      "lba": 66782,
+      "size": 3793792,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH1.L",
+      "lba": 68635,
+      "size": 3364640,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH1.R",
+      "lba": 70278,
+      "size": 3364640,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH1F.L",
+      "lba": 71921,
+      "size": 3028192,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH1F.R",
+      "lba": 73400,
+      "size": 3028192,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH2.L",
+      "lba": 74879,
+      "size": 3949776,
+      "flags": 0
+    },
+    {
+      "name": "MUSIC/EARTH2.R",
+      "lba": 76808,
+      "size": 3949776,
+      "flags": 0
+    },
+    {
+      "name": "VIDEO",
+      "lba": 265,
+      "size": 372,
+      "flags": 2
+    },
+    {
+      "name": "VIDEO/DCACHE.TXT",
+      "lba": 158341,
+      "size": 343,
+      "flags": 0
+    },
+    {
+      "name": "VIDEO/HCACHE.TXT",
+      "lba": 158342,
+      "size": 343,
+      "flags": 0
+    },
+    {
+      "name": "VIDEO/TRACKS",
+      "lba": 268,
+      "size": 1174,
+      "flags": 2
+    },
+    {
+      "name": "VIDEO/INTRO",
+      "lba": 269,
+      "size": 876,
+      "flags": 2
+    },
+    {
+      "name": "VIDEO/CUT",
+      "lba": 270,
+      "size": 1662,
+      "flags": 2
+    },
+    {
+      "name": "VOICE",
+      "lba": 266,
+      "size": 396,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/SPA",
+      "lba": 271,
+      "size": 816,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/ITA",
+      "lba": 272,
+      "size": 864,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/GER",
+      "lba": 273,
+      "size": 864,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/FRE",
+      "lba": 274,
+      "size": 864,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/ENG",
+      "lba": 275,
+      "size": 864,
+      "flags": 2
+    },
+    {
+      "name": "VOICE/DUT",
+      "lba": 276,
+      "size": 864,
+      "flags": 2
+    },
+    {
+      "name": "ASSETS.GFC",
+      "lba": 1518969,
+      "size": 222968,
+      "flags": 0
+    },
+    {
+      "name": "ASSETS.GOB",
+      "lba": 1519078,
+      "size": 88856576,
+      "flags": 0
+    },
+    {
+      "name": "IOPRP255.IMG",
+      "lba": 1562465,
+      "size": 264449,
+      "flags": 0
+    },
+    {
+      "name": "LEGDUT.TGA",
+      "lba": 1562595,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "LEGDUTP.TGA",
+      "lba": 1562876,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "LEGENG.TGA",
+      "lba": 1563197,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "LEGENGP.TGA",
+      "lba": 1563478,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "LEGFRE.TGA",
+      "lba": 1563799,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "LEGFREP.TGA",
+      "lba": 1564080,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "LEGGER.TGA",
+      "lba": 1564401,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "MODULES",
+      "lba": 267,
+      "size": 808,
+      "flags": 2
+    },
+    {
+      "name": "MODULES/CRI_ADXI.IRX",
+      "lba": 1564682,
+      "size": 110760,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/LGDEVW.IRX",
+      "lba": 1564737,
+      "size": 45221,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/LIBSD.IRX",
+      "lba": 1564760,
+      "size": 28573,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/MCMAN.IRX",
+      "lba": 1564774,
+      "size": 95517,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/MCSERV.IRX",
+      "lba": 1564821,
+      "size": 7417,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/MTAPMAN.IRX",
+      "lba": 1564825,
+      "size": 11013,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/PADMAN.IRX",
+      "lba": 1564831,
+      "size": 44917,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/SDRDRV.IRX",
+      "lba": 1564853,
+      "size": 8089,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/SIO2MAN.IRX",
+      "lba": 1564857,
+      "size": 6553,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/SMAP.IRX",
+      "lba": 1564861,
+      "size": 17105,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/USBD.IRX",
+      "lba": 1564870,
+      "size": 34969,
+      "flags": 0
+    },
+    {
+      "name": "MODULES/VVAA.IRX",
+      "lba": 1564888,
+      "size": 22272,
+      "flags": 0
+    },
+    {
+      "name": "LEGITAP.TGA",
+      "lba": 1564899,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "LEGITGA.TGA",
+      "lba": 1565220,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "LEGSPA.TGA",
+      "lba": 1565501,
+      "size": 573484,
+      "flags": 0
+    },
+    {
+      "name": "LEGSPAP.TGA",
+      "lba": 1565782,
+      "size": 655404,
+      "flags": 0
+    },
+    {
+      "name": "POOLS.CSV",
+      "lba": 1566103,
+      "size": 562,
+      "flags": 0
+    }
+  ],
+  "gfc": {
+    "lba": 1518969,
+    "size": 222968,
+    "sig": "0x8008",
+    "gob_size_hdr": 88856576,
+    "nblocks": 4327,
+    "nfiles": 1830,
+    "name_table": true,
+    "name_stride": 72,
+    "parse_end_off": 222968,
+    "leftover_bytes": 0,
+    "gob_size_iso": 88856576,
+    "gob_size_match": true,
+    "block0": {
+      "compressed": 275,
+      "offset": 38111232,
+      "next": 32767,
+      "adler": "0xbb33827b"
+    },
+    "block_last": {
+      "compressed": 3803,
+      "offset": 88852480,
+      "next": 32767
+    },
+    "file0": {
+      "crc": 3338364254,
+      "size": 463,
+      "first": 0,
+      "name": ".\\common\\animations\\arena2_anims.csv"
+    },
+    "ext_counts": {
+      "vag": 541,
+      "igb": 520,
+      "csv": 519,
+      "png": 86,
+      "rcf": 74,
+      "gst": 26,
+      "hke": 26,
+      "dat": 16,
+      "dct": 7,
+      "psh": 3,
+      "asd": 2,
+      "int": 2,
+      "opt": 2,
+      "ini": 1,
+      "vim": 1,
+      "cfg": 1,
+      "tga": 1,
+      "ico": 1,
+      "sln": 1
+    },
+    "path_prefix_top": {
+      "./ps2": 1017,
+      "./common": 705,
+      "./hud": 102,
+      "./gob-prof.dat": 1,
+      "./ps2-prof.dat": 1,
+      "./velocity-win-msvc-dbg.opt": 1,
+      "./velocity-win-msvc-dbgopt.opt": 1,
+      "./velocity-win-msvc-dbgopt.sln": 1,
+      "./xbox-prof.dat": 1
+    },
+    "igb_count": 520,
+    "igb_chain_len_stats": {
+      "sample": 500,
+      "min": 1,
+      "max": 61,
+      "avg": 5.052
+    },
+    "largest_files": [
+      {
+        "name": ".\\ps2\\gfx\\tracks\\velorace.igb",
+        "size": 3948148,
+        "crc": "0C3B02C5",
+        "first": 3727
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\earth3.igb",
+        "size": 3743102,
+        "crc": "DF1D57CB",
+        "first": 3271
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\barin3.igb",
+        "size": 3685162,
+        "crc": "ED9152A1",
+        "first": 3111
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\fenom3.igb",
+        "size": 3665558,
+        "crc": "77C6C027",
+        "first": 3406
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\fenom3.igb",
+        "size": 3634944,
+        "crc": "AB13A39E",
+        "first": 2550
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\barin3.igb",
+        "size": 3461944,
+        "crc": "31443118",
+        "first": 2285
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\teknee1.igb",
+        "size": 3455138,
+        "crc": "DEC6B89C",
+        "first": 3574
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\teknee2.igb",
+        "size": 3450794,
+        "crc": "9966C24C",
+        "first": 3627
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\velorace.igb",
+        "size": 3214444,
+        "crc": "ED87FB03",
+        "first": 2837
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\teknee2.igb",
+        "size": 3201374,
+        "crc": "2B071C07",
+        "first": 2749
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\barin1.igb",
+        "size": 3097648,
+        "crc": "975101C1",
+        "first": 3019
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\earth3.igb",
+        "size": 3092674,
+        "crc": "03C83472",
+        "first": 2436
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\earth2.igb",
+        "size": 2970984,
+        "crc": "E27D7E7B",
+        "first": 3225
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\fenom2.igb",
+        "size": 2893272,
+        "crc": "4AA6E997",
+        "first": 3361
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\earth2.igb",
+        "size": 2892318,
+        "crc": "3EA81DC2",
+        "first": 2391
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\barin2.igb",
+        "size": 2834190,
+        "crc": "D0F17B11",
+        "first": 3067
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\barin1.igb",
+        "size": 2696182,
+        "crc": "4B846278",
+        "first": 2203
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\teknee1.igb",
+        "size": 2629682,
+        "crc": "6CA766D7",
+        "first": 2708
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\teknee3.igb",
+        "size": 2576458,
+        "crc": "A406EBFC",
+        "first": 3680
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\barin2.igb",
+        "size": 2562342,
+        "crc": "0C2418A8",
+        "first": 2245
+      }
+    ],
+    "configish": [
+      {
+        "name": ".\\common\\animations\\arena2_anims.csv",
+        "size": 463,
+        "crc": "C6FB655E"
+      },
+      {
+        "name": ".\\common\\animations\\arena3_anims.csv",
+        "size": 132,
+        "crc": "0775BA9E"
+      },
+      {
+        "name": ".\\common\\animations\\arena4_anims.csv",
+        "size": 177,
+        "crc": "2E4EAF1D"
+      },
+      {
+        "name": ".\\common\\animations\\arena5_anims.csv",
+        "size": 181,
+        "crc": "EFC070DD"
+      },
+      {
+        "name": ".\\common\\animations\\barin1_anims.csv",
+        "size": 416,
+        "crc": "2F564D1E"
+      },
+      {
+        "name": ".\\common\\animations\\barin1_anim_sounds.csv",
+        "size": 756,
+        "crc": "DB13B3DA"
+      },
+      {
+        "name": ".\\common\\animations\\barin2_anims.csv",
+        "size": 613,
+        "crc": "B6B42B1F"
+      },
+      {
+        "name": ".\\common\\animations\\barin2_anim_sounds.csv",
+        "size": 2128,
+        "crc": "8889E85E"
+      },
+      {
+        "name": ".\\common\\animations\\barin3_anims.csv",
+        "size": 758,
+        "crc": "773AF4DF"
+      },
+      {
+        "name": ".\\common\\animations\\barin3_anim_sounds.csv",
+        "size": 1238,
+        "crc": "0F2F231D"
+      },
+      {
+        "name": ".\\common\\animations\\citadelui_anims.csv",
+        "size": 109,
+        "crc": "D9114CB2"
+      },
+      {
+        "name": ".\\common\\animations\\earth1_anims.csv",
+        "size": 294,
+        "crc": "CEB9D62F"
+      },
+      {
+        "name": ".\\common\\animations\\earth2_anims.csv",
+        "size": 220,
+        "crc": "575BB02E"
+      },
+      {
+        "name": ".\\common\\animations\\earth3_anims.csv",
+        "size": 956,
+        "crc": "96D56FEE"
+      },
+      {
+        "name": ".\\common\\animations\\earth3_anim_sounds.csv",
+        "size": 1113,
+        "crc": "40E30AED"
+      },
+      {
+        "name": ".\\common\\animations\\fenom1_anims.csv",
+        "size": 1303,
+        "crc": "EA27C496"
+      },
+      {
+        "name": ".\\common\\animations\\fenom1_anim_sounds.csv",
+        "size": 2001,
+        "crc": "D1E164DE"
+      },
+      {
+        "name": ".\\common\\animations\\fenom2_anims.csv",
+        "size": 828,
+        "crc": "73C5A297"
+      },
+      {
+        "name": ".\\common\\animations\\fenom2_anim_sounds.csv",
+        "size": 481,
+        "crc": "827B3F5A"
+      },
+      {
+        "name": ".\\common\\animations\\fenom3_anims.csv",
+        "size": 902,
+        "crc": "B24B7D57"
+      },
+      {
+        "name": ".\\common\\animations\\fenom3_anim_sounds.csv",
+        "size": 592,
+        "crc": "05DDF419"
+      },
+      {
+        "name": ".\\common\\animations\\teknee1_anims.csv",
+        "size": 379,
+        "crc": "DEA29C42"
+      },
+      {
+        "name": ".\\common\\animations\\teknee1_anim_sounds.csv",
+        "size": 775,
+        "crc": "A9C8B5A8"
+      },
+      {
+        "name": ".\\common\\animations\\teknee2_anims.csv",
+        "size": 587,
+        "crc": "4740FA43"
+      },
+      {
+        "name": ".\\common\\animations\\teknee2_anim_sounds.csv",
+        "size": 821,
+        "crc": "FA52EE2C"
+      },
+      {
+        "name": ".\\common\\animations\\teknee3_anims.csv",
+        "size": 661,
+        "crc": "86CE2583"
+      },
+      {
+        "name": ".\\common\\animations\\teknee3_anim_sounds.csv",
+        "size": 1547,
+        "crc": "7DF4256F"
+      },
+      {
+        "name": ".\\common\\animations\\velorace_anims.csv",
+        "size": 894,
+        "crc": "CD84359F"
+      },
+      {
+        "name": ".\\common\\animations\\velorace_anim_sounds.csv",
+        "size": 631,
+        "crc": "E166AA75"
+      },
+      {
+        "name": ".\\common\\arenaeditor\\itemssettings.csv",
+        "size": 671,
+        "crc": "6F535882"
+      },
+      {
+        "name": ".\\common\\audio\\arena1_2devents.csv",
+        "size": 207,
+        "crc": "0D8F468E"
+      },
+      {
+        "name": ".\\common\\audio\\arena1_3devents.csv",
+        "size": 300,
+        "crc": "962A0AE1"
+      },
+      {
+        "name": ".\\common\\audio\\arena1_envpointsounds.csv",
+        "size": 299,
+        "crc": "97DF8603"
+      },
+      {
+        "name": ".\\common\\audio\\arena1_envtubesounds.csv",
+        "size": 318,
+        "crc": "EF2E9FFB"
+      },
+      {
+        "name": ".\\common\\audio\\arena1_listenerregions.csv",
+        "size": 109,
+        "crc": "CC82FA68"
+      },
+      {
+        "name": ".\\common\\audio\\arena2_2devents.csv",
+        "size": 207,
+        "crc": "71EE6355"
+      },
+      {
+        "name": ".\\common\\audio\\arena2_3devents.csv",
+        "size": 300,
+        "crc": "EA4B2F3A"
+      },
+      {
+        "name": ".\\common\\audio\\arena2_envpointsounds.csv",
+        "size": 299,
+        "crc": "3876CBC9"
+      },
+      {
+        "name": ".\\common\\audio\\arena2_envtubesounds.csv",
+        "size": 318,
+        "crc": "4C781952"
+      },
+      {
+        "name": ".\\common\\audio\\arena2_listenerregions.csv",
+        "size": 109,
+        "crc": "B79C788B"
+      }
+    ]
+  },
+  "gob_stbl": {
+    "lba": 1519078,
+    "size": 88856576,
+    "stbl_kind_counts": {
+      "STBLz": 4040,
+      "STBL0": 289
+    },
+    "stbl_sample_offsets": [
+      {
+        "off": 0,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 2048,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 4096,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 6144,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 8192,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 10240,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 12288,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 14336,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 16384,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 18432,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 20480,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 22528,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 24576,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 26624,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 28672,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 30720,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 32768,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 34816,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 36864,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 38912,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 40960,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 43008,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 45056,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 47104,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 49152,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 51200,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 53248,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 57344,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 61440,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 67584,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 69632,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 71680,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 73728,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 75776,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 77824,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 79872,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 81920,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 83968,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 86016,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      },
+      {
+        "off": 88064,
+        "kind": "STBLz",
+        "hex": "5354424c7a"
+      }
+    ],
+    "enbl_count": 4327,
+    "dafa_cookie_count": 2967,
+    "block_verify": [
+      {
+        "i": 0,
+        "compressed": 275,
+        "offset": 38111232,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c65d04d4b03311006e0",
+        "is_stbl": true
+      },
+      {
+        "i": 1,
+        "compressed": 108,
+        "offset": 38113280,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c33d2512e4b2d2acecc",
+        "is_stbl": true
+      },
+      {
+        "i": 2,
+        "compressed": 113,
+        "offset": 38115328,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c33d2512e4b2d2acecc",
+        "is_stbl": true
+      },
+      {
+        "i": 3,
+        "compressed": 117,
+        "offset": 38117376,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c33d2512e4b2d2acecc",
+        "is_stbl": true
+      },
+      {
+        "i": 4,
+        "compressed": 272,
+        "offset": 15564800,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c5d4fcb6ac33010bc1b",
+        "is_stbl": true
+      },
+      {
+        "i": 10,
+        "compressed": 90,
+        "offset": 38119424,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789c33d481005e2e65c7bc",
+        "is_stbl": true
+      },
+      {
+        "i": 100,
+        "compressed": 118,
+        "offset": 13271040,
+        "next": 32767,
+        "head_ascii": "STBL0",
+        "head_hex": "5354424c3023206e616d652c23206d61",
+        "is_stbl": true
+      },
+      {
+        "i": 500,
+        "compressed": 86,
+        "offset": 41250816,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789cedc13101000000c2a0",
+        "is_stbl": true
+      },
+      {
+        "i": 1000,
+        "compressed": 565,
+        "offset": 86016,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789cad55db8eda30107d8f",
+        "is_stbl": true
+      },
+      {
+        "i": 2000,
+        "compressed": 2247,
+        "offset": 19804160,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789cc5594d701c4715ee95",
+        "is_stbl": true
+      },
+      {
+        "i": 4326,
+        "compressed": 3803,
+        "offset": 88852480,
+        "next": 32767,
+        "head_ascii": "STBLz",
+        "head_hex": "5354424c7a789ced5d7f739c3812fdff",
+        "is_stbl": true
+      }
+    ],
+    "stblz_vs_nblocks_delta": -287,
+    "block_comp_size": {
+      "min": 17,
+      "max": 65545,
+      "avg": 19378.204760804252
+    }
+  },
+  "igb_samples": [
+    {
+      "name": ".\\ps2\\gfx\\ui\\butanim.igb",
+      "crc": "D4E36BE1",
+      "size": 4248,
+      "first": 3801,
+      "err": null,
+      "extracted_len": 4248,
+      "head_hex": "200100000f000000600600001a000000b00100000b00000070000000040000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": " .......`...............p...........1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry",
+        "igExternalInfoEntry",
+        "igFloatArrayMetaField",
+        "igFloatMetaField",
+        "igGraphPathList",
+        "igGroup"
+      ],
+      "sample_file": "igb_head_D4E36BE1_._ps2_gfx_ui_butanim.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\ui\\introtxr.igb",
+      "crc": "33340283",
+      "size": 400437,
+      "first": 4294,
+      "err": null,
+      "extracted_len": 131072,
+      "head_hex": "c40200002400000066050000160000005c04000019000000e80c06000b0000007902000014000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....$...f.......\\...............y...............................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igClut",
+        "igDataList",
+        "igDirEntry",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalIndexedEntry",
+        "igExternalInfoEntry",
+        "igFloatMetaField",
+        "igImage",
+        "igImageMipMapList",
+        "igInfo",
+        "igInfoList",
+        "igIntArrayMetaField",
+        "igIntMetaField",
+        "igLongMetaField",
+        "igMatrix44fMetaField"
+      ],
+      "sample_file": "igb_head_33340283_._ps2_ui_introtxr.igb.bin",
+      "complete": false
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\background.igb",
+      "crc": "F2EC1F44",
+      "size": 707676,
+      "first": 3789,
+      "err": null,
+      "extracted_len": 131072,
+      "head_hex": "4c8a0000b50600000c1a00005c000000d0a10000200400003c7f0900950200008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "L...........\\....... ...<...........1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igActor",
+        "igAnimation",
+        "igAnimationBinding",
+        "igAnimationBindingList",
+        "igAnimationCombiner",
+        "igAnimationCombinerBoneInfo",
+        "igAnimationCombinerBoneInfoList",
+        "igAnimationCombinerBoneInfoListList",
+        "igAnimationHierarchy",
+        "igAnimationModifierList",
+        "igAnimationState",
+        "igAnimationStateList",
+        "igAnimationSystem",
+        "igAnimationTrack",
+        "igAnimationTrackList",
+        "igAnimationTransitionDefinitionList",
+        "igAppearance",
+        "igAttr",
+        "igAttrList"
+      ],
+      "sample_file": "igb_head_F2EC1F44_._ps2_gfx_ui_background.igb.bin",
+      "complete": false
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\citadel_logo.igb",
+      "crc": "88C2823C",
+      "size": 298792,
+      "first": 3899,
+      "err": null,
+      "extracted_len": 131072,
+      "head_hex": "c0260000df010000801000003d0000003c2d000023010000b4230400bc0000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": ".&..........=...<-..#....#..........1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBitMask",
+        "igBlendFunctionAttr",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igClut",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDepthWriteStateAttr",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField"
+      ],
+      "sample_file": "igb_head_88C2823C_._ps2_gfx_ui_citadel_logo.igb.bin",
+      "complete": false
+    },
+    {
+      "name": ".\\ps2\\ui\\fetextur.igb",
+      "crc": "60C01EE2",
+      "size": 619681,
+      "first": 4266,
+      "err": null,
+      "extracted_len": 131072,
+      "head_hex": "ec2f0000770200006605000016000000f8560000c201000090e50800b50000007902000014000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "./..w...f........V..............y...............................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igClut",
+        "igDataList",
+        "igDirEntry",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalIndexedEntry",
+        "igExternalInfoEntry",
+        "igFloatMetaField",
+        "igImage",
+        "igImageMipMapList",
+        "igInfo",
+        "igInfoList",
+        "igIntArrayMetaField",
+        "igIntMetaField",
+        "igLongMetaField",
+        "igMatrix44fMetaField"
+      ],
+      "sample_file": "igb_head_60C01EE2_._ps2_ui_fetextur.igb.bin",
+      "complete": false
+    },
+    {
+      "name": ".\\ps2\\gfx\\fonts\\fonts.igb",
+      "crc": "C3994BD8",
+      "size": 80812,
+      "first": 2005,
+      "err": null,
+      "extracted_len": 80812,
+      "head_hex": "300200001d000000540700001d000000ac02000015000000ec270100080000002e07000036000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "0.......T................'..........6...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igAttrList",
+        "igBitmapFont",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsList",
+        "igCharMetricsMetaField",
+        "igClut",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry"
+      ],
+      "sample_file": "igb_head_C3994BD8_._ps2_gfx_fonts_fonts.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\common\\gfx\\ui\\backanim.igb",
+      "crc": "F0E5FBF2",
+      "size": 5836,
+      "first": 343,
+      "err": null,
+      "extracted_len": 5836,
+      "head_hex": "d002000024000000ac0700001f000000d403000018000000380200000c000000d30500002c000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....$...................8...........,...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttrList",
+        "igAttrSet",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCamera",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry",
+        "igExternalInfoEntry",
+        "igFloatArrayMetaField",
+        "igFloatMetaField"
+      ],
+      "sample_file": "igb_head_F0E5FBF2_._common_gfx_ui_backanim.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\common\\gfx\\ui\\pedecam.igb",
+      "crc": "EA4CD4F4",
+      "size": 16404,
+      "first": 344,
+      "err": null,
+      "extracted_len": 16404,
+      "head_hex": "780300002d000000a809000027000000e40400001f000000a82700000e000000f70500002d000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "x...-.......'............'..........-...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCamera",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry",
+        "igExternalInfoEntry",
+        "igFloatArrayMetaField"
+      ],
+      "sample_file": "igb_head_EA4CD4F4_._common_gfx_ui_pedecam.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\fonts\\alphadance.igb",
+      "crc": "829ACDAF",
+      "size": 41255,
+      "first": 2003,
+      "err": null,
+      "extracted_len": 41255,
+      "head_hex": "78010000130000004e0700001d000000b80100000d0000001c900000060000001c0600002e000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "x.......N.......................................................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igAttrList",
+        "igBitmapFont",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsList",
+        "igCharMetricsMetaField",
+        "igClut",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry"
+      ],
+      "sample_file": "igb_head_829ACDAF_._ps2_gfx_fonts_alphadance.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\fonts\\bane.igb",
+      "crc": "B1015717",
+      "size": 25031,
+      "first": 2004,
+      "err": null,
+      "extracted_len": 25031,
+      "head_hex": "78010000130000004e0700001d000000b80100000d000000bc500000060000001c0600002e000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "x.......N................P......................................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAttr",
+        "igAttrList",
+        "igBitmapFont",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsList",
+        "igCharMetricsMetaField",
+        "igClut",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry"
+      ],
+      "sample_file": "igb_head_B1015717_._ps2_gfx_fonts_bane.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\arr_red.igb",
+      "crc": "962C7AEC",
+      "size": 13944,
+      "first": 3788,
+      "err": null,
+      "extracted_len": 13944,
+      "head_hex": "b0070000690000009c0d0000370000004008000051000000f4110000180000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....i.......7...@...Q...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igAttrSetList",
+        "igBlendFunctionAttr",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igColorAttr",
+        "igColorAttrList",
+        "igColorAttrListList",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDepthWriteStateAttr",
+        "igDirEntry",
+        "igDoubleArrayMetaField"
+      ],
+      "sample_file": "igb_head_962C7AEC_._ps2_gfx_ui_arr_red.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\btn.igb",
+      "crc": "207E62E5",
+      "size": 13732,
+      "first": 3800,
+      "err": null,
+      "extracted_len": 13732,
+      "head_hex": "c806000059000000580d000036000000000700003f0000008c1300001a0000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....Y...X...6.......?...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igAttrSetList",
+        "igBlendFunctionAttr",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igColorAttr",
+        "igColorAttrList",
+        "igColorAttrListList",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField"
+      ],
+      "sample_file": "igb_head_207E62E5_._ps2_gfx_ui_btn.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\bar.igb",
+      "crc": "F823CFEA",
+      "size": 7662,
+      "first": 3802,
+      "err": null,
+      "extracted_len": 7662,
+      "head_hex": "4c040000380000000e0b00002b00000090050000270000000c020000110000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "L...8.......+.......'...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igColorAttr",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_F823CFEA_._ps2_gfx_ui_buttons_bar.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\btn_10.igb",
+      "crc": "4747BDD5",
+      "size": 13022,
+      "first": 3803,
+      "err": null,
+      "extracted_len": 13022,
+      "head_hex": "cc0500004a0000006a09000025000000e006000031000000d0150000190000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....J...j...%.......1...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_4747BDD5_._ps2_gfx_ui_buttons_btn_10.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\btn_12.igb",
+      "crc": "3D87EEB5",
+      "size": 13030,
+      "first": 3804,
+      "err": null,
+      "extracted_len": 13030,
+      "head_hex": "cc0500004a0000006a09000025000000e806000031000000d0150000190000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....J...j...%.......1...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_3D87EEB5_._ps2_gfx_ui_buttons_btn_12.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\btn_14.igb",
+      "crc": "B2C71B15",
+      "size": 13030,
+      "first": 3805,
+      "err": null,
+      "extracted_len": 13030,
+      "head_hex": "cc0500004a0000006a09000025000000e806000031000000d0150000190000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....J...j...%.......1...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_B2C71B15_._ps2_gfx_ui_buttons_btn_14.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\btn_2.igb",
+      "crc": "9642C292",
+      "size": 13026,
+      "first": 3806,
+      "err": null,
+      "extracted_len": 13026,
+      "head_hex": "cc0500004a0000006a09000025000000e406000031000000d0150000190000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....J...j...%.......1...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_9642C292_._ps2_gfx_ui_buttons_btn_2.igb.bin",
+      "complete": true
+    },
+    {
+      "name": ".\\ps2\\gfx\\ui\\buttons\\btn_4.igb",
+      "crc": "19023732",
+      "size": 13026,
+      "first": 3807,
+      "err": null,
+      "extracted_len": 13026,
+      "head_hex": "cc0500004a0000006a09000025000000e406000031000000d0150000190000008706000031000000dafa00000500008010000000010000000000000010000000",
+      "head_ascii": "....J...j...%.......1...............1...........................",
+      "has_dafa": true,
+      "ig_string_hits": [
+        "igAABox",
+        "igAttr",
+        "igAttrList",
+        "igAttrSet",
+        "igBlendStateAttr",
+        "igBoolArrayMetaField",
+        "igBoolMetaField",
+        "igCharArrayMetaField",
+        "igCharMetaField",
+        "igCharMetricsMetaField",
+        "igDataList",
+        "igDependencyMetaField",
+        "igDirEntry",
+        "igDoubleArrayMetaField",
+        "igDoubleMetaField",
+        "igEnumArrayMetaField",
+        "igEnumMetaField",
+        "igExternalDirEntry",
+        "igExternalImageEntry",
+        "igExternalIndexedEntry"
+      ],
+      "sample_file": "igb_head_19023732_._ps2_gfx_ui_buttons_btn_4.igb.bin",
+      "complete": true
+    }
+  ],
+  "elf_corr": {
+    "igb_path_strings_in_elf": [
+      {
+        "name": ".\\common\\gfx\\hints\\boom.igb",
+        "needle": "boom.igb",
+        "file_off": 5446394,
+        "approx_va": "0x631a7a"
+      },
+      {
+        "name": ".\\common\\gfx\\ui\\backanim.igb",
+        "needle": "backanim.igb",
+        "file_off": 5314007,
+        "approx_va": "0x611557"
+      },
+      {
+        "name": ".\\common\\gfx\\ui\\pedecam.igb",
+        "needle": "pedecam.igb",
+        "file_off": 5313911,
+        "approx_va": "0x6114f7"
+      },
+      {
+        "name": ".\\ps2\\gfx\\chars\\crash.igb",
+        "needle": "crash.igb",
+        "file_off": 5481341,
+        "approx_va": "0x63a2fd"
+      },
+      {
+        "name": ".\\ps2\\gfx\\fonts\\fonts.igb",
+        "needle": "fonts.igb",
+        "file_off": 5313450,
+        "approx_va": "0x61132a"
+      },
+      {
+        "name": ".\\ps2\\gfx\\hud\\blacksp2.igb",
+        "needle": "blacksp2.igb",
+        "file_off": 5439496,
+        "approx_va": "0x62ff88"
+      },
+      {
+        "name": ".\\ps2\\gfx\\hud\\blacksp34.igb",
+        "needle": "blacksp34.igb",
+        "file_off": 5438968,
+        "approx_va": "0x62fd78"
+      },
+      {
+        "name": ".\\ps2\\gfx\\hud\\wumpa.igb",
+        "needle": "wumpa.igb",
+        "file_off": 5443768,
+        "approx_va": "0x631038"
+      },
+      {
+        "name": ".\\ps2\\gfx\\items\\wumpa.igb",
+        "needle": "wumpa.igb",
+        "file_off": 5443768,
+        "approx_va": "0x631038"
+      },
+      {
+        "name": ".\\ps2\\gfx\\karts\\crash.igb",
+        "needle": "crash.igb",
+        "file_off": 5481341,
+        "approx_va": "0x63a2fd"
+      },
+      {
+        "name": ".\\ps2\\gfx\\mptracks\\citadel.igb",
+        "needle": "citadel.igb",
+        "file_off": 5313854,
+        "approx_va": "0x6114be"
+      },
+      {
+        "name": ".\\ps2\\gfx\\sfx\\freeze.igb",
+        "needle": "freeze.igb",
+        "file_off": 5314232,
+        "approx_va": "0x611638"
+      },
+      {
+        "name": ".\\ps2\\gfx\\tracks\\citadel.igb",
+        "needle": "citadel.igb",
+        "file_off": 5313854,
+        "approx_va": "0x6114be"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\background.igb",
+        "needle": "background.igb",
+        "file_off": 5313975,
+        "approx_va": "0x611537"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\butanim.igb",
+        "needle": "butanim.igb",
+        "file_off": 5313799,
+        "approx_va": "0x611487"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\cam_crashtocortex.igb",
+        "needle": "cam_crashtocortex.igb",
+        "file_off": 5481399,
+        "approx_va": "0x63a337"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\cam_tocortex.igb",
+        "needle": "cam_tocortex.igb",
+        "file_off": 5481367,
+        "approx_va": "0x63a317"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\cam_tocrash.igb",
+        "needle": "cam_tocrash.igb",
+        "file_off": 5481335,
+        "approx_va": "0x63a2f7"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\charmodels\\crash.igb",
+        "needle": "crash.igb",
+        "file_off": 5481341,
+        "approx_va": "0x63a2fd"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\cortex_hut.igb",
+        "needle": "cortex_hut.igb",
+        "file_off": 5481303,
+        "approx_va": "0x63a2d7"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\crash_hut.igb",
+        "needle": "crash_hut.igb",
+        "file_off": 5481495,
+        "approx_va": "0x63a397"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\dioramachars\\crash.igb",
+        "needle": "crash.igb",
+        "file_off": 5481341,
+        "approx_va": "0x63a2fd"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\pedestal.igb",
+        "needle": "pedestal.igb",
+        "file_off": 5313879,
+        "approx_va": "0x6114d7"
+      },
+      {
+        "name": ".\\ps2\\gfx\\ui\\trophy\\citadel.igb",
+        "needle": "citadel.igb",
+        "file_off": 5313854,
+        "approx_va": "0x6114be"
+      },
+      {
+        "name": ".\\ps2\\ui\\fetextur.igb",
+        "needle": "fetextur.igb",
+        "file_off": 5314067,
+        "approx_va": "0x611593"
+      },
+      {
+        "name": ".\\ps2\\ui\\introtxr.igb",
+        "needle": "introtxr.igb",
+        "file_off": 5313827,
+        "approx_va": "0x6114a3"
+      },
+      {
+        "name": ".\\ps2\\ui\\itextur.igb",
+        "needle": "itextur.igb",
+        "file_off": 5314107,
+        "approx_va": "0x6115bb"
+      }
+    ],
+    "igb_path_hit_count": 27,
+    "va_le32_in_disc": [
+      {
+        "va": "0x108d28",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x108f60",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x10fce0",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x110100",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x508930",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x520160",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x51ac80",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x51acec",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x725f50",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x725f00",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x705c18",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x705f18",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0xbd1000",
+        "gfc_offs": [
+          51433
+        ],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x6b4920",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      },
+      {
+        "va": "0x6b2b90",
+        "gfc_offs": [],
+        "gob_sample_offs": []
+      }
+    ],
+    "alchemy_strings": [
+      {
+        "needle": "Intrinsic Alchemy",
+        "file_off": 5982624,
+        "approx_va": "0x6b4920"
+      },
+      {
+        "needle": "igIGBFile",
+        "file_off": 5975056,
+        "approx_va": "0x6b2b90"
+      },
+      {
+        "needle": "ASSETS.GFC",
+        "file_off": null
+      },
+      {
+        "needle": "ASSETS.GOB",
+        "file_off": null
+      },
+      {
+        "needle": "gfx/ui/butanim.igb",
+        "file_off": 5313792,
+        "approx_va": "0x611480"
+      },
+      {
+        "needle": "ui/introtxr.igb",
+        "file_off": 5313824,
+        "approx_va": "0x6114a0"
+      },
+      {
+        "needle": "pools.csv",
+        "file_off": 5315232,
+        "approx_va": "0x611a20"
+      },
+      {
+        "needle": "STBLz",
+        "file_off": null
+      },
+      {
+        "needle": "STBL0",
+        "file_off": null
+      },
+      {
+        "needle": "STBL",
+        "file_off": null
+      }
+    ]
+  },
+  "ram_corr": {
+    "size": 37748736,
+    "stbl_counts": {
+      "STBLz": 0,
+      "STBL0": 0,
+      "STBL*": 0
+    },
+    "gfc_sig_hits": [
+      "0x1f049e",
+      "0x288916",
+      "0x4ec5b2",
+      "0x4f671a",
+      "0x551dee",
+      "0x55208a",
+      "0x18f7e2e",
+      "0x18f876e",
+      "0x18f9d56",
+      "0x1901ff6"
+    ],
+    "path_hits": [
+      {
+        "needle": "ASSETS.GFC",
+        "off": null
+      },
+      {
+        "needle": "ASSETS.GOB",
+        "off": null
+      },
+      {
+        "needle": "butanim.igb",
+        "off": null
+      },
+      {
+        "needle": "introtxr.igb",
+        "off": null
+      },
+      {
+        "needle": "Intrinsic Alchemy",
+        "off": null
+      },
+      {
+        "needle": "igIGBFile",
+        "off": null
+      }
+    ],
+    "va_as_ptr_hits": [
+      {
+        "va": "0x725f50",
+        "aligned_hits": []
+      },
+      {
+        "va": "0x725f00",
+        "aligned_hits": []
+      },
+      {
+        "va": "0xbd1000",
+        "aligned_hits": []
+      },
+      {
+        "va": "0x10fce0",
+        "aligned_hits": []
+      }
+    ],
+    "stbl_offsets_sample": []
+  },
+  "tools": [
+    "python3 mmap/struct/zlib (binwalk CLI not found)"
+  ]
+}

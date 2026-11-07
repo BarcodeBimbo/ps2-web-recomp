@@ -1,0 +1,2269 @@
+{
+  "elf_path": "C:\\PS2Recomp\\games\\b49f2e769315347e8bda839feb705744\\disc\\boot.elf",
+  "size": 6234672,
+  "entry": "0x00108D28",
+  "phdrs": [
+    {
+      "i": 0,
+      "type": 1,
+      "offset": 128,
+      "vaddr": 1048576,
+      "filesz": 6234112,
+      "memsz": 6464640,
+      "flags": 7
+    },
+    {
+      "i": 1,
+      "type": 1,
+      "offset": 6234240,
+      "vaddr": 7513216,
+      "filesz": 0,
+      "memsz": 0,
+      "flags": 6
+    }
+  ],
+  "sections": [
+    {
+      "name": "",
+      "type": 0,
+      "addr": "0x00000000",
+      "size": "0x0"
+    },
+    {
+      "name": ".shstrtab",
+      "type": 3,
+      "addr": "0x00000000",
+      "size": "0x2D"
+    },
+    {
+      "name": ".strtab",
+      "type": 3,
+      "addr": "0x00000000",
+      "size": "0x0"
+    },
+    {
+      "name": ".symtab",
+      "type": 2,
+      "addr": "0x00000000",
+      "size": "0x0"
+    },
+    {
+      "name": "",
+      "type": 1,
+      "addr": "0x00100000",
+      "size": "0x5F2000"
+    },
+    {
+      "name": "",
+      "type": 1,
+      "addr": "0x0072A480",
+      "size": "0x0"
+    },
+    {
+      "name": ".comment",
+      "type": 1,
+      "addr": "0x00000000",
+      "size": "0x2B"
+    },
+    {
+      "name": ".reginfo",
+      "type": 1879048198,
+      "addr": "0x00000000",
+      "size": "0x18"
+    }
+  ],
+  "comment": "MW MIPS C Compiler (2.4.1.01)\nPlayStation2",
+  "alchemy_version_string": "Intrinsic Alchemy  v3.0 -0909 (Static/Release) ",
+  "key_vas": {
+    "entry_crt0": {
+      "va": "0x00108D28",
+      "file_off": "0x8DA8",
+      "region": "LOAD",
+      "preview": "70000C28 70001428 70001C28 70002428",
+      "disasm": [
+        {
+          "va": "0x00108D28",
+          "word": "0x70000C28",
+          "asm": "MMI/SPECIAL2 fn=0x28"
+        },
+        {
+          "va": "0x00108D2C",
+          "word": "0x70001428",
+          "asm": "MMI/SPECIAL2 fn=0x28"
+        },
+        {
+          "va": "0x00108D30",
+          "word": "0x70001C28",
+          "asm": "MMI/SPECIAL2 fn=0x28"
+        },
+        {
+          "va": "0x00108D34",
+          "word": "0x70002428",
+          "asm": "MMI/SPECIAL2 fn=0x28"
+        }
+      ]
+    },
+    "app_init": {
+      "va": "0x00108F60",
+      "file_off": "0x8FE0",
+      "region": "LOAD",
+      "preview": "27BDFF60 FFBF0030 7FB20020 7FB10010",
+      "disasm": [
+        {
+          "va": "0x00108F60",
+          "word": "0x27BDFF60",
+          "asm": "addiu $29,$29,-160"
+        },
+        {
+          "va": "0x00108F64",
+          "word": "0xFFBF0030",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x00108F68",
+          "word": "0x7FB20020",
+          "asm": "op=0x1F"
+        },
+        {
+          "va": "0x00108F6C",
+          "word": "0x7FB10010",
+          "asm": "op=0x1F"
+        }
+      ]
+    },
+    "loadgate_FCE0": {
+      "va": "0x0010FCE0",
+      "file_off": "0xFD60",
+      "region": "LOAD",
+      "preview": "27BDFFB0 24050001 FFBF0040 7FB30030",
+      "disasm": [
+        {
+          "va": "0x0010FCE0",
+          "word": "0x27BDFFB0",
+          "asm": "addiu $29,$29,-80"
+        },
+        {
+          "va": "0x0010FCE4",
+          "word": "0x24050001",
+          "asm": "addiu $5,$0,1"
+        },
+        {
+          "va": "0x0010FCE8",
+          "word": "0xFFBF0040",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x0010FCEC",
+          "word": "0x7FB30030",
+          "asm": "op=0x1F"
+        }
+      ]
+    },
+    "finalize_110100": {
+      "va": "0x00110100",
+      "file_off": "0x10180",
+      "region": "LOAD",
+      "preview": "27BDFFC0 FFBF0020 7FB10010 7FB00000",
+      "disasm": [
+        {
+          "va": "0x00110100",
+          "word": "0x27BDFFC0",
+          "asm": "addiu $29,$29,-64"
+        },
+        {
+          "va": "0x00110104",
+          "word": "0xFFBF0020",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x00110108",
+          "word": "0x7FB10010",
+          "asm": "op=0x1F"
+        },
+        {
+          "va": "0x0011010C",
+          "word": "0x7FB00000",
+          "asm": "op=0x1F"
+        }
+      ]
+    },
+    "bind_registry_bss": {
+      "va": "0x00725F50",
+      "file_off": null,
+      "region": "BSS",
+      "preview": "(zero-filled at CRT0; not in file)"
+    },
+    "bind_installer": {
+      "va": "0x00520160",
+      "file_off": "0x4201E0",
+      "region": "LOAD",
+      "preview": "27BDFFE0 FFBF0000 0C14224C 00000000",
+      "disasm": [
+        {
+          "va": "0x00520160",
+          "word": "0x27BDFFE0",
+          "asm": "addiu $29,$29,-32"
+        },
+        {
+          "va": "0x00520164",
+          "word": "0xFFBF0000",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x00520168",
+          "word": "0x0C14224C",
+          "asm": "jal 0x00508930"
+        },
+        {
+          "va": "0x0052016C",
+          "word": "0x00000000",
+          "asm": "nop"
+        }
+      ]
+    },
+    "bind_teardown": {
+      "va": "0x00520210",
+      "file_off": "0x420290",
+      "region": "LOAD",
+      "preview": "27BDFFE0 3C010072 FFBF0010 7FB00000",
+      "disasm": [
+        {
+          "va": "0x00520210",
+          "word": "0x27BDFFE0",
+          "asm": "addiu $29,$29,-32"
+        },
+        {
+          "va": "0x00520214",
+          "word": "0x3C010072",
+          "asm": "lui $1,0x72"
+        },
+        {
+          "va": "0x00520218",
+          "word": "0xFFBF0010",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x0052021C",
+          "word": "0x7FB00000",
+          "asm": "op=0x1F"
+        }
+      ]
+    },
+    "nullbind_helper": {
+      "va": "0x0051AC80",
+      "file_off": "0x41AD00",
+      "region": "LOAD",
+      "preview": "27BDFFC0 FFBF0020 7FB10010 7FB00000",
+      "disasm": [
+        {
+          "va": "0x0051AC80",
+          "word": "0x27BDFFC0",
+          "asm": "addiu $29,$29,-64"
+        },
+        {
+          "va": "0x0051AC84",
+          "word": "0xFFBF0020",
+          "asm": "op=0x3F"
+        },
+        {
+          "va": "0x0051AC88",
+          "word": "0x7FB10010",
+          "asm": "op=0x1F"
+        },
+        {
+          "va": "0x0051AC8C",
+          "word": "0x7FB00000",
+          "asm": "op=0x1F"
+        }
+      ]
+    },
+    "nullbind_ra_51ACEC": {
+      "va": "0x0051ACEC",
+      "file_off": "0x41AD6C",
+      "region": "LOAD",
+      "preview": "0C145C28 8E04001C 8E04001C 1080000B",
+      "disasm": [
+        {
+          "va": "0x0051ACEC",
+          "word": "0x0C145C28",
+          "asm": "jal 0x005170A0"
+        },
+        {
+          "va": "0x0051ACF0",
+          "word": "0x8E04001C",
+          "asm": "lw $4,28($16)"
+        },
+        {
+          "va": "0x0051ACF4",
+          "word": "0x8E04001C",
+          "asm": "lw $4,28($16)"
+        },
+        {
+          "va": "0x0051ACF8",
+          "word": "0x1080000B",
+          "asm": "beq $4,$0,11"
+        }
+      ]
+    },
+    "factory_508930": {
+      "va": "0x00508930",
+      "file_off": "0x4089B0",
+      "region": "LOAD",
+      "preview": "3C010072 24050003 8C245F00 8C990000",
+      "disasm": [
+        {
+          "va": "0x00508930",
+          "word": "0x3C010072",
+          "asm": "lui $1,0x72"
+        },
+        {
+          "va": "0x00508934",
+          "word": "0x24050003",
+          "asm": "addiu $5,$0,3"
+        },
+        {
+          "va": "0x00508938",
+          "word": "0x8C245F00",
+          "asm": "lw $4,24320($1)"
+        },
+        {
+          "va": "0x0050893C",
+          "word": "0x8C990000",
+          "asm": "lw $25,0($4)"
+        }
+      ]
+    },
+    "allocator_bss_725F00": {
+      "va": "0x00725F00",
+      "file_off": null,
+      "region": "BSS",
+      "preview": "(zero-filled at CRT0; not in file)"
+    },
+    "alchemy_ver_str": {
+      "va": "0x006B4920",
+      "file_off": "0x5B49A0",
+      "region": "LOAD",
+      "preview": "Intrinsic Alchemy  v3.0 -0909 (S"
+    },
+    "ALCHEMY_BASE": {
+      "va": "0x006B2288",
+      "file_off": "0x5B2308",
+      "region": "LOAD",
+      "preview": "ALCHEMY_BASE"
+    },
+    "alchemy_ini": {
+      "va": "0x006B4B08",
+      "file_off": "0x5B4B88",
+      "region": "LOAD",
+      "preview": "alchemy.ini"
+    },
+    "igFileIO_irx": {
+      "va": "0x006B8F18",
+      "file_off": "0x5B8F98",
+      "region": "LOAD",
+      "preview": "igFileIO.irx"
+    },
+    "alchemy_iop_unix": {
+      "va": "0x006B8E90",
+      "file_off": "0x5B8F10",
+      "region": "LOAD",
+      "preview": "/usr/local/Alchemy/iop/modules"
+    },
+    "alchemy_iop_win": {
+      "va": "0x006B8EB0",
+      "file_off": "0x5B8F30",
+      "region": "LOAD",
+      "preview": "c:/Alchemy/iop/modules"
+    },
+    "igIGBFile": {
+      "va": "0x006B2B90",
+      "file_off": "0x5B2C10",
+      "region": "LOAD",
+      "preview": "igIGBFile"
+    },
+    "igFile": {
+      "va": "0x006B3198",
+      "file_off": "0x5B3218",
+      "region": "LOAD",
+      "preview": "igFile"
+    }
+  },
+  "neighbors": {
+    "entry_crt0": [
+      {
+        "va": "0x00108D28",
+        "word": "0x70000C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D2C",
+        "word": "0x70001428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D30",
+        "word": "0x70001C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D34",
+        "word": "0x70002428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D38",
+        "word": "0x70002C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D3C",
+        "word": "0x70003428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D40",
+        "word": "0x70003C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D44",
+        "word": "0x70004428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D48",
+        "word": "0x70004C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D4C",
+        "word": "0x70005428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D50",
+        "word": "0x70005C28",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      },
+      {
+        "va": "0x00108D54",
+        "word": "0x70006428",
+        "asm": "MMI/SPECIAL2 fn=0x28"
+      }
+    ],
+    "loadgate_FCE0": [
+      {
+        "va": "0x0010FCE0",
+        "word": "0x27BDFFB0",
+        "asm": "addiu $29,$29,-80"
+      },
+      {
+        "va": "0x0010FCE4",
+        "word": "0x24050001",
+        "asm": "addiu $5,$0,1"
+      },
+      {
+        "va": "0x0010FCE8",
+        "word": "0xFFBF0040",
+        "asm": "op=0x3F"
+      },
+      {
+        "va": "0x0010FCEC",
+        "word": "0x7FB30030",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0010FCF0",
+        "word": "0x7FB20020",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0010FCF4",
+        "word": "0x0080982D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0010FCF8",
+        "word": "0x7FB10010",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0010FCFC",
+        "word": "0x7FB00000",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0010FD00",
+        "word": "0x8C865DD4",
+        "asm": "lw $6,24020($4)"
+      },
+      {
+        "va": "0x0010FD04",
+        "word": "0x00061840",
+        "asm": "sll $3,$6,1"
+      },
+      {
+        "va": "0x0010FD08",
+        "word": "0x00661821",
+        "asm": "addu $3,$3,$6"
+      },
+      {
+        "va": "0x0010FD0C",
+        "word": "0x00031940",
+        "asm": "sll $3,$3,5"
+      },
+      {
+        "va": "0x0010FD10",
+        "word": "0x02631821",
+        "asm": "addu $3,$19,$3"
+      },
+      {
+        "va": "0x0010FD14",
+        "word": "0x24700008",
+        "asm": "addiu $16,$3,8"
+      },
+      {
+        "va": "0x0010FD18",
+        "word": "0x8C630054",
+        "asm": "lw $3,84($3)"
+      },
+      {
+        "va": "0x0010FD1C",
+        "word": "0x1465004A",
+        "asm": "bne $3,$5,74"
+      },
+      {
+        "va": "0x0010FD20",
+        "word": "0x00000000",
+        "asm": "nop"
+      },
+      {
+        "va": "0x0010FD24",
+        "word": "0x8E030048",
+        "asm": "lw $3,72($16)"
+      },
+      {
+        "va": "0x0010FD28",
+        "word": "0x10650004",
+        "asm": "beq $3,$5,4"
+      },
+      {
+        "va": "0x0010FD2C",
+        "word": "0x00000000",
+        "asm": "nop"
+      }
+    ],
+    "finalize_110100": [
+      {
+        "va": "0x00110100",
+        "word": "0x27BDFFC0",
+        "asm": "addiu $29,$29,-64"
+      },
+      {
+        "va": "0x00110104",
+        "word": "0xFFBF0020",
+        "asm": "op=0x3F"
+      },
+      {
+        "va": "0x00110108",
+        "word": "0x7FB10010",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0011010C",
+        "word": "0x7FB00000",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x00110110",
+        "word": "0x8CB10050",
+        "asm": "lw $17,80($5)"
+      },
+      {
+        "va": "0x00110114",
+        "word": "0x9223002C",
+        "asm": "lbu $3,44($17)"
+      },
+      {
+        "va": "0x00110118",
+        "word": "0x1460004A",
+        "asm": "bne $3,$0,74"
+      },
+      {
+        "va": "0x0011011C",
+        "word": "0x00A0802D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x00110120",
+        "word": "0x9222002D",
+        "asm": "lbu $2,45($17)"
+      },
+      {
+        "va": "0x00110124",
+        "word": "0x1440003A",
+        "asm": "bne $2,$0,58"
+      },
+      {
+        "va": "0x00110128",
+        "word": "0x00000000",
+        "asm": "nop"
+      },
+      {
+        "va": "0x0011012C",
+        "word": "0x24020004",
+        "asm": "addiu $2,$0,4"
+      },
+      {
+        "va": "0x00110130",
+        "word": "0xAE02004C",
+        "asm": "sw $2,76($16)"
+      },
+      {
+        "va": "0x00110134",
+        "word": "0xAE000050",
+        "asm": "sw $0,80($16)"
+      },
+      {
+        "va": "0x00110138",
+        "word": "0x3C020072",
+        "asm": "lui $2,0x72"
+      },
+      {
+        "va": "0x0011013C",
+        "word": "0x8C445D48",
+        "asm": "lw $4,23880($2)"
+      }
+    ],
+    "bind_installer": [
+      {
+        "va": "0x00520160",
+        "word": "0x27BDFFE0",
+        "asm": "addiu $29,$29,-32"
+      },
+      {
+        "va": "0x00520164",
+        "word": "0xFFBF0000",
+        "asm": "op=0x3F"
+      },
+      {
+        "va": "0x00520168",
+        "word": "0x0C14224C",
+        "asm": "jal 0x00508930"
+      },
+      {
+        "va": "0x0052016C",
+        "word": "0x00000000",
+        "asm": "nop"
+      },
+      {
+        "va": "0x00520170",
+        "word": "0x0C13490C",
+        "asm": "jal 0x004D2430"
+      },
+      {
+        "va": "0x00520174",
+        "word": "0x0040202D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x00520178",
+        "word": "0x3C010072",
+        "asm": "lui $1,0x72"
+      },
+      {
+        "va": "0x0052017C",
+        "word": "0x0C14224C",
+        "asm": "jal 0x00508930"
+      },
+      {
+        "va": "0x00520180",
+        "word": "0xAC225F50",
+        "asm": "sw $2,24400($1)"
+      },
+      {
+        "va": "0x00520184",
+        "word": "0x0C134A38",
+        "asm": "jal 0x004D28E0"
+      },
+      {
+        "va": "0x00520188",
+        "word": "0x0040202D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0052018C",
+        "word": "0xAFA2001C",
+        "asm": "sw $2,28($29)"
+      },
+      {
+        "va": "0x00520190",
+        "word": "0x24030001",
+        "asm": "addiu $3,$0,1"
+      },
+      {
+        "va": "0x00520194",
+        "word": "0x8FA2001C",
+        "asm": "lw $2,28($29)"
+      },
+      {
+        "va": "0x00520198",
+        "word": "0xA043002C",
+        "asm": "sb $3,44($2)"
+      },
+      {
+        "va": "0x0052019C",
+        "word": "0x8FA4001C",
+        "asm": "lw $4,28($29)"
+      },
+      {
+        "va": "0x005201A0",
+        "word": "0x8C990000",
+        "asm": "lw $25,0($4)"
+      },
+      {
+        "va": "0x005201A4",
+        "word": "0x8F3900D0",
+        "asm": "lw $25,208($25)"
+      },
+      {
+        "va": "0x005201A8",
+        "word": "0x0320F809",
+        "asm": "jalr $31,$25"
+      },
+      {
+        "va": "0x005201AC",
+        "word": "0x00000000",
+        "asm": "nop"
+      },
+      {
+        "va": "0x005201B0",
+        "word": "0x3C010072",
+        "asm": "lui $1,0x72"
+      },
+      {
+        "va": "0x005201B4",
+        "word": "0x8C245F50",
+        "asm": "lw $4,24400($1)"
+      },
+      {
+        "va": "0x005201B8",
+        "word": "0x8C990000",
+        "asm": "lw $25,0($4)"
+      },
+      {
+        "va": "0x005201BC",
+        "word": "0x8F390054",
+        "asm": "lw $25,84($25)"
+      }
+    ],
+    "nullbind_helper": [
+      {
+        "va": "0x0051AC80",
+        "word": "0x27BDFFC0",
+        "asm": "addiu $29,$29,-64"
+      },
+      {
+        "va": "0x0051AC84",
+        "word": "0xFFBF0020",
+        "asm": "op=0x3F"
+      },
+      {
+        "va": "0x0051AC88",
+        "word": "0x7FB10010",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0051AC8C",
+        "word": "0x7FB00000",
+        "asm": "op=0x1F"
+      },
+      {
+        "va": "0x0051AC90",
+        "word": "0x90830018",
+        "asm": "lbu $3,24($4)"
+      },
+      {
+        "va": "0x0051AC94",
+        "word": "0x10600033",
+        "asm": "beq $3,$0,51"
+      },
+      {
+        "va": "0x0051AC98",
+        "word": "0x0080802D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0051AC9C",
+        "word": "0xA2000018",
+        "asm": "sb $0,24($16)"
+      },
+      {
+        "va": "0x0051ACA0",
+        "word": "0x27A4003C",
+        "asm": "addiu $4,$29,60"
+      },
+      {
+        "va": "0x0051ACA4",
+        "word": "0x8E05001C",
+        "asm": "lw $5,28($16)"
+      },
+      {
+        "va": "0x0051ACA8",
+        "word": "0x0000302D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0051ACAC",
+        "word": "0x8CB90000",
+        "asm": "lw $25,0($5)"
+      },
+      {
+        "va": "0x0051ACB0",
+        "word": "0x8F39005C",
+        "asm": "lw $25,92($25)"
+      },
+      {
+        "va": "0x0051ACB4",
+        "word": "0x0320F809",
+        "asm": "jalr $31,$25"
+      },
+      {
+        "va": "0x0051ACB8",
+        "word": "0x24070001",
+        "asm": "addiu $7,$0,1"
+      },
+      {
+        "va": "0x0051ACBC",
+        "word": "0x3C010072",
+        "asm": "lui $1,0x72"
+      },
+      {
+        "va": "0x0051ACC0",
+        "word": "0x8C245F50",
+        "asm": "lw $4,24400($1)"
+      },
+      {
+        "va": "0x0051ACC4",
+        "word": "0x8C990000",
+        "asm": "lw $25,0($4)"
+      },
+      {
+        "va": "0x0051ACC8",
+        "word": "0x8F390050",
+        "asm": "lw $25,80($25)"
+      },
+      {
+        "va": "0x0051ACCC",
+        "word": "0x0320F809",
+        "asm": "jalr $31,$25"
+      },
+      {
+        "va": "0x0051ACD0",
+        "word": "0x8E110020",
+        "asm": "lw $17,32($16)"
+      },
+      {
+        "va": "0x0051ACD4",
+        "word": "0x8C590000",
+        "asm": "lw $25,0($2)"
+      },
+      {
+        "va": "0x0051ACD8",
+        "word": "0x0220302D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0051ACDC",
+        "word": "0x27A40038",
+        "asm": "addiu $4,$29,56"
+      },
+      {
+        "va": "0x0051ACE0",
+        "word": "0x8F390054",
+        "asm": "lw $25,84($25)"
+      },
+      {
+        "va": "0x0051ACE4",
+        "word": "0x0320F809",
+        "asm": "jalr $31,$25"
+      },
+      {
+        "va": "0x0051ACE8",
+        "word": "0x0040282D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0051ACEC",
+        "word": "0x0C145C28",
+        "asm": "jal 0x005170A0"
+      },
+      {
+        "va": "0x0051ACF0",
+        "word": "0x8E04001C",
+        "asm": "lw $4,28($16)"
+      },
+      {
+        "va": "0x0051ACF4",
+        "word": "0x8E04001C",
+        "asm": "lw $4,28($16)"
+      },
+      {
+        "va": "0x0051ACF8",
+        "word": "0x1080000B",
+        "asm": "beq $4,$0,11"
+      },
+      {
+        "va": "0x0051ACFC",
+        "word": "0x00000000",
+        "asm": "nop"
+      }
+    ],
+    "nullbind_ra_51ACEC": [
+      {
+        "va": "0x0051ACE0",
+        "word": "0x8F390054",
+        "asm": "lw $25,84($25)"
+      },
+      {
+        "va": "0x0051ACE4",
+        "word": "0x0320F809",
+        "asm": "jalr $31,$25"
+      },
+      {
+        "va": "0x0051ACE8",
+        "word": "0x0040282D",
+        "asm": "SPECIAL fn=0x2D"
+      },
+      {
+        "va": "0x0051ACEC",
+        "word": "0x0C145C28",
+        "asm": "jal 0x005170A0"
+      },
+      {
+        "va": "0x0051ACF0",
+        "word": "0x8E04001C",
+        "asm": "lw $4,28($16)"
+      },
+      {
+        "va": "0x0051ACF4",
+        "word": "0x8E04001C",
+        "asm": "lw $4,28($16)"
+      },
+      {
+        "va": "0x0051ACF8",
+        "word": "0x1080000B",
+        "asm": "beq $4,$0,11"
+      },
+      {
+        "va": "0x0051ACFC",
+        "word": "0x00000000",
+        "asm": "nop"
+      }
+    ]
+  },
+  "jal_xrefs": {
+    "FCE0": [
+      "0x0010F5EC"
+    ],
+    "110100": [
+      "0x0010FD3C"
+    ],
+    "bind_installer": [],
+    "bind_teardown": [],
+    "nullbind_helper": [
+      "0x0010FF10",
+      "0x004EDE50",
+      "0x0051AD9C"
+    ],
+    "factory": [
+      "0x0010918C",
+      "0x0027DD90",
+      "0x0027DE30",
+      "0x0027DEF0",
+      "0x0027DFB4",
+      "0x0027E078",
+      "0x0027ED70",
+      "0x0027EE10",
+      "0x0027EED0",
+      "0x0027EF94",
+      "0x0027F058",
+      "0x0027F11C",
+      "0x0027F1E0",
+      "0x00282230",
+      "0x002822D0",
+      "0x00282390",
+      "0x00282DB0",
+      "0x00282E50",
+      "0x00282F10",
+      "0x00282FD4",
+      "0x00283690",
+      "0x00283730",
+      "0x002837F0",
+      "0x00284B60",
+      "0x00284C00",
+      "0x00284CC0",
+      "0x00284D84",
+      "0x00284E48",
+      "0x002858C0",
+      "0x00285960",
+      "0x00285A20",
+      "0x002863F0",
+      "0x00286490",
+      "0x00286550",
+      "0x00286614",
+      "0x00287010",
+      "0x002870B0",
+      "0x00287170",
+      "0x00287234",
+      "0x00287C40",
+      "0x00287CE0",
+      "0x00287DA0",
+      "0x00287E64",
+      "0x00288B60",
+      "0x00288C00",
+      "0x00288CC0",
+      "0x00288D84",
+      "0x00288E48",
+      "0x00288F0C",
+      "0x00288FD0",
+      "0x00289094",
+      "0x00289B00",
+      "0x00289BA0",
+      "0x00289C60",
+      "0x00289D24",
+      "0x002D64A8",
+      "0x002DA278",
+      "0x002DA308",
+      "0x002DA8E8",
+      "0x002DA978",
+      "0x002E3F60",
+      "0x002E7428",
+      "0x00301550",
+      "0x003056C4",
+      "0x003056E4",
+      "0x003057C0",
+      "0x00305890",
+      "0x003058B8",
+      "0x003058E0",
+      "0x00311478",
+      "0x003114F8",
+      "0x00311560",
+      "0x003116B8",
+      "0x003117B8",
+      "0x00311858",
+      "0x003118C0",
+      "0x00311928",
+      "0x003119A8",
+      "0x00311A28",
+      "0x00311AA8",
+      "0x00311B28",
+      "0x00311BA8",
+      "0x00311C28",
+      "0x00311CA8",
+      "0x00311D40",
+      "0x00311DD8",
+      "0x00311E40",
+      "0x00311E98",
+      "0x00311F00",
+      "0x00311F80",
+      "0x00311FEC",
+      "0x00313B88",
+      "0x00313C68",
+      "0x003151C8",
+      "0x003152A8",
+      "0x0031B218",
+      "0x0031F8DC",
+      "0x00320308",
+      "0x00324238",
+      "0x00324318",
+      "0x00329848",
+      "0x003298D8",
+      "0x00329934",
+      "0x00329990",
+      "0x00329A08",
+      "0x0032ADC8",
+      "0x0032B718",
+      "0x0032B780",
+      "0x0032B868",
+      "0x0032C8F8",
+      "0x0032CE38",
+      "0x0032DF08",
+      "0x004C909C",
+      "0x004CC8DC",
+      "0x004CF19C",
+      "0x004CF1F0",
+      "0x004D0A38",
+      "0x004D0D78",
+      "0x004D1118",
+      "0x004D1458",
+      "0x004D17F8",
+      "0x004D1B78",
+      "0x004D1E48",
+      "0x004D21D8",
+      "0x004D3758",
+      "0x004D4B08",
+      "0x004D4E58",
+      "0x004D51F8",
+      "0x004D68B8",
+      "0x004D6C68",
+      "0x004D6FE8",
+      "0x004D8588",
+      "0x004D8918",
+      "0x004D90E8",
+      "0x004DAE2C",
+      "0x004DAF48",
+      "0x004DB2D8",
+      "0x004DCBE8",
+      "0x004DCF38",
+      "0x004DDEB8",
+      "0x004DE238",
+      "0x004DF9D8",
+      "0x004DFD68",
+      "0x004E0A30",
+      "0x004E18F8",
+      "0x004E1C78",
+      "0x004E2658",
+      "0x004E29A8",
+      "0x004E3E48",
+      "0x004E3EF0",
+      "0x004E3FD4",
+      "0x004E8728",
+      "0x004E8AF8",
+      "0x004E8E78",
+      "0x004E97C8",
+      "0x004E9B48",
+      "0x00504EB8",
+      "0x00508218",
+      "0x0051DE20",
+      "0x00520168",
+      "0x0052017C",
+      "0x005487C8",
+      "0x00548870",
+      "0x00548960",
+      "0x00548A48",
+      "0x00549EDC",
+      "0x0056083C",
+      "0x005800F8",
+      "0x005803C8",
+      "0x00580758",
+      "0x00580A28",
+      "0x00580CF8",
+      "0x00581958",
+      "0x00581CE8",
+      "0x00589218",
+      "0x0058922C",
+      "0x00589240",
+      "0x00589254",
+      "0x00589268",
+      "0x0058927C",
+      "0x00589290",
+      "0x005892A4",
+      "0x005892B8",
+      "0x005892CC",
+      "0x005892E0",
+      "0x005892F4",
+      "0x005AB668",
+      "0x005AB6C0",
+      "0x005AEC94",
+      "0x005AEEFC",
+      "0x005B4E18",
+      "0x005B8B08",
+      "0x005BF7E8",
+      "0x005C0428",
+      "0x005C9AA0",
+      "0x005C9B28",
+      "0x005C9C48",
+      "0x005C9EA8",
+      "0x005CA468",
+      "0x005D4500",
+      "0x005DB838",
+      "0x005EB6CC",
+      "0x005F6BC8",
+      "0x005F6C70",
+      "0x005F6D54",
+      "0x005F6E3C",
+      "0x005F6F24",
+      "0x005F700C",
+      "0x005F70F4"
+    ],
+    "app_init": [
+      "0x00108ED8"
+    ]
+  },
+  "lui_hits_725F50": [
+    {
+      "lui_va": "0x0023AF14",
+      "access_va": "0x0023AF20",
+      "op": "lw",
+      "rt": 2
+    },
+    {
+      "lui_va": "0x0023AF5C",
+      "access_va": "0x0023AF60",
+      "op": "lw",
+      "rt": 6
+    },
+    {
+      "lui_va": "0x0023AFD4",
+      "access_va": "0x0023AFD8",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0031C0E4",
+      "access_va": "0x0031C0E8",
+      "op": "lw",
+      "rt": 3
+    },
+    {
+      "lui_va": "0x00517120",
+      "access_va": "0x00517124",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0051ACBC",
+      "access_va": "0x0051ACC0",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x00520178",
+      "access_va": "0x00520180",
+      "op": "sw",
+      "rt": 2
+    },
+    {
+      "lui_va": "0x005201B0",
+      "access_va": "0x005201B4",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x00520214",
+      "access_va": "0x00520220",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x00520234",
+      "access_va": "0x0052023C",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x00520278",
+      "access_va": "0x0052027C",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x005202A8",
+      "access_va": "0x005202AC",
+      "op": "sw",
+      "rt": 0
+    },
+    {
+      "lui_va": "0x005352F8",
+      "access_va": "0x00535300",
+      "op": "lw",
+      "rt": 3
+    },
+    {
+      "lui_va": "0x0053A93C",
+      "access_va": "0x0053A940",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053ACF4",
+      "access_va": "0x0053ACF8",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053AFC0",
+      "access_va": "0x0053AFC4",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053B2B0",
+      "access_va": "0x0053B2B4",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053B5C0",
+      "access_va": "0x0053B5C8",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053B678",
+      "access_va": "0x0053B67C",
+      "op": "lw",
+      "rt": 4
+    },
+    {
+      "lui_va": "0x0053B924",
+      "access_va": "0x0053B930",
+      "op": "lw",
+      "rt": 4
+    }
+  ],
+  "string_hit_counts": {
+    "Intrinsic Alchemy": 1,
+    "Alchemy": 10,
+    "ALCHEMY_BASE": 1,
+    "alchemy.ini": 2,
+    "AlchemyRoot": 1,
+    "igFileIO": 1,
+    "igUKbd": 1,
+    "igUMouse": 1,
+    "/usr/local/Alchemy": 1,
+    "c:/Alchemy": 1,
+    "c:\\Alchemy": 0,
+    "IGB": 5,
+    ".igb": 47,
+    "GFC": 0,
+    "GOB": 0,
+    "ASSETS.GFC": 0,
+    "ASSETS.GOB": 0,
+    "Velocity": 3,
+    "velocity": 3,
+    "loadgate": 0,
+    "FCE0": 0,
+    "igMalloc": 11,
+    "igIGBFile": 3,
+    "igFile": 4,
+    "igPsx2": 46,
+    "STBL": 0,
+    "STBLz": 0,
+    "_isAlchemyMemory": 1,
+    "ABSOLUTE_BASE": 1,
+    "APPLICATION_BASE": 1,
+    "IOPRP255": 1,
+    "MODULES": 5
+  },
+  "byte_hit_counts": {
+    "Intrinsic Alchemy": 1,
+    "ALCHEMY_BASE": 1,
+    "alchemy.ini": 2,
+    "igFileIO.irx": 1,
+    "/usr/local/Alchemy/iop/modules": 1,
+    "c:/Alchemy/iop/modules": 1,
+    "ASSETS.GFC": 0,
+    "ASSETS.GOB": 0,
+    "Velocity.igm": 1
+  },
+  "ig_class_exact_count": 595,
+  "ig_class_sample": [
+    "igAABox",
+    "igAction",
+    "igActiveComponentsObserver",
+    "igActor",
+    "igActorInfo",
+    "igActorInfoList",
+    "igActorList",
+    "igAlphaFunctionAttr",
+    "igAlphaStateAttr",
+    "igAnimation",
+    "igAnimationBinding",
+    "igAnimationBindingList",
+    "igAnimationCombiner",
+    "igAnimationCombinerBoneInfo",
+    "igAnimationCombinerBoneInfoList",
+    "igAnimationCombinerBoneInfoListList",
+    "igAnimationCombinerBoneInfoPool",
+    "igAnimationCombinerList",
+    "igAnimationDatabase",
+    "igAnimationHierarchy",
+    "igAnimationList",
+    "igAnimationModifier",
+    "igAnimationModifierList",
+    "igAnimationState",
+    "igAnimationStateList",
+    "igAnimationStatePool",
+    "igAnimationSystem",
+    "igAnimationTrack",
+    "igAnimationTrackList",
+    "igAnimationTransitionDefinition",
+    "igAnimationTransitionDefinitionList",
+    "igAnimationTransitionParams",
+    "igAnimationTransitionPoint",
+    "igAnimationTransitionPointList",
+    "igAppearance",
+    "igAppearanceList",
+    "igArenaMemoryPool",
+    "igAttr",
+    "igAttrDefaultManager",
+    "igAttrList",
+    "igAttrListList",
+    "igAttrPool",
+    "igAttrSet",
+    "igAttrSetList",
+    "igAttrStack",
+    "igAttrStackList",
+    "igAttrStackManager",
+    "igAudio2Context",
+    "igBasicColorChanger",
+    "igBillboard",
+    "igBitMask",
+    "igBitmapFont",
+    "igBlendEquationExt",
+    "igBlendFunctionAttr",
+    "igBlendListRecord",
+    "igBlendListRecordList",
+    "igBlendMatricesAttr",
+    "igBlendMatricesAttrPool",
+    "igBlendMatrixPaletteAttr",
+    "igBlendMatrixPaletteAttrList",
+    "igBlendMatrixSelect",
+    "igBlendStateAttr",
+    "igBlendingCorrectionStateAttr",
+    "igBoolArrayMetaField",
+    "igBoolList",
+    "igBoolMetaField",
+    "igBoolObject",
+    "igBoxAspect",
+    "igBoxComponent",
+    "igBoxController",
+    "igBoxModel",
+    "igCallStackTable",
+    "igCallStackTracer",
+    "igCamera",
+    "igCameraTransNode",
+    "igCapabilityManager",
+    "igCharArrayMetaField",
+    "igCharList",
+    "igCharMetaField",
+    "igCharMetricsList"
+  ],
+  "ig_class_tail": [
+    "igVec4fMetaField",
+    "igVec4ucList",
+    "igVec4ucMetaField",
+    "igVectorBlending",
+    "igVectorConstantAttr",
+    "igVectorMorphing",
+    "igVertexArray",
+    "igVertexArray1_1",
+    "igVertexArray2",
+    "igVertexArray2Helper",
+    "igVertexArrayHelper",
+    "igVertexBlendMatrixAttr",
+    "igVertexBlendMatrixAttrPool",
+    "igVertexBlendMatrixListAttr",
+    "igVertexBlendMatrixListAttrPool",
+    "igVertexBlendStateAttr",
+    "igVertexData",
+    "igVertexDataList",
+    "igVertexPipelineModeAttr",
+    "igVertexStream",
+    "igView",
+    "igViewList",
+    "igViewportAttr",
+    "igViewportResizedMessage",
+    "igVisualAttribute",
+    "igVisualContext",
+    "igVisualContextAttrDefaultManager",
+    "igVisualContextCapabilityManager",
+    "igVisualContextList",
+    "igVoiceGroup",
+    "igVoiceGroupList",
+    "igVolume",
+    "igVolumeControl",
+    "igVolumeGroup",
+    "igVolumeGroupList",
+    "igVolumeList",
+    "igWindow",
+    "igWindowResizeEventReceiver",
+    "igWindowSizeObserver",
+    "ignoreDriverDatabase"
+  ],
+  "ig_token_unique": 614,
+  "ig_token_total_occurrences": 843,
+  "ig_prefix_buckets_top": [
+    [
+      "Psx2",
+      40
+    ],
+    [
+      "Animation",
+      25
+    ],
+    [
+      "Texture",
+      15
+    ],
+    [
+      "Vertex",
+      14
+    ],
+    [
+      "Unsigned",
+      13
+    ],
+    [
+      "Non",
+      11
+    ],
+    [
+      "Attr",
+      10
+    ],
+    [
+      "Blend",
+      10
+    ],
+    [
+      "Custom",
+      10
+    ],
+    [
+      "String",
+      10
+    ],
+    [
+      "Gui",
+      9
+    ],
+    [
+      "Transform",
+      9
+    ],
+    [
+      "Geometry",
+      8
+    ],
+    [
+      "Memory",
+      8
+    ],
+    [
+      "Object",
+      8
+    ],
+    [
+      "Image",
+      7
+    ],
+    [
+      "Light",
+      7
+    ],
+    [
+      "Context",
+      6
+    ],
+    [
+      "Data",
+      6
+    ],
+    [
+      "Event",
+      6
+    ],
+    [
+      "Int",
+      6
+    ],
+    [
+      "Message",
+      6
+    ],
+    [
+      "Meta",
+      6
+    ],
+    [
+      "Model",
+      6
+    ],
+    [
+      "Char",
+      5
+    ],
+    [
+      "Color",
+      5
+    ],
+    [
+      "Float",
+      5
+    ],
+    [
+      "Gfx",
+      5
+    ],
+    [
+      "Info",
+      5
+    ],
+    [
+      "Long",
+      5
+    ],
+    [
+      "Matrix",
+      5
+    ],
+    [
+      "Morph",
+      5
+    ],
+    [
+      "Render",
+      5
+    ],
+    [
+      "Shader",
+      5
+    ],
+    [
+      "Time",
+      5
+    ],
+    [
+      "Visual",
+      5
+    ],
+    [
+      "Volume",
+      5
+    ],
+    [
+      "Actor",
+      4
+    ],
+    [
+      "Bool",
+      4
+    ],
+    [
+      "Box",
+      4
+    ]
+  ],
+  "ig_token_top": [
+    [
+      "igb",
+      48
+    ],
+    [
+      "igArenaMemoryPool",
+      41
+    ],
+    [
+      "ignored",
+      16
+    ],
+    [
+      "igMallocMemoryPool",
+      10
+    ],
+    [
+      "igPsx2VisualContext",
+      7
+    ],
+    [
+      "igm",
+      4
+    ],
+    [
+      "igAttrSet",
+      4
+    ],
+    [
+      "igBlendStateAttr",
+      4
+    ],
+    [
+      "igObject",
+      4
+    ],
+    [
+      "igTextureAttr",
+      3
+    ],
+    [
+      "igTextureBindAttr",
+      3
+    ],
+    [
+      "igModelViewMatrixAttr",
+      3
+    ],
+    [
+      "igAttr",
+      3
+    ],
+    [
+      "igLightingStateAttr",
+      3
+    ],
+    [
+      "igTransform",
+      3
+    ],
+    [
+      "igTextureStateAttr",
+      3
+    ],
+    [
+      "igSwitch",
+      3
+    ],
+    [
+      "igIGBFile",
+      3
+    ],
+    [
+      "igUnsignedInt",
+      3
+    ],
+    [
+      "ignoreDriverDatabase",
+      2
+    ],
+    [
+      "igGeometry",
+      2
+    ],
+    [
+      "igGeometryAttr1_5",
+      2
+    ],
+    [
+      "igGeometrySetAttr",
+      2
+    ],
+    [
+      "igTextureMatrixAttr",
+      2
+    ],
+    [
+      "igColorAttr",
+      2
+    ],
+    [
+      "igBlendFunctionAttr",
+      2
+    ],
+    [
+      "igLightStateAttr",
+      2
+    ],
+    [
+      "igLightAttr",
+      2
+    ],
+    [
+      "igDepthWriteStateAttr",
+      2
+    ],
+    [
+      "igAlphaFunctionAttr",
+      2
+    ],
+    [
+      "igAlphaStateAttr",
+      2
+    ],
+    [
+      "igDisplayListAttr",
+      2
+    ],
+    [
+      "igigb",
+      2
+    ],
+    [
+      "igigb_hb",
+      2
+    ],
+    [
+      "igobjspool",
+      2
+    ],
+    [
+      "igBoxController",
+      2
+    ],
+    [
+      "igScrollListComponentController",
+      2
+    ],
+    [
+      "igGuiComponentModel",
+      2
+    ],
+    [
+      "igGuiComponentController",
+      2
+    ],
+    [
+      "igMemberFunctionWithParamAction",
+      2
+    ]
+  ],
+  "path_catalog_summary": {
+    "Alchemy/iop": 2,
+    "igFileIO": 1,
+    "igUKbd": 1,
+    "igUMouse": 1,
+    ".irx": 22,
+    "IOPRP": 1,
+    "MODULES": 5,
+    "cdrom0": 7
+  },
+  "alchemy_path_strings": [
+    {
+      "va": "0x006A3BD0",
+      "s": "Alchemy display %dx%d %s (color %d, depth %d)"
+    },
+    {
+      "va": "0x006A3C70",
+      "s": "Alchemy display closed"
+    },
+    {
+      "va": "0x006B43A0",
+      "s": "_isAlchemyMemory"
+    },
+    {
+      "va": "0x006B4920",
+      "s": "Intrinsic Alchemy  v3.0 -0909 (Static/Release) "
+    },
+    {
+      "va": "0x006B4980",
+      "s": "The headers used to build the Alchemy Core (version %d) do not match the currently registring dll or application (version %d)."
+    },
+    {
+      "va": "0x006B4B18",
+      "s": "Alchemy"
+    },
+    {
+      "va": "0x006B6020",
+      "s": "$(AlchemyRoot)"
+    },
+    {
+      "va": "0x006B8E90",
+      "s": "/usr/local/Alchemy/iop/modules"
+    },
+    {
+      "va": "0x006B8EB0",
+      "s": "c:/Alchemy/iop/modules"
+    },
+    {
+      "va": "0x006BA100",
+      "s": "Alchemy"
+    }
+  ],
+  "irx_strings": [
+    {
+      "va": "0x00611190",
+      "s": "mcman.irx"
+    },
+    {
+      "va": "0x006111A0",
+      "s": "mcserv.irx"
+    },
+    {
+      "va": "0x00612EC8",
+      "s": "usbd.irx"
+    },
+    {
+      "va": "0x00612F10",
+      "s": "lgdevw.irx"
+    },
+    {
+      "va": "0x00641388",
+      "s": "libsd.irx"
+    },
+    {
+      "va": "0x00641398",
+      "s": "sdrdrv.irx"
+    },
+    {
+      "va": "0x006413A8",
+      "s": "vvaa.irx"
+    },
+    {
+      "va": "0x00643218",
+      "s": "cri_adxi.irx"
+    },
+    {
+      "va": "0x006A2720",
+      "s": "lgDevInit: wrong version of lgDev.irx!"
+    },
+    {
+      "va": "0x006A2778",
+      "s": "lgDevInit:  lgdev.irx is version %d.%02d"
+    },
+    {
+      "va": "0x006A6628",
+      "s": "[libpad.a = %d.%d, padman.irx = %d.%d]"
+    },
+    {
+      "va": "0x006A7DE8",
+      "s": "[libmtap.a = %d.%d, mtapman.irx = %d.%d]"
+    },
+    {
+      "va": "0x006A7F10",
+      "s": "libmc: too old release of mcserv.irx"
+    },
+    {
+      "va": "0x006A7F38",
+      "s": "libmc: too old release of mcman.irx"
+    },
+    {
+      "va": "0x006B8F08",
+      "s": "libsd.irx"
+    },
+    {
+      "va": "0x006B8F18",
+      "s": "igFileIO.irx"
+    },
+    {
+      "va": "0x006BA080",
+      "s": "sio2man.irx"
+    },
+    {
+      "va": "0x006BA090",
+      "s": "padman.irx"
+    },
+    {
+      "va": "0x006BA0C0",
+      "s": "mtapman.irx"
+    },
+    {
+      "va": "0x006BA0D0",
+      "s": "usbd.irx"
+    },
+    {
+      "va": "0x006BA0E0",
+      "s": "igUKbd.irx"
+    },
+    {
+      "va": "0x006BA0F0",
+      "s": "igUMouse.irx"
+    }
+  ],
+  "igb_paths": [
+    {
+      "va": "0x00611320",
+      "s": "gfx/fonts/fonts.igb"
+    },
+    {
+      "va": "0x00611480",
+      "s": "gfx/ui/butanim.igb"
+    },
+    {
+      "va": "0x006114A0",
+      "s": "ui/introtxr.igb"
+    },
+    {
+      "va": "0x006114B0",
+      "s": "gfx/ui/trophy/citadel.igb"
+    },
+    {
+      "va": "0x006114D0",
+      "s": "gfx/ui/pedestal.igb"
+    },
+    {
+      "va": "0x006114F0",
+      "s": "gfx/ui/pedecam.igb"
+    },
+    {
+      "va": "0x00611530",
+      "s": "gfx/ui/background.igb"
+    },
+    {
+      "va": "0x00611550",
+      "s": "gfx/ui/backanim.igb"
+    },
+    {
+      "va": "0x00611590",
+      "s": "ui/fetextur.igb"
+    },
+    {
+      "va": "0x006115B8",
+      "s": "ui/itextur.igb"
+    },
+    {
+      "va": "0x00611630",
+      "s": "gfx/sfx/freeze.igb"
+    },
+    {
+      "va": "0x00611810",
+      "s": "gfx/mptracks/%s.igb"
+    },
+    {
+      "va": "0x00611830",
+      "s": "gfx/tracks/%s.igb"
+    },
+    {
+      "va": "0x00611860",
+      "s": "gfx/tracks/%s%s_levelinfo.igb"
+    },
+    {
+      "va": "0x00611AF8",
+      "s": ".igb"
+    },
+    {
+      "va": "0x00611F90",
+      "s": "gfx/mptracks/%s.igb"
+    },
+    {
+      "va": "0x00611FB0",
+      "s": "gfx/tracks/%s.igb"
+    },
+    {
+      "va": "0x00611FD0",
+      "s": "gfx/%s.igb"
+    },
+    {
+      "va": "0x00612028",
+      "s": "font.igb"
+    },
+    {
+      "va": "0x0062B638",
+      "s": "gfx/%s.igb"
+    },
+    {
+      "va": "0x0062E790",
+      "s": "gfx/tracks/%s%s_levelinfo.igb"
+    },
+    {
+      "va": "0x0062FD70",
+      "s": "gfx/hud/blacksp34.igb"
+    },
+    {
+      "va": "0x0062FF80",
+      "s": "gfx/hud/blacksp2.igb"
+    },
+    {
+      "va": "0x00630080",
+      "s": "gfx/hud/positionnumbers/%i.igb"
+    },
+    {
+      "va": "0x00631030",
+      "s": "gfx/hud/wumpa.igb"
+    },
+    {
+      "va": "0x006319B0",
+      "s": "hud/maps/%s.igb"
+    },
+    {
+      "va": "0x00631A70",
+      "s": "gfx/hints/boom.igb"
+    },
+    {
+      "va": "0x00639E80",
+      "s": "ui/introtxr.igb"
+    },
+    {
+      "va": "0x00639E90",
+      "s": "ui/fetextur.igb"
+    },
+    {
+      "va": "0x00639EA0",
+      "s": "ui/itextur.igb"
+    },
+    {
+      "va": "0x0063A250",
+      "s": "gfx/ui/trophy/citadel.igb"
+    },
+    {
+      "va": "0x0063A270",
+      "s": "gfx/ui/background.igb"
+    },
+    {
+      "va": "0x0063A290",
+      "s": "gfx/ui/pedecam.igb"
+    },
+    {
+      "va": "0x0063A2B0",
+      "s": "gfx/ui/backanim.igb"
+    },
+    {
+      "va": "0x0063A2D0",
+      "s": "gfx/ui/cortex_hut.igb"
+    },
+    {
+      "va": "0x0063A2F0",
+      "s": "gfx/ui/cam_tocrash.igb"
+    },
+    {
+      "va": "0x0063A310",
+      "s": "gfx/ui/cam_tocortex.igb"
+    },
+    {
+      "va": "0x0063A330",
+      "s": "gfx/ui/cam_crashtocortex.igb"
+    },
+    {
+      "va": "0x0063A370",
+      "s": "gfx/ui/pedestal.igb"
+    },
+    {
+      "va": "0x0063A390",
+      "s": "gfx/ui/crash_hut.igb"
+    },
+    {
+      "va": "0x0063A4B0",
+      "s": "gfx/ui/butanim.igb"
+    },
+    {
+      "va": "0x0063A4E8",
+      "s": ".igb"
+    },
+    {
+      "va": "0x0063C9B0",
+      "s": "gfx/sfx/freeze.igb"
+    },
+    {
+      "va": "0x0069F0F0",
+      "s": "gfx/hud/blacksp34.igb"
+    },
+    {
+      "va": "0x0069F110",
+      "s": "gfx/hud/blacksp2.igb"
+    },
+    {
+      "va": "0x0069F3B0",
+      "s": "gfx/hud/blacksp34.igb"
+    },
+    {
+      "va": "0x0069F3D0",
+      "s": "gfx/hud/blacksp2.igb"
+    }
+  ],
+  "gfc_gob": [],
+  "velocity_hits": [
+    {
+      "va": "0x00610985",
+      "s": "eventTrackerFileName = Velocity.igm"
+    },
+    {
+      "va": "0x006109A9",
+      "s": ";symbolsFileName = t:/velocity-bin/velocity-ps2-cw-dbg.elf"
+    },
+    {
+      "va": "0x0062E308",
+      "s": "velocity"
+    },
+    {
+      "va": "0x0063EC70",
+      "s": "m_rStartVelocity"
+    },
+    {
+      "va": "0x0063EC90",
+      "s": "m_rStartVelocityDelta"
+    },
+    {
+      "va": "0x00640BA0",
+      "s": "_velocity"
+    }
+  ],
+  "build_related": [
+    {
+      "va": "0x006B4950",
+      "s": "Built by rdy on Tue Sep 9 19:28:21 2003"
+    },
+    {
+      "va": "0x00646050",
+      "s": "** Havok libs built with version [%d], used with code built with [%d]. **"
+    },
+    {
+      "va": "0x006A2680",
+      "s": "Version %s, built on %s at %s"
+    },
+    {
+      "va": "0x006B4950",
+      "s": "Built by rdy on Tue Sep 9 19:28:21 2003"
+    },
+    {
+      "va": "0x00613C90",
+      "s": "Sep 16 2003"
+    },
+    {
+      "va": "0x006A26A8",
+      "s": "Sep 24 2002"
+    },
+    {
+      "va": "0x006B4950",
+      "s": "Built by rdy on Tue Sep 9 19:28:21 2003"
+    },
+    {
+      "va": "0x006B5660",
+      "s": "useSeparateEventTrackers"
+    },
+    {
+      "va": "0x006C2DF0",
+      "s": "_forceNoSeparate"
+    }
+  ],
+  "reloc_sections": [],
+  "dyn_sections": [
+    {
+      "i": 2,
+      "name_idx": 11,
+      "type": 3,
+      "addr": 0,
+      "offset": 0,
+      "size": 0,
+      "entsize": 1,
+      "link": 0,
+      "name": ".strtab"
+    },
+    {
+      "i": 3,
+      "name_idx": 19,
+      "type": 2,
+      "addr": 0,
+      "offset": 0,
+      "size": 0,
+      "entsize": 16,
+      "link": 2,
+      "name": ".symtab"
+    }
+  ],
+  "sym_count": 0,
+  "sample_syms": [],
+  "bss_siblings": {
+    "725EE0": {
+      "va": "0x00725EE0",
+      "in_bss": true,
+      "in_file": false
+    },
+    "725EF0": {
+      "va": "0x00725EF0",
+      "in_bss": true,
+      "in_file": false
+    },
+    "725EF8": {
+      "va": "0x00725EF8",
+      "in_bss": true,
+      "in_file": false
+    },
+    "725F00": {
+      "va": "0x00725F00",
+      "in_bss": true,
+      "in_file": false
+    },
+    "725F50": {
+      "va": "0x00725F50",
+      "in_bss": true,
+      "in_file": false
+    },
+    "725C20": {
+      "va": "0x00725C20",
+      "in_bss": true,
+      "in_file": false
+    }
+  },
+  "raw_string_count": 27822
+}

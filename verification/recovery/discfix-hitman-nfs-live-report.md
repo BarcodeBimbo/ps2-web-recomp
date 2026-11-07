@@ -1,10 +1,10 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 23:51 (PAUSED)
+Updated: 2026-11-07 (RESUMED — idle watcher)
 
 ## Status
 
-**PAUSED.** Cycle 7 **`R4_clear_with_evidence` → PASS**. No CdSync wake code landed. Disc CDVD ranked path R1–R4 is done. **No commit** (waiting on parent for joint-stable call). R5 pad/sound still gated.
+**RESUMED (idle watcher).** Cycle 7 **`R4_clear_with_evidence` → PASS**; joint-stable **`1e04172`** / `DISCFIX-R1-R4-STABLE.md` still documented. R5 pad/sound **still gated** — no apply. Board currently step 8 / `R5_pad_sound_observe` awaiting matrix (`code_change: false`, `allow_discfix_apply: false`); w1 did not post a new proposal on resume. No CDVD/pad/sound patches; no CNK leaks.
 
 ## Cycle summary
 
@@ -26,7 +26,15 @@ Updated: 2026-11-06 23:51 (PAUSED)
 | R2 WaitSema | cleared_with_evidence (sema 2 durable parking; never host_signal(2)) |
 | R3 readee | **verified_apply** in `cdvdfsv.cpp` |
 | R4 CdSync | cleared_with_evidence (Hitman ~1854 mode=1 polls vs ~10 mode=0; no wake rewrite) |
-| R5 pad/sound | **still gated** |
+| R5 pad/sound | **still gated** (observe proposal on board only; no apply) |
+
+## RESUME 2026-11-07 (w1)
+
+- Status: **RESUMED** — idle disc-fix watcher (was pause `76656af6`).
+- Board: step **8**, phase `awaiting_matrix`, `proposed_change` = `R5_pad_sound_observe` (observe-only), `allow_discfix_apply` = false.
+- R1–R4 joint-stable `1e04172` confirmed; **R5 still gated**.
+- Next: await parent/user (or matrix on existing observe gate). No patches.
+- Resume file: `verification/recovery/worker-resume-discfix-w1-2026-11-07.md`
 
 ## What remains (research note)
 
