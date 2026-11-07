@@ -2911,3 +2911,64 @@ INFO  Saving file... (ConsoleTaskMonitor)
 INFO  Completing file save... (ConsoleTaskMonitor)  
 INFO  /hitman_boot.elf: file created (joshy) (LocalFileSystem)  
 INFO  Loaded program: hitman_boot.elf (C:\Users\joshy\ghidra_exports\ps2-elves\hitman_boot.elf) (HeadlessProgramProvider)  
+WARN  Decompiling 00349160: Unable to read bytes at ram:79646f42 (DecompileCallback)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              1.429 secs
+    Apply Data Archives                        0.177 secs
+    Call Convention ID                         0.368 secs
+    Call-Fixup Installer                       1.020 secs
+    Create Address Tables                      0.578 secs
+    Create Address Tables - One Time          12.027 secs
+    Create Function                            3.352 secs
+    Data Reference                             6.314 secs
+    Decompiler Switch Analysis                18.583 secs
+    Demangler GNU                              0.036 secs
+    Disassemble                               12.657 secs
+    Disassemble Entry Points                   0.207 secs
+    Embedded Media                             0.074 secs
+    External Entry References                  0.000 secs
+    External Symbol Resolver                   0.000 secs
+    Function ID                                0.000 secs
+    Function Start Search                      0.215 secs
+    Function Start Search delayed - One Time   0.000 secs
+    GCC Exception Handlers                     0.028 secs
+    MIPS-R5900 Constant Reference Analyzer   116.049 secs
+    MIPS-R5900 Unaligned Instruction Fix       0.938 secs
+    Non-Returning Functions - Discovered       1.858 secs
+    Non-Returning Functions - Known            0.004 secs
+    Reference                                  7.391 secs
+    Shared Return Calls                        1.487 secs
+    Stack                                     33.930 secs
+    Subroutine References                      5.065 secs
+    Subroutine References - One Time           0.002 secs
+-----------------------------------------------------
+     Total Time   223 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+ERROR Unhandled error on /run_analysis (GhidraMCPHeadlessServer) java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:542)
+	at jdk.httpserver/sun.net.httpserver.Request$WriteStream.write(Request.java:421)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:125)
+	at java.base/java.io.BufferedOutputStream.implFlush(BufferedOutputStream.java:252)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:240)
+	at jdk.httpserver/sun.net.httpserver.ExchangeImpl.sendResponseHeaders(ExchangeImpl.java:284)
+	at jdk.httpserver/sun.net.httpserver.HttpExchangeImpl.sendResponseHeaders(HttpExchangeImpl.java:85)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.sendResponse(GhidraMCPHeadlessServer.java:739)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$registerEndpoints$3(GhidraMCPHeadlessServer.java:411)
+	at com.xebyte.headless.GhidraMCPHeadlessServer.lambda$safeContext$31(GhidraMCPHeadlessServer.java:717)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:101)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:932)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:908)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+ 

@@ -46,6 +46,9 @@ std::uint32_t g_finish_pending = 0;
 std::atomic<std::uint32_t> g_finish_deferred{0};
 std::uint64_t g_primitives = 0;
 std::atomic<std::uint64_t> g_observed_primitives{0};
+// Last GIF FRAME_1/FRAME_2 write context (0 or 1). Hitman draws mostly on ctx0 while
+// DISPFB2 can stay latched to the other page (ctx1) after a one-shot CRT init.
+int g_last_frame_ctx = 0;
 
 #ifdef PS2_GPU
 bool gpu_on() { return gpu::mode() != gpu::Mode::off; }
@@ -865,7 +868,10 @@ void write(std::uint32_t reg, std::uint64_t value) {
     case 0x47: case 0x48: s.ctx[reg - 0x47].test = value; break;
     case 0x49: s.pabe = value; break;
     case 0x4A: case 0x4B: s.ctx[reg - 0x4A].fba = value; break;
-    case 0x4C: case 0x4D: s.ctx[reg - 0x4C].frame = value; break;
+    case 0x4C: case 0x4D:
+        g_last_frame_ctx = static_cast<int>(reg - 0x4C);
+        s.ctx[g_last_frame_ctx].frame = value;
+        break;
     case 0x4E: case 0x4F: s.ctx[reg - 0x4E].zbuf = value; break;
     case 0x50: s.bitbltbuf = value; break;
     case 0x51: s.trxpos = value; break;
@@ -1200,6 +1206,53 @@ std::uint32_t shown_lines(std::uint32_t dh, std::uint32_t dy, std::uint64_t smod
     return std::min({dh, lines, below ? span - below : lines});
 }
 
+// Hitman (and similar) write DISPFB2 once at CRT init (FBP|0x1000, PSM=0) and may draw
+// into a different FRAME page without ever flipping DISPFB. Prefer that draw FRAME when
+// neither context's FBP matches DISPFB. Opt out with PS2_PRESENT_DISPFB=1.
+struct PresentSource {
+    std::uint32_t bp = 0, bw = 0, psm = 0, dbx = 0, dby = 0;
+    bool from_frame = false;
+};
+
+PresentSource resolve_present_source(std::uint64_t dispfb) {
+    PresentSource out;
+    out.bp = (static_cast<std::uint32_t>(dispfb) & 0x1FFu) * 32u;
+    out.bw = static_cast<std::uint32_t>(dispfb >> 9) & 0x3Fu;
+    out.psm = static_cast<std::uint32_t>(dispfb >> 15) & 0x1Fu;
+    out.dbx = static_cast<std::uint32_t>(dispfb >> 32) & 0x7FFu;
+    out.dby = static_cast<std::uint32_t>(dispfb >> 43) & 0x7FFu;
+
+    const std::uint32_t disp_fbp = static_cast<std::uint32_t>(dispfb) & 0x1FFu;
+    const std::uint32_t f0 = static_cast<std::uint32_t>(g_state.ctx[0].frame) & 0x1FFu;
+    const std::uint32_t f1 = static_cast<std::uint32_t>(g_state.ctx[1].frame) & 0x1FFu;
+    static std::uint64_t logs = 0;
+    if (trace_display() && (++logs % 60u) == 1u) {
+        std::fprintf(stderr, "[gs] present fb: dispfb=%u frame0=%u frame1=%u last_ctx=%d fbw=%u psm=%u\n",
+                     disp_fbp, f0, f1, g_last_frame_ctx, out.bw, out.psm);
+    }
+    // Mode B page split is real (Hitman: dispfb==frame1==400, frame0==288, last_ctx=0),
+    // but presenting last FRAME made dumps worse (GPU page 288 empty at present).
+    // Keep DISPFB; opt-in FRAME follow via PS2_PRESENT_FRAME=1 for experiments.
+    static const bool follow_frame = std::getenv("PS2_PRESENT_FRAME") != nullptr;
+    if (!follow_frame) return out;
+    const int draw_ctx = (g_last_frame_ctx == 1) ? 1 : 0;
+    const std::uint64_t draw_fr = g_state.ctx[draw_ctx].frame;
+    const std::uint32_t draw_fbp = static_cast<std::uint32_t>(draw_fr) & 0x1FFu;
+    if (!draw_fr || draw_fbp == disp_fbp) return out;
+    const std::uint32_t fbw = static_cast<std::uint32_t>(draw_fr >> 16) & 0x3Fu;
+    const std::uint32_t psm = static_cast<std::uint32_t>(draw_fr >> 24) & 0x3Fu;
+    if (!fbw) return out;
+    out.bp = draw_fbp * 32u;
+    out.bw = fbw;
+    out.psm = psm;
+    out.from_frame = true;
+    if (trace_display()) {
+        std::fprintf(stderr, "[gs] mode-B present: dispfb_fbp=%u -> frame_ctx%d_fbp=%u fbw=%u psm=%u\n",
+                     disp_fbp, draw_ctx, draw_fbp, fbw, psm);
+    }
+    return out;
+}
+
 DisplayRegs display_regs() { return DisplayRegs{g_pmode, g_smode2, {g_dispfb[0], g_dispfb[1]}, {g_display[0], g_display[1]}}; }
 
 bool present() { return present(display_regs()); }
@@ -1213,8 +1266,8 @@ bool present(const DisplayRegs &r) {
     const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
     const std::uint32_t width = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh, height = shown_lines((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1, static_cast<std::uint32_t>(disp >> 12) & 0x7FFu, r.smode2) / magv;
     if (!width || !height || width > 2048 || height > 2048) return true;
-    const gpu::DisplaySource src{(static_cast<std::uint32_t>(fb) & 0x1FFu) * 32, static_cast<std::uint32_t>(fb >> 9) & 0x3Fu, static_cast<std::uint32_t>(fb >> 15) & 0x1Fu,
-                                 static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, static_cast<std::uint32_t>(fb >> 43) & 0x7FFu, width, height, (r.smode2 & 3u) == 3u};
+    const PresentSource srcfb = resolve_present_source(fb);
+    const gpu::DisplaySource src{srcfb.bp, srcfb.bw, srcfb.psm, srcfb.dbx, srcfb.dby, width, height, (r.smode2 & 3u) == 3u};
     return gpu::present(src);
 #else
     (void)r;
@@ -1228,9 +1281,8 @@ bool display(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uint32
     const int circuit = (r.pmode & 2u) ? 1 : (r.pmode & 1u) ? 0 : -1;
     if (circuit < 0) return false;
     const std::uint64_t fb = r.dispfb[circuit], disp = r.display[circuit];
-    const std::uint32_t fbp = static_cast<std::uint32_t>(fb) & 0x1FFu, fbw = static_cast<std::uint32_t>(fb >> 9) & 0x3Fu;
-    const std::uint32_t psm = static_cast<std::uint32_t>(fb >> 15) & 0x1Fu;
-    const std::uint32_t dbx = static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, dby = static_cast<std::uint32_t>(fb >> 43) & 0x7FFu;
+    const PresentSource srcfb = resolve_present_source(fb);
+    const std::uint32_t fbw = srcfb.bw, psm = srcfb.psm, dbx = srcfb.dbx, dby = srcfb.dby;
     const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
     const std::uint32_t dw = (static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1, dh = shown_lines((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1, static_cast<std::uint32_t>(disp >> 12) & 0x7FFu, r.smode2);
     width = dw / magh;
@@ -1239,7 +1291,7 @@ bool display(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uint32
     const bool halved = (r.smode2 & 3u) == 3u;
 #ifdef PS2_GPU
     if (gpu_on()) {
-        const gpu::DisplaySource src{fbp * 32, fbw, psm, dbx, dby, width, height, halved};
+        const gpu::DisplaySource src{srcfb.bp, fbw, psm, dbx, dby, width, height, halved};
         if (!cpu_raster()) return gpu::display(src, rgba, width, height);
         static const bool compare = std::getenv("PS2_GS_COMPARE") != nullptr;
         std::uint32_t gw = 0, gh = 0;
@@ -1249,7 +1301,7 @@ bool display(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uint32
     rgba.resize(static_cast<std::size_t>(width) * height);
     for (std::uint32_t y = 0; y < height; ++y)
         for (std::uint32_t x = 0; x < width; ++x) {
-            std::uint32_t c = read_pixel(psm, fbp * 32, fbw, dbx + x, dby + (halved ? y / 2 : y));
+            std::uint32_t c = read_pixel(psm, srcfb.bp, fbw, dbx + x, dby + (halved ? y / 2 : y));
             if (psm == PSMCT16 || psm == PSMCT16S)
                 c = ((c & 0x1Fu) << 3) | ((c & 0x3E0u) << 6) | ((c & 0x7C00u) << 9) | 0xFF000000u;
             rgba[static_cast<std::size_t>(y) * width + x] = c | 0xFF000000u;
@@ -1285,8 +1337,8 @@ bool copy_frame(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uin
         const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
         const std::uint32_t w = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh, h = ((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1) / magv;
         if (!w || !h || w > 2048 || h > 2048) return false;
-        const gpu::DisplaySource src{(static_cast<std::uint32_t>(fb) & 0x1FFu) * 32, static_cast<std::uint32_t>(fb >> 9) & 0x3Fu, static_cast<std::uint32_t>(fb >> 15) & 0x1Fu,
-                                     static_cast<std::uint32_t>(fb >> 32) & 0x7FFu, static_cast<std::uint32_t>(fb >> 43) & 0x7FFu, w, h, (r.smode2 & 3u) == 3u};
+        const PresentSource srcfb = resolve_present_source(fb);
+        const gpu::DisplaySource src{srcfb.bp, srcfb.bw, srcfb.psm, srcfb.dbx, srcfb.dby, w, h, (r.smode2 & 3u) == 3u};
         got = gpu::display_async(src, rgba, width, height);
     } else
 #endif
