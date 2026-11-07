@@ -35,3 +35,6 @@
 2026-11-07 07:57:16 END smoke exit=0 in 12.1s
 2026-11-07 07:57:16 PASS smoke
 2026-11-07 07:57:16 START uncap
+2026-11-07 07:57:49 END uncap exit=0 in 33.8s
+2026-11-07 07:57:49 PASS uncap
+2026-11-07 07:57:49 START stability

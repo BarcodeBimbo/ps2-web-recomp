@@ -1,0 +1,16 @@
+Captured from live Chrome play surface (God reported console text not in harness logs).
+Time: 2026-11-07 ~07:59 local
+URL: http://127.0.0.1:8620/play/a2116d2ac08a7be4db4e8455ad58d2e5/?statslog=1&fps=1
+Game: Hitman - Blood Money (USA)
+
+boot-status:
+  Game stopped — crash log saved
+
+on-screen help / halt reason:
+  Emulator runtime aborted: Assertion failed: native function `ps2web_frames` called before runtime initialization
+  A crash log was saved automatically. The runtime cannot safely restart in this page — reload the player before trying again.
+
+FPS overlay: FRAME -- / MAX --
+Harness state at capture: tools/_broken_games_stability_probe.py stuck after "GOTO Hitman_BM" with no SHOT/BOOT line — page.goto / boot wait did not scrape DOM halt text.
+
+Root logging gap: probe only sampled Module.* via evaluate after pad ready; did not poll #boot-status / halt help / document.body visible error text on every tick.

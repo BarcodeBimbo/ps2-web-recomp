@@ -590,6 +590,11 @@ void poll_butanim_parse_complete() {
 // is still waiting in the Alchemy scratch slot.
 void rearm_alchemy_timer_intc() {
     if (!alchemy_stbl_pending()) return;
+    // Restore obj+0x20 aggressively on every timer rearm tick, before vt+108 can
+    // run with +20=0. This is the earliest hook during guest FCE0 processing.
+    if (g_butanim_soft_obj && g_butanim_soft_o20 && !g_ui_igb_parse_attempted) {
+        try_restore_butanim_o20();
+    }
     // Ensure INTC masks + keep TIM0/1 actually counting. Do NOT rewrite COMP:
     // forcing comp=count+N with reset-on-compare caused a TIM0 IRQ storm.
     for (int n : {0, 1}) hw::timer_keep_counting(n);
@@ -1126,6 +1131,12 @@ bool service_pending_stblz() {
     // during early module load races object construction (null vtable calls).
     std::uint32_t gate_ctr = 0;
     std::memcpy(&gate_ctr, g_ram + 0x00705C00u, 4);
+    // EARLY restoration: restore obj+0x20 before anything else runs, so we have
+    // the best chance of catching it before vt+108 runs with +20=0. This runs
+    // on every service tick, not just when polling for parse completion.
+    if (g_butanim_soft_obj && g_butanim_soft_o20 && !g_ui_igb_parse_attempted) {
+        try_restore_butanim_o20();
+    }
     const bool repaired = (gate_ctr > 200u) && try_repair_first_cluster();
     // Loose STBLz→STBL0 guess-sizing corrupts neighbors → jalr 0 (ra 0x12D8F4).
     if (gate_ctr > 200u && std::getenv("PS2_ALCHEMY_LOOSE")) inflate_loose_stblz_scratch();

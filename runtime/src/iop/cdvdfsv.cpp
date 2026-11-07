@@ -513,6 +513,15 @@ void install_cdvdfsv() {
                                 int armed = 0;
                                 const bool is_butanim = path.find("butanim") != std::string::npos ||
                                                         path.find("BUTANIM") != std::string::npos;
+                                // Capture obj+0x14/+0x20 BEFORE arming, since they may be
+                                // cleared by guest code before vt+108 runs. These fields are
+                                // normally set by _CdAlignReadBuffer which doesn't run for
+                                // virt reads. We preserve them so 0x51C100 ingest can stick.
+                                std::uint32_t o14_cap = 0, o20_cap = 0;
+                                if (obj && obj + 0x24u < ps2::kRamSize) {
+                                    o14_cap = ee32(obj + 0x14u);
+                                    o20_cap = ee32(obj + 0x20u);
+                                }
                                 if (head_ok && obj && obj + 0x100u < ps2::kRamSize && o45 == 0) {
                                     ps2::g_ram[obj + 44u] = 0;
                                     ps2::g_ram[obj + 45u] = 1;
@@ -523,6 +532,13 @@ void install_cdvdfsv() {
                                     // Remember butanim obj so intro hold waits for vt+108
                                     // (+0xFF), not soft-arm alone. No host FCE0.
                                     ps2::iop::igfileio::note_ui_igb_soft_arm(obj, is_butanim);
+                                    // For butanim: immediately re-affirm obj+0x14/+0x20 in case
+                                    // the completion callback path clears them before vt+108.
+                                    // vt+108 needs *(obj+0x20)+0x24≠0 for 0x51C100 ingest.
+                                    if (is_butanim && o20_cap && o20_cap < ps2::kRamSize) {
+                                        set_ee32(obj + 0x14u, o14_cap);
+                                        set_ee32(obj + 0x20u, o20_cap);
+                                    }
                                 }
                                 if (lg + 24020u + 4u <= ps2::kRamSize) set_ee32(lg + 24020u, i);
                                 // Clear +0x5DD0 so guest 0x10F560 can call 0x10FCE0 on
