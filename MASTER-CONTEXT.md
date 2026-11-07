@@ -36,10 +36,10 @@ Also still true:
 
 | Target | Status | Exact next |
 |--------|--------|------------|
-| **1 Disc-fix → SDK** | R4-D1 DiskReady **verified** + **live 900f** Hitman/NFS green (`logs/discfix-live-2026-11-07/`) | R5 `clear_with_evidence` in flight; then joint-stable commit (R3+R4D1) when asked. |
-| **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS live log lacks `cdvdfsv` search (five-phase); keep logging. |
-| **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
-| **4 Live test → logs/** | 6-game native matrix logged (GoW/GoW2/CNK/Hitman/NFS/Sly) | Repeat; panel play URLs noted; prefer native over Chrome fight. |
+| **1 Disc-fix → SDK** | R4-D1 DiskReady **verified** + live 900f green; **R5 `cleared_with_evidence` PASS** (step 10; no HLE rewrite) | Joint-stable commit (R3+R4D1+R5 clear) when asked. |
+| **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS five-phase; keep logging. |
+| **3 Alchemy → 100%** | Dumper **28/28**; guest FCE0/+5DD0 **fixed**; CNK still **prims=2** | Blocker: vt+108 weak — `obj+0x20` cleared → no `0x51C100` ingest (`cnk-alchemy-fix-attempt-2026-11-07.md`). Quarantine Hitman/NFS. |
+| **4 Live test → logs/** | BootMash Chrome restore (`_gow_min60_settle` + frames in `logs/screenshots/gow-bootmash/`); native matrix logged | Keep BootMash + frame reads; extend shot-compare to 5 games. |
 | GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
 
 **QUEUED / DEFERRED (God ~07:39) — do not work until God calls for it:**
