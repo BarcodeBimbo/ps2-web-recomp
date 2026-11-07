@@ -60,8 +60,9 @@ body.CORTANA-inject {
   --cortana-glass-strong: rgba(0, 10, 28, 0.94);
   --cortana-glass-soft: rgba(0, 18, 40, 0.55);
   --cortana-glass-edge: rgba(0, 212, 255, 0.08);
-  --cortana-glass-blur: 18px;
-  --cortana-glass-blur-strong: 28px;
+  /* Photo glass = fill opacity + rim glow, not heavy backdrop fog (SPLICE #29) */
+  --cortana-glass-blur: 0px;
+  --cortana-glass-blur-strong: 2px;
   --cortana-panel-glass: rgba(0, 15, 36, 0.88);
 
   /* —— Talk capsule (CC footer — only strong bloom site) —— */

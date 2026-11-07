@@ -18,7 +18,8 @@
 - `README.md`, `MASTER-CONTEXT.md`, plan `jarvis_pro_recreation_a1985356.plan.md` (content brand)
 - Cooler modules: `suitModes.js`, `voiceBridge.js`, `sessionCinema.js`, `workspacePresets.js`, `fileMapProvider.js`
 - Helper scripts: `enable-workbench-inject-standalone.js`, `verify-fail-safes.js`, `_gen-themes-worker-c.js`, last-run json
-- **Preserved:** `jarvis.institute`, marketplace **Jarvis 3D** credits, on-disk folder `jarvis-cursor-ui\`, live setting/command **IDs** `jarvis.*` until hot pass (display brand already Cortana in docs)
+- **Preserved:** marketplace **Jarvis 3D** credits where historically required  
+- **2026-11-07:** Deleted leaking installs `~\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0` and `…-0.5.2`. Added junction `C:\PS2Recomp\cortana-cursor-ui` → drivers tree. Full folder rename still blocked while Cursor has the tree open.
 
 ## Deferred until rebuild workers finish (hot files)
 

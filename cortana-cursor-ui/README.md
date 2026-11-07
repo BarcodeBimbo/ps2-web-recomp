@@ -1,0 +1,145 @@
+# CORTANA Command Center UI
+
+Local Cursor / VS Code extension: **full CORTANA Command Center HUD** via **Custom CSS workbench injection**, with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
+
+**Status:** Phases 1–5 complete. **Phase 6 (injection) scaffold shipped in v0.5.0** — see plan `cortana_pro_recreation_a1985356`.
+
+**Visual targets (locked — God rebuild):** Boot splash = real [`media/reference-command-center-2.png`](media/reference-command-center-2.png) (staged as `cortana-boot-splash.png`). Post-boot chrome = CC / CC-2. Custom CSS / workbench **injection is required**; overlays are **definitively out**.
+
+**v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `cortana.injection.enabled` = **false** until Joshua enables.
+
+**Boot path:** Calibrating splash runs on **Cursor IDE launch via workbench injection** (`media/inject/boot.css` + `cortana.injection.bootMs`). There is **no** separate CORTANA splash `.exe` and **no** Windows Startup shortcut for splash. See [`docs/STARTUP-IDE-ONLY.md`](docs/STARTUP-IDE-ONLY.md).
+
+## Credits & pattern sources
+
+| Source | Link | Role |
+|--------|------|------|
+| **cortana.institute** | https://cortana.institute/ | Pattern source for Command Center composition / Voice Status / Talk to CORTANA |
+| **Boot splash PNG** | `media/reference-command-center-2.png` | **Authoritative** real PNG boot (not CSS fallback) |
+| **Command Center chrome** | `media/reference-command-center.png`, `-2.png` | Full IDE chrome visual target |
+| **Legacy calibrating** | `media/reference-calibrating-splash.png` | Retained archive only |
+| **Cortana 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.cortana-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
+
+This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Cortana 3D / cortana.institute binaries, or any third-party Custom CSS marketplace extension. Assets and logic are original to this repo.
+
+## Support model
+
+**God (local owner)** builds, fixes, and rebuilds this extension. There is **no outside/vendor support dependency** and **no third-party Custom CSS extension required**. Fail-safes exist so Cursor updates do not silently leave a broken patch in place; God re-enables after verify.
+
+## License note
+
+Local / personal tooling under this workspace. Cortana 3D marketplace listing is freemium (PRO via Gumroad); we reimplemented equivalent capabilities unlocked for local use — we did **not** copy their VSIX, CSS, or proprietary shaders.
+
+## What shipped (PRO map)
+
+| Marketplace PRO idea | Our module |
+|----------------------|------------|
+| Suit Modes (Mark I / 50 / Endgame / Stealth) | 4 color themes + AI Core suit switcher |
+| Particles / Arc pulse / Data Streams / glow | Canvas FX + CSS streams + glow slider (injected chrome) |
+| F.R.I.D.A.Y. | Tools toggle + chrome rename |
+| Voice TTS | Talk to CORTANA → Cursor Voice/Chat; Web Speech announcements |
+| Sound Design | Optional UI beeps (mute in Tools) |
+| Session Cinema | Timed HUD (injected chrome) + keystroke energy |
+| Stream Pack | Dense HUD + optional watermark |
+| Focus Fortress | Dims nonessential panels |
+| Threat Fix Hints | Problems API → Threats panel |
+| GitHUD | Live `git` branch/dirty/ahead-behind |
+| Dashboard | Full nav shell (injection primary; webview optional fallback) |
+| AI Companion hooks | Chat / Voice commands |
+| Workspace Presets | Save/apply suit + mode combo |
+
+### Intentionally different / stripped vs upstreams
+
+- No Gumroad license, trial, or soft-lock paywall
+- Custom CSS / workbench injection required; floating/editor overlays are **out**
+- Boot = real `reference-command-center-2.png`; chrome = CC / CC-2; calibrating PNG = archive only
+- Calendar / Knowledge / Workflows panels are stubs until wired — **visual chrome must still match the calibrating aesthetic**
+- CPU/Disk gauges remain illustrative until wired; RAM is live from the host
+- Voice channel opens **Cursor** voice/chat (not a separate CORTANA TTS persona); UI copy is full CORTANA branding
+
+## Injection fail-safes (three)
+
+1. **Auto-disable on Cursor update** — `reconcileOnActivate` detects an update / install change and disables the patch so a stale inject does not break the workbench.
+2. **Disable on health / patch break** — health-fail or broken markers disable injection; status surfaces the reason.
+3. **God re-enable after verify** — no automatic silent re-patch; use **CORTANA: Re-enable Injection After Update** (or Enable) after God confirms Cursor is healthy. God builds/fixes/rebuilds — no vendor support gap.
+
+**Integrity toast:** Suppressed on Enable/Disable by syncing `product.json` checksums for `workbench.html` (SHA-256). Requires the same Admin write as Enable.
+
+**Admin:** Enabling injection may require **Admin once** (write under Program Files). Run Cursor or the enable path elevated if you hit `EACCES`.
+
+## Install in Cursor (v0.5.0)
+
+```powershell
+cursor --install-extension "C:\PS2Recomp\cortana-cursor-ui" --force
+```
+
+Or: **Extensions → … → Install from VSIX…** → `cortana-cursor-ui-0.5.0.vsix`
+
+Then:
+
+1. Command Palette → **Color Theme** → **CORTANA Mark I** (or Endgame / Mark 50 / Stealth)
+2. Or **CORTANA: Apply Active Suit Theme**
+3. **CORTANA: Enable Workbench Injection** (Admin once if needed) → **Reload Window** when prompted
+4. Optional: **CORTANA: Injection Health Check** / **Injection Status**
+5. Open the **CORTANA** activity-bar icon → File Map (Command Center webview is demoted when injection is primary and `cortana.injection.fallbackWebview` is false)
+6. **Talk to CORTANA** / mic → Cursor Voice or Chat
+
+Settings (defaults):
+
+| Setting | Default | Notes |
+|---------|---------|--------|
+| `cortana.injection.enabled` | `false` | Flip via Enable command / after reconcile (God + Admin); leave false until then |
+| `cortana.injection.bootMs` | `1200` | Calibrating splash settle time → injected `--CORTANA-boot-ms` |
+| `cortana.injection.fallbackWebview` | `false` | Keep false so injection stays primary HUD |
+
+## Commands
+
+- `CORTANA: Suit Mode…`
+- `CORTANA: Talk / Start Voice`
+- `CORTANA: Toggle Focus Fortress` / `Session Cinema` / `Stream Pack` / `F.R.I.D.A.Y. Mode`
+- `CORTANA: Save / Apply Workspace Preset`
+- `CORTANA: Refresh HUD`
+- `CORTANA: Enable Workbench Injection`
+- `CORTANA: Disable Workbench Injection`
+- `CORTANA: Re-enable Injection After Update`
+- `CORTANA: Injection Health Check`
+- `CORTANA: Injection Status`
+
+## Change log
+
+### 0.5.0 — Phase 6 injection scaffold
+
+- Package + activation wiring for Custom CSS workbench injection (`./workbenchInject`)
+- Config: `cortana.injection.enabled` / `bootMs` / `fallbackWebview`
+- Commands: enable, disable, re-enable after update, health check, status
+- Activate: `reconcileOnActivate` with warning + Re-enable after verify when disabled-due-to-update or health-fail
+- When injection is primary, Command Center webview is not force-focused as the HUD
+- README locks: calibrating splash = boot **and** UI look; injection required; overlays out; three fail-safes; God support model
+- IDE-only boot: `bootMs` → `--CORTANA-boot-ms` in inject bundle; docs `STARTUP-IDE-ONLY.md` (no Startup splash exe)
+
+### 0.4.0 — Phases 1–5 baseline
+
+- PRO modules: suit modes, FX, GitHUD, threats, cinema, fortress, stream pack, voice hooks, presets, File Map
+
+## Layout
+
+```
+cortana-cursor-ui/
+  package.json
+  README.md
+  themes/          # Command + Mark I/50/Endgame/Stealth
+  media/
+  src/
+    extension.js
+    workbenchInject.js   # Phase 6 (sibling-owned)
+    commandCenterView.js
+    fileMapProvider.js
+    suitModes.js
+    voiceBridge.js
+    gitHud.js
+    threatHints.js
+    sessionCinema.js
+    workspacePresets.js
+```
+
+Does not modify PS2 recomp runtime — this folder is standalone.

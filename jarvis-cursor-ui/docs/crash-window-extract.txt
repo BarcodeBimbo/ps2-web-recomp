@@ -1,5 +1,7 @@
 CORTANA crash-window extract (relocated for God)
 ==============================================
+ANNOTATION (2026-11-07): Historical lines below mention packaging/install of **0.5.1 / 0.5.2** and older driver UI builds. **Current product target is Cortana Workstation 0.5.4+.** Legacy installs `ps2recomp-local.jarvis-cursor-ui-0.5.0` and `…-0.5.2` (displayName “JARVIS Command Center UI”) were **removed** from `~\.cursor\extensions` so they cannot leak Jarvis branding. Source path alias: `C:\PS2Recomp\cortana-cursor-ui` (junction). Do not reinstall jarvis-* extensions.
+
 Status: This content was previously written to a hidden agent-transcripts file and posted as a chat message during a voice turn; it was not saved under cortana-cursor-ui/docs, which is why it was not visible as a durable project file.
 
 Source file copied from (not regenerated):

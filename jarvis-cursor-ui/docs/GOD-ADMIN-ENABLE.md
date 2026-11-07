@@ -4,17 +4,19 @@ Workers **cannot elevate**. Joshua runs Admin Enable manually. Scaffold is ready
 
 ## Already done (workers)
 
-- Source: `C:\PS2Recomp\cortana-cursor-ui` **v0.5.2**
+- Source: `C:\PS2Recomp\cortana-cursor-ui` (junction → drivers tree) **v0.5.4+**
 - `src/workbenchInject.js` — Rank-1 patch + 3 fail-safes + **product.json checksum sync** (suppresses corrupt toast)
 - `media/inject/{tokens,boot,hud}.css` — CC-2 PNG boot + chrome
 - Commands wired in `extension.js` / `package.json`
 - QA checklist: [`REBUILD-STATUS.md`](./REBUILD-STATUS.md)
+- **Legacy leak removed (2026-11-07):** deleted `~\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0` and `…-0.5.2` (displayName still said JARVIS). Current product is **Cortana Workstation 0.5.4+** only.
 
 ## Joshua steps (fast path)
 
-1. **Install / sync 0.5.2** to  
-   `%USERPROFILE%\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.2`  
-   (or install the VSIX `cortana-cursor-ui-0.5.2.vsix`).  
+1. **Install / sync Cortana Workstation 0.5.4+** to  
+   `%USERPROFILE%\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.4`  
+   (or install the VSIX `cortana-cursor-ui-0.5.4.vsix`).  
+   **Do not** reinstall any `jarvis-cursor-ui` folder.  
    **Reload Window** once (or skip to step 2 if you prefer a clean Admin launch).  
    Re-sync later if needed: copy from `C:\PS2Recomp\cortana-cursor-ui` or  
    `cursor --install-extension "C:\PS2Recomp\cortana-cursor-ui" --force`.

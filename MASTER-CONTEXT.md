@@ -72,12 +72,12 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 Index: `verification/recovery/worker-pause-all-four-2026-11-06.md`. Standing rule: no new launches until user unpauses.
 
-### D) jarvis-cursor-ui
+### D) cortana-cursor-ui (drivers; junction from former jarvis-cursor-ui name)
 
 | Item | Value |
 |------|--------|
-| Folder | `C:\PS2Recomp\jarvis-cursor-ui\` |
-| VSIX | Latest under folder (was 0.2–0.4; injection rebuild in progress) |
+| Folder | `C:\PS2Recomp\cortana-cursor-ui\` (junction → on-disk `jarvis-cursor-ui\` until Cursor unlocks rename) **v0.5.4+** |
+| VSIX | Prefer `cortana-cursor-ui-0.5.4+.vsix`; never reinstall `jarvis-cursor-ui-*` extensions |
 | Install | Prefer `cursor --install-extension` on the `.vsix` (folder path install **fails** — CLI wants ID or `.vsix`) |
 | Visual target | **`media/reference-command-center.png`** — exact match; also used as **Cursor boot/loading screen** |
 | Mechanism | **Custom CSS / workbench injection required**; overlays **out** |

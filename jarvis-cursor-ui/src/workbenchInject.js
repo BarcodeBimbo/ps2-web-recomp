@@ -1027,6 +1027,22 @@ function stampHudOverviewPanel(markup, overview, catalog) {
   return out;
 }
 
+/** Map catalog model id/label → provider logo key for LLM chip wells. */
+function llmProviderKey(id, label) {
+  const s = `${id || ""} ${label || ""}`.toLowerCase();
+  if (/claude|anthropic|fable|sonnet|opus/.test(s)) return "claude";
+  if (/gpt|openai|o1|o3|o4/.test(s)) return "openai";
+  if (/gemini|google|argon/.test(s)) return "gemini";
+  if (/grok|xai/.test(s)) return "grok";
+  if (/groq/.test(s)) return "groq";
+  if (/composer|cursor|auto|default/.test(s)) return "cursor";
+  if (/muse|spark|wonder/.test(s)) return "muse";
+  if (/ollama/.test(s)) return "ollama";
+  if (/openrouter/.test(s)) return "openrouter";
+  if (/copilot/.test(s)) return "copilot";
+  return "generic";
+}
+
 /** Replace placeholder provider tiles with one chip per Cursor catalog model. */
 function stampHudLlmGrid(markup, catalog) {
   const models = catalog.models || [];
@@ -1036,11 +1052,12 @@ function stampHudLlmGrid(markup, catalog) {
         .map((m) => {
           const id = escapeHudText(m.id);
           const label = escapeHudText(m.label || m.id);
+          const provider = llmProviderKey(m.id, m.label);
           const degraded = Number(m.degradationStatus) > 0;
           const on = Boolean(m.defaultOn) && !degraded;
           const status = degraded ? "Degraded" : on ? "Default" : "Available";
           const cls = degraded ? "unknown" : on ? "on" : "";
-          return `<div class="jcc-llm-chip ${cls}" data-model-id="${id}" data-cursor-model="1" data-status="${degraded ? "degraded" : on ? "default" : "available"}"><span>${label}</span><em>${escapeHudText(status)}</em></div>`;
+          return `<div class="jcc-llm-chip ${cls}" data-model-id="${id}" data-provider="${provider}" data-cursor-model="1" data-status="${degraded ? "degraded" : on ? "default" : "available"}"><i class="jcc-llm-logo" data-provider="${provider}" aria-hidden="true"></i><span class="jcc-llm-copy"><span>${label}</span><em>${escapeHudText(status)}</em></span></div>`;
         })
         .join("\n          ")
     : `<p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data — open Cursor once, run scripts/_list_picker_models.py, or re-Enable injection.</p>`;

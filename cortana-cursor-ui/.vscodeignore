@@ -1,0 +1,7 @@
+.vscode/**
+.git/**
+**/*.vsix
+**/node_modules/**
+**/*.map
+scripts/enable-workbench-inject-last-run.json
+# Ship reference PNGs — Enable stages reference-command-center-2.png as boot splash

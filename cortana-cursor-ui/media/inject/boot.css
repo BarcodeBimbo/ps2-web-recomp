@@ -1,0 +1,633 @@
+/* CORTANA-HEALTH: tokens+boot+hud
+   CORTANA — calibrating boot splash (reference-identical)
+   Visual authority: media/reference-calibrating-splash.png
+   Staged beside workbench.html as ./cortana-boot-splash.png on enable
+   (BOOT_SOURCE = media/reference-calibrating-splash.png).
+
+   CSS fallback: CORTANA + WORKSTATION (Cortana Workstation product).
+   TIMING (--cortana-boot-ms / cortana.injection.bootMs):
+   - 0% → 70%: cover held; bar + % + dots animate 0→100%
+   - 70% → 100%: fade into injected HUD
+   - fill-mode forwards → opacity:0; visibility:hidden
+   CRITICAL: pointer-events NEVER auto on splash layers / lifecycle keyframes.
+*/
+
+/* ========== Keyframes ========== */
+
+@keyframes cortana-boot-lifecycle {
+  0%,
+  70% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@property --cortana-boot-ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes cortana-boot-ring-spin {
+  to {
+    --cortana-boot-ring-angle: 360deg;
+  }
+}
+
+@property --cortana-boot-bar-w {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --cortana-pip-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-4 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+@property --cortana-pip-5 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #292d35;
+}
+
+@keyframes cortana-boot-bar-grow {
+  0% {
+    --cortana-boot-bar-w: 0px;
+  }
+  70%,
+  100% {
+    --cortana-boot-bar-w: min(282px, 52vw);
+  }
+}
+
+@keyframes cortana-boot-bar-fill-width {
+  0% {
+    width: 0%;
+  }
+  70%,
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes cortana-boot-bar-glow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.28);
+  }
+}
+
+@keyframes cortana-boot-percent-text {
+  0% {
+    content: "0%";
+  }
+  3.5% {
+    content: "5%";
+  }
+  7% {
+    content: "10%";
+  }
+  10.5% {
+    content: "15%";
+  }
+  14% {
+    content: "20%";
+  }
+  17.5% {
+    content: "25%";
+  }
+  21% {
+    content: "30%";
+  }
+  24.5% {
+    content: "35%";
+  }
+  28% {
+    content: "40%";
+  }
+  31.5% {
+    content: "45%";
+  }
+  35% {
+    content: "50%";
+  }
+  38.5% {
+    content: "55%";
+  }
+  42% {
+    content: "60%";
+  }
+  45.5% {
+    content: "65%";
+  }
+  49% {
+    content: "70%";
+  }
+  52.5% {
+    content: "75%";
+  }
+  56% {
+    content: "80%";
+  }
+  59.5% {
+    content: "85%";
+  }
+  63% {
+    content: "90%";
+  }
+  66.5% {
+    content: "95%";
+  }
+  70%,
+  100% {
+    content: "100%";
+  }
+}
+
+/* Stepped dots @ progress 20/40/60/80/100% ≡ lifecycle 14/28/42/56/70 */
+@keyframes cortana-boot-pip-step {
+  0%,
+  13.9% {
+    --cortana-pip-1: var(--cortana-dot-off, #292d35);
+    --cortana-pip-2: var(--cortana-dot-off, #292d35);
+    --cortana-pip-3: var(--cortana-dot-off, #292d35);
+    --cortana-pip-4: var(--cortana-dot-off, #292d35);
+    --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  }
+  14%,
+  27.9% {
+    --cortana-pip-1: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-2: var(--cortana-dot-off, #292d35);
+    --cortana-pip-3: var(--cortana-dot-off, #292d35);
+    --cortana-pip-4: var(--cortana-dot-off, #292d35);
+    --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  }
+  28%,
+  41.9% {
+    --cortana-pip-1: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-2: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-3: var(--cortana-dot-off, #292d35);
+    --cortana-pip-4: var(--cortana-dot-off, #292d35);
+    --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  }
+  42%,
+  55.9% {
+    --cortana-pip-1: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-2: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-3: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-4: var(--cortana-dot-off, #292d35);
+    --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  }
+  56%,
+  69.9% {
+    --cortana-pip-1: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-2: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-3: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-4: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  }
+  70%,
+  100% {
+    --cortana-pip-1: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-2: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-3: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-4: var(--cortana-cyan-bright, #4ad1f1);
+    --cortana-pip-5: var(--cortana-cyan-bright, #4ad1f1);
+  }
+}
+
+/* ========== Soft-glow splash void ========== */
+
+body,
+body.cortana-inject,
+body.cortana-boot,
+html.cortana-inject body,
+html:has(#cortana-workbench-css) body,
+.monaco-workbench,
+.monaco-workbench.cortana-inject {
+  --cortana-boot-bar-px: var(--cortana-boot-bar-width, min(282px, 52vw));
+  --cortana-boot-bar-height: 4px;
+  --cortana-boot-ring-size: 58px;
+  --cortana-boot-ring-ms: 1.15s;
+  --cortana-splash-bg: var(--cortana-bg-deep, #020817);
+  --cortana-splash-ring-track: rgba(10, 56, 82, 0.42);
+  --cortana-splash-void-glow:
+    radial-gradient(ellipse 95% 75% at 50% 40%, var(--cortana-cyan-wash, rgba(0, 212, 255, 0.07)) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 55% at 50% 78%, rgba(0, 16, 36, 0.55) 0%, transparent 62%),
+    radial-gradient(ellipse 130% 120% at 50% 50%, var(--cortana-bg, #050d16) 0%, var(--cortana-bg-deep, #020817) 68%, #01050c 100%);
+  --cortana-pip-1: var(--cortana-dot-off, #292d35);
+  --cortana-pip-2: var(--cortana-dot-off, #292d35);
+  --cortana-pip-3: var(--cortana-dot-off, #292d35);
+  --cortana-pip-4: var(--cortana-dot-off, #292d35);
+  --cortana-pip-5: var(--cortana-dot-off, #292d35);
+  background-color: #01050c !important;
+  background-image: var(--cortana-splash-void-glow) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* ========== Title + rotating ring ========== */
+
+body::before,
+body.cortana-inject::before,
+body.cortana-boot::before,
+html:has(#cortana-workbench-css) body::before,
+.monaco-workbench.cortana-inject::before {
+  content: "CORTANA";
+  /* Product: Cortana Workstation — ::after supplies WORKSTATION */
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  /* shift title above ring / status / bar stack */
+  padding: 0 16px 26vh;
+  pointer-events: none !important;
+  background-color: transparent;
+  background-image:
+    var(--cortana-splash-void-glow),
+    /* core dot */
+    radial-gradient(circle, var(--cortana-cyan, #00d4ff) 0 2px, transparent 2.6px),
+    /* punch bg disc so conic reads as a stroke */
+    radial-gradient(circle, var(--cortana-splash-bg, #020817) 0 26px, transparent 27px),
+    /* lit arc */
+    conic-gradient(
+      from var(--cortana-boot-ring-angle, 0deg),
+      var(--cortana-cyan, #00d4ff) 0deg 78deg,
+      var(--cortana-cyan-ghost, rgba(0, 212, 255, 0.12)) 78deg 92deg,
+      transparent 92deg 360deg
+    ),
+    /* dim track */
+    radial-gradient(
+      circle,
+      transparent 26px,
+      var(--cortana-splash-ring-track, rgba(10, 56, 82, 0.42)) 27px,
+      var(--cortana-splash-ring-track, rgba(10, 56, 82, 0.42)) 28.5px,
+      transparent 29.5px
+    ),
+    /* subtitle */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='18' viewBox='0 0 560 18'><text x='280' y='13' text-anchor='middle' fill='%2352565e' font-family='Segoe%20UI,Arial,sans-serif' font-size='9' font-weight='400' letter-spacing='4.2'>WORKSTATION</text></svg>");
+  background-repeat: no-repeat;
+  background-size:
+    cover,
+    6px 6px,
+    var(--cortana-boot-ring-size, 58px) var(--cortana-boot-ring-size, 58px),
+    var(--cortana-boot-ring-size, 58px) var(--cortana-boot-ring-size, 58px),
+    var(--cortana-boot-ring-size, 58px) var(--cortana-boot-ring-size, 58px),
+    min(560px, 90vw) 18px;
+  background-position:
+    center,
+    center calc(50% - 1vh),
+    center calc(50% - 1vh),
+    center calc(50% - 1vh),
+    center calc(50% - 1vh),
+    center calc(50% - 11.5vh);
+  font-family: var(--cortana-font-ui, "Segoe UI", system-ui, sans-serif);
+  font-size: clamp(28px, 4.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: var(--cortana-tracking-wide, 0.32em);
+  text-indent: var(--cortana-tracking-wide, 0.32em);
+  line-height: 1;
+  color: var(--cortana-cyan-bright, #4ad1f1);
+  text-align: center;
+  text-shadow:
+    0 0 8px rgba(0, 212, 255, 0.85),
+    0 0 22px rgba(0, 212, 255, 0.5),
+    0 0 48px rgba(0, 212, 255, 0.32),
+    0 0 80px rgba(0, 212, 255, 0.16);
+  animation:
+    cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards,
+    cortana-boot-ring-spin var(--cortana-boot-ring-ms, 1.15s) linear infinite;
+  will-change: opacity;
+}
+
+/* ========== CALIBRATING + bar + percent + stepped dots ========== */
+
+body::after,
+body.cortana-inject::after,
+body.cortana-boot::after,
+html:has(#cortana-workbench-css) body::after {
+  content: "0%";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0;
+  padding: calc(50% + 9.2vh) 16px 0;
+  pointer-events: none !important;
+  --cortana-boot-bar-w: 0px;
+  font-family: var(--cortana-font-ui, "Segoe UI", Tahoma, sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--cortana-text-percent, #656c73);
+  text-align: center;
+  background-color: transparent;
+  background-image:
+    /* fill */
+    linear-gradient(
+      90deg,
+      var(--cortana-cyan, #00d4ff) 0%,
+      var(--cortana-cyan-bright, #4ad1f1) 55%,
+      var(--cortana-cyan-mid, #40a7ca) 100%
+    ),
+    /* track */
+    linear-gradient(90deg, var(--cortana-bar-track, #151626) 0 100%),
+    /* CALIBRATING */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='20' viewBox='0 0 320 20'><text x='160' y='14' text-anchor='middle' fill='%23b9ebf4' font-family='Segoe%20UI,Arial,sans-serif' font-size='11' font-weight='500' letter-spacing='5'>CALIBRATING</text></svg>"),
+    /* 5 stepped dots */
+    radial-gradient(circle, var(--cortana-pip-1, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-2, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-3, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-4, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-5, #292d35) 0 1.7px, transparent 2.1px);
+  background-repeat: no-repeat;
+  background-size:
+    var(--cortana-boot-bar-w, 0px) var(--cortana-boot-bar-height, 4px),
+    var(--cortana-boot-bar-px, 282px) var(--cortana-boot-bar-height, 4px),
+    320px 20px,
+    5px 5px,
+    5px 5px,
+    5px 5px,
+    5px 5px,
+    5px 5px;
+  background-position:
+    calc(50% - (var(--cortana-boot-bar-px, 282px) / 2)) calc(50% + 7.5vh),
+    center calc(50% + 7.5vh),
+    center calc(50% + 3.2vh),
+    calc(50% - 16px) calc(50% + 13.2vh),
+    calc(50% - 8px) calc(50% + 13.2vh),
+    center calc(50% + 13.2vh),
+    calc(50% + 8px) calc(50% + 13.2vh),
+    calc(50% + 16px) calc(50% + 13.2vh);
+  animation:
+    cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards,
+    cortana-boot-bar-grow var(--cortana-boot-ms, 1800ms) linear forwards,
+    cortana-boot-percent-text var(--cortana-boot-ms, 1800ms) linear forwards,
+    cortana-boot-pip-step var(--cortana-boot-ms, 1800ms) linear forwards;
+  will-change: opacity, --cortana-boot-bar-w;
+}
+
+/* ========== Staged PNG cover (inject) — bar/%/dots stay on ::after ========== */
+
+html:has(#cortana-workbench-css) body::before,
+html:has(#cortana-workbench-css) body.cortana-inject::before,
+html:has(#cortana-workbench-css) body.cortana-boot::before,
+html.cortana-inject:has(#cortana-workbench-css) body::before,
+.monaco-workbench.cortana-inject:has(#cortana-workbench-css)::before {
+  content: "";
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  text-shadow: none;
+  letter-spacing: 0;
+  text-indent: 0;
+  background-color: #01050c;
+  background-image: var(--cortana-boot-splash), var(--cortana-splash-void-glow);
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+  animation: cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards;
+}
+
+html:has(#cortana-workbench-css) body::after,
+html:has(#cortana-workbench-css) body.cortana-inject::after,
+html:has(#cortana-workbench-css) body.cortana-boot::after,
+html.cortana-inject:has(#cortana-workbench-css) body::after {
+  /* PNG carries title/ring/CALIBRATING — only animate bar + % + pips */
+  background-image:
+    linear-gradient(
+      90deg,
+      var(--cortana-cyan, #00d4ff) 0%,
+      var(--cortana-cyan-bright, #4ad1f1) 45%,
+      var(--cortana-cyan-mid, #40a7ca) 100%
+    ),
+    linear-gradient(90deg, var(--cortana-bar-track, #151626) 0 100%),
+    radial-gradient(circle, var(--cortana-pip-1, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-2, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-3, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-4, #292d35) 0 1.7px, transparent 2.1px),
+    radial-gradient(circle, var(--cortana-pip-5, #292d35) 0 1.7px, transparent 2.1px);
+  background-size:
+    var(--cortana-boot-bar-w, 0px) var(--cortana-boot-bar-height, 4px),
+    var(--cortana-boot-bar-px, 282px) var(--cortana-boot-bar-height, 4px),
+    5px 5px,
+    5px 5px,
+    5px 5px,
+    5px 5px,
+    5px 5px;
+  background-position:
+    calc(50% - (var(--cortana-boot-bar-px, 282px) / 2)) calc(50% + 7.5vh),
+    center calc(50% + 7.5vh),
+    calc(50% - 16px) calc(50% + 13.2vh),
+    calc(50% - 8px) calc(50% + 13.2vh),
+    center calc(50% + 13.2vh),
+    calc(50% + 8px) calc(50% + 13.2vh),
+    calc(50% + 16px) calc(50% + 13.2vh);
+  filter: none;
+}
+
+/* ========== Optional #cortana-boot-root ========== */
+
+#cortana-boot-root {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483100 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #01050c !important;
+  background-image: var(--cortana-splash-void-glow) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  animation: cortana-boot-lifecycle var(--cortana-boot-ms, 1800ms) ease-in-out forwards;
+  pointer-events: none !important;
+  color: var(--cortana-cyan-bright, #4ad1f1);
+  font-family: var(--cortana-font-ui, "Segoe UI", system-ui, sans-serif);
+}
+
+body:has(#cortana-boot-root)::before,
+body.cortana-inject:has(#cortana-boot-root)::before,
+body.cortana-boot:has(#cortana-boot-root)::before,
+body:has(#cortana-boot-root)::after,
+body.cortana-inject:has(#cortana-boot-root)::after,
+body.cortana-boot:has(#cortana-boot-root)::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+  background: none !important;
+  pointer-events: none !important;
+}
+
+#cortana-boot-root .cortana-boot-brand {
+  font-size: clamp(28px, 4.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: var(--cortana-tracking-wide, 0.32em);
+  text-indent: var(--cortana-tracking-wide, 0.32em);
+  text-shadow:
+    0 0 8px rgba(0, 212, 255, 0.85),
+    0 0 22px rgba(0, 212, 255, 0.5),
+    0 0 48px rgba(0, 212, 255, 0.32);
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-sub {
+  margin-top: 10px;
+  font-family: var(--cortana-font-ui, "Segoe UI", Tahoma, sans-serif);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  color: var(--cortana-subtitle, #464950);
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-ring {
+  --cortana-boot-ring-angle: 0deg;
+  width: var(--cortana-boot-ring-size, 58px);
+  height: var(--cortana-boot-ring-size, 58px);
+  margin: 22px 0 18px;
+  border-radius: 50%;
+  position: relative;
+  background:
+    radial-gradient(circle, var(--cortana-cyan, #00d4ff) 0 2px, transparent 2.6px) center / 6px 6px no-repeat,
+    radial-gradient(circle, var(--cortana-splash-bg, #020817) 0 26px, transparent 27px),
+    conic-gradient(
+      from var(--cortana-boot-ring-angle, 0deg),
+      var(--cortana-cyan, #00d4ff) 0deg 78deg,
+      var(--cortana-cyan-ghost, rgba(0, 212, 255, 0.12)) 78deg 92deg,
+      transparent 92deg 360deg
+    ),
+    radial-gradient(
+      circle,
+      transparent 26px,
+      var(--cortana-splash-ring-track, rgba(10, 56, 82, 0.42)) 27px,
+      var(--cortana-splash-ring-track, rgba(10, 56, 82, 0.42)) 28.5px,
+      transparent 29.5px
+    );
+  animation: cortana-boot-ring-spin var(--cortana-boot-ring-ms, 1.15s) linear infinite;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-status {
+  font-family: var(--cortana-font-ui, "Segoe UI", Tahoma, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--cortana-tracking-cal, 0.4em);
+  text-indent: var(--cortana-tracking-cal, 0.4em);
+  color: var(--cortana-text-calibrating, #b9ebf4);
+  margin-bottom: 16px;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-progress {
+  position: relative;
+  width: var(--cortana-boot-bar-px, 282px);
+  max-width: 72vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-bar {
+  position: relative;
+  width: 100%;
+  height: var(--cortana-boot-bar-height, 4px);
+  border-radius: var(--cortana-radius-pill, 999px);
+  background: var(--cortana-bar-track, #151626);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--cortana-cyan, #00d4ff),
+    var(--cortana-cyan-bright, #4ad1f1) 70%,
+    var(--cortana-cyan-mid, #40a7ca)
+  );
+  box-shadow: 0 0 4px rgba(0, 212, 255, 0.55);
+  animation:
+    cortana-boot-bar-fill-width var(--cortana-boot-ms, 1800ms) linear forwards,
+    cortana-boot-bar-glow 1.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-percent {
+  font-family: var(--cortana-font-mono, Consolas, monospace);
+  font-size: 11px;
+  color: var(--cortana-text-percent, #656c73);
+  letter-spacing: 0.06em;
+  min-height: 1em;
+  pointer-events: none;
+}
+
+#cortana-boot-root .cortana-boot-percent::after {
+  content: "0%";
+  animation: cortana-boot-percent-text var(--cortana-boot-ms, 1800ms) linear forwards;
+}
+
+#cortana-boot-root .cortana-boot-pips {
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: transparent;
+  margin-top: 2px;
+  animation: cortana-boot-pip-step var(--cortana-boot-ms, 1800ms) linear forwards;
+  box-shadow:
+    -16px 0 0 0 var(--cortana-pip-1, #292d35),
+    -8px 0 0 0 var(--cortana-pip-2, #292d35),
+    0 0 0 0 var(--cortana-pip-3, #292d35),
+    8px 0 0 0 var(--cortana-pip-4, #292d35),
+    16px 0 0 0 var(--cortana-pip-5, #292d35);
+  pointer-events: none;
+}

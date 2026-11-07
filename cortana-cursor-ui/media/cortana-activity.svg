@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none">
+  <!-- Exact geometric replica of Cortana-style talk activity bars from reference-command-center-2.png -->
+  <g fill="#00e5ff" opacity="0.95">
+    <rect x="2" y="12" width="2" height="4" rx="0.6"/>
+    <rect x="6" y="10" width="2" height="8" rx="0.6"/>
+    <rect x="10" y="7" width="2" height="14" rx="0.6"/>
+    <rect x="14" y="4" width="2" height="20" rx="0.6"/>
+    <rect x="18" y="2" width="2" height="24" rx="0.6"/>
+    <rect x="22" y="5" width="2" height="18" rx="0.6"/>
+    <rect x="26" y="8" width="2" height="12" rx="0.6"/>
+    <rect x="30" y="3" width="2" height="22" rx="0.6"/>
+    <rect x="34" y="6" width="2" height="16" rx="0.6"/>
+    <rect x="38" y="1" width="2" height="26" rx="0.6"/>
+    <rect x="42" y="4" width="2" height="20" rx="0.6"/>
+    <rect x="46" y="9" width="2" height="10" rx="0.6"/>
+    <rect x="50" y="5" width="2" height="18" rx="0.6"/>
+    <rect x="54" y="2" width="2" height="24" rx="0.6"/>
+    <rect x="58" y="7" width="2" height="14" rx="0.6"/>
+    <rect x="62" y="3" width="2" height="22" rx="0.6"/>
+    <rect x="66" y="6" width="2" height="16" rx="0.6"/>
+    <rect x="70" y="1" width="2" height="26" rx="0.6"/>
+    <rect x="74" y="4" width="2" height="20" rx="0.6"/>
+    <rect x="78" y="8" width="2" height="12" rx="0.6"/>
+    <rect x="82" y="3" width="2" height="22" rx="0.6"/>
+    <rect x="86" y="5" width="2" height="18" rx="0.6"/>
+    <rect x="90" y="2" width="2" height="24" rx="0.6"/>
+    <rect x="94" y="7" width="2" height="14" rx="0.6"/>
+    <rect x="98" y="10" width="2" height="8" rx="0.6"/>
+    <rect x="102" y="12" width="2" height="4" rx="0.6"/>
+    <rect x="106" y="11" width="2" height="6" rx="0.6"/>
+    <rect x="110" y="13" width="2" height="2" rx="0.6"/>
+  </g>
+</svg>
