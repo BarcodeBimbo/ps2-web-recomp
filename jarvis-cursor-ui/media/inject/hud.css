@@ -729,10 +729,11 @@ html.jarvis-inject-probe::after {
 .jcc-brand-title {
   font-family: var(--jarvis-font-display);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.12em;
   color: var(--jarvis-cyan-soft);
   text-shadow: var(--jarvis-text-glow);
-  font-size: 13px;
+  font-size: 11px;
+  line-height: 1.25;
 }
 
 .jcc-brand-sub {

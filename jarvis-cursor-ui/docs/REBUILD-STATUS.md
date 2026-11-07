@@ -34,19 +34,19 @@ Smoke: `node scripts/verify-fail-safes.js`
 ### D — Inject engine + package
 - [x] Fail-safe wiring + notify status codes fixed
 - [x] PNG required on Enable; health probe + soft re-probe
-- [x] Ship `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.5.1.vsix` (~419 KB; includes CC-2 PNG)
+- [x] Ship `jarvis-cursor-ui-0.5.1.vsix` then **0.5.2** (checksum toast suppress)
 - [ ] Joshua installs / syncs extension (not Program Files by agents)
 
 ## Joshua Admin Enable QA steps
 
-1. Install or sync **0.5.1** from  
-   `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.5.1.vsix`  
-   (or copy tree into `%USERPROFILE%\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.1`).
+1. Install or sync **0.5.2** from  
+   `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.5.2.vsix`  
+   (or copy tree into `%USERPROFILE%\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.2`).
 2. Quit Cursor **including tray**.
 3. **Run Cursor as Administrator** → open `C:\PS2Recomp`.
 4. Command Palette → **CORTANA: Injection Health Check** (expect issues if not yet enabled).
 5. **CORTANA: Enable Workbench Injection** → Reload when prompted.
-6. Dismiss corrupt-install warning (expected).
+6. Corrupt-install toast should **not** appear (checksum sync). If it does, re-run Enable as Admin once.
 7. Confirm: CC-2 PNG splash → HUD chrome; no overlay panels.
 8. **CORTANA: Injection Status** → `enabled/active`, markers valid, splash staged.
 9. Optional fail-safe smoke: break a marker or fake fingerprint → must auto-disable + offer Re-enable (never silent re-patch).

@@ -979,7 +979,18 @@ async function reconcileOnActivate(context) {
   }
 
   if (state.enabled && state.active) {
-    return { status: "ok", message: "injection active and healthy" };
+    // Quiet integrity toast for already-enabled installs (Admin write may soft-fail).
+    let checksum = null;
+    try {
+      checksum = await syncWorkbenchChecksum(loc.appRoot, loc.workbenchPath);
+    } catch (err) {
+      checksum = { ok: false, message: formatWriteError(err) };
+    }
+    return {
+      status: "ok",
+      message: "injection active and healthy",
+      checksum,
+    };
   }
   if (state.enabled && !state.active) {
     return {
@@ -1127,8 +1138,22 @@ async function enable(context) {
     return { ok: false, message };
   }
 
+  // Suppress Cursor "corrupted installation" toast (product.json workbench checksum).
+  const checksum = await syncWorkbenchChecksum(loc.appRoot, loc.workbenchPath).catch((err) => ({
+    ok: false,
+    message: formatWriteError(err),
+  }));
+
   const warnText = warnings.length ? warnings.join("; ") : "";
-  const lastError = warnText;
+  const checksumNote =
+    checksum && checksum.ok
+      ? checksum.synced
+        ? ""
+        : ""
+      : checksum && checksum.message
+        ? ` checksum: ${checksum.message}`
+        : " checksum: sync failed";
+  const lastError = [warnText, checksumNote].filter(Boolean).join(" | ");
 
   await writeState(context, {
     enabled: true,
@@ -1144,9 +1169,10 @@ async function enable(context) {
 
   return {
     ok: true,
+    checksum,
     message: lastError
       ? `Injection enabled with warnings: ${lastError}`
-      : "Injection enabled — reload Cursor window to apply. Integrity warning is expected and not auto-fixed.",
+      : "Injection enabled — reload Cursor window to apply. Integrity toast suppressed via product.json checksum sync.",
   };
 }
 
@@ -1389,6 +1415,42 @@ async function healthCheck(context) {
     }
   }
 
+  // Integrity checksum vs product.json (corrupt-installation toast source)
+  try {
+    const productPath = productJsonPath(loc.appRoot);
+    const buf = await fsp.readFile(loc.workbenchPath);
+    const digest = computeWorkbenchChecksum(buf);
+    let stored = null;
+    let key = WORKBENCH_CHECKSUM_KEY;
+    if (await pathExists(productPath)) {
+      const product = JSON.parse(await fsp.readFile(productPath, "utf8"));
+      if (product.checksums && typeof product.checksums === "object") {
+        if (!(key in product.checksums)) {
+          const alt = Object.keys(product.checksums).find(
+            (k) => /workbench\.html$/i.test(k) && /electron-sandbox/i.test(k)
+          );
+          if (alt) {
+            key = alt;
+          }
+        }
+        stored = product.checksums[key] || null;
+      }
+    }
+    details.checksum = {
+      key,
+      digest,
+      stored,
+      matches: Boolean(stored && stored === digest),
+    };
+    if (state.active && stored && stored !== digest) {
+      details.warnings.push(
+        "product.json workbench checksum mismatch — Enable/Reload as Admin syncs it (suppresses corrupt toast)"
+      );
+    }
+  } catch (err) {
+    details.checksum = { error: err && err.message ? err.message : String(err) };
+  }
+
   // Writable probe (non-destructive): access W_OK
   // Non-Admin after a successful Enable is expected — warn only; do not fail health
   // (periodic probe must not tear down a healthy patch just because ACL is read-only).
@@ -1415,4 +1477,5 @@ module.exports = {
   status,
   healthCheck,
   getFingerprint,
+  syncWorkbenchChecksum,
 };

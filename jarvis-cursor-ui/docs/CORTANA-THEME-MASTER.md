@@ -232,7 +232,7 @@ Detail table: [`PALETTE-MARKETPLACE-VS-REFERENCE.md`](./PALETTE-MARKETPLACE-VS-R
 2. **Disable on injection break** — Missing/corrupt markers, wrong uuid, missing `CORTANA-workbench-css`, or `CORTANA-HEALTH` / CSS needle probe fail (activate + ~60s soft re-probe) → teardown, disable, notify (`health-fail`).
 3. **Joshua-as-builder ownership** — Docs/commands for **Admin Enable**, **Re-enable Injection After Update** after verify. **NOT** marketplace Active support. Workers never elevate; Joshua alone writes Program Files.
 
-Integrity / “corrupt installation” warning: **accepted** — do **not** implement Fix Checksums; do **not** block Phase 6 on it.
+Integrity / “corrupt installation” toast: **suppressed** — Enable/Disable/restore syncs `product.json` checksums for `workbench.html` (SHA-256 base64). Inject unchanged; Admin write required once for the sync.
 
 **Verify script:** `node scripts/verify-fail-safes.js` (wiring smoke).
 

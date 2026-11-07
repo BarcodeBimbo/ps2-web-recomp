@@ -63,7 +63,7 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 2. **Disable on health / patch break** — health-fail or broken markers disable injection; status surfaces the reason.
 3. **God re-enable after verify** — no automatic silent re-patch; use **CORTANA: Re-enable Injection After Update** (or Enable) after God confirms Cursor is healthy. God builds/fixes/rebuilds — no vendor support gap.
 
-**Integrity warning:** Cursor may show a corrupt-install / integrity warning after workbench patch. **God accepts reinstall / re-enable**; do **not** treat that dialog as a blocker to the injection approach.
+**Integrity toast:** Suppressed on Enable/Disable by syncing `product.json` checksums for `workbench.html` (SHA-256). Requires the same Admin write as Enable.
 
 **Admin:** Enabling injection may require **Admin once** (write under Program Files). Run Cursor or the enable path elevated if you hit `EACCES`.
 
