@@ -7,10 +7,12 @@
 **Repo:** `C:\PS2Recomp`  
 **Companion handoff:** `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`, `MASTER-CONTEXT.md`
 
-**Checkbox legend**
+**Checkbox legend (hard rule for autonomous loop)**
 
 - `[ ]` — open (not verified working end-to-end)
 - `[x] YYYY-MM-DD — one-line evidence` — built and verified; date = confirmation day
+- **Solve → verify → check → next.** The moment verification evidence exists, flip **that** checkbox **immediately** (same turn / same session). **No batching**, no “update checkboxes later,” no leaving solved work unchecked.
+- Evidence = log path, metric, harness output, or file/artifact that proves the step works — one line only beside the check.
 
 **End state:** Every library title works **flawlessly in Chrome** (panel `http://127.0.0.1:8620/`), ≥60 FPS by default (30 only where a title truly requires it).
 
@@ -225,4 +227,4 @@ python C:\PS2Recomp\scripts\self_heal.py --game a2116d2ac08a7be4db4e8455ad58d2e5
 python C:\PS2Recomp\scripts\self_heal.py --library
 ```
 
-**When marking a checkbox:** use today's date (local) and one line pointing at log/file/metric that proved it.
+**When marking a checkbox:** use today's date (local) and one line pointing at log/file/metric that proved it — **immediately** after verify, before starting the next step.

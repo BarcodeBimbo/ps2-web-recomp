@@ -26,8 +26,13 @@ When the conversation or window context is **too large** (slow turns, truncation
 - **Current execution plan** and step status (what passed, what’s in flight).
 - **Open leads** only (not full history).
 
+## Campaign checkboxes (`logs/master-campaign-plan-2026-11-07.md`)
+
+- **Solve → verify → check → next.** Flip `[x]` with date + one-line evidence **immediately** when a step verifies — never batch checkbox updates.
+
 ## Forbidden
 
 - Replacing detailed evidence in chat with a long inline summary instead of rollover
+- Deferring master-plan checkbox marks after verification
 - Stopping work because context is full
 - Dropping quarantine rules (CNK Alchemy vs Hitman/NFS disc path)

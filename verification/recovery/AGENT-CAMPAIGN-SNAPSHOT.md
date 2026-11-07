@@ -2,7 +2,7 @@
 
 **Updated:** 2026-11-07 ~10:20 local (America/New_York)  
 **Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**  
-**Checkbox campaign plan:** `logs/master-campaign-plan-2026-11-07.md` (update checkboxes when steps verify).
+**Checkbox campaign plan:** `logs/master-campaign-plan-2026-11-07.md` — **solve → verify → check → next**; mark `[x]` + date + evidence **immediately**, never batched.
 
 ## Improvement-pass policy (refined ~10:21)
 

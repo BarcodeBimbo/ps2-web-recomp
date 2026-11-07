@@ -26,7 +26,7 @@ Also still true:
 7. **Context rollover (God ~10:20):** When chat context is too large, **do not** trim/summarize in place. Spawn a **new agent** with clean context; carry state only via `MASTER-CONTEXT.md` + `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`. Continue executing without pause. Rule: `.cursor/rules/agent-context-rollover.mdc`.
 8. **Improvement-pass (God ~10:21):** **Additive only** for theme/vision; **optimization + light modernization OK** inside existing stack (panel, store, runtime, self-heal, verify). **No wholesale** re-architecture. Policy: `verification/recovery/improvement-pass-policy-2026-11-07.md`.
 
-**Campaign add-ons (God ~10:18):** Chrome-flawless every game; store→downloader→patch pipeline (`autonomous-pipeline-2026-11-07.md`); self-heal per install (`self_heal.py`, `self-heal-patch-system-2026-11-07.md`). Hitman wave-1: GS XYOFFSET 11-bit applied; web rebuild in flight for Chrome. **Master checklist:** `logs/master-campaign-plan-2026-11-07.md`.
+**Campaign add-ons (God ~10:18):** Chrome-flawless every game; store→downloader→patch pipeline (`autonomous-pipeline-2026-11-07.md`); self-heal per install (`self_heal.py`, `self-heal-patch-system-2026-11-07.md`). Hitman wave-1: GS XYOFFSET 11-bit applied; web rebuild in flight for Chrome. **Master checklist:** `logs/master-campaign-plan-2026-11-07.md` — checkboxes flip **immediately** on verify (solve→verify→check→next; no batching).
 
 ---
 
