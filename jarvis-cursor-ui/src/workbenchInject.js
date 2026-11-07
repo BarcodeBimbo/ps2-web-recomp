@@ -22,6 +22,7 @@ const crypto = require("crypto");
 const os = require("os");
 const { spawnSync } = require("child_process");
 const vscode = require("vscode");
+const { getGitStatus } = require("./gitHud");
 
 const MARKER_START = "CORTANA-INJECT-START";
 const MARKER_END = "CORTANA-INJECT-END";
@@ -1162,6 +1163,238 @@ function stampHudGauge(markup, id, lab, metric, pct, title) {
   return markup.replace(re, open);
 }
 
+/**
+ * Live Intelligence Feed from Cursor (diagnostics + git + workspace + catalog) — not photo demo rows.
+ * Glyphs are square icons (info/warn/tip/live); amber WARN matches CC-2.
+ * @param {string} markup
+ * @param {{ items: Array<{tone:string,title:string,meta:string}> }} feed
+ */
+function stampHudFeed(markup, feed) {
+  const items = feed?.items || [];
+  const live = items.length > 0;
+  const rows = live
+    ? items
+        .map((it) => {
+          const tone = escapeHudText(it.tone || "info");
+          const title = escapeHudText(it.title || "—");
+          const meta = escapeHudText(it.meta || "");
+          return `<div class="jcc-feed-item" data-tone="${tone}"><span class="jcc-feed-glyph ${tone}" role="img" aria-label="${tone}"></span><div class="jcc-feed-body"><strong>${title}</strong><span class="jcc-feed-meta" data-text="${meta}"></span></div></div>`;
+        })
+        .join("\n          ")
+    : `<p class="jcc-feed-empty">Awaiting data</p>`;
+  const re =
+    /<div\s+class="jcc-feed-list"\s+id="cortana-feed-list"[\s\S]*?<\/div>(?=\s*<a class="jcc-feed-foot"|<\/section>)/i;
+  if (!re.test(markup)) return markup;
+  let out = markup.replace(
+    re,
+    `<div class="jcc-feed-list" id="cortana-feed-list" data-state="${live ? "live" : "empty"}">\n          ${rows}\n        </div>`
+  );
+  out = out.replace(
+    /id="cortana-feed-live"([^>]*)\s*hidden/i,
+    live ? `id="cortana-feed-live"$1` : `id="cortana-feed-live"$1 hidden`
+  );
+  if (live) {
+    out = out.replace(
+      /(<a class="jcc-feed-foot"[^>]*)\s*hidden/i,
+      "$1"
+    );
+  }
+  return out;
+}
+
+/**
+ * Active Agents: stamp Active/Standby from real Cursor capability + workspace signals.
+ * @param {string} markup
+ * @param {Record<string, {status:string, active:boolean}>} agents
+ */
+function stampHudAgents(markup, agents) {
+  let out = markup;
+  for (const [slot, info] of Object.entries(agents || {})) {
+    const status = escapeHudText(info.status || "—");
+    const active = Boolean(info.active);
+    out = out.replace(
+      new RegExp(
+        `<article\\s+class="jcc-agent[^"]*"\\s+data-agent="${slot}"([^>]*)>`,
+        "i"
+      ),
+      `<article class="jcc-agent${active ? " active" : " standby"}" data-agent="${slot}"$1>`
+    );
+    out = out.replace(
+      new RegExp(
+        `(data-agent="${slot}"[\\s\\S]{0,280}?<div class="jcc-agent-st)([^"]*)("[^>]*data-agent-st[^>]*>)([^<]*)(</div>)`,
+        "i"
+      ),
+      (_m, pre, _cls, mid, _old, end) =>
+        `${pre}${active ? "" : " standby"}${mid}${status}${end}`
+    );
+  }
+  return out;
+}
+
+/**
+ * Mission Timeline from workspace + git signals (honest schedule proxy — not photo demo).
+ * @param {string} markup
+ * @param {{ rows: Array<{time:string,title:string,tone:string,pct?:number}> }} tl
+ */
+function stampHudTimeline(markup, tl) {
+  const rows = tl?.rows || [];
+  if (!rows.length) return markup;
+  const html = rows
+    .map((r, idx) => {
+      const pct = typeof r.pct === "number" ? Math.max(0, Math.min(100, r.pct)) : 0;
+      const tone = r.tone || "cyan";
+      const cls =
+        pct >= 100 ? "done" : tone === "amber" || tone === "warn" ? "overdue" : idx === 0 ? "active" : "";
+      const clsAttr = cls ? ` ${cls}` : "";
+      return `<div class="jcc-tl-item${clsAttr}" data-pct="${pct}" style="--pct:${pct}"><div class="jcc-tl-t">${escapeHudText(r.time)} · ${escapeHudText(r.title)}</div><div class="jcc-tl-m">${escapeHudText(r.meta || "Cursor live")}</div><div class="jcc-tl-bar"><i style="width:${pct}%"></i></div></div>`;
+    })
+    .join("\n            ");
+  const re =
+    /<div class="jcc-tl" id="cortana-timeline"[\s\S]*?<\/div>(?=\s*<a class="jcc-tl-foot")/i;
+  if (!re.test(markup)) return markup;
+  return markup.replace(
+    re,
+    `<div class="jcc-tl" id="cortana-timeline" data-state="live">\n            ${html}\n          </div>`
+  );
+}
+
+/** Collect live feed + agent + timeline facts from Cursor (not jarvis.institute). */
+async function collectHudFeedAgentTimeline(catalog, live, memoryInsights) {
+  const git = await getGitStatus();
+  let errors = 0;
+  let warnings = 0;
+  try {
+    for (const d of vscode.languages.getDiagnostics()) {
+      const diags = d[1] || [];
+      for (const x of diags) {
+        if (x.severity === vscode.DiagnosticSeverity.Error) errors += 1;
+        else if (x.severity === vscode.DiagnosticSeverity.Warning) warnings += 1;
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+  const models = catalog?.models || [];
+  const agentModels = models.filter((m) => m.supportsAgent).length;
+  const ws = live?.workspace || "Workspace";
+  const items = [];
+  items.push({
+    tone: "info",
+    title: `Cortana Workstation online · ${ws}`,
+    meta: "Status",
+  });
+  if (errors || warnings) {
+    items.push({
+      tone: errors ? "warn" : "warn",
+      title:
+        errors > 0
+          ? `${errors} error${errors === 1 ? "" : "s"}${warnings ? ` · ${warnings} warning${warnings === 1 ? "" : "s"}` : ""}`
+          : `${warnings} warning${warnings === 1 ? "" : "s"} in Problems`,
+      meta: "Problems",
+    });
+  } else {
+    items.push({ tone: "live", title: "Problems panel clear", meta: "Diagnostics" });
+  }
+  if (git.ok) {
+    items.push({
+      tone: git.dirty ? "warn" : "tip",
+      title: `Git · ${git.branch}${git.dirty ? ` · ${git.detail}` : " · clean"}`,
+      meta: git.dirty ? "Dirty" : "Git",
+    });
+  }
+  if (models.length) {
+    items.push({
+      tone: "tip",
+      title: `${models.length} Cursor model${models.length === 1 ? "" : "s"} in catalog`,
+      meta: "LLMs",
+    });
+  }
+  if (live?.cpuPct != null) {
+    items.push({
+      tone: "live",
+      title: `CPU ${live.cpuPct}% · RAM ${live.ramPct ?? "—"}%`,
+      meta: "System",
+    });
+  }
+  const memN = memoryInsights?.memories;
+  if (memN != null && memN !== "—") {
+    items.push({
+      tone: "info",
+      title: `Transcript memory · ${memN}`,
+      meta: "Memory",
+    });
+  }
+
+  const agents = {
+    coding: {
+      active: agentModels > 0,
+      status: agentModels > 0 ? "Active" : "Standby",
+    },
+    research: {
+      active: models.length > 0,
+      status: models.length > 0 ? "Active" : "Standby",
+    },
+    memory: {
+      active: Number(memoryInsights?.sessionTurns) > 0 || scannedTruthy(memoryInsights),
+      status:
+        Number(memoryInsights?.sessionTurns) > 0 || scannedTruthy(memoryInsights)
+          ? "Active"
+          : "Standby",
+    },
+    browser: { active: false, status: "Standby" },
+    task: {
+      active: git.dirty || errors > 0,
+      status: git.dirty || errors > 0 ? "Active" : "Standby",
+    },
+    system: { active: false, status: "Standby" },
+  };
+
+  const now = new Date();
+  const fmt = (d) =>
+    d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit", hour12: true });
+  const rows = [
+    {
+      time: fmt(now),
+      title: `Inject live · ${ws}`,
+      tone: "cyan",
+      pct: 100,
+    },
+    {
+      time: fmt(new Date(now.getTime() + 30 * 60000)),
+      title: git.ok ? `Git ${git.branch}${git.dirty ? " (dirty)" : ""}` : "No git repo",
+      tone: git.dirty ? "amber" : "cyan",
+      pct: git.dirty ? 55 : 100,
+    },
+    {
+      time: fmt(new Date(now.getTime() + 90 * 60000)),
+      title:
+        errors || warnings
+          ? `Clear ${errors}E / ${warnings}W in Problems`
+          : "Problems clear — keep green",
+      tone: errors ? "amber" : "cyan",
+      pct: errors ? 35 : 100,
+    },
+    {
+      time: fmt(new Date(now.getTime() + 180 * 60000)),
+      title: `${models.length || 0} models · ${agentModels} agent-capable`,
+      tone: "cyan",
+      pct: models.length ? 70 : 20,
+    },
+  ];
+
+  return { feed: { items: items.slice(0, 6) }, agents, timeline: { rows } };
+}
+
+function scannedTruthy(memoryInsights) {
+  try {
+    const m = memoryInsights?.memories;
+    if (m == null || m === "—") return false;
+    return String(m).replace(/,/g, "") !== "0";
+  } catch {
+    return false;
+  }
+}
+
 async function readHudMarkup(context) {
   const full = path.join(context.extensionUri.fsPath, HUD_MARKUP_REL);
   let markup = await fsp.readFile(full, "utf8");
@@ -1181,14 +1414,21 @@ async function readHudMarkup(context) {
       /id="cortana-meta-host">[^<]*</,
       `id="cortana-meta-host">${escapeHudText(HUD_FOOTER_LOCATION)}<`
     )
-    .replace(/id="cortana-meta-ws">[^<]*</, `id="cortana-meta-ws">${escapeHudText(live.workspace)}<`)
+    .replace(
+      /id="cortana-meta-ws">[^<]*</,
+      `id="cortana-meta-ws">${escapeHudText("—")}<`
+    )
     .replace(
       /id="cortana-system-status-text">[^<]*</,
-      `id="cortana-system-status-text">SYSTEM STATUS · INJECT ON<`
+      `id="cortana-system-status-text">SYSTEM STATUS · OPTIMAL<`
     );
   markup = stampHudOverviewPanel(markup, overview, catalog);
   markup = stampHudMemoryInsights(markup, memoryInsights);
   markup = stampHudLlmGrid(markup, catalog);
+  const fat = await collectHudFeedAgentTimeline(catalog, live, memoryInsights);
+  markup = stampHudFeed(markup, fat.feed);
+  markup = stampHudAgents(markup, fat.agents);
+  markup = stampHudTimeline(markup, fat.timeline);
   markup = stampHudGauge(
     markup,
     "cortana-gauge-cpu",
@@ -1280,10 +1520,10 @@ function buildHudLiveScript(overviewSeed) {
     "var hint=document.getElementById('cortana-talk-hint');",
     "if(!voice||!hint)return;",
     "var t=String(voice.textContent||'').trim();",
-    "if(/^Listening/i.test(t))hint.textContent='Listening…';",
+    "if(/^Listening/i.test(t))hint.textContent='I am listening…';",
     "else if(/responding/i.test(t))hint.textContent='Responding…';",
     "else if(/^Offline/i.test(t))hint.textContent='Voice offline';",
-    "else hint.textContent='Tap to speak';",
+    "else hint.textContent='I am listening…';",
     "}",
     "function syncVoiceOv(){",
     "var v=document.getElementById('cortana-voice-status');",

@@ -10,21 +10,21 @@
 .monaco-workbench.CORTANA-inject,
 body.cortana-inject,
 body.CORTANA-inject {
-  /* —— Void / surfaces (CC deep navy — PNG samples) —— */
-  --cortana-bg: #050d16;
+  /* —— Void / surfaces (SPLICE-ELEMENT-INVENTORY-CC2 sampled) —— */
+  --cortana-bg: #030d19;
   --cortana-bg-deep: #020817;
-  --cortana-bg-elevated: #091d35;
-  --cortana-bg-panel: #000f24;
-  --cortana-bg-sidebar: #001020;
-  --cortana-bg-activity: #030a12;
-  --cortana-bg-editor: #050d16;
+  --cortana-bg-elevated: #091a2b;
+  --cortana-bg-panel: #0e2538;
+  --cortana-bg-sidebar: #041324;
+  --cortana-bg-activity: #030d19;
+  --cortana-bg-editor: #020817;
   --cortana-bg-input: #021018;
   --cortana-bg-hover: rgba(0, 212, 255, 0.05);
   --cortana-bg-active: rgba(0, 212, 255, 0.1);
   --cortana-bg-void: #020817;
-  --cortana-bg-well: #061729;
-  --cortana-bg-rail: #001020;
-  --cortana-bg-main: #020c1a;
+  --cortana-bg-well: #091a2b;
+  --cortana-bg-rail: #041324;
+  --cortana-bg-main: #030d19;
   --cortana-nebula-ms: 22s;
 
   /* —— Cyan spectrum (CC sampled accents — muted, not neon bloom) —— */
@@ -135,14 +135,18 @@ body.CORTANA-inject {
   --cortana-agent-glow-ms: 2.6s;
   --cortana-constellation-ms: 2s;
 
-  /* —— Status —— */
+  /* —— Status (photo: green OK; amber WARN/weather/gold agents; purple LLM/memory) —— */
   --cortana-ok: #2fa58f;
   --cortana-ok-bright: #3dd68c;
-  --cortana-warn: #ffc94d;
-  --cortana-danger: #ff4757;
-  --cortana-info: #4ad1f1;
-  --cortana-tip: #7ec8ff;
+  --cortana-warn: #ffab00;
+  --cortana-warn-soft: #ffc94d;
+  --cortana-danger: #ff5252;
+  --cortana-info: #40c4ff;
+  --cortana-tip: #4ad1f1;
   --cortana-live: #3dd68c;
+  --cortana-accent-purple: #7c4dff;
+  --cortana-accent-gold: #ffd740;
+  --cortana-weather-sun: #ffab00;
   --cortana-bar-track: #0c1a2a;
   --cortana-dot-off: #292d35;
   --cortana-ink-on-cyan: #021018;

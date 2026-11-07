@@ -41,5 +41,6 @@ Full button/panel/window/icon inventory + God-missed flags: [`SPLICE-ELEMENT-INV
 - [ ] Verify .jcc-nebula + particles read as photo glow treatment
 - [ ] Audit dark-spot layering across rail, grid, footer
 - [ ] Full-app chrome grade (editor/sidebar/status) vs HUD unison
-- [ ] God reviews inventory + missed flags before rebuild locks
+- [x] God confirmed: photo colors incl. amber where present; live Cursor data in slots
+- [ ] Apply tokens + stamp feed/agents/timeline from Cursor (in progress)
 - [ ] No package until God signs theming + element audit
