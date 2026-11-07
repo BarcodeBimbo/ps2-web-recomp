@@ -22,12 +22,10 @@ body.cortana-inject .monaco-workbench,
 }
 
 /*
- * Title bar (God clarify): reference-command-center-2.png is FULL-BLEED navy glass —
- * minimize / maximize / close do NOT show. Stock captions stay HIDDEN.
- * Close is NOT a permanent custom button — hover the top-right corner and a
- * Cortana-styled close control appears (.jcc-corner-close-zone).
- * Escape hatch: Focus Mode (#cortana-focus-toggle) restores IDE title strip;
- * stock caption cluster stays hidden (match reference).
+ * Title bar (God confirm): stock Win min/max/close stay HIDDEN always.
+ * Functional captions are MERGED into Cortana chrome (#cortana-win-chrome) —
+ * same icon-btn shapes as reference header tools; top-right. Focus Mode keeps
+ * Cortana win-chrome (does NOT restore stock Windows caption buttons).
  */
 /* HUD primary: visually hide stock parts until Focus Mode (no pointer-events blank — click-through HUD) (#cortana-focus-toggle) */
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.activitybar,
@@ -117,13 +115,16 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 /* ========== Title bar ========== */
 
 /*
- * Caption cluster (God): HIDDEN always — match reference-command-center-2.png.
- * --cortana-caption-w is 0 (no header reserve for invisible controls).
+ * Stock caption cluster: HIDDEN. Cortana #cortana-win-chrome owns min/max/close.
+ * --cortana-win-chrome-w reserves header slot + fixed strip width.
  */
 :root {
   --cortana-caption-btn: 0px;
   --cortana-caption-w: 0px;
   --cortana-caption-reserve: 0px;
+  --cortana-win-btn: 30px;
+  --cortana-win-chrome-gap: 6px;
+  --cortana-win-chrome-w: calc((var(--cortana-win-btn) * 3) + (var(--cortana-win-chrome-gap) * 2) + 12px);
   --cortana-titlebar-h: 30px;
   --cortana-z-titlebar: 99999;
   --cortana-z-caption: 100000;
@@ -169,8 +170,8 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 }
 
 /*
- * Cortana Workstation — hide stock min/max/close (reference-command-center-2.png).
- * Closing: hover-reveal .jcc-corner-close in top-right (not a permanent button).
+ * Stock Win captions — always hidden (HUD + Focus Mode).
+ * Functional min/max/close live in #cortana-win-chrome (Cortana chrome).
  */
 .monaco-workbench .window-controls-container,
 .monaco-workbench .part.titlebar .window-controls-container,
@@ -195,85 +196,85 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 }
 
 /*
- * Hover-reveal close — invisible until pointer enters top-right corner zone.
- * Matches reference: no visible caption chrome; close appears on hover only.
+ * Integrated Cortana window controls — top-right, icon-btn shapes (reference).
+ * Lives outside #cortana-cc-hud so Focus Mode keeps them (stock never returns).
  */
-#cortana-cc-hud .jcc-corner-close-zone {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: calc(var(--cortana-z-caption, 100000) + 2);
-  width: var(--cortana-corner-close-zone-w, 52px);
-  height: var(--cortana-corner-close-zone-h, 36px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 4px 6px 0 0;
+#cortana-win-chrome.jcc-win-chrome {
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  z-index: calc(var(--cortana-z-caption, 100000) + 5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cortana-win-chrome-gap, 6px);
   margin: 0;
-  box-sizing: border-box;
+  padding: 0;
   pointer-events: auto;
   -webkit-app-region: no-drag;
   app-region: no-drag;
-  background: transparent;
 }
 
-#cortana-cc-hud .jcc-corner-close {
-  width: 28px;
-  height: 28px;
+#cortana-win-chrome .jcc-win-btn {
+  width: var(--cortana-win-btn, 30px);
+  height: var(--cortana-win-btn, 30px);
   margin: 0;
   padding: 0;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background: transparent;
-  color: var(--cortana-cyan-soft, #4ad1f1);
-  font: 600 18px/1 var(--cortana-font-ui, "Segoe UI", sans-serif);
-  letter-spacing: 0;
+  border-radius: var(--cortana-hud-icon-btn-radius, 8px);
+  border: 1px solid var(--cortana-header-icon-border, rgba(0, 212, 255, 0.16));
+  background: var(--cortana-header-icon-bg, rgba(0, 15, 36, 0.72));
+  color: var(--cortana-header-icon, #40a7ca);
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-2px);
-  transition:
-    opacity 0.16s ease,
-    visibility 0.16s ease,
-    transform 0.16s ease,
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-#cortana-cc-hud .jcc-corner-close-zone:hover .jcc-corner-close,
-#cortana-cc-hud .jcc-corner-close-zone:focus-within .jcc-corner-close,
-#cortana-cc-hud .jcc-corner-close:focus-visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-  background: rgba(0, 15, 36, 0.88);
-  border-color: rgba(0, 212, 255, 0.35);
-  color: #e8fbff;
+  display: inline-grid;
+  place-items: center;
+  line-height: 0;
   box-shadow:
-    0 0 12px rgba(0, 212, 255, 0.28),
-    inset 0 0 8px rgba(0, 212, 255, 0.08);
-  text-shadow: 0 0 8px rgba(0, 242, 255, 0.55);
+    inset 0 0 10px rgba(0, 212, 255, 0.06),
+    0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
-#cortana-cc-hud .jcc-corner-close:hover,
-#cortana-cc-hud .jcc-corner-close:focus-visible {
-  background: rgba(0, 40, 60, 0.95);
+#cortana-win-chrome .jcc-win-btn:hover {
+  color: var(--cortana-header-icon-hover, #4ad1f1);
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 30, 55, 0.88);
+  box-shadow:
+    inset 0 0 12px rgba(0, 212, 255, 0.1),
+    0 0 12px rgba(0, 212, 255, 0.18);
+}
+
+#cortana-win-chrome .jcc-win-close:hover {
+  color: #e8fbff;
   border-color: rgba(0, 242, 255, 0.55);
-  color: #fff;
+  background: rgba(0, 40, 60, 0.95);
+  box-shadow:
+    0 0 14px rgba(0, 242, 255, 0.28),
+    inset 0 0 10px rgba(0, 212, 255, 0.1);
 }
 
-body:has(#cortana-focus-toggle:checked) #cortana-cc-hud .jcc-corner-close-zone {
-  display: none !important;
-  pointer-events: none !important;
+#cortana-win-chrome .jcc-win-btn svg {
+  display: block;
+  pointer-events: none;
+}
+
+/* Header slot — clears fixed win-chrome over operator / tools */
+.jcc-win-chrome-slot {
+  display: inline-block;
+  flex: 0 0 var(--cortana-win-chrome-w, 108px);
+  width: var(--cortana-win-chrome-w, 108px);
+  min-width: var(--cortana-win-chrome-w, 108px);
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 /*
- * HUD primary: subsume stock title chrome; caption cluster stays hidden (above).
- * Focus Mode restores the full navy title strip (stock controls remain hidden).
+ * HUD primary: subsume stock title chrome; stock captions stay hidden (above).
+ * Focus Mode: IDE title strip may show navy theme, but stock buttons stay hidden —
+ * #cortana-win-chrome remains the only min/max/close.
  */
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar,
 body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked)) .monaco-workbench .part.titlebar {
@@ -1567,7 +1568,7 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: flex;
   align-items: center;
   gap: 7px;
-  /* No caption reserve — min/max/close hidden to match reference */
+  /* Slot + fixed #cortana-win-chrome clear operator / tools */
   flex-wrap: nowrap;
   min-width: 0;
 }

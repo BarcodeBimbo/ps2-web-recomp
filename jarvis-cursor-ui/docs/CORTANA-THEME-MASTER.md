@@ -261,8 +261,8 @@ Audit detail: [`INJECTION-APPROACH.md`](./INJECTION-APPROACH.md).
 | Target | Lock | Method |
 |--------|------|--------|
 | **Title bar chrome** (colors, glow, controls styling) | **YES** | `"window.titleBarStyle": "custom"` + inject CSS (`.part.titlebar` / custom-titlebar) |
-| **Stock min / max / close** | **HIDDEN** | Match `reference-command-center-2.png` — never show Windows caption buttons (`.window-controls-container` / `.codicon-chrome-*`) |
-| **Close (God clarify)** | **Hover-reveal only** | No permanent custom close button. Invisible top-right hit zone (`.jcc-corner-close-zone`); Cortana-styled `.jcc-corner-close` appears on hover; click closes via stock chrome-close node or `workbench.action.closeWindow` |
+| **Stock min / max / close** | **HIDDEN always** | Never show Windows caption buttons (`.window-controls-container` / `.codicon-chrome-*`) — HUD **and** Focus Mode |
+| **Integrated window controls (God confirm)** | **YES** | Merge min / max / close into Cortana chrome `#cortana-win-chrome` — reference icon-btn shapes, top-right; functional via stock node click fallback + `workbench.action.*`. Focus Mode keeps Cortana controls (does **not** restore stock Win buttons) |
 | **Top-corner / in-window app icon styling** | **YES** | Same custom titleBar + inject CSS (e.g. `.window-appicon` size/filter/hide/tint). Bitmap **replacement** still needs `.ico` if God later wants a new glyph — not required for YES chrome path |
 | **Windows taskbar icon** | **OUT OF SCOPE for now** | Needs exe / resource / shortcut `.ico` replace — **not** pure CSS. Do not schedule 6.I until God reopens |
 

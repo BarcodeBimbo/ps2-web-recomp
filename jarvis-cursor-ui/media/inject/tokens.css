@@ -205,12 +205,13 @@ body.CORTANA-inject {
   --cortana-header-icon-hover: #4ad1f1;
   --cortana-badge-size: 17px;
   --cortana-footer-h: 72px;
-  /* Caption cluster hidden; hover-reveal close uses corner zone (not stock Win chrome) */
+  /* Stock captions hidden; Cortana #cortana-win-chrome owns min/max/close */
   --cortana-caption-btn: 0px;
   --cortana-caption-w: 0px;
   --cortana-caption-reserve: 0px;
-  --cortana-corner-close-zone-w: 52px;
-  --cortana-corner-close-zone-h: 36px;
+  --cortana-win-btn: 30px;
+  --cortana-win-chrome-gap: 6px;
+  --cortana-win-chrome-w: calc((var(--cortana-win-btn) * 3) + (var(--cortana-win-chrome-gap) * 2) + 12px);
   --cortana-titlebar-h: 30px;
   --cortana-z-hud: 99990;
   --cortana-z-titlebar: 99999;

@@ -2,11 +2,19 @@
 <!-- Content rule: no placeholder/dummy numbers or status. Real data, empty, or honest "—" / Awaiting data only. -->
 <input type="checkbox" id="cortana-focus-toggle" class="jcc-focus-check" aria-hidden="true"/>
 <label for="cortana-focus-toggle" class="jcc-focus-fab" title="Restore Cortana Workstation">◈ CORTANA WORKSTATION</label>
+<!-- God: stock Win captions stay hidden — Cortana-integrated min/max/close (Focus Mode + HUD). -->
+<div id="cortana-win-chrome" class="jcc-win-chrome" role="toolbar" aria-label="Window controls">
+  <button type="button" class="jcc-win-btn jcc-win-min" data-cortana-cmd="minimize" title="Minimize" aria-label="Minimize">
+    <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.5 6h7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+  </button>
+  <button type="button" class="jcc-win-btn jcc-win-max" data-cortana-cmd="maximize" title="Maximize" aria-label="Maximize">
+    <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><rect x="2.4" y="2.4" width="7.2" height="7.2" rx="0.6" fill="none" stroke="currentColor" stroke-width="1.25"/></svg>
+  </button>
+  <button type="button" class="jcc-win-btn jcc-win-close" data-cortana-cmd="close" title="Close" aria-label="Close">
+    <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3.2 3.2l5.6 5.6M8.8 3.2L3.2 8.8" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg>
+  </button>
+</div>
 <div id="cortana-cc-hud" class="cortana-cc-hud" data-cortana-hud="1" data-cortana-wake="on" aria-label="Cortana Workstation">
-  <!-- God: no always-visible close — hover top-right corner reveals Cortana close (stock Win captions stay hidden) -->
-  <div class="jcc-corner-close-zone" id="cortana-corner-close-zone">
-    <button type="button" class="jcc-corner-close" id="cortana-corner-close" data-cortana-cmd="close" title="Close" aria-label="Close window">×</button>
-  </div>
   <div class="jcc-nebula" aria-hidden="true"></div>
   <div class="jcc-particles" aria-hidden="true">
     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -96,6 +104,8 @@
             <span class="jcc-op-name" id="cortana-op-name">—</span>
           </span>
         </button>
+        <!-- Spacer matches fixed #cortana-win-chrome width so header tools clear integrated captions -->
+        <span class="jcc-win-chrome-slot" aria-hidden="true"></span>
       </div>
     </header>
 
