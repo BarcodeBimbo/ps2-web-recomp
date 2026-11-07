@@ -1,6 +1,6 @@
-# Marketplace extract — nextgencode.jarvis-3d-theme
+# Marketplace extract — Jarvis 3D
 
-**Source:** [VS Marketplace — Jarvis 3D - Iron Man Theme](https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme) (NextGenCode / Mattzey jarvis-3d-vscode-theme lineage)  
+**Source:** [VS Marketplace — Jarvis 3D - Iron Man Theme](https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme) (NextGenCode / Mattzey CORTANA-3d-vscode-theme lineage)  
 **Purpose:** Phase-6 injection **pattern mapping only**. Do not steal VSIX, Gumroad keys, or their assets.  
 **Our locks win:** injection required · **no overlays** · calibrating splash from **our** PNGs · God fail-safes · **every Studio option YES locally** · **Active support EXCLUDED**.
 
@@ -8,7 +8,7 @@
 
 ## Speakable summary (parent / God)
 
-Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no plugins,” but FAQ/troubleshooting admit **Custom CSS** — file `custom-styles/jarvis-3d-effects.css`, absolute paths, enable Custom CSS and JS, restart — and the **corrupt-install warning** is expected. Stack claim: CSS3 + extension JS listeners + Canvas particles + SVG Arc Reactor. Free = classic theme/icons/basic HUD; PRO $4.99/2 devices; Studio $24.99/5 + stream white-label; Gumroad live keys + 7-day trial. **Copy patterns only** (workbench CSS inject, glow tokens, settings polish, command taxonomy ideas). **Do not copy** their VSIX, Gumroad, overlay HUD/Konami overlays, or their boot art. **Diff vs us:** we own inject (no third-party loader dependency), forbid overlays, boot from **our** calibrating PNG, and ship three God fail-safes they don’t document. **God lock:** every Studio marketplace option = **YES** on the local theme (unlocked); **Active support = NO** (excluded — God-as-builder only). Title-bar chrome via `titleBarStyle: custom` + inject CSS; taskbar icon needs `.ico`/shortcut replace — **not** pure CSS.
+Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no plugins,” but FAQ/troubleshooting admit **Custom CSS** — file `custom-styles/CORTANA-3d-effects.css`, absolute paths, enable Custom CSS and JS, restart — and the **corrupt-install warning** is expected. Stack claim: CSS3 + extension JS listeners + Canvas particles + SVG Arc Reactor. Free = classic theme/icons/basic HUD; PRO $4.99/2 devices; Studio $24.99/5 + stream white-label; Gumroad live keys + 7-day trial. **Copy patterns only** (workbench CSS inject, glow tokens, settings polish, command taxonomy ideas). **Do not copy** their VSIX, Gumroad, overlay HUD/Konami overlays, or their boot art. **Diff vs us:** we own inject (no third-party loader dependency), forbid overlays, boot from **our** calibrating PNG, and ship three God fail-safes they don’t document. **God lock:** every Studio marketplace option = **YES** on the local theme (unlocked); **Active support = NO** (excluded — God-as-builder only). Title-bar chrome via `titleBarStyle: custom` + inject CSS; taskbar icon needs `.ico`/shortcut replace — **not** pure CSS.
 
 ---
 
@@ -24,13 +24,13 @@ Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no 
 
 | Signal | What the page says |
 |--------|-------------------|
-| CSS file | Edit `custom-styles/jarvis-3d-effects.css` (glow `box-shadow`, scanning-line, primary `#00d9ff`) |
+| CSS file | Edit `custom-styles/CORTANA-3d-effects.css` (glow `box-shadow`, scanning-line, primary `#00d9ff`) |
 | Custom CSS Loader | FAQ: to remove corrupt warning completely → install **Custom CSS and JS Loader** |
 | Corrupt warning | Expected when using custom CSS; “editor is NOT corrupted”; click Don’t show again |
 | Troubleshooting “Custom CSS Not Working” | (1) absolute path in settings (2) forward slashes `/` on Windows (3) Enable “Custom CSS and JS” from Command Palette (4) full restart |
 | Settings hint | `"window.titleBarStyle": "custom"` annotated “optional — **requires custom CSS**” |
 
-**Summary for build:** Their deep chrome effects are **workbench Custom CSS injection** (be5invis-style loader + their `jarvis-3d-effects.css`), not theme-JSON alone. Marketing “auto / no plugins” conflicts with troubleshooting; treat CSS inject as the real path. Extension API JS still drives HUD/stats/commands; particles/reactor are Canvas/SVG layered on that chrome.
+**Summary for build:** Their deep chrome effects are **workbench Custom CSS injection** (be5invis-style loader + their `CORTANA-3d-effects.css`), not theme-JSON alone. Marketing “auto / no plugins” conflicts with troubleshooting; treat CSS inject as the real path. Extension API JS still drives HUD/stats/commands; particles/reactor are Canvas/SVG layered on that chrome.
 
 **Our mapping:** Same *pattern class* as plan Rank 1 — but **extension-owned** `workbenchInject.js` (no required be5invis dependency). Accept corrupt warning (God lock: no Fix Checksums).
 
@@ -59,7 +59,7 @@ Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no 
 
 | Feature | Free | PRO — $4.99 lifetime | Studio — $24.99 |
 |---------|------|----------------------|-----------------|
-| Classic Jarvis theme + icon theme | Yes | Yes | Yes |
+| Classic CORTANA theme + icon theme | Yes | Yes | Yes |
 | Basic HUD / Arc Reactor / energy | Yes | Yes | Yes |
 | Standard performance mode | Yes | Yes | Yes |
 | Suit Modes (Mark I / 50 / Endgame / Stealth) | — | Yes | Yes |
@@ -99,9 +99,9 @@ Marketplace Jarvis 3D sells a freemium Iron Man HUD theme. Marketing says “no 
 }
 ```
 
-Also mentioned elsewhere: `"jarvis.enableSoundEffects": true` (experimental).
+Also mentioned elsewhere: `"CORTANA.enableSoundEffects": true` (experimental).
 
-**Our mapping:** Optional polish defaults for docs/README — do **not** force their theme id; use our suit theme ids + `jarvis.injection.*`.
+**Our mapping:** Optional polish defaults for docs/README — do **not** force their theme id; use our suit theme ids + `CORTANA.injection.*`.
 
 ---
 
@@ -111,30 +111,30 @@ Also mentioned elsewhere: `"jarvis.enableSoundEffects": true` (experimental).
 
 | Command | Description | Shortcut |
 |---------|-------------|----------|
-| `JARVIS: Show H.U.D.` | Real-time coding stats | `Ctrl+Alt+H` |
-| `JARVIS: Show Dashboard` | Stark Industries Dashboard | `Ctrl+Alt+D` |
-| `JARVIS: Toggle Assistant` | JARVIS / F.R.I.D.A.Y. | `Ctrl+Alt+A` |
-| `JARVIS: Show Arc Reactor Energy` | Energy analysis | `Ctrl+Alt+E` |
-| `JARVIS: Show Threat Panel` | Security analysis | `Ctrl+Alt+S` |
-| `JARVIS: Cycle Profile` | Coding profiles | `Ctrl+Alt+P` |
+| `CORTANA: Show H.U.D.` | Real-time coding stats | `Ctrl+Alt+H` |
+| `CORTANA: Show Dashboard` | Stark Industries Dashboard | `Ctrl+Alt+D` |
+| `CORTANA: Toggle Assistant` | CORTANA / F.R.I.D.A.Y. | `Ctrl+Alt+A` |
+| `CORTANA: Show Arc Reactor Energy` | Energy analysis | `Ctrl+Alt+E` |
+| `CORTANA: Show Threat Panel` | Security analysis | `Ctrl+Alt+S` |
+| `CORTANA: Cycle Profile` | Coding profiles | `Ctrl+Alt+P` |
 
 ### Community
 
-- `JARVIS: Support Development ☕`
-- `JARVIS: Rate Extension ⭐`
-- `JARVIS: Share Theme 🔗`
+- `CORTANA: Support Development ☕`
+- `CORTANA: Rate Extension ⭐`
+- `CORTANA: Share Theme 🔗`
 
 ### Visual effects
 
-- `JARVIS: Show Holographic Data Monitor`
-- `JARVIS: Show Arc Reactor Core`
+- `CORTANA: Show Holographic Data Monitor`
+- `CORTANA: Show Arc Reactor Core`
 
 ### Other named commands (FAQ / secrets)
 
-- `Jarvis: Start 7-Day FREE Trial`
-- `Jarvis: Enter License Key` (Gumroad — PRO; from Gumroad product page)
-- `Jarvis: Load Stark Legacy` / `War Machine` / `Rescue` / `Matrix Mode`
-- Secret: type `Jarvis: ` then `Ctrl+Shift+Alt+J` ×3 rapidly (“Protocol Override”)
+- `CORTANA: Start 7-Day FREE Trial`
+- `CORTANA: Enter License Key` (Gumroad — PRO; from Gumroad product page)
+- `CORTANA: Load Stark Legacy` / `War Machine` / `Rescue` / `Matrix Mode`
+- Secret: type `CORTANA: ` then `Ctrl+Shift+Alt+J` ×3 rapidly (“Protocol Override”)
 - Konami in editor → “HUD **overlay**” boot sequence (10s)
 
 ---
@@ -215,8 +215,8 @@ Also claims: “CSS3 + GPU transforms + **WebGL shaders**” (FAQ) — stack dia
 
 | Their piece | Our phase-6 slot |
 |-------------|------------------|
-| `custom-styles/jarvis-3d-effects.css` | `media/inject/{tokens,boot,hud}.css` |
-| Custom CSS Loader enable/restart | `jarvis.injection.enable/disable` + Admin write + reload |
+| `custom-styles/CORTANA-3d-effects.css` | `media/inject/{tokens,boot,hud}.css` |
+| Custom CSS Loader enable/restart | `CORTANA.injection.enable/disable` + Admin write + reload |
 | Corrupt warning FAQ | README fail-safe / risk note |
 | Canvas/SVG FX | Optional in `hud` after boot; never as editor overlay |
 | Free/PRO matrix | Existing modules + injection gate; no Gumroad |
@@ -238,11 +238,11 @@ Also claims: “CSS3 + GPU transforms + **WebGL shaders**” (FAQ) — stack dia
 | Fail-safe 3 | **God-as-builder / local-owner** — never rename or sell as “Active support” |
 | Overlays | Still **forbidden**; Studio HUD via **inject**, not floating overlays |
 
-### 1) How marketplace Jarvis 3D itself uses Custom CSS (corrupt FAQ) — confirmed
+### 1) How Marketplace Jarvis 3D itself uses Custom CSS (corrupt FAQ) — confirmed
 
 Their public product path (despite “no plugins / auto effects” marketing):
 
-1. Ship / edit `custom-styles/jarvis-3d-effects.css` (glow, scan-line, primary `#00d9ff`).
+1. Ship / edit `custom-styles/CORTANA-3d-effects.css` (glow, scan-line, primary `#00d9ff`).
 2. Point settings at that file with an **absolute** path (Windows: forward slashes).
 3. Command Palette → **Enable Custom CSS and JS** → **full restart**.
 4. Cursor/VS Code may show a **corrupt / integrity** warning — FAQ says editor is **not** corrupted; dismiss / Don’t show again.
@@ -272,7 +272,7 @@ Every Studio row = **YES** on God's local theme except Active support = **EXCLUD
 
 | Studio / marketplace row | Local = | Our module / surface | Inject / CSS deliverable |
 |--------------------------|---------|----------------------|---------------------------|
-| Classic Jarvis theme + icon theme | **YES** | `themes/jarvis-*-color-theme.json` + activity/icon assets | Theme JSON + optional icon theme; chrome tokens in `media/inject/tokens.css` |
+| Classic CORTANA theme + icon theme | **YES** | `themes/CORTANA-*-color-theme.json` + activity/icon assets | Theme JSON + optional icon theme; chrome tokens in `media/inject/tokens.css` |
 | Basic HUD / Arc Reactor / energy | **YES** | Command Center shell + `media/arc-reactor.svg` | `media/inject/hud.css` (+ boot settle via `boot.css`) |
 | Standard performance mode | **YES** | Default FX budget / pause-when-unfocused | Perf flags in inject HUD; no paid tier |
 | Suit Modes (Mark I / 50 / Endgame / Stealth) | **YES** | `src/suitModes.js` + 4 themes | Suit CSS variables bridged into inject tokens |

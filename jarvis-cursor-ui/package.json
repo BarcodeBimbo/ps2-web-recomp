@@ -2,7 +2,7 @@
   "name": "jarvis-cursor-ui",
   "displayName": "JARVIS Command Center UI",
   "description": "Full JARVIS Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"
@@ -29,6 +29,11 @@
   ],
   "main": "./src/extension.js",
   "contributes": {
+    "configurationDefaults": {
+      "window.titleBarStyle": "custom",
+      "workbench.sideBar.location": "left",
+      "workbench.activityBar.location": "default"
+    },
     "themes": [
       {
         "label": "JARVIS Command",

@@ -166,7 +166,20 @@ class CommandCenterViewProvider {
     return `${h}h ${m}m`;
   }
 
+  _injectionPrimary() {
+    try {
+      const cfg = vscode.workspace.getConfiguration("jarvis.injection");
+      return cfg.get("enabled") === true && cfg.get("fallbackWebview") !== true;
+    } catch {
+      return false;
+    }
+  }
+
   _html(webview) {
+    // When workbench injection is primary, demote this webview to a thin fallback note.
+    if (this._injectionPrimary()) {
+      return this._fallbackHtml(webview);
+    }
     const nonce = String(Date.now());
     const icon = webview.asWebviewUri(
       vscode.Uri.joinPath(this.context.extensionUri, "media", "arc-reactor.svg")
@@ -1083,6 +1096,32 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 </script>
 </body>
 </html>`;
+  }
+}
+
+  _fallbackHtml(webview) {
+    const nonce = String(Date.now());
+    void webview;
+    return `<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'nonce-${nonce}';"/>
+<title>JARVIS Command Center (fallback)</title>
+<style>
+body{margin:0;padding:20px;background:#020817;color:#becedb;font:12px/1.45 "Segoe UI Condensed","Segoe UI",sans-serif}
+h1{margin:0 0 8px;font-size:13px;letter-spacing:.18em;color:#4ad1f1;text-transform:uppercase}
+p{margin:0 0 10px;color:#7a8fa3}
+code{color:#00d4ff}
+.pill{display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(0,212,255,.35);color:#00d4ff;letter-spacing:.08em;font-size:10px}
+</style>
+</head>
+<body>
+  <h1>Injected HUD is primary</h1>
+  <p>Command Center chrome lives in workbench injection (<code>#jarvis-cc-hud</code>), matching the reference PNGs.</p>
+  <p>This sidebar webview is optional fallback only. Set <code>jarvis.injection.fallbackWebview</code> to restore the in-view dashboard.</p>
+  <div class="pill">SYSTEM STATUS · INJECT ON</div>
+  <script nonce="${nonce}">acquireVsCodeApi().postMessage({type:"ready"});</script>
+</body></html>`;
   }
 }
 

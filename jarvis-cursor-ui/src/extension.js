@@ -98,6 +98,7 @@ async function activate(context) {
       const cfg = vscode.workspace.getConfiguration();
       await cfg.update("workbench.colorTheme", suit.theme, vscode.ConfigurationTarget.Global);
       await cfg.update("workbench.sideBar.location", "left", vscode.ConfigurationTarget.Global);
+      await cfg.update("window.titleBarStyle", "custom", vscode.ConfigurationTarget.Global);
       if (injectionIsPrimary()) {
         vscode.window.showInformationMessage(
           `${suit.theme} applied. Injection is primary HUD — File Map webview remains available.`
@@ -268,12 +269,14 @@ async function activate(context) {
   );
 
   // Phase 6: reconcile after providers + commands (Re-enable button → executeCommand)
+  // Fail-safes 1–2 return disabled-due-to-update | health-fail (never auto-re-enable).
   try {
     const reconciled = await inject.reconcileOnActivate(context);
     if (
       reconciled &&
       (reconciled.status === "disabled-due-to-update" ||
-        reconciled.status === "health-fail")
+        reconciled.status === "health-fail" ||
+        reconciled.status === "auto-disabled")
     ) {
       const msg =
         reconciled.message ||
@@ -286,6 +289,38 @@ async function activate(context) {
   } catch (err) {
     console.warn("[jarvis] reconcileOnActivate failed:", err);
   }
+
+  // Soft re-probe while enabled (~60s). On fail → teardown + disable + notify; never auto-re-enable.
+  const healthTimer = setInterval(async () => {
+    try {
+      const cfg = injectionCfg();
+      if (cfg.get("enabled") !== true) {
+        return;
+      }
+      const result = await inject.healthCheck(context);
+      if (result && result.ok) {
+        return;
+      }
+      const issues =
+        result && result.details && Array.isArray(result.details.issues)
+          ? result.details.issues.join("; ")
+          : "health probe failed";
+      const disabled = await inject.disable(
+        context,
+        `Periodic health-fail: ${issues} — JARVIS injection disabled.`
+      );
+      const msg =
+        (disabled && disabled.message) ||
+        `Injection health-fail: ${issues}. Re-enable after verify.`;
+      const pick = await vscode.window.showWarningMessage(msg, "Re-enable after verify");
+      if (pick === "Re-enable after verify") {
+        await vscode.commands.executeCommand("jarvis.injection.reenableAfterUpdate");
+      }
+    } catch (err) {
+      console.warn("[jarvis] periodic healthCheck failed:", err);
+    }
+  }, 60000);
+  context.subscriptions.push({ dispose: () => clearInterval(healthTimer) });
 
   if (injectionIsPrimary()) {
     console.info(

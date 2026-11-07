@@ -64,13 +64,13 @@ class FileMapProvider {
   }
 
   _ignoreSet() {
-    const cfg = vscode.workspace.getConfiguration("jarvis");
+    const cfg = vscode.workspace.getConfiguration("CORTANA");
     const list = cfg.get("fileMap.ignore", SKIP_DEFAULT);
     return new Set((list || SKIP_DEFAULT).map((s) => String(s).toLowerCase()));
   }
 
   _maxEntries() {
-    return vscode.workspace.getConfiguration("jarvis").get("fileMap.maxEntries", 4000);
+    return vscode.workspace.getConfiguration("CORTANA").get("fileMap.maxEntries", 4000);
   }
 
   _scanWorkspace() {
@@ -229,7 +229,7 @@ class FileMapProvider {
     <input id="q" type="search" placeholder="Filter map…" spellcheck="false"/>
     <button id="refresh" title="Refresh">↻</button>
   </div>
-  <div class="badge">JARVIS File Map — click a file to open it. Holographic project structure for this workspace.</div>
+  <div class="badge">CORTANA File Map — click a file to open it. Holographic project structure for this workspace.</div>
   <div class="tree-wrap"><ul class="root" id="root"></ul></div>
   <script nonce="${nonce}">
     const vscode = acquireVsCodeApi();

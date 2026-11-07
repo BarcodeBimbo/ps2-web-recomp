@@ -1,4 +1,4 @@
-# JARVIS Theme Master — Cold Reopen
+# CORTANA Theme Master — Cold Reopen
 
 > ## REBUILD LIVE — God ordered full rebuild (Nov 7 ~1:42 AM)
 >
@@ -8,40 +8,49 @@
 
 **Authority:** God (team) · **Operator:** Joshua · **Date locked:** Nov 7, 2026  
 **Canonical plan:** `jarvis_pro_recreation_a1985356` (plan wins on lock conflicts).  
-**Extension root:** `C:\PS2Recomp\jarvis-cursor-ui` · **v0.5.0** · workbench inject markers present under Program Files (see session log)
+**Extension root:** `C:\PS2Recomp\jarvis-cursor-ui` · **v0.5.1** · workbench inject markers may be present under Program Files (see session log) · **Admin Enable = Joshua only**
+
+### Workers (God rebuild NOW)
+
+| Worker | Owns | Must not |
+|--------|------|----------|
+| **A** | Splash / `boot.css` — real PNG cover + animated progress/bg | Drop PNG path / overlays |
+| **B** | HUD one-to-one vs `reference-command-center-2.png` (`hud.css`) | Overlays |
+| **C** | Full IDE theme unison (themes + tokens alignment) | Break inject markers |
+| **D** | Fail-safes 1–3 + package / VSIX / this status sync | Delete fail-safe code; fight A–C CSS |
 
 ---
 
 ## Session log (tonight) — Nov 6–7, 2026
 
-**Written into this file for cold reopen.** Chronological record of what actually happened; agents paused after this entry.
+**Written into this file for cold reopen.** Chronological record; **pause lifted** — God ordered rebuild resume (~1:42 AM).
 
 ### 1) Phase 6 injection build started
 - Work began on Custom CSS / workbench injection per this master and plan `jarvis_pro_recreation_a1985356`.
 - Produced on disk under `C:\PS2Recomp\jarvis-cursor-ui\`:
   - `src/workbenchInject.js` (inject engine)
   - `media/inject/tokens.css` (token system)
-  - `media/inject/boot.css` (calibrating splash sheet)
+  - `media/inject/boot.css` (Command Center PNG boot sheet + animated progress/bg)
   - `media/inject/hud.css` (HUD chrome sheet)
-  - `package.json` + `src/extension.js` (`jarvis.injection.enable` / disable / reenableAfterUpdate / healthCheck / status)
-- Boot asset: `media/reference-calibrating-splash.png`. Overlays forbidden. Studio YES / Active support OUT / three fail-safes locked in sibling docs.
+  - `package.json` + `src/extension.js` (`CORTANA.injection.enable` / disable / reenableAfterUpdate / healthCheck / status)
+- Boot asset (God lock rebuild): `media/reference-command-center-2.png` (same frame as `reference-command-center.png`), staged as `CORTANA-boot-splash.png`. Calibrating PNG = optional archive. Overlays forbidden. Studio YES / Active support OUT / three fail-safes locked.
 
 ### 2) Program Files install attempted
 - Install target (not a delivery folder):  
   `C:\Program Files\cursor\resources\app\out\vs\code\electron-sandbox\workbench\workbench.html`
-- Goal: patch workbench with marked JARVIS CSS + stage `jarvis-boot-splash.png` beside it.
+- Goal: patch workbench with marked CORTANA CSS + stage `CORTANA-boot-splash.png` beside it.
 
 ### 3) EACCES — Cursor was not elevated
-- Josh ran **JARVIS: Enable Workbench Injection** while logged in as an admin **account**, but the **Cursor process token was not elevated** (Medium integrity; Administrators group present as “deny only”).
+- Josh ran **CORTANA: Enable Workbench Injection** while logged in as an admin **account**, but the **Cursor process token was not elevated** (Medium integrity; Administrators group present as “deny only”).
 - Result: `EACCES: Cannot write Cursor workbench files under Program Files` — same message as soft-fail in `workbenchInject.js`.
 - Agent shell was also non-elevated (`SHELL_ADMIN=False`); could not write Program Files either.
 
 ### 4) Fix that unblocked Enable
 1. Quit **all** Cursor windows, **including the tray**.
 2. Right-click Cursor (`C:\Program Files\cursor\Cursor.exe` or Start Menu) → **Run as administrator** → UAC Yes.
-3. Re-run **JARVIS: Enable Workbench Injection**.
+3. Re-run **CORTANA: Enable Workbench Injection**.
 4. **Reload Window**.
-5. After that, workbench.html was observed patched (~44KB, JARVIS-INJECT-START/END, ~1:34 AM) with bak + splash present.
+5. After that, workbench.html was observed patched (~44KB, CORTANA-INJECT-START/END, ~1:34 AM) with bak + splash present.
 
 ### 5) Corrupt-install warning
 - Appeared (or expected) after sealed install files were modified.
@@ -50,7 +59,7 @@
 ### 6) Two Cursor windows conflict blocked workspace loading
 - Cursor session restore had been dual-tracking `C:\PS2Recomp` **and** `E:\PS2Recomp.code-workspace`, plus empty windows → second IDE / “cannot open any workspace” style failure.
 - Earlier mitigations: `window.restoreWindows: "one"`, `window.openFoldersInNewWindow: "off"`, restore trimmed toward one Recomp folder (`STARTUP-IDE-ONLY.md`).
-- After Enable, workspace-open failure was reported again; diagnose found inject HTML structurally closed (`</head>`, `workbench.js` present) and pristine `workbench.jarvis.*.bak.html` (~1824 B) available. **Restore was not applied** because pause was ordered — Josh owns whether to Disable/restore.
+- After Enable, workspace-open failure was reported again; diagnose found inject HTML structurally closed (`</head>`, `workbench.js` present) and pristine `workbench.CORTANA.*.bak.html` (~1824 B) available. **Restore was not applied** because pause was ordered — Josh owns whether to Disable/restore.
 
 ### 7) Name rule
 - **God** = team / account label (locks, God-as-builder, filenames such as `GOD-ADMIN-ENABLE.md`). Do **not** blanket-replace.
@@ -59,27 +68,33 @@
 - Do **not** rename files or folders for this.
 
 ### 8) Delivery folder abandoned
-- `C:\PS2Recomp\jarvis-phase6-delivery` was created briefly as a copy-paste drop, then **abandoned and deleted**.
+- `C:\PS2Recomp\CORTANA-phase6-delivery` was created briefly as a copy-paste drop, then **abandoned and deleted**.
 - Install path remains Program Files Cursor + extension under `~\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0`.
 
-### 9) All work paused
-- Josh ordered: master session log + pause only; switching to JARVIS himself.
-- Diagnose / Program Files / name-update workers **stopped**. No new builds or installs until Josh resumes.
+### 9) Brief pause, then God rebuild
+- Josh briefly paused agents (~1:37 AM), then God ordered **full rebuild NOW** (~1:42 AM).
+- Workers **A–D** resumed: splash / HUD / themes / fail-safe+package. Fail-safes 1–3 remain LOCKED.
+
+### 10) Worker D fail-safe harden (rebuild)
+- Fixed reconcile status mismatch: engine now returns `disabled-due-to-update` / `health-fail` so extension notify + **Re-enable after verify** fires (was returning `auto-disabled` only).
+- Hardened CSS health probe (`CORTANA-HEALTH` needles), splash PNG required on Enable, ~60s soft re-probe.
+- Boot stage source locked to **`reference-command-center-2.png`** (real PNG; not CSS-only fallback).
 
 ### Current state snapshot
 
-| Piece | State at pause |
-|-------|----------------|
-| Phase 6 build (engine/tokens/boot/hud/commands) | Started and on disk in extension root |
-| Program Files inject | Attempted; after elevated Enable, `workbench.html` **patched** |
-| EACCES | Hit, then fixed via full quit + Run as administrator |
-| Corrupt warning | Expected |
-| Dual-window / workspace load | Conflicted; one-window settings applied; restore optional |
+| Piece | State |
+|-------|--------|
+| Phase 6 build (engine/tokens/boot/hud/commands) | On disk; A–C polishing CSS/themes; D packaging |
+| Program Files inject | May still be patched from earlier Admin Enable — Joshua owns Disable/re-Enable |
+| EACCES | Fixed via full quit + Run as administrator when writing Program Files |
+| Corrupt warning | Expected / accepted |
+| Dual-window / workspace load | Prefer Recomp folder only (`STARTUP-IDE-ONLY.md`) |
 | Delivery folder | Abandoned / gone |
-| Agents | Paused |
+| Agents | **Rebuild LIVE** (A–D) |
+| Package | Target **0.5.1** VSIX (Joshua Admin install) |
 
 ### If Josh needs emergency restore
-Admin Cursor → **JARVIS: Disable Workbench Injection**, or copy `workbench.jarvis.*.bak.html` over `workbench.html` in the workbench folder, then restart Cursor.
+Admin Cursor → **CORTANA: Disable Workbench Injection**, or copy `workbench.CORTANA.*.bak.html` over `workbench.html` in the workbench folder, then restart Cursor.
 
 ---
 
@@ -94,7 +109,8 @@ Admin Cursor → **JARVIS: Disable Workbench Injection**, or copy `workbench.jar
 | [`INJECTION-APPROACH.md`](./INJECTION-APPROACH.md) | Rank-1 inject audit; fail-safe outline; Cursor install facts |
 | [`VISUAL-SPEC-FROM-REFERENCE.md`](./VISUAL-SPEC-FROM-REFERENCE.md) | Pixel/UX from reference PNGs |
 | [`PALETTE-MARKETPLACE-VS-REFERENCE.md`](./PALETTE-MARKETPLACE-VS-REFERENCE.md) | Hybrid palette (PNG boot vs marketplace brand) |
-| [`MARKETPLACE-JARVIS-3D-EXTRACT.md`](./MARKETPLACE-JARVIS-3D-EXTRACT.md) | Pattern map + Studio matrix; copy patterns only |
+| [`MARKETPLACE-CORTANA-3D-EXTRACT.md`](./MARKETPLACE-CORTANA-3D-EXTRACT.md) | Pattern map + Studio matrix; copy patterns only |
+| [`REBUILD-STATUS.md`](./REBUILD-STATUS.md) | Worker A–D QA checklist for Joshua Admin Enable |
 | [`../README.md`](../README.md) | User-facing install, fail-safes, commands |
 
 ---
@@ -108,20 +124,20 @@ Admin Cursor → **JARVIS: Disable Workbench Injection**, or copy `workbench.jar
 | **3 — Ops HUD** | **Done** |
 | **4 — Session / focus / stream** | **Done** |
 | **5 — Presets + package** | **Done** |
-| **6 — Injection foundation** | **IN PROGRESS** — workbench inject **installed** (Program Files patched); HUD/Studio polish still open |
+| **6 — Injection foundation** | **REBUILD IN PROGRESS** — God resume; Workers A–D; inject engine + fail-safes locked; HUD/splash/themes polishing |
 
 ### Phase 6 sub-phases
 
 | Sub-phase | Intent | Checkpoint |
 |-----------|--------|------------|
-| **6.3.A Scaffold** | `workbenchInject.js`, `media/inject/{tokens,boot,hud}.css`, `jarvis.injection.*` settings/commands, `extension.js` gate | **Done** — synced to installed `0.5.0` |
-| **6.3.B Fail-safe 1** | Auto-disable on Cursor update (fingerprint) | Wired; fingerprint stored at enable |
-| **6.3.C Fail-safe 2** | Disable on patch/probe fail | Wired; markers present on disk |
-| **6.3.D Fail-safe 3** | Joshua-as-builder docs (**not** Active support) | Documented in README / this master |
-| **6.3.E Boot** | Full-bleed calibrating PNG → `bootMs` → reveal | **Installed** (`jarvis-boot-splash.png` staged); **QA pending** after reload |
-| **6.3.F HUD** | Inject CC regions; Studio YES (3D/anim/arc/tracking/…) | **Scaffold CSS injected** — Studio YES completeness still open |
-| **6.3.G Demote** | Webview not primary when inject on; no overlays | Partial (`fallbackWebview` false; setting enabled) |
-| **6.3.H Verify + package** | PNG QA, Studio checklist, fail-safe tests, VSIX | **Pending** |
+| **6.3.A Scaffold** | `workbenchInject.js`, `media/inject/{tokens,boot,hud}.css`, `CORTANA.injection.*` settings/commands, `extension.js` gate | **Done** — synced to installed `0.5.0` |
+| **6.3.B Fail-safe 1** | Auto-disable on Cursor update (fingerprint) | **Verified** — teardown + disable + notify; never auto-re-enable |
+| **6.3.C Fail-safe 2** | Disable on patch/probe fail | **Verified** — markers + `CORTANA-HEALTH` CSS probe + ~60s soft re-probe |
+| **6.3.D Fail-safe 3** | Joshua-as-builder docs (**not** Active support) | Documented — Admin Enable / reenableAfterUpdate only |
+| **6.3.E Boot** | Full-bleed **CC-2 PNG** → `bootMs` → reveal | Real PNG staged as `CORTANA-boot-splash.png`; **QA pending** (Joshua Admin) |
+| **6.3.F HUD** | Inject CC regions vs CC / CC-2; Studio YES | Worker B polishing — Studio YES completeness open |
+| **6.3.G Demote** | Webview not primary when inject on; no overlays | Partial (`fallbackWebview` false) |
+| **6.3.H Verify + package** | PNG QA, Studio checklist, fail-safe tests, VSIX | Worker D — **0.5.1** package path |
 | **6.3.J Title bar** | Custom `titleBarStyle` + inject CSS (chrome + top-corner icon styling) | **`window.titleBarStyle: custom` set** + hud.css titlebar rules injected |
 | **6.3.I Taskbar `.ico`** | Electron/app or shortcut icon replace | **OUT OF SCOPE for now** |
 
@@ -130,21 +146,24 @@ Admin Cursor → **JARVIS: Disable Workbench Injection**, or copy `workbench.jar
 
 ---
 
-## Visual targets (from reference PNGs)
+## Visual targets (from reference PNGs) — God rebuild
 
-**Primary boot / first-paint:** [`media/reference-calibrating-splash.png`](../media/reference-calibrating-splash.png) (638×480)
+**Primary boot / first-paint (LOCKED):**  
+[`media/reference-command-center-2.png`](../media/reference-command-center-2.png) (same frame family as [`reference-command-center.png`](../media/reference-command-center.png))
 
-- Full-bleed on IDE launch via **injection** (not a separate exe).
-- Copy stack: `J.A.R.V.I.S.` → `JUST A RATHER VERY INTELLIGENT SYSTEM` → `CALIBRATING` → `N%` → five step dots.
-- Charcoal void ≈ `#0E121A`; cyan bloom / ring / bar from splash samples (`#0FDEFF`–`#00f2ff` family).
-- Detail geometry, tokens, acceptance: [`VISUAL-SPEC-FROM-REFERENCE.md`](./VISUAL-SPEC-FROM-REFERENCE.md) §1.
+- Full-bleed on IDE launch via **injection** only (not a separate exe).
+- **Must be a real PNG** staged beside workbench as `CORTANA-boot-splash.png` — **not** a CSS-only calibrating fallback.
+- Engine Enable **fails** if the PNG cannot be staged.
+- Animated progress / parallax / fade timing: Worker A (`boot.css` + `CORTANA.injection.bootMs`).
+- **PAUSED:** false — rebuild resumed.
 
-**Post-boot Command Center chrome:**  
-[`media/reference-command-center.png`](../media/reference-command-center.png) + [`-2.png`](../media/reference-command-center-2.png) (1024×573)
+**Post-boot Command Center chrome:** same CC / CC-2 PNGs (1024×573)
 
 - Glass navy dashboard; left nav; SYSTEM STATUS · OPTIMAL; cyan clock; globe hero; Talk capsule; footer meta.
 - Injection must restyle the **entire Cursor window** (title bar, activity bar, sidebar, tabs, panel, status bar) — webview alone is insufficient.
-- Detail: visual-spec §2–§3.
+- Detail: visual-spec §2–§3; Worker B owns one-to-one HUD.
+
+**Legacy asset retained:** [`media/reference-calibrating-splash.png`](../media/reference-calibrating-splash.png) kept on disk for reference; **not** the Enable stage source under current God lock.
 
 **Overlays:** Forbidden (no floating / editor-wide overlay HUD).
 
@@ -167,7 +186,7 @@ God lock: every Studio-tier option **YES** on the local theme — unlocked, **no
 | 6 | **Realtime tracking** | Coding / energy / session metrics in HUD |
 | 7 | **30% optimized colors** | Calibrated palette; God “30%” vs stock Cursor contrast |
 | 8 | **Built-in HUD** | Injected Command Center chrome |
-| 9 | **Classic Jarvis theme + icon** | Classic color theme + icon theme |
+| 9 | **Classic CORTANA theme + icon** | Classic color theme + icon theme |
 | 10 | **Basic HUD** | Status strips, reactor, core chips |
 | 11 | **Arc + energy** | Reactor + energy readouts |
 | 12 | **EVERY studio option YES** | Full Studio column (below) |
@@ -198,22 +217,24 @@ Full module → inject map: [`GOD-REQUIREMENTS-PHASE6.md`](./GOD-REQUIREMENTS-PH
 
 | Surface | Prefer | Why |
 |---------|--------|-----|
-| **Boot / splash** | **Splash PNG samples** (`#0E121A`, `#0FDEFF`–`#00f2ff`, bar/ring/dots) | Pixel-match calibrating primary |
+| **Boot / splash** | **CC PNG samples** + cyan progress overlay (`#0E121A` / `#00f2ff` family) | Pixel-match Command Center boot still |
 | **Brand / product cyan** | **Marketplace** primary `#00d9ff` (and related brand tokens where not splash-locked) | Suit / theme / listing coherence |
 | **CC glass / Optimal green when matching refs** | **PNG / CC samples** | Screenshot match (muted teal-green, not neon `#00ff9f`) |
 
-Do **not** replace splash bloom cyan with marketplace `#00d9ff` if that softens the calibrating still. Dual vars OK (`--jarvis-cyan-brand` + bloom `--jarvis-cyan`).  
+Do **not** replace CC/boot bloom cyan with marketplace `#00d9ff` if that softens the boot still. Dual vars OK (`--CORTANA-cyan-brand` + bloom `--CORTANA-cyan`).  
 Detail table: [`PALETTE-MARKETPLACE-VS-REFERENCE.md`](./PALETTE-MARKETPLACE-VS-REFERENCE.md).
 
 ---
 
-## Three fail-safes (LOCKED)
+## Three fail-safes (LOCKED — never drop)
 
-1. **Auto-disable on update** — Cursor version/commit (fingerprint) change → teardown patch, disable, notify; **never** auto-re-enable.
-2. **Disable on patch detect** — Missing/corrupt markers or health-probe fail → teardown, disable, notify.
-3. **Joshua-as-builder / no outside-support gap** — Joshua owns Admin enable, integrity warning, rebuilds, re-enable after verify. **This is NOT marketplace “Active support.”** Do not rebrand fail-safe 3 as community/vendor support.
+1. **Auto-disable on update** — Cursor `product.json` version/commit + `vscode.version` fingerprint change → teardown patch, disable, notify (`disabled-due-to-update`); **never** auto-re-enable.
+2. **Disable on injection break** — Missing/corrupt markers, wrong uuid, missing `CORTANA-workbench-css`, or `CORTANA-HEALTH` / CSS needle probe fail (activate + ~60s soft re-probe) → teardown, disable, notify (`health-fail`).
+3. **Joshua-as-builder ownership** — Docs/commands for **Admin Enable**, **Re-enable Injection After Update** after verify. **NOT** marketplace Active support. Workers never elevate; Joshua alone writes Program Files.
 
 Integrity / “corrupt installation” warning: **accepted** — do **not** implement Fix Checksums; do **not** block Phase 6 on it.
+
+**Verify script:** `node scripts/verify-fail-safes.js` (wiring smoke).
 
 ---
 
@@ -226,10 +247,10 @@ Integrity / “corrupt installation” warning: **accepted** — do **not** impl
 | Module | `src/workbenchInject.js` |
 | CSS | Marked inline `<style>` from `media/inject/{tokens,boot,hud}.css` before `</head>` |
 | Third-party loader | **No runtime dependency** (be5invis / YUYUMOE / APC are research refs only) |
-| Default enabled | `jarvis.injection.enabled` = **false** until Joshua Enable (now **true** — installed) |
+| Default enabled | `CORTANA.injection.enabled` = **false** until Joshua Enable (now **true** — installed) |
 | CSP | CSS-first; do **not** strip Cursor CSP for CSS-only path |
 | Write ACL | Program Files → **Admin once** for Enable/Disable; soft-fail with clear message |
-| Commands | `jarvis.injection.enable` / `disable` / `reenableAfterUpdate` / `healthCheck` / `status` |
+| Commands | `CORTANA.injection.enable` / `disable` / `reenableAfterUpdate` / `healthCheck` / `status` |
 
 Audit detail: [`INJECTION-APPROACH.md`](./INJECTION-APPROACH.md).
 
@@ -253,11 +274,12 @@ Do **not** delete. Engine + CSS are live under Program Files inject; continue HU
 |------|------|
 | `src/workbenchInject.js` | Rank-1 inject engine (locate / backup / patch / teardown / fingerprint / health) |
 | `media/inject/tokens.css` | Calibrated / 30% palette CSS variables |
-| `media/inject/boot.css` | Calibrating splash cover |
+| `media/inject/boot.css` | CC PNG full-bleed + animated progress / particle bg |
 | `media/inject/hud.css` | Post-boot chrome hooks (scaffold; Studio YES HUD incomplete) |
-| `media/reference-calibrating-splash.png` | Boot asset (staged/copied on enable per inject engine) |
-| `package.json` → `jarvis.injection.*` | Settings: `enabled`, `bootMs`, `fallbackWebview` |
-| Commands | `jarvis.injection.enable` / `disable` / `reenableAfterUpdate` / `healthCheck` / `status` |
+| `media/reference-command-center-2.png` | Boot asset staged on Enable as `CORTANA-boot-splash.png` |
+| `media/reference-calibrating-splash.png` | Legacy calibrating still (retained; not Enable stage source) |
+| `package.json` → `CORTANA.injection.*` | Settings: `enabled`, `bootMs`, `fallbackWebview` |
+| Commands | `CORTANA.injection.enable` / `disable` / `reenableAfterUpdate` / `healthCheck` / `status` |
 | `src/extension.js` | Activate gate → reconcile; command wiring |
 
 Phases 1–5 modules remain: `suitModes`, `gitHud`, `threatHints`, `sessionCinema`, `workspacePresets`, `voiceBridge`, themes, Command Center webview (demoted / fallback).
@@ -266,9 +288,12 @@ Phases 1–5 modules remain: `suitModes`, `gitHud`, `threatHints`, `sessionCinem
 
 ## Boot on IDE launch
 
-- **Asset:** `reference-calibrating-splash.png` only (not command-center PNG as boot).
-- **Delivery:** Workbench injection on Cursor/IDE launch → full-bleed cover → hold `jarvis.injection.bootMs` (default 1200) → fade/reveal HUD.
-- **Not** a separate splash executable.
+- **Asset:** `reference-command-center-2.png` / `reference-command-center.png` (same frame) → staged `CORTANA-boot-splash.png`.
+- **PAUSED:** false — rebuild resumed (Worker A).
+- **Motion:** progress fill 0→100% + live % + stepped dots over `CORTANA.injection.bootMs`; navy particle / data-stream field behind/around PNG; fade into HUD after hold (~70% of `bootMs`).
+- **Delivery:** Workbench injection on Cursor/IDE launch → full-bleed PNG cover → fade/reveal HUD.
+- **Not** a separate splash executable; **not** CSS-only calibrating fallback as primary.
+- Calibrating PNG = optional archive only.
 - Corrupt warning after patch is expected UX.
 
 ---
@@ -277,10 +302,10 @@ Phases 1–5 modules remain: `suitModes`, `gitHud`, `threatHints`, `sessionCinem
 
 | Lock | Value |
 |------|--------|
-| **Primary product scope** | JARVIS inject / theme work targets the **Recomp folder IDE** session (`C:\PS2Recomp` / this extension workspace) |
+| **Primary product scope** | CORTANA inject / theme work targets the **Recomp folder IDE** session (`C:\PS2Recomp` / this extension workspace) |
 | **Document** | Treat Recomp Cursor window as the verify / Admin-enable / QA surface |
 | **One window** | `window.restoreWindows: "one"`; do **not** dual-restore `E:\PS2Recomp.code-workspace` + folder; no Startup-folder Cursor shortcuts |
-| **Splash** | Injection path only (`boot.css` / `jarvis.injection.*`) — never a separate splash exe or new window to show it |
+| **Splash** | Injection path only (`boot.css` / `CORTANA.injection.*`) — never a separate splash exe or new window to show it |
 | **Sibling note** | A sibling agent or other Cursor window **may apply settings** that affect user/global Cursor config; that does not expand product scope — still document and verify against **Recomp IDE** |
 
 Full write-up: [`STARTUP-IDE-ONLY.md`](./STARTUP-IDE-ONLY.md). Workers soft-fail on Admin; Joshua enables inject in the Recomp-scoped Admin session per [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md).
@@ -293,7 +318,7 @@ Full write-up: [`STARTUP-IDE-ONLY.md`](./STARTUP-IDE-ONLY.md). Workers soft-fail
 flowchart TB
   ext[extension.js]
   inject[workbenchInject Rank-1]
-  boot[boot splash calibrating PNG]
+  boot[boot splash CC PNG]
   hud[injected CC chrome]
   ext --> inject
   inject --> boot
@@ -309,7 +334,7 @@ flowchart TB
   voice[voiceBridge] --> hud
 ```
 
-Core idea: IDE launch → calibrating PNG via inject → Command Center chrome with Studio YES completeness. No overlay path. No Gumroad. No Active support.
+Core idea: IDE launch → Command Center PNG via inject (animated progress/bg) → CC chrome with Studio YES completeness. No overlay path. No Gumroad. No Active support.
 
 ---
 
@@ -326,18 +351,23 @@ Core idea: IDE launch → calibrating PNG via inject → Command Center chrome w
 
 ---
 
-## Continue checklist (paused — Joshua)
+## Continue checklist (rebuild LIVE — Joshua Admin gate)
 
 - [x] Cold-reopen this master + plan  
 - [x] Scaffold files still present (inventory above)  
 - [x] Admin Enable attempted / Program Files patched (see session log)  
+- [x] Fail-safe wiring verified (`scripts/verify-fail-safes.js`)  
+- [x] Worker A: CC-2 PNG stage path + animated progress/bg in `boot.css` (re-Enable to stage new PNG)  
 - [ ] Confirm IDE opens workspaces cleanly after elevation/restore if needed  
-- [ ] Boot splash matches calibrating PNG (QA)  
-- [ ] Fail-safes 1–2 behave on fake update / broken markers  
-- [ ] Continue **6.3.E QA → 6.3.F → 6.3.G → 6.3.H** when Joshua resumes  
+- [ ] Boot splash = **real CC-2 PNG** full-bleed (QA after Admin Enable / Reload)  
+- [ ] HUD one-to-one vs CC-2 (Worker B) + theme unison (Worker C)  
+- [ ] Fail-safes 1–2 behave on fake update / broken markers (manual QA)  
+- [ ] Install **0.5.1** VSIX / sync extension → Admin Enable per [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md)  
 - [ ] Leave taskbar `.ico` alone until 6.I reopened  
 - [ ] Keep Active support OUT; keep hybrid palette; keep Recomp IDE as verify scope  
 
+See also: [`REBUILD-STATUS.md`](./REBUILD-STATUS.md).
+
 ---
 
-*Master consolidate for cold reopen. Sibling docs remain authoritative detail; plan wins on lock conflicts. **PAUSED** — agents stopped; Joshua switching to JARVIS personally. Session log above is the night record.*
+*Master consolidate for cold reopen. Sibling docs remain authoritative detail; plan wins on lock conflicts. **REBUILD LIVE** — Workers A–D; fail-safes locked; Joshua owns Admin Enable.*

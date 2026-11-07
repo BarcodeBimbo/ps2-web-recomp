@@ -1,4 +1,4 @@
-# JARVIS workbench injection — approach audit (phase 6)
+# CORTANA workbench injection — approach audit (phase 6)
 
 **Date:** 2026-11-07  
 **Scope:** How to implement Custom CSS / workbench injection for Cursor on Windows inside `jarvis-cursor-ui`, with fail-safes.  
@@ -47,7 +47,7 @@ Upstream Custom CSS Loader already knows Cursor: it probes `workbench-apc-extens
 1. Resolves app root → `…/electron-sandbox/workbench/workbench.html` (fallback candidates like be5invis).
 2. On **Enable:** backup pristine HTML → insert **marked** inline `<style>` (+ later optional guarded `<script>` / boot CSS) before `</head>`.
 3. On **Disable / fail-safe:** restore from backup (or strip markers if backup missing).
-4. Persist `jarvis.injection.enabled`, Cursor `version`+`commit`, backup path, marker UUID in `globalState`.
+4. Persist `CORTANA.injection.enabled`, Cursor `version`+`commit`, backup path, marker UUID in `globalState`.
 
 **Why #1**
 
@@ -61,7 +61,7 @@ Upstream Custom CSS Loader already knows Cursor: it probes `workbench-apc-extens
 
 ### Rank 2 — CSS-only minimal patch (phase-6 scaffolding subset of Rank 1)
 
-Same as Rank 1 but **CSS-only** for the first shippable scaffold: markers + backup + fail-safes + boot splash via CSS (`#jarvis-boot` / body background using `file://` or data-URI / copied asset under `out/`). Defer DOM-mutating JS until Trusted Types strategy is decided.
+Same as Rank 1 but **CSS-only** for the first shippable scaffold: markers + backup + fail-safes + boot splash via CSS (`#CORTANA-boot` / body background using `file://` or data-URI / copied asset under `out/`). Defer DOM-mutating JS until Trusted Types strategy is decided.
 
 **Use when:** God wants safest first mechanical step before full HUD DOM.
 
@@ -91,8 +91,8 @@ Works technically; **fails** “extension owns auto-disable” and “God is the
 | File | Purpose |
 |------|---------|
 | `src/workbenchInject.js` | Locate HTML, backup/restore, patch/unpatch, version probe, health check |
-| `media/inject/jarvis-workbench.css` | Phase-6 scaffold CSS (markers, boot layer, minimal chrome hooks) |
-| `media/inject/jarvis-boot.css` (optional split) | Boot splash using `reference-command-center.png` |
+| `media/inject/CORTANA-workbench.css` | Phase-6 scaffold CSS (markers, boot layer, minimal chrome hooks) |
+| `media/inject/CORTANA-boot.css` (optional split) | Boot splash using `reference-command-center.png` |
 | `docs/INJECTION-APPROACH.md` | This audit (done) |
 
 ### Files to change (later in phase 6)
@@ -100,7 +100,7 @@ Works technically; **fails** “extension owns auto-disable” and “God is the
 | File | Change |
 |------|--------|
 | `src/extension.js` | On `activate`: call `workbenchInject.reconcileOnActivate(context)` — **never** auto-enable without God; auto-**disable** on version/marker fail |
-| `package.json` | Commands: `jarvis.injection.enable` / `disable` / `status`; settings: `jarvis.injection.enabled` (default false until Joshua enables) |
+| `package.json` | Commands: `CORTANA.injection.enable` / `disable` / `status`; settings: `CORTANA.injection.enabled` (default false until Joshua enables) |
 | `README.md` | Injection credits/risks, fail-safes, Admin note, corrupt-install warning, God-owns-rebuild |
 
 ### What to patch
@@ -114,10 +114,10 @@ C:\Program Files\cursor\resources\app\out\vs\code\electron-sandbox\workbench\wor
 **Patch shape (recommended):**
 
 ```html
-<!-- JARVIS-INJECT-START uuid=… cursorVersion=… cursorCommit=… -->
-<style id="jarvis-workbench-css">…inlined CSS…</style>
+<!-- CORTANA-INJECT-START uuid=… cursorVersion=… cursorCommit=… -->
+<style id="CORTANA-workbench-css">…inlined CSS…</style>
 <!-- optional later: boot/DOM helper script with Trusted Types plan -->
-<!-- JARVIS-INJECT-END -->
+<!-- CORTANA-INJECT-END -->
 ```
 
 Insert immediately before `</head>` (after stock CSS link).  
@@ -126,7 +126,7 @@ Insert immediately before `</head>` (after stock CSS link).
 **Backup:**
 
 ```
-workbench.jarvis.<uuid>.bak.html
+workbench.CORTANA.<uuid>.bak.html
 ```
 
 same directory; never overwrite a pristine backup with an already-patched file (classic Custom CSS bug).
@@ -149,13 +149,13 @@ Persist in `context.globalState` (and mirror key flags in settings for visibilit
 
 | Key | Meaning |
 |-----|---------|
-| `jarvis.injection.enabled` | User/God intent |
-| `jarvis.injection.active` | Patch currently on disk |
-| `jarvis.injection.cursorVersion` | e.g. `3.29.9` at last successful enable |
-| `jarvis.injection.cursorCommit` | `product.json` commit |
-| `jarvis.injection.backupUuid` | Backup filename token |
-| `jarvis.injection.markerUuid` | Marker in HTML |
-| `jarvis.injection.lastError` | Last disable reason |
+| `CORTANA.injection.enabled` | User/God intent |
+| `CORTANA.injection.active` | Patch currently on disk |
+| `CORTANA.injection.cursorVersion` | e.g. `3.29.9` at last successful enable |
+| `CORTANA.injection.cursorCommit` | `product.json` commit |
+| `CORTANA.injection.backupUuid` | Backup filename token |
+| `CORTANA.injection.markerUuid` | Marker in HTML |
+| `CORTANA.injection.lastError` | Last disable reason |
 
 ### Fail-safe (1) — Auto-disable on Cursor update
 
@@ -165,7 +165,7 @@ On every `activate` / `onStartupFinished`:
 2. If `enabled|active` and `(version, commit) !== stored` → **treat as update**:
    - Restore backup / strip markers.
    - Set `enabled=false`, `active=false`.
-   - One notification: “Cursor updated — JARVIS injection disabled. Re-enable after verify.”
+   - One notification: “Cursor updated — CORTANA injection disabled. Re-enable after verify.”
 3. Do **not** auto-re-enable (Joshua re-runs Enable after rebuild/verify).
 
 ### Fail-safe (2) — Disable on patch detection / health failure
@@ -175,7 +175,7 @@ On activate when `enabled`:
 1. Read `workbench.html`.
 2. **Missing markers** but `active` expected → update wipe or external restore → disable, clear state, notify.
 3. **Markers present but corrupted** (start without end, wrong uuid, CSS id missing) → restore backup, disable.
-4. **Optional runtime probe** (if JS inject later): look for `#jarvis-workbench-css` / expected DOM ids; if missing after reload → disable + restore.
+4. **Optional runtime probe** (if JS inject later): look for `#CORTANA-workbench-css` / expected DOM ids; if missing after reload → disable + restore.
 5. **Write failure** (EACCES) → leave disk alone, set not-active, prompt Admin re-run.
 
 ### Fail-safe (3) — God is the builder / no outside-support gap
@@ -231,11 +231,11 @@ reconcileOnActivate():
 
 2. **Inject host standard** — **LOCKED:** Rank 1 Custom CSS Loader / CSS Injector / Custom UI Style pattern (extension-owned `workbench.html` inline CSS). No third-party loader runtime dependency.
 
-3. **Default `jarvis.injection.enabled`** — **`false`** until Joshua runs Enable once.
+3. **Default `CORTANA.injection.enabled`** — **`false`** until Joshua runs Enable once.
 
 4. **CSP stripping** — Do **not** strip Cursor CSP for CSS-only phase 6.
 
-5. **Command Center webview** — Demote to optional fallback (`jarvis.injection.fallbackWebview` default false).
+5. **Command Center webview** — Demote to optional fallback (`CORTANA.injection.fallbackWebview` default false).
 
 6. **Admin elevation** — Soft-fail with clear message; Joshua runs Enable as Admin once if Program Files ACL blocks.
 

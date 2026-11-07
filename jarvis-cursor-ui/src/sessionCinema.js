@@ -1,6 +1,6 @@
 "use strict";
 
-const KEY = "jarvis.sessionState";
+const KEY = "CORTANA.sessionState";
 
 /**
  * @param {import("vscode").ExtensionContext} context

@@ -1,0 +1,228 @@
+<!-- JARVIS Command Center HUD — one-to-one vs reference-command-center.png -->
+<input type="checkbox" id="jarvis-focus-toggle" class="jcc-focus-check" aria-hidden="true"/>
+<label for="jarvis-focus-toggle" class="jcc-focus-fab" title="Restore JARVIS Command Center">◈ JARVIS HUD</label>
+<div id="jarvis-cc-hud" class="jarvis-cc-hud" data-jarvis-hud="1" aria-label="JARVIS Command Center">
+  <div class="jcc-particles" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+
+  <aside class="jcc-rail">
+    <div class="jcc-brand">
+      <div class="jcc-iris" aria-hidden="true">
+        <span class="jcc-iris-ring"></span>
+        <span class="jcc-iris-ring r2"></span>
+        <span class="jcc-iris-core"></span>
+      </div>
+      <div class="jcc-brand-text">
+        <div class="jcc-brand-title">JARVIS</div>
+        <div class="jcc-brand-sub">COMMAND CENTER</div>
+      </div>
+    </div>
+
+    <nav class="jcc-nav" aria-label="Command Center">
+      <a class="jcc-nav-item active" href="#" data-nav="home"><span class="jcc-nav-ico">◈</span>Command Center</a>
+      <a class="jcc-nav-item" href="#" data-nav="core"><span class="jcc-nav-ico">◉</span>AI Core</a>
+      <a class="jcc-nav-item" href="#" data-nav="agents"><span class="jcc-nav-ico">⬡</span>Agents</a>
+      <a class="jcc-nav-item" href="#" data-nav="tasks"><span class="jcc-nav-ico">▣</span>Tasks<span class="jcc-badge">3</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="calendar"><span class="jcc-nav-ico">▦</span>Calendar</a>
+      <a class="jcc-nav-item" href="#" data-nav="memory"><span class="jcc-nav-ico">◎</span>Memory</a>
+      <a class="jcc-nav-item" href="#" data-nav="conversations"><span class="jcc-nav-ico">☰</span>Conversations<span class="jcc-badge">12</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="knowledge"><span class="jcc-nav-ico">▤</span>Knowledge Base</a>
+      <a class="jcc-nav-item" href="#" data-nav="tools"><span class="jcc-nav-ico">⚙</span>Tools &amp; Skills<span class="jcc-badge">18</span></a>
+      <a class="jcc-nav-item" href="#" data-nav="workflows"><span class="jcc-nav-ico">⇄</span>Workflows</a>
+    </nav>
+
+    <div class="jcc-voice">
+      <div class="jcc-voice-lab">VOICE STATUS</div>
+      <div class="jcc-wave" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="jcc-listen">Listening…</div>
+      <button type="button" class="jcc-mic" title="Tap to Speak" aria-label="Tap to Speak">
+        <span class="jcc-mic-ring"></span>
+        <span class="jcc-mic-ring r2"></span>
+        <span class="jcc-mic-core">🎙</span>
+      </button>
+      <div class="jcc-mic-hint">Tap to Speak</div>
+    </div>
+
+    <label for="jarvis-focus-toggle" class="jcc-focus" id="jarvis-focus-mode" title="Focus Mode — reveal IDE editor">
+      <span class="jcc-focus-ico">⚡</span> Focus Mode
+    </label>
+  </aside>
+
+  <div class="jcc-main">
+    <header class="jcc-header">
+      <div class="jcc-status-pill">
+        <span class="jcc-status-dot"></span>
+        SYSTEM STATUS · OPTIMAL
+      </div>
+      <div class="jcc-clock-wrap">
+        <div class="jcc-date" id="jarvis-hud-date">Monday, 15 June 2026</div>
+        <div class="jcc-clock" id="jarvis-hud-clock">11:18:21 am</div>
+      </div>
+      <div class="jcc-header-tools">
+        <div class="jcc-search"><span>⌕</span> Search…</div>
+        <button type="button" class="jcc-icon-btn" title="Layout" aria-label="Layout">⊞</button>
+        <button type="button" class="jcc-icon-btn" title="Notifications" aria-label="Notifications">🔔</button>
+        <div class="jcc-operator">
+          <span class="jcc-op-av">OC</span>
+          <span>Operator Commander</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="jcc-grid">
+      <!-- Row 1 -->
+      <section class="jcc-panel jcc-overview">
+        <h2 class="jcc-panel-title">AI Core Overview</h2>
+        <ul class="jcc-ov-list">
+          <li><span class="jcc-ov-ico ok">◉</span><span class="jcc-ov-k">AI Core</span><span class="jcc-ov-v ok">Active</span></li>
+          <li><span class="jcc-ov-ico">◎</span><span class="jcc-ov-k">Memory</span><span class="jcc-ov-v cyan">3,380 stored</span></li>
+          <li><span class="jcc-ov-ico ok">🎙</span><span class="jcc-ov-k">Voice</span><span class="jcc-ov-v ok">Online</span></li>
+          <li><span class="jcc-ov-ico">⬡</span><span class="jcc-ov-k">Agents</span><span class="jcc-ov-v cyan">2 Running</span></li>
+          <li><span class="jcc-ov-ico">▣</span><span class="jcc-ov-k">LLMs</span><span class="jcc-ov-v cyan">4 Connected</span></li>
+          <li><span class="jcc-ov-ico ok">●</span><span class="jcc-ov-k">System</span><span class="jcc-ov-v ok">Optimal</span></li>
+        </ul>
+      </section>
+
+      <section class="jcc-panel jcc-hero">
+        <div class="jcc-globe" aria-hidden="true">
+          <div class="jcc-orbit o1"></div>
+          <div class="jcc-orbit o2"></div>
+          <div class="jcc-orbit o3"></div>
+          <svg class="jcc-globe-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="jccGlow" cx="50%" cy="45%" r="55%">
+                <stop offset="0%" stop-color="#4ad1f1" stop-opacity="0.55"/>
+                <stop offset="55%" stop-color="#00d4ff" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#020817" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="100" r="72" fill="url(#jccGlow)" stroke="rgba(0,212,255,0.35)" stroke-width="1"/>
+            <ellipse cx="100" cy="100" rx="72" ry="24" fill="none" stroke="rgba(0,212,255,0.28)" stroke-width="0.8"/>
+            <ellipse cx="100" cy="100" rx="72" ry="48" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="0.6"/>
+            <ellipse cx="100" cy="100" rx="24" ry="72" fill="none" stroke="rgba(0,212,255,0.28)" stroke-width="0.8"/>
+            <ellipse cx="100" cy="100" rx="48" ry="72" fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="0.6"/>
+            <g class="jcc-globe-dots" fill="#00f2ff">
+              <circle cx="100" cy="34" r="1.6"/><circle cx="132" cy="42" r="1.2"/>
+              <circle cx="158" cy="70" r="1.4"/><circle cx="168" cy="100" r="1.6"/>
+              <circle cx="158" cy="130" r="1.2"/><circle cx="132" cy="158" r="1.4"/>
+              <circle cx="100" cy="166" r="1.6"/><circle cx="68" cy="158" r="1.2"/>
+              <circle cx="42" cy="130" r="1.4"/><circle cx="32" cy="100" r="1.6"/>
+              <circle cx="42" cy="70" r="1.2"/><circle cx="68" cy="42" r="1.4"/>
+              <circle cx="118" cy="78" r="1"/><circle cx="82" cy="92" r="1"/>
+              <circle cx="110" cy="118" r="1.1"/><circle cx="78" cy="122" r="0.9"/>
+              <circle cx="100" cy="100" r="2.4" fill="#4ad1f1"/>
+            </g>
+          </svg>
+        </div>
+        <div class="jcc-hero-label">JARVIS AI CORE v3.0.0</div>
+      </section>
+
+      <section class="jcc-panel jcc-feed">
+        <h2 class="jcc-panel-title">Live Intelligence Feed</h2>
+        <div class="jcc-feed-list">
+          <article class="jcc-feed-item"><span class="jcc-tag info">INFO</span><div class="jcc-feed-body"><strong>Standing meeting in 12m</strong><span>Calendar · Strategy sync</span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag warn">WARN</span><div class="jcc-feed-body"><strong>GitHub PR review pending</strong><span>Repos · needs attention</span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag tip">TIP</span><div class="jcc-feed-body"><strong>Memory compaction suggested</strong><span>3,380 stored · optimize</span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag live">LIVE</span><div class="jcc-feed-body"><strong>CPU load nominal</strong><span>System monitor · 15%</span></div></article>
+          <article class="jcc-feed-item"><span class="jcc-tag info">INFO</span><div class="jcc-feed-body"><strong>Voice channel online</strong><span>Tap to Speak armed</span></div></article>
+        </div>
+      </section>
+
+      <!-- Row 2 -->
+      <section class="jcc-panel jcc-agents">
+        <h2 class="jcc-panel-title">Active Agents</h2>
+        <div class="jcc-agent-grid">
+          <div class="jcc-agent active"><div class="jcc-agent-h"><span class="jcc-agent-ico">&lt;/&gt;</span>Coding</div><div class="jcc-agent-st">Active</div><div class="jcc-mini-wave"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="jcc-agent active"><div class="jcc-agent-h"><span class="jcc-agent-ico">R</span>Research</div><div class="jcc-agent-st">Active</div><div class="jcc-mini-wave"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="jcc-agent"><div class="jcc-agent-h"><span class="jcc-agent-ico">M</span>Memory</div><div class="jcc-agent-st standby">Standby</div><div class="jcc-mini-wave dim"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="jcc-agent"><div class="jcc-agent-h"><span class="jcc-agent-ico">B</span>Browser</div><div class="jcc-agent-st standby">Standby</div><div class="jcc-mini-wave dim"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="jcc-agent"><div class="jcc-agent-h"><span class="jcc-agent-ico">T</span>Task</div><div class="jcc-agent-st standby">Standby</div><div class="jcc-mini-wave dim"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="jcc-agent"><div class="jcc-agent-h"><span class="jcc-agent-ico">S</span>System</div><div class="jcc-agent-st standby">Standby</div><div class="jcc-mini-wave dim"><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div>
+      </section>
+
+      <section class="jcc-panel jcc-timeline">
+        <h2 class="jcc-panel-title">Mission Timeline</h2>
+        <div class="jcc-tl">
+          <div class="jcc-tl-item done"><div class="jcc-tl-t">09:00 · Workspace indexed</div><div class="jcc-tl-m">Done · file map ready</div></div>
+          <div class="jcc-tl-item"><div class="jcc-tl-t">11:00 · Suit systems online</div><div class="jcc-tl-m">In progress · 62%</div><div class="jcc-tl-bar"><i style="width:62%"></i></div></div>
+          <div class="jcc-tl-item"><div class="jcc-tl-t">14:30 · Deep-work: Voice pipeline</div><div class="jcc-tl-m">Queued</div></div>
+          <div class="jcc-tl-item overdue"><div class="jcc-tl-t">16:00 · Executive briefing</div><div class="jcc-tl-m">Overdue · prepare capsule</div></div>
+        </div>
+      </section>
+
+      <section class="jcc-panel jcc-commands">
+        <h2 class="jcc-panel-title">Quick Commands</h2>
+        <div class="jcc-cmd-grid">
+          <button type="button" class="jcc-cmd">Start New Task</button>
+          <button type="button" class="jcc-cmd">Open Calendar</button>
+          <button type="button" class="jcc-cmd">Start Voice Chat</button>
+          <button type="button" class="jcc-cmd">Run Workflow</button>
+        </div>
+      </section>
+
+      <!-- Row 3 -->
+      <section class="jcc-panel jcc-monitor">
+        <h2 class="jcc-panel-title">System Monitor</h2>
+        <div class="jcc-gauges">
+          <div class="jcc-gauge" style="--p:15"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">15%</div><div class="jcc-gauge-lab">CPU</div></div>
+          <div class="jcc-gauge" style="--p:54"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">54%</div><div class="jcc-gauge-lab">RAM</div></div>
+          <div class="jcc-gauge" style="--p:40"><div class="jcc-gauge-ring"></div><div class="jcc-gauge-val">40%</div><div class="jcc-gauge-lab">Disk</div></div>
+        </div>
+      </section>
+
+      <section class="jcc-panel jcc-memory">
+        <h2 class="jcc-panel-title">Memory Insights</h2>
+        <div class="jcc-constellation" aria-hidden="true">
+          <span class="n n1"></span><span class="n n2"></span><span class="n n3"></span>
+          <span class="n n4"></span><span class="n n5"></span><span class="n n6"></span>
+          <span class="n n7"></span>
+          <svg viewBox="0 0 160 70" preserveAspectRatio="none"><path d="M20 50 L45 22 L80 35 L110 18 L140 40 M45 22 L80 35 L110 18 M80 35 L70 55 L110 48" fill="none" stroke="rgba(0,212,255,0.35)" stroke-width="1"/></svg>
+        </div>
+        <div class="jcc-mem-stats">
+          <div><strong>3,380</strong><span>Memories</span></div>
+          <div><strong>22</strong><span>Session Turns</span></div>
+          <div><strong>14</strong><span>Tool Calls</span></div>
+        </div>
+      </section>
+
+      <section class="jcc-panel jcc-llm">
+        <h2 class="jcc-panel-title">LLM Status</h2>
+        <div class="jcc-llm-grid">
+          <div class="jcc-llm-chip on"><span>Claude</span><em>Connected</em></div>
+          <div class="jcc-llm-chip on"><span>OpenAI</span><em>Connected</em></div>
+          <div class="jcc-llm-chip on"><span>Gemini</span><em>Connected</em></div>
+          <div class="jcc-llm-chip on"><span>Groq</span><em>Connected</em></div>
+          <div class="jcc-llm-chip"><span>OpenRouter</span><em>Not Linked</em></div>
+          <div class="jcc-llm-chip"><span>Ollama</span><em>Not Linked</em></div>
+          <div class="jcc-llm-chip"><span>Claude Code</span><em>Not Linked</em></div>
+          <div class="jcc-llm-chip on"><span>Cursor</span><em>Connected</em></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="jcc-footer">
+    <div class="jcc-footer-meta">
+      <div class="jcc-meta-chip"><span class="jcc-meta-k">Location</span><span class="jcc-meta-v">Local Host</span></div>
+      <div class="jcc-meta-chip"><span class="jcc-meta-k">Weather</span><span class="jcc-meta-v">28°C Overcast</span></div>
+      <div class="jcc-meta-chip"><span class="jcc-meta-k">Network</span><span class="jcc-meta-v ok">Excellent</span></div>
+    </div>
+    <button type="button" class="jcc-talk" id="jarvis-talk-cta" aria-label="Talk to JARVIS">
+      <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="jcc-talk-copy">
+        <strong>TALK TO JARVIS</strong>
+        <em>I am listening…</em>
+      </span>
+      <span class="jcc-talk-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    </button>
+    <button type="button" class="jcc-briefing" title="Executive Briefing">
+      <span class="jcc-play">▶</span> Executive Briefing
+    </button>
+    <div class="jcc-tech-line" aria-hidden="true"></div>
+  </footer>
+</div>

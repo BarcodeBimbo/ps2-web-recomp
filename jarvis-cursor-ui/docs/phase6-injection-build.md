@@ -6,7 +6,7 @@
 >
 > Do **not** launch Enable injection against Program Files while paused.
 >
-> **Resume / theme authority:** [`JARVIS-THEME-MASTER.md`](./JARVIS-THEME-MASTER.md)
+> **Resume / theme authority:** [`CORTANA-THEME-MASTER.md`](./CORTANA-THEME-MASTER.md)
 
 **Source of truth:** plan `jarvis_pro_recreation_a1985356` (Phases 1–5 completed; Phase 6 **PAUSED**). If this doc disagrees with the plan locks, **the plan wins**.
 
@@ -36,7 +36,7 @@
 6. **Real-time tracking** — coding / energy / session metrics
 7. **30% optimized colors** — calibrated palette; God “30%” vs stock Cursor contrast
 8. **Built-in HUD**
-9. **Classic Jarvis theme + icon theme**
+9. **Classic CORTANA theme + icon theme**
 10. **Basic HUD**
 11. **Arc reactor + energy**
 12. **EVERY Studio option = YES** (classic+icons, basic HUD/arc/energy, standard perf, Suit Modes, particles/arc/streams/glow, F.R.I.D.A.Y./TTS/sound, Session Cinema/Stream Pack/Focus Fortress, Threat/GitHUD/Dashboard, AI Companion/presets, multi-device N/A local, stream watermark optional local, seasonal suits)
@@ -45,7 +45,7 @@ See full Studio column map in [`GOD-REQUIREMENTS-PHASE6.md`](./GOD-REQUIREMENTS-
 
 ## Gap vs v0.4.0
 
-Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema`, `workspacePresets`, `voiceBridge`, themes, Command Center **webview**). Presentation is still activity-bar webview-first with an in-webview calibrating `#splash`. Injection scaffolding, workbench boot PNG cover, `jarvis.injection.*` settings, the three fail-safes, inject-path **3D/anim/arc/tracking/30% palette/Studio YES** completeness, and classic+icon finish on the inject path are **missing**. README still incorrectly names command-center PNG as boot — sync to plan. Do **not** add Active support.
+Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema`, `workspacePresets`, `voiceBridge`, themes, Command Center **webview**). Presentation is still activity-bar webview-first with an in-webview calibrating `#splash`. Injection scaffolding, workbench boot PNG cover, `CORTANA.injection.*` settings, the three fail-safes, inject-path **3D/anim/arc/tracking/30% palette/Studio YES** completeness, and classic+icon finish on the inject path are **missing**. README still incorrectly names command-center PNG as boot — sync to plan. Do **not** add Active support.
 
 ## Ordered sub-phases
 
@@ -70,7 +70,7 @@ Phases 1–5 modules exist (`suitModes`, `gitHud`, `threatHints`, `sessionCinema
 
 ## Scaffold status — **PAUSED** (safe checkpoint)
 
-Scaffold intact on disk; **Enable injection against Program Files is deferred** until Phase 6 resumes per [`JARVIS-THEME-MASTER.md`](./JARVIS-THEME-MASTER.md).
+Scaffold intact on disk; **Enable injection against Program Files is deferred** until Phase 6 resumes per [`CORTANA-THEME-MASTER.md`](./CORTANA-THEME-MASTER.md).
 
 **Workers do not elevate.** Admin Enable remains **God-only** when resumed — see [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md). Do **not** run Enable during this pause.
 
@@ -94,7 +94,7 @@ Scaffold intact on disk; **Enable injection against Program Files is deferred** 
 |----|--------|---------|
 | D1 | Boot asset | **Resolved** — calibrating splash |
 | D2 | Inject host | **Resolved** — Rank-1 Custom CSS Loader in-repo |
-| D3 | Legacy Command Center webview | Fallback only (`jarvis.injection.fallbackWebview` default false) |
+| D3 | Legacy Command Center webview | Fallback only (`CORTANA.injection.fallbackWebview` default false) |
 | D4 | Install-dir write / elevation | **LOCKED:** Workers soft-fail only; **Joshua runs Admin Enable manually** — see `GOD-ADMIN-ENABLE.md` |
 | D5 | Fingerprint | `vscode.version` + product.json version when readable (± workbench hash) |
 | D6 | Studio YES / no Gumroad | **Resolved** — full Studio column YES; unlocked locally |

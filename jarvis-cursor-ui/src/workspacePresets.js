@@ -4,7 +4,7 @@ const vscode = require("vscode");
 const { getSuit, setSuit } = require("./suitModes");
 const { getState, patchState } = require("./sessionCinema");
 
-const KEY = "jarvis.presets";
+const KEY = "CORTANA.presets";
 
 /** @param {import("vscode").ExtensionContext} context */
 function listPresets(context) {

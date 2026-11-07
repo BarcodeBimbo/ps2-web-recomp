@@ -1,17 +1,19 @@
-/* JARVIS — Calibrating boot cover (CSS-only first path)
-   Visual authority: media/reference-calibrating-splash.png
+/* JARVIS-HEALTH: tokens+boot+hud
+   JARVIS — Command Center boot cover (PNG-first)
+   Visual authority: media/reference-command-center-2.png
+   (same frame as media/reference-command-center.png)
+   Staged beside workbench.html as ./jarvis-boot-splash.png on enable.
 
-   TIMING (boot lifecycle):
-   - animation-duration: 1.8s (var --jarvis-boot-ms)
-   - 0% → 70% (~0–1.26s): full opacity cover held (calibrating cinema)
-   - 70% → 100% (~1.26–1.8s): fade out
+   TIMING (boot lifecycle — driven by --jarvis-boot-ms / jarvis.injection.bootMs):
+   - 0% → 70%: full opacity cover held; progress bar + % animate 0→100%
+   - 70% → 100%: fade out into injected HUD
    - animation-fill-mode: forwards → opacity:0; visibility:hidden; pointer-events:none
-   Engine may override with jarvis.injection.bootMs; keep selectors resilient.
 
    Layers:
-   1) PNG staged next to workbench.html as ./jarvis-boot-splash.png (preferred)
-   2) Pure-CSS J.A.R.V.I.S calibrating recreation as FALLBACK (#jarvis-boot-root /
-      body.jarvis-boot / ::after stack when PNG missing)
+   1) body base — navy field with slow data-stream drift (behind / peek under parallax)
+   2) body::before — full-bleed Command Center PNG cover + subtle parallax
+   3) body::after — particle wash + live progress bar + % + stepped dots
+   CSS-only calibrating recreation REMOVED — PNG is the splash.
 */
 
 /* ========== Shared keyframes ========== */
@@ -30,23 +32,55 @@
   }
 }
 
-@keyframes jarvis-boot-ring-spin {
-  to {
-    transform: rotate(360deg);
+@keyframes jarvis-boot-parallax {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.07) translate3d(-0.35%, 0.25%, 0);
+  }
+  100% {
+    transform: scale(1.05) translate3d(0.25%, -0.2%, 0);
   }
 }
 
-@keyframes jarvis-boot-dot-pulse {
-  0%,
-  100% {
-    box-shadow: var(--jarvis-reactor-glow-lo, 0 0 4px rgba(0, 242, 255, 0.45), 0 0 12px rgba(0, 212, 255, 0.22));
-    opacity: 1;
-    filter: brightness(1);
+@keyframes jarvis-boot-streams {
+  0% {
+    background-position:
+      center center,
+      0 0,
+      20% 30%,
+      70% 60%,
+      45% 80%,
+      center center;
   }
-  50% {
-    box-shadow: var(--jarvis-reactor-glow-hi, 0 0 8px rgba(0, 242, 255, 0.85), 0 0 22px rgba(0, 212, 255, 0.5));
-    opacity: 0.88;
-    filter: brightness(1.15);
+  100% {
+    background-position:
+      center center,
+      0 48px,
+      22% 28%,
+      68% 62%,
+      47% 78%,
+      center center;
+  }
+}
+
+/* Length (not % of viewport) so fill matches the track width */
+@property --jarvis-boot-bar-w {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes jarvis-boot-bar-grow {
+  0% {
+    --jarvis-boot-bar-w: 0px;
+  }
+  70% {
+    --jarvis-boot-bar-w: 420px;
+  }
+  100% {
+    --jarvis-boot-bar-w: 420px;
   }
 }
 
@@ -56,38 +90,127 @@
     filter: brightness(1);
   }
   50% {
-    filter: brightness(1.25);
+    filter: brightness(1.35);
   }
 }
 
-@keyframes jarvis-boot-title-bloom {
-  0%,
+@keyframes jarvis-boot-percent-text {
+  0% {
+    content: "0%";
+  }
+  7% {
+    content: "7%";
+  }
+  14% {
+    content: "14%";
+  }
+  21% {
+    content: "21%";
+  }
+  28% {
+    content: "28%";
+  }
+  35% {
+    content: "35%";
+  }
+  42% {
+    content: "42%";
+  }
+  49% {
+    content: "49%";
+  }
+  56% {
+    content: "56%";
+  }
+  63% {
+    content: "63%";
+  }
+  70% {
+    content: "70%";
+  }
+  77% {
+    content: "77%";
+  }
+  84% {
+    content: "84%";
+  }
+  91% {
+    content: "91%";
+  }
+  98%,
   100% {
-    text-shadow: var(--jarvis-text-glow, 0 0 10px rgba(0, 242, 255, 0.85), 0 0 28px rgba(0, 212, 255, 0.55));
-  }
-  50% {
-    text-shadow:
-      0 0 12px rgba(0, 242, 255, 1),
-      0 0 36px rgba(0, 212, 255, 0.75),
-      0 0 72px rgba(0, 212, 255, 0.4);
+    content: "100%";
   }
 }
 
-@keyframes jarvis-boot-pip-pulse {
+@keyframes jarvis-boot-pip-step {
   0%,
-  100% {
-    opacity: 1;
+  13% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-dot-off, #292d35),
+      -14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      0 0 0 0 var(--jarvis-dot-off, #292d35),
+      14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      28px 0 0 0 var(--jarvis-dot-off, #292d35);
   }
-  50% {
-    opacity: 0.65;
+  14%,
+  27% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      -14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      0 0 0 0 var(--jarvis-dot-off, #292d35),
+      14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+  }
+  28%,
+  41% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      0 0 0 0 var(--jarvis-dot-off, #292d35),
+      14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+  }
+  42%,
+  55% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      0 0 0 0 var(--jarvis-cyan, #00f2ff),
+      14px 0 0 0 var(--jarvis-dot-off, #292d35),
+      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+  }
+  56%,
+  69% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      0 0 0 0 var(--jarvis-cyan, #00f2ff),
+      14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      28px 0 0 0 var(--jarvis-dot-off, #292d35);
+  }
+  70%,
+  100% {
+    box-shadow:
+      -28px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      -14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      0 0 0 0 var(--jarvis-cyan, #00f2ff),
+      14px 0 0 0 var(--jarvis-cyan, #00f2ff),
+      28px 0 0 0 var(--jarvis-cyan, #00f2ff);
   }
 }
 
-/* ========== Full-bleed cover: body / workbench early paint ==========
-   This stylesheet is ONLY inlined when JARVIS injection is active, so
-   bare `body::before/::after` is correct. `.jarvis-inject` aliases kept
-   for optional future class hooks — engine does not require them.
-*/
+@keyframes jarvis-boot-bar-fill-width {
+  0% {
+    width: 0%;
+  }
+  70%,
+  100% {
+    width: 100%;
+  }
+}
+
+/* ========== Base navy field (behind PNG) ========== */
 
 body,
 body.jarvis-inject,
@@ -96,10 +219,32 @@ html.jarvis-inject body,
 html:has(#jarvis-workbench-css) body,
 .monaco-workbench,
 .monaco-workbench.jarvis-inject {
-  background-color: var(--jarvis-bg-deep, #0e121a) !important;
+  background-color: var(--jarvis-bg, #0b0e14) !important;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 40%, rgba(0, 212, 255, 0.07), transparent 70%),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 11px,
+      rgba(0, 242, 255, 0.035) 11px,
+      rgba(0, 242, 255, 0.035) 12px
+    ),
+    radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.14) 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 60%, rgba(15, 222, 255, 0.12) 0 1px, transparent 2px),
+    radial-gradient(circle at 45% 80%, rgba(0, 212, 255, 0.1) 0 1.5px, transparent 2.5px),
+    linear-gradient(160deg, #06090f 0%, #0b0e14 45%, #0a1520 100%);
+  background-size:
+    100% 100%,
+    100% 24px,
+    180px 180px,
+    220px 220px,
+    160px 160px,
+    100% 100%;
+  animation: jarvis-boot-streams var(--jarvis-boot-stream-ms, 4.8s) linear infinite;
 }
 
-/* Primary CSS cover — PNG preferred; dark void underneath */
+/* ========== PNG full-bleed cover ========== */
+
 body::before,
 body.jarvis-inject::before,
 body.jarvis-boot::before,
@@ -110,261 +255,111 @@ html:has(#jarvis-workbench-css) body::before,
   inset: 0;
   z-index: 2147483000;
   background-color: var(--jarvis-bg-deep, #0e121a);
-  background-image: url(./jarvis-boot-splash.png);
+  background-image: var(--jarvis-boot-splash, url(./jarvis-boot-splash.png));
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  animation: jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards;
+  transform-origin: 50% 42%;
+  animation:
+    jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards,
+    jarvis-boot-parallax calc(var(--jarvis-boot-ms, 1800ms) * 1.15) ease-in-out infinite;
   pointer-events: auto;
+  will-change: opacity, transform;
 }
 
-/* When PNG missing, ::before still paints void; ::after paints CSS fallback HUD */
+/* ========== Progress + particles overlay ==========
+   Not a fake calibrating splash — PNG remains the visual. */
+
 body::after,
 body.jarvis-inject::after,
 body.jarvis-boot::after,
 html:has(#jarvis-workbench-css) body::after {
-  content: "J.A.R.V.I.S.\A JUST A RATHER VERY INTELLIGENT SYSTEM";
-  white-space: pre;
+  content: "0%";
   position: fixed;
   inset: 0;
   z-index: 2147483001;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-bottom: 8vh;
+  justify-content: flex-end;
+  padding-bottom: max(48px, 7vh);
   box-sizing: border-box;
-  font-family: var(--jarvis-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
-  font-size: clamp(26px, 5vw, 48px);
-  font-weight: 700;
-  letter-spacing: var(--jarvis-tracking-wide, 0.28em);
-  color: var(--jarvis-cyan, #00f2ff);
+  font-family: var(--jarvis-font-mono, Consolas, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--jarvis-text-percent, #a8c0d0);
   text-align: center;
-  line-height: 1.15;
-  text-shadow: var(--jarvis-text-glow);
+  text-shadow: 0 0 8px rgba(0, 242, 255, 0.45);
+  pointer-events: none;
+  --jarvis-boot-bar-w: 0px;
+  background-image:
+    linear-gradient(
+      90deg,
+      var(--jarvis-cyan-soft, #0fdeff) 0%,
+      var(--jarvis-cyan, #00f2ff) 70%,
+      #7af0ff 100%
+    ),
+    linear-gradient(90deg, var(--jarvis-bar-track, #151626) 0 100%),
+    radial-gradient(circle, rgba(0, 242, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(15, 222, 255, 0.4) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 212, 255, 0.35) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(120, 230, 255, 0.25) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 242, 255, 0.2) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 212, 255, 0.3) 0 1px, transparent 2px),
+    linear-gradient(180deg, transparent 52%, rgba(6, 9, 15, 0.62) 100%);
+  background-repeat: no-repeat;
+  background-size:
+    min(var(--jarvis-boot-bar-w), 52vw) 3px,
+    min(420px, 52vw) 3px,
+    3px 3px,
+    2px 2px,
+    4px 4px,
+    2px 2px,
+    3px 3px,
+    2px 2px,
+    100% 100%;
+  background-position:
+    calc(50% - min(210px, 26vw)) calc(100% - 72px),
+    center calc(100% - 72px),
+    12% 22%,
+    78% 35%,
+    55% 18%,
+    30% 70%,
+    88% 62%,
+    18% 48%,
+    center center;
+  /* lifecycle owns opacity end-state; pulse runs only during hold via shorter composite —
+     use filter pulse so it does not fight lifecycle opacity */
   animation:
     jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards,
-    jarvis-boot-title-bloom 1.6s ease-in-out infinite;
-  /* Fallback remains visible if PNG 404 — void + text still read as splash. */
-  pointer-events: none;
-  background:
-    /* ring track */
-    radial-gradient(circle closest-side,
-      transparent 46px,
-      rgba(8, 100, 115, 0.35) 47px,
-      rgba(8, 100, 115, 0.35) 48px,
-      transparent 49px) center calc(50% + 4px) / 120px 120px no-repeat,
-    /* center dot */
-    radial-gradient(circle, var(--jarvis-cyan, #00f2ff) 0 3px, transparent 4px)
-      center calc(50% + 4px) / 12px 12px no-repeat,
-    /* progress track */
-    linear-gradient(90deg, var(--jarvis-bar-track, #151626) 0 100%)
-      center calc(50% + 118px) / min(282px, 44vw) 4px no-repeat,
-    /* progress fill ~33% */
-    linear-gradient(90deg, var(--jarvis-cyan-soft, #0fdeff) 0%, var(--jarvis-cyan, #00f2ff) 100%)
-      center calc(50% + 118px) / min(94px, 14.5vw) 4px no-repeat;
-  background-repeat: no-repeat;
+    jarvis-boot-bar-grow var(--jarvis-boot-ms, 1800ms) linear forwards,
+    jarvis-boot-bar-glow 1.1s ease-in-out infinite,
+    jarvis-boot-percent-text var(--jarvis-boot-ms, 1800ms) linear forwards;
+  will-change: opacity, filter;
 }
 
-/* ========== #jarvis-boot-root — engine may inject empty host ========== */
+/* ========== Optional #jarvis-boot-root (if engine adds host later) ========== */
 
 #jarvis-boot-root {
   position: fixed !important;
   inset: 0 !important;
   z-index: 2147483100 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
   margin: 0 !important;
-  padding: 0 16px 6vh !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   background-color: var(--jarvis-bg-deep, #0e121a) !important;
-  background-image: url(./jarvis-boot-splash.png);
+  background-image: var(--jarvis-boot-splash, url(./jarvis-boot-splash.png));
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  color: var(--jarvis-cyan, #00f2ff);
-  font-family: var(--jarvis-font-ui, "Segoe UI Condensed", sans-serif);
   animation: jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards;
   pointer-events: auto;
 }
 
-/* :empty host — CSS recreation when engine leaves root empty / PNG fails */
-#jarvis-boot-root:empty::before {
-  content: "J.A.R.V.I.S.";
-  display: block;
-  font-family: var(--jarvis-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
-  font-size: clamp(28px, 5.5vw, 52px);
-  font-weight: 700;
-  letter-spacing: var(--jarvis-tracking-wide, 0.28em);
-  color: var(--jarvis-cyan, #00f2ff);
-  text-shadow: var(--jarvis-text-glow);
-  animation: jarvis-boot-title-bloom 1.6s ease-in-out infinite;
-  text-align: center;
-  margin-bottom: 0.35em;
-}
-
-#jarvis-boot-root:empty::after {
-  /* Tagline + CALIBRATING + 33% + pip row via multi-line content.
-     Ring/bar geometry lives on .jarvis-boot-stack when engine adds children. */
-  content: "JUST A RATHER VERY INTELLIGENT SYSTEM\A\A CALIBRATING\A\A 33%\A\A ■ ■ □ □ □";
-  white-space: pre;
-  display: block;
-  font-family: var(--jarvis-font-ui, "Segoe UI Condensed", sans-serif);
-  font-size: clamp(8px, 1.4vw, 11px);
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  color: var(--jarvis-subtitle, #464950);
-  text-align: center;
-  text-shadow: none;
-  line-height: 1.8;
-  width: min(360px, 80vw);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* Structured fallback (engine or future DOM) — preferred pure-CSS recreation */
-#jarvis-boot-root .jarvis-boot-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  text-align: center;
-  /* Sit above PNG if both present; when PNG covers full bleed, stack can be hidden by engine */
-}
-
-#jarvis-boot-root .jarvis-boot-title {
-  font-family: var(--jarvis-font-display, "Segoe UI Condensed", "Arial Narrow", sans-serif);
-  font-size: clamp(28px, 5.5vw, 52px);
-  font-weight: 700;
-  letter-spacing: var(--jarvis-tracking-wide, 0.28em);
-  color: var(--jarvis-cyan, #00f2ff);
-  text-shadow: var(--jarvis-text-glow);
-  animation: jarvis-boot-title-bloom 1.6s ease-in-out infinite;
-  margin: 0 0 0.4em;
-  line-height: 1.1;
-}
-
-#jarvis-boot-root .jarvis-boot-tagline {
-  font-family: var(--jarvis-font-ui, "Segoe UI Condensed", sans-serif);
-  font-size: clamp(8px, 1.35vw, 11px);
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--jarvis-subtitle, #464950);
-  margin: 0 0 1.6em;
-}
-
-#jarvis-boot-root .jarvis-boot-ring {
-  position: relative;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(8, 100, 115, 0.45);
-  box-sizing: border-box;
-  margin: 0 0 1.25em;
-}
-
-#jarvis-boot-root .jarvis-boot-ring::before {
-  content: "";
-  position: absolute;
-  inset: -1.5px;
-  border-radius: 50%;
-  border: 1.5px solid transparent;
-  border-top-color: var(--jarvis-cyan, #00f2ff);
-  border-right-color: var(--jarvis-cyan, #00f2ff);
-  box-shadow: var(--jarvis-reactor-glow-lo, var(--jarvis-glow-soft));
-  animation:
-    jarvis-boot-ring-spin 1.1s linear infinite,
-    jarvis-arc-reactor-pulse var(--jarvis-reactor-ms, 2.4s) ease-in-out infinite;
-}
-
-#jarvis-boot-root .jarvis-boot-ring::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  margin: -2.5px 0 0 -2.5px;
-  border-radius: 50%;
-  background: var(--jarvis-cyan-soft, #0fdeff);
-  animation: jarvis-boot-dot-pulse var(--jarvis-reactor-ms, 2.4s) ease-in-out infinite;
-}
-
-#jarvis-boot-root .jarvis-boot-status {
-  font-family: var(--jarvis-font-ui, "Segoe UI Condensed", sans-serif);
-  font-size: clamp(9px, 1.5vw, 12px);
-  font-weight: 500;
-  letter-spacing: var(--jarvis-tracking-cal, 0.4em);
-  text-transform: uppercase;
-  color: var(--jarvis-text-calibrating, #b9ebf4);
-  margin: 0 0 1.1em;
-}
-
-#jarvis-boot-root .jarvis-boot-bar {
-  position: relative;
-  width: min(282px, 44vw);
-  height: 4px;
-  border-radius: var(--jarvis-radius-pill, 999px);
-  background: var(--jarvis-bar-track, #151626);
-  overflow: hidden;
-  margin: 0 0 0.55em;
-}
-
-#jarvis-boot-root .jarvis-boot-bar::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 33%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #28caff 0%, var(--jarvis-cyan, #00f2ff) 100%);
-  box-shadow: var(--jarvis-reactor-glow-lo, var(--jarvis-glow-tight));
-  animation:
-    jarvis-boot-bar-glow 1.2s ease-in-out infinite,
-    jarvis-arc-reactor-pulse var(--jarvis-reactor-ms, 2.4s) ease-in-out infinite;
-}
-
-#jarvis-boot-root .jarvis-boot-percent {
-  font-family: var(--jarvis-font-mono, Consolas, monospace);
-  font-size: 10px;
-  color: var(--jarvis-text-percent, #656c73);
-  margin: 0 0 1.1em;
-  letter-spacing: 0.05em;
-}
-
-#jarvis-boot-root .jarvis-boot-pips {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  justify-content: center;
-}
-
-#jarvis-boot-root .jarvis-boot-pips span {
-  width: 6px;
-  height: 6px;
-  border-radius: 1px;
-  background: var(--jarvis-dot-off, #292d35);
-}
-
-#jarvis-boot-root .jarvis-boot-pips span:nth-child(-n + 2) {
-  background: var(--jarvis-cyan, #00f2ff);
-  box-shadow: var(--jarvis-reactor-glow-lo, var(--jarvis-glow-tight));
-  animation:
-    jarvis-boot-pip-pulse 1.3s ease-in-out infinite,
-    jarvis-arc-reactor-pulse var(--jarvis-reactor-ms, 2.4s) ease-in-out infinite;
-}
-
-/* When PNG is the cover, hide decorative CSS stack if marked */
-#jarvis-boot-root[data-splash="png"] .jarvis-boot-stack {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Suppress duplicate body::after title when dedicated boot root is present */
+body:has(#jarvis-boot-root)::before,
+body.jarvis-inject:has(#jarvis-boot-root)::before,
+body.jarvis-boot:has(#jarvis-boot-root)::before,
 body:has(#jarvis-boot-root)::after,
 body.jarvis-inject:has(#jarvis-boot-root)::after,
 body.jarvis-boot:has(#jarvis-boot-root)::after {
@@ -374,53 +369,61 @@ body.jarvis-boot:has(#jarvis-boot-root)::after {
   background: none !important;
 }
 
-body:has(#jarvis-boot-root)::before,
-body.jarvis-inject:has(#jarvis-boot-root)::before,
-body.jarvis-boot:has(#jarvis-boot-root)::before {
-  /* Root owns the cover; avoid double opaque layers */
-  content: none !important;
-  display: none !important;
-  animation: none !important;
-}
-
-/* ========== Standalone CSS fallback block (no DOM children required) ==========
-   Recreates ring / bar / pips as fixed layers when body has .jarvis-boot-css-fallback
-*/
-body.jarvis-boot-css-fallback::after {
-  /* extend title block with CALIBRATING cue via content */
-  content: "J.A.R.V.I.S.\A JUST A RATHER VERY INTELLIGENT SYSTEM\A\A CALIBRATING\A\A 33%";
-  font-size: clamp(22px, 4.5vw, 44px);
-  letter-spacing: 0.28em;
-  line-height: 1.35;
-}
-
-/* Fixed ring overlay for CSS-fallback mode */
-body.jarvis-boot-css-fallback .monaco-workbench::after,
-.monaco-workbench.jarvis-boot-css-fallback::after {
-  content: "";
-  position: fixed;
-  top: calc(50% - 12px);
+#jarvis-boot-root .jarvis-boot-progress {
+  position: absolute;
   left: 50%;
-  width: 58px;
-  height: 58px;
-  margin: -29px 0 0 -29px;
-  z-index: 2147483002;
-  border-radius: 50%;
-  border: 1.5px solid rgba(8, 100, 115, 0.4);
-  box-sizing: border-box;
-  box-shadow: inset 0 0 0 0 transparent;
+  bottom: max(36px, 5.5vh);
+  transform: translateX(-50%);
+  width: min(420px, 52vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
   pointer-events: none;
-  background:
-    conic-gradient(from 0deg, var(--jarvis-cyan, #00f2ff) 0 80deg, transparent 80deg),
-    radial-gradient(circle, var(--jarvis-cyan, #00f2ff) 0 2.5px, transparent 3px);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 1px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 1px));
-  animation:
-    jarvis-boot-ring-spin 1.1s linear infinite,
-    jarvis-boot-lifecycle var(--jarvis-boot-ms, 1800ms) ease-in-out forwards;
 }
 
-/* Pips + bar as box-shadows on a fixed workbench ::before companion — skip if inject ::before used */
-body.jarvis-boot-css-fallback #jarvis-boot-root .jarvis-boot-bar::before {
-  width: 33%;
+#jarvis-boot-root .jarvis-boot-bar {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  border-radius: var(--jarvis-radius-pill, 999px);
+  background: var(--jarvis-bar-track, #151626);
+  overflow: hidden;
+}
+
+#jarvis-boot-root .jarvis-boot-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--jarvis-cyan-soft, #0fdeff), var(--jarvis-cyan, #00f2ff));
+  box-shadow: var(--jarvis-reactor-glow-lo, var(--jarvis-glow-tight));
+  animation:
+    jarvis-boot-bar-fill-width var(--jarvis-boot-ms, 1800ms) linear forwards,
+    jarvis-boot-bar-glow 1.1s ease-in-out infinite;
+}
+
+#jarvis-boot-root .jarvis-boot-percent {
+  font-family: var(--jarvis-font-mono, Consolas, monospace);
+  font-size: 11px;
+  color: var(--jarvis-text-percent, #a8c0d0);
+  letter-spacing: 0.12em;
+}
+
+#jarvis-boot-root .jarvis-boot-percent::after {
+  content: "0%";
+  animation: jarvis-boot-percent-text var(--jarvis-boot-ms, 1800ms) linear forwards;
+}
+
+#jarvis-boot-root .jarvis-boot-pips {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--jarvis-cyan, #00f2ff);
+  margin-top: 4px;
+  animation: jarvis-boot-pip-step var(--jarvis-boot-ms, 1800ms) linear forwards;
 }

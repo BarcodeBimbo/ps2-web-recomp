@@ -17,7 +17,7 @@ async function openChat() {
       /* next */
     }
   }
-  vscode.window.showInformationMessage("Open Cursor Chat to talk to JARVIS.");
+  vscode.window.showInformationMessage("Open Cursor Chat to talk to CORTANA.");
   return false;
 }
 

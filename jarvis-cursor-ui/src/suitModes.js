@@ -8,7 +8,7 @@ const SUITS = [
   {
     id: "mark1",
     label: "Mark I",
-    theme: "JARVIS Mark I",
+    theme: "CORTANA Mark I",
     accent: "#00d9ff",
     accent2: "#4d9fff",
     bg: "#050d1a",
@@ -16,7 +16,7 @@ const SUITS = [
   {
     id: "mark50",
     label: "Mark 50",
-    theme: "JARVIS Mark 50",
+    theme: "CORTANA Mark 50",
     accent: "#7af0ff",
     accent2: "#e8f7ff",
     bg: "#040c18",
@@ -24,7 +24,7 @@ const SUITS = [
   {
     id: "endgame",
     label: "Endgame",
-    theme: "JARVIS Endgame",
+    theme: "CORTANA Endgame",
     accent: "#ffb020",
     accent2: "#ff4d4d",
     bg: "#120808",
@@ -32,14 +32,14 @@ const SUITS = [
   {
     id: "stealth",
     label: "Stealth",
-    theme: "JARVIS Stealth",
+    theme: "CORTANA Stealth",
     accent: "#6a9a8a",
     accent2: "#9ab8a8",
     bg: "#060a0a",
   },
 ];
 
-const KEY = "jarvis.suitMode";
+const KEY = "CORTANA.suitMode";
 
 function list() {
   return SUITS;
@@ -57,6 +57,8 @@ async function setSuit(context, id) {
   await context.globalState.update(KEY, suit.id);
   const cfg = vscode.workspace.getConfiguration();
   await cfg.update("workbench.colorTheme", suit.theme, vscode.ConfigurationTarget.Global);
+  await cfg.update("window.titleBarStyle", "custom", vscode.ConfigurationTarget.Global);
+  await cfg.update("workbench.sideBar.location", "left", vscode.ConfigurationTarget.Global);
   return suit;
 }
 
@@ -64,7 +66,7 @@ async function setSuit(context, id) {
 async function pickSuit(context) {
   const pick = await vscode.window.showQuickPick(
     SUITS.map((s) => ({ label: s.label, description: s.theme, id: s.id })),
-    { title: "JARVIS Suit Mode" }
+    { title: "CORTANA Suit Mode" }
   );
   if (!pick) return getSuit(context);
   return setSuit(context, pick.id);

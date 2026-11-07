@@ -4,7 +4,7 @@
 
 **Canonical plan:** `jarvis_pro_recreation_a1985356`  
 **Build mirror:** [`phase6-injection-build.md`](./phase6-injection-build.md)  
-**Marketplace extract / Studio→module map:** [`MARKETPLACE-JARVIS-3D-EXTRACT.md`](./MARKETPLACE-JARVIS-3D-EXTRACT.md) (§ GOD LOCKS)
+**Marketplace extract / Studio→module map:** [`MARKETPLACE-CORTANA-3D-EXTRACT.md`](./MARKETPLACE-CORTANA-3D-EXTRACT.md) (§ GOD LOCKS)
 
 If docs disagree, **the plan wins**; this file is the explicit God feature checklist for Phase 6.
 
@@ -33,7 +33,7 @@ If docs disagree, **the plan wins**; this file is the explicit God feature check
 | 6 | **Real-time tracking** | Coding / energy / session metrics live in HUD | YES |
 | 7 | **30% optimized colors** | Marketplace “optimized colors” / eye-strain claim → lock a **calibrated palette**; **“30%”** is God-dictated optimization target vs stock Cursor contrast | YES |
 | 8 | **Built-in HUD** | Command Center chrome injected into workbench (not overlay-only) | YES |
-| 9 | **Classic Jarvis theme + icon theme** | Classic JARVIS color theme + matching icon theme pack | YES |
+| 9 | **Classic CORTANA theme + icon theme** | Classic CORTANA color theme + matching icon theme pack | YES |
 | 10 | **Basic HUD** | Studio “basic HUD” tier present (status strips, reactor, core chips) | YES |
 | 11 | **Arc reactor + energy** | As on Studio / marketplace — reactor + energy readouts | YES |
 | 12 | **EVERY Studio option = YES** | Full Studio column mapped below — all YES on God's theme (local unlock) | YES |
@@ -76,8 +76,8 @@ Documented goals for cutting-edge parity (in-repo, God-owned):
 
 ## Color optimization lock (item 7)
 
-- Lock a calibrated JARVIS palette in `media/inject/tokens.css` (and theme JSON).
-- **“30% optimized colors”** = God-dictated marketing/engineering target: reduce eye-strain / improve contrast comfort ~30% vs stock Cursor defaults (measure via luminance/contrast checklist in visual QA; document baseline vs Jarvis tokens).
+- Lock a calibrated CORTANA palette in `media/inject/tokens.css` (and theme JSON).
+- **“30% optimized colors”** = God-dictated marketing/engineering target: reduce eye-strain / improve contrast comfort ~30% vs stock Cursor defaults (measure via luminance/contrast checklist in visual QA; document baseline vs CORTANA tokens).
 - Palette remains cyan/navy Command Center family; do not drift to unrelated themes.
 
 ---
@@ -109,9 +109,9 @@ Documented goals for cutting-edge parity (in-repo, God-owned):
 | Title bar HUD look | `"window.titleBarStyle": "custom"` + CSS on `.monaco-workbench .part.titlebar` / custom-titlebar nodes via `media/inject/hud.css` | **YES** — same workbench patch |
 | In-window appicon tint/size | CSS on `.window-appicon` (custom title bar only) | **YES** for style; bitmap swap still needs `.ico` |
 | Taskbar / pinned icon | Replace install icons under `C:\Program Files\cursor\resources\app\resources\win32\` (e.g. `code.ico`) and/or set shortcut `.ico`; `Cursor.exe` embeds the process icon | **Optional 6.I** — Admin, backup, restore on disable/update; **not** pure CSS |
-| Marketplace Custom CSS parallel | Their FAQ: `jarvis-3d-effects.css` + Loader + corrupt warning | Ours: extension-owned inject; accept corrupt warning; no third-party Loader |
+| Marketplace Custom CSS parallel | Their FAQ: `CORTANA-3d-effects.css` + Loader + corrupt warning | Ours: extension-owned inject; accept corrupt warning; no third-party Loader |
 
-Cross-ref detail: [`MARKETPLACE-JARVIS-3D-EXTRACT.md`](./MARKETPLACE-JARVIS-3D-EXTRACT.md) § GOD LOCKS.
+Cross-ref detail: [`MARKETPLACE-CORTANA-3D-EXTRACT.md`](./MARKETPLACE-CORTANA-3D-EXTRACT.md) § GOD LOCKS.
 
 ---
 

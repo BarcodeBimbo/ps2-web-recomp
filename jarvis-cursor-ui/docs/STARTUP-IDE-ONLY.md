@@ -1,6 +1,6 @@
 # Startup — IDE-only (no separate splash exe)
 
-Recomp / JARVIS boot is **Cursor IDE launch only**. There is **no** Windows Startup shortcut, **no** standalone Jarvis splash `.exe`, and **no** second process for the calibrating cover.
+Recomp / CORTANA boot is **Cursor IDE launch only**. There is **no** Windows Startup shortcut, **no** standalone CORTANA splash `.exe`, and **no** second process for the calibrating cover.
 
 ## Root cause (second IDE window)
 
@@ -25,22 +25,22 @@ If a second window still appears after an old session: close the extra window, l
 
 ## Calibrating splash (injection-scoped)
 
-Splash appears **inside** the Cursor workbench after **JARVIS: Enable Workbench Injection** (Admin once) + Reload:
+Splash appears **inside** the Cursor workbench after **CORTANA: Enable Workbench Injection** (Admin once) + Reload:
 
 | Piece | Role |
 |-------|------|
-| `media/inject/boot.css` | Full-bleed calibrating cover lifecycle (`--jarvis-boot-ms`) |
-| `media/reference-calibrating-splash.png` | Staged beside `workbench.html` as `jarvis-boot-splash.png` |
-| `jarvis.injection.bootMs` | Injected into CSS as `--jarvis-boot-ms` (User default **1200**) |
-| `jarvis.injection.enabled` | Left **`false`** until Joshua enables (do not force-enable without Admin) |
+| `media/inject/boot.css` | Full-bleed calibrating cover lifecycle (`--CORTANA-boot-ms`) |
+| `media/reference-calibrating-splash.png` | Staged beside `workbench.html` as `CORTANA-boot-splash.png` |
+| `CORTANA.injection.bootMs` | Injected into CSS as `--CORTANA-boot-ms` (User default **1200**) |
+| `CORTANA.injection.enabled` | Left **`false`** until Joshua enables (do not force-enable without Admin) |
 
 ### Joshua resume (when ready)
 
 1. Follow [`GOD-ADMIN-ENABLE.md`](GOD-ADMIN-ENABLE.md) (elevate Cursor once).
-2. Command Palette → **JARVIS: Enable Workbench Injection** → Reload.
+2. Command Palette → **CORTANA: Enable Workbench Injection** → Reload.
 3. Expect calibrating splash briefly, then navy/cyan HUD. Integrity warning is expected.
 
-Workers must **not** flip `jarvis.injection.enabled` to `true` or write under Program Files.
+Workers must **not** flip `CORTANA.injection.enabled` to `true` or write under Program Files.
 
 ## Chat / aux panel on launch
 

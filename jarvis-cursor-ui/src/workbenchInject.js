@@ -10,9 +10,9 @@
  * God-as-builder / local-owner rebuild: no third-party loader dependency.
  * CSP: CSS-first only; never strip Cursor Content-Security-Policy.
  *
- * Integrity / "corrupt installation" checksum warning: intentionally NOT fixed
- * here. God accepts the dialog; do not implement product.json checksum patching
- * and do not block enable/disable on it.
+ * Integrity / "corrupt installation" toast: suppressed by syncing
+ * product.json checksums[workbench.html] to SHA-256 (base64, no padding) of the
+ * on-disk workbench after Enable/Disable/restore. Inject behavior unchanged.
  */
 
 const fs = require("fs");
@@ -23,12 +23,16 @@ const vscode = require("vscode");
 
 const MARKER_START = "JARVIS-INJECT-START";
 const MARKER_END = "JARVIS-INJECT-END";
+const MARKER_HUD_START = "JARVIS-HUD-START";
+const MARKER_HUD_END = "JARVIS-HUD-END";
 const STYLE_ID = "jarvis-workbench-css";
 const BOOT_STAGED_NAME = "jarvis-boot-splash.png";
-const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
+/** Authoritative boot still: Command Center frame (same as reference-command-center.png). */
+const BOOT_SOURCE_REL = path.join("media", "reference-command-center-2.png");
+const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
 const GLOBAL_BACKUP_NAME = "workbench.jarvis.pristine.html";
 
-/** CSS inlined in this order (siblings own the files; missing → skip + warn). */
+/** CSS inlined in this order (Worker A owns boot.css; Worker B owns hud.css). */
 const CSS_REL_PATHS = [
   path.join("media", "inject", "tokens.css"),
   path.join("media", "inject", "boot.css"),
@@ -312,35 +316,52 @@ function parseMarkers(html) {
     /<!--\s*JARVIS-INJECT-START\s+uuid=([^\s]+)\s+cursorVersion=([^\s]+)\s+cursorCommit=([^\s>]*)\s*-->/;
   const endRe = /<!--\s*JARVIS-INJECT-END\s*-->/;
   const styleRe = /<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>/i;
+  const hudStartRe = /<!--\s*JARVIS-HUD-START\s+uuid=([^\s]+)\s*-->/;
+  const hudEndRe = /<!--\s*JARVIS-HUD-END\s*-->/;
 
   const startMatch = html.match(startRe);
   const endMatch = html.match(endRe);
   const styleMatch = html.match(styleRe);
+  const hudStartMatch = html.match(hudStartRe);
+  const hudEndMatch = html.match(hudEndRe);
 
   return {
     hasStart: Boolean(startMatch),
     hasEnd: Boolean(endMatch),
     hasStyle: Boolean(styleMatch),
+    hasHudStart: Boolean(hudStartMatch),
+    hasHudEnd: Boolean(hudEndMatch),
+    hasHudRoot: html.includes('id="jarvis-cc-hud"') || html.includes("id='jarvis-cc-hud'"),
     uuid: startMatch ? startMatch[1] : null,
+    hudUuid: hudStartMatch ? hudStartMatch[1] : null,
     cursorVersion: startMatch ? startMatch[2] : null,
     cursorCommit: startMatch ? (startMatch[3] || "") : null,
     startIndex: startMatch ? startMatch.index : -1,
     endIndex: endMatch ? endMatch.index : -1,
     startLen: startMatch ? startMatch[0].length : 0,
     endLen: endMatch ? endMatch[0].length : 0,
+    hudStartIndex: hudStartMatch ? hudStartMatch.index : -1,
+    hudEndIndex: hudEndMatch ? hudEndMatch.index : -1,
+    hudEndLen: hudEndMatch ? hudEndMatch[0].length : 0,
   };
 }
 
 function isAlreadyPatched(html) {
-  return html.includes(MARKER_START) || html.includes(`id="${STYLE_ID}"`) || html.includes(`id='${STYLE_ID}'`);
+  return (
+    html.includes(MARKER_START) ||
+    html.includes(MARKER_HUD_START) ||
+    html.includes(`id="${STYLE_ID}"`) ||
+    html.includes(`id='${STYLE_ID}'`) ||
+    html.includes('id="jarvis-cc-hud"')
+  );
 }
 
 /**
- * Fail-safe (2): missing/corrupt markers, start without end, wrong uuid, missing style id.
+ * Fail-safe (2): missing/corrupt markers, start without end, wrong uuid, missing style id / HUD.
  */
 function markersValid(html, expectedUuid) {
   const m = parseMarkers(html);
-  if (!m.hasStart && !m.hasEnd && !m.hasStyle) {
+  if (!m.hasStart && !m.hasEnd && !m.hasStyle && !m.hasHudStart && !m.hasHudEnd) {
     return { ok: false, reason: "markers missing", markers: m };
   }
   if (m.hasStart && !m.hasEnd) {
@@ -358,21 +379,101 @@ function markersValid(html, expectedUuid) {
   if (expectedUuid && m.uuid !== expectedUuid) {
     return { ok: false, reason: "wrong marker uuid", markers: m };
   }
+  if (m.hasHudStart || m.hasHudEnd || m.hasHudRoot) {
+    if (m.hasHudStart && !m.hasHudEnd) {
+      return { ok: false, reason: "HUD start marker without end", markers: m };
+    }
+    if (!m.hasHudStart && m.hasHudEnd) {
+      return { ok: false, reason: "HUD end marker without start", markers: m };
+    }
+    if (m.hasHudStart && m.hasHudEnd && m.hudStartIndex > m.hudEndIndex) {
+      return { ok: false, reason: "HUD marker order corrupt", markers: m };
+    }
+    if (!m.hasHudRoot) {
+      return { ok: false, reason: "missing jarvis-cc-hud root", markers: m };
+    }
+    if (expectedUuid && m.hudUuid && m.hudUuid !== expectedUuid) {
+      return { ok: false, reason: "wrong HUD marker uuid", markers: m };
+    }
+  } else {
+    return { ok: false, reason: "missing Command Center HUD markup", markers: m };
+  }
   return { ok: true, reason: "ok", markers: m };
 }
 
-function stripPatch(html) {
+/**
+ * Fail-safe (2) content probe: injected <style> must still carry sheet markers
+ * after sibling A–C CSS polish. Soft: only when a style block is present.
+ */
+const CSS_HEALTH_NEEDLES = [
+  "JARVIS-HEALTH",
+  "--jarvis-cyan",
+  "jarvis-boot",
+  "media/inject/hud.css",
+];
+
+function extractInjectedStyleCss(html) {
+  const styleRe = /<style\s+id=["']jarvis-workbench-css["']>([\s\S]*?)<\/style>/i;
+  const match = html.match(styleRe);
+  return match ? match[1] : "";
+}
+
+function probeInjectedCssHealth(html) {
+  const css = extractInjectedStyleCss(html);
+  if (!css) {
+    return { ok: false, reason: "empty injected style block", found: [] };
+  }
+  const found = [];
+  const missing = [];
+  for (const needle of CSS_HEALTH_NEEDLES) {
+    if (css.includes(needle)) {
+      found.push(needle);
+    } else {
+      missing.push(needle);
+    }
+  }
+  // Require health tag + at least boot + cyan token; HUD path comment is soft-preferred
+  const required = ["JARVIS-HEALTH", "--jarvis-cyan", "jarvis-boot"];
+  const missingRequired = required.filter((n) => !css.includes(n));
+  if (missingRequired.length) {
+    return {
+      ok: false,
+      reason: `missing CSS health needles: ${missingRequired.join(", ")}`,
+      found,
+      missing,
+    };
+  }
+  return { ok: true, reason: "ok", found, missing };
+}
+
+function stripHudMarkup(html) {
   const m = parseMarkers(html);
-  if (m.hasStart && m.hasEnd && m.startIndex <= m.endIndex) {
-    const from = m.startIndex;
-    const to = m.endIndex + m.endLen;
+  if (m.hasHudStart && m.hasHudEnd && m.hudStartIndex <= m.hudEndIndex) {
+    const from = m.hudStartIndex;
+    const to = m.hudEndIndex + m.hudEndLen;
     return `${html.slice(0, from)}${html.slice(to)}`.replace(/\n{3,}/g, "\n\n");
   }
   return html
-    .replace(/<!--\s*JARVIS-INJECT-START[\s\S]*?-->\s*/g, "")
-    .replace(/<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
-    .replace(/<!--\s*JARVIS-INJECT-END\s*-->\s*/g, "")
+    .replace(/<!--\s*JARVIS-HUD-START[\s\S]*?-->[\s\S]*?<!--\s*JARVIS-HUD-END\s*-->\s*/g, "")
+    .replace(/<script[^>]*id=["']jarvis-hud-clock-script["'][\s\S]*?<\/script>\s*/gi, "")
     .replace(/\n{3,}/g, "\n\n");
+}
+
+function stripPatch(html) {
+  let out = html;
+  const m = parseMarkers(out);
+  if (m.hasStart && m.hasEnd && m.startIndex <= m.endIndex) {
+    const from = m.startIndex;
+    const to = m.endIndex + m.endLen;
+    out = `${out.slice(0, from)}${out.slice(to)}`;
+  } else {
+    out = out
+      .replace(/<!--\s*JARVIS-INJECT-START[\s\S]*?-->\s*/g, "")
+      .replace(/<style\s+id=["']jarvis-workbench-css["'][\s\S]*?<\/style>\s*/gi, "")
+      .replace(/<!--\s*JARVIS-INJECT-END\s*-->\s*/g, "");
+  }
+  out = stripHudMarkup(out);
+  return out.replace(/\n{3,}/g, "\n\n");
 }
 
 function insertBeforeHeadClose(html, block) {
@@ -386,6 +487,17 @@ function insertBeforeHeadClose(html, block) {
   return `${before}${block}\n${after}`;
 }
 
+function insertBeforeBodyClose(html, block) {
+  const lower = html.toLowerCase();
+  const idx = lower.lastIndexOf("</body>");
+  if (idx === -1) {
+    throw new Error("workbench.html missing </body> — refusing to patch HUD");
+  }
+  const before = html.slice(0, idx).replace(/\s*$/, "\n");
+  const after = html.slice(idx);
+  return `${before}${block}\n${after}`;
+}
+
 function buildPatchBlock({ uuid, version, commit, css }) {
   return [
     `<!-- ${MARKER_START} uuid=${uuid} cursorVersion=${version} cursorCommit=${commit || ""} -->`,
@@ -393,6 +505,49 @@ function buildPatchBlock({ uuid, version, commit, css }) {
     css,
     `</style>`,
     `<!-- ${MARKER_END} -->`,
+  ].join("\n");
+}
+
+function formatHudClock(now = new Date()) {
+  const date = now.toLocaleDateString(undefined, {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const clock = now.toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+  return { date, clock };
+}
+
+async function readHudMarkup(context) {
+  const full = path.join(context.extensionUri.fsPath, HUD_MARKUP_REL);
+  let markup = await fsp.readFile(full, "utf8");
+  const { date, clock } = formatHudClock();
+  markup = markup
+    .replace(/>Monday, 15 June 2026</, `>${date}<`)
+    .replace(/>11:18:21 am</i, `>${clock}<`);
+  const clockScript = [
+    `<script id="jarvis-hud-clock-script">`,
+    `(function(){function t(){var d=new Date(),c=document.getElementById("jarvis-hud-clock"),a=document.getElementById("jarvis-hud-date");`,
+    `if(c)c.textContent=d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit",second:"2-digit",hour12:true});`,
+    `if(a)a.textContent=d.toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});}`,
+    `t();setInterval(t,1000);}());`,
+    `</script>`,
+  ].join("");
+  return { markup, clockScript };
+}
+
+function buildHudBlock({ uuid, markup, clockScript }) {
+  return [
+    `<!-- ${MARKER_HUD_START} uuid=${uuid} -->`,
+    markup.trim(),
+    clockScript,
+    `<!-- ${MARKER_HUD_END} -->`,
   ].join("\n");
 }
 
@@ -496,19 +651,15 @@ async function readCssBundle(context) {
 
   const bootMs = resolveBootMs();
 
-  // CSP img-src allows 'self' and data:. Prefer relative sibling next to workbench.
-  // Boot CSS uses bare body::before (sheet only present when patched) — bind URL there too.
-  // jarvis.injection.bootMs overrides tokens.css --jarvis-boot-ms for the calibrating cover.
+  // CSP img-src allows 'self' and data:. Stage PNG as sibling of workbench.html.
+  // Bind URL + bootMs via CSS vars only — boot.css composes PNG + progress + particle layers.
+  // Do NOT override background-image here (would wipe multi-layer boot.css stacks).
   parts.push(
     [
       "/* === jarvis staged splash binding === */",
       `:root {`,
       `  --jarvis-boot-splash: url(./${BOOT_STAGED_NAME});`,
       `  --jarvis-boot-ms: ${bootMs}ms;`,
-      `}`,
-      `body::before,`,
-      `#jarvis-boot, .jarvis-boot-splash, body.jarvis-booting, body.jarvis-inject::before, body.jarvis-boot::before {`,
-      `  background-image: var(--jarvis-boot-splash, url(./${BOOT_STAGED_NAME}));`,
       `}`,
     ].join("\n")
   );
@@ -684,10 +835,15 @@ async function reconcileOnActivate(context) {
         const msg = formatWriteError(err);
         await writeState(context, { enabled: false, active: false, lastError: msg });
         await mirrorEnabledSetting(false);
-        return { status: "auto-disabled", message: mismatchReason, restoreError: msg };
+        return {
+          status: "disabled-due-to-update",
+          message: mismatchReason,
+          restoreError: msg,
+        };
       }
       await clearInjectionState(context, mismatchReason);
-      return { status: "auto-disabled", message: mismatchReason };
+      // Fail-safe (1): never auto-re-enable — notify via extension Re-enable button
+      return { status: "disabled-due-to-update", message: mismatchReason };
     }
 
     // Fail-safe (2): corrupt / wrong-uuid / missing style while patch expected on disk
@@ -702,10 +858,26 @@ async function reconcileOnActivate(context) {
           const msg = formatWriteError(err);
           await writeState(context, { enabled: false, active: false, lastError: msg });
           await mirrorEnabledSetting(false);
-          return { status: "auto-disabled", message: reason, restoreError: msg };
+          return { status: "health-fail", message: reason, restoreError: msg };
         }
         await clearInjectionState(context, reason);
-        return { status: "auto-disabled", message: reason };
+        return { status: "health-fail", message: reason };
+      }
+
+      // CSS sheet probe: HUD/tokens health markers must survive A–C rebuilds
+      const styleProbe = probeInjectedCssHealth(html);
+      if (!styleProbe.ok) {
+        const reason = `Health probe failed: ${styleProbe.reason} — JARVIS injection disabled.`;
+        try {
+          await restoreWorkbenchHtml(context, loc.workbenchPath, state.backupUuid);
+        } catch (err) {
+          const msg = formatWriteError(err);
+          await writeState(context, { enabled: false, active: false, lastError: msg });
+          await mirrorEnabledSetting(false);
+          return { status: "health-fail", message: reason, restoreError: msg };
+        }
+        await clearInjectionState(context, reason);
+        return { status: "health-fail", message: reason };
       }
     }
 
@@ -718,7 +890,7 @@ async function reconcileOnActivate(context) {
         /* already missing */
       }
       await clearInjectionState(context, reason);
-      return { status: "auto-disabled", message: reason };
+      return { status: "health-fail", message: reason };
     }
   }
 
@@ -788,14 +960,43 @@ async function enable(context) {
     return { ok: false, message };
   }
 
+  // God lock: boot must be real PNG staged beside workbench — not CSS-only fallback.
   const splash = await stageBootSplash(context, loc.workbenchPath).catch((err) => ({
     ok: false,
     message: formatWriteError(err),
   }));
+  if (!splash || !splash.ok) {
+    const message =
+      (splash && splash.message) ||
+      "Boot splash PNG staging failed — Enable requires reference-command-center-2.png";
+    await writeState(context, { lastError: message, enabled: false, active: false });
+    await mirrorEnabledSetting(false);
+    return { ok: false, message };
+  }
 
   const { css, warnings } = await readCssBundle(context);
   if (!css.trim()) {
     const message = "No CSS available to inject (media/inject/*.css missing)";
+    await writeState(context, { lastError: message });
+    return { ok: false, message };
+  }
+  if (!css.includes("JARVIS-HEALTH")) {
+    const message =
+      "Inject CSS missing JARVIS-HEALTH marker (tokens.css / hud.css) — refusing Enable";
+    await writeState(context, { lastError: message });
+    return { ok: false, message };
+  }
+
+  let hudBundle;
+  try {
+    hudBundle = await readHudMarkup(context);
+  } catch (err) {
+    const message = `HUD markup missing (${HUD_MARKUP_REL.replace(/\\/g, "/")}): ${err.code || err.message}`;
+    await writeState(context, { lastError: message });
+    return { ok: false, message };
+  }
+  if (!hudBundle.markup || !hudBundle.markup.includes("jarvis-cc-hud")) {
+    const message = "HUD markup invalid — missing jarvis-cc-hud root";
     await writeState(context, { lastError: message });
     return { ok: false, message };
   }
@@ -806,10 +1007,16 @@ async function enable(context) {
     commit: fp.commit,
     css,
   });
+  const hudBlock = buildHudBlock({
+    uuid: markerUuid,
+    markup: hudBundle.markup,
+    clockScript: hudBundle.clockScript,
+  });
 
   let patched;
   try {
     patched = insertBeforeHeadClose(html, block);
+    patched = insertBeforeBodyClose(patched, hudBlock);
   } catch (err) {
     const message = err.message || String(err);
     await writeState(context, { lastError: message });
@@ -837,8 +1044,7 @@ async function enable(context) {
   }
 
   const warnText = warnings.length ? warnings.join("; ") : "";
-  const splashNote = splash && splash.ok ? "" : splash && splash.message ? ` splash: ${splash.message}` : "";
-  const lastError = [warnText, splashNote].filter(Boolean).join(" | ");
+  const lastError = warnText;
 
   await writeState(context, {
     enabled: true,
@@ -1038,6 +1244,11 @@ async function healthCheck(context) {
   if (state.active && !details.splash.present) {
     details.issues.push("active but jarvis-boot-splash.png not staged beside workbench");
   }
+  if (state.active && !details.splash.sourcePresent) {
+    details.issues.push("boot source PNG missing (reference-command-center-2.png)");
+  }
+
+  details.warnings = details.warnings || [];
 
   for (const rel of CSS_REL_PATHS) {
     const full = path.join(context.extensionUri.fsPath, rel);
@@ -1048,14 +1259,64 @@ async function healthCheck(context) {
     }
   }
 
+  const hudMarkupFull = path.join(context.extensionUri.fsPath, HUD_MARKUP_REL);
+  details.hudMarkup = {
+    path: HUD_MARKUP_REL.replace(/\\/g, "/"),
+    present: await pathExists(hudMarkupFull),
+    injected: Boolean(parseMarkers(html).hasHudRoot),
+  };
+  if (!details.hudMarkup.present) {
+    details.issues.push(`HUD markup missing: ${details.hudMarkup.path}`);
+  }
+  if (state.active && !details.hudMarkup.injected) {
+    details.issues.push("active but jarvis-cc-hud not present in workbench.html");
+  }
+
+  // Content probe against live workbench style + on-disk sheets
+  const styleProbe = probeInjectedCssHealth(html);
+  details.cssHealth = styleProbe;
+  if (state.active && isAlreadyPatched(html) && !styleProbe.ok) {
+    details.issues.push(`injected CSS health: ${styleProbe.reason}`);
+  }
+  for (const rel of CSS_REL_PATHS) {
+    const full = path.join(context.extensionUri.fsPath, rel);
+    if (!(await pathExists(full))) {
+      continue;
+    }
+    try {
+      const text = await fsp.readFile(full, "utf8");
+      const hasHealth = text.includes("JARVIS-HEALTH");
+      details.css.push({
+        path: `${rel.replace(/\\/g, "/")}:health`,
+        present: hasHealth,
+      });
+      if (!hasHealth) {
+        // boot.css is owned by Worker A and may briefly lack the comment while polishing;
+        // tokens/hud + injected-bundle probe remain the hard fail-safe (2) needles.
+        const msg = `CSS health marker missing in ${rel.replace(/\\/g, "/")}`;
+        if (rel.includes("boot.css")) {
+          details.warnings.push(msg);
+        } else {
+          details.issues.push(msg);
+        }
+      }
+    } catch {
+      /* ignore read */
+    }
+  }
+
   // Writable probe (non-destructive): access W_OK
+  // Non-Admin after a successful Enable is expected — warn only; do not fail health
+  // (periodic probe must not tear down a healthy patch just because ACL is read-only).
   try {
     await fsp.access(loc.workbenchPath, fs.constants.W_OK);
     details.writable = true;
   } catch {
     details.writable = false;
     if (state.enabled || state.active) {
-      details.issues.push("workbench.html not writable (Admin ACL required for Enable/Disable)");
+      details.warnings.push(
+        "workbench.html not writable (Admin ACL required for Enable/Disable writes)"
+      );
     }
   }
 

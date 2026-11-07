@@ -1,4 +1,4 @@
-# JARVIS Visual Spec (from reference imagery)
+# CORTANA Visual Spec (from reference imagery)
 
 **Purpose:** Pixel / UX target for the **injection build** (Custom CSS / workbench injection). Overlays are out of scope.
 
@@ -129,7 +129,7 @@ All major elements are **horizontally centered** on the canvas midline (`x ≈ 3
 
 ```
 ┌─ Title / brand strip ─────────────────────────────────────────────┐
-│ JARVIS COMMAND CENTER │ SYSTEM STATUS ● OPTIMAL │ clock │ search… │
+│ CORTANA COMMAND CENTER │ SYSTEM STATUS ● OPTIMAL │ clock │ search… │
 ├─ Left nav ──────┬─ Main dashboard grid ───────────────────────────┤
 │ Command Center  │ AI Core Overview │ Globe hero │ Live Feed        │
 │ AI Core         │ Active Agents    │ Timeline   │ Quick Commands   │
@@ -137,13 +137,13 @@ All major elements are **horizontally centered** on the canvas midline (`x ≈ 3
 │ Voice Status    │                                                     │
 │ Focus Mode      │                                                     │
 ├─────────────────┴─────────────────────────────────────────────────┤
-│ Location / Weather / Network │ TALK TO JARVIS capsule │ Briefing  │
+│ Location / Weather / Network │ TALK TO CORTANA capsule │ Briefing  │
 └───────────────────────────────────────────────────────────────────┘
 ```
 
 #### Left sidebar (nav + voice)
 
-- Header: **`JARVIS COMMAND CENTER`** + circular radar / globe icon (cyan pulse).
+- Header: **`CORTANA COMMAND CENTER`** + circular radar / globe icon (cyan pulse).
 - Vertical nav (reference labels):
   - Command Center *(active)*
   - AI Core
@@ -171,7 +171,7 @@ All major elements are **horizontally centered** on the canvas midline (`x ≈ 3
 | Region | Content cues |
 |--------|----------------|
 | AI Core Overview | Rows: AI Core Active, Memory count, Voice Online, Agents running, LLMs connected, System Optimal — tinted icons |
-| Center hero | 3D / wireframe globe + orbital rings; overlay **`JARVIS AI CORE v3.0.0`** |
+| Center hero | 3D / wireframe globe + orbital rings; overlay **`CORTANA AI CORE v3.0.0`** |
 | Live Intelligence Feed | Color-coded events (Info / Warn / Tip / Live / Urgent) |
 | Active Agents | Cards: Coding, Research, Memory, Browser, Task, System — mini waveforms + status |
 | Mission Timeline | Vertical nodes + cyan spine; tasks with progress |
@@ -184,7 +184,7 @@ All major elements are **horizontally centered** on the canvas midline (`x ≈ 3
 
 - Left meta: **Location**, **Weather** (e.g. `28°C Overcast`), **Network** (e.g. `Excellent`).
 - Center — primary CTA: wide **glowing capsule**  
-  **`TALK TO JARVIS`** + waveform + **`I am listening...`**
+  **`TALK TO CORTANA`** + waveform + **`I am listening...`**
   Heavy cyan outer bloom; darkest fill inside; dominant focal point of the chrome.
 - Right: **`Executive Briefing`** (or equivalent action) button.
 
@@ -218,21 +218,21 @@ Target is **workbench CSS injection** so the **entire Cursor window**, once past
 | **Breadcrumbs / editor widgets** | Same palette; cyan accents on focus |
 | **Panel** (terminal / problems) | Same glass + cyan active tab underline |
 | **Status Bar** | Remap toward **footer meta** strip (host / network / suit); darkest navy; cyan hover |
-| **Quick Input / Command Palette / Chat / Composer** | Restyle toward **Talk to JARVIS** capsule language (glow rim, cyan focus, dark fill) wherever injection allows |
+| **Quick Input / Command Palette / Chat / Composer** | Restyle toward **Talk to CORTANA** capsule language (glow rim, cyan focus, dark fill) wherever injection allows |
 | **Scrollbars, badges, progress** | Cyan accent tokens from theme JSON + injected CSS |
 | **Notifications** | Glass navy + cyan border |
 
 ### 3.2 Splash vs post-boot (injection sequence)
 
 1. **Boot / loading:** Full-window calibrating splash matching §1 (solid `#0E121A`, ring, bar, dots, copy). This is the **PRIMARY** visual for first paint / reload cinema — *not* a screenshot of the Command Center grid.
-2. **After calibrate:** Crossfade/hide splash → Command Center regions (§2) with **injected** activity bar / sidebar / editor / status bar already in JARVIS chrome so the IDE does not “flash” default theme.
+2. **After calibrate:** Crossfade/hide splash → Command Center regions (§2) with **injected** activity bar / sidebar / editor / status bar already in CORTANA chrome so the IDE does not “flash” default theme.
 3. Command Center **webview** supplies the dashboard grid + Talk bar content; **injection** supplies the surrounding IDE shell so the *window* matches the reference, not only the view.
 
 ### 3.3 Explicit non-goals
 
 - No floating editor overlays, no transparent HUD layers on top of unmodified chrome.
 - Do not treat “theme JSON alone” as sufficient for pixel match — **injection CSS is required** for activity bar geometry, Talk-bar glow, glass radii, and splash full-bleed.
-- Do not leave default blue/grey Cursor accents visible on activity bar, status bar, or tab strip when JARVIS suit is active.
+- Do not leave default blue/grey Cursor accents visible on activity bar, status bar, or tab strip when CORTANA suit is active.
 
 ---
 
@@ -255,14 +255,14 @@ Target is **workbench CSS injection** so the **entire Cursor window**, once past
 - [ ] `SYSTEM STATUS ● OPTIMAL` green pill visible
 - [ ] Cyan clock (date + time) in header
 - [ ] Glass cards with ~8–12px radius and 1px cyan-tint borders
-- [ ] Center AI Core globe / hero + `JARVIS AI CORE v…` treatment
+- [ ] Center AI Core globe / hero + `CORTANA AI CORE v…` treatment
 - [ ] Feed / agents / timeline / gauges / LLM grid recognizable vs reference regions
-- [ ] Bottom **Talk to JARVIS** capsule is the brightest glow on screen; listening subcopy present
+- [ ] Bottom **Talk to CORTANA** capsule is the brightest glow on screen; listening subcopy present
 - [ ] Footer meta (location / weather / network or IDE equivalents) flanking Talk bar
 
 ### Injection / IDE shell
 
-- [ ] Activity bar, sidebar, editor tabs, panel, status bar all use JARVIS navy/cyan — **no stock Cursor purple/grey strip**
+- [ ] Activity bar, sidebar, editor tabs, panel, status bar all use CORTANA navy/cyan — **no stock Cursor purple/grey strip**
 - [ ] Reload / cold start shows calibrating splash (§1) before CC
 - [ ] After load, full window matches reference composition language without overlay windows
 - [ ] Focus / hover / selection states use cyan wash, not default blue
