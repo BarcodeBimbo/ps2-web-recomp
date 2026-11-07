@@ -2,3 +2,4 @@
 [2026-11-07 18:53:49] W-CNK locks acquired pid=7596 web+native-b49f
 [2026-11-07 18:54:03] W-CNK ghidra switch=cnk_boot.elf decompiling 5032e0/110100/51c100
 [2026-11-07 18:54:19] W-CNK hunting SW to +0x20; vt108 callers
+[2026-11-07 18:56:30] W-CNK vt108 seq=502d20-then-lw+20; candidate intercept=0x503308

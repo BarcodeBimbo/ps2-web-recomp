@@ -7,3 +7,4 @@
 [2026-11-07 18:55:33] W-NFS-2 start: implement post-seek prefetch / concurrent fetches
 [2026-11-07 18:55:40] W-NFS-2 acquired web-60c82f4a lock pid=22752
 [2026-11-07 18:55:59] W-NFS-2 implementing host/web.cpp prefetch
+[2026-11-07 18:56:47] W-NFS-2 reading web.cpp; lock held; implementing deeper prefetch

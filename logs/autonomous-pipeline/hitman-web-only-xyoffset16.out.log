@@ -23,3 +23,9 @@ code 908116 instructions (3547 KiB), functions 7346, entries 100372, rejected se
 [12/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
 [13/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.o
 [14/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit_web.cpp.o
+[15/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/ipu/ipu.cpp.o
+[16/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gs.cpp.o
+[17/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/gif.cpp.o
+[18/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/queue.cpp.o
+[19/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/gs/raster.cpp.o
+[20/931] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/iop/cpu.cpp.o

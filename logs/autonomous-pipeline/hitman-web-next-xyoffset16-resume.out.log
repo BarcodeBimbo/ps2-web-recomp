@@ -7,3 +7,5 @@
 [6/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vif.cpp.o
 [7/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_micro.cpp.o
 [8/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit.cpp.o
+[9/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/vu_jit_web.cpp.o
+[10/926] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/ipu/ipu.cpp.o
