@@ -1,11 +1,10 @@
 /* CORTANA-HEALTH: tokens+boot+hud
-   JARVIS-HEALTH: tokens+boot+hud
-   J.A.R.V.I.S — calibrating boot splash (reference-identical)
+   CORTANA — calibrating boot splash (reference-identical)
    Visual authority: media/reference-calibrating-splash.png
-   Staged beside workbench.html as ./cortana-boot-splash.png (jarvis-boot-splash.png in legacy scripts)
+   Staged beside workbench.html as ./cortana-boot-splash.png on enable
    (BOOT_SOURCE = media/reference-calibrating-splash.png).
 
-   Brand: J.A.R.V.I.S on splash (CSS fallback + PNG cover).
+   Splash title C.O.R.T.A.N.A matches reference PNG lettering only; product name is Cortana.
    TIMING (--cortana-boot-ms / cortana.injection.bootMs):
    - 0% → 70%: cover held; bar + % + dots animate 0→100%
    - 70% → 100%: fade into injected HUD
@@ -77,7 +76,7 @@
   }
   70%,
   100% {
-    --cortana-boot-bar-w: 282px;
+    --cortana-boot-bar-w: min(282px, 52vw);
   }
 }
 
@@ -250,7 +249,7 @@ body.cortana-inject::before,
 body.cortana-boot::before,
 html:has(#cortana-workbench-css) body::before,
 .monaco-workbench.cortana-inject::before {
-  content: "J.A.R.V.I.S";
+  content: "C.O.R.T.A.N.A";
   position: fixed;
   inset: 0;
   z-index: 2147483000;

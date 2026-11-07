@@ -7,8 +7,8 @@
 > See **§ Session log (tonight)** below. Pristine workbench bak still available if Disable/restore is needed.
 
 **Authority:** God (team) · **Operator:** Joshua · **Date locked:** Nov 7, 2026  
-**Canonical plan:** `jarvis_pro_recreation_a1985356` (plan wins on lock conflicts).  
-**Extension root:** `C:\PS2Recomp\jarvis-cursor-ui` · **v0.5.1** · workbench inject markers may be present under Program Files (see session log) · **Admin Enable = Joshua only**
+**Canonical plan:** `cortana_pro_recreation_a1985356` (plan wins on lock conflicts).  
+**Extension root:** `C:\PS2Recomp\cortana-cursor-ui` · **v0.5.1** · workbench inject markers may be present under Program Files (see session log) · **Admin Enable = Joshua only**
 
 ### Workers (God rebuild NOW)
 
@@ -26,8 +26,8 @@
 **Written into this file for cold reopen.** Chronological record; **pause lifted** — God ordered rebuild resume (~1:42 AM).
 
 ### 1) Phase 6 injection build started
-- Work began on Custom CSS / workbench injection per this master and plan `jarvis_pro_recreation_a1985356`.
-- Produced on disk under `C:\PS2Recomp\jarvis-cursor-ui\`:
+- Work began on Custom CSS / workbench injection per this master and plan `cortana_pro_recreation_a1985356`.
+- Produced on disk under `C:\PS2Recomp\cortana-cursor-ui\`:
   - `src/workbenchInject.js` (inject engine)
   - `media/inject/tokens.css` (token system)
   - `media/inject/boot.css` (Command Center PNG boot sheet + animated progress/bg)
@@ -69,7 +69,7 @@
 
 ### 8) Delivery folder abandoned
 - `C:\PS2Recomp\CORTANA-phase6-delivery` was created briefly as a copy-paste drop, then **abandoned and deleted**.
-- Install path remains Program Files Cursor + extension under `~\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.0`.
+- Install path remains Program Files Cursor + extension under `~\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.0`.
 
 ### 9) Brief pause, then God rebuild
 - Josh briefly paused agents (~1:37 AM), then God ordered **full rebuild NOW** (~1:42 AM).
@@ -102,7 +102,7 @@ Admin Cursor → **CORTANA: Disable Workbench Injection**, or copy `workbench.CO
 
 | Doc | Role |
 |-----|------|
-| Plan `jarvis_pro_recreation_a1985356` | Phase status + Phase 6 ordered build; **wins on conflicts** |
+| Plan `cortana_pro_recreation_a1985356` | Phase status + Phase 6 ordered build; **wins on conflicts** |
 | [`GOD-REQUIREMENTS-PHASE6.md`](./GOD-REQUIREMENTS-PHASE6.md) | God YES checklist; Active support EXCLUDED; Studio column |
 | [`phase6-injection-build.md`](./phase6-injection-build.md) | Build mirror of Phase 6 sub-phases |
 | [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md) | God Admin enable steps (resume gate) |

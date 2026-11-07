@@ -1,7 +1,7 @@
 # CORTANA rebuild status — Admin Enable QA
 
 **When:** Nov 7, 2026 · God rebuild LIVE · Workers A–D  
-**Extension:** `C:\PS2Recomp\jarvis-cursor-ui` · package target **0.5.1**  
+**Extension:** `C:\PS2Recomp\cortana-cursor-ui` · package target **0.5.1**  
 **Operator:** Joshua (Admin Enable only — workers do not elevate)
 
 ## Fail-safes (Worker D — verified in code)
@@ -34,14 +34,14 @@ Smoke: `node scripts/verify-fail-safes.js`
 ### D — Inject engine + package
 - [x] Fail-safe wiring + notify status codes fixed
 - [x] PNG required on Enable; health probe + soft re-probe
-- [x] Ship `jarvis-cursor-ui-0.5.1.vsix` then **0.5.2** (checksum toast suppress)
+- [x] Ship `cortana-cursor-ui-0.5.1.vsix` then **0.5.2** (checksum toast suppress)
 - [ ] Joshua installs / syncs extension (not Program Files by agents)
 
 ## Joshua Admin Enable QA steps
 
 1. Install or sync **0.5.2** from  
-   `C:\PS2Recomp\jarvis-cursor-ui\jarvis-cursor-ui-0.5.2.vsix`  
-   (or copy tree into `%USERPROFILE%\.cursor\extensions\ps2recomp-local.jarvis-cursor-ui-0.5.2`).
+   `C:\PS2Recomp\cortana-cursor-ui\cortana-cursor-ui-0.5.2.vsix`  
+   (or copy tree into `%USERPROFILE%\.cursor\extensions\ps2recomp-local.cortana-cursor-ui-0.5.2`).
 2. Quit Cursor **including tray**.
 3. **Run Cursor as Administrator** → open `C:\PS2Recomp`.
 4. Command Palette → **CORTANA: Injection Health Check** (expect issues if not yet enabled).

@@ -611,7 +611,7 @@ body.CORTANA-inject {
   }
 }
 
-/* Subtle yaw + drift on photo cutout (baked JARVIS type stays readable — no full spin) */
+/* Subtle yaw + drift on photo cutout (baked CORTANA type stays readable — no full spin) */
 @keyframes cortana-globe-parallax {
   0%,
   100% {

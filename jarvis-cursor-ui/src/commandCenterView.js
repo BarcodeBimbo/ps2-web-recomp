@@ -17,7 +17,7 @@ function clampPct(n) {
 }
 
 /**
- * CORTANA Command Center — jarvis.institute layout + PRO feature modules (unlocked).
+ * CORTANA Command Center — cortana.institute layout + PRO feature modules (unlocked).
  */
 class CommandCenterViewProvider {
   /** @param {vscode.ExtensionContext} context @param {import("./fileMapProvider").FileMapProvider} fileMap */
@@ -162,7 +162,7 @@ class CommandCenterViewProvider {
       threats: this._threats,
       presets: listPresets(this.context),
       stats: snap.stats || {},
-      assistant: session.friday ? "F.R.I.D.A.Y." : "J.A.R.V.I.S.",
+      assistant: session.friday ? "F.R.I.D.A.Y." : "C.O.R.T.A.N.A.",
     };
   }
 
@@ -328,7 +328,7 @@ class CommandCenterViewProvider {
 <meta charset="UTF-8"/>
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src ${webview.cspSource} data:; script-src 'nonce-${nonce}';"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>J.A.R.V.I.S Command Center</title>
+<title>C.O.R.T.A.N.A Command Center</title>
 <style>
 :root {
   --bg: ${suit.bg};
@@ -363,7 +363,7 @@ canvas#fx {
 }
 .shell, #splash, .bottom, .cinema, .watermark { position: relative; z-index: 2; }
 
-/* splash — match jarvis.institute calibrating */
+/* splash — match cortana.institute calibrating */
 #splash {
   position: fixed; inset: 0; z-index: 40;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -692,7 +692,7 @@ body.mode-friday .brand::after { content: " · F.R.I.D.A.Y."; color: var(--cyan2
 </div>
 
 <div id="splash">
-  <div class="title">J.A.R.V.I.S</div>
+  <div class="title">C.O.R.T.A.N.A</div>
   <div class="sub">Just A Rather Very Intelligent System</div>
   <div class="ring"></div>
   <div class="cal">CALIBRATING</div>

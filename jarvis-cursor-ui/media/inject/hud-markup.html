@@ -1,19 +1,19 @@
 <!-- CORTANA Command Center HUD — one-to-one vs reference-command-center.png -->
 <!-- Content rule: no placeholder/dummy numbers or status. Real data, empty, or honest "—" / Awaiting data only. -->
 <input type="checkbox" id="cortana-focus-toggle" class="jcc-focus-check" aria-hidden="true"/>
-<label for="cortana-focus-toggle" class="jcc-focus-fab" title="Restore JARVIS Command Center">◈ JARVIS HUD</label>
-<div id="cortana-cc-hud" class="cortana-cc-hud" data-cortana-hud="1" data-cortana-wake="on" aria-label="JARVIS Command Center">
+<label for="cortana-focus-toggle" class="jcc-focus-fab" title="Restore CORTANA Command Center">◈ CORTANA HUD</label>
+<div id="cortana-cc-hud" class="cortana-cc-hud" data-cortana-hud="1" data-cortana-wake="on" aria-label="CORTANA Command Center">
   <div class="jcc-particles" aria-hidden="true">
     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
   </div>
 
   <aside class="jcc-rail">
-    <div class="jcc-brand" aria-label="JARVIS Command Center">
+    <div class="jcc-brand" aria-label="CORTANA Command Center">
       <!-- Pixel chrome: media/inject/cortana-topleft.png from reference-command-center-2.png -->
       <div class="jcc-brand-chrome" aria-hidden="true"></div>
       <div class="jcc-brand-text">
-        <div class="jcc-brand-title">JARVIS</div>
+        <div class="jcc-brand-title">CORTANA</div>
         <div class="jcc-brand-sub">COMMAND CENTER</div>
         <div class="jcc-brand-suite">OPERATOR SUITE</div>
       </div>
@@ -116,14 +116,14 @@
           </li>
           <li class="jcc-ov-row" data-row="system" data-tone="green">
             <span class="jcc-ov-k">System</span>
-            <span class="jcc-ov-v" id="cortana-ov-system" data-ov-live="system" data-tone="green">—</span>
+            <span class="jcc-ov-v" id="cortana-ov-system" data-ov-live="system" data-tone="green"></span>
           </li>
         </ul>
       </section>
 
       <section class="jcc-panel jcc-hero">
-        <!-- Authority cutout: reference-command-center-2.png globe (JARVIS/AI CORE baked in). No invented SVG. -->
-        <div class="jcc-globe jcc-globe-photo" role="img" aria-label="JARVIS AI CORE v3.0.0"></div>
+        <!-- Authority cutout: reference-command-center-2.png globe (reference lettering in photo; product label = CORTANA). No invented SVG. -->
+        <div class="jcc-globe jcc-globe-photo" role="img" aria-label="CORTANA AI CORE v3.0.0"></div>
       </section>
 
       <section class="jcc-panel jcc-feed">
@@ -131,6 +131,8 @@
           <h2 class="jcc-panel-title">Live Intelligence Feed</h2>
           <span class="jcc-feed-live" id="cortana-feed-live" hidden title="Armed when real events arrive"><i aria-hidden="true"></i>LIVE</span>
         </div>
+        <!-- Live rows: inject/JS only — never reference dummy copy. Shape:
+             <div class="jcc-feed-item"><span class="jcc-tag info">INFO</span><div class="jcc-feed-body"><strong>…</strong><span class="jcc-feed-meta" data-text="…"></span></div></div> -->
         <div class="jcc-feed-list" id="cortana-feed-list" data-state="empty">
           <p class="jcc-feed-empty">Awaiting data</p>
         </div>
@@ -256,15 +258,8 @@
       <section class="jcc-panel jcc-llm">
         <h2 class="jcc-panel-title">LLM Status</h2>
         <!-- Chips stamped at inject from media/inject/cursor-models.json (availableDefaultModels2). Empty until stamp. -->
-        <div class="jcc-llm-grid" id="cortana-llm-grid" data-jcc-llm-source="cursor-models.json" data-state="chrome">
-          <div class="jcc-llm-tile" data-provider="claude"><span class="jcc-llm-name">Claude</span><em class="jcc-llm-st">—</em></div>
-          <div class="jcc-llm-tile" data-provider="openai"><span class="jcc-llm-name">OpenAI</span><em class="jcc-llm-st">—</em></div>
-          <div class="jcc-llm-tile" data-provider="gemini"><span class="jcc-llm-name">Gemini</span><em class="jcc-llm-st">—</em></div>
-          <div class="jcc-llm-tile" data-provider="groq"><span class="jcc-llm-name">Groq</span><em class="jcc-llm-st">—</em></div>
-          <div class="jcc-llm-tile off" data-provider="openrouter"><span class="jcc-llm-name">OpenRouter</span><em class="jcc-llm-st">Not Linked</em></div>
-          <div class="jcc-llm-tile off" data-provider="ollama"><span class="jcc-llm-name">Ollama</span><em class="jcc-llm-st">Not Linked</em></div>
-          <div class="jcc-llm-tile off" data-provider="claude-code"><span class="jcc-llm-name">Claude Code</span><em class="jcc-llm-st">Not Linked</em></div>
-          <div class="jcc-llm-tile on" data-provider="cursor"><span class="jcc-llm-name">Cursor</span><em class="jcc-llm-st">Connected</em></div>
+        <div class="jcc-llm-grid" id="cortana-llm-grid" data-jcc-llm-source="cursor-models.json" data-state="empty">
+          <p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data</p>
         </div>
       </section>
     </div>
@@ -277,10 +272,10 @@
       <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">◉</span><span class="jcc-meta-line"><span class="jcc-meta-k">Network</span> <span class="jcc-meta-v" id="cortana-meta-net">—</span></span></div>
     </div>
     <div class="jcc-talk-wrap">
-      <button type="button" class="jcc-talk" id="cortana-talk-cta" data-cortana-voice data-cortana-action="voice" aria-label="Talk to JARVIS">
+      <button type="button" class="jcc-talk" id="cortana-talk-cta" data-cortana-voice data-cortana-action="voice" aria-label="Talk to CORTANA">
         <span class="jcc-talk-wave jcc-talk-wave-photo l" aria-hidden="true"></span>
         <span class="jcc-talk-copy">
-          <strong>TALK TO JARVIS</strong>
+          <strong>TALK TO CORTANA</strong>
           <em id="cortana-talk-hint">I am listening…</em>
         </span>
         <span class="jcc-talk-wave jcc-talk-wave-photo r" aria-hidden="true"></span>

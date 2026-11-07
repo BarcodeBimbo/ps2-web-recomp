@@ -20,6 +20,7 @@ const fsp = fs.promises;
 const path = require("path");
 const crypto = require("crypto");
 const os = require("os");
+const { spawnSync } = require("child_process");
 const vscode = require("vscode");
 
 const MARKER_START = "CORTANA-INJECT-START";
@@ -34,6 +35,10 @@ const BOOT_SOURCE_REL = path.join("media", "reference-calibrating-splash.png");
 const HERO_GLOBE_STAGED_NAME = "jcc-hero-globe.png";
 const HERO_GLOBE_SOURCE_REL = path.join("media", "inject", "jcc-hero-globe.png");
 const HUD_MARKUP_REL = path.join("media", "inject", "hud-markup.html");
+const CURSOR_MODELS_REL = path.join("media", "inject", "cursor-models.json");
+/** Cursor reactive storage key → availableDefaultModels2 (real picker catalog). */
+const CURSOR_APPUSER_DB_KEY =
+  "src.vs.platform.reactivestorage.browser.reactiveStorageServiceImpl.persistentStorage.applicationUser";
 const GLOBAL_BACKUP_NAME = "workbench.cortana.pristine.html";
 /** Cursor product.json checksums key for the patched workbench HTML. */
 const WORKBENCH_CHECKSUM_KEY = "vs/code/electron-sandbox/workbench/workbench.html";
@@ -624,6 +629,264 @@ function escapeHudText(s) {
     .replace(/"/g, "&quot;");
 }
 
+/** @typedef {{ id: string, label: string, defaultOn?: boolean, degradationStatus?: number, supportsAgent?: boolean }} CursorCatalogModel */
+
+/**
+ * Normalize catalog entries — never invent providers; only Cursor model ids from catalog source.
+ * @param {unknown[]} raw
+ * @returns {CursorCatalogModel[]}
+ */
+function normalizeCursorCatalogModels(raw) {
+  if (!Array.isArray(raw)) {
+    return [];
+  }
+  const seen = new Set();
+  const out = [];
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
+    const id = String(item.id || item.name || item.serverModelName || "").trim();
+    if (!id || seen.has(id)) {
+      continue;
+    }
+    seen.add(id);
+    const label = String(item.label || item.clientDisplayName || item.inputboxShortModelName || id).trim();
+    out.push({
+      id,
+      label: label || id,
+      defaultOn: Boolean(item.defaultOn),
+      degradationStatus: Number(item.degradationStatus) || 0,
+      supportsAgent: Boolean(item.supportsAgent),
+    });
+  }
+  return out;
+}
+
+function cursorStateDbPath() {
+  const appData = process.env.APPDATA || process.env.HOME || "";
+  if (!appData) {
+    return "";
+  }
+  return path.join(appData, "Cursor", "User", "globalStorage", "state.vscdb");
+}
+
+/**
+ * Pull availableDefaultModels2 from live Cursor state.vscdb when sqlite3 CLI is available.
+ * Soft-fail → bundled media/inject/cursor-models.json.
+ */
+async function tryReadModelsFromStateVscdb() {
+  const dbPath = cursorStateDbPath();
+  if (!dbPath || !(await pathExists(dbPath))) {
+    return null;
+  }
+  const sqlite3 = spawnSync("sqlite3", ["-version"], { encoding: "utf8", timeout: 4000 });
+  if (sqlite3.error || sqlite3.status !== 0) {
+    return null;
+  }
+  const py = spawnSync(
+    process.platform === "win32" ? "python" : "python3",
+    ["-c", `import json,sqlite3,os;db=os.path.join(os.environ.get('APPDATA',''),'Cursor','User','globalStorage','state.vscdb');con=sqlite3.connect('file:'+db+'?mode=ro',uri=True);raw=con.execute('SELECT value FROM ItemTable WHERE key=?',(${JSON.stringify(CURSOR_APPUSER_DB_KEY)},)).fetchone()[0];data=json.loads(raw);models=data.get('availableDefaultModels2') or [];out=[]
+for m in models:
+ out.append({'id':m.get('name') or m.get('serverModelName') or '','label':m.get('clientDisplayName') or m.get('inputboxShortModelName') or (m.get('name') or ''),'defaultOn':bool(m.get('defaultOn')),'degradationStatus':int(m.get('degradationStatus') or 0),'supportsAgent':bool(m.get('supportsAgent'))})
+print(json.dumps({'source':'state.vscdb availableDefaultModels2','models':out}))`],
+    { encoding: "utf8", timeout: 20000, windowsHide: true }
+  );
+  if (py.error || py.status !== 0 || !py.stdout) {
+    return null;
+  }
+  try {
+    const parsed = JSON.parse(py.stdout.trim());
+    const models = normalizeCursorCatalogModels(parsed.models);
+    if (!models.length) {
+      return null;
+    }
+    return {
+      source: parsed.source || "state.vscdb availableDefaultModels2",
+      syncedAt: new Date().toISOString(),
+      models,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Load real Cursor model catalog for LLM Status stamping (never hardcoded provider tiles).
+ * @param {import("vscode").ExtensionContext} context
+ */
+async function loadCursorModelCatalog(context) {
+  const live = await tryReadModelsFromStateVscdb();
+  if (live && live.models.length) {
+    return live;
+  }
+  const jsonPath = path.join(context.extensionUri.fsPath, CURSOR_MODELS_REL);
+  try {
+    const raw = JSON.parse(await fsp.readFile(jsonPath, "utf8"));
+    const models = normalizeCursorCatalogModels(raw.models);
+    return {
+      source: raw.source || "media/inject/cursor-models.json",
+      syncedAt: raw.syncedAt || raw.syncedFrom || null,
+      models,
+    };
+  } catch {
+    return { source: "unavailable", syncedAt: null, models: [] };
+  }
+}
+
+async function countWorkspaceAgentTranscripts() {
+  const folders = vscode.workspace.workspaceFolders || [];
+  let count = 0;
+  const seen = new Set();
+  for (const folder of folders) {
+    const roots = [folder.uri.fsPath];
+    const projectsDir = path.join(folder.uri.fsPath, ".cursor", "projects");
+    try {
+      if (await pathExists(projectsDir)) {
+        const subs = await fsp.readdir(projectsDir);
+        for (const sub of subs) {
+          roots.push(path.join(projectsDir, sub));
+        }
+      }
+    } catch {
+      /* ignore */
+    }
+    for (const root of roots) {
+      const dirs = [
+        path.join(root, "agent-transcripts"),
+        path.join(root, ".cursor", "agent-transcripts"),
+      ];
+      for (const dir of dirs) {
+        const norm = path.normalize(dir).toLowerCase();
+        if (seen.has(norm)) {
+          continue;
+        }
+        seen.add(norm);
+        if (!(await pathExists(dir))) {
+          continue;
+        }
+        try {
+          const names = await fsp.readdir(dir);
+          count += names.filter((n) => /\.jsonl$/i.test(n)).length;
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+  }
+  return count;
+}
+
+/**
+ * AI Core Overview facts at inject — os/workspace/Cursor catalog only (no invented counts).
+ * @param {import("vscode").ExtensionContext} context
+ * @param {{ models: CursorCatalogModel[] }} catalog
+ * @param {{ version?: string, commit?: string }} fp
+ */
+async function collectHudOverviewFacts(context, catalog, fp) {
+  const transcripts = await countWorkspaceAgentTranscripts();
+  const models = catalog.models || [];
+  const agentCapable = models.filter((m) => m.supportsAgent).length;
+  const extVersion = (() => {
+    try {
+      return vscode.extensions.getExtension(context.extension.id)?.packageJSON?.version || "";
+    } catch {
+      return "";
+    }
+  })();
+  return {
+    core: fp.version ? `Cursor ${fp.version}` : "Cursor",
+    memory: {
+      num: transcripts > 0 ? String(transcripts) : "—",
+      unit: transcripts > 0 ? (transcripts === 1 ? "transcript" : "transcripts") : "",
+    },
+    voice: "Standby",
+    agents: {
+      num: agentCapable > 0 ? String(agentCapable) : "—",
+      unit: agentCapable > 0 ? (agentCapable === 1 ? "agent model" : "agent models") : "",
+    },
+    llms: {
+      num: models.length > 0 ? String(models.length) : "—",
+      unit: models.length > 0 ? (models.length === 1 ? "model" : "models") : "",
+    },
+    system: extVersion ? `CORTANA ${extVersion}` : "CORTANA",
+    extensionVersion: extVersion,
+  };
+}
+
+function stampHudOverviewPanel(markup, overview, catalog) {
+  const models = catalog.models || [];
+  let out = markup;
+  const memN = overview.memory?.num ?? "—";
+  const memU = overview.memory?.unit ?? "";
+  const agN = overview.agents?.num ?? "—";
+  const agU = overview.agents?.unit ?? "";
+  const llN = overview.llms?.num ?? "—";
+  const llU = overview.llms?.unit ?? "";
+
+  out = out
+    .replace(/data-memory-count="[^"]*"/, `data-memory-count="${escapeHudText(memN)}"`)
+    .replace(/data-agent-count="[^"]*"/, `data-agent-count="${escapeHudText(agN)}"`)
+    .replace(/data-llm-count="[^"]*"/, `data-llm-count="${escapeHudText(llN)}"`);
+  out = out.replace(
+    /id="cortana-ov-workstation"([^>]*)>\s*<\/span>/,
+    `id="cortana-ov-workstation"$1>${escapeHudText(overview.core || "—")}</span>`
+  );
+  out = out.replace(
+    /id="cortana-ov-system"([^>]*)>\s*<\/span>/,
+    `id="cortana-ov-system"$1>${escapeHudText(overview.system || "—")}</span>`
+  );
+  out = out.replace(
+    /<span class="jcc-ov-num" data-ov-num="memory"><\/span>\s*<span class="jcc-ov-unit" data-ov-unit="memory"><\/span>/,
+    `<span class="jcc-ov-num" data-ov-num="memory">${escapeHudText(memN)}</span><span class="jcc-ov-unit" data-ov-unit="memory">${escapeHudText(memU)}</span>`
+  );
+  out = out.replace(
+    /<span class="jcc-ov-num" data-ov-num="agents"><\/span>\s*<span class="jcc-ov-unit" data-ov-unit="agents"><\/span>/,
+    `<span class="jcc-ov-num" data-ov-num="agents">${escapeHudText(agN)}</span><span class="jcc-ov-unit" data-ov-unit="agents">${escapeHudText(agU)}</span>`
+  );
+  out = out.replace(
+    /<span class="jcc-ov-num" data-ov-num="llms"><\/span>\s*<span class="jcc-ov-unit" data-ov-unit="llms"><\/span>/,
+    `<span class="jcc-ov-num" data-ov-num="llms">${escapeHudText(llN)}</span><span class="jcc-ov-unit" data-ov-unit="llms">${escapeHudText(llU)}</span>`
+  );
+  out = out.replace(
+    /id="cortana-ov-voice"([^>]*)>\s*<\/span>/,
+    `id="cortana-ov-voice"$1>${escapeHudText(overview.voice || "Standby")}</span>`
+  );
+  if (!models.length) {
+    return out;
+  }
+  return out;
+}
+
+/** Replace placeholder provider tiles with one chip per Cursor catalog model. */
+function stampHudLlmGrid(markup, catalog) {
+  const models = catalog.models || [];
+  const source = escapeHudText(catalog.source || "cursor-models.json");
+  const chips = models.length
+    ? models
+        .map((m) => {
+          const id = escapeHudText(m.id);
+          const label = escapeHudText(m.label || m.id);
+          const degraded = Number(m.degradationStatus) > 0;
+          const on = Boolean(m.defaultOn) && !degraded;
+          const status = degraded ? "Degraded" : on ? "Default" : "Available";
+          const cls = degraded ? "unknown" : on ? "on" : "";
+          return `<div class="jcc-llm-chip ${cls}" data-model-id="${id}" data-cursor-model="1" data-status="${degraded ? "degraded" : on ? "default" : "available"}"><span>${label}</span><em>${escapeHudText(status)}</em></div>`;
+        })
+        .join("\n          ")
+    : `<p class="jcc-feed-empty" style="grid-column:1/-1">Awaiting data — open Cursor once, run scripts/_list_picker_models.py, or re-Enable injection.</p>`;
+  const state = models.length ? "live" : "empty";
+  const re =
+    /<div\s+class="jcc-llm-grid"\s+id="cortana-llm-grid"[\s\S]*?<\/div>(?=\s*<\/section>)/i;
+  if (!re.test(markup)) {
+    return markup;
+  }
+  return markup.replace(
+    re,
+    `<div class="jcc-llm-grid" id="cortana-llm-grid" data-jcc-llm-source="${source}" data-state="${state}" data-model-count="${models.length}">\n          ${chips}\n        </div>`
+  );
+}
+
 /** @param {unknown} n @returns {number | null} */
 function clampHudPct(n) {
   if (typeof n !== "number" || !Number.isFinite(n)) return null;
@@ -743,6 +1006,10 @@ async function readHudMarkup(context) {
   let markup = await fsp.readFile(full, "utf8");
   const { date, clock } = formatHudClock();
   const live = await collectHudLiveFacts();
+  const loc = await locateWorkbench();
+  const fp = loc ? await readProductFingerprint(loc.appRoot) : { version: "", commit: "" };
+  const catalog = await loadCursorModelCatalog(context);
+  const overview = await collectHudOverviewFacts(context, catalog, fp);
   markup = markup
     .replace(/id="cortana-hud-date">[^<]*</, `id="cortana-hud-date">${escapeHudText(date)}<`)
     .replace(/id="cortana-hud-clock">[^<]*</, `id="cortana-hud-clock">${escapeHudText(clock)}<`)
@@ -753,8 +1020,9 @@ async function readHudMarkup(context) {
     .replace(
       /id="cortana-system-status-text">[^<]*</,
       `id="cortana-system-status-text">SYSTEM STATUS · INJECT ON<`
-    )
-    .replace(/id="cortana-ov-system">[^<]*</, `id="cortana-ov-system">Inject on<`);
+    );
+  markup = stampHudOverviewPanel(markup, overview, catalog);
+  markup = stampHudLlmGrid(markup, catalog);
   markup = stampHudGauge(
     markup,
     "cortana-gauge-cpu",
@@ -787,7 +1055,7 @@ async function readHudMarkup(context) {
     `t();setInterval(t,1000);}());`,
     `</script>`,
   ].join("");
-  const liveScript = buildHudLiveScript();
+  const liveScript = buildHudLiveScript(overview);
   const waveScript = buildHudWaveScript();
   const voiceScript = buildHudVoiceScript();
   const wakeScript = buildHudWakeScript();
@@ -806,12 +1074,31 @@ async function readHudMarkup(context) {
 }
 
 /**
- * Browser-honest live fields: navigator.onLine, sync talk hint with wake status.
+ * Browser-honest live fields: network, overview data-ov-live rows, talk hint, voice row sync.
+ * @param {Record<string, unknown>} overviewSeed inject-time facts from collectHudOverviewFacts
  */
-function buildHudLiveScript() {
+function buildHudLiveScript(overviewSeed) {
+  const seedJson = JSON.stringify(overviewSeed || {}).replace(/</g, "\\u003c");
   const body = [
     "(function(){",
     "if(window.__cortanaLiveWired)return;window.__cortanaLiveWired=true;",
+    `var OV_SEED=${seedJson};`,
+    "function setOvNum(key,num,unit){",
+    "var n=document.querySelector('[data-ov-num=\"'+key+'\"]');",
+    "var u=document.querySelector('[data-ov-unit=\"'+key+'\"]');",
+    "if(n&&num!=null&&num!=='')n.textContent=String(num);",
+    "if(u)u.textContent=unit!=null?String(unit):'';",
+    "}",
+    "function applyOverviewSeed(){",
+    "if(!OV_SEED)return;",
+    "var core=document.querySelector('[data-ov-live=\"core\"]')||document.getElementById('cortana-ov-workstation');",
+    "if(core&&OV_SEED.core)core.textContent=OV_SEED.core;",
+    "var sys=document.querySelector('[data-ov-live=\"system\"]')||document.getElementById('cortana-ov-system');",
+    "if(sys&&OV_SEED.system)sys.textContent=OV_SEED.system;",
+    "if(OV_SEED.memory)setOvNum('memory',OV_SEED.memory.num,OV_SEED.memory.unit);",
+    "if(OV_SEED.agents)setOvNum('agents',OV_SEED.agents.num,OV_SEED.agents.unit);",
+    "if(OV_SEED.llms)setOvNum('llms',OV_SEED.llms.num,OV_SEED.llms.unit);",
+    "}",
     "function net(){",
     "var el=document.getElementById('cortana-meta-net');if(!el)return;",
     "var on=typeof navigator!=='undefined'&&navigator.onLine;",
@@ -828,15 +1115,22 @@ function buildHudLiveScript() {
     "else if(/^Offline/i.test(t))hint.textContent='Voice offline';",
     "else hint.textContent='Tap to speak';",
     "}",
+    "function syncVoiceOv(){",
+    "var v=document.getElementById('cortana-voice-status');",
+    "var ov=document.getElementById('cortana-ov-voice')||document.querySelector('[data-ov-live=\"voice\"]');",
+    "if(v&&ov){var t=String(v.textContent||'').trim();ov.textContent=t||'Standby';}",
+    "}",
+    "applyOverviewSeed();",
     "net();",
+    "syncVoiceOv();",
     "window.addEventListener('online',net);",
     "window.addEventListener('offline',net);",
     "var voiceEl=document.getElementById('cortana-voice-status');",
     "if(voiceEl&&window.MutationObserver){",
-    "new MutationObserver(syncTalkHint).observe(voiceEl,{childList:true,characterData:true,subtree:true});",
+    "new MutationObserver(function(){syncTalkHint();syncVoiceOv();}).observe(voiceEl,{childList:true,characterData:true,subtree:true});",
     "}",
     "syncTalkHint();",
-    "setInterval(syncTalkHint,1500);",
+    "setInterval(function(){syncTalkHint();syncVoiceOv();},1500);",
     "})();",
   ].join("");
   return `<script id="cortana-hud-live-script">${body}</script>`;

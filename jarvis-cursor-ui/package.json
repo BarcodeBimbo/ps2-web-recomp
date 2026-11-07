@@ -1,8 +1,8 @@
 {
   "name": "cortana-cursor-ui",
   "displayName": "CORTANA Command Center UI",
-  "description": "Full CORTANA Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by jarvis.institute + Jarvis 3D PRO patterns — custom local reimplementation, all features unlocked.",
-  "version": "0.5.3",
+  "description": "Full CORTANA Command Center HUD for Cursor via Custom CSS workbench injection: suit modes, particles, GitHUD, threat hints, Session Cinema, Focus Fortress, Stream Pack, Voice TTS hooks, and File Map. Inspired by cortana.institute + Cortana 3D PRO patterns — custom local reimplementation, all features unlocked.",
+  "version": "0.5.4",
   "publisher": "ps2recomp-local",
   "engines": {
     "vscode": "^1.85.0"
@@ -113,8 +113,8 @@
         "title": "CORTANA: Talk / Start Voice"
       },
       {
-        "command": "jarvis.voice.talk",
-        "title": "JARVIS: Talk / Start Voice"
+        "command": "cortana.voice.talk",
+        "title": "CORTANA: Talk / Start Voice"
       },
       {
         "command": "cortana.voice.chat",
@@ -157,8 +157,8 @@
         "title": "CORTANA: Enable Workbench Injection"
       },
       {
-        "command": "jarvis.injection.enable",
-        "title": "JARVIS: Enable Workbench Injection"
+        "command": "cortana.injection.enable",
+        "title": "CORTANA: Enable Workbench Injection"
       },
       {
         "command": "cortana.injection.disable",
@@ -205,10 +205,10 @@
           "command": "cortana.injection.enable"
         },
         {
-          "command": "jarvis.injection.enable"
+          "command": "cortana.injection.enable"
         },
         {
-          "command": "jarvis.voice.talk"
+          "command": "cortana.voice.talk"
         },
         {
           "command": "cortana.injection.disable"

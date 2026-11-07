@@ -2,25 +2,25 @@
 
 Local Cursor / VS Code extension: **full CORTANA Command Center HUD** via **Custom CSS workbench injection**, with Suit Modes, FX, GitHUD, Threat Fix Hints, Session Cinema, Focus Fortress, Stream Pack, Voice/TTS hooks, F.R.I.D.A.Y. mode, Workspace Presets, and a large **File Map**.
 
-**Status:** Phases 1–5 complete. **Phase 6 (injection) scaffold shipped in v0.5.0** — see plan `jarvis_pro_recreation_a1985356`.
+**Status:** Phases 1–5 complete. **Phase 6 (injection) scaffold shipped in v0.5.0** — see plan `cortana_pro_recreation_a1985356`.
 
-**Visual targets (locked — God rebuild):** Boot splash = real [`media/reference-command-center-2.png`](media/reference-command-center-2.png) (staged as `jarvis-boot-splash.png`). Post-boot chrome = CC / CC-2. Custom CSS / workbench **injection is required**; overlays are **definitively out**.
+**Visual targets (locked — God rebuild):** Boot splash = real [`media/reference-command-center-2.png`](media/reference-command-center-2.png) (staged as `cortana-boot-splash.png`). Post-boot chrome = CC / CC-2. Custom CSS / workbench **injection is required**; overlays are **definitively out**.
 
-**v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `jarvis.injection.enabled` = **false** until Joshua enables.
+**v0.5.0:** Injection packaging + activation wiring (`workbenchInject` enable/disable/reconcile/health). Default `cortana.injection.enabled` = **false** until Joshua enables.
 
-**Boot path:** Calibrating splash runs on **Cursor IDE launch via workbench injection** (`media/inject/boot.css` + `jarvis.injection.bootMs`). There is **no** separate CORTANA splash `.exe` and **no** Windows Startup shortcut for splash. See [`docs/STARTUP-IDE-ONLY.md`](docs/STARTUP-IDE-ONLY.md).
+**Boot path:** Calibrating splash runs on **Cursor IDE launch via workbench injection** (`media/inject/boot.css` + `cortana.injection.bootMs`). There is **no** separate CORTANA splash `.exe` and **no** Windows Startup shortcut for splash. See [`docs/STARTUP-IDE-ONLY.md`](docs/STARTUP-IDE-ONLY.md).
 
 ## Credits & pattern sources
 
 | Source | Link | Role |
 |--------|------|------|
-| **jarvis.institute** | https://jarvis.institute/ | Pattern source for Command Center composition / Voice Status / Talk to CORTANA |
+| **cortana.institute** | https://cortana.institute/ | Pattern source for Command Center composition / Voice Status / Talk to CORTANA |
 | **Boot splash PNG** | `media/reference-command-center-2.png` | **Authoritative** real PNG boot (not CSS fallback) |
 | **Command Center chrome** | `media/reference-command-center.png`, `-2.png` | Full IDE chrome visual target |
 | **Legacy calibrating** | `media/reference-calibrating-splash.png` | Retained archive only |
-| **Jarvis 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.jarvis-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
+| **Cortana 3D Theme** (NextGenCode) | https://marketplace.visualstudio.com/items?itemName=nextgencode.cortana-3d-theme | PRO feature *patterns* (Suit Modes, particles/arc/streams, F.R.I.D.A.Y., TTS/SFX, Session Cinema, Stream Pack, Focus Fortress, Threat Fix Hints, GitHUD, presets) |
 
-This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Jarvis 3D / jarvis.institute binaries, or any third-party Custom CSS marketplace extension. Assets and logic are original to this repo.
+This extension is a **custom reimplementation** for Cursor/Windows. It does **not** wrap, bundle, or require upstream Cortana 3D / cortana.institute binaries, or any third-party Custom CSS marketplace extension. Assets and logic are original to this repo.
 
 ## Support model
 
@@ -28,7 +28,7 @@ This extension is a **custom reimplementation** for Cursor/Windows. It does **no
 
 ## License note
 
-Local / personal tooling under this workspace. Jarvis 3D marketplace listing is freemium (PRO via Gumroad); we reimplemented equivalent capabilities unlocked for local use — we did **not** copy their VSIX, CSS, or proprietary shaders.
+Local / personal tooling under this workspace. Cortana 3D marketplace listing is freemium (PRO via Gumroad); we reimplemented equivalent capabilities unlocked for local use — we did **not** copy their VSIX, CSS, or proprietary shaders.
 
 ## What shipped (PRO map)
 
@@ -70,10 +70,10 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 ## Install in Cursor (v0.5.0)
 
 ```powershell
-cursor --install-extension "C:\PS2Recomp\jarvis-cursor-ui" --force
+cursor --install-extension "C:\PS2Recomp\cortana-cursor-ui" --force
 ```
 
-Or: **Extensions → … → Install from VSIX…** → `jarvis-cursor-ui-0.5.0.vsix`
+Or: **Extensions → … → Install from VSIX…** → `cortana-cursor-ui-0.5.0.vsix`
 
 Then:
 
@@ -81,16 +81,16 @@ Then:
 2. Or **CORTANA: Apply Active Suit Theme**
 3. **CORTANA: Enable Workbench Injection** (Admin once if needed) → **Reload Window** when prompted
 4. Optional: **CORTANA: Injection Health Check** / **Injection Status**
-5. Open the **CORTANA** activity-bar icon → File Map (Command Center webview is demoted when injection is primary and `jarvis.injection.fallbackWebview` is false)
+5. Open the **CORTANA** activity-bar icon → File Map (Command Center webview is demoted when injection is primary and `cortana.injection.fallbackWebview` is false)
 6. **Talk to CORTANA** / mic → Cursor Voice or Chat
 
 Settings (defaults):
 
 | Setting | Default | Notes |
 |---------|---------|--------|
-| `jarvis.injection.enabled` | `false` | Flip via Enable command / after reconcile (God + Admin); leave false until then |
-| `jarvis.injection.bootMs` | `1200` | Calibrating splash settle time → injected `--CORTANA-boot-ms` |
-| `jarvis.injection.fallbackWebview` | `false` | Keep false so injection stays primary HUD |
+| `cortana.injection.enabled` | `false` | Flip via Enable command / after reconcile (God + Admin); leave false until then |
+| `cortana.injection.bootMs` | `1200` | Calibrating splash settle time → injected `--CORTANA-boot-ms` |
+| `cortana.injection.fallbackWebview` | `false` | Keep false so injection stays primary HUD |
 
 ## Commands
 
@@ -110,7 +110,7 @@ Settings (defaults):
 ### 0.5.0 — Phase 6 injection scaffold
 
 - Package + activation wiring for Custom CSS workbench injection (`./workbenchInject`)
-- Config: `jarvis.injection.enabled` / `bootMs` / `fallbackWebview`
+- Config: `cortana.injection.enabled` / `bootMs` / `fallbackWebview`
 - Commands: enable, disable, re-enable after update, health check, status
 - Activate: `reconcileOnActivate` with warning + Re-enable after verify when disabled-due-to-update or health-fail
 - When injection is primary, Command Center webview is not force-focused as the HUD
@@ -124,7 +124,7 @@ Settings (defaults):
 ## Layout
 
 ```
-jarvis-cursor-ui/
+cortana-cursor-ui/
   package.json
   README.md
   themes/          # Command + Mark I/50/Endgame/Stealth
