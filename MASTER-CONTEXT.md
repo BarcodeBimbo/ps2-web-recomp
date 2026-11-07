@@ -416,7 +416,6 @@ Does not modify PS2 recomp runtime sources.
 | Null-bind | `verification/recovery/cnk-nullbind-51ACEC-live-report.md` |
 | Sly assets / GS | `verification/recovery/sly-asset-binwalk-report.md`, `sly-gs-vu-live-report.md` |
 | WaitSema ownership | `verification/recovery/waitsema-createsema-trace-live-report.md` |
-| Command Center UI | `jarvis-cursor-ui/README.md` |
 
 ---
 
