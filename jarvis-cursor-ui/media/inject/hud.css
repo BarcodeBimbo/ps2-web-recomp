@@ -881,9 +881,8 @@ html.cortana-inject-probe::after {
     "rail main"
     "footer footer";
   background:
-    radial-gradient(90% 70% at 55% 20%, rgba(0, 80, 120, 0.18) 0%, transparent 55%),
-    radial-gradient(70% 50% at 20% 90%, rgba(0, 40, 70, 0.25) 0%, transparent 50%),
-    linear-gradient(165deg, #020817 0%, #061729 45%, #020817 100%);
+    radial-gradient(85% 55% at 62% 8%, rgba(0, 212, 255, 0.06) 0%, transparent 52%),
+    linear-gradient(180deg, var(--cortana-bg-deep, #020817) 0%, var(--cortana-bg-well, #061729) 42%, var(--cortana-bg-deep, #020817) 100%);
   color: var(--cortana-text, #becedb);
   font-family: var(--cortana-font-ui);
   font-size: 12px;
@@ -1034,22 +1033,20 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 0 0 12px;
+  padding: 0 0 10px;
   background:
     linear-gradient(
       180deg,
-      rgba(14, 36, 60, 0.78) 0%,
-      rgba(5, 20, 36, 0.9) 26%,
-      var(--CORTANA-bg-rail, var(--cortana-bg-rail, #001020)) 58%,
-      rgba(1, 12, 24, 0.98) 100%
+      rgba(9, 29, 53, 0.92) 0%,
+      var(--cortana-bg-rail, #001020) 38%,
+      var(--cortana-bg-deep, #020817) 100%
     );
-  border-right: 1px solid rgba(74, 209, 241, 0.22);
+  border-right: 1px solid rgba(0, 212, 255, 0.14);
   box-shadow:
-    inset -1px 0 0 rgba(0, 212, 255, 0.08),
-    1px 0 0 rgba(0, 0, 0, 0.45),
-    10px 0 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(var(--CORTANA-glass-blur, var(--cortana-glass-blur, 18px)));
-  -webkit-backdrop-filter: blur(var(--CORTANA-glass-blur, var(--cortana-glass-blur, 18px)));
+    inset -1px 0 0 rgba(0, 212, 255, 0.05),
+    6px 0 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(var(--cortana-glass-blur, 18px));
+  -webkit-backdrop-filter: blur(var(--cortana-glass-blur, 18px));
   overflow: hidden;
 }
 
@@ -1110,8 +1107,8 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   font-family: var(--CORTANA-font-display, var(--cortana-font-display, "Segoe UI", sans-serif));
   font-weight: 700;
   letter-spacing: 0.22em;
-  color: #d7f7ff;
-  text-shadow: 0 0 6px rgba(0, 242, 255, 0.35);
+  color: #e8f7ff;
+  text-shadow: 0 0 6px rgba(74, 209, 241, 0.28);
   font-size: clamp(9px, 1.05vw, 12px);
   line-height: 1.05;
   text-transform: uppercase;
@@ -1128,24 +1125,14 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   white-space: nowrap;
 }
 
-.jcc-brand-suite {
-  font-size: clamp(5px, 0.52vw, 7px);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: rgba(122, 168, 184, 0.85);
-  margin-top: 3px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
 .jcc-nav {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 0;
   flex: 1;
   min-height: 0;
   overflow: auto;
-  padding: 2px 0 8px;
+  padding: 4px 0 6px;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 212, 255, 0.25) transparent;
 }

@@ -1190,8 +1190,13 @@ function buildHudVoiceScript() {
     "if(!t){t=document.createElement('div');t.id='cortana-voice-toast';",
     "t.setAttribute('role','status');",
     "t.style.cssText='position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:100000;",
-    "padding:10px 16px;border-radius:8px;background:rgba(0,20,40,.92);border:1px solid rgba(0,212,255,.45);",
-    "color:#cfefff;font:12px/1.35 Segoe UI,system-ui,sans-serif;pointer-events:none;max-width:420px;text-align:center;",
+    "padding:10px 16px;border-radius:8px;",
+    "background:var(--cortana-glass-strong,rgba(0,10,28,.94));",
+    "border:1px solid var(--cortana-border-strong,rgba(0,212,255,.28));",
+    "color:var(--cortana-text-bright,#e8f7ff);",
+    "font:12px/1.35 var(--cortana-font-ui,Segoe UI,system-ui,sans-serif);",
+    "pointer-events:none;max-width:420px;text-align:center;",
+    "box-shadow:var(--cortana-glow-soft,0 0 12px rgba(0,212,255,.1));",
     "box-shadow:0 0 24px rgba(0,212,255,.2)';host.appendChild(t);}",
     "t.textContent=msg;t.style.opacity='1';",
     "clearTimeout(t.__hide);t.__hide=setTimeout(function(){t.style.opacity='0';},4200);",
@@ -1559,6 +1564,7 @@ function buildHudInteractScript() {
     "}",
     "function boot(){",
     "if(!hud()){setTimeout(boot,400);return;}",
+    "if(document.documentElement)document.documentElement.classList.add('cortana-inject');",
     "document.body&&document.body.classList.add('cortana-inject','cortana-boot');",
     "setTimeout(function(){document.body&&document.body.classList.remove('cortana-boot');},",
     "parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cortana-boot-ms'),10)||1800);",
@@ -1706,6 +1712,66 @@ function resolveBootMs() {
   return Math.round(bootMs);
 }
 
+/**
+ * Final palette pass: titlebar / sidebar / statusbar / editor chrome → tokens (reference PNG).
+ * Appended after hud.css so vars exist; uses !important only to beat stray theme hex.
+ */
+function buildChromePaletteBindCss() {
+  return [
+    "/* === cortana chrome palette bind (reference-command-center.png) === */",
+    "/* CORTANA-HEALTH: chrome-bind */",
+    "html.cortana-inject,",
+    "body.cortana-inject,",
+    "body.cortana-inject .monaco-workbench {",
+    "  background-color: var(--cortana-bg-deep, #020817) !important;",
+    "  color: var(--cortana-text, #becedb) !important;",
+    "}",
+    ".monaco-workbench .part.titlebar,",
+    ".monaco-workbench .titlebar,",
+    ".monaco-workbench .titlebar-container {",
+    "  background-color: var(--cortana-bg-deep, #020817) !important;",
+    "  background-image: linear-gradient(180deg, var(--cortana-cyan-wash, rgba(0,212,255,0.06)) 0%, transparent 100%) !important;",
+    "  color: var(--cortana-cyan-bright, #4ad1f1) !important;",
+    "  border-bottom: 1px solid var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
+    "}",
+    ".monaco-workbench .window-title,",
+    ".monaco-workbench .titlebar-center .title {",
+    "  color: var(--cortana-cyan-bright, #4ad1f1) !important;",
+    "  text-shadow: var(--cortana-text-glow-soft, 0 0 4px rgba(74,209,241,0.22)) !important;",
+    "}",
+    ".monaco-workbench .part.activitybar {",
+    "  background-color: var(--cortana-bg-activity, #030a12) !important;",
+    "  border-color: var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
+    "}",
+    ".monaco-workbench .part.sidebar,",
+    ".monaco-workbench .part.auxiliarybar {",
+    "  background-color: var(--cortana-bg-sidebar, #001020) !important;",
+    "  color: var(--cortana-text, #becedb) !important;",
+    "  border-color: var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
+    "}",
+    ".monaco-workbench .part.statusbar {",
+    "  background-color: var(--cortana-bg-panel, #000f24) !important;",
+    "  color: var(--cortana-text-dim, #7a8fa3) !important;",
+    "  border-top: 1px solid var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
+    "}",
+    ".monaco-workbench .part.panel {",
+    "  background-color: var(--cortana-bg-elevated, #091d35) !important;",
+    "}",
+    ".monaco-workbench .part.editor {",
+    "  background-color: var(--cortana-bg-editor, #050d16) !important;",
+    "}",
+    "body:has(#cortana-cc-hud):not(:has(#cortana-focus-toggle:checked))",
+    "  .monaco-workbench .part.titlebar .window-controls-container {",
+    "  background: linear-gradient(180deg, var(--cortana-glass-strong, rgba(0,10,28,0.94)) 0%, var(--cortana-bg-panel, #000f24) 100%) !important;",
+    "  border-left: 1px solid var(--cortana-border-subtle, rgba(0,212,255,0.12)) !important;",
+    "}",
+    ".monaco-workbench .window-controls-container > .window-icon,",
+    ".monaco-workbench .window-controls-container .codicon {",
+    "  color: var(--cortana-cyan-soft, #4ad1f1) !important;",
+    "}",
+  ].join("\n");
+}
+
 async function readCssBundle(context) {
   const warnings = [];
   const parts = [];
@@ -1736,6 +1802,8 @@ async function readCssBundle(context) {
       `}`,
     ].join("\n")
   );
+
+  parts.push(buildChromePaletteBindCss());
 
   return { css: parts.join("\n\n"), warnings };
 }
