@@ -2652,17 +2652,18 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .jcc-constellation {
   position: relative;
   width: 100%;
-  max-width: min(220px, 100%);
-  height: var(--cortana-constellation-h, 72px);
-  margin: 0 auto;
+  max-width: var(--cortana-constellation-max-w, 178px);
+  height: var(--cortana-constellation-h, 76px);
+  min-height: 52px;
+  margin: 0 auto 0 0;
   border: none;
   border-radius: 0;
   background-color: transparent;
   background-image: var(--jcc-photo-memory-constellation);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.45));
+  background-position: left center;
+  background-size: 100% auto;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.38));
   overflow: visible;
   pointer-events: none;
 }
@@ -2680,22 +2681,22 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 .jcc-mem-stats {
   flex: 0 0 auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   align-items: flex-end;
-  gap: 8px 12px;
-  text-align: center;
-  min-width: 92px;
-  padding-top: 2px;
+  gap: 5px;
+  text-align: right;
+  min-width: 108px;
+  padding-top: 0;
 }
 
 .jcc-mem-stat {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  min-width: 44px;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 5px;
+  min-width: 0;
   --mem-lab: attr(data-lab);
   --mem-value: "—";
 }
@@ -2706,32 +2707,34 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
 
 .jcc-mem-stats span,
 .jcc-mem-stat span {
-  display: block;
-  order: 2;
-  font-size: 7px;
-  letter-spacing: 0.08em;
-  color: rgba(140, 170, 190, 0.8);
-  text-transform: uppercase;
-  line-height: 1.15;
+  display: inline;
+  order: 1;
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: rgba(140, 170, 190, 0.88);
+  text-transform: none;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .jcc-mem-stat[data-lab] span::before {
-  content: var(--mem-lab);
+  content: var(--mem-lab) ":";
 }
 
 .jcc-mem-stats strong,
 .jcc-mem-stat strong {
-  display: block;
-  order: 1;
+  display: inline;
+  order: 2;
   color: #e8fbff;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: 0.01em;
-  text-shadow: 0 0 10px rgba(0, 229, 255, 0.45);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.38);
+  white-space: nowrap;
 }
 
-.jcc-mem-stat strong::before {
+.jcc-mem-stat strong:empty::before {
   content: var(--mem-value);
 }
 
