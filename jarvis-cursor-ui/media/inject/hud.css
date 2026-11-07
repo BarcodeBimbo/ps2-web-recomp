@@ -2041,10 +2041,17 @@ button.jcc-search:hover,
     linear-gradient(168deg, rgba(20, 36, 52, 0.55) 0%, rgba(0, 14, 32, 0.88) 100%);
 }
 
+/*
+ * AI Core globe REGION — full extract from reference-command-center-2.png:
+ * mesh, landmasses, ALL orbital rings + nodes, equator scanline, pedestal,
+ * particle field, outer arcs. Only JARVIS lettering scrubbed.
+ * Live layers: Cortana label + traveling node accents (do NOT redraw/replace photo rings).
+ * NEVER generative globe art / NEVER boot splash.
+ */
 .jcc-globe {
   position: relative;
-  width: min(280px, 94%);
-  aspect-ratio: 304 / 222;
+  width: min(320px, 98%);
+  aspect-ratio: 280 / 213;
   display: grid;
   place-items: center;
   overflow: visible;
@@ -2052,43 +2059,247 @@ button.jcc-search:hover,
   z-index: 0;
 }
 
-/*
- * Authority: media/inject/jcc-hero-globe.png (CC-2 crop).
- * Bound via --cortana-hero-globe (staged beside workbench). NEVER boot/calibrating splash.
- * No invented SVG globe / Arc Reactor / CSS orbit art — photo rings ride with the cutout.
- */
-.jcc-globe.jcc-globe-photo,
-.jcc-globe > .jcc-globe-photo {
-  background-image: var(--cortana-hero-globe, var(--jcc-photo-hero-globe, url(./jcc-hero-globe.png)));
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center 42%;
-  pointer-events: none;
-  will-change: transform, filter;
-  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.35));
-  animation:
-    cortana-globe-breathe var(--cortana-globe-breathe-ms, 3.2s) ease-in-out infinite,
-    cortana-globe-parallax 14s ease-in-out infinite;
-}
-
-.jcc-globe > .jcc-globe-photo {
+.jcc-globe-mesh {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background-image: var(--cortana-hero-globe, var(--jcc-photo-hero-globe, url(./jcc-hero-globe.png)));
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.4));
+  will-change: transform, filter, opacity;
+  /* Live motion on full traced region — breathe + yaw (rings/pedestal travel with mesh) */
+  animation:
+    cortana-globe-breathe var(--cortana-globe-breathe-ms, 3.2s) ease-in-out infinite,
+    cortana-globe-parallax 14s ease-in-out infinite;
+  transform-origin: 50% 46%;
 }
 
-/* Photo may carry reference globe lettering; product = CORTANA AI CORE v3.0.0 — hide overlay label */
+/* Transparent orbit carriers — photo owns ring strokes; CSS only moves accent nodes */
+.jcc-globe-rings {
+  position: absolute;
+  inset: 4% 2% 14%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.jcc-orbit {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 92%;
+  height: 42%;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  transform: translate(-50%, -50%) rotateX(68deg);
+  transform-style: preserve-3d;
+  opacity: 1;
+}
+
+.jcc-orbit-a {
+  width: 96%;
+  height: 44%;
+  animation: cortana-orbit-spin 11s linear infinite;
+}
+
+.jcc-orbit-b {
+  width: 78%;
+  height: 36%;
+  transform: translate(-50%, -50%) rotateX(62deg) rotateZ(28deg);
+  animation: cortana-orbit-spin-rev 16s linear infinite;
+}
+
+.jcc-orbit-c {
+  width: 64%;
+  height: 30%;
+  transform: translate(-50%, -50%) rotateX(70deg) rotateZ(-22deg);
+  animation: cortana-orbit-spin 22s linear infinite;
+}
+
+/* Traveling accent nodes ride the invisible carriers (photo nodes stay in extract) */
+.jcc-orbit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: #9ffcff;
+  box-shadow: 0 0 8px rgba(0, 242, 255, 0.95), 0 0 16px rgba(0, 200, 255, 0.55);
+}
+
+.jcc-orbit-node {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7ef9ff;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.95), 0 0 18px rgba(0, 200, 255, 0.55);
+  z-index: 3;
+}
+
+.jcc-orbit-node.n1 {
+  left: 78%;
+  top: 28%;
+  animation: cortana-node-pulse 2.4s ease-in-out infinite;
+}
+
+.jcc-orbit-node.n2 {
+  left: 18%;
+  top: 52%;
+  animation: cortana-node-pulse 2.4s ease-in-out infinite 0.6s;
+}
+
+.jcc-orbit-node.n3 {
+  left: 62%;
+  top: 68%;
+  animation: cortana-node-pulse 2.4s ease-in-out infinite 1.2s;
+}
+
+/* Pedestal is in the photo extract — CSS layer is a soft live pulse only */
+.jcc-globe-pedestal {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 2%;
+  height: 16%;
+  z-index: 1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 40%, rgba(0, 229, 255, 0.18) 0%, transparent 60%);
+  opacity: 0.55;
+  animation: cortana-pedestal-pulse 2.8s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Equator scanline shimmer (matches reference horizontal stroke) */
+.jcc-globe-scan {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 46%;
+  height: 1px;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 229, 255, 0.15) 18%,
+    rgba(180, 250, 255, 0.85) 50%,
+    rgba(0, 229, 255, 0.15) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.55);
+  animation: cortana-scan-shimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .jcc-hero-label {
-  display: none !important;
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  text-align: center;
+  pointer-events: none;
+  text-shadow:
+    0 0 12px rgba(0, 229, 255, 0.65),
+    0 0 28px rgba(0, 180, 255, 0.35);
+  animation: cortana-label-glow 3.2s ease-in-out infinite;
 }
 
-/* Legacy selectors kept inert so prior invented SVG/orbit markup cannot paint */
+.jcc-hero-label strong {
+  font-family: var(--cortana-font-display, "Segoe UI", sans-serif);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #e8fbff;
+  line-height: 1;
+  margin-right: -0.22em;
+}
+
+.jcc-hero-label span {
+  font-size: clamp(8px, 0.95vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.46em;
+  color: #7ad4ef;
+  margin-right: -0.46em;
+}
+
+.jcc-hero-label em {
+  font-style: normal;
+  font-size: clamp(7px, 0.75vw, 9px);
+  letter-spacing: 0.2em;
+  color: rgba(140, 200, 220, 0.85);
+}
+
+@keyframes cortana-globe-breathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.28)) brightness(0.97);
+    opacity: 0.94;
+  }
+  50% {
+    filter: drop-shadow(0 0 22px rgba(74, 209, 241, 0.52)) brightness(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes cortana-globe-parallax {
+  0%, 100% { transform: rotate(-1.4deg) translate3d(-2px, 1px, 0) scale(1); }
+  33% { transform: rotate(0.7deg) translate3d(2px, -2px, 0) scale(1.012); }
+  66% { transform: rotate(1.5deg) translate3d(1px, 2px, 0) scale(1.006); }
+}
+
+@keyframes cortana-orbit-spin {
+  from { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg); }
+  to { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg); }
+}
+
+@keyframes cortana-orbit-spin-rev {
+  from { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(28deg); }
+  to { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(-332deg); }
+}
+
+@keyframes cortana-node-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+@keyframes cortana-pedestal-pulse {
+  0%, 100% { opacity: 0.35; transform: scaleX(1); }
+  50% { opacity: 0.7; transform: scaleX(1.03); }
+}
+
+@keyframes cortana-scan-shimmer {
+  0%, 100% { opacity: 0.35; filter: brightness(0.9); }
+  50% { opacity: 0.85; filter: brightness(1.25); }
+}
+
+@keyframes cortana-label-glow {
+  0%, 100% { filter: brightness(1); text-shadow: 0 0 12px rgba(0, 229, 255, 0.55), 0 0 24px rgba(0, 180, 255, 0.28); }
+  50% { filter: brightness(1.12); text-shadow: 0 0 18px rgba(0, 242, 255, 0.85), 0 0 36px rgba(0, 200, 255, 0.45); }
+}
+
+/* Keep old photo class harmless if leftover markup */
+.jcc-globe.jcc-globe-photo,
+.jcc-globe > .jcc-globe-photo {
+  background-image: none !important;
+}
+
 .jcc-globe-svg,
 .jcc-globe-aura,
 .jcc-globe-core,
-.jcc-globe-particles,
-.jcc-orbit,
-.jcc-orbit-node {
+.jcc-globe-particles {
   display: none !important;
 }
 
