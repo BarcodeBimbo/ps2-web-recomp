@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-06T22:13:00-05:00",
+  "updated": "2026-11-06T23:55:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 7,
-  "phase": "idle_r4_pass_awaiting_parent",
+  "step": 8,
+  "phase": "awaiting_matrix",
   "prior_cycles": [
     {
       "step": 1,
@@ -48,24 +48,33 @@
     }
   ],
   "discfix": {
-    "status": "r4_pass_acknowledged",
+    "status": "proposed",
     "applied": {
       "R3_readee": {
         "file": "runtime/src/iop/cdvdfsv.cpp",
         "status": "verified_apply"
       }
     },
-    "proposed_change": null,
-    "evidence": {
-      "r3_verified": true,
-      "post_r3_logs": [
-        "logs/discfix-r3-hitman-600.log",
-        "logs/discfix-r3-nfs-600.log"
+    "proposed_change": {
+      "id": "R5_pad_sound_observe",
+      "summary": "Open R5 pad/sound for Hitman+NFS: observe-only inventory + evidence. Guest padman/libsd IRX already load from disc; host has SIO2+SPU2 HLE (no padman/libsd HLE servers). Classify leftover WaitSema 7 (Hitman) and 17/23/29/30/32 (NFS) vs pad/sound RPC parks. Prove-before-swap: no behavioral patch this cycle.",
+      "files": [],
+      "code_change": false,
+      "details": [
+        "Do NOT host_signal any leftover sema IDs.",
+        "Do NOT implement CNK Alchemy pulses.",
+        "Do NOT land CdSync wake (R4 cleared).",
+        "Gather: module load order, SPU2 activity, pad press path, SIF drain, create_ra ownership.",
+        "After matrix pass on this observe gate, disc-fix may propose clear_with_evidence OR a narrow SIF/pad/sound RPC fix named by evidence."
       ],
-      "hitman_sceCdSync": "Heavy mode=1 Status/Sync polls in earlier HLE log; games still draw 127k\u2013208k prims @600f after R3 with SIF 0",
-      "nfs": "Little/no sceCdSync spam; same green post-R3",
-      "leftover_sema_2": "Durable parking (R2 cleared) \u2014 not a CdSync waiter rewrite target",
-      "quarantine": "No CNK Alchemy"
+      "success_bar": "Matrix accepts observe evidence cycle; R5 stays gated for apply until a follow-up proposal."
+    },
+    "evidence": {
+      "prior_ownership": "verification/recovery/waitsema-createsema-trace-live-report.md",
+      "nfs_rpc_fix": "docs/NFS_RPC_FIX.md (SND Library EE driver poll wake already landed)",
+      "sdk_local": "E:/usr/local/sce ee/include/libpad.h libsdr.h; iop/include/libsd.h; iop/modules/padman.irx",
+      "sdk_iso_download": "E:/AI games/...3.03.ISO \u2014 not waiting; flag if needed",
+      "r1_r4": "joint-stable 1e04172"
     },
     "files_touched": [
       "runtime/src/iop/cdvdfsv.cpp"
@@ -82,11 +91,11 @@
     ]
   },
   "matrix": {
-    "status": "watching",
+    "status": "pending",
     "current_phase": null,
-    "verdict": "pass",
+    "verdict": null,
     "last_completed": "R4_clear_with_evidence",
-    "notes": "Cycle 6 PASS + cycle 7 R4 clear PASS stand. Ranked: R1/R2/R4 cleared_with_evidence; R3 verified_apply; R5 still_gated. Disc-fix ack idle awaiting parent (commit/R5/soak). Matrix alive watching — will not unlock R5 or commit. No host_signal(2). No CNK on Hitman/NFS.",
+    "notes": "Disc-fix cycle 8: R5_pad_sound_observe (no code). Waiting for matrix.",
     "phases": [
       "boot",
       "menu",
@@ -126,7 +135,7 @@
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
       "R4_CdSync": "cleared_with_evidence",
-      "R5_pad_sound": "still_gated"
+      "R5_pad_sound": "proposed_observe"
     },
     "allow_discfix_apply": false
   },
