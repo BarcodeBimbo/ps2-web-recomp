@@ -931,35 +931,24 @@ html.cortana-inject-probe::after {
   z-index: 3;
 }
 
+/* Brand iris — cutout from reference-command-center-2.png (not generic Arc Reactor SVG) */
 .jcc-iris {
   position: relative;
   width: 34px;
   height: 34px;
   flex-shrink: 0;
-}
-
-.jcc-iris-ring {
-  position: absolute;
-  inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(74, 209, 241, 0.55);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.35);
-  animation: cortana-orbit-spin 8s linear infinite;
-}
-
-.jcc-iris-ring.r2 {
-  inset: 6px;
-  border-color: rgba(74, 209, 241, 0.35);
-  animation: cortana-orbit-spin-rev 5s linear infinite;
-}
-
-.jcc-iris-core {
-  position: absolute;
-  inset: 11px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #4ad1f1 0%, #00d4ff 45%, transparent 72%);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.7);
+  background-image: var(--jcc-photo-brand-iris);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.45);
   animation: cortana-arc-reactor-pulse var(--CORTANA-reactor-ms, var(--cortana-reactor-ms, 2.4s)) ease-in-out infinite;
+}
+
+.jcc-iris-ring,
+.jcc-iris-core {
+  display: none !important;
 }
 
 .jcc-brand-text {
