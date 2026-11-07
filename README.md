@@ -103,6 +103,31 @@ flowchart LR
 
 Each phase must pass its Sony-contract checks before a ranked rewrite is swapped in (prove-before-swap).
 
+## Resources
+
+### Sony SDK sources
+
+- [ps2dev/ps2sdk](https://github.com/ps2dev/ps2sdk) — EE/IOP SDK used as the primary contract source
+  - [sifrpc.c](https://github.com/ps2dev/ps2sdk/blob/master/ee/kernel/src/sifrpc.c) — SIF RPC client/server lifecycle
+  - [sifcmd.c](https://github.com/ps2dev/ps2sdk/blob/master/ee/kernel/src/sifcmd.c) — SIF command packets
+  - [libcdvd.c](https://github.com/ps2dev/ps2sdk/blob/master/ee/rpc/cdvd/src/libcdvd.c) — EE CDVD RPC / `sceCd*` surface
+  - [thread.c](https://github.com/ps2dev/ps2sdk/blob/master/ee/kernel/src/thread.c) — EE kernel threading helpers
+- IOP IRX libraries referenced in HLE research: **THREADMAN**, **thsemap**, **EXCEPMAN**, **FILEIO**, **IOMAN**, **CDVDMAN** (and related **CDVDFSV** / disc server paths under ps2sdk `iop/`)
+
+### BIOS / hardware references
+
+- [PS2Tek](https://israpps.github.io/ps2tek/) — EE/IOP hardware and BIOS notes
+  - [EE architecture](https://israpps.github.io/ps2tek/#eearchitecture)
+  - [BIOS overview](https://israpps.github.io/ps2tek/#bios)
+  - [BIOS EE threading](https://israpps.github.io/ps2tek/#bioseethreading)
+  - [CDVD reads and seeks](https://israpps.github.io/ps2tek/#cdvdreadsandseeks)
+- PS2 BIOS behavior (boot, module load, syscall surface) as cross-check for EE HLE stubs (`CreateSema` / `WaitSema` / `SignalSema` / `iSignalSema`, SIF, CDVD)
+
+### Community references
+
+- [PS2 Developer Wiki](https://www.psdevwiki.com/ps2/) — hardware, memory maps, and subsystem overview
+- [Open PS2 Loader (OPL)](https://github.com/ps2homebrew/Open-PS2-Loader) — community CDVD / `cdvd_readee` reference for retail-like read completion (dst / readee / curReadPos)
+
 ## How it works
 
 **Recompilation.** `eerecomp` reads the game's executable, follows its control flow to find the functions and emits C++ for them in units of 16 KiB of guest code. The output keeps the R5900's quirks: 128-bit registers and the multimedia instructions that work on them, branch delay slots, the PS2's floating point unit, which has no infinities or denormals and rounds differently from IEEE, and vector unit 0 used as a coprocessor. Jumps between units become tail calls, and a thread switch unwinds the host stack and resumes at the guest address, so the generated code never needs a stack per guest thread.
