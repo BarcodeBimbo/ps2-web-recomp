@@ -3,6 +3,12 @@
 **Updated:** 2026-11-07 ~10:20 local (America/New_York)  
 **Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**
 
+## Improvement-pass policy (refined ~10:21)
+
+- **Additive only** for product shape: CyberArcade panel, custom Windows recompiler, evidence-first `logs/` + `verification/recovery/`, store/downloader patterns, disc-fix board, quarantine rules — **unchanged**.
+- **Allowed:** optimization (faster smokes, leaner verify, better defaults where safe) and **light modernization** (JSON schemas, typed hooks, clearer APIs, harness metrics) **without** replacing those pillars.
+- **Not allowed:** wholesale re-architecture, new primary UX, abandoning panel/store/cmake pipeline, or merging CNK Alchemy into Hitman/NFS disc-fix.
+
 ## Mandates (carry always)
 
 - **Chrome flawless:** every library title playable in Chrome (panel `:8620`).

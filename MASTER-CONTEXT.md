@@ -24,6 +24,7 @@ Also still true:
 5. Evidence in `verification/recovery/` + `logs/`. Quarantine: never apply CNK Alchemy host hacks to Hitman/NFS disc path.
 6. **Verify-each-fix (God ~07:35):** Implement → run real game/component → check pass/fail → debug/retry. **No unverified ship** (CNK 2-prims, disc-fix SDK, matrix, Alchemy, Sly Ghidra map, 60 FPS).
 7. **Context rollover (God ~10:20):** When chat context is too large, **do not** trim/summarize in place. Spawn a **new agent** with clean context; carry state only via `MASTER-CONTEXT.md` + `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`. Continue executing without pause. Rule: `.cursor/rules/agent-context-rollover.mdc`.
+8. **Improvement-pass (God ~10:21):** **Additive only** for theme/vision; **optimization + light modernization OK** inside existing stack (panel, store, runtime, self-heal, verify). **No wholesale** re-architecture. Policy: `verification/recovery/improvement-pass-policy-2026-11-07.md`.
 
 **Campaign add-ons (God ~10:18):** Chrome-flawless every game; store→downloader→patch pipeline (`autonomous-pipeline-2026-11-07.md`); self-heal per install (`self_heal.py`, `self-heal-patch-system-2026-11-07.md`). Hitman wave-1: GS XYOFFSET 11-bit applied; web rebuild in flight for Chrome.
 

@@ -2,6 +2,8 @@
 
 **Standing order:** continuous until every library title is playable at ≥60 FPS (30 only when hardware requires). Hitman black canvas is **wave-1 graphics**; disc-fix/matrix/Alchemy/FPS run in parallel lanes.
 
+**Improvement-pass (refined):** Optimize and modernize **inside** the existing stack (panel, `store.py`, `windows_port`, runtime GS/CDVD, self-heal, verify scripts). Add detectors, metrics, gates, and performance — **do not** replace the core vision or swap the architecture for a new product shape.
+
 ## Architecture (as found in repo)
 
 | Stage | Component | Path / API |
