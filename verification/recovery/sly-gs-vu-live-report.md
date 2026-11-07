@@ -11,7 +11,8 @@
 | GS both+compare | `PS2_GS=both`, `PS2_GS_COMPARE=1` | 0 | **4,865,142** |
 | Strict VU + software | `PS2_GS=software`, `PS2_VU_INTERPRET=1`, `PS2_VU_EXACT=1` | 0 | **4,864,999** |
 
-Logs: `logs/sly-live-gscompare/`, `logs/sly-live-vu-exact/`
+Logs: `logs/sly-live-gscompare/` (if present), `logs/sly-live-vu-exact/run.log`  
+Frames relocated by log-move worker to: `logs/frames/sly-live-gscompare/`, `logs/frames/sly-live-vu-exact/`
 
 ## Findings (simple)
 
