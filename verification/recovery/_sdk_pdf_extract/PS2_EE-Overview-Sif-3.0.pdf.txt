@@ -1,0 +1,807 @@
+
+
+===== PAGE 1 =====
+
+PlayStation®2 EE Library Overview 
+Release 3.0 
+ 
+ 
+ 
+ 
+Sif Libraries 
+ 
+ 
+ 
+  
+
+===== PAGE 2 =====
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+© 2003 Sony Computer Entertainment Inc. 
+Publication date: December 2003 
+ 
+Sony Computer Entertainment Inc. 
+1-1, Akasaka 7-chome, Minato-ku 
+Tokyo 107-0052, Japan 
+ 
+Sony Computer Entertainment America 
+919 E. Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+ 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+ 
+The PlayStation®2 EE Library Overview - Sif Libraries manual is supplied pursuant to and subject to the 
+terms of the Sony Computer Entertainment PlayStation® license agreements. 
+The PlayStation®2 EE Library Overview - Sif Libraries manual is intended for distribution to and use by only 
+Sony Computer Entertainment licensed Developers and Publishers in accordance with the PlayStation® 
+license agreements. 
+Unauthorized reproduction, distribution, lending, rental or disclosure to any third party, in whole or in part, 
+of this book is expressly prohibited by law and by the terms of the Sony Computer Entertainment 
+PlayStation® license agreements. 
+Ownership of the physical property of the book is retained by and reserved by Sony Computer 
+Entertainment. Alteration to or deletion, in whole or in part, of the book, its presentation, or its contents is 
+prohibited. 
+The information in the PlayStation®2 EE Library Overview - Sif Libraries manual is subject to change 
+without notice. The content of this book is Confidential Information of Sony Computer Entertainment. 
+ and PlayStation are registered trademarks of Sony Computer Entertainment Inc. All other trademarks 
+are property of their respective owners and/or their licensors. 
+
+===== PAGE 3 =====
+
+ 
+Summary Table of Contents 
+About This Manual v 
+Changes Since Last Release v 
+Related Documentation vi 
+Typographic Conventions vi 
+Developer Support vi 
+Chapter 1: Standard IOP Services 1-1 
+Chapter 2: SIF System 2-1 
+ 
+    
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 4 =====
+
+About This Manual 
+This is the Runtime Library Release 3.0 version of the PlayStation®2 EE Library Overview - Sif Libraries 
+manual.  
+The purpose of this manual is to provide overview-level information about the PlayStation®2 EE sif libraries. 
+For related descriptions of the PlayStation®2 EE sif library structures and functions, refer to the 
+PlayStation®2 EE Library Reference - Sif Libraries. 
+Changes Since Last Release 
+Chapter 1: Standard IOP Services 
+• The following functions and "Other Functions" were added to "Note on RPC Re-entry" in the "Library 
+Overview" section.   
+  RPC WAIT Functions: 
+    sceSifAllocSysMemory() 
+    sceSifFreeIopHeap() 
+    sceSifFreeSysMemory() 
+    sceSifLoadIopHeap() 
+    sceSifLoadModuleBuffer() 
+    sceSifLoadStartModule() 
+    sceSifLoadStartModuleBuffer() 
+    sceSifQueryBlockSize() 
+    sceSifQueryBlockTopAddress() 
+    sceSifQueryMaxFreeMemSize() 
+    sceSifQueryMemSize() 
+    sceSifQueryTotalFreeMemSize() 
+    sceSifSearchModuleByAddress() 
+    sceSifSearchModuleByName() 
+    sceSifStopModule() 
+    sceSifUnloadModule() 
+  Non-RPC Functions: 
+    sceSifAddRebootNotifyHandler() 
+    sceSifRemoveRebootNotifyHandler() 
+    sceSifSetRebootNotifyBuffer() 
+    sceSifSyncIop() 
+ 
+Chapter 2: SIF System  
+• The figure in "SIF System Configuration” was changed.   
+• The figure in the "Overview" of "SIF DMA API" was changed and the DMA channel description 
+was deleted.   
+• The figure in the "Overview" of “SIF Command API"  was changed and the description of the 
+receive buffer in "Usage Procedure" was changed. 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 5 =====
+
+vi About This Manual 
+• The figure in the "Overview" of "SIF RPC API" was changed and the description of the completion 
+of the service function was added to "Usage Procedure".   
+• “Differences in Structure Between RPC and MRPC" was deleted from "Support for Multithreading 
+in SIF RPC" and an "Overview" was added.   
+• A case was added to the description of cases where re-entry occurs from NOWAIT state in "How 
+RPC Re-entry Works" in the "Notes on RPC Re-entry" section. 
+• The description of preventing RPC re-entry in "Preventing RPC Re-entry" in the "Notes on RPC 
+Re-entry" section was changed and the description of library function in "Library Functions That 
+Use RPC" was also changed. 
+• The description of libraries in "Specifying Thread Priorities for IOP Modules" in the "IOP Module 
+Replacement" section was changed. 
+Related Documentation 
+Library specifications for the IOP can be found in the PlayStation®2 IOP Library Reference manuals and the 
+PlayStation®2 IOP Library Overview manuals. 
+Note: the Developer Support Web site posts current developments regarding the Libraries and also 
+provides notice of future documentation releases and upgrades. 
+Typographic Conventions 
+Certain Typographic Conventions are used throughout this manual to clarify the meaning of the text: 
+Convention Meaning 
+courier Indicates literal program code. 
+italic Indicates names of arguments and structure 
+members (in structure/function definitions 
+only). 
+medium bold Indicates data types and structure/function 
+names (in structure/function definitions 
+only). 
+blue Indicates a hyperlink. 
+Developer Support 
+Sony Computer Entertainment America (SCEA) 
+SCEA developer support is available to licensees in North America only. You may obtain developer support 
+or additional copies of this documentation by contacting the following addresses: 
+Order Information Developer Support 
+Attn: Developer Tools Coordinator 
+Sony Computer Entertainment America 
+919 East Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+Tel: (650) 655-8000 
+E-mail: scea_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:(650) 655-5566  
+(Call Monday through Friday,  
+8 a.m. to 5 p.m., PST/PDT) 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 6 =====
+
+ About This Manual vii 
+Sony Computer Entertainment Europe (SCEE) 
+SCEE developer support is available to licensees only in the PAL television territories (including Europe and 
+Australasia). You may obtain developer support or additional copies of this documentation by contacting 
+the following addresses: 
+Order Information Developer Support 
+Attn: Development Tools Manager 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+Tel: +44 (0) 20 7859-5000 
+E-mail: scee_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:  
++44 (0) 20 7859-5777 
+(Call Monday through Friday,  
+9 a.m. to 6 p.m., GMT/BST) 
+ 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 7 =====
+
+viii About This Manual 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 8 =====
+
+Chapter 1: 
+Standard IOP Services  
+Library Overview 1-3 
+Related Files 1-3 
+Note on RPC Re-entry 1-3 
+ 
+ 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 9 =====
+
+1-2  
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 10 =====
+
+ Standard IOP Services    1-3 
+Library Overview 
+Standard IOP services include functions used to load IOP modules from the EE side, manage the IOP 
+heap, etc. These functions use the SIF RPC as an extension to the EE Kernel. They can be broadly divided 
+into the two categories shown below. 
+Module Operations Management 
+These service functions load modules into IOP memory and load objects into EE memory. On the IOP side, 
+the module named LoadModuleByEE performs these services. 
+Memory Heap Management 
+These service functions allocate/free IOP heap memory and load files into allocated areas. On the IOP side, 
+the module named FILEIO_service performs these services. 
+Related Files 
+The following header file is needed to use the standard IOP services API. 
+Table 1-1 
+Category Filename  
+Header file sifdev.h  
+Note on RPC Re-entry 
+The standard IOP services functions use the SIF RPC internally. Thus, if multiple threads are used, RPC re-
+entry must be avoided. Refer to the discussion on RPC re-entry in the "SIF System" document. 
+RPC WAIT Functions 
+In the following functions, sceSifBindRpc() / sceSifCallRpc() is executed in WAIT state. Besides being 
+careful with RPC re-entry, make sure that interrupts are disabled and that these functions are not called 
+from within an interrupt handler. 
+• sceSifL oadModule() 
+• sceSifLoadElf( ) 
+• sceSifL oadElfPart() 
+• sceSifIn itIopHeap() 
+• sceSifAll ocIopHeap() 
+• sc eSifFreeIopHeap() 
+• sc eSifLoadIopHeap() 
+• sceSifAll ocSysMemory() 
+• sc eSifFreeIopHeap() 
+• sceSifF reeSysMemory() 
+• sc eSifLoadIopHeap() 
+• sceSifLoadM oduleBuffer() 
+• sceSifL oadStartModule() 
+• sceSifL oadStartModuleBuffer() 
+• sc eSifQueryBlockSize() 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 11 =====
+
+1-4    Standard IOP Services 
+• sceSifQ ueryBlockTopAddress() 
+• sceSifQ ueryMaxFreeMemSize() 
+• sceSifQ ueryMemSize() 
+• sceSifQ ueryTotalFreeMemSize() 
+• sceSifSe archModuleByAddress() 
+• sceSifSe archModuleByName() 
+• sceSifStopM odule() 
+• sceSifUnl oadModule() 
+Non-RPC Functions 
+The following functions do not use sceSifBindRpc() / sceSifCallRpc(). They can be used without concern for 
+RPC re-entry issues (this does not mean that the functions themselves are re-entrant). 
+• sceSifL oadFileReset() 
+• sceSifAd dRebootNotifyHandler() 
+• sceSifRem oveRebootNotifyHandler() 
+• sceSifSetRebootNotifyBuffer() 
+• sceSifSyn cIop() 
+Other Functions 
+Although the following function is not directly related to RPC re-entry, it does perform SIF reinitialization, 
+and therefore, will close any RPC connections. As a result, if you use this function, you cannot use other 
+functions that perform transfers via the SIF until you call a function like sceSifSyncIop() to confirm that this 
+function has completed operations. 
+• sceSifRebootI op() 
+ 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 12 =====
+
+  
+Chapter 2: 
+SIF System 
+SIF System Configuration 2-3 
+SIF DMA API 2-4 
+Overview 2-4 
+Related Files 2-4 
+SIF Command API 2-5 
+Overview 2-5 
+Related Files 2-5 
+Usage Procedure 2-5 
+Sample Programs 2-6 
+SIF RPC API 2-7 
+Overview 2-7 
+Related Files 2-8 
+Usage Procedure 2-8 
+Standard Service Functions 2-9 
+Sample Programs 2-9 
+Support for Multithreading in SIF RPC 2-10 
+Overview 2-10 
+Related Files 2-10 
+Sample Programs 2-10 
+Programming Notes 2-10 
+Notes on RPC Re-entry 2-12 
+How RPC Re-entry Works 2-12 
+Preventing RPC Re-entry 2-12 
+Library Functions That Use RPC 2-12 
+IOP Module Replacement 2-13 
+Default Module Replacement 2-13 
+Replacing Non-default Modules 2-15 
+Specifying Thread Priorities for IOP Modules 2-15 
+ 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 13 =====
+
+2-2       
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 14 =====
+
+ SIF System    2-3 
+SIF System Configuration 
+SIF is a system that provides communications between the EE and IOP via the SubBus Interface (SIF). It is 
+comprised of a hierarchical structure, described below.    
+Figure 2-1: SIF Hierarchical Structure 
+ 
+EE Application Program 
+ & libraries 
+ SIF RPC API 
+libkernl.a 
+ SIF CMD API 
+libkernl.a 
+ SIF DMA A PI 
+libkernl.a 
+EE kernel 
+IOP Application Program 
+ & modules 
+SIF RPC API 
+SIF RPC Interface  
+SIF CMD API 
+SIF RPC Interface  
+SIF DMA A PI 
+SIF Manager 
+ 
+IOP kernel 
+ 
+ 
+Both the EE and IOP sides are provided with almost identical APIs at three levels, namely SIF DMA, SIF 
+CMD, and SIF RPC (Remote Procedure Call). 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 15 =====
+
+2-4    SIF System 
+SIF DMA API 
+Overview 
+The SIF DMA API is the lowest level API of the SIF system. It provides functions for performing DMA 
+transfers to the other side's memory, bidirectionally between the EE and IOP. It also provides functions for 
+checking the transfer status.    
+Figure 2-2 
+ 
+EE Application Program 
+ 
+ SIF RPC API 
+libkernl.a 
+ SIF CMD API 
+libkernl.a 
+ SIF DMA A PI 
+libkernl.a 
+EE kernel 
+EE Memory 
+ 
+IOP Application Program 
+ 
+SIF RPC API 
+SIF RPC Interface  
+SIF CMD API 
+SIF RPC Interface  
+SIF DMA A PI 
+SIF Manager 
+ 
+IOP kernel 
+IOP Memory 
+  
+ 
+The SIF DMA receiving channels for both the EE and IOP are normally open, and DMA transfers to the 
+other side's memory can be executed asynchronously (without being concerned with the status of the 
+other side). However, when the EE is on the receiving end of a transfer, and a DMA termination interrupt is 
+generated, the EE-side receiving channel will be closed. In this case, a SIF CMD can be used to reopen the 
+receiving channel. 
+Related Files 
+The following files are required to use the SIF DMA API. 
+Table 2-1 
+Category Filename 
+Header file sif.h 
+EE Library libkernl.a 
+IOP module iop.ilb 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 16 =====
+
+ SIF System    2-5 
+SIF Command API 
+Overview 
+The SIF CMD (Command) API, which is located at a level above the SIF DMA API, is used to send 
+command packets that execute functions (command functions) that were previously defined and registered 
+locally on either the EE and IOP, from the other side. For example, if a command function for changing a 
+variable of an IOP application was registered on the IOP, the SIF CMD API would permit this operation to 
+be performed from the EE. Likewise, by registering a command function on the EE, executing an instruction 
+in an IOP application can cause an action to occur on the EE. The EE and IOP have nearly identical APIs.    
+Figure 2-3 
+ 
+EE Application Program 
+ 
+ SIF RPC API 
+libkernl.a 
+ SIF CMD API 
+libkernl.a 
+ SIF DMA API 
+libkernl.a 
+EE kernel 
+EE Hardware 
+ 
+IOP Application Program 
+ 
+SIF RPC API 
+SIF RPC Interface  
+SIF CMD API 
+SIF RPC Interface 
+Command 
+Function 
+Group 
+ 
+SIF DMA API 
+SIF Manager 
+ 
+IOP kernel 
+IOP Hardware 
+  
+The SIF CMD API can be used at the same time as the SIF DMA API. 
+Related Files 
+The following files are required to use the SIF CMD API. 
+Table 2-2 
+Category Filename 
+Header file sifcmd.h 
+EE Library Libkernl.a 
+IOP module iop.ilb 
+Usage Procedure 
+First, sceSifInitCmd() is called by both the EE and IOP for initialization. The internal operations performed at 
+this time are as follows. 
+1.  Allocate a receive buffer (8 qwords) and convert its address. 
+2.  Register the SIF CMD interrupt handler. 
+3.  Initialize software registers. 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 17 =====
+
+2-6    SIF System 
+Next, at the processor that will be the receiver, call sceSifSetCmdBuffer() to register a command function 
+registration buffer (table). Also, call sceSifAddCmdHandler() to register a command function. A command 
+function is executed as an interrupt function. To register several command functions, repeatedly call 
+sceSifAddCmdHandler() the required number of times. 
+Then, when necessary, prepare an appropriate command packet and call sceSifSendCmd() to send it to 
+the receiving processor. The internal operations performed at this time are as follows. 
+1.  The command packet is transferred to the receive buffer on the other side and generates a 
+transfer termination interrupt. 
+2. The SIF CMD interrupt handler searches the receive buffer on the receiving side. 
+3.  If a command packet is found in the receive buffer, the packet is analyzed and the appropriate 
+command function is executed in the interrupt handler context.  
+If no data is found in the receive buffer, processing returns directly from the interrupt handler. 
+Sample Programs 
+Sample programs that use the SIF CMD API can be found in /sce/ee/sample/sif/sifcmd and 
+/sce/iop/sample/sif/sifcmd. 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 18 =====
+
+ SIF System    2-7 
+SIF RPC API 
+Overview 
+The SIF RPC (Remote Procedure Call) API is a mechanism for building a simple client/server model on top 
+of the SIF CMD API. For example, a function that was registered on the IOP can be called from an EE 
+application and the results can be returned to the EE application.   
+Figure 2-4 
+ 
+EE Application Program 
+ 
+ SIF RPC API 
+libkernl.a 
+ SIF CMD API 
+libkernl.a 
+ SIF DMA API 
+libkernl.a 
+EE kernel 
+EE Hardware 
+IOP Application Program 
+SIF RPC API
+SIF RPC Interface 
+Service 
+function 
+group 
+ 
+SIF CMD API 
+SIF RPC Interface 
+ 
+SIF DMA API 
+SIF Manager 
+ 
+IOP kernel 
+IOP Hardware 
+ 
+ 
+Since nearly identical APIs are provided for both the EE and IOP, the EE can also be the server and the IOP 
+can be the client, which is the opposite to the situation shown in the above figure. Both sides can also play 
+both roles at the same time. 
+In addition, the SIF RPC API can be used at the same time as the SIF DMA API and the SIF CMD API. 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 19 =====
+
+2-8    SIF System 
+Related Files 
+The following files are required to use the SIF RPC API. 
+Table 2-3 
+Category Filename 
+Header file sifrpc.h 
+EE library libkernl.a 
+IOP module iop.ilb 
+Usage Procedure 
+The procedure to follow when using the SIF RPC API is summarized as follows. 
+Figure 2-5 
+Initialize
+sceSifInitRpc
+Initialize
+sceSifInitRpc
+Register service
+functions
+sceSifSetRpcQueue
+sceSifRegisterRpc
+Service loop
+sceSifRpcLoop
+Issue Request
+sceSifCallRpc
+Get service
+information
+sceSifBindRpc
+Synchronize
+Client-sideServer-side
+Get Request
+sceSifGetNextRequest
+Execute service
+functions
+sceSifExecRequest
+ 
+  
+When there is no request from the client while executing the server-side service loop, the thread calling the 
+service loop will enter SLEEP state until a request is received. 
+With the client-side functions sceSifBindRpc() and sceSifCallRpc(), the thread calling these functions will 
+wait for a semaphore or an event flag until there is a response from the server (this is known as 
+synchronous calling or WAIT execution). This call can also be performed without a WAIT state. In this case, 
+completion of the operation can be checked with sceSifCheckStatRpc() (this is known as asynchronous 
+calling or NOWAIT execution). 
+The completion of the service function is reported from the server using a SIF CMD. Note that calling the 
+sceSifCallRpc() function with interrupts disabled or from inside of an interrupt handler can result in a hang..  
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 20 =====
+
+ SIF System    2-9 
+Standard Service Functions  
+I/O services and standard IOP services are provided as service functions when the EE is the client. For 
+more information, please refer to the libio/libiserv documents. 
+Sample Programs 
+Sample programs that use the SIF RPC API can be found in /sce/ee/sample/sif/sifrpc and 
+/sce/iop/sample/sif/sifrpc. 
+ 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 21 =====
+
+2-10    SIF System 
+Support for Multithreading in SIF RPC 
+Overview  
+libmrpc incorporates support for multithreading into the general concept of SIFRPC (RPC) and provides an 
+MSIFRPC (MRPC). With multithreading, multiple threads on the EE can bind to the same service function 
+enabling each thread to call the function at arbitrary times. 
+In RPC, a service is performed on the server by a registered thread for a previously registered function.  In 
+other words, even when multiple clients have invoked Bind, all processing is still performed by one thread 
+and the individual clients are not distinguished from each other. An Unbind is not performed since no 
+thread is created or deleted. 
+However, with MRPC, the registered thread itself does not perform the service. Instead, when a Bind 
+request arrives on the server, the server creates one thread, and that thread executes the registered 
+function. As a result, processing is performed by a different thread for each client that issued Bind, and 
+multiple threads can execute simultaneously on one server. 
+The default values for the priority and stack size of the threads that perform the service and of the receive 
+data buffer size are 32, 0x2000, and 0x800, respectively.  
+These values can be specified by using sceSifMBindRpcParam(). 
+A thread that performs a service is deleted with an Unbind request. 
+MRPC uses RPC buffers when Bind is performed. Up to 32 simultaneous Bind requests are supported. 
+Related Files 
+The following files are required to use libmrpc. 
+Table 2-4 
+Category File Name    
+Library file libmrpc.a    
+Header file libmrpc.h    
+IOP module msifrpc.irx  
+Sample Programs 
+For sample programs that use libmrpc, please see the libnet library (network library) whose source code is 
+publicly available, as well as the libmrpc function reference which contains notes about using the functions. 
+Programming Notes 
+Transfer units 
+Carefully note the units used for the size of the MSIFRPC buffer and the units used for the size of data to be 
+transferred. 
+Although the buffer is 16-byte aligned on the EE, and 4-byte aligned on the IOP, this does not take the 
+cache into account. When considering the cache, 64-byte alignment should be used by applications. This 
+means that the starting address of the MSIFRPC buffer should be 64-byte aligned, and the buffer area 
+should be allocated in 64-byte units. In addition, the transfer data size should also be in 64-byte units. 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 22 =====
+
+ SIF System    2-11 
+Sharing the transfer buffer 
+Although a particular thread can use one buffer for both sending and receiving, it is not possible to share 
+one send buffer, or one receive buffer, among multiple threads. In other words, when multiple threads are 
+used, the buffer should be segregated for each thread. Of course, if a separate buffer is allocated for each 
+thread, it can be used for both sending and receiving. 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 23 =====
+
+2-12    SIF System 
+Notes on RPC Re-entry 
+How RPC Re-entry Works 
+Service functions that call the SIF RPC API are not reentrant. Even if the functions themselves are coded to 
+be reentrant, there can be no re-entry via RPC. 
+From the client side, if a service function is called using sceSifCallRpc(), additional calls cannot be made if 
+the operation has not completed. If multiple calls are made, in many cases the proper data will not be 
+obtained and a hang can occur in the internal function _sceRpcFreePacket() within the client-side library. 
+The following examples show cases where re-entry can occur. 
+Cases where re-entry occurs from NOWAIT state (1) 
+• NOWAIT execution of sceSifCallRpc(&bd) 
+• Re-ex ecution of sceSifCallRpc(&bd) before it has completed execution. 
+Cases where re-entry occurs from NOWAIT state (2) 
+• A thread (A) runs sceSifCallRpc(&bd) in NOWAIT state. 
+• An interrupt occurs and control passes to an interrupt handler. 
+• The interrupt handler wakes up a thread (B), which has a higher priority than thread (A). 
+• Control returns from the interrupt handler and execution rights are given to thread (B). 
+• Thread (B) executes sceSifCallRpc(&bd). Re-entry takes place if the sceSifCallRpc(&bd) from (1) has not 
+finished. 
+Cases where re-entry occurs from WAIT state 
+• A thread (A) runs sceSifCallRpc(&bd) in WAIT state. 
+• sceSifCallRpc(&bd) waits for a semaphore and execution rights are given to another thread (B). 
+• Thread (B) executes sceSifCallRpc(&bd). Re-entry takes place if the sceSifCallRpc(&bd) from (1) has not 
+finished. 
+Preventing RPC Re-entry 
+The following methods can be used to prevent RPC re-entry. 
+• Use a single thread to group together calls for sceSifCallRpc() that use the same ClientData 
+• Use sceSifCheckStatRpc() to make sure that SIFRPC processing has ended 
+• Use the SIFRPC termination callback to manage the SIFRPC processing state 
+• Use a semaphore, etc. when more than one thread calls sceSifCallRpc() and use the same ClientData 
+(thread-safe structure) 
+Library Functions That Use RPC 
+Among the library functions provided by SCE, many that are related to peripheral equipment use 
+sceSifCallRpc() internally. Basically, functions belonging to the same library use the same ClientData so 
+make sure that RPC re-entry does not take place as described above. 
+Some libraries that use sceSifCallRpc() also have internal controls to prevent RPC re-entry from occurring 
+such as the standard I/O service functions. For more information, please see the documentation for each 
+library. 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 24 =====
+
+ SIF System    2-13 
+IOP Module Replacement 
+Default Module Replacement 
+Some modules are loaded from ROM into the IOP by default. To replace these modules, you must first 
+reboot the IOP and restart the operating system. At that time, specify the modules to be replaced as image 
+files. Image files are provided that match the version of the library. 
+Immediately after starting up the application from disk, the IOP should be rebooted so that the default 
+modules are replaced.  
+Confirm that the message shown below is displayed by dsidb on the DTL-T10000 (IOP-side console) 
+during a replacement.  
+1.  Normal execution 
+dsidb> 
+Update reboot complete  
+2.  Example of a failure (incorrect filename) 
+dsidb> 
+Update rebooting.. 
+open file name ********.***;1 
+file 'cdrom0:********.***;1' can't open 
+***Resetted 
+ 
+A sample program is shown below. 
+     
+        #include <eekernel.h> 
+        #include <eeregs.h> 
+        #include <sifdev.h> 
+        #include <stdio.h> 
+        #include <libcdvd.h> 
+         
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 25 =====
+
+2-14    SIF System 
+        #define CDROM      /* Use CDROM */ 
+        #define REPLACE    /* Module replacement */ 
+         
+        #ifdef CDROM 
+        #define IOPRP "cdrom0:\\MODULES\\"IOP_IMAGE_FILE";1" 
+         #else 
+        #define IOPRP "host0:/usr/local/sce/iop/modules/"IOP_IMAGE_file 
+#endif 
+         
+        int main() 
+        { 
+        #ifdef REPLACE 
+        #ifdef CDROM 
+          sceSifInitRpc(0); 
+          sceCdInit(SCECdINIT); 
+        #else 
+          sceSifInitRpc(0); 
+        #endif /* CDROM */ 
+while (!sceSifRebootIop (IOPRP)); /* IOP reboot module  
+                                               substitution */ 
+          while( !sceSifSyncIop() );        /* Wait for completion */ 
+        #endif /* REPLACE */ 
+         
+          sceSifInitRpc(0); 
+          sceSifLoadFileReset(); 
+          sceFsReset(); 
+        #ifdef CDROM 
+          sceCdInit(SCECdINIT); 
+          sceCdMmode(SCECdCD);      /* Media: CD-ROM */ 
+        #endif 
+         
+        /* Start non-default modules */ 
+          while (sceSifLoadModule(...) < 0); 
+          while (sceSifLoadModule(...) < 0); 
+                : 
+                : 
+        } 
+ 
+The IOP_IMAGE_FILE and IOP_IMAGE_file macros used in the program define the IOP replacement 
+module from Release 1.6 in sifdev.h as shown below. This filename is updated every release.  
+<sifdev.h> 
+        #define IOP_IMAGE_FILE "IOPRPXX.IMG" 
+        #define IOP_IMAGE_file "ioprpXX.img" 
+     
+This allows the specification method shown below to be used when replacing an IOP default module and 
+makes modification unnecessary when only a library update is performed. 
+Example: 
+        #ifdef CDROM 
+          //  Starting up from a CD/DVD-ROM disk (access IOPreplace module 
+              on the CD/DVD-ROM) 
+          while (!sceSifRebootIop ("cdrom0:\\" IOP_IMAGE_FILE ";1")); 
+        #else 
+          // Access IOP replacement module on the local disk 
+          while (!sceSifRebootIop ("host0:/usr/local/sce/iop/modules/" 
+          IOP_IMAGE_file)); 
+        #endif 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 26 =====
+
+ SIF System    2-15 
+No services can be used via the IOP, including printf(), from the time sceSifRebootIop() is issued until 
+sceSifSyncIop() returns a non-zero value (however, the EE coprocessor can be controlled). 
+Also, since all SIFCMD, SIFRPC, and DECI settings are reset, they should be set again. For sceOpen() or 
+sceRead(), call sceFsReset() and for libcdvd, call sceCdInit(). 
+Replacing Non-default Modules 
+The sample program shown above can be used to replace non-default modules. However, 
+sceSifLoadModule() should be executed again after rebooting the IOP. 
+Specifying Thread Priorities for IOP Modules 
+When sceSifLoadModule() is used to start an IOP module, the thread priority used by the module can be 
+specified. Use the third argument, as shown below. 
+For pad: 
+char* mes = "thpri=32,34"; <- Set to desired value 
+sceSifLoadModule( "host0:/usr/local/sce/iop/modules/padman.irx", 
+strlen(mes)+1, mes ); 
+ 
+Many libraries that have an IOP module provide a function (sceXXXChangeThreadPriority()) to change the 
+thread priority of an active module. 
+For more information, refer to the library documents. 
+ PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 
+
+===== PAGE 27 =====
+
+2-16    SIF System 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0  -  Sif Libraries 

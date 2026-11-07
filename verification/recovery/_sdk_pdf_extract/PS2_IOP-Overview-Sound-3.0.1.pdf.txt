@@ -1,0 +1,2545 @@
+
+
+===== PAGE 1 =====
+
+  
+PlayStation®2 IOP Library Overview 
+Release 3.0.1 
+ 
+ 
+ 
+ 
+Sound Libraries 
+ 
+
+===== PAGE 2 =====
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+© 2004 Sony Computer Entertainment Inc. 
+Publication date: March 2004 
+ 
+Sony Computer Entertainment Inc. 
+1-1, Akasaka 7-chome, Minato-ku 
+Tokyo 107-0052, Japan 
+ 
+Sony Computer Entertainment America 
+919 E. Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+ 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+ 
+The PlayStation®2 IOP Library Overview - Sound Libraries manual is supplied pursuant to and subject to 
+the terms of the Sony Computer Entertainment PlayStation® license agreements. 
+The PlayStation®2 IOP Library Overview - Sound Libraries manual is intended for distribution to and use by 
+only Sony Computer Entertainment licensed Developers and Publishers in accordance with the 
+PlayStation® license agreements. 
+Unauthorized reproduction, distribution, lending, rental or disclosure to any third party, in whole or in part, 
+of this book is expressly prohibited by law and by the terms of the Sony Computer Entertainment 
+PlayStation® license agreements. 
+Ownership of the physical property of the book is retained by and reserved by Sony Computer 
+Entertainment. Alteration to or deletion, in whole or in part, of the book, its presentation, or its contents is 
+prohibited. 
+The information in the PlayStation®2 IOP Library Overview - Sound Libraries manual is subject to change 
+without notice. The content of this book is Confidential Information of Sony Computer Entertainment. 
+ and PlayStation are registered trademarks of Sony Computer Entertainment Inc. All other trademarks 
+are property of their respective owners and/or their licensors. 
+
+===== PAGE 3 =====
+
+ 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Summary Table of Contents 
+About This Manual v 
+Changes Since Last Release v  
+Related Documentation v  
+Typographic Conventions v  
+Developer Support v 
+Chapter 1: Low Level Sound Library 1-1  
+Chapter 2: Sound Data (HD) Simple Access Library (libsdhd) 2-1  
+Chapter 3: Sound Data (SQ) Simple Access Library (libsdsq) 3-1  
+Chapter 4: CSL MIDI Delay Module (moddelay) 4-1  
+Chapter 5: CSL Hardware Synthesizer (modhysn) 5-1  
+Chapter 6: CSL MIDI Sequencer Module (modmidi) 6-1  
+Chapter 7: CSL MIDI Monophonic (modmono) 7-1  
+Chapter 8: CSL MIDI Stream Generation 8-1  
+Chapter 9: CSL SE Stream Generation (modsein) 9-1  
+Chapter 10: CSL Sound Effect Sequencer (modsesq) 10-1  
+Chapter 11: CSL Sound Effect Sequencer 2 11-1  
+Chapter 12: CSL Software Synthesizer (modssyn) 12-1  
+Chapter 13: SPU2 Waveform Data Encoding Module (spucodec) 13-1  
+ 
+
+===== PAGE 4 =====
+
+iv Table of Contents 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+              
+
+===== PAGE 5 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+About This Manual 
+This is the Runtime Library Release 3.0.1 version of the PlayStation®2 IOP Library Overview - Sound 
+Libraries manual.  
+The purpose of this manual is to provide overview-level information about the PlayStation®2 IOP sound 
+libraries. For related descriptions of the PlayStation®2 IOP sound library structures and functions, refer to 
+the PlayStation®2 IOP Library Reference - Sound Libraries. 
+Changes Since Last Release 
+Chapter 11: CSL Sound Effect Sequencer 2 
+• New 
+Related Documentation 
+Library specifications for the EE can be found in the PlayStation®2 EE Library Reference manuals and the 
+PlayStation®2 EE Library Overview manuals. 
+Note: the Developer Support Web site posts current developments regarding the Libraries and also 
+provides notice of future documentation releases and upgrades. 
+Typographic Conventions 
+Certain Typographic Conventions are used throughout this manual to clarify the meaning of the text: 
+Convention Meaning 
+courier Indicates literal program code. 
+italic Indicates names of arguments and structure 
+members (in structure/function definitions 
+only). 
+medium bold Indicates data types and structure/function 
+names (in structure/function definitions 
+only). 
+blue Indicates a hyperlink. 
+Developer Support 
+Sony Computer Entertainment America (SCEA) 
+SCEA developer support is available to licensees in North America only. You may obtain developer support 
+or additional copies of this documentation by contacting the following addresses: 
+Order Information Developer Support 
+Attn: Developer Tools Coordinator 
+Sony Computer Entertainment America 
+919 East Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+Tel: (650) 655-8000 
+E-mail: scea_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:(650) 655-5566  
+(Call Monday through Friday,  
+8 a.m. to 5 p.m., PST/PDT) 
+ 
+
+===== PAGE 6 =====
+
+vi About This Manual 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Sony Computer Entertainment Europe (SCEE) 
+SCEE developer support is available to licensees only in the PAL television territories (including Europe and 
+Australasia). You may obtain developer support or additional copies of this documentation by contacting 
+the following addresses: 
+Order Information Developer Support 
+Attn: Development Tools Manager 
+Sony Computer Entertainment Europe 
+13 Great Marlborough Street 
+London W1F 7HP, U.K. 
+Tel: +44 (0) 20 7859-5000 
+E-mail: scee_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:  
++44 (0) 20 7911-7711 
+(Call Monday through Friday,  
+9 a.m. to 6 p.m., GMT/BST) 
+ 
+
+===== PAGE 7 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 1: 
+Low Level Sound Library  
+Library Overview 1-3 
+Register Macros 1-3 
+List of Register Macros 1-4 
+Basic Parameter Register Macros 1-4  
+Voice Control Parameter Register Macros 1-5  
+Address Value Register Macros 1-6  
+Address Value Register Macros 1-6  
+Entries (Pseudo Register Macros) 1-6  
+Caution: Setting SPDIF (Optical Digital) Output 1-7  
+Effects Functions 1-8 
+Effects Inputs 1-8 
+Effects Work Area 1-8 
+Effect Types and Switching 1-9  
+Bypass Function and Bitstream Voice Output 1-11  
+Summary of Bitstream Voice Output 1-11  
+Precautions 1-11 
+Data Format of Bitstream Voice Data 1-12  
+Actual Processing 1-13  
+Operation for Bypass Processing Only 1-14  
+SPU2 Overview and Differences with the SPU 1-16  
+SPU2 Overview 1-16 
+Differences Between the SPU2 Cores and the SPU 1-16  
+Differences Between the SPU2 and SPU 1-17  
+Internal Signals and Function Connections 1-18  
+Memory Map 1-20 
+ 
+
+===== PAGE 8 =====
+
+1-2      
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 9 =====
+
+      Low Level Sound Library    1-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Library Overview 
+libsd is a low level library for controlling the PlayStation 2 sound device (SPU2 and peripheral circuits). 
+Always use libsd to access the sound device. 
+libsd provides functions for accessing public SPU2 registers, transferring waveform data or sound data to 
+or from SPU2 local memory, setting up processing for interrupts from the SPU2, and setting or getting 
+effect attributes. It also provides batch functions for collecting together accesses to a series of SPU2 
+registers. 
+Register Macros 
+libsd uses register wrapper APIs and register macros to access SPU2 registers. SPU2 registers are 
+classified into three types, namely basic parameter registers, voice control parameter registers, and 
+address value registers. Register wrapper APIs for setting or getting values for each of these types of 
+registers are provided separately. Pseudo registers have been defined for some SPU2 functions, and APIs 
+that can be used in a similar manner as the other register wrapper APIs are provided. 
+Table 1-1 
+Register Type Register Macro  Set Value Get Value 
+Basic parameter 
+register 
+SD_VP_*/SD_P_* sceSdSetParam() sceSdGetParam() 
+Voice control 
+parameter register 
+SD_S_* sceSdSetSwitch() sceSdGetSwitch() 
+Address value 
+register 
+SD_VA_*/SD_A_* sceSdSetAddr() sceSdGetAddr() 
+Pseudo register SD_C_* sceSdS etCoreAttr() sceSdGetCoreAttr() 
+ 
+Since each core has registers with the same names, register macros must be used by taking the bitwise 
+OR with a core-specific macro (SD_CORE_0 or SC_CORE_1). Also, macros that have registers with the 
+same names for each voice (SD_V*) are used by further taking the bitwise OR with a voice-specific macro 
+(SD_VOICE_00 to SD_VOICE_23). 
+(Example) 
+        sceSdSetParam( SD_CORE_0|SD_P_MVOLL , 0x3fff ) ; 
+        sceSdSetParam( SD_CORE_0|SD_VOICE_05|SD_VP_PITCH , 0x1000 ); 
+ 
+
+===== PAGE 10 =====
+
+1-4    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+List of Register Macros 
+Register macros are listed below. 
+Basic Parameter Register Macros 
+Table 1-2 
+Set:  sceSdSetParam() 
+Get:  sceSdGetParam() 
+Register Macro Core Specification Voice Specification    Function 
+SD_VP_VOLL SD_CORE_ ? SD_VOICE_?? Voice volume (left)  
+SD_VP_VOLR SD_CORE_ ? SD_VOICE_?? Voice volume (right) 
+SD_VP_PITCH SD_CORE_? SD_V OICE_?? Pitch when sound 
+is generated   
+SD_VP_ADSR1 SD_CORE_? SD_VOI CE_?? Envelope                   
+SD_VP_ADSR2 SD_CORE_? SD_V OICE_?? Envelope (2)  
+SD_VP_ENVX SD_CORE_? SD_V OICE_?? Envelope current 
+value          
+SD_VP_VOLXL SD_COR E_? SD_VOICE_?? Volume current 
+value (left)  
+SD_VP_VOLXR SD_COR E_? SD_VOICE_?? Volume current 
+value (right)  
+SD_P_MMIX SD_CORE_? --- Output specification 
+after voice mixing       
+SD_P_MVOLL SD_CORE_? --- Master volume (left) 
+SD_P_MVOLR SD_CORE_? --- Master volume 
+(right)  
+SD_P_EVOLL SD_CORE_? --- Effect return volume 
+(left)  
+SD_P_EVOLR SD_CORE_? --- Effect return volume 
+(right)  
+SD_P_AVOLL SD_CORE_1 --- Core external input 
+volume (left)  
+SD_P_AVOLR SD_CORE_1 --- Core external input 
+volume (right)  
+SD_P_BVOLL SD_CORE_? --- Sound data input 
+volume (left)  
+SD_P_BVOLR SD_CORE_? --- Sound data input 
+volume (right)  
+SD_P_MVOLXL SD_CORE_? --- Master volume 
+current value (left)  
+SD_P_MVOLXR SD_CORE_? --- Master volume 
+current value (right)  
+ 
+
+===== PAGE 11 =====
+
+      Low Level Sound Library    1-5 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+Voice Control Parameter Register Macros 
+Table 1-3 
+Set:  sceSdSetSwitch() 
+Get:  sceSdGetSwitch() 
+Register Macro Core Specification Voice Specificat ion Function                    
+SD_S_PMON SD_CORE_? --- Pitch modulation 
+specification  
+SD_S_NON SD_CORE_? --- Allocation to noise 
+generator   
+SD_S_KON SD_CORE_? --- Key on (start voice 
+generation) 
+SD_S_KOFF SD_CORE_? --- Key off (end voice 
+generation)  
+SD_S_ENDX SD_CORE_? --- Endpoint passed 
+flag            
+SD_S_VMIXL SD_CORE_? --- Voice output mixing 
+specification (Dry 
+left)        
+SD_S_VMIXR SD_CORE_? --- Voice output mixing 
+specification (Dry 
+right)       
+SD_S_VMIXEL SD_CORE_? --- Voice output mixing 
+specification (Wet 
+left)        
+SD_S_VMIXER SD_CORE_? --- Voice output mixing 
+specification (Wet 
+right)  
+ 
+
+===== PAGE 12 =====
+
+1-6    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Address Value Register Macros 
+Table 1-4 
+Set:  sceSdSetAddr() 
+Get:  sceSdGetAddr() 
+Register Macro Core Specification Voice Specificat ion Function                    
+SD_VA_SSA SD_CORE_? SD_VOI CE_?? Waveform data 
+starting address  
+SD_VA_LSAX SD_CORE_ ? SD_VOICE_?? Loop point address   
+SD_VA_NAX SD_CORE_? SD_V OICE_?? Waveform data 
+address that should 
+be read next            
+SD_A_ESA SD_CORE_? --- Effect processing 
+work area starting 
+address                
+SD_A_EEA SD_CORE_? --- Effect processing 
+work area final 
+address                   
+SD_A_TSA SD_CORE_? --- Transfer starting 
+address       
+SD_A_IRQA SD_CORE_? --- Interrupt address 
+specification 
+ 
+Entries (Pseudo Register Macros) 
+Table 1-5 
+Set:  sceSdSetCoreAttr 
+Get:  sceSdGetCoreAttr 
+Macro Core Specification Voice 
+Specification 
+Function                 
+SD_C_EFFECT_ENABLE SD_CORE_ ? --- Enable writing to 
+effect area               
+SD_C_IRQ_ENABLE SD_C ORE_? --- Enable IRQ 
+interrupt      
+SD_C_MUTE_ENABLE SD_CORE_? --- Mute                     
+SD_C_NOISE_CLK SD_COR E_? --- Noise generator 
+M series shift 
+frequency           
+SD_C_SPDIF_MODE --- --- Set SPDIF (mask)  
+
+===== PAGE 13 =====
+
+      Low Level Sound Library    1-7 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Caution: Setting SPDIF (Optical Digital) Output 
+Signals that are output from the SPU2 to the SPDIF must comply with the IEC958 standard. Although most 
+required settings are made when the library is initialized, the application is responsible for the following 
+three items. Therefore, be sure to set these correctly. 
+Table 1-6 
+Item Setting Meaning                         
+Media  (category code)      SD_SPDIF_MEDIA_DVD 
+SD_SPDIF_MEDIA_CD 
+DVD 
+CD (default) 
+Output contents  SD_SPDIF_OUT_OFF 
+ 
+SD_SPDIF_OUT_PCM 
+ 
+SD_SPDIF_OUT_BYPASS 
+ 
+ 
+ 
+ 
+SD_SPDIF_OUT_ 
+BITSTREAM 
+ 
+Do not output anything to 
+the SPDIF. 
+Output the same sound as 
+analog output by using 
+PCM (default). 
+Output the data that was 
+entered in the Core0 
+bypassing the SPU2 
+(perform no volume 
+processing, etc.). 
+Output the data that was 
+entered in the Core0 input 
+block as a bitstream. 
+Digital recording SD_SPDIF_COPY_ 
+NORMAL 
+ 
+ 
+SD_SPDIF_COPY_ 
+PROHIBIT 
+Normal mode (first 
+generation recordable) 
+(default). 
+Prohibit digital recording 
+ 
+sceSdSetCoreAttr() is used to set attributes as follows. If a setting is made for either core, it becomes 
+effective for both cores.   
+(Example)  DVD, PCM output, prohibit digital recording 
+sceSdSetCoreAttr( 
+SD_C_SPDIF_MODE, 
+SPU_SPDIF_MEDIA_DVD | SD_SPDIF_OUT_PCM | SD_SPDIF_COPY_PROHIBIT 
+); 
+ 
+
+===== PAGE 14 =====
+
+1-8    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Effects Functions 
+The SPU2 has two sets of independent built-in effects functions, one for each core. These functions are 
+described below. 
+Effects Inputs 
+Effects inputs are provided to mix the results from all sound outputs handled by a particular core. However, 
+mixing is enabled not by activating a switch after mixing all of the effects voices, but instead, outputs such 
+as voice output, sound data input, or core external input (CORE1 only) can be individually specified to be 
+mixed into effects. 
+Table 1-7 
+Target Register Macro 
+Voice output SD_S_VMIXEL 
+SD_S_VMIXER 
+Mixing results of all voices SD_P_MMIX.MSENDEL 
+SD_P_MMIX.MSENDER 
+Sound data input SD_P_MMIX.MINEL 
+SD_P_MMIX.MINER 
+Core external input (CORE1 only) SD_P_MMIX.SINEL 
+SD_P_MMIX.SINER 
+ 
+By setting the bit of each register to 1, the associated source is mixed as input to effects. If a source is not 
+needed for mixing into effects, 0 should be specified. 
+Note that if effects have already been applied to SPU2 CORE0, then are further applied to the core external 
+input of SPU2 CORE1, the result will be that two effects will be applied simultaneously to the sound for 
+SPU2 CORE0. Make sure you know what you are doing before specifying a core external input as an 
+effects input. 
+Effects Work Area 
+To implement effects functions, a work area is required for saving and processing previous inputs in order 
+to produce delay effects such as reverb. This work area is taken from SPU2 local memory and is used in 
+SPU2 effects functions.  
+The work area must be allocated for each core and is separate from normal waveform data. In other words, 
+when SPU2 effects functions are used, the total amount of waveform data that can be placed in SPU2 local 
+memory is reduced. The size of the work area depends on the type of effect that is used. Currently, the 
+work area can be a maximum of 128KB (0x20000) for each core for a total of 256KB. 
+Table 1-8 
+Effects Macro Type Size  Macro Size (bytes) 
+SD_REV_MODE_OFF Off SD_REV_SIZE_OFF 0x 0080 
+SD_REV_MODE_ROOM Room SD_REV_SIZE_ROOM 0x 26c0 
+SD_REV_MODE_STUDIO_A Studio (sma ll) SD_REV_SIZE_STUDIO_A 0x 1f40 
+SD_REV_MODE_STUDIO_B Studio (medium) SD_REV_SIZE_STUDIO_B 0x 4840 
+SD_REV_MODE_STUDIO_C Studio (large ) SD_REV_SIZE_STUDIO_C 0x 6fe0 
+SD_REV_MODE_HALL Hall SD_REV_SIZE_HALL 0x ade0 
+
+===== PAGE 15 =====
+
+      Low Level Sound Library    1-9 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Effects Macro Type Size  Macro Size (bytes) 
+SD_REV_MODE_SPACE Space echo SD_REV_SIZE_SPACE 0x f6c0 
+SD_REV_MODE_ECHO Echo SD_REV_SIZE_ECHO 0x18040 
+SD_REV_MODE_DELAY Delay SD_REV_SIZE_DELAY 0x18040 
+SD_REV_MODE_PIPE Pipe echo SD_REV_SIZE_PIPE 0x 3c00 
+ 
+The location of the effects work area in SPU2 local memory is determined by specifying its ending address 
+(SD_A_EEA). The ending address must be specified on a 128KB boundary in SPU2 local memory. Since 
+the starting address of the work area is set internally by the library according to the effects type, it need not 
+be set by the user. 
+Effect Types and Switching 
+The SPU2 effects functions can be switched in by specifying the effect type. Currently, the library provides 
+nine effect types (listed above, excluding off). For the “echo” and “delay” types, the delay time and amount 
+of feedback can also be specified (via the library). 
+Since the method of using the effects work area and the size of the work area differ according to the type, 
+when the effect type is switched in, the effects work area must be resized and the work results within the 
+effects work area must be cleared. 
+The effects work area is resized as part of normal processing when the effect type is changed in the library. 
+Although the effects work area is not cleared as part of normal processing, the user can specify that the 
+work area is to be cleared when the type is specified. This will allow clear processing to be performed at 
+the same time resizing is performed by the library function that changes the type. A clear function can also 
+be called independently. 
+When clearing the effects work area, it is important to note that if the effect type is changed or the work 
+area is cleared while sound is being produced, the data within the effects work area may become 
+discontinuous and noise may be generated when that discontinuity is output. 
+To prevent this from happening, reduce the effects return volume (SD_P_EVOLL/R) in stages before 
+clearing the effects work area. 
+Code example: 
+sceSdEffectAttr r_attr; 
+ 
+/* Get current SD_P_EVOLL/R */ 
+evoll = sceSdGetParam (SD_CORE_? | SD_P_EVOLL); 
+evolr = sceSdGetParam (SD_CORE_? | SD_P_EVOLR); 
+/* Reduce SD_P_EVOLL/R in stages (example:  25 stages) */ 
+for (i = 25-1; i >= 0; i--) { 
+    sceSdSetParam (SD_CORE_? | SD_P_EVOLL, (evoll * i) / 25); 
+    sceSdSetParam (SD_CORE_? | SD_P_EVOLR, (evolr * i) / 25); 
+    DelayThread (16 * 1000); /* Wait 16 msec */ 
+} 
+#if 1  /* ###### When individual processes are performed together in 
+a batch ###### */ 
+/* Specify new effects type and clear effects work area */ 
+r_attr.mode = SD_REV_MODE_??? | SD_REV_MODE_CLEAR_WA; 
+/* Always 0 so that the return volume is not reset */ 
+r_attr.depth_L = r_attr.depth_R = 0; 
+if ((return_value = sceSdSetEffectAttr (SD_CORE_?, &r_attr)) < 0) { 
+    /* … */ 
+} 
+
+===== PAGE 16 =====
+
+1-10    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+#else  /* ###### When individual processes are performed separately 
+###### */ 
+/* Disable writing to the effects work area */ 
+sceSdSetCoreAttr (SD_CORE_? | SD_C_EFFECT_ENABLE, 0); 
+/* Clear effects work area */ 
+if ((return_value = sceSdClearEffectWorkArea (SD_CORE_?, ?, 
+SD_REV_MODE_???)) < 0) { 
+    /* … */ 
+} 
+/* Specify new effects type */ 
+r_attr.mode = SD_REV_MODE_???; 
+/* Always 0 so that the return volume is not reset */ 
+r_attr.depth_L = r_attr.depth_R = 0; 
+if ((return_value = sceSdSetEffectAttr (SD_CORE_?, &r_attr)) < 0) { 
+    /* … */ 
+} 
+/* Enable writing to the effects work area */ 
+sceSdSetCoreAttr (SD_CORE_? | SD_C_EFFECT_ENABLE, 1); 
+#endif 
+/* Increase SD_P_EVOLL/R in stages to the original value */ 
+for (i = 1; i <= 25; i++) { 
+    sceSdSetParam (SD_CORE_? | SD_P_EVOLL, (evoll * i) / 25); 
+    sceSdSetParam (SD_CORE_? | SD_P_EVOLR, (evolr * i) / 25); 
+    DelayThread (16 * 1000); /* Wait 16 msec */ 
+} 
+ 
+ 
+
+===== PAGE 17 =====
+
+      Low Level Sound Library    1-11 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Bypass Function and Bitstream Voice Output 
+The SPU2 is equipped with a function to bypass its internal processing and output 3D sound (non-PCM) 
+bitstream voice data for consumer use to the PlayStation 2's built-in optical digital output. The SPU2 can 
+also bypass its internal processing and output PCM voice data. 
+The data formats and processing methods used for these functions are described below using actual code. 
+Summary of Bitstream Voice Output 
+Bitstream voice data is different from ordinary PCM voice data. Because it is highly encoded, it must be 
+transmitted to a device that can decode the data, such as an AV amplifier, without changing a single bit. 
+When bitstream voice data is transferred to the SPU2 sound data input in the same manner as ordinary 
+voice data, the value of each bit cannot be precisely guaranteed by volume calculations in the SPU2. 
+Consequently, the SPU2 is equipped with a bypass function for the SPU2 CORE0 sound data input that 
+bypasses internal processing and outputs the data directly to the optical digital output. Bitstream voice 
+data can also be handled using this function. 
+The following three procedures are performed for the processing in a program. 
+1.  Mute: Sets the volume to 0 so no noise is output when settings are changed. 
+2.  Optical digital output settings: Uses a function to change core attributes to set the switching between 
+the optical digital output and bypass processing, and changes to a state that allows bitstream voice 
+data to flow. 
+3.  Data transfer: Transf ers data to the SPU2 CORE0 sound data input that had been previously arranged 
+in a suitable format. 
+Data transferred to the sound data input must be in a prescribed format, regardless of whether bypass 
+processing is used. For bypass processing, a special data format is also required.  
+Precautions 
+Licensing 
+Generally speaking it is necessary to have an agreement or be certified with each license provider who 
+plans, provides or manages the bitstream voice data format in order to use bitstream voice data in title 
+applications. For details please consult with license providers of the bitstream voice data format you want 
+to use. 
+Use with Analog Output 
+The SPU2 does not have a function to decode bitstream voice data. When you want to output sound 
+output both to the optical digital output and the analog output as well, data in PCM format must be 
+prepared in advance or the data decoded by software in the EE, down mixed to two channels, then output 
+to the analog output (for example, input to the SPU2 CORE1 sound data input). 
+Pause / Resume Processing 
+When a state occurs in which data transfer is not continuous, such as when bitstream voice data pauses 
+and resumes, the operation of a device that receives the optical digital output, such as an AV amplifier, will 
+be different depending on the device. The SPU2 only transfers data and does not execute processing that 
+resets the state when reissuing a transfer. Be sure to support suitable software according to the 
+characteristics of the bitstream voice data.  
+
+===== PAGE 18 =====
+
+1-12    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+For example, when pausing a transfer, the following types of representative processing are necessary: 
+pausing only at fixed units (data block size),  acquiring header information such as type of bitstream voice 
+data and remaining size when paused, and resending this information when reissuing the transfer. 
+For details on the format when transferring bitstream voice data using a digital interface, refer to 
+International Standard IEC61937 specified by the IEC (International Electrical Standards Association) and 
+related documentation. Also refer to the documentation of the encoder being used. You should also 
+consult with the license provider of the bitstream voice data format. 
+Amount of Data 
+From the standpoint of restrictions on data formats, the amount of data per unit time is twice that of a data 
+transfer to an ordinary sound data input. Be sure to take note of the transfer rate as well as the amount of 
+IOP memory being used. 
+Data Format of Bitstream Voice Data 
+The data format when working with bitstream voice data will be described here.  
+Data transferred to the SPU2 sound data input generally must be in the following format. 
+• Should be little-endian. 
+• L-channel and R-channel data should  be interleaved every 512 bytes. 
+Figure 1-1: Data format for SPU2 sound data input 
+ 
+L-channel area
+R-channel area
+L-channel area
+R-channel area
+512 bytes
+L data(512)
+L data(513)
+:
+L data(1023)
+R data(512)
+R data(513)
+:
+R data(1023)
+L data(0)
+L data(1)
+:
+L data(511)
+R data(0)
+R data(1)
+:
+R data(511)
+512 bytes
+512 bytes
+512 bytes
+ 
+The following condition is added for bitstream voice data. 
+• The actual data should be sequentially arranged  on the L-channel side and all values on the R-
+channel side should be 0. 
+     
+
+===== PAGE 19 =====
+
+      Low Level Sound Library    1-13 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Figure 1-2: Bitstream voice data format 
+ 
+L-channel area
+R-channel area
+L-channel area
+R-channel area
+512 bytes
+data(n x 512 + 0)
+data(n x 512 + 1)
+:
+data(n x 512 + 511)
+0
+0
+:
+0
+data(512)
+data(513)
+:
+data(1023)
+0
+0
+:
+0
+data(0)
+data(1)
+:
+data(511)
+0
+0
+:
+0
+:
+:
+:
+L-channel area
+R-channel area
+512 bytes
+512 bytes
+512 bytes
+512 bytes
+512 bytes
+ 
+ 
+Actual Processing 
+The data processing method that handles bitstream voice data will be described here using actual code. 
+Mute 
+Uses the register wrapper function sceSdSetParam() used for basic parameter setting, to set the value of 
+volume BVOL of the SPU2 CORE0 sound data input to 0. If this is not done, noise will be output. Be sure 
+to perform this operation. 
+Code example:     
+ /* Set SPU2 CORE0 BVOL to 0 on both L/R sides */ 
+        sceSdSetParam (SD_CORE_0 | SD_P_BVOLL, 0); 
+        sceSdSetParam (SD_CORE_0 | SD_P_BVOLR, 0); 
+ 
+
+===== PAGE 20 =====
+
+1-14    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Optical Digital Output Settings 
+Uses the core attribute setting function sceSdSetCoreAttr() to specify SD_SPDIF_OUT_BITSTREAM in the 
+"type to output" of SD_C_SPDIF_MODE. Bypass processing becomes valid at the same time through the 
+use of this specification. 
+Code example: 
+ /* Media is DVD, output is bitstream, digital recording is  
+           prohibited */ 
+        sceSdSetCoreAttr(SD_C_SPDIF_MODE,  
+         (SD_SPDIF_MEDIA_DVD | SD_SPDIF_OUT_BITSTREAM |  
+        SD_SPDIF_COPY_PROHIBIT)); 
+ 
+Data Transfer  
+Uses the function sceSdBlockTrans() that performs data transfers (block transfers) to the sound data input, 
+to transfer bitstream voice data in a format indicated in advance. 
+Code example: 
+        sceSdBlockTrans(SD_CORE_0, (SD_TRANS_MODE_WRITE | SD_BLOCK_LOOP), 
+           buffer_top_addr, buffer_size); 
+ 
+End Transfer of Bitstream Voice Data 
+Stops data transfers (block transfers) to the sound data input just like ordinary sound data. 
+Code example: 
+sceSdBlockTrans (SD_CORE_0, SD_TRANS_MODE_STOP, NULL, 0); 
+Thereafter, the settings of the optical digital output should be returned to normal when you want to output 
+ordinary sound to the optical digital output. In addition, the value of volume BVOL of the SPU2 CORE0 
+sound data input should be set as necessary. 
+Code example: 
+/* Media is DVD, output is PCM, digital recording is permitted */ 
+        sceSdSetCoreAttr (SD_C_SPDIF_MODE,  
+          (SD_SPDIF_MEDIA_DVD | SD_SPDIF_OUT_PCM | 
+SD_SPDIF_COPY_NORMAL)); 
+        /* Set both L/R sides of SPU2 CORE0 BVOL to 0x7fff */ 
+        sceSdSetParam (SD_CORE_0 | SD_P_BVOLL, 0x7fff); 
+        sceSdSetParam (SD_CORE_0 | SD_P_BVOLR, 0x7fff); 
+ 
+Operation for Bypass Processing Only 
+In the SPU2 CORE0 sound data input, not only can bitstream voice data be subject to bypass processing, 
+but ordinary PCM voice data can as well.  
+The data format for this type of operation is similar to bitstream voice data with required data arranged in 
+the L-channel area and the entire R-channel area being set to 0. In the L-channel area, 16-bit PCM voice 
+data is alternately arranged L/R every 128 samples for a total of 256 samples. 
+ 
+
+===== PAGE 21 =====
+
+      Low Level Sound Library    1-15 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Figure 1-3: PCM voice data format for bypass processing 
+L-channel area
+R-channel area
+512 bytes
+Lch data(0)
+Rch data(0)
+Lch data(1)
+Rch data(1)
+:
+Lch data(127)
+Rch data(127)
+512 bytes
+0
+0
+0
+0
+:
+0
+0
+16bit
+ 
+In a program, processing is similar to that for bitstream voice data except that SD_SPDIF_OUT_BYPASS 
+should be specified for the "type to output" for the argument SD_C_SPDIF_MODE of sceSdSetCoreAttr(). 
+Code example: 
+        /* Media is DVD, output is bypass processing, digital recording is 
+           prohibited */ 
+        sceSdSetCoreAttr(SD_C_SPDIF_MODE,  
+          (SD_SPDIF_MEDIA_DVD | SD_SPDIF_OUT_BYPASS |  
+        SD_SPDIF_COPY_PROHIBIT)); 
+ 
+If the bypass function is used, the amount of data transferred will normally be two times as indicated above. 
+Also, the data is not normally output to the analog output and the volume cannot be adjusted either. Given 
+these characteristics, be sure to use this feature only if you have a special need to handle bitstream data 
+and only after thorough examination. 
+
+===== PAGE 22 =====
+
+1-16    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+SPU2 Overview and Differences with the SPU 
+This section presents an overview of the hardware for the SPU2, which is the PlayStation 2 sound 
+processor, and briefly explains the differences between the SPU2 and the SPU, which is the PlayStation 
+sound processor. 
+SPU2 Overview 
+The SPU2, which consists of two cores, is a sound synthesizing processor that has local memory and 
+external input/output. Each core (CORE0 and CORE1) performs the equivalent processing of the basic 
+functions of the SPU that had been provided by the PlayStation, ranging from voice processing to effects 
+processing and master volume processing, and each core also has sound generation functions for 24 
+voices. 
+Various types of switching functions and sound data input/output functions for 16-bit PCM data have also 
+been added. 
+CORE0 and CORE1, which are functionally equivalent, operate independently. They are connected so that 
+CORE0 output is input to CORE1, and the final mixed sound is output from CORE1. 
+Differences Between the SPU2 Cores and the SPU 
+Each core of the SPU2 differs from the SPU for the items described below. 
+Processing resolution and sampling frequency 
+Core processing is performed in units of 48 kHz. The resolution and sampling frequency of sound 
+generation processing are also 48 kHz. 
+ 
+Read position available during waveform data processing 
+The waveform data that voice processing will use next can be read as an address for each voice. 
+ 
+End of loop can be confirmed 
+The core, which has a flag for each voice that indicates that voice processing has reached the end of a 
+loop, can confirm that the end of a loop was reached for waveform data having loop information. 
+ 
+Mixing can be switched separately for dry and wet output 
+In addition to panpot control according to the voice volume, mixing for the wet and dry, left and right 
+channels can be turned on and off for each voice. 
+ 
+16-bit or 24-bit straight PCM sound data input 
+16-bit or 24-bit straight PCM data can be input (transferred) as sound data from the host and mixed with 
+the voice processing mixing results. Although local memory is used as the input buffer, this corresponds in 
+form to the core external input of the SPU. 
+ 
+16-bit sound data input without volume processing 
+Encoded 16-bit sound data can be directly output (transferred) from the host to digital output. 
+ 
+
+===== PAGE 23 =====
+
+      Low Level Sound Library    1-17 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Sound data output of mixing results 
+The 24-voice final mixed output sound data of a total of four channels (wet and dry, left and right channels) 
+can be transferred to the host. 
+ 
+Auto DMA Transfer 
+Auto DMA Transfer, which reduces the host-side interrupt load due to data transfers during sound data 
+processing, has been added as a DMA transfer mode. 
+ 
+Effects work area can be restricted and moved 
+The ending position of the effects area can be specified in units of 128 Kbytes. 
+ 
+Differences Between the SPU2 and SPU 
+The entire SPU2 differs from the SPU for the items described below. 
+Enlarged local memory size 
+The SPU2 has a 2Mbyte local memory (sound buffer). Only one local memory exists for the two cores, and 
+the entire 2Mbyte area can be accessed from both cores. 
+ 
+Additional reserved area within local memory 
+Since there are two cores and since local memory is used as the sound data input/output buffer area, the 
+reserved area at the beginning of local memory has been enlarged. 
+ 
+Two DMA transfers can be executed at the same time 
+Each core has its own independent DMA transfer functions, and these functions can operate in parallel. 
+ 
+Two interrupts can be generated at the same time 
+Each core has its own independent hardware interrupts, and these interrupts can operate in parallel. 
+ 
+Two effects can be set separately 
+Each core has its own independent effects processing functions, and effects processing can be performed 
+with different settings. 
+ 
+CORE0 output is connected as CORE1 input 
+The 24-voice + effects processing sound that was generated by CORE0 is input to CORE1. CORE1-side 
+effects processing can also be added to this sound. The CORE1 input to which CORE0 output is linked 
+corresponds to the CD input of the SPU. 
+ 
+Single-system output for each of analog and digital 
+Analog and digital each have single-system output, which can be switched on and off. 
+ 
+
+===== PAGE 24 =====
+
+1-18    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Internal Signals and Function Connections 
+The SPU2 core and local memory connections are shown below. 
+Figure 1-4 
+Final
+output
+CORE0
+Core output
+Sound data input
+Sound data output
+CORE1
+Core                    Core
+external input     output
+Sound data input
+          Sound data output
+Local Memory
+ 
+ 
+
+===== PAGE 25 =====
+
+      Low Level Sound Library    1-19 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+The core internal connections are shown below. 
+Figure 1-5 
+ 
+Voice Processing  Vn
+Mixing 
+[SINEL] 
+ [SINL] 
+[AVOLL] 
+[BVOLL]  
+SIN(L)  
+MEMIN(L)  
+[MINEL] 
+ [MINL]  
+[EVOLL] 
+Digital 
+Effect  
+[SINER] 
+ [SINR] 
+[AVOLR]
+[BVOLR]
+SIN(R)  
+MEMIN(R)  
+[MINER] 
+ [MINR] 
+[EVOLR]  
+Digital 
+Effect 
+[MVOLL]  
+[MVOLXL]
+[MVOLR]
+[MVOLXR]
+OUT(L) OUT(R)
+[MSNDL] [MSNDEL] [MSNDR]  [MSNDER]  
+MEMOUT(L) 
+MEMOUT(EL) 
+MEMOUT(R) 
+MEMOUT(ER) 
+[VMIXL] [VMIXEL] [VMIXR]  [VMIXER]  
+[VOLL]  
+[VOLXL]
+[VOLR] 
+[VOLXR]  
+[ENVX] 
+Envelope 
+[ADSR1][ADSR2]  
+[NON]
+Noise 
+generator 
+Pitch 
+conversion  
+Pitch 
+modulation 
+[PITCH]  
+OUTX 
+vn-1  
+Decode  
+Waveform 
+Local memory 
+[PMON] 
+OUTX  
+vn 
+CORE 
+ 
+
+===== PAGE 26 =====
+
+1-20    Low Level Sound Library  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Memory Map 
+The memory map of local memory is shown below. 
+Figure 1-6 
+ 
+ Sound data 
+output area
+Sound data
+input area
+0x00_0000
+0x00_3fff 
+0x00_4000
+0x00_4fff
+0x??_ffff
+0x1f_ffff
+Waveform data 
+area
+Effect
+work area
+(movable)
+(2MB) 
+0x00_5000
+0x00_5010
+0x00_500f
+Area reserved
+by the system
+Byte address 
+ 
+     
+Table 1-9   
+Address Macro Position Address 
+SD_SOUNDOUT_TOPADDR Start of sound data output area 0x000000 
+SD_SOUNDIN_TOPADDR Start of sound data input area 0x004000 
+SD_USERAREA_TOPADDR Start of waveform data area 0x005010 
+ 
+The starting address of the effects work area (X) is determined as follows. 
+ 
+X=SD_A_EEA - SD_REV_SIZE_XX 
+ 
+(When effects work areas are set in both cores, SD_A_EEA is lower. SD_REV_SIZE_XX is the size of the 
+effects specified in that area.) 
+ 
+ 
+   
+
+===== PAGE 27 =====
+
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 2: 
+Sound Data (HD) Simple Access Library 
+(libsdhd) 
+Library Overview 2-3 
+Specification 2-3 
+Related Files 2-3 
+Library Structure 2-3 
+Reference Materials 2-3  
+Function Specifications 2-4 
+Types of Information Obtained 2-4  
+Types of Access Methods 2-4  
+Information Acquisition Functions and Address Acquisition Functions 2-4  
+Information Acquisition Diagram 2-5  
+Usage Example 2-6 
+ 
+ 
+ 
+
+===== PAGE 28 =====
+
+2-2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 29 =====
+
+ Sound Data (HD)  Simple Access Library (libsdhd)    2-3
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Library Overview 
+Specification 
+libSdHd is a library that was developed to simplify access to sound data (HD).  
+libSdHd enables all the information contained in sound data (HD) that is output by applications such as 
+JAM, to be obtained using a variety of methods. Two formats are provided for obtaining this information. 
+One is a structure defined in sdhd.h and the other is an address which points to a structure defined in hd.h. 
+These formats allow information to be obtained using information acquisition functions and address 
+acquisition functions. 
+Related Files 
+The following files are associated with libsdhd. 
+Table 2-1 
+Category Filename 
+Library file sdhd.ilb 
+Header files sdhd.h, hd.h 
+Module file sdhd.irx 
+Library Structure 
+The structure of libsdhd is shown below. 
+libsdhd has functions for accessing sound data (HD). The information in sound data can be used to create 
+sound drivers, etc. 
+Figure 2-1 
+ Sound Data (HD) 
+libsdhd 
+SK 
+CSL 
+Sound drivers, etc. 
+SD 
+ 
+Reference Materials 
+In order to use the information obtained by libsdhd to create sound drivers, it is necessary to have a 
+general understanding of the data. For more information, please see the "Sound Data Formats" document. 
+
+===== PAGE 30 =====
+
+2-4  Sound Data (HD)  Simple Access Library (libsdhd) 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Function Specifications 
+Types of Information Obtained 
+• Program information  
+Split block 
+• Sample set information 
+• Sample information 
+• VAGInfo information 
+For details about the various types of information, please see the "Sound Data Formats" document. 
+Types of Access Methods 
+libsdhd provides various methods for accessing data. The following parameters are used to access data. 
+• Program number 
+• Split block number 
+• Split number 
+• Sample set number 
+• Sample index number 
+• Sample number 
+• VAGInfo number 
+• Note number 
+• Velocity 
+Access methods can use parameters individually or in combinations. 
+Information Acquisition Functions and Address Acquisition Functions 
+Functions are classified either as information acquisition functions or address acquisition functions. 
+Information acquisition functions pass a structure defined in sdhd.h as an argument and copy information 
+to that structure. When this structure is actually used, its format will be easy to read. On the other hand, 
+address acquisition functions return an address in the hd that points to the required information. This 
+address points to the address of a structure defined in hd.h. For more information about each structure 
+that is defined in hd.h, please see the "Sound Data Formats" document. 
+Information Acquisition Functions 
+ 
+• sceSdHdGetProgramParam 
+• sceSdHdGetSplitBlock 
+• sceSdHdGetSampleSetParam 
+• sceSdHdGetSampleParam 
+• sceSdHdGetVAGInfoParam 
+• sceSdHdGetSplitBlockByNote 
+
+===== PAGE 31 =====
+
+ Sound Data (HD)  Simple Access Library (libsdhd)    2-5
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+• sceSdHdGetSampleSetParamByNote 
+• sceSdHdGetSampleParamByNoteVelocity 
+• sceSdHdGetVAGInfoParamByNoteVelocity 
+• sceSdHdGetSampleParamByVelocity 
+• sceSdHdGetVAGInfoParamByVelocity 
+• sceSdHdGetVAGInfoParamBySampleNumber 
+Address Acquisition Functions 
+ 
+• sceSdHdGetProgramParamAddr 
+• sceSdHdGetSplitBlockAddr 
+• sceSdHdGetSampleSetParamAddr 
+• sceSdHdGetSampleParamAddr 
+• sceSdHdGetVAGInfoParamAddr 
+• sceSdHdGetSplitBlockAddrByNote 
+• sceSdHdGetSampleSetParamAddrByNote 
+• sceSdHdGetSampleParamAddrByNoteVelocity 
+• sceSdHdGetVAGInfoParamAddrByNoteVelocity 
+• sceSdHdGetSampleParamAddrByVelocity 
+• sceSdHdGetVAGInfoParamAddrByVelocity 
+• sceSdHdGetVAGInfoParamAddrBySampleNumber 
+Information Acquisition Diagram 
+Figure 2-2 
+ 
+ 
+ 
+HD 
+SdHd 
+• Program number 
+• Note number 
+• Velocity, etc. 
+• Required information 
+  (format of information 
+defined in sdhd.h) 
+• Program number
+• Note number 
+• Velocity, etc. 
+• Address of required 
+  information 
+  (format of information 
+  defined in hd.h)  
+Information acquisition functions Address acquisition functions 
+ 
+
+===== PAGE 32 =====
+
+2-6  Sound Data (HD)  Simple Access Library (libsdhd) 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage Example 
+Figure 2-3 
+ 
+Get note number and 
+velocity from MIDI file sceSdHdGetSampleParamByNoteVelocity 
+Set parameters such 
+as volume or pan for 
+SPU2 voice sceSdHdGetVAGInfoParamByNoteVelocity 
+Set sampling rate or 
+offset address 
+parameter for SPU2 
+voice 
+Generate sound using key on 
+ 
+First, use libsdhd to get the necessary information from the sound data (HD). Then use the low-level sound 
+library to set parameters from this information. 
+ 
+
+===== PAGE 33 =====
+
+ 
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 3: 
+Sound Data (SQ) Simple Access Library 
+(libsdsq) 
+Overview 3-3 
+Related Files 3-3 
+Reference Materials 3-3  
+Functional Specifications 3-4 
+Types of Information Obtainable Using libsdsq 3-4  
+Playback Processing Using libsdsq 3-4  
+Loop Playback Processing 3-5  
+ 
+
+===== PAGE 34 =====
+
+3-2     
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 35 =====
+
+ Sound Data (SQ) Simple Access Library (libsdsq)    3-3
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+libsdsq is a library that provides functions for accessing sound data (SQ) output by JAM and other 
+applications. With libsdsq, sequence data and Song command data can be obtained sequentially by event 
+from sound data (SQ). Original sequences can then be created using this information. 
+The position of libsdsq is shown below. 
+Figure 3-1: Location of libsdsq 
+ 
+SdSq
+SoundData（HD & SQ）
+SK 
+CSL 
+SD 
+Application 
+SdHd
+ 
+Related Files 
+The following files are used with libsdsq. 
+Table 3-1 
+Category Filename 
+Library file sdsq.ilb 
+Header files sdsq.h, sq.h 
+Module file sdsq.irx 
+Reference Materials 
+For more information about SQ data, please see the "Sound Data Formats" document. 
+A general understanding of SMF (standard MIDI file format) is needed to use libsdsq in order to create 
+sound sequencers and the like. For more information, please refer to popular books on MIDI that are 
+generally available. 
+
+===== PAGE 36 =====
+
+3-4    Sound Data (SQ) Simple Access Library (libsdsq)     
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Functional Specifications 
+Types of Information Obtainable Using libsdsq  
+libsdsq enables the following types of information to be obtained from sound data (SQ). 
+• MIDI data information 
+• Song data 
+MIDI data information is data in a MIDI chunk located within sound data (SQ). It includes basic information 
+about the entire MIDI data block, as well as the delta time and sequence data of each event. 
+Song data is one Song command’s worth of data. 
+For details about these different types of information, please see the "Sound Data Formats" document. 
+Playback Processing Using libsdsq  
+Operations that libsdsq performs for getting MIDI data are centered around the MIDI data information 
+structure (SceSdSqMidiData). 
+This structure not only acts as a read pointer into the MIDI sequence, indicating the position that is 
+currently being read, but it also saves the sequence data at that position. 
+To play back MIDI data, first use sceSdSqInitMidiData() to initialize the MIDI data information structure. The 
+MIDI data block to be played should also be specified at this time. This will set the read pointer to the 
+beginning of that MIDI data block. 
+Next, use sceSdSqReadMidiData() to get the sequence data. The information obtained by this function 
+includes the delta time, so sound should be generated after that delta time has elapsed. (libsdsq does not 
+have any time management functions, so this is the responsibility of the user application.)  Sequential SQ 
+data can be played by repeating this process of getting sequence data, waiting for the delta time to elapse, 
+then generating sound until the end of the sequence data is reached. 
+
+===== PAGE 37 =====
+
+ Sound Data (SQ) Simple Access Library (libsdsq)    3-5
+  
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Figure 3-2: Playback Processing Flowchart 
+ 
+Initialization 
+Get one event’s worth of data
+Reached end of sequence?
+No
+sceSdSqInitMidiData() 
+sceSdSqReadMidiData() 
+Wait for delta time to elapse
+Generate sound 
+MIDI data information 
+structure 
+ 
+Loop Playback Processing 
+During playback processing, the contents of a MIDI data information structure can be stored at an arbitrary 
+position within the sequence by copying it to another MIDI data information structure. If playback 
+processing is performed using the copied MIDI data information structure, data can be played back by 
+returning the read pointer to that position. This makes it possible to play back loops. 
+Figure 3-3: Loop Playback Mechanism 
+ Loop start position 
+Create copy 
+Loop end position 
+Start using copy 
+Performance continues by returning to start position 
+ 
+ 
+
+===== PAGE 38 =====
+
+3-6    Sound Data (SQ) Simple Access Library (libsdsq)     
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Figure 3-4: Loop Playback Flowchart 
+ 
+No 
+Yes
+No 
+Yes
+Initialization 
+Get one event’s worth of data
+Reached loop start position?
+No
+sceSdSqInitMidiData() 
+sceSdSqReadMidiData() 
+Wait for delta time to elapse 
+Generate sound 
+MIDI data information 
+structure 
+Reached end of sequence? 
+Yes
+Create copy of MIDI data 
+information structure 
+Reached loop end position? 
+Get one event’s worth of data
+Wait for delta time to elapse 
+Generate sound 
+MIDI data information 
+structure 
+ 
+ 
+ 
+
+===== PAGE 39 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 4: 
+CSL MIDI Delay Module (moddelay)  
+Overview 4-3 
+Usage Method 4-4 
+Buffer Structure 4-4 
+Initialization Processing 4-5  
+ 
+
+===== PAGE 40 =====
+
+4-2       
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 41 =====
+
+ CSL MIDI Delay Module    4-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+moddelay is an IOP module that is implemented to conform with the Component Sound Library (CSL) 
+specification. Moddelay has functions for outputting the input buffer MIDI Stream data such that it can be 
+delayed by a specified number of Ticks. It can be used, for example, to absorb the latency difference 
+between the software and hardware synthesizers. 
+
+===== PAGE 42 =====
+
+4-4    CSL MIDI Delay Module  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage Method 
+Buffer Structure 
+Table 4-1: Buffer Group 0: Input port group 
+BufCtx Index  Contents Data Structure 
+N*2 Input port Nth input buffer 
+ 
+sceCslMidiStream  
+void[ buffsize-sizeof 
+(sceCslMidiStream) ] 
+N*2+1 Input port Nth delay buffer sceMidiDelay_DelayBuffer 
+ 
+Table 4-2: Buffer Group 1: Output port 
+BufCtx Index  Contents Data Structure 
+N Output port Nth output buffer sceCslMidiStream 
+void[ buffsize - 
+sizeof(sceCslMidiStream) 
+N can be in the range (0 - 15). 
+ 
+
+===== PAGE 43 =====
+
+ CSL MIDI Delay Module    4-5 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Figure 4-1 
+sceCslCtx
+buffGrpNum = 2
+buffGrp
+conf
+callback
+extmod
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceMidiDelay
+_DelayBuffer
+BfSize
+sceCslMidiStream
+buffsize
+Buffer
+Input portsceCslBuffGrp[]
+buffNum
+buffCtx
+buffNum
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceCslMidiStream
+buffsize
+Buffer
+Output port
+Buffer
+ 
+ 
+Input buffers and their corresponding delay buffers must exist in pairs. If one is missing, either an error will 
+occur during initialization or that input buffer will become unusable. 
+Initialization Processing 
+Moddelay initialization is performed by calling sceMidiDelay_Init(). Before initializing moddelay, you must 
+reserve the buffer structures described above in memory and set values for the members of the 
+sceMidiDelay_DelayBuffer structure to be placed in the delay buffer, as indicated below. 
+     
+delayBfSize Number of bytes in th e delay buffer data area (delayBf[]) 
+delayTime  Delay time (number of times ATick() is called) 
+
+===== PAGE 44 =====
+
+4-6    CSL MIDI Delay Module  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 45 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 5: 
+CSL Hardware Synthesizer (modhysn)  
+Overview 5-3 
+Usage 5-4 
+Buffer Structure 5-4 
+Bank Binary Files 5-4 
+Function Overview 5-5 
+External Specifications 5-5  
+MIDI Status 5-5 
+Control Changes and NRPN 5-6  
+MIDI Streams and SE Streams 5-7  
+Specifying the Information to Use Within Bank Binary Data 5-7  
+Assigning Voices Used by Each Stream 5-7  
+ 
+
+===== PAGE 46 =====
+
+5-2       
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 47 =====
+
+ CSL Hardware Synthesizer    5-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modhsyn is a sound source module that is implemented in conformance with the Component Sound 
+Library (CSL). Input buffer MIDI Stream data and SE Stream data are interpreted, and bank binary files 
+(*.bd, *.hd) are used as phoneme data to generate sound using the SPU2. Modhsyn also has a debugging 
+function that can be used to obtain SPU2 access history. 
+modhsyn supports SE messages and extended MIDI messages that are defined for controlling sound 
+effects. For detailed information about these kinds of messages, please see the "CSL Overview" document. 
+
+===== PAGE 48 =====
+
+5-4    CSL Hardware Synthesizer  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage 
+Buffer Structure 
+Table 5-1: Buffer Group 0: Input port group 
+ 
+BufCtx Index Contents Data Structure              
+N*2 Input port Nth input bu ffer sceCslMidiStream   
+  void[buffsize-sizeof      
+     (sceCslMidiStream)]   
+or    
+sceCslSeStream     
+   void[buffsize-sizeof      
+      (sceCslSeStream)] 
+N*2+1 Input port Nth environment sceHSy nEnv                  
+ 
+Figure 5-1 
+ sceCslCtx 
+buffGrpNum = 1 
+buffGrp  
+conf 
+callback 
+extmod 
+sceCslBuffCtx[] 
+sema 
+buff 
+sema 
+buff 
+: 
+sema 
+buff 
+ sceHSynEnv 
+sceCslMidiStream  
+buffsize 
+Buffer 
+Input portsceCslBuffGrp[] 
+buffNum 
+buffCtx 
+ 
+ 
+ 
+In the current implementation, the 16 ports between input ports 0 and 15 can be used. 
+The input buffers and their environments must exist as pairs. If one is missing, either an error will occur 
+during initialization or that input buffer will become unusable. 
+Bank Binary Files 
+Bank binary files that are to be used as phoneme data can be created using an SCE-provided tool (JAM). 
+
+===== PAGE 49 =====
+
+ CSL Hardware Synthesizer    5-5 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Function Overview 
+External Specifications 
+External specifications for modhsyn sound source module functions, in particular, specifications for 
+functions specific to modhsyn are shown below. 
+For information about extended MIDI messages and SE messages, please refer to the "CSL Overview" 
+document. 
+MIDI Status 
+modhsyn supports the following MIDI statuses. 
+Table 5-2 
+MIDI Status Contents 
+$8n Note OFF 
+$9n Note ON (when velocity=0 Note OFF) 
+$Bn Control Change 
+$Cn Program Change 
+$En Pitchbend Change 
+ 
+Also, in addition to the above, in exclusive messages, data between $F0 and $F7 are skipped. Extended 
+MIDI messages $F9 and $FD are also supported. 
+
+===== PAGE 50 =====
+
+5-6    CSL Hardware Synthesizer  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Control Changes and NRPN 
+modhsyn currently supports the following control changes. 
+Table 5-3 
+Control No. Contents in modhsyn            
+#00 Bank Select 
+#01 Pitch Modulation Depth 
+#02 Amp Modulation Depth   
+#05 Portament Time 
+#06 Data Entry (Effect Parameter) 
+#07 Channel Volume         
+#10 ($0A) Pan                    
+#11 ($0B) Expression             
+#64 ($40) Damper Pedal           
+#65 ($41) Portament Switch 
+#84 ($54) Portament Control 
+#98 ($62) NRPN LSB 
+#99 ($63) NRPN MSB 
+#120 ($78) All Sound Off 
+#121 ($79) Reset All Controller 
+#123 ($7B) All Note Off 
+ 
+Currently, modhsyn supports the following NRPN. 
+Table 5-4: Effect type setting 
+NRPN Function 
+$B0,$63,$02 Effect type command 
+$B0,$62,$00                  • Core specifications (Core0) 
+$B0,$62,$10                   • Core specifications (Core1)     
+$B0,$06,$00                   : Off 
+$B0,$06,$01                   : Room 
+$B0,$06,$02                   : StudioA 
+$B0,$06,$03                   : StudioB 
+$B0,$06,$04                   : StudioC 
+$B0,$06,$05                   : Hall 
+$B0,$06,$06                   : Space 
+$B0,$06,$07                   : Echo 
+$B0,$06,$08                   : Delay 
+$B0,$06,$09                  : Pipe 
+ 
+
+===== PAGE 51 =====
+
+ CSL Hardware Synthesizer    5-7 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Table 5-5: Effect depth and other settings 
+NRPN Function 
+$B0,$63,$03 Effect depth command 
+$B0,$62,$00 Effect depth positive phase (Core0) 
+$B0,$62,$01  Effect depth negative phase (Core0) 
+$B0,$62,$02  Effect delay (Core0) 
+$B0,$62,$03  Effect feed (Core0) 
+$B0,$62,$10  Effect depth positive phase (Core1) 
+$B0,$62,$11  Effect depth negative phase (Core1) 
+$B0,$62,$12  Effect delay (Core1) 
+$B0,$62,$13  Effect feed (Core1) 
+$B0,$06,$nn               Parameters ($nn=$00 to $7F) 
+ 
+Currently, modhsyn does not support any RPN. 
+MIDI Streams and SE Streams  
+modhsyn supports MIDI streams and SE streams as streams that are input to the input port. The stream 
+that is input to that input port can be specified by setting the portMode member of the input port 
+environment. 
+Table 5-6 
+Mode Contents        
+SceHSynTypeHSyn MIDI stream     
+sceHSynTypeSESyn  SE stream       
+ 
+Specifying the Information to Use Within Bank Binary Data 
+modhsyn supports multiple waveform data information sets included within bank binary data (waveform 
+data) that was assigned to the input port. By setting the waveType member of the input port environment, 
+you can specify which waveform data information set is to be used from the bank binary data that was 
+assigned to that input port.  
+Table 5-7     
+Mode Contents                              
+sceHSynModeHSyn  Normal wave form data information set  
+sceHSynModeTimbre Waveform da ta information set for SE 
+stream (Do not specify for MIDI 
+sequences) 
+ 
+Assigning Voices Used by Each Stream 
+The sceHSyn_SESetMaxVoices() function can be used to set an upper limit for the total number of voices 
+that an SE stream will use to generate sound. 
+This upper limit is used as follows when sound is being generated between MIDI streams and SE streams. 
+
+===== PAGE 52 =====
+
+5-8    CSL Hardware Synthesizer  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+When the number of voices of the SE stream is below the upper limit 
+• When there are voices that are not being used by either stream 
+MIDI stream sound generation uses all remaining voices that are not being used by the SE stream, 
+regardless of the SE stream upper limit. 
+SE stream sound generation also uses remaining voices within a range that does not exceed the upper 
+limit. 
+• When no voices are available 
+MIDI stream sound generation only compares the priorities of only voices that are being used by the 
+MIDI stream, frees a voice, then assigns a voice. 
+Similarly, SE stream sound generation compares the priorities of only voices that are being used by the 
+MIDI stream, frees a voice, and assigns a voice. 
+When the number of voices of the SE stream has reached the upper limit 
+MIDI stream sound generation operates in a similar manner as described above for when the number of 
+voices of the SE stream has not reached the upper limit. 
+Even when there are available voices, SE stream sound generation compares the priorities of only voices 
+that are being used by the SE stream, frees a voice, then assigns a voice. 
+Also, if the upper limit is set to 0, no distinction is made for MIDI and SE stream sound generation with 
+respect to the voices that are used. All available voices are used for both types of sound generation, and 
+voices are freed using the priorities of all voices. 
+ 
+ 
+ 
+ 
+
+===== PAGE 53 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 6: 
+CSL MIDI Sequencer Module (modmidi)  
+Overview 6-3 
+Usage 6-4 
+Buffer Structure 6-4 
+MIDI Message Filter Callbacks 6-5  
+Function Overview 6-6 
+MIDI Messages 6-6 
+Loop Control 6-6 
+Marking Function 6-7 
+ 
+
+===== PAGE 54 =====
+
+6-2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+
+===== PAGE 55 =====
+
+ CSL MIDI Sequencer Module (modmidi)    6-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modmidi is an IOP module that is implemented to conform with the Component Sound Library (CSL) 
+specification. Modmidi has functions for inputting and interpreting sq data (sequence data) and outputting 
+MIDI Stream data. 
+The sq data that is input to modmidi is a proprietary format converted from smf. It can be created using an 
+SCE-provided tool (smf2sq or JAM). Since modmidi can have multiple input buffers, multiple sq data 
+streams can be performed simultaneously. 
+The MIDI Stream data that is output by modmidi becomes the input data of the sound source module 
+(hardware synthesizer or software synthesizer). Since modmidi can have multiple output buffers, multiple 
+sound sources can be driven. The correspondence between a track and an output destination buffer is 
+specified by the Bank Change LSB (32) of a MIDI message. 
+
+===== PAGE 56 =====
+
+6-4    CSL MIDI Sequencer Module (modmidi) 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage 
+Buffer Structure 
+Table 6-1: Buffer Group 0: Input port group 
+BufCtx Index Description Data structure           
+N*2 Input port Nth input buffer void []                   
+N*2+1 Input port Nth environment sceMidiEnv               
+ 
+Table 6-2: Buffer Group 1: Output port group 
+BufCtx Index Description Data structure           
+N Output port Nth output 
+buffer 
+sceCslMidiStream void[ 
+buffsize - sizeof 
+(sceCslMidiStream) ]        
+N can be in the range (0 - 15). 
+Figure 6-1 
+sceCslCtx
+buffGrpNum = 2
+buffGrp
+conf
+callback
+extmod
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceMidiEnv
+Sequence
+data
+Input portsceCslBuffGrp[]
+buffNum
+buffCtx
+buffNum
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceCslMidiStream
+buffsize
+Buffer
+Output port
+ 
+ 
+Input buffers and their corresponding environments must exist in pairs. If one is missing, either an error will 
+occur during initialization or that buffer will become unusable. 
+
+===== PAGE 57 =====
+
+ CSL MIDI Sequencer Module (modmidi)    6-5 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+MIDI Message Filter Callbacks 
+The following callbacks are provided to allow MIDI messages output from modmidi to be changed at any 
+time. 
+Table 6-3 
+Trigger Callback Function Filter Function          
+Channel message chMsgCallBack Replace message          
+Exclusive message excMsgCallBack Suppress message output  
+Mark callback markCallBack Confirm mark position 
+Meta-event metaMsgCallBack Suppress message output  
+Loop repeatCallBack Suppress loop            
+    
+Callback functions are registered in sceMidiEnv. When a message, etc., appears in the sequence data as a 
+trigger, the associated callback function will be called. 
+The callback function examines the message, etc., which is passed as a parameter, and suppresses the 
+message output. The function can then specify a new message to be output in place of the original 
+message and can confirm the message position. 
+
+===== PAGE 58 =====
+
+6-6    CSL MIDI Sequencer Module (modmidi) 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Function Overview 
+MIDI Messages 
+modmidi can process sequence data format (SQ) data. For information about the sequence data format, 
+please see the "Sound Data Formats" document. 
+For information on these MIDI messages, please see “Conversion Conventions From SMF To Sequence 
+Data" in the "Midi Chunk" section of the "Sound Data Formats" document. 
+Although most MIDI messages are output as is to the output port, the following MIDI messages are 
+supported by modmidi but are not output to the output port. 
+ Table 6-4    
+MIDI Message Contents                                  
+$Bn, $20, $nn Set output port of MIDI channel n to $nn  
+$B0, $63, $00/$01 Loop control (see next section)           
+$B0, $63, $10/$11/$12 Marking function (see next section)           
+$FF, $51, $03, $n1, $n2, $n3  Meta ev ent: Set tempo in microseconds     
+$FF, $2F, $00 Meta event: End of data                    
+ 
+For "Meta event: Set tempo in microseconds," although modmidi performs its processing based on that 
+value, keep in mind that it is ultimately quantized according to the ATick processing time interval. 
+Loop Control 
+modmidi can embed a loop performance as in the following control change messages. 
+Table 6-5     
+Function Message Explanat ion            
+Loop start $B0,$63,$00,$B0,$06, $nn nn is the loop number  
+Loop end $B0,$63,$01,$B0,$06,$nn,
+$B0,$26,mm  
+nn is the loop number  
+mm is the loop count   
+ 
+If the loop count is 0, an endless loop will occur. 
+Loop settings can be nested. For example, if the loop start and loop end are set as follows, the 
+performance order will be A B B B C A B B B C. 
+Figure 6-2 
+A
+ Loop
+ Loop
+ Loop
+ Loop
+BC
+ Start,1st  Start,
+ number 0
+End, number
+ 0 twice
+End,1st once
+ 
+As with SEQ loops, these loops are performed by sequence. Loops cannot be performed by track. 
+Consequently, loop settings should be made for a single track. 
+
+===== PAGE 59 =====
+
+ CSL MIDI Sequencer Module (modmidi)    6-7 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Marking Function 
+modmidi allows you to embed a marking function as one of the following control change messages (NRPN 
++ Data Entry). 
+Table 6-6     
+Function Message Explanation            
+mark callback  
+7BIT 
+$Bn,$63,$10,$Bn,$62,$00, 
+$Bn,$06,$dd 
+dd is an arbitrary value  
+0-127  
+mark callback 
+14BIT 
+$Bn,$63,$10,$Bn,$62,$01,$Bn,$06,
+$dm,$Bn,$26,$dl  
+dm and dl are arbitrary 
+values 0-127   
+mark callback MSB 
+7BIT 
+$Bn,$63,$11,$Bn $06,$dd dd is an arbitrary value  
+0-127  
+mark callback MSB 
+14BIT 
+$Bn,$63,$12,$Bn,$06,$dm,$Bn, 
+$26,dl  
+dm and dl are arbitrary 
+values 0-127   
+ 
+"mark callback 7/14BIT" is a message that properly uses NRPN MSB/LSB; "mark callback MSB 7/14BIT" 
+only uses the NPRN MSB, and should be used in order to minimize data. 
+When reading these messages, the mark callback function "markCallBack" specified by the environment 
+sceMidiEnv is called. If MIDI channel messages for this environment are indicated as 7 bits, they are passed 
+directly to markCallBack as 7-bit data; if 14 bits, they are passed as 14-bit data and processed as (dm << 
+7 | dl). This enables the score data position to be obtained, and allows score data to control external 
+processing. 
+However, since markCallBack is called while the score data is being analyzed, if there are many processes 
+underway at the time, the playback tempo of the score data may slow down. 
+ 
+
+===== PAGE 60 =====
+
+6-8    CSL MIDI Sequencer Module (modmidi) 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+ 
+
+===== PAGE 61 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 7: 
+CSL MIDI Monophonic (modmono) 
+Overview 7-3 
+Usage 7-4 
+Buffer Structure 7-4 
+ 
+
+===== PAGE 62 =====
+
+7-2       
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 63 =====
+
+     CSL MIDI Monophonic    7-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modmono is an IOP module that is implemented to conform with the Component Sound Library (CSL) 
+specification. modmono has functions for outputting the input buffer's MIDI Stream data as MIDI Stream 
+data that has been monophonically assigned. The existence of monophonic assignment can be specified 
+for each channel. 
+
+===== PAGE 64 =====
+
+7-4    CSL MIDI Monophonic  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage 
+Buffer Structure 
+Table 7-1: Buffer Group 0: Input port group  
+BufCtx Index Contents Data Structure 
+N*2 Input port Nth input bu ffer sceCslMidiStream  
+void[ buffsize - 
+sizeof(sceCslMidiStream) ] 
+N*2+1 Input port Nth environment sceMidiMono_Env 
+ 
+Table 7-2: Buffer Group 1: Output port group 
+BufCtx Index Contents Data Structure 
+N Output port Nth output 
+buffer 
+sceCslMidiStream 
+void[ buffsize - 
+sizeof(sceCslMidiStream) ] 
+N can be in the range (0 - 15). 
+ 
+Figure 7-1 
+sceCslCtx
+buffGrpNum = 2
+buffGrp
+conf
+callback
+extmod
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+ sceMidiMonoEnv
+sceCslMidiStream
+buffsize
+Buffer
+Input portsceCslBuffGrp[]
+buffNum
+buffCtx
+buffNum
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceCslMidiStream
+buffsize
+Buffer
+Output port
+ 
+Input buffers and their corresponding output buffers must exist in pairs. If one is missing, either an error will 
+occur during initialization or that input buffer will become unusable. 
+ 
+
+===== PAGE 65 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 8: 
+CSL MIDI Stream Generation  
+Overview 8-3 
+Usage Method 8-4 
+Buffer Structure 8-4 
+MIDI Message Packing 8-4  
+Extended MIDI Message 8-4  
+ 
+
+===== PAGE 66 =====
+
+8-2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 67 =====
+
+ CSL MIDI Stream Generation    8-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+The MIDI Stream Generation Module is an IOP module that is implemented to conform with the Component 
+Sound Library (CSL) specification. Modmsin generates a MIDI stream by an API call from an application 
+program, and outputs that data to an output buffer. It differs from a typical CSL module in that the API 
+configuration is central, there are no input buffers and the ATic() function is not implemented. 
+The MIDI Stream Generation Module supports extended MIDI messages defined by SCE for sound effects. 
+For information about extended MIDI messages, please refer to the "CSL Overview" document. 
+ 
+
+===== PAGE 68 =====
+
+8-4    CSL MIDI Stream Generation  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage Method 
+Buffer Structure 
+Buffer Group 0: (None) 
+Table 8-1: Buffer Group 1: Output port group 
+BufCtx Index Contents Data Structure 
+N Output port Nth buffer sceCslMidiStream 
+void[ buffsize - sizeof 
+(sceCslMidiStream)] 
+N can be in the range (0-15). 
+ 
+Figure 8-1 
+sceCslCtx
+buffGrpNum = 2
+buffGrp
+conf
+callback
+extmod
+sceCslBuffGrp[]
+buffNum = 0
+buffCtx = NULL
+buffNum
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+sceCslMidiStream
+buffsize
+Buffer
+Output port
+ 
+MIDI Message Packing 
+The MIDI Stream Generation Module packs a 2- to 3-byte MIDI message into a 32-bit word before 
+outputting it. 
+The procedure is to first use a macro such as sceMSIn_MakeMsg() to prepare a packed MIDI message and 
+then to use the sceMSIn_PutMsg() function to write it to the output stream. 
+Extended MIDI Message 
+The MIDI Stream Generation Module can embed extended MIDI messages defined by SCE for sound 
+effects in the output stream using the sceMSIn_PutHsMsg() function. A macro is also provided for restoring 
+the various parameters of the extended MIDI message. 
+For information about the contents of extended MIDI messages, please refer to the "CSL Overview" 
+document. 
+ 
+ 
+ 
+
+===== PAGE 69 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 9:  
+CSL SE Stream Generation (modsein) 
+Overview 9-3 
+Using modsein 9-4 
+Buffer Structure 9-4 
+Generating SE Messages 9-4  
+Function Characteristics 9-5 
+SE Messages 9-5 
+ 
+
+===== PAGE 70 =====
+
+9-2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 71 =====
+
+ CSL SE Stream Generation    9-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modsein is an IOP module that is implemented in conformance with the Component Sound Library (CSL). 
+Modsein generates an SE stream via an API call from an application program and outputs that data to the 
+output buffer. 
+modsein differs from a typical CSL module in that it has no input buffer, and the ATick() function is only 
+provided formally. Modsein supports SE messages. For information about SE messages, refer to the "CSL 
+Overview" document. 
+
+===== PAGE 72 =====
+
+9-4    CSL SE Stream Generation  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Using modsein 
+Buffer Structure 
+Buffer Group 0: (none) 
+Buffer Group 1: Output port group 
+Table 9-1 
+BufCtx Index Contents Data Structure            
+N Buffer of output port N sceC slSeStream         
+void[ buffsize - sizeof  
+(sceCslSeStream) ]    
+N can range from 1 to 15. 
+ 
+Generating SE Messages 
+modsein can generate an SE message consisting of a number of bytes from the argument specification, 
+and output it directly to the output buffer. Or, the message can be temporarily packed into units of 32-bit 
+words and output to the output buffer. Headers added to already generated SE messages can also be 
+output to the output buffer. 
+Normally, a function specially prepared for each message is used.  
+Buffers which create SE messages in advance are also provided to allow the messages to be output to the 
+output buffer using sceSEIn_PutSEMsg(). For Note ON / Pitch ON messages, utility macros which 
+correspond to each message are also provided. 
+
+===== PAGE 73 =====
+
+ CSL SE Stream Generation    9-5 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Function Characteristics 
+SE Messages 
+An SE message is a data format that is provided for controlling sound effects. It is used for handling 
+parameter controls in realtime from the time sound is generated until it is cancelled. The ID that is specified 
+when a sound is generated is used for identifying a voice in an individual control. 
+For details about SE messages, refer to the "CSL Overview" document. 
+ 
+
+===== PAGE 74 =====
+
+9-6    CSL SE Stream Generation  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 75 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 10: 
+CSL Sound Effect Sequencer (modsesq) 
+Overview 10-3 
+Usage 10-4 
+Buffer Structure 10-4 
+Output Port Specification 10-4  
+Function Overview 10-5 
+Volume, Panpot, and Timescale 10-5  
+SE Sequence Sets, SE Sequences, and Sequence IDs 10-5  
+SE Messages Created by Playback of SE Sequences 10-5  
+ 
+ 
+ 
+
+===== PAGE 76 =====
+
+10-2    
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 77 =====
+
+CSL Sound Effect Sequencer    10-3 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modsesq is an IOP module that performs inputting and decoding of sq data (sequence data) and 
+outputting of SE Stream data. modsesq is implemented in conformance with the Component Sound 
+Library (CSL). 
+Input sq data is created with an SCE tool (smf2sq or JAM) and has a unique format that is used to 
+represent playback sequences. Although sq data includes several types of data, modsesq supports only 
+the SE sequence set format and the SE song format (currently undefined). Also, these formats are only 
+supported when created with JAM. 
+An SE sequence set can have multiple SE sequences. An SE sequence describes the order in which sound 
+effects will be played. For information about SE sequences, refer to the "Sound Data Format" document. 
+modsesq can perform multiple SE sequences simultaneously with one input port. Since modsesq can have 
+more than one input buffer, it can also perform multiple sets of sq data simultaneously. 
+The SE stream data that is output by modsesq is the input data of the sound source module (hardware 
+synthesizer). modsesq can have more than one output buffer and can drive multiple sound sources. An SE 
+stream consists of SE messages. For information about SE messages, refer to the "CSL Overview" 
+document. 
+
+===== PAGE 78 =====
+
+10-4    CSL Sound Effect Sequencer  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage 
+Buffer Structure 
+Buffer Group 0:  Input port group 
+Table 10-1:  
+BufCtx Index Conten ts Data structure 
+N*2 Input buffer of input port N void[] 
+N*2+1 Environment of input port N sceSESqEnv  
+ 
+Buffer Group 1:  Output port group 
+Table 10-2:  
+BufCtx Index Conten ts Data structure 
+N Output buffer of output port N sceCslSeStream 
+void [ buffsize – sizeof 
+(sceCslSeStream) ] 
+ 
+An input buffer and its environment must exist as a pair. If either one is missing, an error will occur during 
+initialization, and that buffer will be disabled. 
+Output Port Specification 
+The output of sq data that is played by modsesq can be specified for each SE sequence set by setting the 
+environment. 
+Table 10-3 
+Member Contents 
+defaultOutPort Output port number when outPort is not specified 
+outPort[32] The SE sequence set numbe r, and the output port number for 
+outputting the SE sequence that contains that SE sequence set. 
+ 
+When no outPort[0] output port has been specified (the port number is 
+sceSESqEnv_NoOutPortAssignment) or when the SE sequence set number that contains the SE sequence 
+is not in the outPort specification, that SE sequence is output to the defaultOutPort. 
+When the SE sequence set number is in the outPort specification, that SE sequence is output to the 
+specified output port. 
+
+===== PAGE 79 =====
+
+CSL Sound Effect Sequencer    10-5 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Function Overview 
+Volume, Panpot, and Timescale 
+The input port environment, overall SQ, SE sequence set, and SE sequence each have a volume, panpot, 
+and timescale as attributes. The final SE stream is controlled with the value obtained by summing all of 
+these attributes. 
+The SE sequence reading speed can be controlled by setting the timescale. Since time is managed in 
+milliseconds for an SE sequence, the timescale is based on 1000 (realtime). As the value increases, the 
+reading speed increases (if the timescale is 2000, the speed will be doubled). As the value decreases, the 
+reading speed decreases (if the timescale is 500, the speed will be 1/2 as fast). 
+SE Sequence Sets, SE Sequences, and Sequence IDs 
+An SE sequence set is a grouping of multiple SE sequences. 
+An attribute (volume, panpot, or timescale) of an SE sequence set affects all SE sequences contained in 
+that SE sequence set. 
+The final SE sequence is specified according to a combination of the SE sequence set number and SE 
+sequence number. modeseq assigns and manages the combination of these two numbers as a single 
+number called the sequence ID. 
+Up to 32 of these sequence IDs can be assigned simultaneously per input port. This sequence ID is used 
+for specifying performances or expressing changes. 
+SE Messages Created by Playback of SE Sequences 
+SE sequences are successively generated by calls to sceSESq_Atick().  
+The ID that is kept by an SE message generated from an SE sequence has the format shown below. 
+Table 10-4 
+SE Message ID   Meaning                                       
+0xF1AABBCC      F1: sceSESqM essageIdPrefix: Currently 0xf1 
+ AA: Sequence ID assigned to the target SE sequence 
+ BB: Input port number in modsesq for which sq data is specified 
+       to which the target SE sequence belongs 
+ CC: Output port number in mods esq to which the target SE  
+       sequence is finally output 
+ 
+ 
+
+===== PAGE 80 =====
+
+10-6    CSL Sound Effect Sequencer  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 81 =====
+
+ 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 11: 
+CSL Sound Effect Sequencer 2 
+Overview 11-3 
+Usage 11-4 
+Buffer Structure 11-4 
+Output Port Specification 11-4  
+ID Monitor Structure 11-4  
+Functional Overview 11-5 
+Volume, Panpot, and Timescale 11-5  
+SE Message ID 11-5 
+Example of Starting and Controlling the Performance of an SE Sequence 11-6  
+ 
+ 
+
+===== PAGE 82 =====
+
+11-2      
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 83 =====
+
+CSL Sound Effect Sequencer 2    11-3 
+ 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modsesq2 is an IOP module that builds on the basic functionality of modsesq. modsesq2 simplifies the 
+process of generating sound, and provides functions for controlling the volume, panpot, and pitch through 
+individual requests. 
+For information about the basic functions of modsesq, see the "modsesq Overview" document. 
+Note that modsesq2 and modsesq cannot both be used at the same time. However, modsesq2 can be 
+used together with other CSL modules. 
+When modsesq2 is used, new functions become available in modhsyn. You should also refer to the 
+modhsyn documentation. 
+
+===== PAGE 84 =====
+
+11-4    CSL Sound Effect Sequencer 2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage 
+Buffer Structure  
+Buffer Group 0:  Input port group 
+Table 11-1 
+BufCtx Index Contents Data Structure 
+N*2 Input buffer of input port N void[] 
+N*2+1 Environment of input N sceSESq2Env 
+ 
+Buffer Group 1:  Output port group 
+Table 11-2 
+BufCtx Index Contents Data Structure 
+N Output buffer of output 
+port N 
+sceCslSeStream 
+void[ buffsize - sizeof  
+(sceCslSeStream) ] 
+ 
+An input buffer and its environment must exist as a pair. If either one is missing, an error will occur during 
+initialization, and that buffer will be disabled. 
+Output Port Specification 
+The output destination for sq data that is played back by modsesq2 can be specified for each SE 
+sequence set by the following environment settings. 
+Table 11-3 
+Member Contents 
+defaultOutPort Output port number when no outPort is specified 
+outPort[32] The SE sequence set numbe r, and the output port number for 
+outputting SE sequences contained in that SE sequence set. 
+ 
+If no output port is specified for outPort[0] (the port number is set to sceSESq2Env_NoOutPortAssignment), 
+or if the SE sequence set number containing the desired SE sequence is not in the outPort specification, 
+that SE sequence will be output to the defaultOutPort. 
+If the SE sequence set number is in the outPort specification, the corresponding SE sequence will be 
+output to the specified output port. 
+ID Monitor Structure 
+The ID monitor structure is used by both modseq2 and modhsyn to monitor the state of an ID. One 
+structure must be allocated for each modsesq2 module, and its address must be registered in both 
+modsesq2 and modhsyn. 
+The ID monitor structure is defined in csl.h as shown below. 
+Structure: 
+typedef struct { 
+ int system[48]; 
+} sceCslIdMonitor; 
+
+===== PAGE 85 =====
+
+CSL Sound Effect Sequencer 2    11-5 
+ 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Registration functions: 
+#include <modsesq2.h> 
+int sceSESq2SetIdMonitor(sceCslIdMonitor *id_monitor); 
+#include<modhsyn.h> 
+int sceHSyn_SetIdMonitor(sceCslIdMonitor *id_monitor) 
+Functional Overview 
+Volume, Panpot, and Timescale  
+The input port environment, overall SQ, SE sequence set, and SE sequence each have a volume, panpot, 
+and timescale as attributes. The final SE stream is controlled by totaling the values of all of these attributes. 
+Timescale is used to control the loading speed of an SE sequence. Time is managed in milliseconds for SE 
+sequences, and a timescale value of 1000 (real-time) is used as the reference point. As the value gets 
+larger, the loading speed increases (a timescale of 2000 means that speed is doubled), and as the value 
+gets smaller, the loading speed decreases (a timescale of 500 means that speed is halved). 
+SE Message ID 
+modsesq2 issues a unique SE message ID whenever it starts performing an SE sequence.  
+modsesq2 allows up to 32 SE sequences to be played simultaneously by one port. 
+When a one-shot SE sequence is played, the SE message ID will become invalid when the performance 
+ends, after the release of that performance. When an SE sequence loop is played, the SE message ID will 
+become invalid when the performance is stopped and the release has converged. 
+The format of the SE message ID, which is used to control the volume, panpot, and pitch, is shown below. 
+ 
+SE Message ID Description of Fields 
+0xF8AABBBB F8:  sceSESq2Message IdPrefix (currently, 0xf8) 
+AA:  modsesq2 input port number which is specified by the sq data 
+and to which the target SE sequence belongs 
+BBBB:  Number issued each time a performance is started (cyclic 
+from 0x0000 to 0xffff; always unique during sound generation). 
+ 
+
+===== PAGE 86 =====
+
+11-6    CSL Sound Effect Sequencer 2  
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Example of Starting and Controlling the Performance of an SE Sequence 
+Figure 11-1 
+ sceSESq2Play port,setNo,seqNo,volume... Start 
+performance
+Get SE message ID Use SE message ID to 
+control performance 
+sceSESq2Pause 
+(pause performance) 
+sceSESq2Stop 
+(stop performance) 
+sceSESq2SetPitch 
+(control pitch) 
+sceSESq2SetPanpot 
+(control panpot) 
+sceSESq2SetVolume 
+(control volume) 
+SE message ID is invalid 
+  
+  
+ 
+
+===== PAGE 87 =====
+
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 12: 
+CSL Software Synthesizer (modssyn) 
+Overview 12-3 
+Time Precision of a Performance 12-3  
+Usage Method 12-4 
+Buffer Structure 12-4 
+ 
+
+===== PAGE 88 =====
+
+12-2    
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+ 
+
+===== PAGE 89 =====
+
+ CSL Software Synthesizer    12-3     
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+modssyn is a software synthesizer IOP module that is implemented to conform with the Component Sound 
+Library (CSL) specification. modssyn works together with an EE-side library (libssyn) to interpret MIDI 
+Stream data from the input buffer and generate sound using the software sound source. modssyn is 
+responsible for sending MIDI Stream data from the input buffer to libssyn on the EE. For information about 
+the functions and external specifications of the software synthesizer, please refer to the libssyn document. 
+Figure 12-1 
+MIDI
+MIDI
+PCM
+libssyn
+modssyn
+SIF
+Performance
+by the EE-side API
+ 
+Time Precision of a Performance 
+Generally, since software synthesis is performed on the EE in the intervals between other processing, the 
+time precision during processing will be less than the corresponding precision on the IOP. Even if 
+processing is performed every 1/240 second on the IOP, it is often the case that processing can only be 
+performed every 1/60 second on the EE. To ensure that the precision of a performance is high even in 
+these cases, time stamps are added to the data that is transferred from modssyn to libssyn. Since the 
+waveforms are generated on the EE using those time stamps, the performance can have a time precision 
+that corresponds to the precision of processing on the IOP. 
+
+===== PAGE 90 =====
+
+12-4    CSL Software Synthesizer 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Usage Method 
+Buffer Structure 
+Table 12-1: Buffer Group 0: Input port group 
+BufCtx Index Contents Data Structure 
+N*2 Input port Nth input buffer sceCslMidiStream 
+void[buffsize-sizeof 
+(sceCslMidiStream)] 
+N*2+1 Input port Nth environment  sceSSynEnv 
+ 
+Figure 12-2 
+sceCslCtx
+buffGrpNum = 1
+buffGrp
+conf
+callback
+extmod
+sceCslBuffGrp[]
+buffNum = 1
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+ sceSSynEnv
+sceCslMidiStream
+buffsize
+Buffer
+Input port
+ 
+ 
+The input buffers and their environments must exist as pairs. If one is missing, either an error will occur 
+during initialization or that input buffer will become unusable. 
+The data buffer size (buffsize - sizeof (sceCslMidiStream)) must be an integral multiple of 16. 
+ 
+ 
+
+===== PAGE 91 =====
+
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Chapter 13: 
+SPU2 Waveform Data Encoding Module 
+(spucodec) 
+Overview 13-3 
+Functional Characteristics 13-4  
+ 
+ 
+
+===== PAGE 92 =====
+
+13-2    
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+ 
+
+===== PAGE 93 =====
+
+ SPU2 Waveform Data Encoding Module    13-3 
+ PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Overview 
+SpuCodec is an IOP module for handling the encoding of waveform data for the SPU2. The waveform data 
+is encoded with a function call from an application program, and the result is output to an area in IOP 
+memory. 
+
+===== PAGE 94 =====
+
+13-4    SPU2 Waveform Data Encoding Module 
+PlayStation 2 IOP Library Overview Release 3.0.1  -  Sound Libraries 
+Functional Characteristics 
+Currently the only function provided by SpuCodec is encoding from 16-bit straight PCM data to waveform 
+data that is supported by the SPU2. Options include a function for setting a loop point when encoding and 
+a function for encoding by dividing the data into fixed areas or sizes to reduce overhead when encoding. 
+To use the function, the waveform data that is to be encoded should first be placed in an area in IOP 
+memory, and the data area of the output destination should be reserved in IOP memory. The function 
+should then be called from the application program while specifying information about both of these areas. 
+Since the encoded output is in IOP memory, a suitable function such as one from the low-level sound 
+library should be used to transfer the data to SPU2 local memory. 
+ 
+ 

@@ -1,0 +1,1993 @@
+
+
+===== PAGE 1 =====
+
+PlayStation®2 EE Library Overview 
+Release 3.0.2 
+ 
+ 
+ 
+ 
+Sound Libraries 
+ 
+ 
+ 
+  
+
+===== PAGE 2 =====
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+© 2004 Sony Computer Entertainment Inc. 
+Publication date: July 2004 
+ 
+Sony Computer Entertainment Inc. 
+1-1, Akasaka 7-chome, Minato-ku 
+Tokyo 107-0052, Japan 
+ 
+Sony Computer Entertainment America 
+919 E. Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+ 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+ 
+The PlayStation®2 EE Library Overview - Sound Libraries manual is supplied pursuant to and subject to the 
+terms of the Sony Computer Entertainment PlayStation® license agreements. 
+The PlayStation®2 EE Library Overview - Sound Libraries manual is intended for distribution to and use by 
+only Sony Computer Entertainment licensed Developers and Publishers in accordance with the 
+PlayStation® license agreements. 
+Unauthorized reproduction, distribution, lending, rental or disclosure to any third party, in whole or in part, 
+of this book is expressly prohibited by law and by the terms of the Sony Computer Entertainment 
+PlayStation® license agreements. 
+Ownership of the physical property of the book is retained by and reserved by Sony Computer 
+Entertainment. Alteration to or deletion, in whole or in part, of the book, its presentation, or its contents is 
+prohibited. 
+The information in the PlayStation®2 EE Library Overview - Sound Libraries manual is subject to change 
+without notice. The content of this book is Confidential Information of Sony Computer Entertainment. 
+ and PlayStation are registered trademarks of Sony Computer Entertainment Inc. All other trademarks 
+are property of their respective owners and/or their licensors. 
+
+===== PAGE 3 =====
+
+ 
+Summary Table of Contents 
+About This Manual v 
+Changes Since Last Release v 
+Related Documentation v 
+Typographic Conventions v 
+Developer Support vi 
+Chapter 1: CSL (Component Sound Libraries) Overview 1-1 
+Chapter 2: CSL Line-out Library 2-1 
+Chapter 3: Low-Level Sound Library 3-1 
+Chapter 4: Standard Kit Library/Sound System Overview 4-1 
+Chapter 5: SPU2 Local Memory Management 5-1 
+Chapter 6: CSL Software Synthesizer 6-1 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 4 =====
+
+iv Table of Contents 
+ 
+        
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 5 =====
+
+About This Manual 
+This is the Runtime Library Release 3.0.2 version of the PlayStation®2 EE Library Overview - Sound 
+Libraries manual.  
+The purpose of this manual is to provide overview-level information about the PlayStation®2 sound 
+libraries. For related descriptions of the PlayStation®2 sound library structures and functions, refer to the 
+PlayStation®2 EE Library Reference - Sound Libraries. 
+Changes Since Last Release 
+Chapter 1: CSL (Component Sound Libraries) Overview 
+• The SE stream name within the document has been changed to sound effect stream.   
+Related Documentation 
+This manual should be read in conjunction with the PlayStation®2 EE Library Reference manuals which 
+define all structures and functions. 
+Additionally, library specifications for the IOP can be found in the PlayStation®2 IOP Library Reference 
+manuals and the PlayStation®2 IOP Library Overview manuals. 
+Note: the Developer Support Web site posts current developments regarding the Libraries and also 
+provides notice of future documentation releases and upgrades. 
+Typographic Conventions 
+Certain Typographic Conventions are used throughout this manual to clarify the meaning of the text: 
+Convention Meaning 
+courier Indicates literal program code. 
+italic Indicates names of arguments and structure 
+members (in structure/function definitions 
+only). 
+medium bold Indicates data types and structure/function 
+names (in structure/function definitions 
+only). 
+blue Indicates a hyperlink. 
+Developer Support 
+Sony Computer Entertainment America (SCEA) 
+SCEA developer support is available to licensees in North America only. You may obtain developer support 
+or additional copies of this documentation by contacting the following addresses: 
+Order Information Developer Support 
+Attn: Developer Tools Coordinator 
+Sony Computer Entertainment America 
+919 East Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+Tel: (650) 655-8000 
+E-mail: scea_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:(650) 655-5566  
+(Call Monday through Friday,  
+8 a.m. to 5 p.m., PST/PDT) 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 6 =====
+
+vi About This Manual 
+Sony Computer Entertainment Europe (SCEE) 
+SCEE developer support is available to licensees only in the PAL television territories (including Europe and 
+Australasia). You may obtain developer support or additional copies of this documentation by contacting 
+the following addresses: 
+Order Information Developer Support 
+Attn: Development Tools Manager 
+Sony Computer Entertainment Europe 
+13 Great Marlborough Street 
+London W1F 7HP, U.K. 
+Tel: +44 (0) 20 7859-5000 
+E-mail: scee_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:  
++44 (0) 20 7911-7711 
+(Call Monday through Friday,  
+9 a.m. to 6 p.m., GMT/BST) 
+ 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 7 =====
+
+Chapter 1: 
+CSL (Component Sound Libraries) 
+Overview 
+CSL Overview 1-3 
+CSL Standards 1-4 
+Category Classification According to Input/Output (I/O) 1-4 
+Common Data Structures 1-4 
+Buffer Group Structure 1-6 
+Category Definition Data Structures 1-7 
+Extended MIDI Messages 1-8 
+SE Messages 1-10 
+Recommended API Format 1-13 
+Low Level Library 1-14 
+Using CSL 1-15 
+SCE-provided CSL Modules 1-15 
+Sample Programs 1-16 
+Creator Authoring Environment 1-17 
+JAM 1-17 
+ 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 8 =====
+
+1-2       
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 9 =====
+
+ CSL (Component Sound Libraries) Overview    1-3 
+CSL Overview 
+The PlayStation 2 sound library is designed around a component-based architecture. The architecture 
+provides a flexible system for generating sound through software support.  
+The various sound generation processes and functions are divided into modules according to defined data 
+delivery modes. The system is flexible because a given function can be replaced by a module with a 
+different implementation, and new effects can be added simply by adding modules. 
+Figure 1-1 
+CSL Module
+Attribute
+Information
+(environment)
+SPU2
+libsd / libsdr
+CSL Module
+Attribute
+Information
+(environment)
+Shared buffer
+in memory
+Data such as
+waveform
+Data such as
+music, etc.
+ 
+ 
+CSL is the generic name for the sound development environment that is based on this interface. Although 
+CSL is highly flexible, it has a simple structure that is designed for realtime sound rendering. The 
+component-based architecture design adds virtually no overhead to this simple structure. 
+A CSL module is a library having an interface that conforms to the CSL specification. A CSL module can be 
+implemented for either the IOP or the EE. Although a CSL module is assumed to operate as a dynamic link 
+library (.irx) on the IOP, a module can also be statically linked (.a). Static linking is always used on the EE. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 10 =====
+
+1-4    CSL (Component Sound Libraries) Overview 
+CSL Standards 
+Rules related to CSL modules are described below. 
+CSL standardization concepts stress the importance of making stream data compatible between modules, 
+while defining other aspects of the interface as loosely as possible, so that flexibility and performance are 
+not lost. 
+For the convenience of user programs, the recommended specifications of the API and internal data 
+structures are defined to provide a unified feel to CSL, but these are not compulsory, and specific details 
+are left up to the creator of the CSL module. 
+A CSL module must satisfy the following three required conditions: 
+• It must have one module context structure per instance. 
+• It must conform to a Buffer Group structure. 
+• Sound stream data must conform to a category definition data structure. 
+Category Classification According to Input/Output (I/O) 
+CSL modules are classified into categories according to the combination of the input output data formats. 
+The supported data formats are shown below. 
+Table 1-1 
+Data Format Description                                            
+midi-stream MIDI data only. No delta time.                         
+pcm-stream SPU-specified 16-bit PCM data. L/R interleaving every 
+512 bytes.  
+se-stream Sound effect stream. Structure for SE messages. 
+raw-stream  1 sample interleave or monaural 16-bit PCM data. 
+adpcm-stream vag-format ADPCM data                                  
+original Module-specific data                                   
+any Any kind of data                                       
+ 
+For example, a module that inputs midi-stream data and outputs pcm-stream data would be in the "midi-
+pcm" category. 
+Common Data Structures 
+Some data structures defined in CSL are common to all categories and others are specific to a particular 
+category. The common data structures are described first. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 11 =====
+
+ CSL (Component Sound Libraries) Overview    1-5 
+CSL Context Structure (sceCslCtx) 
+The CSL context structure mainly describes the structure of the I/O data buffers. A CSL module is defined 
+so that it has one CSL context structure per instance. 
+    Structure 
+ 
+      typedef struct { 
+      int  buffGrpNum; 
+      sceCslBuffGrp *buffGrp; 
+      void*  config; 
+      void*  callBack; 
+      char  *extmod[]; 
+      } sceCslCtx; 
+ 
+    Members 
+ 
+      buffGrpNum Required:  Number of buffGrp arrays 
+      buffGrp  Required:  Pointer to buffGrp array 
+      config Optional:  Structure for settings related to the entire 
+module 
+      callBack Optional:  Callback function for asynchronous execution 
+      extmod Optional:  Name of the module when directly accessing an 
+external module 
+ 
+CSL Buffer Group Structure (sceCslBuffGrp) 
+The CSL buffer group structure is used to gather together I/O data buffers and manage them as a group. A 
+CSL module is defined so that it has data buffers that conform to this format. 
+ 
+    Structure 
+ 
+      typedef struct { 
+      int  buffNum; 
+      sceCslBuffCtx *buffCtx[n]; 
+      } sceCslBuffGrp; 
+ 
+    Members 
+ 
+      buffNum  Required:  Number of buffers belonging to that group 
+      buffCtx  Required:  Pointer to buffer array 
+ 
+CSL Buffer Context Structure (sceCslBuffCtx) 
+CSL buffer context structures are associated in a one-to-one correspondence with individual I/O data 
+buffers. 
+    Structure 
+ 
+      typedef struct { 
+      int    sema; 
+      void   *buff; 
+      } sceCslBuffCtx; 
+ 
+    Members 
+ 
+      sema  Optional:  Valid semaphore for that buffer 
+      buff  Required:  Pointer to buffer 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 12 =====
+
+1-6    CSL (Component Sound Libraries) Overview 
+Buffer Group Structure 
+The data buffer structures used by a module are described by the CSL context structure, CSL buffer group 
+structure, and CSL buffer context structure. Multiple groups are configured to have multiple buffers each as 
+shown in the figure.    
+Figure 1-2 
+ 
+sceCslBuffCtx[] 
+sema 
+buff 
+sema 
+buff 
+: 
+sema 
+buff 
+sceCslCtx 
+buffGrpNum 
+buffGrp 
+config 
+callback 
+extmod 
+sceCslBuffGrp[] 
+buffNum 
+buffCtx 
+buffNum 
+buffCtx 
+Normally there is a 
+separate input buffer 
+group and output buffer 
+group. 
+sceCslBuffCtx[] 
+sema 
+buff 
+sema 
+buff 
+: 
+sema 
+buff 
+void[] 
+void[] 
+The combination of data 
+buffer and environment 
+structure is called a “port”.
+ 
+Data 
+buffer 
+Environ-
+ment 
+structure
+A CSL module can have a structure for describing data attributes at the same position as the input buffer or 
+output buffer. This is called an environment structure (env), and a set consisting of data together with the 
+environment structure is called a port. 
+Required Specification: Buffer Group arrangement 
+If a module has an input buffer group, the input buffer group should be assigned Group 0. If a module also 
+has an output buffer group, the output buffer group should be assigned Group 1. 
+If the module does not have an input buffer, the output buffer group should be assigned Group 0. 
+Required Specification: Buffer arrangement 
+Arrange CSL buffer context structures in the input buffer array or output buffer array by individual ports. For 
+example, if A and B are two sets of input data with environment structures, arrange the buffers such that 
+buffer 0 is port A data, buffer 1 is port A's environment structure, buffer 2 is port B data, and buffer 3 is 
+port B's environment structure. 
+When a module contains only data and no environment structure, simply arrange the data buffers 
+sequentially. 
+Recommended Specifications: Keeping control information 
+Keeping control information that is needed for module operation as data associated with the Buffer Group 
+structure is recommended whenever possible. Maintaining it within the module as a global variable or 
+something similar, should be minimized. 
+It is recommended that control information related to each I/O port be collected together in the 
+environment structure for that port. For control information that applies to the entire module (not just 
+individual ports), it is recommended that this information be kept in a structure that is associated with the 
+config member of the CSL context structure. All of these formats are arbitrary. 
+Recommended Specification: Memory allocation 
+It is recommended that memory allocation for I/O buffers, control information, or Buffer Group structures be 
+done by the module and ensured by the user application. Since it is safe to entrust memory management 
+to the user, dynamic allocation within the module should be avoided. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 13 =====
+
+ CSL (Component Sound Libraries) Overview    1-7 
+Category Definition Data Structures 
+This section explains data structures that are defined for each category (I/O format). The data structure for 
+"original" can be arbitrarily defined. 
+   midi-stream buffer structure (sceCslMidiStream) 
+    Structure 
+ 
+      typedef struct { 
+       u_int buffsize;  // include Header size 
+       u_int validsize;  // valid data size 
+       u_char data[0];  // data max is data[buffsize] 
+      } sceCslMidiStream; 
+ 
+    Members 
+ 
+      buffsize Required:  Size of entire buffer 
+      validsize Required:  Size of valid data 
+      data  Required:  midi data 
+ 
+This is a variable length structure in which buffsize and validsize are headers, and are followed by MIDI 
+data. validsize is used to successively record the position of data that the module has processed. 
+Although MIDI messages themselves are entered for data, there is no delta time. Also, running time is not 
+supported. CSL-specific extended MIDI messages are defined (these are described later). Support for 
+extended MIDI messages is not required, but it is recommended. 
+se-stream buffer structure (sceCslSeStream) 
+    Structure 
+ 
+      typedef struct { 
+       u_int buffsize;  // include Header size 
+       u_int validsize;  // valid data size 
+       u_char data[0];  // data max is data[buffsize] 
+      } sceCslMidiStream; 
+ 
+    Members 
+ 
+      buffsize  Required:  Size of entire buffer 
+      validsize  Required:  Size of valid data 
+      data   Required:  SE message data 
+ 
+ 
+This is a variable length structure in which buffsize and validsize are headers, and are followed by SE 
+message data. validsize is used to successively record the position of data that the module has processed. 
+The SE message (details given later) is stored in the data member. Support for SE messages is not 
+required but is a recommended specification. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 14 =====
+
+1-8    CSL (Component Sound Libraries) Overview 
+pcm-stream buffer structure (sceCslPcmStream) 
+    Structure 
+ 
+      typedef struct { 
+       u_int pcmbuf_size; 
+       u_int validsize; 
+       void *pcmbuf; 
+       u_int pad; 
+      } sceCslPcmStream; 
+ 
+    Members 
+ 
+      buffsize Required:  Size of pcmbuf 
+      validsize Required:  Size of valid data within pcmbuf 
+      pcmbuf  Required:  Pointer to pcmbuf 
+      pad  Unused 
+ 
+This structure differs from midi-stream in that the actual data is in an area that is pointed to by pcmbuf. 
+validsize is used to successively record the position of data that the module has processed. 
+The data, which is 16-bit, signed, little endian PCM data, is structured so that L and R are interleaved every 
+512 bytes. 
+raw-stream structure 
+This is currently undefined (under investigation). 
+adpcm-stream structure 
+This is currently undefined (under investigation). 
+Extended MIDI Messages 
+MIDI messages, devised for music, have the following problems when controlling sound effects. 
+• Since generated voices are managed according to a channel number and key number only, key 
+off operations cannot be performed separately by consecutively striking the same key. 
+• Panpot and other controls are performed for all channels. 
+Extended MIDI messages, which were uniquely defined by SCE to address these problems, are described 
+below. These extended MIDI messages are used only by CSL and do not obey MIDI rules. Therefore, they 
+should not be passed to a general MIDI device via the MIDI interface. 
+Pre Voice Control Message 
+Immediately after this message, the Expression, Panpot, and PitchBend will be set, but only for the 
+generated voice. The message will have no effect on other voices. The Pre Voice Control Message consists 
+of the following five bytes. 
+Figure 1-3 
+0xF9 op. code ch. 1st data 2nd data 
+    
+op. code, 1st data, and 2nd data 
+Specify these bytes as follows, according to the content of the message.  
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 15 =====
+
+ CSL (Component Sound Libraries) Overview    1-9 
+Table 1-2  
+Contents op. code 1st data 2nd data      
+Expression 0x00 0-127 Invalid       
+Panpot 0x01 0-127 Invalid       
+PitchBend 0x02 LSB (0-127) MSB (0-127) 
+   
+ch. 
+Specify the channel in the low-order 4 bits. 
+Voice Control Message 
+This message controls a voice according to a key number and ID number. It enables more flexible control 
+over the voice. 
+The Voice Control Message consists of the following seven bytes. 
+Figure 1-4 
+0xFD op. code mode & ch. key id 1st data 2nd data 
+ 
+op. code, 1st data, and 2nd data 
+Specify these bytes as follows according to the contents of the message. 
+Table 1-3    
+Contents op. code  1st data 2nd data 
+Expression 0x00 0-127 Invalid       
+Panpot 0x01 0-127 Invalid       
+PitchBend 0x02 LSB (0-127) MSB (0-127)   
+Note Control  
+(Note On/Off) 
+0x10 velocity (0-127)  
+If 0 is specified, this 
+becomes a Note 
+Off message 
+Invalid 
+ 
+mode and ch. 
+Specify channel according to bits 0-3 and mode according to bits 4-6. 
+If bit4=1, the key field is ignored, and channels for all voices are targeted, regardless of the key number. 
+Always specify 0 for this bit for a Note Control Message. 
+key 
+Specify the key number (0-127). 
+id 
+Specify the ID number (0-126 or 127). If 127 is specified, all voices are targeted regardless of the ID 
+number. Do not specify 127 for a Note Control Message. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 16 =====
+
+1-10    CSL (Component Sound Libraries) Overview 
+SE Messages 
+An SE message is a data format that is provided for controlling sound effects. Its purpose is to control 
+parameters in realtime from the start of sound generation to the end. An ID is used to identify a voice for an 
+individual control, at the time sound is generated. 
+An SE message consists of the following byte string. 
+Table 1-4 
+Value Contents                                    
+0xfe Message Prefix                              
+version Version: Currently, 0x01                    
+Id0 ID: 32 bit / little endian:  bit 0 - 7     
+id1                                       bit 8 - 15    
+id2                                       bit 16 - 23   
+id3                                       bit 24 - 31   
+status SE status:  bit 7 is always 1               
+data SE data:  length depends on SE status 
+       
+Message Prefix 
+Indicates the beginning of the SE message.  
+Assigned the value 0xfe. 
+Version 
+Indicates the version of the SE message.  
+Assigned the value 0x01. 
+ID 
+Distinguishes SE messages. Data organization is 32-bit little endian. 
+The value of ID can range from 0x10000000 to 0xefffffff. The ranges from 0x00000000 to 0x0fffffff and 
+0xf0000000 to 0xffffffff are reserved for use by SCE modules. 
+SE Status 
+Indicates the contents of the SE message. 
+Currently, includes the following items. 
+Table 1-5 
+Contents Value Number of consecutive data      
+Note on/off 0xa? 6                               
+Note on 0x9? 6 
+Voice Control 0xb? Depends on individual command   
+Voice Group Control 0xc0 Depends on individual command   
+ 
+Note on/off, Note on :  0xa?, 0x9? 
+Status indicating the starting or ending of a sound. The low-order 4 bits specify the bank number or sound 
+effect timbre set number for that port. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 17 =====
+
+ CSL (Component Sound Libraries) Overview    1-11 
+This SE message consists of the following 7 bytes, including the status. 
+Table 1-6 
+Value Contents                                                    
+0xa? or 0x9? SE status:  note on/off + bank number or sound effect 
+timbre set number                
+prog_num Program number or sound effect timbre number  
+(0x00 - 0x7f)                               
+note_num Note number (0x00 - 0x7f)                                   
+velocity Velocity (key strike intensity)      
+  (status = 0xa?: 0x00 - 0x7f, where 0x00 is reserved as  
+   note off) 
+  (status = 0x9?: 0x00 - 0x7f, where all are processed as  
+   note on)                          
+panpot Panpot      
+(-127 - +127, where a number < 0 means inverted phase)   
+pitch_LSB Pitch specification LSB (0x00 - 0x7f)                       
+pitch_MSB Pitch specification MSB (0x00 - 0x7f)                       
+ 
+• Waveform data for which the sound is ultimately generated is determined by the bank number or 
+sound effect timbre set number and program number, or the sound effect timbre number and note 
+number (the decision rules depend on the format of the waveform data). 
+• When status = 0xa?, sound is generated when the specified velocity is not equal to 0x00. Sound is 
+silenced when the specified velocity is equal to 0x00. 
+• When status = 0x9?, sound (silent state) is generated even when velocity = 0x00. To silence the sound, 
+use 0xa?, velocity = 0x00. 
+• Stereo balance is determined with the panpot. +64 is for the positive phase sector. When a negative 
+value is specified, the phase will be inverted. 
+• The actual musical interval that is generated is determined by the specified note number and the 
+attributes of the waveform data. 
+• The actual musical interval that is generated can be directly specified by specifying the pitch. The value 
+used for pitch is equivalent to that for the SPU2 hardware. The 14-bit range (0x0000 - 0x3fff) is 
+specified 7 bits at a time. If the musical interval that is determined by the specified note number and the 
+attributes of the waveform data is given precedence and there is no pitch specification, both the LSB 
+and MSB of the pitch specification will be 0x00. 
+Voice Control :  0xb? 
+Status for controlling the voice of the generated sound. This status, which includes status, consists of the 
+following byte string. 
+Table 1-7 
+Value Contents                                    
+0xb? SE status: Voice Control + bank number or sound effect timbre set 
+number 
+prog_num Program number or sound effect timbre number (0x00 - 0x7f)         
+note_num Note number (0x00 - 0x7f)                   
+command Voice Control command                       
+data Voice Control data:  length depends on the Voice Control command   
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 18 =====
+
+1-12    CSL (Component Sound Libraries) Overview 
+Currently, the following commands are implemented. 
+Table 1-8 
+Command Value No. of Consecutive 
+Data 
+Consecutive Data  
+Time-Volume 0x07 3 or more Time, arrival volume  
+(0-0x80), 0   
+Time-PitchLFO-
+Cycle 
+0x0a 2 or more Time, arrival cycle 
+Time-AmpLFO-
+Cycle 
+0x0b 2 or more Time, arrival cycle 
+Time-Panpot-
+Clockwise 
+0x0c 3 or more Time, arrival panpot  
+(0-0xff), 0 
+Time-Panpot-
+Counterclockwise 
+0x0d 3 or more Time, arrival panpot  
+(0-0xff), 0 
+Time-Pitch+ 0x0e 3 or more Time, arrival pitch LSB  
+(0-0xff),  
+Arrival pitch MSB (0-0xff)   
+Time-Pitch- 0x0f 3 or more Time, arrival pitch LSB  
+(0-0xff),  
+Arrival pitch MSB (0-0xff)   
+Pitch LFO+ Depth 0x10 2 Amplitude LSB (0 - 0xff),  
+Amplitude MSB (0 - 0xff)  
+Pitch LFO- Depth 0x11 2 Amplitude LSB (0 - 0xff),  
+Amplitude MSB (0 - 0xff)       
+Pitch LFO Cycle 0x12 1 or more Cycle  
+Amp. LFO+ Depth 0x20 2 Amplitude (-0x80 - 0x7f), 0   
+Amp. LFO- Depth 0x21 2 Amplitude (-0x80 - 0x7f), 0   
+Amp. LFO Cycle 0x22 1 or more Cycle  
+ 
+Time is in units of milliseconds, and is represented in delta time format for standard MIDI files. 
+The arrival volume is the value that is ultimately reached when the upper limit is set to 0x80. 
+For the arrival panpot, +64 is the positive phase center. When a negative value is specified using two's 
+complement, the phase will become inverted. If a specification is made so that the phase is inverted while a 
+change is in progress, the result will become folded back using the same phase. 
+The arrival pitch with units of cents is a relative value from the current pitch. 
+Pitch LFO amplitude with units of 1/128 of a half-step is obtained by dividing a signed 16-bit value from  
+-0x8000 to 0x7fff into two unsigned bytes. 
+(Arrival) cycle with units of milliseconds is the unsigned 16-bit value from 0 to 0xffff expressed in standard 
+MIDI file delta time format. 
+For details, refer to the "Sound Data Formats" document. 
+Voice Group Control :  0xc? 
+Status for controlling the voices of generated sounds which have the same ID. This status, which includes 
+"status", consists of the following byte string. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 19 =====
+
+ CSL (Component Sound Libraries) Overview    1-13 
+Table 1-9 
+Value Contents                                    
+0xc? SE status: Voice Group Control +     
+currently specified as 0x0 only  
+command Voice Group Control command                 
+data Voice Group Control data: length depends on the Voice Group 
+Control command         
+     
+Currently, the following command is implemented. 
+Table 1-10 
+Command Value No. of Consecutive Data Consecutive Data      
+All Note off mask 0x1e 8 Target base ID 
+(0x00000000-
+0xffffffff), mask 
+(0x00000000-
+0xffffffff) 
+All Note off 0x1f 0 ----                           
+         
+All Note off mask performs Note Off processing for all voices for which the result of the bitwise AND of the 
+specified target base ID and the mask is the same as the result of the bitwise AND of the ID held by the 
+voice, and the mask. Both data sequences are 32-bit little endian. 
+All Note off performs Note Off processing for all voices that have the same ID. 
+Recommended API Format 
+There are no required rules for the APIs of a CSL module. An API can be freely implemented to suit the 
+needs of the module. However, since all information required for module operation can be described in the 
+CSL context structure, including a pointer to the CSL context structure as an API argument is 
+recommended. 
+Also, implementing the following two APIs according to the format shown below is particularly 
+recommended. 
+Recommended Specification:  int vendername???_Init( sceSdModCtx *module_ctx, u_int interval ) 
+ 
+ Arguments: module_ctx Pointer to CSL context structure 
+       interval 1 Tick interval (microseconds) 
+ 
+This API initializes the module's internal environment. It initializes the environment structure that is passed 
+from the user program. 
+A Tick, which is the time interval between successive calls of the ATick function shown below, is specified 
+by the user program. 
+Recommended Specification:  int vendername???_ATick( sceSdModCtx *module_context ) 
+ 
+      Argument: module_ctx Pointer to CSL context structure 
+       
+This API is routinely called by the user program at fixed intervals. When received, the module performs 
+sound processing for 1 Tick. The user program is responsible for routinely calling this API. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 20 =====
+
+1-14    CSL (Component Sound Libraries) Overview 
+Low Level Library 
+To enable a CSL module to access the SPU2, use the low level library libsd (for the IOP). If the libsd register 
+wrapper API is used, the publicly available SPU registers can practically be accessed directly. 
+For a CSL module implemented on the EE, use libsdr to remotely call libsd. An API for batch processing 
+register wrapper APIs is provided for performing remote access efficiently. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 21 =====
+
+ CSL (Component Sound Libraries) Overview    1-15 
+Using CSL 
+SCE-provided CSL Modules 
+SCE plans to provide the following CSL modules. The Category column indicates the I/O data formats. 
+Table 1-11: EE 
+Module Category Function                    
+MIDI stream generation Original -> MIDI Module for generating a 
+MIDI stream from a 
+program                     
+Software synthesizer MIDI -> PCM Multifunction Wave Table 
+sound source module that 
+performs calculations on 
+the EE                      
+Lineout PCM -> Original Module that generates 
+sounds by sending a PCM 
+stream to the SPU2 
+Sound effect stream 
+generation 
+Original -> SE Module for generating an 
+SE stream from a program 
+ 
+    Table 1-12: IOP 
+Module Category Function                    
+MIDI stream generation Original -> MIDI Module for generating a 
+MIDI stream from a 
+program                     
+Sound effect stream 
+generation 
+Original -> SE Module for generating a        
+SE stream from a           
+program 
+MIDI sequencer Original -> MIDI Sequencer module for 
+reading an sq file and 
+outputting a MIDI stream    
+Sound effect sequencer Original -> SE Sequencer module 
+specifically for sound 
+effects  
+MIDI delay MIDI -> MIDI Latency adjustment 
+module   
+MIDI monophonic MIDI -> MIDI Module for assigning a 
+MIDI stream as 
+monophonic   
+Hardware synthesizer MIDI -> Original Sound source module for 
+using SPU2 voices           
+Software synthesizer MIDI -> PCM Multifunction Wave Table 
+sound source module on 
+the IOP 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 22 =====
+
+1-16    CSL (Component Sound Libraries) Overview 
+Sample Programs 
+Sample programs that use CSL modules are listed below for reference. 
+sce/iop/sample/sound/sqhard 
+This program uses the following modules to perform a musical composition. This is the most basic example 
+of CSL use. 
+          a. MIDI sequencer (modmidi) [IOP] 
+          b. Hardware synthesizer (modhsyn) [IOP] 
+sce/iop/sample/sound/ezmidi 
+This program uses the following modules to perform a musical composition and to generate sound effects 
+from the EE. 
+          a. MIDI sequencer (modmidi) [IOP] 
+          b. MIDI stream generation (modmsin) [EE] 
+          c. Hardware synthesizer (modhsyn) [IOP] 
+sce/iop/sample/sound/sqsoft 
+This program uses the following modules to perform a musical composition. The performance is executed 
+by the software synthesizer on the EE, and music is output as PCM data, then transferred from the EE to 
+the IOP and on to the SPU2. 
+          a. MIDI sequencer (modmidi) [IOP] 
+          b. Software synthesizer (modssyn) [EE/IOP] 
+          c. Lineout (liblout) [EE] 
+sce/iop/sample/sound/sebasic 
+This program uses the following modules to start and stop sound effects. This is the most basic example of 
+how to use SE modules. 
+  a. Sound effect stream generation (modsein) [IOP] 
+  b. Hardware synthesizer (modhsyn) [IOP] 
+sce/iop/sample/sound/semidi 
+This program uses the following modules to start and stop sound effects while performing a MIDI chunk 
+within an SQ file. 
+     a. MIDI sequencer (modmidi) [IOP] 
+          b. Sound effect stream generation (modsein) [IOP] 
+          c. Hardware synthesizer (modhsyn) [IOP] 
+sce/iop/sample/sound/ezsein 
+This program uses the following modules to generate sound effects from the EE. 
+a. Sound effect stream generation (libsein) [EE] 
+b. Hardware synthesizer (modhsyn) [IOP] 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 23 =====
+
+ CSL (Component Sound Libraries) Overview    1-17 
+Creator Authoring Environment 
+JAM 
+JAM is provided as an authoring tool that supports SCE-provided CSL modules.  
+JAM, which runs on a Macintosh, can perform integrated waveform conversion, bank editing, MIDI 
+conversion, and preview operations. It supports both hardware and software synthesizers. 
+For more information, please refer to the documentation provided with JAM. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 24 =====
+
+1-18    CSL (Component Sound Libraries) Overview 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 25 =====
+
+Chapter 2: 
+CSL Line-out Library  
+Library Overview 2-3 
+Usage 2-4 
+Buffer Structure 2-4 
+Initialization 2-4 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 26 =====
+
+2-2   
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 27 =====
+
+ CSL Line-out Library    2-3 
+Library Overview 
+liblout is a library that outputs PCM Streams from the EE to the SPU2 through libsdr. The library conforms 
+to CSL (Component Sound Library). 
+Up to four input ports can be processed, and these ports can be freely assigned to Left or Right channel 0 
+or 1 of SPU2. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 28 =====
+
+2-4    CSL Line-out Library 
+Usage 
+Buffer Structure 
+Buffer Group 0: input port group 
+Table 2-1 
+BufCtx Index Contents Data Structure 
+N Input port Nth Input buffer  sceCslPcmStream 
+The range of N is 0 - 3. 
+ 
+Figure 2-1 
+ sceCslCtx 
+buffGrpNum = 1 
+buffGrp 
+conf 
+callback 
+extmod 
+sceCslBuffCtx[] 
+sema 
+buff 
+sema 
+buff 
+: 
+sema 
+buff 
+sceCslPcmStream 
+pcmbuf 
+Buffer 
+Input portsceCslBuffGrp[] 
+buffNum 
+buffCtx 
+ 
+sceLoutConf 
+ 
+ 
+Alignment, etc. must be performed for areas indicated by sceCslPcmStream and pcmbuf, since non-
+cached accesses will occur. 
+Initialization 
+To set up librsd and allocate IOP memory, the following initialization steps must be performed before calling 
+sceLout_Init(): 
+sceSdRemoteInit(); 
+sceSdRemote(1, rSdInit); 
+sceSifInitIopHeap(); 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 29 =====
+
+Chapter 3: 
+Low-Level Sound Library  
+Library Overview 3-3 
+Related Files 3-3 
+Description of Features 3-4 
+List of libsd Functions 3-4 
+List of Batch Commands 3-5 
+List of Register Macros 3-5 
+Changing the Priority of a Thread 3-7 
+Notes 3-8 
+Non-blocking Operations and Callbacks 3-8 
+Calling from Multiple Threads (Re-entry) 3-8 
+Memory Alignment in Transferred Data 3-8 
+TRC Requirements 3-9 
+21.0 Optical Digital Output 3-9 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 30 =====
+
+3-2   
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 31 =====
+
+ Low-Level Sound Library    3-3 
+Library Overview 
+libsdr is a low-level sound library that allows the EE to remotely control the SPU2, which is connected to 
+the IOP. The libsdr routines work together with the driver module on the IOP side and provide the EE with 
+features similar to the IOP low-level sound driver library libsd. Most of the processing takes place in the IOP 
+driver module. On the EE side, non-blocking operations, where a command is issued and then control 
+returns immediately, are supported. 
+Figure 3-1 
+ 
+SIF
+sceSdRemote()
+libsdr
+EE Hardware
+EE Application
+Driver Module
+sdrdrv.irx
+libsd
+SPU2, IOP Hardware
+ 
+ 
+Related Files 
+The following files are required to use libsdr: 
+Table 3-1 
+Category Filename 
+Library libsdr.a 
+Header file libsdr.h 
+Run-time module  (IOP-side) sdrdrv.irx  
+libsd.irx 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 32 =====
+
+3-4    Low-Level Sound Library 
+Description of Features 
+List of libsd Functions 
+The following is a list of libsd functions that can be called through libsdr.  
+Please refer to the description of sceSdRemote() for how these functions are called and to the libsd 
+document for details on individual functions. 
+Table 3-2: libsd Functions 
+libsd Function Name Description 
+sceSdInit Initialize sound device 
+sceSdSetParam Write to basic parameter register 
+sceSdGetParam Read from basic parameter register 
+sceSdSetSwitch Write to voice control parameter register 
+sceSdGetSwitch Read from voice control parameter 
+sceSdSetAddr Write to address register 
+sceSdGetAddr Read from address register 
+sceSdSetCoreAttr Write to core setting pseudo-register 
+sceSdGetCoreAttr Read from core setting pseudo-register 
+sceSdProcBatch Batch process 
+sceSdProcBatchEx Batch process with batch voice processing 
+sceSdVoiceTrans Transfer to SPU2 local memory 
+sceSdBlockTrans Transfer to input/output block 
+sceSDStopTrans Stop transfer to SPU2 local memory 
+sceSdVoiceTransStatus Get voice transfer status 
+sceSdBlockTransStatus Get input/output block transfer status 
+sceSdSetTransCallback Set up interrupt callback for transfer 
+sceSdSetIRQCallback Set up IRQ interrupt callback 
+sceSdSetEffectAttr Set up effect attributes 
+sceSdGetEffectAttr Get effect attributes 
+sceSdSetEffectMode Set effect mode 
+sceSdSetEffectModeParams Set effect mode attributes 
+sceSdClearEffectWorkArea Clear effect work area 
+sceSdCleanEffectWorkArea Clear effect work area (asynchronous) 
+sceSdNote2Pitch Convert from note to pitch 
+sceSdPitch2Note Convert from pitch to note 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 33 =====
+
+ Low-Level Sound Library    3-5 
+List of Batch Commands 
+A series of batch commands can be sent all at once to the IOP for execution using sceSdProcBatch() and 
+sceSdProcBatchEx(). The following is a list of batch commands. For details, refer to the libsd document. 
+Table 3-3: Batch commands 
+Batch Command Description 
+SD_BSET_PARAM Run sceSdSetParam() 
+SD_BGET_PARAM Run sceSdGetParam() 
+SD_BSET_SWITCH Run sceSdSetSwitch() 
+SD_BGET_SWITCH Run sceSdGetSwitch() 
+SD_BSET_ADDR Run sceSdSetAddr() 
+SD_BGET_ADDR Run sceSdGetAddr() 
+SD_BSET_CORE Run sceSdSetCoreAttr() 
+SD_BGET_CORE Run sceSdGetCoreAttr() 
+SD_WRITE_IOP Write to IOP memory 
+SD_WRITE_EE Write to EE memory 
+SD_RETURN_EE Transfer returns to EE memory 
+List of Register Macros 
+In libsdr, SPU2 registers are specified using register macros defined in libsd. The following is a list of 
+register macros. For more information, refer to the libsd and SPU2 documents. 
+Table 3-4: Basic parameter register macros 
+Register macro Core Voice Description 
+SD_VP_VOLL SD_CORE_? SD_VOICE_?? Voice volume (left) 
+SD_VP_VOLR SD_CORE_? SD_VOICE_?? Voice volume (right) 
+SD_VP_PITCH SD_CORE_? SD_VOICE_?? Playing pitch 
+SD_VP_ADSR1 SD_CORE_? SD_VOICE_?? Envelope 
+SD_VP_ADSR2 SD_CORE_? SD_VOICE_?? Envelope (2) 
+SD_VP_ENVX SD_CORE_? SD_VOICE_?? Current envelope value 
+SD_VP_VOLXL SD_CORE_? SD_VOICE_?? Current volume (left) 
+SD_VP_VOLXR SD_CORE_? SD_VOICE_?? Current volume (right) 
+SD_P_MMIX SD_CORE_? --- Output after voice mixing 
+SD_P_MVOLL SD_CORE_? --- Master volume (left) 
+SD_P_MVOLR SD_CORE_? --- Master volume (right) 
+SD_P_EVOLL SD_CORE_? --- Effect return volume (left) 
+SD_P_EVOLR SD_CORE_? --- Effect return volume 
+(right) 
+SD_P_AVOLL SD_CORE_? --- Core external input 
+volume (left) 
+SD_P_AVOLR SD_CORE_? --- Core external input 
+volume (right) 
+SD_P_BVOLL SD_CORE_? --- Sound data input volume 
+(left) 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 34 =====
+
+3-6    Low-Level Sound Library 
+Register macro Core Voice Description 
+SD_P_BVOLR SD_CORE_? --- Sound data input volume 
+(right) 
+SD_P_MVOLXL SD_CORE_? --- Current master volume 
+(left) 
+SD_P_MVOLXR SD_CORE_? --- Current master volume 
+(right) 
+ 
+Table 3-5: Voice management parameter register macros 
+Register Macro Core Voice Description 
+SD_S_PMON SD_CORE_? --- Set pitch modulation 
+SD_S_NON SD_CORE_? --- Assign noise generator 
+SD_S_KON SD_CORE_? --- Key on (start voice playback) 
+SD_S_KOFF SD_CORE_? --- Key off (end voice playback) 
+SD_S_ENDX SD_CORE_? --- Endpoint passed flag 
+SD_S_VMIXL SD_CORE_? --- Voice output mixing (Dry left) 
+SD_S_VMIXR SD_CORE_? --- Voice output mixing (Dry right) 
+SD_S_VMIXEL SD_CORE_? --- Voice output mixing (Wet left) 
+SD_S_VMIXER SD_CORE_? --- Voice output mixing (Wet right) 
+ 
+Table 3-6: Address register macros 
+Register macro Core Voice Description 
+SD_VA_SSA SD_CORE_? SD_VOICE_?? Start address of wave data 
+SD_VA_LSAX SD_CORE_? SD_VOICE_?? Loop point address 
+SD_VA_NAX SD_CORE_? SD_VOICE_?? Address of next wave data 
+to be read 
+SD_A_ESA SD_CORE_? --- Start address of effect 
+processing work area 
+SD_A_EEA SD_CORE_? --- End address of effect 
+processing work area 
+SD_A_TSA SD_CORE_? --- Transfer start address 
+SD_A_IRQA SD_CORE_? --- Interrupt address 
+ 
+Table 3-7: Entry (pseudo-register macros) 
+Macro Core Voice Description 
+SD_C_EFFECT_ENABLE SD_CORE_? --- Effect area write permission 
+SD_C_IRQ_ENABLE SD_CORE_? --- Enable IRQ interrupts 
+SD_C_MUTE_ENABLE SD_CORE_? --- Mute 
+SD_C_NOISE_CLK SD_CORE_? --- Noise generator M-series shift 
+frequency 
+SD_C_SPDIF_MODE ---  --- SPDIF setting (mask) 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 35 =====
+
+ Low-Level Sound Library    3-7 
+Changing the Priority of a Thread 
+The priorities of the sdrdrv.irx driver module threads running on the IOP can be changed. The following 
+three methods are available: 
+• Modify the source code 
+• Specify the priority at module load time 
+• Change the priority during execution 
+To modify the source code, change the value specified for param.initPriority in the thread creation sections 
+of sdd_main.c (main thread) and sdd_com.c (callback thread) in the sdrdrv source code. 
+To specify the priorities at module load time, pass the thread priorities as arguments to sceSifLoadModule() 
+in the following manner. 
+  char arg[] = "thpri=24,24"; 
+  sceSifLoadModule( "host0:/usr/local/sce/iop/modules/sdrdrv.irx", 
+  strlen( arg ) + 1, arg ); 
+ 
+There are two thread priorities in sdrdrv.irx--the first is the priority used for the main thread, and the second 
+is the priority used for the callback thread. These values are both 24 by default. The priority value of the 
+callback thread must be greater than or equal to the priority value of the main thread (i.e., the callback 
+thread must have a lower priority than the main thread). 
+To change the priorities during execution, use sceSdRemote() to call rSdChangeThreadPriority. This also 
+involves specifying the two arguments in the same order as in the case when the priorities are changed at 
+module load time. Both priorities will be changed simultaneously. For more information, refer to the function 
+reference. 
+When changing the priority of a thread, care must be taken with regard to priorities of other modules. It is 
+not recommended that the priority of IOP threads be changed casually. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 36 =====
+
+3-8    Low-Level Sound Library 
+Notes 
+Non-blocking Operations and Callbacks 
+sceSdRemote(), which calls libsd functions, can specify a blocking or non-blocking operation as a 
+parameter. For blocking operations, sceSdRemote() issues a command to the IOP driver module, waits for 
+the operation to finish, and returns the result as the return value. For non-blocking operations, 
+sceSdRemote() issues the command but does not wait for the IOP operations to finish and returns 
+immediately with a return value of 0. 
+Problems may occur if a command is sent before the previous IOP operation is finished. For non-blocking 
+operations, the completion of the IOP operation can be determined by setting up a terminating callback 
+function using sceSdRemoteCallBack() or by polling using the SD_WRITE_EE and the SD_RETURN_EE 
+batch commands. Use of a terminating callback may result in context switching, so polling is more effective 
+if EE performance is to be emphasized. 
+Calling from Multiple Threads (Re-entry) 
+libsdr is not re-entrant. If multiple threads call libsdr functions asynchronously, care must be taken to 
+prevent overlapping calls. 
+RPC re-entry issues are discussed in the "SIF System" document. Please use this as a reference for how 
+re-entry takes place and how to avoid it. 
+Memory Alignment in Transferred Data 
+When using sceSdRemote() to set up or get effect attributes or to execute batch commands 
+(SD_WRITE_EE / SD_RETURN_EE) accompanying EE memory writes, SIF DMA transfers will be used 
+internally by libsdr. Thus, the following general issues relating to DMA transfers must be kept in mind. 
+First, note alignment in the memory being transferred. The attribute setting in the compiler must be set to 
+provide 16-byte alignment on the EE and 4-byte alignment on the IOP. 
+Also keep consistency issues between the main memory and cache in mind. The EE has no bus-snooping 
+functions, so if a DMA transfer takes place from the IOP to the EE, then the EE accesses another variable 
+over the same cache line, the region that was DMA-transferred could be overwritten by a write-back. To 
+prevent this, make sure to consider memory alignment. The size of the EE cache line is 64 bytes, so using 
+64-byte alignment will be safe (although memory use will be less efficient). 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 37 =====
+
+ Low-Level Sound Library    3-9 
+TRC Requirements 
+Be careful when using libsdr in a title application as the following matter is prescribed by the TRC (Technical 
+Requirements Checklist). 
+21.0 Optical Digital Output 
+Suppressing the optical digital output  
+When an application has intentionally set the optical digital output OFF, the part that has set it to OFF 
+should be entered in the TRC. This is equivalent to setting the SD_SPDIF_OUT_OFF flag in the 
+SD_C_SPDIF_MODE entry using rSdSetCoreAttr. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 38 =====
+
+3-10    Low-Level Sound Library 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 39 =====
+
+ 
+  
+Chapter 4:  
+Standard Kit Library/Sound System 
+Overview 
+Library Overview 4-3 
+Related Files 4-3 
+Sample Programs 4-3 
+Description of Standard Kit/Sound System Library Functions 4-5 
+Library Organization 4-5 
+Managing Sound Data 4-6 
+ADPCM Streaming Mechanism 4-7 
+Combining IOP Modules 4-8 
+Options When Loading IOP Modules 4-9 
+Notes 4-11 
+Blocking / Non-blocking Processing 4-11 
+Effect on IOP Processing When Functions are Called Continuously 4-11 
+Calls From Multiple Threads (Reentry) 4-11 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 40 =====
+
+4-2   
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 41 =====
+
+ Standard Kit Library/Sound System Overview    4-3
+  
+Library Overview 
+The standard kit library (libsk) is a utility library whose primary function is to allow the environment that 
+exists on the IOP to be easily manipulated from the EE.  
+The functions of libsk, which work in concert with the standard support modules of the IOP, provide various 
+IOP functions for EE applications, and enable those functions to be used without requiring any IOP 
+programming. Currently, these functions are provided only for the sound environment (sound system).  
+The functions provided by the standard kit/sound system library (SKSS) include functions related to the 
+performance of score data, the generation and muting of one-shot sounds, and playback and control of 
+ADPCM stream data. Also included are simplified versions of functions for setting up the SPU2 environment 
+and transferring waveform data. In addition, since the implementation uses the low-level sound libraries 
+(libsdr/sdrdrv), libsdr functions can also be used in a supplementary capacity. 
+Related Files 
+The following files are required to use libsk. Some of these files may not be necessary depending on the 
+functions that are needed by the IOP runtime modules (see the “Combining IOP Modules” section). 
+Table 4-1 
+Category Filename 
+Library libsk.a 
+Header files sk/sk.h 
+sk/common.h 
+sk/errno.h 
+sk/sound.h 
+sk/stream.h 
+Runtime modules (IOP) sksound.irx 
+skhsynth.irx 
+skmidi.irx 
+sksesq.irx 
+skmsin.irx 
+sksadpcm.irx 
+ 
+-lsdr must be specified as an option during linking. 
+In addition, to use libsd.irx, sdrdrv.irx, the CSL modules (mod???.irx) that are required by each sk???.irx, 
+and the ADPCM stream functions, stradpcm.irx must be loaded in the IOP during execution (see the 
+“Combining IOP Modules” section). 
+Sample Programs 
+The following sample programs use the standard kit/sound system library. 
+• sce/ee/sample/sk/playsq/ 
+These sample program provide basic examples of how to use standard kit/sound system library 
+functions. 
+• sce/ee/sample/sk/ctrlsq/ 
+These sample programs use the controller to call standard kit/sound system library functions and 
+control sound performances. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 42 =====
+
+4-4  Standard Kit Library/Sound System Overview 
+• sce /ee/sample/sk/ctrlstr/ 
+These sample programs use the controller to call standard kit/sound system library ADPCM stream 
+control functions for controlling the playback of ADPCM stream data. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 43 =====
+
+ Standard Kit Library/Sound System Overview    4-5
+  
+Description of Standard Kit/Sound System Library Functions 
+Library Organization 
+A software hierarchy diagram showing the standard kit/sound system library together with existing library 
+modules is presented below. 
+The software that is included in the standard kit/sound system library is shown in red. 
+Figure 4-1 
+ User program 
+libsk
+libsdr 
+libspu2m 
+sksound
+skhsynth / skmidi 
+/ skmsin / sksesq
+libsd 
+SPU2 
+sdrdrv
+modhsyn / modmidi / 
+modmsin / modsesq 
+↑EE 
+↓IOP 
+sksadpcm 
+stradpcm 
+ 
+ 
+libsk Stand ard kit 
+libspu2m SPU2 local memory management 
+libsdr Low-level sound library/EE 
+sdrdrv Low-level sound driver 
+sksound Standard kit/sound system/sound basic 
+skhsynth Standard kit/sound system/hardware synthesizer 
+skmidi Standard kit/sound system/MIDI sequencer 
+skmsin Standard kit/sound system/MIDI stream generation 
+sksesq Standard kit/sound system/sound effects sequencer 
+skstradpcm Standard kit/sound system/ADPCM streaming 
+modhsyn CSL hardware synthesizer 
+modmidi CSL MIDI synthesizer 
+modmsin CSL MIDI stream generation 
+modsesq CSL sound effects sequencer 
+stradpcm Low-level ADPCM streaming 
+libsd Low-level sound library/IOP 
+ 
+All programming for the standard kit/sound system is done on the EE.  
+Software on the IOP consists of modules which are designed to be dynamically linked. When an application 
+starts up, the modules it needs are selected and loaded into memory. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 44 =====
+
+4-6  Standard Kit Library/Sound System Overview 
+Managing Sound Data 
+To perform sound processing, the system must be instructed to manage scores, waveforms, and ADPCM 
+stream data, and link them together with their actual performance or playback.  
+To manage score and waveform data, the address where each type of data is located and the size of the 
+data are registered (using BIND) and an ID representing that data is returned. The data can subsequently 
+be identified by specifying that ID. 
+Score data (SQ data) must be located in IOP memory. Attribute information (HD data) within waveform data 
+must also be located in IOP memory. Phoneme data (BD data) must be located in SPU2 memory. 
+Addresses can also be registered by using address representations for the respective address spaces. For 
+waveform data, the same ID number is used for the attribute information data (HD data) and accompanying 
+phoneme data (BD data). Although score data isn’t needed when a one-shot sound is generated from 
+waveform data, an ID must be obtained using the registration process in order to manage the data. 
+Similarly, registration processing is also performed for ADPCM stream data to obtain an ID. 
+Figure 4-2 
+ 
+ Main tain address
+  and size of each
+  d ata ID 
+Waveform 
+data (HD) 
+Score data 
+(SQ) 
+Waveform 
+data (BD) 
+ 
+IOP Memory 
+SPU2 local Memory 
+Standard key/sound system 
+ID 
+ID 
+Register 
+Register 
+Register 
+Score/waveform data 
+management
+Track management
+ 
+ 
+To represent a combination of score and waveform to be used for a performance, the two are joined 
+together by registering the IDs for each one in a "track" (this operation is also called a BIND). Each track 
+also has an ID, and the data can be performed by specifying the track ID when starting and stopping the 
+performance. 
+First, the ID of the waveform data must be registered in the track. Then, to perform score data, the ID of the 
+score data is registered in the track. To generate a one-shot sound, the ID of the one-shot sound generator 
+is registered in the track. The IDs of the waveform data, score data, and one-shot sound generator can be 
+registered in multiple tracks. 
+Although ADPCM stream data need not be linked with other data, to unify performance management, the 
+ADPCM stream ID is also registered in the track. Since various attributes related to ADPCM streaming 
+functions must be changed in real-time, they are specified together with the track ID in playback functions. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 45 =====
+
+ Standard Kit Library/Sound System Overview    4-7
+  
+Figure 4-3 
+ 
+Standard kit/sound system 
+Track management
+SQ ＝ #0
+HD/BD ＝ #3  
+TR #0 
+SQ ＝ #1
+HD/BD ＝ #2  
+TR #1
+SQ ＝ #2
+HD/BD ＝ #2  
+TR #2
+Register in track Performance instructions 
+Register SQ:#0 and 
+HD/BD:#3 in track #0 
+Register SQ:#1 and 
+HD/BD:#2 in track #1 
+Perform track #0 
+Change tempo of track #1 
+Score/waveform data 
+management
+ 
+ 
+The application is responsible for associating each data ID with the data itself. That is, after data is 
+registered and an ID obtained, the data area that was specified at that time must not be cleared or 
+overwritten by other data. When data is no longer needed, the registration of its ID is first canceled (this is 
+referred to as UNBIND), after which the memory area may be discarded. 
+ADPCM Streaming Mechanism 
+To play ADPCM stream data, the structure that holds the attributes along with the track ID for which the 
+ADPCM stream data is registered, are passed to the function for starting the performance. This structure 
+contains information such as the performance state and buffer attribute information. 
+Up to the point when the ADPCM stream data is finally performed, transfer buffers in EE and IOP memory, 
+and ring buffers in IOP and SPU2 local memory are needed. The size of the IOP ring buffer must be an 
+integer multiple of the sizes of the SPU2 local memory ring buffer and the IOP data transfer buffer. The EE 
+data transfer buffer must be the same size as the IOP data transfer buffer. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 46 =====
+
+4-8  Standard Kit Library/Sound System Overview 
+Figure 4-4 
+ 
+ DiscMedia 
+read 
+EE memory 
+Data transfer 
+buffer 
+IOP memory 
+ 
+Data transfer 
+buffer 
+ 
+loop 
+copy
+transfer
+Validsize 
+SPU2 local memory 
+Ring buffer
+loop 
+Ring buffer
+ 
+transfer
+ 
+ 
+ADPCM stream data is first placed in the EE data transfer buffer. The data is transferred to the IOP by 
+specifying the valid size (validsize) and calling the data transfer operation function. When the data transfer to 
+the IOP completes, the valid size (validsize) will become zero. 
+On the IOP, the contents of the data transfer buffer are transferred to the ring buffer, and the stream is 
+played by sequentially transferring the data within the ring buffer in accordance with the playback 
+processing of the SPU2. 
+Combining IOP Modules 
+The IOP modules that are provided by the standard kit/sound system and the low-level modules that are 
+required for each of them are shown below. 
+Table 4-2 
+Module Name Description Requirement Low-level Required Modules 
+sksound Sound basic Required sdrdrv, libsd 
+skhsynth Hardware synthesizer Required sksound, modhsyn 
+skmidi MIDI sequencer Optional skhsynth, modmidi 
+skmsin MIDI stream generation Optional skhsynth, modmsin 
+sksesq Sound effects sequencer Optional skhsynth, modsesq 
+sksadpcm ADPCM streaming Optional sksound, stradpcm 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 47 =====
+
+ Standard Kit Library/Sound System Overview    4-9
+  
+Sound basic (sksound:  Required) 
+This module provides basic sound processing. It also performs routine interrupt processing, SPU2 
+environment configuration, SPU2 data transfer processing, and manages track information. 
+Hardware synthesizer (skhsynth:  Required) 
+This module manages waveform data and controls SPU2 voices. 
+MIDI sequencer (skmidi:  Required only when performing scores) 
+This module manages score data and their performance. 
+Sound effects sequencer (sksesq:  Required only when performing sound effects sequences) 
+This module manages sound effects sequences and their performance. 
+MIDI stream generation (skmsin:  Required only when generating one-shot sounds) 
+This module manages and controls one-shot sound generation. 
+ADPCM streaming (sksadpcm:  Required only when performing ADPCM streams) 
+This module manages and controls ADPCM streaming functions. 
+ 
+IOP modules are chosen based on the functions that will be used and loaded together with the 
+corresponding low-level modules they require. Examples are given below. 
+Example:  When performing only scores  
+skmidi + modmidi + skhsynth + modhsynth + sksound + sdrdrv + libsd 
+Example:  When generating one-shot sounds + performing scores 
+skmsin + modmsin + 
+skmidi + modmidi + skhsynth + modhsynth + sksound + sdrdrv + libsd 
+Example: When executing a sound effects sequence + generating one-shot sound + performing scores 
+sksesq + modsesq + 
+skmsin + modmsin + 
+skmidi + modmidi + skhsynth + modhsynth + sksound + sdrdrv + libsd 
+Example: When generating only one-shot sound  
+skmsin + modmsin + skhsynth + modhsynth + sksound + sdrdrv + libsd 
+Example: When executing only ADPCM streaming functions 
+sksadpcm + sksound + stradpcm + sdrdrv + libsd 
+Options When Loading IOP Modules 
+The attributes of IOP modules can be changed by specifying options when loading the modules.  
+Options can be specified as follows, for example, within the source code. For details, see the description of 
+sceSifLoadModule() in the library reference. 
+ 
+sceSifLoadModule ("cdrom0:\\SKMIDI.IRX", 
+    10 + 1 + 10 + 1, "maxtrack=8\000maxentry=8") 
+- tickresolution (sksound) 
+Specifies the tick resolution (= time interval per tick) 
+Default: 240 ... 1/240 second 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 48 =====
+
+4-10  Standard Kit Library/Sound System Overview 
+Example: Specify 1/480 second for the tick resolution 
+  tickres olution=480 
+- thpri (sksound, sksadpcm) 
+Specifiies thread priority in the IOP 
+Default: 32 
+Example: Specify 48 for the thread priority 
+  t hpri=48 
+- maxtrack (sksound, skmidi, sksesq, skmsin) 
+Specifies the upper limit for registering data to be managed by the modules as tracks 
+Default: 8 (sksound) / 4 (skmidi, sksesq, skmsin); Maximum: 16 (common) 
+Example: Specify 16 for the number of tracks to be used 
+  maxtrack=16 
+Comments: 
+• The following relationship between maxentry and maxtrack must hold for each module: maxentry 
+>= maxtrack. Although a module will operate correctly even if maxentry < maxtrack, the upper 
+limit on the number of registration tracks for that module would be limited to the maxentry value. 
+• The maxtrack value for the sksound module must be greater than or equal to the total of the 
+maxtrack values of the other modules excluding skhsynth. 
+• The maxtrack value for the skhsynth module will automatically become equal to the maxtrack 
+value of the sksound module when skhsynth is loaded. 
+• The maxtrack value for the sksadpcm module is always 2. 
+- maxentry (skhsynth, skmidi, sksesq, skmsin) 
+Specifies the upper limit on the number of data entries that will be registered as IDs 
+Default: 8 (skhsynth) / 4 (skmidi, sksesq, skmsin); Maximum: 16 (common) 
+Example: Specify 16 for the upper limit on the number of data entries that will be registered 
+  maxentry=16 
+Comments: 
+The following relationship between maxentry and maxtrack must hold for each module:  maxentry >= 
+maxtrack. Although a module will operate correctly even if maxentry < maxtrack, the upper limit on the 
+number of registration tracks for that module would be limited to the maxentry value. 
+The maxentry value for the sksadpcm module is always 2. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 49 =====
+
+ Standard Kit Library/Sound System Overview    4-11
+  
+Notes 
+Blocking / Non-blocking Processing 
+The standard kit/sound system library performs processing by internally calling libsd functions (mainly 
+sceSdRemote()) from the EE. 
+Both blocking and non-blocking processing can be specified for sceSdRemote() with an argument. 
+However, the standard kit/sound system library currently only uses blocking. As a result, to prevent a 
+sound processing instruction sent to the IOP from interrupting graphics processing, processing must be 
+divided into threads and threads that are dedicated to sound processing must be created. 
+Effect on IOP Processing When Functions are Called Continuously  
+When the sksound module is started on the IOP, the tickresolution option can be used to set the period 
+during which the IOP will perform its processing. The standard value for this period is 1/240 second. In 
+many cases, instructions from the EE are also processed during this period. 
+When functions are called continuously on the EE, operations on the IOP may need to enter wait states 
+depending on the timing of those calls (for example, immediately after a command is executed to begin 
+playing score data, even if the system is ready to begin the performance, a non-performance state may be 
+returned until some amount of time has elapsed). 
+In addition, for instructions that modify SPU2 registers, a minimum delay of 1/48000-second must be 
+present to update an SPU2 register, and this value may not be realized when functions are called 
+continuously. 
+Be sure to call a series of identical functions, or functions that change, at fixed intervals (for example, 1/60 
+second on the EE). 
+Calls From Multiple Threads (Reentry) 
+The standard kit/sound system library uses libsdr internally, and since libsdr is not reentrant, the standard 
+kit/sound system library also has this same restriction. When standard kit/sound system library functions 
+are called asynchronously from multiple threads, be sure that these calls do not mutually overlap.  
+Reentry is described in the libsdr documents and the "SIF System" document that deals with RPC reentry. 
+Please refer to these documents for information about what causes reentry and how to prevent it. 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 50 =====
+
+4-12  Standard Kit Library/S ound System Overview 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+ 
+
+===== PAGE 51 =====
+
+Chapter 5:  
+SPU2 Local Memory Management 
+Library Overview 5-3 
+Related Files 5-3 
+Sample Programs 5-3 
+Software Architecture 5-4 
+Memory Management Table 5-4 
+Reserving the Effect Work Area 5-4 
+Allocating and Freeing Memory Areas 5-5 
+ 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 52 =====
+
+5-2 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 53 =====
+
+ SPU2 Local Memory Management    5-3 
+Library Overview 
+The SPU2 local memory management library (libspu2m) is a utility library that simplifies the management of 
+SPU2 local memory areas. 
+Related Files 
+The following files are required to use libspu2m. 
+Table 5-1  
+Category Filename 
+Library libspu2m.a| 
+Header file libspu2m.h| 
+Sample Programs 
+The following sample programs use libspu2m. 
+• sce/ee/sample/sk/playsq/ 
+• sce/ee/sample/sk/ctrlsq/ 
+These are standard kit/sound system library sample programs which use libspu2m for SPU2 local 
+memory management. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 54 =====
+
+5-4    SPU2 Local Memory Management 
+Software Architecture 
+Memory Management Table 
+SPU2 local memory cannot be directly accessed from both the EE and IOP, therefore, the EE uses 
+information on memory allocation and freeing to manage the state of memory areas. The table for 
+managing this information (known as the "memory management table") is allocated by a user program, and 
+the starting address and size are specified as arguments to the initialization routine. The initialization routine 
+initializes and maintains the specified memory management table, which is then used for the allocation and 
+freeing of SPU2 local memory areas.     
+Figure 5-1 
+ 
+SPU2 Local Memory EE Main Memory
+Memory
+management table
+ 
+Reserving the Effect Work Area 
+Not only does SPU2 local memory have an area for user waveform data, but it also contains an area for 
+sound data input/output as well as a partial reserved area. These areas are at fixed locations, and libspu2m 
+allocates them as user areas that are not subject to management. 
+SPU2 local memory can also be used as a work area for effects, however, the size of the work area will 
+vary depending on the effect. Whether or not a work area will be used can be specified in libspu2m using 
+an argument of the initialization routine. 
+With the current implementation, 128KB from each SPU2 core (total of 256KB) is reserved from all of SPU2 
+local memory when an effect work area is used.  This reserved area is not subject to management. 
+Since the sound data input/output and partial reserved areas are also not subject to management as 
+described above, the amount of memory available to the user is 1,814,512 bytes. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 55 =====
+
+ SPU2 Local Memory Management    5-5 
+Figure 5-2 
+0x00 0000
+0x00 4fff
+0x00 5000
+0x00 500f
+0x00 5010
+0x1b ffff
+0x1c 0000
+Sound data
+input/output area
+Reserved area
+CORE1 effect
+work area
+CORE0 effect
+work area
+User area when effect work area is used
+User area when effect work area is not
+used
+ ~                           ~ ~                           ~
+ 
+ 
+• Size of user area when effect work area is used 
+2 MB - (0x5010 + 2 * 128 KB) = 1,814,512 (0x1baff0) bytes 
+• Size of user area when effect work area is not used 
+2 MB - (0x5010) = 2,076,656 (0x1faff0) bytes 
+Allocating and Freeing Memory Areas 
+Dedicated functions are provided for allocating and freeing memory areas. The number of area allocations, 
+that is, the number of sections into which SPU2 local memory can be subdivided and managed is 
+determined by the size of the memory management table. If the size of the memory management table is 
+exceeded when the area allocation function is called, a value indicating that the "area cannot be allocated" 
+is returned, even if there exists an unallocated area having the specified size. Therefore, be sure to allocate 
+a memory management table of the required size and pass it to the initialization routine. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 56 =====
+
+5-6    SPU2 Local Memory Management 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 57 =====
+
+Chapter 6: 
+CSL Software Synthesizer  
+Library Overview 6-3 
+Usage 6-4 
+Buffer Structure 6-4 
+Programming Procedures 6-5 
+MIDI Message Filter Callback 6-5 
+Overview of Features 6-7 
+Received MIDI Messages 6-8 
+Extended MIDI Messages 6-9 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 58 =====
+
+6-2   
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 59 =====
+
+ CSL Software Synthesizer  6-3 
+Library Overview 
+libssyn is a software sound source library that conforms to the CSL (Component Sound Library) 
+specification. IOP MIDI Stream data is received via modssyn (software synthesizer communication module), 
+and PCM Stream data is output using phoneme data in EE memory. Alternatively, instead of using MIDI 
+Stream data from the IOP, sound can also be played through MIDI messages (EE MIDI stream) using API 
+calls from an EE application. 
+Figure 6-1 
+ 
+MIDI
+MIDI 
+PCM 
+libssyn 
+ 
+modssyn  
+SIF 
+Sound played 
+with EE API 
+Sound played with 
+stream from IOP  
+A maximum of 8 input ports and 8 output ports can be used. Each input port is capable of serving as an 
+independent sound source (the maximum number of generated sounds is the total of the upper limit of the 
+number of generated sounds set up for each of the input ports). 
+Each input port has 16 channels of parts. Each part has four output ports, and an output port of a part can 
+be freely assigned to an actual output port. 
+libssyn works in conjunction with the IOP module "modssyn.irx". See modssyn for additional information. 
+Since libssyn uses vu0 internally, to protect the vu context in a multithreaded environment, threads that are 
+currently using vu0 should be grouped together as a single thread. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 60 =====
+
+6-4    CSL Software Synthesizer 
+Usage 
+Buffer Structure 
+Buffer Group 0: Input port group 
+Table 6-1 
+BufCtx Index Description Data Structure 
+1 - N Input buffer for input port N  sceSSynEnv 
+ 
+Buffer Group 1: Output port group 
+Table 6-2 
+BufCtx Index Description Buffer Contents 
+N Output buffer for input port 
+N 
+ sceCslPcmStream 
+* Non-cached access is performed on the buffer area indicated by pcmbuf and 
+sceCslPcmStream itself, so alignment, etc. must be taken into account. 
+ 
+Buffer Group 2: EE MIDI Stream input port group 
+Table 6-3 
+BufCtx Index Description Data Structure 
+1 Sequence data generated 
+through API calls 
+sceCslMidiStream  
+void[ buffsize - sizeof  
+(sceCslMidiStream) ] 
+* The validsize member of sceCslMidiStream indicates the valid data count in the buffer. 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 61 =====
+
+ CSL Software Synthesizer  6-5 
+Figure 6-2 
+sceCslCtx
+buffGrpNum = 3
+buffGrp
+conf
+callback
+extmod
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+Buffer
+sceSSynEn v
+input_buff
+Input portsceCslBuffGrp[]
+buffNum
+buffCtx
+buffNum
+buffCtx
+buffNum = 1
+buffCtx
+sceCslBuffCtx[]
+sema
+buff
+sema
+buff
+:
+sema
+buff
+Output port
+Buffer
+sceCslPcmStream
+pcmbuf
+sceCslBuffCtx[]
+sema
+buff
+sceC slMidiStream
+buffsize
+Buffer
+EE MIDI Stream Input port
+ 
+Buffer group 2 is used if EE MIDI Stream is used. Set buffGrpNum = 2 if EE MIDI Stream is not used. 
+If sceCslBuffCtx.buff of an input port is set to NULL, the port will be skipped during ATick processing. This 
+can be used to temporarily disable sounds from a particular port.  
+Programming Procedures 
+Libssyn causes IOP communication to take place, so the following sequence of operations must be 
+performed for initialization. 
+  1.  Call sceSSyn_Init() to initialize the synthesizer routine. 
+  2.  Call sceSSyn_RegisterRpc() to perform registration of the SIF RPC server. 
+  3.  Call sceSifLoadModule() to load the IOP module (moddssyn.irx). 
+  4.  Load sound phoneme data into EE memory, call sceSSyn_PrepareParameter() to resolve 
+addresses, and call sceSSyn_Load() to register. 
+2. and 3. are not needed if sounds are played only with EE MIDI Stream, and not with IOP MIDI Stream. 
+MIDI Message Filter Callback 
+The following callbacks are provided to allow MIDI messages output by libssyn to be changed at any time. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 62 =====
+
+6-6    CSL Software Synthesizer 
+Table 6-4 
+Trigger Callback Function Filter Function          
+Channel message msg_callback Suppress message output  
+Exclusive message excMsgCallBack Suppress message output  
+    
+Callback functions are registered in sceSSynEnv. When a message serving as a trigger, etc. appears in the 
+sequence data, the associated callback function is called. 
+The callback function examines the message, etc., which is passed as a parameter, and can, in certain 
+cases, suppress the message. 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 63 =====
+
+ CSL Software Synthesizer  6-7 
+Overview of Features 
+The external specifications of the software sound source implemented by libssyn are shown below. 
+    Tone Generator (Wave Table Reading Section): TG 
+• Wave Data is 8/16-bit PCM wave data with a 22.05K/44.1K/48K sampling rate. Wave data contains a 
+read start position and loop start/end positions as address information. 
+ One loop can be specified and it must be a forward loop. To use a loop other than a forward loop, 1 
+shot can create a silent loop as a forward loop and the other loop is expanded into a forward loop. The 
+maximum playback frequency depends on the loop size. 
+• The read start position can be modified with velocity, etc. 
+• The key region/velocity can be used to change the waveform being read. Up to two waves can be read 
+at the same time. 
+• A dedicated ENV is provided and pitch can be modified. 
+• pitch can be modified using LFO. 
+• pitch can be modified using a MIDI pitch bend message. 
+• A pitch can be set up with keyfollow using key#. 
+• Portamento can be used. 
+ 
+Time Variant Filter: TVF 
+• One of LPF/BPF/HPF for 12db/oct. can be selected and used. 
+• Control can be performed using cutoff Freq. and resonance (1/Q). 
+• A dedicated ENV is provided and cutoff can be modified. 
+• cutoff can be modified with LFO. 
+• A cutoff freq. can be set up with keyfollow using key#. 
+ 
+Time Variant Amplifier: TVA 
+• Operates as an attenuator. 
+• Provides a dedicated ENV and level can be modified. 
+• level can be modified with LFO. 
+• level can be set up with keyfollow using key#. 
+ 
+Output Mixer: MIX 
+• Up to eight channels of output. 16 parts x 4 channels output assigned to 8-channel output port. 
+• Pan pot settings can be made for each voice. 
+ 
+Envelope Generator: ENV 
+• Envelope control through ADSR level 4 points, time 3 points. 
+• time is specified in milliseconds. 
+• The range for level is -1.0 - 1.0 for TG and TVF, 0.0 - 1.0 for TVA. The endpoint level for TVA 
+ReRelease is fixed at 0. 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 64 =====
+
+6-8    CSL Software Synthesizer 
+• level and time can be modified with velocity, key#. 
+• O perating curves: 
+TG:   read frequencies can be modified in cents 
+TVF:  cutoff Freq. can be modified in cents 
+TVA:  linear 
+ 
+Low Frequency Oscillator: LFO 
+• Each voice has two LFOs. 
+• Supported waveforms are: sine, rectangular, triangular, sawtooth, and noise. 
+• Delay before transmission can be set. 
+Received MIDI Messages 
+The following is a list of MIDI messages that can be received by the software sound source. 
+8n kk     note off (ignore velocity) 
+9n kk vv  note on(velocity = 0: off) 
+Bn 
+   0x00,0x20  Bank Change 
+   0x01       Modulation 
+   0x05       Portamento time 
+   0x06,0x26   Data Entry 
+   0x07         Volume 
+   0x0a         Panpot 
+   0x0b         Expression 
+   0x40         hold1 
+   0x41         portamento 
+   0x54         portamento control 
+    0x63,0x62   NRPN 
+     0x01,0x08  vibrato rate 
+     0x01,0x09  vibrato depth 
+    0x01,0x0a  vibrato delay 
+     0x01,0x20  TVF cut-off 
+     (0x01,0x21  TVF resonance 
+     0x01,0x63  TVF,TVA attack time 
+     0x01,0x64  TVF,TVA decay time 
+     0x01,0x65  TVF,TVA release time 
+     0x18,rr    drum pitch course 
+     0x1a,rr    drum TVA level 
+     0x1c,rr    drum pan-pot 
+    0x65,0x64   RPN 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 65 =====
+
+ CSL Software Synthesizer  6-9 
+     0x00,0x00  pitch bend sensitivity 
+     0x00,0x01  master fine tuning 
+     0x00,0x02  master coarse tuning 
+     0x7f,0x7f  NULL 
+    0x78,0x00  all sound off 
+     0x79,0x00  reset all controllers 
+     Other  Mode message is recognized as all notes off 
+Cn pp             Program Change 
+Dn pp             Channel Pressure 
+En vv vv          Pitch Bend Change 
+Extended MIDI Messages 
+The software sound source implemented in libssyn can receive extended MIDI messages as defined by the 
+CSL. For more information on extended MIDI messages, see the "CSL Overview" document. 
+ 
+ PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 
+
+===== PAGE 66 =====
+
+6-10    CSL Software Synthesizer 
+ 
+ 
+PlayStation 2 EE Library Overview Release 3.0.2  -  Sound Libraries 

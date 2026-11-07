@@ -1,0 +1,291 @@
+
+
+===== PAGE 1 =====
+
+CD(DVD)-ROM Tips 
+ 
+ 
+
+===== PAGE 2 =====
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+© 2003 Sony Computer Entertainment Inc. 
+Publication date: December 2003 
+ 
+Sony Computer Entertainment Inc. 
+1-1, Akasaka 7-chome, Minato-ku 
+Tokyo 107-0052, Japan 
+ 
+Sony Computer Entertainment America 
+919 E. Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+ 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+ 
+The CD(DVD)-Rom Tips manual is supplied pursuant to and subject to the terms of the Sony Computer 
+Entertainment PlayStation® license agreements. 
+The CD(DVD)-Rom Tips manual is intended for distribution to and use by only Sony Computer 
+Entertainment licensed Developers and Publishers in accordance with the PlayStation® license 
+agreements. 
+Unauthorized reproduction, distribution, lending, rental or disclosure to any third party, in whole or in part, 
+of this book is expressly prohibited by law and by the terms of the Sony Computer Entertainment 
+PlayStation® license agreements. 
+Ownership of the physical property of the book is retained by and reserved by Sony Computer 
+Entertainment. Alteration to or deletion, in whole or in part, of the book, its presentation, or its contents is 
+prohibited. 
+The information in the CD(DVD)-Rom Tips manual is subject to change without notice. The content of this 
+book is Confidential Information of Sony Computer Entertainment. 
+ and PlayStation are registered trademarks of Sony Computer Entertainment Inc. All other trademarks 
+are property of their respective owners and/or their licensors. 
+
+===== PAGE 3 =====
+
+Table of Contents 
+About This Manual v 
+Changes Since Last Release v 
+Related Documentation v 
+Typographic Conventions v 
+Developer Support v 
+Increasing Disc Reading Speed 1 
+Tips for Increasing Speed 1 
+Speed Enhancement Case Studies 2 
+                              
+ CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 4 =====
+
+iv  
+ 
+ 
+CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 5 =====
+
+  
+About This Manual 
+This is the Runtime Library Release 3.0 version of the CD(DVD)-ROM Tips manual.  
+It introduces programming tips that concern the CD(DVD)-ROM. 
+Changes Since Last Release 
+• No ne 
+Related Documentation 
+Note: the Developer Support Web site posts current developments regarding the Libraries and also 
+provides notice of future documentation releases and upgrades. 
+Typographic Conventions 
+Certain Typographic Conventions are used throughout this manual to clarify the meaning of the text: 
+Convention Meaning 
+courier Indicates literal program code. 
+italic Indicates names of arguments and structure 
+members (in structure/function definitions 
+only). 
+medium bold Indicates data types and structure/function 
+names (in structure/function definitions 
+only). 
+blue Indicates a hyperlink. 
+Developer Support 
+Sony Computer Entertainment America (SCEA) 
+SCEA developer support is available to licensees in North America only. You may obtain developer support 
+or additional copies of this documentation by contacting the following addresses: 
+Order Information Developer Support 
+Attn: Developer Tools Coordinator 
+Sony Computer Entertainment America 
+919 East Hillsdale Blvd. 
+Foster City, CA 94404, U.S.A. 
+Tel: (650) 655-8000 
+E-mail: scea_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:(650) 655-5566  
+(Call Monday through Friday,  
+8 a.m. to 5 p.m., PST/PDT) 
+ 
+ CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 6 =====
+
+vi    About This Manual  
+Sony Computer Entertainment Europe (SCEE) 
+SCEE developer support is available to licensees only in the PAL television territories (including Europe and 
+Australasia). You may obtain developer support or additional copies of this documentation by contacting 
+the following addresses: 
+Order Information Developer Support 
+Attn: Development Tools Manager 
+Sony Computer Entertainment Europe 
+30 Golden Square 
+London W1F 9LD, U.K. 
+Tel: +44 (0) 20 7859-5000 
+E-mail: scee_support@ps2-pro.com 
+Web: https://www.ps2-pro.com/ 
+Developer Support Hotline:  
++44 (0) 20 7859-5777 
+(Call Monday through Friday,  
+9 a.m. to 6 p.m., GMT/BST) 
+ 
+ 
+ 
+CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 7 =====
+
+ Increasing Disc Reading Speed    1 
+ 
+Increasing Disc Reading Speed 
+In some cases, expending only a little effort can reduce the time required to read data from a CD(DVD)-
+ROM by several 10s of percent. Since the impression of a game may vary greatly depending on how fast 
+the disc can be read, refer to the following information to actively increase the reading speed. 
+Tips for Increasing Speed 
+The following tips are presented for increasing the reading speed of a CD(DVD)-ROM. 
+• Try to keep data from spanning directories 
+• Use a MAP file so that the sceCdSearchFile() function can be omitted  
+• Consolidate data in advance, read it all at once from the disc, and distribute it in memory 
+• Place data in nearby sectors 
+• Be aware of 64-byte alignment when reading from the EE 
+Essentially, the objective of these tips is to prevent wasteful movement of the read head. Some additional 
+background information is presented below. 
+Try to keep data from spanning directories 
+The general procedure for accessing a CD(DVD)-ROM is to first use the sceCdSearchFile() function to 
+obtain the sector number from the file name, then to use the sceCdRead() function to read that sector's 
+data. 
+The sceCdSearchFile() function finds the sector number by reading entry information recorded on the 
+innermost track of the disc. However, entry information for files that are in the same directory as the target 
+search file will be kept in an entry cache within the library. Consequently, if the next file to be found is in the 
+same directory as the previous file, its entry information will already be available and does not need to be 
+read from the disc. Thus, processing time will be reduced. However, if the next file to be found is located in 
+a different directory, the entry cache will no longer be valid. 
+In the worst case, when files are located in two separate directories and they are alternately read, entry 
+information and data will also be alternately read, and a significant amount of time will be required just to 
+move the read head. 
+Therefore, from the perspective of execution speed, it is better to arrange files so that they are separated 
+into directories for each situation based on how they are used, rather than arranging them according to file 
+type. In cases where files are shared in multiple situations, the files should be copied in advance into each 
+directory, space permitting. 
+Use a MAP file so that the sceCdSearchFile() function can be omitted 
+The sector number which indicates where each file is recorded can be output to a MAP file using the 
+"Export map file" function of the CD(DVD)-ROM Generator. If this MAP file is used by the program, entry 
+information does not need to be read by sceCdSearchFile() and the function can be omitted. This will 
+improve the performance of disc reads. 
+Consolidate data in advance, read it all at once from the disc, and distribute it in memory 
+The more that data can be consolidated and read using one call to sceCdRead(), the more efficiently the 
+data will be read from the disc. For a particular situation, one means of doing this would be to tie together 
+required data in a single file in advance. Then, read that file to the heap area temporarily, and finally divide 
+up the data in memory. Although the situations in which this technique can be used are limited, its effect 
+can have significant benefit. 
+ CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 8 =====
+
+2    Increasing Disc Reading Speed 
+Since data is typically not fixed during the early stages of development, it is often the case that writing 
+programs that read files individually using functions such as sceOpen() is unavoidable. However, you should 
+consider packing data at the earliest possible stage. 
+This technique can also be applied to the reading of IOP modules. See the example below. 
+Place data in nearby sectors 
+The read head of a CD(DVD)-ROM moves in two stages corresponding to the lens and the base. If the 
+difference between the sector number of the current head position and the destination position is within the 
+following ranges, the head movement can be completed relatively quickly since only the lens will need to 
+move. 
+Table 1 
+Media Lens Movement Range 
+CD-ROM 4371 sectors 
+DVD-ROM (Single Layer) 14764 sectors 
+DVD-ROM (Dual Layer)  13360 sectors 
+ 
+Therefore, an increase in speed can be expected if files that are read successively are placed at positions 
+that are as close together as possible. 
+As an example, if SYSTEM.CNF, which is read during the boot sequence (before applications are 
+launched), is placed in the innermost track in advance, the startup time can be expected to be shortened a 
+little. 
+Be aware of 64-byte alignment when reading from the EE 
+If the address of a buffer is not 64-byte aligned, the sceCdRead() function will perform compensation 
+processing internally. An increase in speed can be obtained just by adjusting the buffer alignment properly 
+to avoid this processing.  
+To allocate a buffer area, use memalign(64, size), or __attribute__((aligned(64))) for static buffers. 
+Speed Enhancement Case Studies 
+First, consider the following kinds of read processing to use as comparisons. In particular, consider 
+processing that is close to worst case for reading data, even though it may be somewhat artificial. 
+a. Readi ng IOP modules 
+Start-up processing that reads sio2man.irx, padman.irx, mcman.irx, mcserv.irx, and libsd.irx from the 
+disc 
+b. Reading binary data 
+Processing that uses the sceCdSearchFile() and sceCdRead() functions to alternately read twenty 256-
+KB binary data files that have been placed in each of two directories, into EE memory.   
+The effective speed-up achieved using four techniques is shown below.  The time required for each 
+type of processing described above is shown as 100%. Although the measurements were done using 
+CD-R, the same techniques can be used with a DVD-R. Note that the actual times will vary depending 
+on the state of the media or drive, and that the measurement of processing time has an error of several 
+percent (%). 
+CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 9 =====
+
+ Increasing Disc Reading Speed    3 
+ 
+Case Study 1:  Reading IOP Modules All at Once 
+The general technique for reading IOP modules is to use the sceSifLoadModule() function. However, since 
+read processing will be divided up according to the number of modules that are read, and since processing 
+equivalent to the sceCdSearchFile() function is performed internally by the sceSifLoadModule() function 
+each time a module is read, a non-negligible overhead occurs as the number of modules increases such as 
+when the hard disk, network, or libsk is used. 
+To deal with this problem, we will introduce a technique for reading IOP modules all at once via EE 
+memory. The procedure is as follows. 
+1. Consolidate the IOP modules together in one file 
+First, link together the required IOP modules in one file. Since these modules will be transferred from 
+the EE to the IOP later, insert padding so that the beginning of each module will be 16-byte aligned. 
+2. Read the consolidated file into EE memory 
+Allocate the EE heap area and call sceCdRead() once to read the consolidated file containing the IOP 
+modules. 
+3. Transfer the modules from the EE to the IOP 
+Use the sceSifSetDma() function to transfer the data for one module to the IOP heap area. 
+4. Start up the module 
+Use the sceSifLoadModuleBuffer() function to execute the transferred module. 
+5. Repeat steps (3) and (4) for all the modules. 
+6. Free the heap areas that were allocated on the EE and IOP, respectively. 
+This technique enabled the time required for reading the IOP modules to be reduced to 13%, assuming 
+that the time required for the comparison example is 100%. 
+Note that this technique cannot be used to load dev9.irx and atad.irx. These modules must be loaded 
+using a function such as sceSifLoadModule() and specifying the file name. 
+Case Study 2:  Adjusting the Alignment of the EE Buffer 
+If the buffer address is made to be 64-byte aligned when reading the 40 data files, the required time will be 
+reduced to 78%, assuming that the time required when the buffer address is not 64-byte aligned is 100%. 
+Case Study 3:  Reading Data Files All at Once 
+When the 40 data files are read all at once to the heap area by calling the sceCdRead() function once, read 
+processing time is reduced to 23%, assuming that the time required for the comparison example is 100%. 
+Case 4:  Best Case 
+When all of the above techniques are used together, the time required for reading the IOP modules is 
+reduced to 8% (1/12) and the time required for reading the data files is reduced to 6% (1/17), assuming 
+that the time required for the comparison example is 100%. 
+ CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+
+===== PAGE 10 =====
+
+4    Increasing Disc Reading Speed 
+CD(DVD)-Rom Tips  -  Runtime Library Release 3.0 
+Figure 1 
+Comparison example (Worst case)
+Comparison example (Worst case)
+100
+Reading IOP Modules
+13
+8
+100
+Reading data files
+Read all at once
+Best case
+78Buffer alignment adjustment
+23Read all at once
+6Best case
+ 
+ 
