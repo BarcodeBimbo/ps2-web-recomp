@@ -24,7 +24,7 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **Session cut-off (prior):** 2026-11-06 ~23:51 local. **Unpaused:** 2026-11-07 ~05:26. **Now (~07:03):** Standing instructions LOCKED. Master was **stale at ~06:32** (no Ghidra/MCP five-todo block) — refreshed here.
 
-**Background still true:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) Custom PS2 Alchemy dumper Phase 1–3 **verify 20/20** on CNK; schema 1.1; optical stub (§9). **No** disc-fix/R5/CNK runtime patches.
+**Background still true:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) Custom PS2 Alchemy dumper Phase 1–3 — **verify 28/28 PASS** exit 0 on CNK (~07:18, includes Ghidra prologue locks); schema 1.1; optical stub (§9). **No** disc-fix/R5/CNK runtime patches.
 
 ### G) Active five-todo chain — Ghidra MCP / Alchemy RE (2026-11-07 ~07:03) — **PRIMARY RESUME**
 
