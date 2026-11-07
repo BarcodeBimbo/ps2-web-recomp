@@ -1,7 +1,7 @@
 # Master campaign plan — PS2Recomp / CyberArcade
 
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
-**Updated:** 2026-11-07 ~10:35 local (W-STORE §3 hooks)  
+**Updated:** 2026-11-07 ~11:15 local (web rebuild + harness `20261107T161255Z`)  
 
 **Execution mandate (God ~10:28):** This plan runs **without user input, call, or wait** — full agent control. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  
@@ -48,7 +48,7 @@
 - [x] 2026-11-07 — Mode A/C eliminated: DISPLAY2 decodes 512×448; `logs/hitman-display2-mode-verdict-2026-11-07.md`
 - [x] 2026-11-07 — DISPFB2 PSM=0, FBW=8 live trace; present path reads circuit 2 (`PMODE=0x66`)
 - [ ] PSM mismatch ruled out for black canvas (draw vs present readback compare)
-- [ ] Chrome wasm present uses same PSM/decode as native for Hitman
+- [x] 2026-11-07 — Wasm/native share `libps2runtime` GS decode (same cmake tree); post-web harness PSM=0 path live (`161255Z`)
 
 ### Layer 3 — Scissor / XYOFFSET
 
@@ -71,7 +71,7 @@
 - [x] 2026-11-07 — Harness ~865k prims, ~60 FPS, no serve abort; **canvas still black** (pre-XYOFFSET web)
 - [x] 2026-11-07 — Native 400f smoke with **`disc.iso`**: **97,531** prims (`logs/autonomous-pipeline/hitman-xyoffset-400f.log`)
 - [x] 2026-11-07 — Web player rebuilt XYOFFSET runtime; `ps2web.wasm` **11:09** > native **10:18** (`build/web-a2116…/`)
-- [ ] Harness `canvas_lum` pass post web rebuild
+- [ ] Harness `canvas_lum` pass post web rebuild (`20261107T161255Z`: boot OK **845k** prims **~58fps**, `end_lum≈0.14` still fail)
 - [ ] DISPFB vs FRAME page split (400 vs 288): compose blit if raster non-empty but present black
 
 ---

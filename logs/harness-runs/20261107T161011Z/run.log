@@ -1,0 +1,82 @@
+11:10:11 harness run=20261107T161011Z observe=60s games=['Hitman_BM'] mute=1 mash=0
+11:10:17 GOTO Hitman_BM (a2116d2a) observe=60s mute=1 mash=0 cursor=none
+11:10:17 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\00_goto.png
+11:10:19 FPS Hitman_BM 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:10:21 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\00b_loading.png
+11:10:21 FPS Hitman_BM 00b_loading overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:10:23 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\00c_preboot.png
+11:10:23 FPS Hitman_BM 00c_preboot overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:11:21 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\01_boot.png
+11:11:22 FPS Hitman_BM 01_boot overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:11:22 Hitman_BM BOOT FAIL prims=None renderer=None boot=
+11:11:22 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\02_observe_start.png
+11:11:22 FPS Hitman_BM 02_observe_start overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:11:22 Hitman_BM t=  0.0 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:11:28 Hitman_BM t=  6.5 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:11:34 Hitman_BM t= 12.7 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:11:38 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\03_observe_mid.png
+11:11:38 FPS Hitman_BM 03_observe_mid overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:11:41 Hitman_BM t= 19.2 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:11:47 Hitman_BM t= 25.4 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:11:53 Hitman_BM t= 31.7 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:12:00 Hitman_BM t= 37.9 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:12:06 Hitman_BM t= 44.1 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:12:12 Hitman_BM t= 50.4 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:12:18 Hitman_BM t= 56.6 stats_fps=None overlay_fps=None maxMs=None graph_trend=None prims=None renderer=None
+11:12:22 SHOT Hitman_BM C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\hitman_bm\04_observe_end.png
+11:12:22 FPS Hitman_BM 04_observe_end overlay=None frameMs=None maxMs=None class= graph_trend=None graph_peak=None
+11:12:22 MANIFEST C:\PS2Recomp\logs\screenshots\harness-20261107T161011Z\SHOT_MANIFEST.md
+11:12:22 METRICS C:\PS2Recomp\logs\harness-runs\20261107T161011Z\metrics.json
+11:12:22 SUMMARY {
+  "run_id": "20261107T161011Z",
+  "harness": "cyberarcade_live",
+  "screenshot_to_file_to_analysis": true,
+  "fps_overlay_graph_reading": true,
+  "console_to_logs": true,
+  "muted_chrome": true,
+  "no_visible_mouse": true,
+  "direct_input_pad_wake": true,
+  "no_bootmash": true,
+  "observe_s": 60,
+  "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T161011Z",
+  "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z",
+  "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\SHOT_MANIFEST.md",
+  "games": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=False max_prims=0 end_lum=254.17471729747675 software=False abort=False",
+      "booted": false,
+      "max_prims": 0,
+      "software": false,
+      "abort_seen": false,
+      "fps": null,
+      "fps_overlay": {
+        "samples": 0,
+        "avg": null,
+        "min": null,
+        "max": null,
+        "maxMs_peak": null,
+        "graph_trend_avg": null,
+        "graph_trend_last": null
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\00b_loading.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\00c_preboot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161011Z\\hitman_bm\\04_observe_end.png"
+      ]
+    }
+  ],
+  "all_ok": false
+}

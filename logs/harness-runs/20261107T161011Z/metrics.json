@@ -1,0 +1,42 @@
+{
+  "schema": "ps2recomp.harness.metrics/v1",
+  "run_id": "20261107T161011Z",
+  "observe_s": 60,
+  "harness": "cyberarcade_live",
+  "games": [
+    {
+      "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "canvas_lum_by_tag": {},
+      "canvas_lum_end": null,
+      "canvas_black_end": false,
+      "fps": null,
+      "fps_overlay": {
+        "samples": 0,
+        "avg": null,
+        "min": null,
+        "max": null,
+        "maxMs_peak": null,
+        "graph_trend_avg": null,
+        "graph_trend_last": null
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 0,
+      "booted": false
+    }
+  ],
+  "paths": {
+    "summary": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T161011Z\\summary.json",
+    "console": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T161011Z\\console.jsonl",
+    "fps_overlay": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T161011Z\\fps-overlay.jsonl"
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "summary": {
+    "run_id": "20261107T161255Z",
+    "harness": "cyberarcade_live",
+    "screenshot_to_file_to_analysis": true,
+    "fps_overlay_graph_reading": true,
+    "console_to_logs": true,
+    "muted_chrome": true,
+    "no_visible_mouse": true,
+    "direct_input_pad_wake": true,
+    "no_bootmash": true,
+    "observe_s": 45,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261107T161255Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\SHOT_MANIFEST.md",
+    "games": [
+      {
+        "name": "Hitman_BM",
+        "label": "Hitman",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=menu booted=True max_prims=845147 end_lum=2.9001153718458914 software=False abort=False",
+        "booted": true,
+        "max_prims": 845147,
+        "software": false,
+        "abort_seen": false,
+        "fps": {
+          "avg": 57.641666666666666,
+          "min": 10.6,
+          "max": 60.0
+        },
+        "fps_overlay": {
+          "samples": 25,
+          "avg": 54.8,
+          "min": 0.0,
+          "max": 60.0,
+          "maxMs_peak": 167.0,
+          "graph_trend_avg": -0.05226923076923077,
+          "graph_trend_last": 0.002
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 00_goto canvas_lum=6.177431803117038 lum=7.860662433600915",
+          "black_screen 01_boot canvas_lum=0.11830634736493216 lum=2.791721032536465",
+          "black_screen 02_observe_start canvas_lum=0.15656090487238983 lum=2.9409306108897177",
+          "black_screen 03_observe_mid canvas_lum=0.13816357308584695 lum=2.896523489375771",
+          "black_screen 04_observe_end canvas_lum=0.13816357308584695 lum=2.9001153718458914"
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end.png"
+        ]
+      }
+    ],
+    "all_ok": false
+  },
+  "results": [
+    {
+      "name": "Hitman_BM",
+      "label": "Hitman",
+      "id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "expect": "menu",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=menu booted=True max_prims=845147 end_lum=2.9001153718458914 software=False abort=False",
+      "boot_snap": {
+        "frames": 47,
+        "prims": 383,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 37,
+          "frameMs": 26.7,
+          "maxMs": 167,
+          "fpsText": "37",
+          "msText": "26.7 ms",
+          "maxText": "167 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 1949,
+            "series": [
+              1,
+              0.359,
+              0.333,
+              0.359,
+              0.359,
+              0.821,
+              0.41,
+              1,
+              0.872,
+              1,
+              1,
+              1,
+              0.41,
+              0.615,
+              0.667,
+              0.308,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "trend": -0.564,
+            "peak": 1,
+            "mean": 0.404
+          }
+        }
+      },
+      "max_prims": 845147,
+      "fps": {
+        "avg": 57.641666666666666,
+        "min": 10.6,
+        "max": 60.0
+      },
+      "fps_overlay": {
+        "samples": 25,
+        "avg": 54.8,
+        "min": 0.0,
+        "max": 60.0,
+        "maxMs_peak": 167.0,
+        "graph_trend_avg": -0.05226923076923077,
+        "graph_trend_last": 0.002
+      },
+      "software": false,
+      "abort_seen": false,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 00_goto canvas_lum=6.177431803117038 lum=7.860662433600915",
+        "black_screen 01_boot canvas_lum=0.11830634736493216 lum=2.791721032536465",
+        "black_screen 02_observe_start canvas_lum=0.15656090487238983 lum=2.9409306108897177",
+        "black_screen 03_observe_mid canvas_lum=0.13816357308584695 lum=2.896523489375771",
+        "black_screen 04_observe_end canvas_lum=0.13816357308584695 lum=2.9001153718458914"
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [stats] frame 1501 60.0 fps (60 on screen) GPU 17% idle emu 40% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.3 ms x0",
+        "log: [stats] frame 1561 60.0 fps (60 on screen) GPU 27% idle emu 43% vu 97% gs 92% heap 384 MB audio 31 ms hitch 17.5 ms x0",
+        "log: [stats] frame 1622 60.0 fps (60 on screen) GPU 33% idle emu 41% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.4 ms x0",
+        "log: [stats] frame 1683 60.0 fps (60 on screen) GPU 25% idle emu 43% vu 97% gs 92% heap 384 MB audio 27 ms hitch 17.4 ms x0",
+        "log: [stats] frame 1744 60.0 fps (60 on screen) GPU 16% idle emu 41% vu 96% gs 92% heap 384 MB audio 23 ms hitch 17.5 ms x0",
+        "log: [stats] frame 1804 60.0 fps (60 on screen) GPU 28% idle emu 45% vu 98% gs 92% heap 384 MB audio 37 ms hitch 17.3 ms x0",
+        "log: [stats] frame 1864 60.0 fps (60 on screen) GPU 32% idle emu 44% vu 97% gs 93% heap 384 MB audio 32 ms hitch 17.4 ms x0",
+        "log: [stats] frame 1925 60.0 fps (60 on screen) GPU 32% idle emu 44% vu 97% gs 93% heap 384 MB audio 32 ms hitch 17.1 ms x0",
+        "log: [stats] frame 1985 60.0 fps (60 on screen) GPU 24% idle emu 44% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.3 ms x0",
+        "log: [stats] frame 2045 60.0 fps (60 on screen) GPU 17% idle emu 43% vu 98% gs 92% heap 384 MB audio 23 ms hitch 17.3 ms x0",
+        "log: [stats] frame 2106 60.0 fps (60 on screen) GPU 27% idle emu 44% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.3 ms x0",
+        "log: [stats] frame 2166 60.0 fps (60 on screen) GPU 28% idle emu 44% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.7 ms x0",
+        "log: [stats] frame 2226 60.0 fps (60 on screen) GPU 17% idle emu 45% vu 97% gs 93% heap 384 MB audio 29 ms hitch 17.4 ms x0",
+        "log: [stats] frame 2287 60.0 fps (60 on screen) GPU 25% idle emu 45% vu 97% gs 93% heap 384 MB audio 37 ms hitch 17.3 ms x0",
+        "log: [stats] frame 2348 60.0 fps (60 on screen) GPU 31% idle emu 44% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.3 ms x0",
+        "log: [stats] frame 2408 60.0 fps (60 on screen) GPU 25% idle emu 42% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.5 ms x0",
+        "log: [stats] frame 2468 60.0 fps (60 on screen) GPU 17% idle emu 43% vu 97% gs 92% heap 384 MB audio 31 ms hitch 17.4 ms x0",
+        "log: [stats] frame 2528 60.0 fps (60 on screen) GPU 28% idle emu 43% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.4 ms x0",
+        "log: [stats] frame 2589 60.0 fps (60 on screen) GPU 31% idle emu 45% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.4 ms x0",
+        "log: [stats] frame 2649 60.0 fps (60 on screen) GPU 30% idle emu 45% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.6 ms x0"
+      ],
+      "shots": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto.png",
+          "lum": 6.177431803117038
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot.png",
+          "lum": 0.11830634736493216
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start.png",
+          "lum": 0.15656090487238983
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 0.13816357308584695
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end.png",
+          "lum": 0.13816357308584695
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto.png",
+          "lum": 7.860662433600915,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto_canvas.png",
+          "canvas_lum": 6.177431803117038,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.18; graph_trend=0; boot=Preparing game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto.png"
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot.png",
+          "lum": 2.791721032536465,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot_canvas.png",
+          "canvas_lum": 0.11830634736493216,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 0,
+            "frameMs": 2000,
+            "maxMs": 0,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.28,
+            "graph_peak": 1,
+            "graph_mean": 0.14,
+            "graph_ink": 655
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.079,
+            "upper_ink": 0.0609,
+            "graph_ink": 0.0972,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.12; overlay_fps=0; overlay_maxMs=0; graph_trend=-0.28; shot_fps_tint=warn_bad graph_ink=0.0972; boot=Starting game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start.png",
+          "lum": 2.9409306108897177,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start_canvas.png",
+          "canvas_lum": 0.15656090487238983,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 37,
+            "frameMs": 26.7,
+            "maxMs": 167,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.564,
+            "graph_peak": 1,
+            "graph_mean": 0.404,
+            "graph_ink": 1949
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1128,
+            "upper_ink": 0.0679,
+            "graph_ink": 0.1578,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.16; overlay_fps=37; overlay_maxMs=167; graph_trend=-0.564; shot_fps_tint=warn_bad graph_ink=0.1578",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid.png",
+          "lum": 2.896523489375771,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid_canvas.png",
+          "canvas_lum": 0.13816357308584695,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 17,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0.359,
+            "graph_mean": 0.359,
+            "graph_ink": 2326
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1278,
+            "upper_ink": 0.075,
+            "graph_ink": 0.1805,
+            "tint": "ok",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.14; overlay_fps=60; overlay_maxMs=17; graph_trend=0; shot_fps_tint=ok graph_ink=0.1805",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end.png",
+          "lum": 2.9001153718458914,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end_canvas.png",
+          "canvas_lum": 0.13816357308584695,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.7,
+            "maxMs": 17,
+            "className": "ok",
+            "visible": true,
+            "graph_trend": 0.002,
+            "graph_peak": 0.385,
+            "graph_mean": 0.36,
+            "graph_ink": 2328
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1283,
+            "upper_ink": 0.075,
+            "graph_ink": 0.1816,
+            "tint": "ok",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.14; overlay_fps=60; overlay_maxMs=17; graph_trend=0.002; shot_fps_tint=ok graph_ink=0.1816",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261107T161255Z\\hitman_bm",
+      "rows_n": 84
+    }
+  ]
+}

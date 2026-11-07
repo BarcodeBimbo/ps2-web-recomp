@@ -1,0 +1,177 @@
+{"t": 1794067976.6044755, "game": "Hitman_BM", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794067976.9793277, "game": "Hitman_BM", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794067977.8180606, "game": "Hitman_BM", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794067977.819061, "game": "Hitman_BM", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794067977.8255785, "game": "Hitman_BM", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794067977.8275883, "game": "Hitman_BM", "type": "log", "text": "[disc] disc: 310 files, 1540176 sectors, layer 1 at 0"}
+{"t": 1794067977.8285887, "game": "Hitman_BM", "type": "log", "text": "[mc] card in slot 1: /memcard-a2116d2ac08a7be4db4e8455ad58d2e5/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794067977.8290968, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=0 init=1 max=1 attr=0x0 option=0x57F1D0 ra=0x001080BC thr=1"}
+{"t": 1794067977.8301055, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=1 init=1 max=1 attr=0x0 option=0x57F1E0 ra=0x001080CC thr=1"}
+{"t": 1794067977.8311062, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=2 init=0 max=255 attr=0x0 option=0x57EC38 ra=0x001038CC thr=1"}
+{"t": 1794067977.8321047, "game": "Hitman_BM", "type": "log", "text": "[waitsema] id=2 count=0 waiters=0 ra=0x001037F8 thr=2 create_ra=0x001038CC init=0 max=255 will_block"}
+{"t": 1794067977.8331072, "game": "Hitman_BM", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794067978.482899, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067978.4854128, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1 0.5 fps (0 on screen) GPU 0% idle emu 1% vu 52% gs 52% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794067978.4859161, "game": "Hitman_BM", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOP\\IOPRP310.IMG;1\""}
+{"t": 1794067978.4944518, "game": "Hitman_BM", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOP\\IOPRP310.IMG;1 reports 3100, asynchronous protocol"}
+{"t": 1794067978.4959636, "game": "Hitman_BM", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOP\\IOPRP310.IMG;1 reports 3100"}
+{"t": 1794067978.4974773, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=3 init=0 max=1 attr=0x530000 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9183054, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=3 init=0 max=1 attr=0x205BD700 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9203167, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=3 init=0 max=1 attr=0x80000592 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9223206, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=3 init=1 max=1 attr=0x550000 option=0x5BAD08 ra=0x0041B108 thr=1"}
+{"t": 1794067978.9228294, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=4 init=1 max=1 attr=0x550000 option=0x5BAD18 ra=0x0041B120 thr=1"}
+{"t": 1794067978.9273658, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=5 init=1 max=1 attr=0x550000 option=0x5BAD28 ra=0x0041B138 thr=1"}
+{"t": 1794067978.9288785, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=6 init=0 max=1 attr=0x550000 option=0x5BAD38 ra=0x0041B154 thr=1"}
+{"t": 1794067978.9308898, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=7 init=0 max=1 attr=0x5D8A28 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9318936, "game": "Hitman_BM", "type": "log", "text": "[waitsema] id=7 count=0 waiters=0 ra=0x00105BD4 thr=1 create_ra=0x00105B74 init=0 max=1 will_block"}
+{"t": 1794067978.9389417, "game": "Hitman_BM", "type": "log", "text": "[deletesema] id=7 init=0 max=1 create_ra=0x00105B74 ra=0x00105BDC"}
+{"t": 1794067978.9394484, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=7 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9414594, "game": "Hitman_BM", "type": "log", "text": "[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block"}
+{"t": 1794067978.9424572, "game": "Hitman_BM", "type": "log", "text": "[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C"}
+{"t": 1794067978.9424572, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=7 init=0 max=1 attr=0x105BAC option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9434571, "game": "Hitman_BM", "type": "log", "text": "[waitsema] id=7 count=0 waiters=0 ra=0x00105E94 thr=1 create_ra=0x00105E30 init=0 max=1 will_block"}
+{"t": 1794067978.9444568, "game": "Hitman_BM", "type": "log", "text": "[deletesema] id=7 init=0 max=1 create_ra=0x00105E30 ra=0x00105E9C"}
+{"t": 1794067978.945964, "game": "Hitman_BM", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794067978.9469743, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=7 init=0 max=1 attr=0x4A0000 option=0x0 ra=0x001008FC thr=1"}
+{"t": 1794067978.947983, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.948983, "game": "Hitman_BM", "type": "log", "text": "[waitsema] id=7 count=0 waiters=0 ra=0x001008A0 thr=3 create_ra=0x001008FC init=0 max=1 will_block"}
+{"t": 1794067978.951493, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9535046, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x8000059C option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.954503, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x80000006 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9560115, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9580293, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SIO2MAN.IRX"}
+{"t": 1794067978.9590287, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9600296, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x1FFFCE0 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.961947, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\PADMAN.IRX"}
+{"t": 1794067978.962947, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067978.963947, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9654505, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9674585, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\MCMAN.IRX"}
+{"t": 1794067978.9684596, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9699724, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.970981, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\MCSERV.IRX"}
+{"t": 1794067978.9729822, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=8 init=1 max=1 attr=0x1207DC option=0x5BC028 ra=0x00427C38 thr=1"}
+{"t": 1794067978.9754996, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=9 init=0 max=1 attr=0x1207DC option=0x5BC038 ra=0x00427C64 thr=1"}
+{"t": 1794067978.9780219, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9790223, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x5C4870 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9815426, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.984053, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x6001F0 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9866002, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9875996, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x5C8F30 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9886, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x3CF5C28F option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9901092, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x5D5D5D5D option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9911191, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9921198, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x5D8A90 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067978.9931188, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x80000597 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9946296, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SYSTEM.CNF;1 -> found"}
+{"t": 1794067978.9971566, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x432E4D45 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067978.9981556, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0016713, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0026717, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SYSTEM.CNF;1 -> found"}
+{"t": 1794067979.004181, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x41B680 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0056908, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x0 option=0x57EEB8 ra=0x00105B74 thr=1"}
+{"t": 1794067979.006701, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x54EE40 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0089443, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x270 option=0x57EC50 ra=0x00103A68 thr=1"}
+{"t": 1794067979.0109544, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.0129554, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0xFA0 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0144725, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x205BD700 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.01598, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0174906, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0190077, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794067979.0200157, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x53454D52 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0210145, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x1 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.022523, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x54ED40 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.023594, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794067979.024603, "game": "Hitman_BM", "type": "log", "text": "[createsema] id=10 init=0 max=1 attr=0x550000 option=0x57EEC8 ra=0x00105E30 thr=1"}
+{"t": 1794067979.0261104, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\ALLLEVEL\\ERRORMES.ZIP;1 -> found"}
+{"t": 1794067979.0271406, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.028149, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.0291524, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020398)"}
+{"t": 1794067979.0301533, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.0311472, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.0326643, "game": "Hitman_BM", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794067979.0346699, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\MAIN.INI;1 -> found"}
+{"t": 1794067979.0361717, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\MAIN.INI;1 -> found"}
+{"t": 1794067979.0381796, "game": "Hitman_BM", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794067979.0512652, "game": "Hitman_BM", "type": "log", "text": "[dma] gif tag id 7 qwc 31 addr 0x00000000 data 0x01FFF6C0"}
+{"t": 1794067979.0542774, "game": "Hitman_BM", "type": "log", "text": "[dma] gif tag id 7 qwc 11 addr 0x00000000 data 0x01FFF6B0"}
+{"t": 1794067979.0557828, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\LIBSD.IRX"}
+{"t": 1794067979.0567918, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0005AA78)"}
+{"t": 1794067979.0577903, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0005AA7C)"}
+{"t": 1794067979.0592964, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0005AA98)"}
+{"t": 1794067979.0608103, "game": "Hitman_BM", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x0005AAA8)"}
+{"t": 1794067979.0618103, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0005AAD4)"}
+{"t": 1794067979.0628107, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0005AAD8)"}
+{"t": 1794067979.0628107, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SCRTCHPD.IRX"}
+{"t": 1794067979.06432, "game": "Hitman_BM", "type": "log", "text": "[loadfile] cdrom0:\\IOP\\SYNTHCD.IRX"}
+{"t": 1794067979.0658324, "game": "Hitman_BM", "type": "log", "text": "[iop-io] write 0x1FFE0144 = 0x1F800800 (pc 0x0005F52C)"}
+{"t": 1794067979.145659, "game": "Hitman_BM", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794067979.2080736, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794067979.2105992, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794067979.2115996, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.ZIP;1 -> found"}
+{"t": 1794067979.2452528, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=2384 comp=2384 mode=0x583"}
+{"t": 1794067979.898001, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\HM3GPAD.CFG;1 -> found"}
+{"t": 1794067979.9000006, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\HM3GPAD.CFG;1 -> found"}
+{"t": 1794067979.9030242, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8"}
+{"t": 1794067979.9040325, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=4484 comp=4484 mode=0x583"}
+{"t": 1794067979.9055398, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 39 37.5 fps (28 on screen) GPU 1% idle emu 15% vu 99% gs 93% heap 384 MB audio 22 ms hitch 167.2 ms x8"}
+{"t": 1794067979.9065468, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.WHD;1 -> found"}
+{"t": 1794067979.9075472, "game": "Hitman_BM", "type": "log", "text": "[cdvdfsv] search \\SCENES\\BOOTMENU.WAV;1 -> found"}
+{"t": 1794067979.908053, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=6584 comp=6584 mode=0x583"}
+{"t": 1794067981.2818427, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 50 10.6 fps (11 on screen) GPU 0% idle emu 4% vu 99% gs 99% heap 384 MB audio 0 ms hitch 338.1 ms x4"}
+{"t": 1794067981.2828448, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=8684 comp=8684 mode=0x583"}
+{"t": 1794067981.2833505, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=10784 comp=10784 mode=0x583"}
+{"t": 1794067981.2843568, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=12884 comp=12884 mode=0x583"}
+{"t": 1794067981.293885, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=14984 comp=14984 mode=0x583"}
+{"t": 1794067981.8136508, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=17084 comp=17084 mode=0x583"}
+{"t": 1794067981.8146467, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 90 38.3 fps (38 on screen) GPU 10% idle emu 4% vu 91% gs 81% heap 384 MB audio 5 ms hitch 50.6 ms x7"}
+{"t": 1794067981.8186707, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794067981.8196719, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794067981.8221953, "game": "Hitman_BM", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794067981.8227003, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=19184 comp=19184 mode=0x583"}
+{"t": 1794067982.3434815, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=21284 comp=21284 mode=0x583"}
+{"t": 1794067982.3460023, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=23384 comp=23384 mode=0x583"}
+{"t": 1794067982.9109921, "game": "Hitman_BM", "type": "log", "text": "[timer] TIM0 compare IRQ count=25484 comp=25484 mode=0x583"}
+{"t": 1794067982.9150007, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 126 36.0 fps (34 on screen) GPU 20% idle emu 5% vu 93% gs 87% heap 384 MB audio 10 ms hitch 99.0 ms x9"}
+{"t": 1794067984.029934, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 170 42.6 fps (41 on screen) GPU 19% idle emu 15% vu 95% gs 89% heap 384 MB audio 35 ms hitch 133.1 ms x10"}
+{"t": 1794067985.0691538, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 230 60.0 fps (60 on screen) GPU 87% idle emu 44% vu 97% gs 94% heap 384 MB audio 37 ms hitch 17.5 ms x0"}
+{"t": 1794067986.102961, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 291 60.0 fps (60 on screen) GPU 24% idle emu 43% vu 97% gs 92% heap 384 MB audio 25 ms hitch 17.3 ms x0"}
+{"t": 1794067986.6236217, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 352 60.0 fps (60 on screen) GPU 40% idle emu 44% vu 97% gs 92% heap 384 MB audio 32 ms hitch 24.2 ms x0"}
+{"t": 1794067987.6614237, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 412 60.0 fps (60 on screen) GPU 60% idle emu 45% vu 97% gs 92% heap 384 MB audio 36 ms hitch 17.3 ms x0"}
+{"t": 1794067988.7025242, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 473 60.0 fps (60 on screen) GPU 49% idle emu 42% vu 96% gs 92% heap 384 MB audio 29 ms hitch 17.3 ms x0"}
+{"t": 1794067989.734196, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 534 60.0 fps (60 on screen) GPU 40% idle emu 39% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.3 ms x0"}
+{"t": 1794067990.768021, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 595 60.0 fps (60 on screen) GPU 18% idle emu 39% vu 96% gs 92% heap 384 MB audio 22 ms hitch 17.5 ms x0"}
+{"t": 1794067991.8044443, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 655 60.0 fps (60 on screen) GPU 29% idle emu 45% vu 98% gs 93% heap 384 MB audio 34 ms hitch 17.4 ms x0"}
+{"t": 1794067993.3459845, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 715 60.0 fps (60 on screen) GPU 40% idle emu 45% vu 97% gs 92% heap 384 MB audio 35 ms hitch 17.3 ms x0"}
+{"t": 1794067993.869024, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 776 60.0 fps (60 on screen) GPU 18% idle emu 41% vu 96% gs 92% heap 384 MB audio 28 ms hitch 17.2 ms x0"}
+{"t": 1794067994.9073563, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 836 60.0 fps (60 on screen) GPU 26% idle emu 46% vu 98% gs 93% heap 384 MB audio 41 ms hitch 17.3 ms x0"}
+{"t": 1794067995.9455602, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 897 60.0 fps (60 on screen) GPU 41% idle emu 45% vu 97% gs 93% heap 384 MB audio 26 ms hitch 17.3 ms x0"}
+{"t": 1794067996.9810946, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 958 60.0 fps (60 on screen) GPU 39% idle emu 46% vu 98% gs 93% heap 384 MB audio 33 ms hitch 17.3 ms x0"}
+{"t": 1794067998.0242074, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1019 60.0 fps (60 on screen) GPU 29% idle emu 41% vu 97% gs 92% heap 384 MB audio 27 ms hitch 17.3 ms x0"}
+{"t": 1794067999.0643082, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1079 60.0 fps (60 on screen) GPU 17% idle emu 45% vu 98% gs 92% heap 384 MB audio 38 ms hitch 17.5 ms x0"}
+{"t": 1794068000.1002326, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1140 60.0 fps (60 on screen) GPU 27% idle emu 43% vu 97% gs 92% heap 384 MB audio 40 ms hitch 17.5 ms x0"}
+{"t": 1794068001.139861, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1200 60.0 fps (60 on screen) GPU 35% idle emu 43% vu 96% gs 92% heap 384 MB audio 25 ms hitch 17.4 ms x0"}
+{"t": 1794068002.1773982, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1260 60.0 fps (60 on screen) GPU 28% idle emu 40% vu 98% gs 92% heap 384 MB audio 30 ms hitch 17.3 ms x0"}
+{"t": 1794068003.2172186, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1320 60.0 fps (60 on screen) GPU 17% idle emu 37% vu 97% gs 91% heap 384 MB audio 26 ms hitch 17.4 ms x0"}
+{"t": 1794068004.2565765, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1381 60.0 fps (60 on screen) GPU 28% idle emu 43% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.5 ms x0"}
+{"t": 1794068004.776843, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1441 60.0 fps (60 on screen) GPU 28% idle emu 40% vu 97% gs 92% heap 384 MB audio 31 ms hitch 17.3 ms x0"}
+{"t": 1794068005.8173041, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1501 60.0 fps (60 on screen) GPU 17% idle emu 40% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.3 ms x0"}
+{"t": 1794068006.8587694, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1561 60.0 fps (60 on screen) GPU 27% idle emu 43% vu 97% gs 92% heap 384 MB audio 31 ms hitch 17.5 ms x0"}
+{"t": 1794068007.8976393, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1622 60.0 fps (60 on screen) GPU 33% idle emu 41% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.4 ms x0"}
+{"t": 1794068008.9379869, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1683 60.0 fps (60 on screen) GPU 25% idle emu 43% vu 97% gs 92% heap 384 MB audio 27 ms hitch 17.4 ms x0"}
+{"t": 1794068009.980541, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1744 60.0 fps (60 on screen) GPU 16% idle emu 41% vu 96% gs 92% heap 384 MB audio 23 ms hitch 17.5 ms x0"}
+{"t": 1794068011.0215676, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1804 60.0 fps (60 on screen) GPU 28% idle emu 45% vu 98% gs 92% heap 384 MB audio 37 ms hitch 17.3 ms x0"}
+{"t": 1794068012.059365, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1864 60.0 fps (60 on screen) GPU 32% idle emu 44% vu 97% gs 93% heap 384 MB audio 32 ms hitch 17.4 ms x0"}
+{"t": 1794068013.0932717, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1925 60.0 fps (60 on screen) GPU 32% idle emu 44% vu 97% gs 93% heap 384 MB audio 32 ms hitch 17.1 ms x0"}
+{"t": 1794068014.1341972, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 1985 60.0 fps (60 on screen) GPU 24% idle emu 44% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.3 ms x0"}
+{"t": 1794068015.1708684, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2045 60.0 fps (60 on screen) GPU 17% idle emu 43% vu 98% gs 92% heap 384 MB audio 23 ms hitch 17.3 ms x0"}
+{"t": 1794068016.205999, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2106 60.0 fps (60 on screen) GPU 27% idle emu 44% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.3 ms x0"}
+{"t": 1794068017.244555, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2166 60.0 fps (60 on screen) GPU 28% idle emu 44% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.7 ms x0"}
+{"t": 1794068018.2888231, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2226 60.0 fps (60 on screen) GPU 17% idle emu 45% vu 97% gs 93% heap 384 MB audio 29 ms hitch 17.4 ms x0"}
+{"t": 1794068019.3258734, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2287 60.0 fps (60 on screen) GPU 25% idle emu 45% vu 97% gs 93% heap 384 MB audio 37 ms hitch 17.3 ms x0"}
+{"t": 1794068020.3678749, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2348 60.0 fps (60 on screen) GPU 31% idle emu 44% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.3 ms x0"}
+{"t": 1794068020.8886688, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2408 60.0 fps (60 on screen) GPU 25% idle emu 42% vu 97% gs 92% heap 384 MB audio 32 ms hitch 17.5 ms x0"}
+{"t": 1794068021.926761, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2468 60.0 fps (60 on screen) GPU 17% idle emu 43% vu 97% gs 92% heap 384 MB audio 31 ms hitch 17.4 ms x0"}
+{"t": 1794068022.9624639, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2528 60.0 fps (60 on screen) GPU 28% idle emu 43% vu 97% gs 92% heap 384 MB audio 33 ms hitch 17.4 ms x0"}
+{"t": 1794068024.0075467, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2589 60.0 fps (60 on screen) GPU 31% idle emu 45% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.4 ms x0"}
+{"t": 1794068025.048395, "game": "Hitman_BM", "type": "log", "text": "[stats] frame 2649 60.0 fps (60 on screen) GPU 30% idle emu 45% vu 97% gs 92% heap 384 MB audio 29 ms hitch 17.6 ms x0"}

@@ -145,14 +145,25 @@ def build_web(game_id):
     import json, secrets
     (web / 'build.json').write_text(json.dumps({'id': secrets.token_hex(12),'async_mode':async_mode,'trampoline':async_mode=='asyncify'}), encoding='utf-8')
     backup = published.with_name(published.name + '-previous')
-    if backup.exists(): shutil.rmtree(backup)
-    published.rename(backup)
+    if backup.exists():
+        shutil.rmtree(backup, onerror=_rmtree_onerror)
+    if published.exists():
+        published.rename(backup)
     try:
         web.rename(published)
-    except BaseException:
-        backup.rename(published)
-        raise
-    shutil.rmtree(backup)
+    except OSError:
+        # WinError 32: em++/ninja may still hold handles on -next; copy artifacts in place.
+        if backup.exists():
+            backup.rename(published)
+        published.mkdir(parents=True, exist_ok=True)
+        for name in ('ps2web.html', 'ps2web.js', 'ps2web.wasm', 'ps2web.data', 'build.json', 'boot.txt',
+                     'ps2-shell.html', 'blit_wgsl.cpp', 'gs_wgsl.cpp'):
+            src = web / name
+            if src.is_file():
+                shutil.copy2(src, published / name)
+        shutil.rmtree(web, onerror=_rmtree_onerror)
+    else:
+        shutil.rmtree(backup, onerror=_rmtree_onerror)
     ensure_web_build_readable(published)
 
 
@@ -303,6 +314,13 @@ if __name__ == '__main__':
             raise ValueError('Existing game files are incomplete.')
         print('== [1/1] Building browser player', flush=True)
         build_web(game_id)
+        import panel
+
+        game = panel.get_game(game_id)
+        if game and (ROOT / 'build' / f'web-{game_id}' / 'ps2web.html').is_file():
+            game['status'] = 'ready'
+            game.pop('error', None)
+            panel.save(game)
     elif len(sys.argv) >= 5:
         port(sys.argv[1], Path(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), archive_password)
     else:
