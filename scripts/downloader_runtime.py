@@ -38,22 +38,18 @@ def node_executable():
     return usable[0] if usable else (path_node or (str(managed) if managed.is_file() else None))
 
 
-def runtime_env(twocaptcha_api_key=None):
+def runtime_env():
     """Build the Node worker environment.
 
-    Captcha keys come from the browser (localStorage → per-job request → here) or
-    from an already-set process environment. Never read config/store.private.json.
+    Captcha keys are NOT passed via process env. They travel
+    browser localStorage → download request body → job JSON on stdin.
+    Never read config/store.private.json for captcha secrets.
     """
     binary = node_executable()
-    if twocaptcha_api_key is None:
-        secret = os.environ.get('TWOCAPTCHA_API_KEY') or ''
-    else:
-        secret = str(twocaptcha_api_key)
     # Strip HTTP(S)_PROXY so CDN/browser downloads use the system VPN tunnel,
     # not an app-level proxy from Settings or the environment.
     env = {
         **os.environ,
-        'TWOCAPTCHA_API_KEY': str(secret),
         'PATH': str(Path(binary).parent) + os.pathsep + os.environ.get('PATH', '') if binary else os.environ.get('PATH', ''),
         'PLAYWRIGHT_BROWSERS_PATH': str(ROOT / 'tools/downloader-browsers'),
     }
@@ -61,6 +57,7 @@ def runtime_env(twocaptcha_api_key=None):
         'CDN_HTTP_PROXY', 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY',
         'http_proxy', 'https_proxy', 'all_proxy',
         'PIA_USERNAME', 'PIA_PASSWORD', 'PIA_PROXY_HOST', 'MULLVAD_ACCOUNT_NUMBER',
+        'TWOCAPTCHA_API_KEY',  # never inherit or inject captcha via env
     ):
         env.pop(key, None)
     env['NO_PROXY'] = '*'

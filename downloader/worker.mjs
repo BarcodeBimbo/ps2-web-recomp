@@ -349,7 +349,8 @@ async function main() {
 
   const context = await launchContext();
   try {
-    const key = process.env.TWOCAPTCHA_API_KEY || '';
+    // Key from Settings localStorage → panel request → job JSON stdin (never process.env).
+    const key = String(job.twocaptcha_api_key || '').trim();
     await installSolver(context, key, emit);
     const pages = context.pages();
     const page = pages.length > 0 ? pages[0] : await context.newPage();

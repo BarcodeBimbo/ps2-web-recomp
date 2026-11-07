@@ -57,7 +57,9 @@ Raw key values are never printed here. Any historical secret is shown as `***REM
 
 ## Still present (non-secret / pending parent fix)
 
-These are **code paths / names**, not hardcoded secrets. Parent is rewiring them to **stdin job JSON** (not env):
+These are **code paths / names**, not hardcoded secrets. **Parent landed the stdin job JSON path** (2026-11-06): `runtime_env()` no longer sets/inherits `TWOCAPTCHA_API_KEY`; `store._run_node_worker` puts `twocaptcha_api_key` on the job; `downloader/worker.mjs` and `RomDL/Downloader.ts` no longer read process env for captcha.
+
+Was pending (now done):
 
 | File | What remains |
 |------|----------------|

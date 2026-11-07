@@ -10,9 +10,15 @@ const WAIT_SECONDS = 20;
 const ORIGIN_IP = '199.127.62.112';
 const PROVIDER_HOST = 'romsfun.com';
 
-// Never hardcode captcha secrets — set TWOCAPTCHA_API_KEY in the environment
-// (panel Store downloads pass the browser localStorage key into the worker env).
-const TWOCAPTCHA_API_KEY = (process.env.TWOCAPTCHA_API_KEY || '').trim();
+// Never hardcode captcha secrets. Key comes from Settings localStorage via
+// the Store download job JSON (`twocaptcha_api_key`), or CLI --twocaptcha-key=
+// for rare manual runs. Never process.env.TWOCAPTCHA_API_KEY.
+function resolveTwocaptchaKey(): string {
+    const arg = process.argv.find((a) => a.startsWith('--twocaptcha-key='));
+    if (arg) return arg.slice('--twocaptcha-key='.length).trim();
+    return '';
+}
+const TWOCAPTCHA_API_KEY = resolveTwocaptchaKey();
 const TWOCAPTCHA_CREATE_URL = "https://api.2captcha.com/createTask";
 const TWOCAPTCHA_RESULT_URL = "https://api.2captcha.com/getTaskResult";
 
@@ -41,7 +47,7 @@ function cleanFilenameForR36s(filename: string, cleanTags = false): string {
 
 async function solveTurnstile2Captcha(sitekey: string, pageUrl: string, action?: string, cdata?: string, pagedata?: string): Promise<string> {
     if (!TWOCAPTCHA_API_KEY) {
-        throw new Error('TWOCAPTCHA_API_KEY is not set. Paste a 2Captcha key in CyberArcade Settings (saved in this browser only), or export TWOCAPTCHA_API_KEY.');
+        throw new Error('2Captcha key missing. Paste it in CyberArcade Settings (cog) — saved in this browser only — then retry the download.');
     }
     const task: any = { type: "TurnstileTaskProxyless", websiteURL: pageUrl, websiteKey: sitekey };
     if (action) task.action = action;

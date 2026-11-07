@@ -924,7 +924,14 @@ def _run_node_worker(script, job, flags, identifier, twocaptcha_key=''):
     if not node: raise ValueError('Node.js is required for this download. Run Setup.cmd.')
     worker = Path(__file__).resolve().parents[1] / 'downloader' / script
     if not worker.is_file(): raise ValueError('Downloader worker is missing.')
-    env = runtime_env(twocaptcha_api_key=twocaptcha_key or '')
+    env = runtime_env()
+    # Captcha key: Settings localStorage → request body → this field on stdin job JSON.
+    # Never process.env.TWOCAPTCHA_API_KEY.
+    payload = dict(job)
+    if twocaptcha_key:
+        payload['twocaptcha_api_key'] = twocaptcha_key
+    else:
+        payload.pop('twocaptcha_api_key', None)
     process = subprocess.Popen(
         [node, str(worker)],
         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -932,7 +939,7 @@ def _run_node_worker(script, job, flags, identifier, twocaptcha_key=''):
     )
     with TURN: flags['process'] = process
     try:
-        process.stdin.write(json.dumps(job))
+        process.stdin.write(json.dumps(payload))
         process.stdin.close()
         result = None
         while True:
