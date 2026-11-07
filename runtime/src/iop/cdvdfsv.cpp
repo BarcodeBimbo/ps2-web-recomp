@@ -513,7 +513,9 @@ void install_cdvdfsv() {
         g_read_args = args;
         g_read_eeaddr1 = eeaddr1;
         g_read_eeaddr2 = eeaddr2;
-        if (g_trace_hle) std::fprintf(stderr, "[cdvdfsv] N 0x%X sector %u count %u to 0x%08X\n", method, sector, count, dst);
+        if (g_trace_hle)
+            std::fprintf(stderr, "[cdvdfsv] N 0x%X sector %u count %u to 0x%08X eeaddr1(readee)=0x%08X eeaddr2(curReadPos)=0x%08X\n",
+                         method, sector, count, dst, eeaddr1, eeaddr2);
         switch (method) {
         case 0x01:
             if (ret_size >= 4) set_ee32(ret, 0);

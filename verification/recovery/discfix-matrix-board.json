@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T21:42:00-05:00",
+  "updated": "2026-11-06T21:41:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -7,7 +7,7 @@
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
   "step": 2,
-  "phase": "awaiting_matrix",
+  "phase": "matrix_verdict",
   "prior_cycle": {
     "step": 1,
     "proposed": "R3_generic_complete_path",
@@ -62,10 +62,10 @@
     "files_touched": []
   },
   "matrix": {
-    "status": "pending",
-    "current_phase": null,
-    "verdict": null,
-    "notes": "Disc-fix cycle 2: R1_clear_with_evidence (no code). Prior R3 fail acknowledged. Waiting for matrix.",
+    "status": "complete",
+    "current_phase": "sustained_run",
+    "verdict": "pass",
+    "notes": "PASS R1_clear_with_evidence. Verified matrix + HLE logs for both games: end-of-run SIF is 0 packets wait; no held RPC waiting for reply; no Alchemy pulses; frames/prims match board. Mid-run 1-packet waits drain to 0 — SIF-end rewrite is not the active Hitman/NFS blocker. R1_SIF_end cleared_with_evidence / not-needed. R2 still gated (leftover WaitSema 2 is ownership/observe). R3/R4/R5 still gated — next may be unbundled R3 only (readee+curReadPos, no sceCdSync wake, no code this cycle). allow_discfix_apply true for this no-code clear only. CNK Alchemy reports noted; quarantine holds. No commit.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
     "phase_results": {
       "hitman_bm": {
@@ -76,7 +76,9 @@
         "sustained_run": "pass",
         "log": "logs/matrix-hitman-600.log",
         "frames": 600,
-        "prims": 78118
+        "prims": 78118,
+        "sif_end_verified": "[sif] 0 packets wait for the EE (processed 0)",
+        "held_rpc": 0
       },
       "nfs_mw": {
         "boot": "pass",
@@ -86,12 +88,22 @@
         "sustained_run": "pass",
         "log": "logs/matrix-nfs-600.log",
         "frames": 600,
-        "prims": 49750
+        "prims": 49750,
+        "sif_end_verified": "[sif] 0 packets wait for the EE (processed 1)",
+        "held_rpc": 0
       }
     },
-    "allow_discfix_apply": false
+    "ranked_rewrite_decision": {
+      "R1_SIF_end": "cleared_with_evidence",
+      "R2_WaitSema_fidelity": "still_gated",
+      "R3_readee": "still_gated",
+      "R4_CdSync": "still_gated",
+      "R5_pad_sound": "still_gated"
+    },
+    "allow_discfix_apply": true
   },
-  "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
+  "ranked_rewrites_gated": ["R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
+  "ranked_rewrites_cleared": ["R1_SIF_end"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
   "commit_policy": "No commits until stable build; then commit freely."
 }

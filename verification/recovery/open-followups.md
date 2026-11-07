@@ -17,3 +17,9 @@ User started describing another fix and got cut off — pick up when they say wh
 ## CNK null-bind (resolved model)
 
 See `cnk-nullbind-51ACEC-live-report.md`: forced FCE0 dies because registry **vt+80** returns null for the current thread (GetThreadId map miss), then code still jalrs vt+84 on null. Soft-arm leaves `0x725F50` clear / prims=2. Next: log tid vs map — no pointer stuffing.
+
+## Landed research reports (2026-11-06)
+
+- `cnk-elf-alchemy-full-redo-report.md` — ELF bind path / loadgate map
+- `alchemy-sdk-research-report.md` — Intrinsic Alchemy 3.0 / Velocity web+ELF
+- Matrix cycle 1 **FAIL** on bundled R3; disc-fix now proposes **R1 clear with evidence** (board step 2)

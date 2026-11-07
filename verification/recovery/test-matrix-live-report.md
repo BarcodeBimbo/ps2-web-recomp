@@ -1,6 +1,6 @@
-# Test-matrix live report
+﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~21:37 local
+Updated: 2026-11-06 ~21:41 local
 
 ## Gate cycle 1 — FAIL
 
@@ -50,3 +50,41 @@ Post **R1 SIF-end** (or clear R1 with real evidence) before any cdvdfsv readee/c
 ### Matrix posture
 
 Watching board again for the next `proposed_change`.
+
+---
+
+## Gate cycle 2 — PASS (R1 clear, no code)
+
+Disc-fix proposed `R1_clear_with_evidence`: clear the R1 SIF-end lock from drain evidence only. No sif.cpp rewrite. No binary change.
+
+### Verified
+
+| Log | Frames | Prims | Final SIF | Held RPC | Alchemy |
+|-----|--------|-------|-----------|----------|---------|
+| matrix-hitman-600 | 600 | 78118 | 0 packets wait (processed 0) | 0 | none |
+| matrix-nfs-600 | 600 | 49750 | 0 packets wait (processed 1) | 0 | none |
+| discfix-hitman-bm-600-hle | 600 | 127974 | 0 packets wait | 0 | none |
+| discfix-nfs-mw-600-hle | 600 | 208253 | 0 packets wait | 0 | none |
+
+Mid-run lines sometimes show 1 packet waiting; all four runs finish drained. Board claims match the logs.
+
+### Ranked rewrite locks now
+
+- R1 SIF end — **cleared_with_evidence** (not the active Hitman/NFS blocker)
+- R2 WaitSema fidelity — still gated (leftover sema 2 stays observe-only; never host_signal(2))
+- R3 readee — still gated (may be proposed next, unbundled, no CdSync wake)
+- R4 CdSync — still gated
+- R5 pad/sound — still gated
+
+### Apply / commit
+
+`allow_discfix_apply`: **true** for this no-code clear only. Nothing to land in tree. No commit.
+
+### Context (not blocking)
+
+CNK ELF/Alchemy reports at `cnk-elf-alchemy-full-redo-report.md` and `alchemy-sdk-research-report.md`. Quarantine holds — those tracks stay off Hitman/NFS.
+
+### Next
+
+Disc-fix may post an **unbundled R3** (readee + curReadPos only). R2 remains gated; do not bundle R4 sceCdSync wake.
+

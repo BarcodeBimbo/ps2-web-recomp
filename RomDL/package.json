@@ -1,0 +1,11 @@
+{
+  "name": "cyberarcade-romdl",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "phantomwright": "1.59.3"
+  }
+}
