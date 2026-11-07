@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "updated": "2026-11-07",
+  "invariants": [
+    {
+      "id": "xyoffset_11bit",
+      "description": "GS XYOFFSET OFX/OFY use 11-bit signed offsets, not full 16-bit",
+      "files": [
+        "runtime/src/gs/gs.hpp",
+        "runtime/src/gs/raster.cpp",
+        "runtime/src/gpu/gpu.cpp",
+        "runtime/src/gs/gs.cpp"
+      ],
+      "games": ["a2116d2ac08a7be4db4e8455ad58d2e5"],
+      "evidence": "logs/hitman-capture-post-xyoffset-2026-11-07/draws.tsv"
+    },
+    {
+      "id": "dispfb2_psm0_fbw8",
+      "description": "Hitman boot CRT sets DISPFB2 PSM=0 FBW=8 FBP=400",
+      "evidence": "logs/hitman-caller-readable/05-ghidra-decompiled-gs-init.md"
+    },
+    {
+      "id": "frame_vs_dispfb_pages",
+      "description": "Draw FRAME0 often on page 288 while DISPFB2 present on 400",
+      "evidence": "logs/hitman-caller-readable/04-mode-verdict-DISPFB-vs-FRAME.md"
+    }
+  ]
+}

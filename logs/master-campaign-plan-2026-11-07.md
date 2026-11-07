@@ -62,7 +62,7 @@
 ### Layer 4 — Ghidra load hygiene (Raw Binary vs ELF)
 
 - [x] 2026-11-07 — `hitman_boot.elf` **ELF** @ `0x00100000`, entry `0x0010001C` via Ghidra MCP `load_program` (14733 fn)
-- [ ] PMODE/DISPFB2/FRAME writer catalog with trusted VAs
+- [x] 2026-11-07 — PMODE/DISPFB2/FRAME/SCISSOR writers @ trusted VAs (`07-PMODE-DISPFB2-FRAME-writers.md`)
 - [x] 2026-11-07 — Not ps2-packer; normal stripped EE (`logs/hitman-boot-elf-packer-check-2026-11-07.md`)
 
 ### Hitman integration gates (Chrome)
@@ -119,6 +119,7 @@
 - [ ] Inline `autonomous_verify` smoke before `ready` (CLI/nightly only — documented gap)
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
+- [x] 2026-11-07 — `tests/store_pipeline.py` **14/14** OK (`py -3 tests/store_pipeline.py -v`)
 - [ ] Nightly: download → build → heal → verify log under `logs/autonomous-pipeline/`
 - [ ] Store pull → playable in Chrome **without manual patch steps** (definition of done)
 
@@ -193,7 +194,7 @@
 ## 8) Improvement-pass policy (additive optimize / modernize)
 
 - [x] 2026-11-07 — Documented: `verification/recovery/improvement-pass-policy-2026-11-07.md`
-- [ ] GS regression / invariant catalog JSON
+- [x] 2026-11-07 — `verification/recovery/gs-invariant-catalog.json` (XYOFFSET, DISPFB2, frame split)
 - [ ] Harness metrics + golden capture for Hitman draws
 - [ ] Versioned registry schema + machine-readable disc-fix applied list
 
