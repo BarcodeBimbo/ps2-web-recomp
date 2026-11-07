@@ -24,6 +24,7 @@ from serve import Handler, ROOM_PATH, BoundedHTTPServer
 from windows_port import EXTENSIONS, ROOT, prepared_game
 from archives import ARCHIVE_EXTENSIONS, inspect_archive
 from malware_guard import assert_safe_import
+from log_paths import game_log, resolve_game_log
 import cover_settings
 import store
 
@@ -310,7 +311,7 @@ def build(game, source, frames, rounds, slot, password=None):
         # panel itself was launched without MSYS2 on the inherited PATH.
         msys_bin = ROOT / 'tools' / 'msys64' / 'clang64' / 'bin'
         env['PATH'] = os.pathsep.join((str(msys_bin), env.get('PATH', '')))
-        with (GAMES / game_id / 'build.log').open('wb' if source else 'ab') as log:
+        with game_log(game_id, 'build.log').open('wb' if source else 'ab') as log:
             if not source:
                 log.write(b'\n== Rebuilding browser player ==\n')
             with subprocess.Popen([sys.executable, '-u', ROOT / 'scripts/windows_port.py', *args],
@@ -809,7 +810,7 @@ class Panel(Handler):
         logs = re.fullmatch(r'/api/games/([a-f0-9]{32})/(build|explore|desktop)(/download)?', self.route)
         if logs:
             game_id, name, download = logs.groups()
-            path = GAMES / game_id / f'{name}.log'
+            path = resolve_game_log(game_id, f'{name}.log', GAMES / game_id) or (GAMES / game_id / f'{name}.log')
             if download:
                 try:
                     log = path.open('rb')

@@ -45,8 +45,12 @@ def phase(name, action):
 
 
 def run_command(command, *, cwd, env=None, timeout=1200, idle_timeout=None):
-    log_path = ROOT / 'tools/setup.log'
-    log_path.parent.mkdir(exist_ok=True)
+    try:
+        from log_paths import tools_log
+        log_path = tools_log('setup.log')
+    except ImportError:
+        log_path = ROOT / 'logs' / 'tools' / 'setup.log'
+        log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open('a', encoding='utf-8') as log:
         log.write('\n$ ' + subprocess.list2cmdline(list(map(str, command))) + '\n');log.flush()
         process = subprocess.Popen(command, cwd=cwd, env=env, stdout=subprocess.PIPE,
@@ -63,8 +67,8 @@ def run_command(command, *, cwd, env=None, timeout=1200, idle_timeout=None):
             while not finished or process.poll() is None:
                 now = time.monotonic()
                 if idle_timeout and now-last_output > idle_timeout:
-                    raise TimeoutError(f'Setup command produced no output for {idle_timeout}s. Re-run Setup.cmd; see tools/setup.log.')
-                if now-started > timeout: raise TimeoutError(f'Setup command exceeded {timeout}s. Re-run Setup.cmd; see tools/setup.log.')
+                    raise TimeoutError(f'Setup command produced no output for {idle_timeout}s. Re-run Setup.cmd; see logs/tools/setup.log.')
+                if now-started > timeout: raise TimeoutError(f'Setup command exceeded {timeout}s. Re-run Setup.cmd; see logs/tools/setup.log.')
                 try: chunk = output.get(timeout=.2)
                 except queue.Empty: chunk = b''
                 if chunk is None: finished = True

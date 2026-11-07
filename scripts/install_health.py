@@ -73,12 +73,19 @@ def analyze_log(text: str, *, min_prims: int = 8, boot_frames: int = 60) -> dict
 
 def evaluate_game(game_dir: Path, *, min_prims: int = 8) -> dict:
     game_dir = Path(game_dir)
+    try:
+        from log_paths import resolve_game_log
+    except ImportError:
+        resolve_game_log = None
     sources = []
     best = None
     # Smoke first. Keep the worst status across logs so a green explore cannot
     # hide a black-screen/missing-code smoke failure.
     for name in ('smoke.log', 'health_smoke.log', 'explore.log'):
-        path = game_dir / name
+        if resolve_game_log is not None:
+            path = resolve_game_log(game_dir.name, name, game_dir)
+        else:
+            path = game_dir / name
         text = _read(path)
         if not text:
             continue

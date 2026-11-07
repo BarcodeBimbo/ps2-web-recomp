@@ -15,6 +15,7 @@ from windows_setup import BIN, EMSDK, ROOT, WGPU, tools_env
 
 from archives import ARCHIVE_EXTENSIONS
 from malware_guard import assert_safe_import
+from log_paths import game_log, game_logs_dir
 EXTENSIONS = {'.iso', '.bin', '.cue', '.img', '.chd', '.rom'} | ARCHIVE_EXTENSIONS
 try:
     _requested_jobs = int(os.getenv('PS2_BUILD_JOBS', '1'))
@@ -210,17 +211,19 @@ def port(game_id, source, frames=3600, rounds=8, password=None):
     for frame in range(600, frames, 300):
         presses += ['--press', f'{frame}:cross']
     misses, card, dump = (game / name for name in ('misses.txt', 'explore.ps2', 'explore_ram.bin'))
+    explore_shots = game_logs_dir(game.name) / 'shots'
+    explore_shots.mkdir(parents=True, exist_ok=True)
     explore_env = {**env, 'PS2_DUMP': relative(dump), 'PS2_GPU_LOW_POWER': '1',
                    'PS2_VU_RECORD': relative(game / 'vu1')}
     for index in range(rounds):
         build_native()
         for path in (misses, card, dump):
             path.unlink(missing_ok=True)
-        with (game / 'explore.log').open('wb') as log:
+        with game_log(game.name, 'explore.log').open('wb') as log:
             result = subprocess.run(
                 [runner, relative(elf), '--disc', relative(iso), '--boot', boot, '--misses', relative(misses),
                  '--memcard', relative(card), '--frames', str(frames), *presses,
-                 '--frames-dir', relative(game / 'shots'), '--frame-every', '300'],
+                 '--frames-dir', relative(explore_shots), '--frame-every', '300'],
                 cwd=ROOT, env=explore_env, stdout=log, stderr=subprocess.STDOUT, timeout=900)
         if result.returncode:
             raise RuntimeError(f'Exploration exited with status {result.returncode}. See Exploration log. Set maximum rounds to 0 to build without exploration.')

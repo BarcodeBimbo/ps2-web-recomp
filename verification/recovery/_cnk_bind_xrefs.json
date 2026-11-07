@@ -1,0 +1,400 @@
+{
+  "key_name_builds": {
+    "igIGBFile": {
+      "name_va": "0x6b2b90",
+      "builds": [],
+      "count": 0
+    },
+    "igFile": {
+      "name_va": "0x6b3198",
+      "builds": [],
+      "count": 0
+    },
+    "igPsx2IopRpcConnection": {
+      "name_va": "0x6b4890",
+      "builds": [],
+      "count": 0
+    },
+    "igPsx2VisualContext": {
+      "name_va": "0x6be420",
+      "builds": [],
+      "count": 0
+    },
+    "igGuiSystem": {
+      "name_va": "0x6c6ae8",
+      "builds": [],
+      "count": 0
+    },
+    "igRenderer": {
+      "name_va": "0x6c69e8",
+      "builds": [],
+      "count": 0
+    },
+    "igStreamingSource": {
+      "name_va": "0x640870",
+      "builds": [],
+      "count": 0
+    },
+    "igInfoManager": {
+      "name_va": "0x6c61e8",
+      "builds": [],
+      "count": 0
+    },
+    "igObject": {
+      "name_va": "0x68bbca",
+      "builds": [],
+      "count": 0
+    },
+    "igNode": {
+      "name_va": "0x6b6430",
+      "builds": [
+        "0x51bea0"
+      ],
+      "count": 1
+    },
+    "igGroup": {
+      "name_va": "0x6c3ab0",
+      "builds": [],
+      "count": 0
+    },
+    "igAttr": {
+      "name_va": "0x68bdb4",
+      "builds": [],
+      "count": 0
+    },
+    "igMemoryPool": {
+      "name_va": "0x6b28b0",
+      "builds": [],
+      "count": 0
+    },
+    "igMallocMemoryPool": {
+      "name_va": "0x611040",
+      "builds": [
+        "0x109040"
+      ],
+      "count": 1
+    },
+    "igFileImage": {
+      "name_va": "0x6bd768",
+      "builds": [],
+      "count": 0
+    },
+    "igPsx2Audio2Context": {
+      "name_va": "0x641200",
+      "builds": [],
+      "count": 0
+    },
+    "igSerialScheduler": {
+      "name_va": "0x6c5e60",
+      "builds": [],
+      "count": 0
+    },
+    "igMessenger": {
+      "name_va": "0x6c5ea8",
+      "builds": [],
+      "count": 0
+    },
+    "igDataPump": {
+      "name_va": "0x6c5d58",
+      "builds": [],
+      "count": 0
+    },
+    "igAnimationSystem": {
+      "name_va": "0x6c4b90",
+      "builds": [],
+      "count": 0
+    }
+  },
+  "abs_ptr_hits_top": [
+    [
+      "igBoxController",
+      1
+    ],
+    [
+      "igScrollListComponentController",
+      1
+    ],
+    [
+      "igGuiComponentModel",
+      1
+    ],
+    [
+      "igGuiComponentController",
+      1
+    ],
+    [
+      "igMemberFunctionWithParamAction",
+      1
+    ],
+    [
+      "igOnOffColorChanger",
+      1
+    ],
+    [
+      "igGuiComponent",
+      1
+    ],
+    [
+      "igScrollListArrowController",
+      1
+    ],
+    [
+      "igAttrSet",
+      1
+    ],
+    [
+      "igDepthStateAttr",
+      1
+    ],
+    [
+      "igTimeTransform",
+      1
+    ],
+    [
+      "igTransform",
+      1
+    ],
+    [
+      "igBasicColorChanger",
+      1
+    ],
+    [
+      "igBlendStateAttr",
+      1
+    ],
+    [
+      "igTextureStateAttr",
+      1
+    ],
+    [
+      "igModelViewMatrixAttr",
+      1
+    ],
+    [
+      "igProjectionMatrixAttr",
+      1
+    ],
+    [
+      "igLightingStateAttr",
+      1
+    ],
+    [
+      "igColorChanger",
+      1
+    ],
+    [
+      "igStringKey",
+      1
+    ],
+    [
+      "igProperty",
+      1
+    ],
+    [
+      "igSimpleUserInfo",
+      1
+    ]
+  ],
+  "bind_725F50": [
+    {
+      "lui": "0x520178",
+      "access": "0x5201a0",
+      "op": "lw",
+      "reg": "a0"
+    },
+    {
+      "lui": "0x5201b0",
+      "access": "0x5201bc",
+      "op": "lw",
+      "reg": "a0"
+    },
+    {
+      "lui": "0x520214",
+      "access": "0x52022c",
+      "op": "sw",
+      "reg": "r0"
+    },
+    {
+      "lui": "0x53b5c0",
+      "access": "0x53b5fc",
+      "op": "lw",
+      "reg": "a0"
+    }
+  ],
+  "bind_725EE0": [
+    {
+      "lui": "0x2766b4",
+      "access": "0x2766e8",
+      "op": "lw",
+      "reg": "v0"
+    },
+    {
+      "lui": "0x2766c4",
+      "access": "0x2766e8",
+      "op": "lw",
+      "reg": "v0"
+    },
+    {
+      "lui": "0x2766c4",
+      "access": "0x2766fc",
+      "op": "lw",
+      "reg": "v0"
+    },
+    {
+      "lui": "0x341c6c",
+      "access": "0x341c78",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x4e9c84",
+      "access": "0x4e9cb8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x4ea0e4",
+      "access": "0x4ea0e8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x501c74",
+      "access": "0x501cac",
+      "op": "lw",
+      "reg": "s0"
+    },
+    {
+      "lui": "0x50a534",
+      "access": "0x50a550",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a564",
+      "access": "0x50a594",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a568",
+      "access": "0x50a594",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a5a0",
+      "access": "0x50a5d8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a5c4",
+      "access": "0x50a5d8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a5c8",
+      "access": "0x50a5d8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a910",
+      "access": "0x50a948",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a938",
+      "access": "0x50a948",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a968",
+      "access": "0x50a9a4",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a99c",
+      "access": "0x50a9a4",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50a9c0",
+      "access": "0x50a9e4",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50aa00",
+      "access": "0x50aa24",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50aa1c",
+      "access": "0x50aa24",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x50b02c",
+      "access": "0x50b048",
+      "op": "sw",
+      "reg": "s0"
+    },
+    {
+      "lui": "0x50f870",
+      "access": "0x50f8a8",
+      "op": "lw",
+      "reg": "a1"
+    },
+    {
+      "lui": "0x50f920",
+      "access": "0x50f930",
+      "op": "lw",
+      "reg": "s0"
+    },
+    {
+      "lui": "0x51178c",
+      "access": "0x5117a8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x511794",
+      "access": "0x5117a8",
+      "op": "lw",
+      "reg": "a2"
+    },
+    {
+      "lui": "0x5117ec",
+      "access": "0x5117f8",
+      "op": "lw",
+      "reg": "a0"
+    },
+    {
+      "lui": "0x5aca94",
+      "access": "0x5acabc",
+      "op": "lw",
+      "reg": "t0"
+    },
+    {
+      "lui": "0x5acab4",
+      "access": "0x5acabc",
+      "op": "lw",
+      "reg": "t0"
+    },
+    {
+      "lui": "0x5acab4",
+      "access": "0x5acae0",
+      "op": "lw",
+      "reg": "t0"
+    }
+  ]
+}

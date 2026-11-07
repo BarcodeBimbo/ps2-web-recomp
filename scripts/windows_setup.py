@@ -308,7 +308,7 @@ def main():
                 print('Store downloader was not fully installed: ' + str(error), flush=True)
                 print('Local Add game still works. Re-run Setup.cmd for torrent/web downloads.', flush=True)
     print('\nSETUP '+('FINISHED WITH WARNINGS' if any(item['status']=='failed' for item in REPORT) else 'COMPLETE')+'. Starting the desktop library and automatic LAN mobile service.', flush=True)
-    print('Setup report: tools/setup-report.json | Detailed setup log: tools/setup.log', flush=True)
+    print('Setup report: tools/setup-report.json | Detailed setup log: logs/tools/setup.log', flush=True)
     from panel import main as panel_main
     panel_main(open_browser=True)
 

@@ -62,7 +62,46 @@ struct Semaphore {
     std::uint32_t attr{};
     std::uint32_t option{};
     std::deque<int> waiters;
+    // Observe-only ownership tag (not saved). CreateSema RA + params for WaitSema tracing.
+    std::uint32_t create_ra{};
 };
+
+bool trace_sema_enabled() {
+    static const bool on = std::getenv("PS2_TRACE_SEMA") != nullptr;
+    return on;
+}
+
+// Leftover Hitman/NFS wait IDs (+ shared id 2). Always tag/log these lightly.
+bool interesting_sema(int id) {
+    switch (id) {
+    case 2:
+    case 7:
+    case 17:
+    case 23:
+    case 29:
+    case 30:
+    case 32:
+        return true;
+    default:
+        return false;
+    }
+}
+
+void log_createsema(int id, const Semaphore &s, std::uint32_t ra, int thr) {
+    static int s_all = 0;
+    const bool force = interesting_sema(id) || trace_sema_enabled();
+    if (!force && s_all >= 48) return;
+    std::fprintf(stderr,
+                 "[createsema] id=%d init=%d max=%d attr=0x%X option=0x%X ra=0x%08X thr=%d\n",
+                 id, s.init, s.max, s.attr, s.option, ra, thr);
+    if (!interesting_sema(id)) ++s_all;
+}
+
+void log_deletesema(int id, const Semaphore &s, std::uint32_t ra) {
+    if (!(interesting_sema(id) || trace_sema_enabled())) return;
+    std::fprintf(stderr, "[deletesema] id=%d init=%d max=%d create_ra=0x%08X ra=0x%08X\n",
+                 id, s.init, s.max, s.create_ra, ra);
+}
 
 struct Handler {
     int id{};
@@ -446,8 +485,11 @@ void signal_sema(Cpu &c, int id, bool interrupt) {
     if (id == 2) {
         static int s_sig2 = 0;
         if (s_sig2 < 8) {
-            std::fprintf(stderr, "[sema2] %sSignal count=%d waiters=%zu ra=0x%08X thr=%d\n",
-                         interrupt ? "i" : "", s.count, s.waiters.size(), c.r[31].w[0], g_current);
+            std::fprintf(stderr,
+                         "[sema2] %sSignal count=%d waiters=%zu ra=0x%08X thr=%d "
+                         "create_ra=0x%08X init=%d max=%d\n",
+                         interrupt ? "i" : "", s.count, s.waiters.size(), c.r[31].w[0], g_current,
+                         s.create_ra, s.init, s.max);
             ++s_sig2;
         }
     }
@@ -482,12 +524,18 @@ void wait_sema(Cpu &c, int id) {
     }
     Semaphore &s = *found;
     ret(c, id);
-    if (id == 2) {
-        static int s_w2 = 0;
-        if (s_w2 < 8) {
-            std::fprintf(stderr, "[sema2] Wait count=%d waiters=%zu ra=0x%08X thr=%d\n",
-                         s.count, s.waiters.size(), c.r[31].w[0], g_current);
-            ++s_w2;
+    if (interesting_sema(id)) {
+        static int s_w2 = 0, s_w_other = 0;
+        const bool show =
+            trace_sema_enabled() || (id == 2 ? s_w2 < 8 : s_w_other < 24);
+        if (show) {
+            std::fprintf(stderr,
+                         "[waitsema] id=%d count=%d waiters=%zu ra=0x%08X thr=%d "
+                         "create_ra=0x%08X init=%d max=%d will_%s\n",
+                         id, s.count, s.waiters.size(), c.r[31].w[0], g_current, s.create_ra,
+                         s.init, s.max, (s.count > 0) ? "pass" : "block");
+            if (id == 2) ++s_w2;
+            else ++s_w_other;
         }
     }
     if (id == 16) {
@@ -700,7 +748,10 @@ void dump() {
         std::fprintf(stderr, "\n");
     }
     for (const auto &[id, s] : g_semas)
-        if (!s.waiters.empty()) std::fprintf(stderr, "[sema] %d count %d waiters %zu\n", id, s.count, s.waiters.size());
+        if (!s.waiters.empty())
+            std::fprintf(stderr,
+                         "[sema] %d count %d waiters %zu create_ra=0x%08X init=%d max=%d\n", id,
+                         s.count, s.waiters.size(), s.create_ra, s.init, s.max);
     const std::uint32_t skip = load<std::uint32_t>(g_ram + 0x00702BA0u);
     const std::uint32_t sema45 = load<std::uint32_t>(g_ram + 0x00705C18u);
     const std::uint32_t flag_bf0 = load<std::uint32_t>(g_ram + 0x00705BF0u);
@@ -976,16 +1027,19 @@ void handle_syscall(Cpu &c, std::uint32_t pc) {
         s.attr = ld32(p + 16);
         s.option = ld32(p + 20);
         s.count = s.init;
+        s.create_ra = c.r[31].w[0];
         const int id = lowest_free(g_semas, 256, 0);
         if (id < 0) { ret(c, -1); break; }
         g_semas[id] = s;
         index_semas();
+        log_createsema(id, s, s.create_ra, g_current);
         ret(c, id);
         break;
     }
     case 0x41: {
         auto it = g_semas.find(static_cast<int>(arg(c, 0)));
         if (it == g_semas.end()) { ret(c, -1); break; }
+        log_deletesema(it->first, it->second, c.r[31].w[0]);
         for (int waiter : it->second.waiters)
             if (Thread *t = thread(waiter)) release(*t, -425);
         g_semas.erase(it);
