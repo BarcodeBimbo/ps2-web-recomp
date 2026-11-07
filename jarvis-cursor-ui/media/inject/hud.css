@@ -1319,8 +1319,13 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   max-width: 88px;
 }
 
-/* Voice / agent activity — photo strips from reference (not invented bar SVG) */
+/* Voice activity — idle: photo strip; live/talking: real audio-wave bars */
 .jcc-wave.jcc-wave-photo.voice {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
   background-image: var(--jcc-photo-voice-wave);
   background-size: contain;
   background-position: center;
@@ -1328,8 +1333,42 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.55));
 }
 
+.jcc-wave.jcc-wave-photo.voice i {
+  display: none;
+  flex: 0 0 3px;
+  width: 3px;
+  height: 40%;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #7af0ff, #00b8e0);
+  box-shadow: 0 0 4px rgba(0, 242, 255, 0.7);
+  transform-origin: bottom center;
+  animation: cortana-voice-bar 0.85s ease-in-out infinite;
+}
+
+.jcc-wave.jcc-wave-photo.voice i:nth-child(odd) { animation-duration: 0.7s; }
+.jcc-wave.jcc-wave-photo.voice i:nth-child(3n) { animation-duration: 1.05s; animation-delay: 0.1s; }
+.jcc-wave.jcc-wave-photo.voice i:nth-child(4n) { animation-delay: 0.2s; }
+
+/* Live talking / listening — swap photo for live audio wave */
+.jcc-voice.is-listening .jcc-wave.jcc-wave-photo.voice,
+.jcc-voice.is-live .jcc-wave.jcc-wave-photo.voice,
+.jcc-voice[data-voice-live="1"] .jcc-wave.jcc-wave-photo.voice,
+.jcc-voice.is-responding .jcc-wave.jcc-wave-photo.voice {
+  background-image: none;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.65));
+}
+
+.jcc-voice.is-listening .jcc-wave.jcc-wave-photo.voice i,
+.jcc-voice.is-live .jcc-wave.jcc-wave-photo.voice i,
+.jcc-voice[data-voice-live="1"] .jcc-wave.jcc-wave-photo.voice i,
+.jcc-voice.is-responding .jcc-wave.jcc-wave-photo.voice i {
+  display: inline-block;
+  height: calc(18% + var(--cortana-voice-amp, 0.35) * 82%);
+  transform: scaleY(max(0.2, var(--h, var(--amp, 0.7))));
+}
+
 .jcc-wave i {
-  display: none !important;
+  display: none;
 }
 
 .jcc-listen {
@@ -1354,12 +1393,64 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   opacity: 0.35;
 }
 
-/* Mic iris — circular cutout from reference (replaces emoji 🎙 + generic rings) */
+/* Mic wrap — photo iris + LIVE ripple rings when talking (not static crop) */
+.jcc-mic-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.jcc-mic-wrap .jcc-mic {
+  pointer-events: auto !important;
+  z-index: 2;
+}
+
+.jcc-mic-ripple {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 229, 255, 0.45);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.jcc-voice.is-listening .jcc-mic-ripple,
+.jcc-voice.is-live .jcc-mic-ripple,
+.jcc-voice[data-voice-live="1"] .jcc-mic-ripple,
+.jcc-voice.is-responding .jcc-mic-ripple {
+  animation: cortana-mic-ripple 2.2s ease-out infinite;
+}
+
+.jcc-voice.is-listening .jcc-mic-ripple.r2,
+.jcc-voice.is-live .jcc-mic-ripple.r2,
+.jcc-voice[data-voice-live="1"] .jcc-mic-ripple.r2,
+.jcc-voice.is-responding .jcc-mic-ripple.r2 {
+  animation-delay: 0.55s;
+}
+
+.jcc-voice.is-listening .jcc-mic-ripple.r3,
+.jcc-voice.is-live .jcc-mic-ripple.r3,
+.jcc-voice[data-voice-live="1"] .jcc-mic-ripple.r3,
+.jcc-voice.is-responding .jcc-mic-ripple.r3 {
+  animation-delay: 1.1s;
+}
+
+/* Mic iris — circular cutout from reference */
 .jcc-mic {
   position: relative;
   width: 56px;
   height: 56px;
-  margin: 0 auto;
+  margin: 0;
   border: none;
   padding: 0;
   border-radius: 50%;
@@ -1371,6 +1462,18 @@ body:has(#cortana-focus-toggle:checked) .jcc-focus-fab {
   background-repeat: no-repeat;
   box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
   animation: cortana-arc-reactor-pulse var(--CORTANA-reactor-ms, var(--cortana-reactor-ms, 2.4s)) ease-in-out infinite;
+}
+
+.jcc-voice.is-listening .jcc-mic,
+.jcc-voice.is-live .jcc-mic,
+.jcc-voice[data-voice-live="1"] .jcc-mic,
+.jcc-voice.is-responding .jcc-mic {
+  box-shadow:
+    0 0 14px rgba(0, 242, 255, 0.65),
+    0 0 28px rgba(0, 212, 255, 0.35);
+  animation:
+    cortana-arc-reactor-pulse var(--cortana-reactor-ms, 2.4s) ease-in-out infinite,
+    cortana-mic-talk-pulse 1.1s ease-in-out infinite;
 }
 
 .jcc-mic-ring,
@@ -3320,11 +3423,146 @@ button.jcc-search:hover,
   box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 212, 255, 0.08);
 }
 
+.jcc-footer-left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
 .jcc-footer-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+}
+
+/*
+ * Bottom-left footer audio (inferred live layers — paid app not available):
+ * mic-pulse core + soft rings, mini audio wave, traveling bead dots.
+ * Always gently alive; intensifies when Talk/voice is live.
+ */
+.jcc-footer-audio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px 2px;
+  pointer-events: none;
+  max-width: 100%;
+}
+
+.jcc-footer-mic-pulse {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+
+.jcc-footer-mic-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #9ffcff, #00d4ff 55%, #0c79a0);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+  animation: cortana-footer-corner-pulse 1.8s ease-in-out infinite;
+  z-index: 2;
+}
+
+.jcc-footer-mic-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  opacity: 0.55;
+  animation: cortana-mic-ripple 2.4s ease-out infinite;
+}
+
+.jcc-footer-mic-ring.b {
+  animation-delay: 1.1s;
+  border-color: rgba(74, 209, 241, 0.35);
+}
+
+.jcc-footer-mini-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+  padding: 0 2px;
+}
+
+.jcc-footer-mini-wave i {
+  display: block;
+  width: 2px;
+  height: 35%;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #7af0ff, #00b8e0);
+  box-shadow: 0 0 3px rgba(0, 212, 255, 0.45);
+  transform-origin: bottom center;
+  animation: cortana-voice-bar 1.1s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+.jcc-footer-mini-wave i:nth-child(odd) { animation-duration: 0.9s; }
+.jcc-footer-mini-wave i:nth-child(3n) { animation-duration: 1.25s; animation-delay: 0.15s; }
+.jcc-footer-mini-wave i:nth-child(5) { height: 55%; }
+
+.jcc-footer-beads {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 8px;
+  margin-left: 2px;
+}
+
+.jcc-footer-beads > i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 4px rgba(0, 212, 255, 0.3);
+  animation: cortana-bead-travel 2.4s ease-in-out infinite;
+}
+
+.jcc-footer-beads > i:nth-child(2) { animation-delay: 0.15s; }
+.jcc-footer-beads > i:nth-child(3) { animation-delay: 0.3s; }
+.jcc-footer-beads > i:nth-child(4) { animation-delay: 0.45s; }
+.jcc-footer-beads > i:nth-child(5) { animation-delay: 0.6s; }
+.jcc-footer-beads > i:nth-child(6) { animation-delay: 0.75s; }
+.jcc-footer-beads > i:nth-child(7) { animation-delay: 0.9s; }
+.jcc-footer-beads > i:nth-child(8) { animation-delay: 1.05s; }
+.jcc-footer-beads > i:nth-child(9) { animation-delay: 1.2s; }
+.jcc-footer-beads > i:nth-child(10) { animation-delay: 1.35s; }
+
+.jcc-footer:has(.jcc-talk-wrap.is-live) .jcc-footer-mini-wave i,
+.jcc-footer:has(.jcc-talk-wrap[data-voice-live="1"]) .jcc-footer-mini-wave i,
+.jcc-footer:has(#cortana-talk-cta.is-live) .jcc-footer-mini-wave i {
+  animation-duration: 0.65s;
+  opacity: 1;
+  height: calc(30% + var(--cortana-voice-amp, 0.35) * 70%);
+}
+
+.jcc-footer:has(.jcc-talk-wrap.is-live) .jcc-footer-beads > i,
+.jcc-footer:has(.jcc-talk-wrap[data-voice-live="1"]) .jcc-footer-beads > i,
+.jcc-footer:has(#cortana-talk-cta.is-live) .jcc-footer-beads > i {
+  animation-duration: 1.35s;
+  background: rgba(122, 240, 255, 0.8);
+  box-shadow: 0 0 7px rgba(0, 242, 255, 0.65);
+}
+
+.jcc-footer:has(.jcc-talk-wrap.is-live) .jcc-footer-mic-core,
+.jcc-footer:has(.jcc-talk-wrap[data-voice-live="1"]) .jcc-footer-mic-core,
+.jcc-footer:has(#cortana-talk-cta.is-live) .jcc-footer-mic-core {
+  animation-duration: 0.95s;
+  box-shadow: 0 0 14px rgba(0, 242, 255, 0.9);
 }
 
 .jcc-meta-chip {
@@ -3563,33 +3801,60 @@ button.jcc-search:hover,
   color: #b9ebf4;
 }
 
+/* Middle Talk audio wave — always a clean live bar viz (idle soft, live amp-driven) */
 .jcc-talk-wave {
-  display: inline-block;
-  width: 72px;
-  height: 22px;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  width: 78px;
+  height: 24px;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(0, 242, 255, 0.45));
 }
 
-.jcc-talk-wave.jcc-talk-wave-photo.l {
-  background-image: var(--jcc-photo-talk-wave-l);
+.jcc-talk-wave.jcc-talk-wave-live i {
+  display: inline-block;
+  flex: 0 0 2px;
+  width: 2px;
+  height: 28%;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #9ffcff, #00d4ff 55%, #0c79a0);
+  box-shadow: 0 0 4px rgba(0, 229, 255, 0.55);
+  transform-origin: bottom center;
+  animation: cortana-voice-bar 1.05s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.jcc-talk-wave.jcc-talk-wave-live i:nth-child(odd) { animation-duration: 0.88s; }
+.jcc-talk-wave.jcc-talk-wave-live i:nth-child(3n) { animation-duration: 1.2s; animation-delay: 0.08s; }
+.jcc-talk-wave.jcc-talk-wave-live i:nth-child(4n) { animation-delay: 0.16s; }
+.jcc-talk-wave.jcc-talk-wave-live.r i { animation-direction: reverse; }
+
+.jcc-talk.is-live .jcc-talk-wave.jcc-talk-wave-live i,
+.jcc-talk[data-voice-live="1"] .jcc-talk-wave.jcc-talk-wave-live i,
+.jcc-talk-wrap.is-live .jcc-talk-wave.jcc-talk-wave-live i,
+.jcc-talk-wrap[data-voice-live="1"] .jcc-talk-wave.jcc-talk-wave-live i {
+  opacity: 1;
+  animation-duration: 0.62s;
+  height: calc(22% + var(--cortana-voice-amp, 0.4) * 78%);
+  transform: scaleY(max(0.2, var(--h, var(--amp, 0.8))));
+  box-shadow: 0 0 6px rgba(0, 242, 255, 0.85);
+}
+
+/* Legacy photo class kept harmless if leftover */
+.jcc-talk-wave.jcc-talk-wave-photo {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 6px rgba(0, 242, 255, 0.55));
 }
+.jcc-talk-wave.jcc-talk-wave-photo.l { background-image: var(--jcc-photo-talk-wave-l); }
+.jcc-talk-wave.jcc-talk-wave-photo.r { background-image: var(--jcc-photo-talk-wave-r); }
 
-.jcc-talk-wave.jcc-talk-wave-photo.r {
-  background-image: var(--jcc-photo-talk-wave-r);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 0 6px rgba(0, 242, 255, 0.55));
-}
-
-/* Idle: hide structural bars (photo art shows). Live talk/wrap unlocks bars via rules above. */
+/* Idle: legacy photo wings may hide bars; live-wave class always shows soft bars */
 .jcc-talk-wrap:not(.is-live):not([data-voice-live="1"])
   .jcc-talk:not(.is-live):not([data-voice-live="1"])
-  .jcc-talk-wave
+  .jcc-talk-wave.jcc-talk-wave-photo
   i {
   display: none !important;
   animation: none !important;
@@ -3633,6 +3898,68 @@ button.jcc-search:hover,
   );
   opacity: 0.45;
   pointer-events: none;
+}
+
+/* —— Live audio / mic / footer motion (photo can't show these) —— */
+@keyframes cortana-voice-bar {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  40% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(0.55);
+  }
+}
+
+@keyframes cortana-mic-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+}
+
+@keyframes cortana-mic-talk-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.18);
+  }
+}
+
+@keyframes cortana-bead-travel {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.15);
+  }
+}
+
+@keyframes cortana-footer-corner-pulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
 }
 
 /* Responsive tighten */

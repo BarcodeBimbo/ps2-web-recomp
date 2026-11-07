@@ -47,9 +47,16 @@
 
     <div class="jcc-voice" data-cortana-voice data-cortana-action="voice" title="Tap to Speak — start Cursor voice chat">
       <div class="jcc-voice-lab">VOICE STATUS</div>
-      <div class="jcc-wave jcc-wave-photo voice" aria-hidden="true"></div>
+      <div class="jcc-wave jcc-wave-photo voice" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
       <div class="jcc-listen" id="cortana-voice-status">Standby</div>
-      <button type="button" id="cortana-mic-btn" class="jcc-mic" data-cortana-voice data-cortana-action="voice" title="Tap to Speak" aria-label="Tap to Speak"></button>
+      <div class="jcc-mic-wrap">
+        <span class="jcc-mic-ripple r1" aria-hidden="true"></span>
+        <span class="jcc-mic-ripple r2" aria-hidden="true"></span>
+        <span class="jcc-mic-ripple r3" aria-hidden="true"></span>
+        <button type="button" id="cortana-mic-btn" class="jcc-mic" data-cortana-voice data-cortana-action="voice" title="Tap to Speak" aria-label="Microphone — tap to speak"></button>
+      </div>
       <div class="jcc-mic-hint" data-cortana-action="voice">Tap to speak</div>
     </div>
 
@@ -324,20 +331,36 @@
   </div>
 
   <footer class="jcc-footer">
-    <div class="jcc-footer-meta">
-      <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">⌖</span><span class="jcc-meta-line"><span class="jcc-meta-k">Location</span> <span class="jcc-meta-v" id="cortana-meta-host">Manhattan, New York</span></span></div>
-      <div class="jcc-meta-chip"><span class="jcc-meta-ico jcc-meta-ico-sun" aria-hidden="true">☀</span><span class="jcc-meta-line"><span class="jcc-meta-k">Weather</span> <span class="jcc-meta-v" id="cortana-meta-ws">—</span></span></div>
-      <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">◉</span><span class="jcc-meta-line"><span class="jcc-meta-k">Network</span> <span class="jcc-meta-v" id="cortana-meta-net">—</span></span></div>
+    <div class="jcc-footer-left">
+      <div class="jcc-footer-meta">
+        <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">⌖</span><span class="jcc-meta-line"><span class="jcc-meta-k">Location</span> <span class="jcc-meta-v" id="cortana-meta-host">Manhattan, New York</span></span></div>
+        <div class="jcc-meta-chip"><span class="jcc-meta-ico jcc-meta-ico-sun" aria-hidden="true">☀</span><span class="jcc-meta-line"><span class="jcc-meta-k">Weather</span> <span class="jcc-meta-v" id="cortana-meta-ws">—</span></span></div>
+        <div class="jcc-meta-chip"><span class="jcc-meta-ico" aria-hidden="true">◉</span><span class="jcc-meta-line"><span class="jcc-meta-k">Network</span> <span class="jcc-meta-v" id="cortana-meta-net">—</span></span></div>
+      </div>
+      <!-- Bottom-left live audio: mic pulse + mini wave + traveling beads (inferred; not static photo) -->
+      <div class="jcc-footer-audio" aria-hidden="true">
+        <span class="jcc-footer-mic-pulse" title="">
+          <i class="jcc-footer-mic-core"></i>
+          <i class="jcc-footer-mic-ring a"></i>
+          <i class="jcc-footer-mic-ring b"></i>
+        </span>
+        <span class="jcc-footer-mini-wave">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </span>
+        <span class="jcc-footer-beads">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </span>
+      </div>
     </div>
     <div class="jcc-talk-wrap">
       <div class="jcc-talk-para" aria-hidden="true"></div>
-      <button type="button" class="jcc-talk" id="cortana-talk-cta" data-cortana-voice data-cortana-action="voice" aria-label="Talk to Cortana Workstation">
-        <span class="jcc-talk-wave jcc-talk-wave-photo l" aria-hidden="true"></span>
+      <button type="button" class="jcc-talk" id="cortana-talk-cta" data-cortana-voice data-cortana-action="voice" aria-label="Talk to Cortana — start voice">
+        <span class="jcc-talk-wave jcc-talk-wave-live l" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
         <span class="jcc-talk-copy">
           <strong>TALK TO CORTANA</strong>
           <em id="cortana-talk-hint">I am listening…</em>
         </span>
-        <span class="jcc-talk-wave jcc-talk-wave-photo r" aria-hidden="true"></span>
+        <span class="jcc-talk-wave jcc-talk-wave-live r" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
       </button>
       <div class="jcc-talk-meter" aria-hidden="true"><i id="cortana-talk-meter-bar" style="width:0%"></i></div>
     </div>
