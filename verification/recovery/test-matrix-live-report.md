@@ -1,6 +1,6 @@
 ﻿# Test-matrix live report
 
-Updated: 2026-11-06 ~22:09 local
+Updated: 2026-11-06 ~22:10 local
 
 ## Gate cycle 1 — FAIL
 
@@ -231,4 +231,7 @@ R4 not unlocked. No sceCdSync wake. No `host_signal(2)`.
 ### Matrix posture
 
 Watching for any next proposal (R4 only if separately posted).
+
+
+**Alive ~22:10:** Cycle 6 PASS confirmed on board; R4/R5 still gated; watching for next proposed_change.
 

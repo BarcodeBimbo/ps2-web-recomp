@@ -1,113 +1,71 @@
 {
-  "updated": "2026-11-06T22:10:30-05:00",
+  "updated": "2026-11-06T22:11:30-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
     "nfs_mw": "60c82f4a111da300ac23bbec85272788"
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
-  "step": 6,
-  "phase": "watching",
+  "step": 7,
+  "phase": "awaiting_matrix",
   "prior_cycles": [
     {"step": 1, "id": "R3_generic_complete_path", "verdict": "fail"},
     {"step": 2, "id": "R1_clear_with_evidence", "verdict": "pass"},
-    {"step": 3, "id": "R3_readee_length_harden", "verdict": "fail", "why": "R2 gated"},
+    {"step": 3, "id": "R3_readee_length_harden", "verdict": "fail"},
     {"step": 4, "id": "R2_clear_with_evidence", "verdict": "pass"},
-    {"step": 5, "id": "R3_readee_length_harden", "verdict": "pass", "why": "allow_discfix_apply; behavioral patch landed"}
+    {"step": 5, "id": "R3_readee_length_harden", "verdict": "pass"},
+    {"step": 6, "id": "R3_post_apply_verify", "verdict": "pass", "why": "R3 verified_apply"}
   ],
   "discfix": {
-    "status": "idle_after_r3_verify",
+    "status": "proposed",
     "applied": {
-      "id": "R3_readee_length_harden",
-      "file": "runtime/src/iop/cdvdfsv.cpp",
-      "what": "Set readee b1len/b2len when dest1/dest2 fed; unaligned head/tail (+16/+80) when bounce dst misaligned and no staged dest",
-      "not_touched": ["cdvd.cpp sceCdSync wake", "WaitSema", "host_signal", "CNK Alchemy"]
+      "R3_readee": {
+        "file": "runtime/src/iop/cdvdfsv.cpp",
+        "status": "verified_apply"
+      }
     },
     "proposed_change": {
-      "id": "R3_post_apply_verify",
-      "summary": "Verify-only: mark R3 landed and stable from post-patch 600f smokes on both games. No new code. After pass, R4 stays gated until a separate proposal.",
+      "id": "R4_clear_with_evidence",
+      "summary": "Clear R4 (sceCdSync wake rewrite) with evidence only — no cdvd.cpp finish_read/wake change. Hitman polls sceCdSync(mode=1) while EE reads use cdvdfsv; non-blocking busy checks already see idle. Post-R3 smokes still green. No host_signal. Unlocks R5 later if needed.",
       "files": [],
       "code_change": false,
       "details": [
-        "Confirm Hitman+NFS post-R3 smokes: frame limit, prims move, SIF drain 0, no Alchemy.",
-        "Confirm Hitman unaligned readee path fired: dst=0x52C098 head=8 tail=8.",
-        "Confirm curReadPos still matches before complete_call.",
-        "Do NOT unlock R4 or land sceCdSync wake in this cycle.",
-        "Do NOT host_signal(2)."
+        "Do NOT land sceCdSync waiter wake / finish_read coupling from FSV complete in this step.",
+        "Do NOT touch WaitSema or host_signal(2).",
+        "Argument: EE disc path is cdvdfsv complete (R3 verified); IOP sceCdSync(mode=1/17) is a busy poll against g_cd.busy which stays false when reads are FSV-side — returns ready without needing a new wake rewrite.",
+        "Blocking sceCdSync waiters are not the leftover that stops prims (prims move; SIF drains; leftover is durable sema 2).",
+        "If matrix disagrees, fail with the specific sync-waiter case to patch — disc-fix will post a real R4 then."
       ],
-      "success_bar": "Matrix marks R3 verified / cleared_apply; allow next ranked item later."
+      "success_bar": "Matrix marks R4 cleared_with_evidence / not-needed; no binary change."
     },
     "evidence": {
-      "post_apply_smokes": {
-        "hitman": {
-          "log": "logs/discfix-r3-hitman-600.log",
-          "frames": 600,
-          "prims": 127974,
-          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
-          "unaligned": "[cdvdfsv] readee unaligned dst=0x52C098 head=8 tail=8",
-          "curReadPos": "complete_after_read matches continue",
-          "leftover_sema": [2, 7],
-          "alchemy": "none"
-        },
-        "nfs": {
-          "log": "logs/discfix-r3-nfs-600.log",
-          "frames": 600,
-          "prims": 208253,
-          "sif_end": "[sif] 0 packets wait for the EE (processed 1)",
-          "curReadPos": "complete_after_read matches continue",
-          "leftover_sema": [2, 17, 23, 29, 30, 32],
-          "alchemy": "none"
-        }
-      },
-      "rebuild": {
-        "hitman": "logs/discfix-r3-rebuild-hitman.log",
-        "nfs": "logs/discfix-r3-rebuild-nfs.log",
-        "note": "Sequential -j2; both linked with b1len string present"
-      }
+      "r3_verified": true,
+      "post_r3_logs": ["logs/discfix-r3-hitman-600.log", "logs/discfix-r3-nfs-600.log"],
+      "hitman_sceCdSync": "Heavy mode=1 Status/Sync polls in earlier HLE log; games still draw 127k–208k prims @600f after R3 with SIF 0",
+      "nfs": "Little/no sceCdSync spam; same green post-R3",
+      "leftover_sema_2": "Durable parking (R2 cleared) — not a CdSync waiter rewrite target",
+      "quarantine": "No CNK Alchemy"
     },
     "files_touched": ["runtime/src/iop/cdvdfsv.cpp"]
   },
   "matrix": {
-    "status": "complete",
-    "current_phase": "sustained_run",
-    "verdict": "pass",
-    "notes": "PASS R3_post_apply_verify. Independent check of discfix-r3-*-600.log: Hitman 600f/127974 prims, unaligned readee dst=0x52C098 head=8 tail=8 fired, curReadPos 35/35 exact, SIF 0, phases all pass, leftover sema 2/7, no Alchemy. NFS 600f/208253 prims, 60 streams, SIF 0, phases all pass, leftover sema 2/17/23/29/30/32, no Alchemy. Patch scoped to cdvdfsv readee lengths only — R4 not unlocked. R3_readee = verified_apply. allow_discfix_apply false (verify-only). Quarantine holds. Commit still only when jointly stable — matrix OK with R3 verified if disc-fix wants a later commit after any soak.",
+    "status": "pending",
+    "current_phase": null,
+    "verdict": null,
+    "notes": "Disc-fix cycle 7: R4_clear_with_evidence after R3 verified_apply. No code. Waiting for matrix.",
     "phases": ["boot", "menu", "first_disc_read", "streaming", "sustained_run"],
-    "phase_results": {
-      "hitman_bm": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/discfix-r3-hitman-600.log",
-        "frames": 600,
-        "prims": 127974,
-        "unaligned": "dst=0x52C098 head=8 tail=8",
-        "curReadPos_exact": "35/35"
-      },
-      "nfs_mw": {
-        "boot": "pass",
-        "menu": "pass",
-        "first_disc_read": "pass",
-        "streaming": "pass",
-        "sustained_run": "pass",
-        "log": "logs/discfix-r3-nfs-600.log",
-        "frames": 600,
-        "prims": 208253
-      }
-    },
     "ranked_rewrite_decision": {
       "R1_SIF_end": "cleared_with_evidence",
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
-      "R4_CdSync": "still_gated",
+      "R4_CdSync": "proposed_clear",
       "R5_pad_sound": "still_gated"
     },
     "allow_discfix_apply": false
   },
   "ranked_rewrites_gated": ["R4_CdSync", "R5_pad_sound"],
-  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee"],
+  "ranked_rewrites_cleared": ["R1_SIF_end", "R2_WaitSema_fidelity"],
+  "ranked_rewrites_applied": ["R3_readee"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "No commits until stable build; then commit freely. R3 verified — joint commit OK when disc-fix ready."
+  "commit_policy": "R3 verified; commit still deferred until parent/matrix call stable (or after R4/R5 gate closes)."
 }
