@@ -21,7 +21,15 @@ body.jarvis-inject .monaco-workbench,
   background-color: transparent !important;
 }
 
-/* When CC HUD is present, tuck stock parts under / dim during focus-off */
+/*
+ * Title bar (God note): reference-command-center(-2).png is FULL-BLEED —
+ * no Cursor/OS title bar, min/max/close, or menu strip appears in the photo.
+ * #jarvis-cc-hud { inset:0 } intentionally covers the stock title bar while
+ * HUD is primary so the window reads 1:1 with the PNG. This is NOT a missing
+ * element for photo match. Escape hatch: Focus Mode reveals IDE chrome;
+ * title bar is then themed navy/cyan per VISUAL-SPEC §3.1 (rules below).
+ * Do not restore a stock Cursor title strip on top of the HUD for PNG QA.
+ */
 /* HUD primary: hide stock parts until Focus Mode (#jarvis-focus-toggle) */
 body:has(#jarvis-cc-hud):not(:has(#jarvis-focus-toggle:checked)) .monaco-workbench .part.activitybar,
 body:has(#jarvis-cc-hud):not(:has(#jarvis-focus-toggle:checked)) .monaco-workbench .part.sidebar,
