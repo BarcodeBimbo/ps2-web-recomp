@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 import time
@@ -14,6 +15,17 @@ GAMES = ROOT / "games"
 REGISTRY = ROOT / "verification" / "recovery" / "game-fix-registry.json"
 LOG_DIR = ROOT / "logs" / "autonomous-pipeline"
 MATRIX = ROOT / "verification" / "recovery" / "matrix_phase_check.py"
+HARNESS_METRICS = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
+HARNESS_SUMMARY = ROOT / "logs" / "cyberarcade-live-harness-latest.json"
+
+STATS_FPS = re.compile(
+    r"\[stats\]\s+frame\s+\d+\s+([\d.]+)\s+fps(?:\s+\((\d+)\s+on screen\))?",
+    re.I,
+)
+STOPPED_CYCLES = re.compile(
+    r"\[ee\]\s+stopped after (\d+) frames,\s*(\d+) cycles",
+    re.I,
+)
 
 
 def load_registry() -> dict:
@@ -68,6 +80,68 @@ def score_matrix(game_id: str, log_path: Path, meta: dict) -> dict:
         return {"raw": proc.stdout[-2000:]}
 
 
+def parse_fps_from_log(text: str) -> dict:
+    """Native smoke + optional web statslog lines — measurement only (no pacing changes)."""
+    fps_vals = [float(m.group(1)) for m in STATS_FPS.finditer(text)]
+    on_screen = [int(m.group(2)) for m in STATS_FPS.finditer(text) if m.group(2)]
+    stopped = STOPPED_CYCLES.search(text)
+    out: dict = {
+        "fps_samples": len(fps_vals),
+        "fps_avg": (sum(fps_vals) / len(fps_vals)) if fps_vals else None,
+        "fps_min": min(fps_vals) if fps_vals else None,
+        "fps_max": max(fps_vals) if fps_vals else None,
+        "fps_on_screen_last": on_screen[-1] if on_screen else None,
+        "native_vblank_frames": int(stopped.group(1)) if stopped else None,
+        "ee_cycles_per_vblank": (
+            int(stopped.group(2)) / int(stopped.group(1))
+            if stopped and int(stopped.group(1)) > 0
+            else None
+        ),
+        "source": "stats_log" if fps_vals else ("native_stopped" if stopped else None),
+    }
+    return out
+
+
+def harness_chrome_metrics(game_id: str) -> dict | None:
+    for path in (HARNESS_METRICS,):
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for g in data.get("games", []):
+            if g.get("game_id") == game_id:
+                return {
+                    "run_id": data.get("run_id"),
+                    "canvas_lum_end": g.get("canvas_lum_end"),
+                    "canvas_black_end": g.get("canvas_black_end"),
+                    "fps": g.get("fps"),
+                    "fps_overlay": g.get("fps_overlay"),
+                    "bootmenu": g.get("bootmenu"),
+                    "max_prims": g.get("max_prims"),
+                }
+    if not HARNESS_SUMMARY.is_file():
+        return None
+    try:
+        blob = json.loads(HARNESS_SUMMARY.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    for r in blob.get("results", []):
+        if r.get("id") == game_id:
+            canvas_end = None
+            for a in r.get("analyses") or []:
+                if a.get("tag") == "04_observe_end" and a.get("canvas_lum") is not None:
+                    canvas_end = a.get("canvas_lum")
+            return {
+                "run_id": (blob.get("summary") or {}).get("run_id"),
+                "canvas_lum_end": canvas_end,
+                "fps": r.get("fps"),
+                "fps_overlay": r.get("fps_overlay"),
+            }
+    return None
+
+
 def evaluate_health(game_id: str, log_path: Path) -> dict:
     sys.path.insert(0, str(ROOT / "scripts"))
     import install_health
@@ -83,7 +157,10 @@ def verify_game(game_id: str, frames: int | None, env: dict | None) -> dict:
         return {"game_id": game_id, "status": "skipped", "reason": "quarantined_track"}
     use_frames = frames or meta.get("smoke_frames", 400)
     code, log_path = run_smoke(game_id, use_frames, env)
+    log_text = log_path.read_text(encoding="utf-8", errors="replace")
     health = evaluate_health(game_id, log_path)
+    fps_metrics = parse_fps_from_log(log_text)
+    chrome_metrics = harness_chrome_metrics(game_id)
     matrix = score_matrix(game_id, log_path, meta)
     status = "pass" if code == 0 and health.get("status") != "fail" else "fail"
     if matrix and not matrix.get("skipped") and matrix.get("verdict") == "fail":
@@ -96,6 +173,8 @@ def verify_game(game_id: str, frames: int | None, env: dict | None) -> dict:
         "log": str(log_path.relative_to(ROOT)),
         "health": health,
         "matrix": matrix,
+        "fps_metrics": fps_metrics,
+        "chrome_metrics": chrome_metrics,
     }
 
 

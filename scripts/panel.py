@@ -353,6 +353,8 @@ def build(game, source, frames, rounds, slot, password=None):
                 # Full installs must not silently become playable when explore proves broken.
                 gate_ready(health)
             # Web-only rebuilds keep prior ready state but surface the health failure.
+        from store_pipeline_hooks import finalize_post_build
+        finalize_post_build(game_id, health, full_install=bool(source))
         game['status'] = 'ready'
         identity=GAMES/game_id/'identity.json'
         if identity.is_file(): game.update(json.loads(identity.read_text()))
@@ -502,6 +504,19 @@ def import_game(data):
     game_id = secrets.token_hex(16)
     game = {'id': game_id, 'title': title.strip(), 'status': 'building','added_at':time.time()}
     (GAMES / game_id).mkdir()
+    download_job_id = data.get('download_job_id')
+    if not isinstance(download_job_id, str) or not download_job_id or len(download_job_id) > 64:
+        download_job_id = None
+    from store_pipeline_hooks import begin_install_manifest, note_post_download
+    begin_install_manifest(
+        GAMES / game_id,
+        game_id=game_id,
+        title=title.strip(),
+        source=source,
+        download_job_id=download_job_id,
+    )
+    if download_job_id:
+        note_post_download(game_id, download_job_id, title.strip())
     enqueue(game, source, frames, rounds, password)
     return game
 

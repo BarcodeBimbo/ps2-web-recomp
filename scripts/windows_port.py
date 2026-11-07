@@ -117,7 +117,14 @@ def build_web(game_id):
         raise ValueError('The extracted disc or boot data is incomplete. Add the original disc again.')
     published = ROOT / 'build' / f'web-{game_id}'
     web = ROOT / 'build' / f'web-{game_id}-next'
-    if web.exists(): shutil.rmtree(web)
+    if web.exists():
+        # Windows/cmake trees can leave read-only generated objects; plain rmtree fails WinError 145.
+        def _rmtree_onerror(func, path, exc):
+            import stat
+            if not os.access(path, os.W_OK):
+                os.chmod(path, stat.S_IWUSR)
+            func(path)
+        shutil.rmtree(web, onerror=_rmtree_onerror)
     web.mkdir(parents=True)
     shutil.copyfile(published / 'boot.txt', web / 'boot.txt')
     generated = ROOT / 'generated' / game_id

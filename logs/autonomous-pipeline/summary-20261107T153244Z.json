@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "title": "NFS Most Wanted",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261107T153240Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 140753,
+        "frames": 500,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "game": "nfs_mw",
+        "frames": 500,
+        "primitives": 140753,
+        "cdvd_searches_found": 0,
+        "fileio_disc_opens": 1,
+        "disc_read_signals": 1,
+        "alchemy_contamination": false,
+        "missing_code": [],
+        "halt": null,
+        "sif_packets_waiting": 0,
+        "leftover_semas": [
+          {
+            "id": 2,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 17,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 23,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 29,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 30,
+            "count": 0,
+            "waiters": 1
+          },
+          {
+            "id": 32,
+            "count": 0,
+            "waiters": 1
+          }
+        ],
+        "phases": {
+          "boot": "pass",
+          "menu": "pass",
+          "first_disc_read": "pass",
+          "streaming": "pass",
+          "sustained_run": "pass"
+        },
+        "verdict": "pass",
+        "first_fail_phase": null
+      }
+    }
+  ]
+}

@@ -10,7 +10,17 @@
     "self_heal": {
       "orchestrator": "scripts/self_heal.py",
       "per_install_report": "games/<id>/install_issues.json",
-      "auto_tiers": ["T0_global_runtime", "T1_web_acl_rebuild", "T1_post_smoke", "T2_registry_quarantine"]
+      "auto_tiers": ["T0_global_runtime", "T1_web_acl_rebuild", "T1_post_smoke", "T2_registry_quarantine"],
+      "min_canvas_lum": 5.0,
+      "detectors": [
+        "canvas_black_harness",
+        "low_fps",
+        "matrix_fail",
+        "fbp_triad_mismatch",
+        "web_build_stale"
+      ],
+      "web_rebuild_poll_s": 3.0,
+      "web_rebuild_poll_timeout_s": 1800.0
     }
   },
   "per_game": {
@@ -27,9 +37,11 @@
     "60c82f4a111da300ac23bbec85272788": {
       "title": "NFS Most Wanted",
       "matrix_key": "nfs_mw",
-      "tracks": ["disc_fix_stable"],
+      "tracks": ["disc_fix_stable", "gs_shared_checklist"],
       "smoke_frames": 600,
-      "matrix_phases": 5
+      "matrix_phases": 5,
+      "last_autonomous_verify": "logs/autonomous-pipeline/summary-20261107T153244Z.json",
+      "matrix_verdict": "pass"
     },
     "695b874b308a4e5353767bb6df8ba697": {
       "title": "God of War USA",

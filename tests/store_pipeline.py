@@ -11,6 +11,7 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import store
 import windows_port
+from store_pipeline_hooks import begin_install_manifest, finalize_post_build, gate_strict_ready
 from urllib.error import HTTPError
 
 
@@ -36,6 +37,7 @@ class PipelineTests(unittest.TestCase):
         def importer(data):
             self.assertEqual(Path(data['path']).read_bytes(), b'ISO fixture')
             self.assertEqual(data['password'], 'temporary secret')
+            self.assertEqual(data.get('download_job_id'), 'a')
             seen.append(data)
             return {'id': 'b' * 32}
         job = self.run_download(Response(), importer)
@@ -70,9 +72,9 @@ class PipelineTests(unittest.TestCase):
             store.JOBS.clear()
             store.start({'url': 'https://romsfun.com/download/game-1/5', 'title': 'Fixture'}, self.root, lambda _: None)
         mode, payload, ext = worker.call_args.kwargs['args'][1:4]
-        self.assertEqual(mode, 'provider')
+        self.assertEqual(mode, 'browser')
         self.assertEqual(payload['url'], 'https://romsfun.com/download/game-1/5')
-        self.assertEqual(ext, '.bin')
+        self.assertEqual(ext, '.browser')
 
     def test_signed_cdn_url_is_allowed(self):
         self.assertTrue(store.is_signed_cdn_url(
@@ -129,6 +131,39 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual((web / 'ps2web.html').read_text(), 'new html')
         self.assertTrue(json.loads((web / 'build.json').read_text())['id'])
         self.assertFalse(web.with_name('web-fixture-previous').exists())
+
+    def test_install_manifest_round_trip(self):
+        game = self.root / 'games' / ('f' * 32)
+        game.mkdir(parents=True)
+        iso = self.root / 'incoming.iso'
+        iso.write_bytes(b'ISO fixture for manifest')
+        begin_install_manifest(
+            game,
+            game_id='f' * 32,
+            title='Fixture',
+            source=iso,
+            download_job_id='deadbeef',
+        )
+        manifest_path = game / 'install_manifest.json'
+        self.assertTrue(manifest_path.is_file())
+        payload = json.loads(manifest_path.read_text(encoding='utf-8'))
+        self.assertEqual(payload['download_job_id'], 'deadbeef')
+        self.assertEqual(payload['source']['bytes'], len(b'ISO fixture for manifest'))
+        self.assertEqual(len(payload['source']['sha256']), 64)
+        health = {'status': 'ok', 'reasons': [], 'warnings': []}
+        with patch('store_pipeline_hooks.ROOT', self.root):
+            finalize_post_build('f' * 32, health, full_install=True)
+        updated = json.loads(manifest_path.read_text(encoding='utf-8'))
+        self.assertIsNotNone(updated['timestamps']['build_completed_at'])
+        self.assertEqual(updated['health_status'], 'ok')
+
+    def test_strict_verify_blocks_warn_status(self):
+        health = {'status': 'warn', 'reasons': [], 'warnings': ['no_explore_or_smoke_log']}
+        with patch.dict('os.environ', {'PS2_STRICT_VERIFY': '1'}):
+            with self.assertRaisesRegex(RuntimeError, 'Strict verify'):
+                gate_strict_ready(health, full_install=True)
+        with patch.dict('os.environ', {}, clear=True):
+            gate_strict_ready(health, full_install=True)
 
 
 if __name__ == '__main__': unittest.main(verbosity=2)

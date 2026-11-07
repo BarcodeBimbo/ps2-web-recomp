@@ -25,6 +25,12 @@ Each install is keyed by **32-char id**; symptoms never bleed across ids except 
 | `web_serve_or_acl` | build/harness logs | ps2web.js unreadable in panel |
 | `web_build_stale` | mtime native > web | Chrome player behind runtime |
 | Matrix `verdict: fail` | `matrix_phase_check.py` | Five-phase boot/read/stream break |
+| `canvas_black_harness` | `cyberarcade-live-harness-latest.json` / `harness-runs/*/summary.json` | Chrome end-shot luminance below registry threshold |
+| `low_fps` | `[stats] … fps` + harness `fps` / `fps_overlay` | Sustained below `min_fps_default` (60) or per-game override |
+| `fbp_triad_mismatch` | GS log `dispfb_fbp` vs `frame_ctx0_fbp` | DISPFB/FRAME buffer page mismatch (stub plan only) |
+| `web_build_stale` | native mtime > web mtime | Explicit symptom (was implicit-only) |
+
+**Idle-aware rebuild:** after `panel.enqueue` web-only build, `poll_until_build_idle` spins until library `status` ∉ `{building, queued}` (timeout from registry).
 
 ## Action tiers (auto vs gated)
 
@@ -48,6 +54,6 @@ Each install is keyed by **32-char id**; symptoms never bleed across ids except 
 
 1. Prove Hitman **canvas** after GS XYOFFSET + web rebuild.
 2. Run `self_heal.py --library` → fix stale web builds for all ready titles.
-3. Extend detectors: **harness canvas_lum** (Chrome), **FPS < 60** from `[frame]` logs.
+3. ~~Extend detectors~~ **Done (2026-11-07 W-HEAL):** harness `canvas_lum`, `low_fps`, `matrix_fail`, `fbp_triad_mismatch` stubs + idle web rebuild poll.
 4. When CNK Alchemy **proven**, add detector `cnk_prims_2` → auto soft-arm observe only (no Hitman bleed).
 5. Fold harness into nightly: store download → build → heal → verify → log `logs/self-heal/`.

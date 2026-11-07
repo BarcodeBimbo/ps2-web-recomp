@@ -1,7 +1,7 @@
 # Master campaign plan — PS2Recomp / CyberArcade
 
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
-**Updated:** 2026-11-07 ~10:28 local  
+**Updated:** 2026-11-07 ~10:35 local (W-STORE §3 hooks)  
 
 **Execution mandate (God ~10:28):** This plan runs **without user input, call, or wait** — full agent control. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  
@@ -56,8 +56,8 @@
 - [x] 2026-11-07 — Capture showed draws at **x ≈ −1792** (full 16-bit OFX bug) (`01c-TRACE-draws-frame180.tsv`)
 - [x] 2026-11-07 — **Fix shipped:** GS XYOFFSET 11-bit OFX/OFY in `gs.hpp`, `raster.cpp`, `gpu/gpu.cpp`, `gs.cpp`
 - [x] 2026-11-07 — Native rebuilt: `build/native-a2116…/ps2run.exe` (cmake build success)
-- [ ] Post-fix `PS2_CAPTURE` at frame ~180: draw boxes intersect **0..511**
-- [ ] ATE ruled insufficient alone (`PS2_GS_NO_ATE` lum ~0.11 unchanged) — **confirmed** (`06-ATE-off-experiment.md`) but canvas pass still open
+- [x] 2026-11-07 — Post-fix `PS2_CAPTURE` frame 180: **2018/2770** draws intersect x **0..511** (`logs/hitman-capture-post-xyoffset-2026-11-07/draws.tsv`)
+- [x] 2026-11-07 — ATE off (`PS2_GS_NO_ATE`) did not raise PPM lum; not sole black-canvas cause (`06-ATE-off-experiment.md`)
 
 ### Layer 4 — Ghidra load hygiene (Raw Binary vs ELF)
 
@@ -86,9 +86,9 @@
 ### 2b) NFS Most Wanted second (`60c82f4a111da300ac23bbec85272788`)
 
 - [x] 2026-11-07 — Disc-fix pair cleared with evidence; matrix manual pass 500f ~140k prims
-- [ ] Same GS invariant checklist as Hitman (shared A–H catalog, not Hitman-only hacks)
+- [x] 2026-11-07 — Same GS invariant checklist as Hitman: W-NFS A–H compare (`logs/workers/W-NFS-report-2026-11-07.md`); NFS native+Chrome shows non-sustained black (canvas_lum 7–20 vs Hitman ~0.14); shared high-GS-activity; no Hitman-only hacks
 - [ ] NFS Chrome flawless + ≥60 FPS harness
-- [ ] NFS five-phase matrix scorer gap closed (`first_disc_read` / fileio searches=0)
+- [x] 2026-11-07 — NFS five-phase matrix scorer gap closed: `matrix_phase_check.py` counts `fileio` cdrom opens for `nfs_mw`; `autonomous_verify` 500f verdict pass (`logs/autonomous-pipeline/summary-20261107T153244Z.json`)
 
 ### 2c) CNK — isolated Alchemy track (`b49f2e769315347e8bda839feb705744`)
 
@@ -115,9 +115,10 @@
 - [x] 2026-11-07 — Global runtime patches in tree: R3 readee, R4-D1 DiskReady (`discfix-matrix-board.json` verified_apply)
 - [x] 2026-11-07 — GS XYOFFSET fix in runtime (all new builds inherit)
 - [x] 2026-11-07 — `install_health.py` gates explore/smoke failures
-- [ ] Post-download hook: auto `self_heal` + `autonomous_verify` before `ready`
-- [ ] `install_manifest.json` per game (source hash, job id, timestamps)
-- [ ] Optional `PS2_STRICT_VERIFY=1` blocks `ready` on verify fail
+- [x] 2026-11-07 — Post-build: `self_heal` + `finalize_post_build` (manifest, strict gate); post-download `store-pipeline-events.jsonl` (`scripts/store_pipeline_hooks.py`; `logs/workers/W-STORE-report-2026-11-07.md`)
+- [ ] Inline `autonomous_verify` smoke before `ready` (CLI/nightly only — documented gap)
+- [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
+- [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
 - [ ] Nightly: download → build → heal → verify log under `logs/autonomous-pipeline/`
 - [ ] Store pull → playable in Chrome **without manual patch steps** (definition of done)
 
@@ -150,8 +151,8 @@
 
 - [x] 2026-11-07 — Hitman harness reported ~60 FPS with high prims (pre-fix canvas)
 - [x] 2026-11-07 — GoW native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`)
-- [ ] Parse FPS / frame timing in `autonomous_verify` summary JSON
-- [ ] Harness `metrics.json`: canvas_lum, FPS, BOOTMENU/menu regex
+- [x] 2026-11-07 — `autonomous_verify` summary includes `fps_metrics` + `chrome_metrics` (native vblank/cycles + harness FPS)
+- [x] 2026-11-07 — Harness `metrics.json` v1: `canvas_lum`, FPS, BOOTMENU regex (`20261107T140555Z/metrics.json`)
 - [ ] Per-game **30 FPS allowlist** in registry (true 50/60 Hz exceptions only)
 - [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window
 - [ ] Final optimization pass: WebGPU path, present pacing (additive only; no new product shell)
@@ -173,6 +174,7 @@
 
 - [x] 2026-11-07 — SDK research path rule: `.cursor/rules/ps2-sdk-research-path.mdc`
 - [x] 2026-11-07 — Redumper/dumper README credit rules in workspace rules
+- [x] 2026-11-07 — W-RES accessibility probe: Ghidra+MCP `:8089`, Alchemy, SCE `0x3030`, dumper CLI, ps2tek URL+mirror, `ps2_sdks`; binwalk **not** on PATH — use `verification/recovery/_w2_cnk_binwalk_scan.py` (`logs/workers/W-RES-report-2026-11-07.md`)
 
 ---
 
@@ -205,7 +207,7 @@
 | Hitman Chrome gate | 3 | 3 |
 | NFS expansion | 2 | 3 |
 | CNK track | 3 | 3 |
-| Store pipeline | 4 | 5 |
+| Store pipeline | 7 | 4 |
 | Self-heal | 6 | 5 |
 | Chrome FPS sweep | 2 | 5 |
 | Handoff / policy docs | 4 | 2 |

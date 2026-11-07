@@ -19,6 +19,7 @@ LOADFILE = re.compile(r"\[(?:sif|loadfile)\].*(?:LOADFILE|loadfile|IOPRP)", re.I
 CDVD_SEARCH = re.compile(r"\[cdvdfsv\] search .+ -> found", re.I)
 CDVD_N = re.compile(r"\[cdvdfsv\] N 0x", re.I)
 CDVD_STREAM = re.compile(r"\[cdvdfsv\] stream", re.I)
+FILEIO_DISC_OPEN = re.compile(r"\[fileio\] open cdrom0?:", re.I)
 CURREAD = re.compile(r"curReadPos|eeaddr2|read.?pos", re.I)
 READEE = re.compile(r"readee|eeaddr1|_rd_intr", re.I)
 # Real Alchemy host/guest pulses only. Do NOT use bare "FCE0" — Hitman CreateSema
@@ -47,7 +48,9 @@ def score(text: str, game: str) -> dict:
     frames = int(STOPPED.search(text).group(1)) if STOPPED.search(text) else (
         frame_hits[-1][0] if frame_hits else 0
     )
-    searches = len(CDVD_SEARCH.findall(text))
+    cdvd_searches = len(CDVD_SEARCH.findall(text))
+    fileio_disc_opens = len(FILEIO_DISC_OPEN.findall(text))
+    searches = cdvd_searches + (fileio_disc_opens if game == "nfs_mw" else 0)
     alchemy = bool(ALCHEMY_PULSE.search(text))
     missing = [m.group(1).lower() for m in MISSING.finditer(text)]
     halt = HALT_BAD.search(text)
@@ -98,7 +101,9 @@ def score(text: str, game: str) -> dict:
         "game": game,
         "frames": frames,
         "primitives": prims,
-        "cdvd_searches_found": searches,
+        "cdvd_searches_found": cdvd_searches,
+        "fileio_disc_opens": fileio_disc_opens if game == "nfs_mw" else None,
+        "disc_read_signals": searches,
         "alchemy_contamination": alchemy,
         "missing_code": missing,
         "halt": halt.group(1).strip()[:80] if halt else None,
@@ -125,10 +130,13 @@ def read_log_text(path: Path) -> str:
 
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
-        print("usage: matrix_phase_check.py <hitman|nfs_mw|hitman_bm> <logfile>")
+        print("usage: matrix_phase_check.py <hitman|nfs_mw|hitman_bm> <logfile|->")
         return 2
     game = "hitman_bm" if argv[1] in ("hitman", "hitman_bm") else "nfs_mw"
-    text = read_log_text(Path(argv[2]))
+    if argv[2] == "-":
+        text = sys.stdin.read()
+    else:
+        text = read_log_text(Path(argv[2]))
     print(json.dumps(score(text, game), indent=2))
     return 0
 

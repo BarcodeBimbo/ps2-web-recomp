@@ -44,6 +44,8 @@
 | Harness prior | ~865k prims, 60 FPS, **canvas black** (pre-XYOFFSET web) |
 | Disc-fix board | Step 10 R5 cleared_with_evidence; R3+R4D1 applied |
 | Self-heal first run | ACL ok; web rebuild queued; symptom `gs_negative_draw_boxes` until capture re-run |
+| NFS **500f autonomous_verify** | **pass** matrix all phases; 140753 prims; `fileio` scorer fix (`logs/workers/W-NFS-report-2026-11-07.md`) |
+| NFS Chrome harness | Visible canvas (lum ~20 boot, ~7 end); **not** Hitman-class sustained black; FPS ~13–20 open |
 
 ## Artifacts (new this campaign)
 

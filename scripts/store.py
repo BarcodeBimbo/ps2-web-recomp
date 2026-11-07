@@ -1026,7 +1026,12 @@ def download(identifier, mode, payload, ext, password, root, importer, twocaptch
                         path = Path(result['path'])
                         if not path.is_file(): raise ValueError('Downloader did not produce a file.')
                         update(identifier, status='importing', path=str(path), bytes=int(result.get('bytes') or path.stat().st_size), total=result.get('total'), speed=0, detail='Installing...')
-                        game = importer({'path': str(path), 'title': JOBS[identifier]['title'], 'password': password})
+                        game = importer({
+                            'path': str(path),
+                            'title': JOBS[identifier]['title'],
+                            'password': password,
+                            'download_job_id': identifier,
+                        })
                         update(identifier, status='complete', game_id=game['id'], detail='')
                         return
                     except ValueError as browser_error:
@@ -1112,7 +1117,12 @@ def download(identifier, mode, payload, ext, password, root, importer, twocaptch
                 path = Path(result['path'])
                 if not path.is_file(): raise ValueError('Downloader did not produce a file.')
                 update(identifier, status='importing', path=str(path), bytes=int(result.get('bytes') or path.stat().st_size), total=result.get('total'), speed=0, detail='Installing...')
-                game = importer({'path': str(path), 'title': JOBS[identifier]['title'], 'password': password})
+                game = importer({
+                    'path': str(path),
+                    'title': JOBS[identifier]['title'],
+                    'password': password,
+                    'download_job_id': identifier,
+                })
                 update(identifier, status='complete', game_id=game['id'], detail='')
             finally:
                 with TURN:
@@ -1179,7 +1189,12 @@ def download(identifier, mode, payload, ext, password, root, importer, twocaptch
                         # Atomically close cancellation before handing ownership to the installer.
                         update(identifier,status='importing',path=str(target),speed=0)
                 partial.replace(target)
-                game = importer({'path':str(target),'title':JOBS[identifier]['title'],'password':password})
+                game = importer({
+                    'path': str(target),
+                    'title': JOBS[identifier]['title'],
+                    'password': password,
+                    'download_job_id': identifier,
+                })
                 update(identifier,status='complete',game_id=game['id'])
                 break
             except Exception:

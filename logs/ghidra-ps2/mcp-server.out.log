@@ -2972,3 +2972,6 @@ ERROR Unhandled error on /run_analysis (GhidraMCPHeadlessServer) java.io.IOExcep
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
  
+INFO  Reopened existing raw binary from project: cnk_boot.elf (C:\Users\joshy\ghidra_exports\ps2-elves\cnk_boot.elf) (HeadlessProgramProvider)  
+ERROR Invalid PNG data at 20659780 (PngDataType)  
+ERROR Invalid PNG data at 30759780 (PngDataType)  

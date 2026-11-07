@@ -156,17 +156,19 @@
       "nfs_mw": {
         "boot": "pass",
         "menu": "pass",
-        "first_disc_read": "pass_manual",
-        "streaming": "pass_manual",
-        "sustained_run": "pass_manual",
-        "log": "logs/discfix-r5-clear-nfs-500.merged.log",
+        "first_disc_read": "pass",
+        "streaming": "pass",
+        "sustained_run": "pass",
+        "log": "logs/autonomous-pipeline/60c82f4a111da300ac23bbec85272788-500f-20261107T153240Z.log",
         "frames": 500,
         "prims": 140753,
         "cdvd_searches_found": 0,
+        "fileio_disc_opens": 1,
+        "disc_read_signals": 1,
         "sif_packets_waiting": 0,
         "alchemy_real": false,
         "leftover_semas": [2, 17, 23, 29, 30, 32],
-        "note": "Scorer first_disc_read needs SearchFile strings; NFS uses fileio. Guest IRX + pad/SPU2 traces prove pad/sound path without HLE rewrite."
+        "note": "2026-11-07 W-NFS: scorer accepts fileio cdrom opens for nfs_mw; autonomous_verify matrix JSON all phases pass."
       }
     },
     "ranked_rewrite_decision": {

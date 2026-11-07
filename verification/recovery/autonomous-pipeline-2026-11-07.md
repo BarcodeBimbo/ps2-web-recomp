@@ -19,7 +19,18 @@
 | **Per-game registry** | Knobs + quarantine | `verification/recovery/game-fix-registry.json` (**new**) |
 | **Autonomous verify** | Smoke + health + matrix JSON | `scripts/autonomous_verify.py` (**new**) |
 
-**Download → playable chain (today):** Store job completes → `import_game` copies/extracts → build worker runs explore + native/web builds → `install_health` marks ready/failed → manual matrix/disc-fix boards for Hitman/NFS.
+**Download → playable chain (today):** Store job completes → `import_game` (malware guard + `install_manifest.json` stub) → build worker runs explore + native/web builds → `install_health` + `self_heal` → optional `PS2_STRICT_VERIFY=1` → `ready`. Matrix/disc-fix boards still manual for Hitman/NFS.
+
+### Store hooks (2026-11-07, W-STORE)
+
+| Hook | Location | Behavior |
+|------|----------|----------|
+| Post-download | `import_game` + `store_pipeline_hooks.note_post_download` | Job id from store transfer id; append `logs/autonomous-pipeline/store-pipeline-events.jsonl` |
+| Manifest stub | `games/<id>/install_manifest.json` | `source.sha256`, `download_job_id`, import/build timestamps, health snapshot |
+| Post-build | `panel.build` → `finalize_post_build` | Updates manifest; `PS2_STRICT_VERIFY=1` blocks `ready` on health **warn** or **fail** (full installs) |
+| **Gap (documented)** | `autonomous_verify.py` inline smoke | **Not wired** on build hot path — too slow; run CLI/nightly per E3/E8 |
+| **Gap** | Nightly download→verify | Log target exists; scheduler not in repo yet |
+| **Gap** | Chrome harness `canvas_lum` at install | Requires web rebuild + browser job; see self-heal T1 |
 
 ## Patch layers (every new install)
 
@@ -40,7 +51,7 @@
 | E5 | **Rebuild web** for titles with `web_rebuild_required_after_runtime` | Harness canvas_lum threshold |
 | E6 | **Matrix → 100%** | CNK + NFS scorer gaps closed (`live-matrix` SUMMARY) |
 | E7 | **FPS lane** | GoW 3600f min60 browser; extend `autonomous_verify` with frame timing |
-| E8 | **Store automation test** | `tests/store_pipeline.py` green; optional nightly catalog pull |
+| E8 | **Store automation test** | [x] 2026-11-07 — `tests/store_pipeline.py` 14/14; nightly catalog pull still optional |
 
 **Loop rule:** after each step passes evidence gate, promote fixes to `game-fix-registry.json` + `discfix-matrix-board.json` (if behavioral), then pick next failing game from `autonomous_verify` summary.
 
