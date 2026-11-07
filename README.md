@@ -1,5 +1,7 @@
 # CyberArcade
 
+This project is a fork of [snuri00/ps2-web-recomp](https://github.com/snuri00/ps2-web-recomp). Upstream code remains under that project's license; Windows / CyberArcade changes in this tree are additional work on top of that base.
+
 Cursor is used for research, reverse engineering, and WebAssembly patching. Commits may be authored as **Cursor** (`cursor@users.noreply.github.com`) so that assistance is visible in history.
 
 **Latest runtime fix:** [NFS polling RPC deadlock](docs/NFS_RPC_FIX.md), verified with the uploaded driver snapshot. Broader fixes and test limits: [FIX_REPORT.md](docs/FIX_REPORT.md).
@@ -227,7 +229,9 @@ The VLC tables of the MPEG decoder are adapted from [Play!](https://github.com/j
 
 ## License
 
-The code in this repository is available under the MIT License, see [LICENSE](LICENSE). `runtime/src/ipu/tables.hpp` keeps the BSD 2-clause notice of Play!.
+Upstream [snuri00/ps2-web-recomp](https://github.com/snuri00/ps2-web-recomp) is licensed under the **MIT License** (Copyright (c) 2026 Samir Nuri). That license applies to the forked code in this repository; the [LICENSE](LICENSE) file is the upstream MIT text and is kept unchanged.
+
+New work in this CyberArcade / Windows fork (documentation, Windows packaging, HLE/runtime patches, panel and tooling changes unique to this tree) is provided under the same MIT terms unless a file says otherwise. Third-party notices stay with their components — for example `runtime/src/ipu/tables.hpp` keeps the BSD 2-clause notice of Play!.
 
 
 ## November security and control update
