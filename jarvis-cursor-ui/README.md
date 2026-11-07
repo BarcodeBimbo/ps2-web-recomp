@@ -42,9 +42,10 @@ Local / personal tooling under this workspace. Jarvis 3D marketplace listing is 
 
 - No Gumroad license, trial, or soft-lock paywall
 - Custom CSS / workbench injection required; no floating/editor overlays
-- Calendar / Knowledge / Workflows panels are stubs until wired
-- CPU/Disk gauges remain illustrative; RAM is live from the host
-- Voice channel opens **Cursor** voice/chat (not a separate LLM runtime)
+- Boot screen = `reference-command-center.png` (not the calibrating-splash PNG)
+- Calendar / Knowledge / Workflows panels are stubs until wired — **visual chrome must still match the reference image**
+- CPU/Disk gauges remain illustrative until wired; RAM is live from the host
+- Voice channel opens **Cursor** voice/chat (not a separate JARVIS TTS persona); UI copy is full JARVIS branding
 
 ## Install in Cursor
 
