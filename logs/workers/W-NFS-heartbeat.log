@@ -8,3 +8,15 @@
 [2026-11-07 18:55:40] W-NFS-2 acquired web-60c82f4a lock pid=22752
 [2026-11-07 18:55:59] W-NFS-2 implementing host/web.cpp prefetch
 [2026-11-07 18:56:47] W-NFS-2 reading web.cpp; lock held; implementing deeper prefetch
+[2026-11-07 18:57:12] W-NFS-2 host/web.cpp patched; starting NFS web rebuild
+[2026-11-07 18:57:13] W-NFS-2 rebuild started pid=29860
+[2026-11-07 18:57:15] W-NFS-2 deepening defaults (48/24/16); then NFS-only ninja rebuild
+[2026-11-07 18:57:25] W-NFS-2 relaunching NFS web rebuild via helper script
+[2026-11-07 18:57:30] W-NFS-2 rebuild_pid=11016 alive=True
+[2026-11-07 18:57:39] W-NFS-2 deepened kReadAhead=48 prefetchMin=24 maxFetches=16; claiming lock pid=28648; starting NFS incremental rebuild
+[2026-11-07 18:57:50] W-NFS-2 wrote prefetch-fix report; rebuild still running
+[2026-11-07 18:57:51] W-NFS-2 starting incremental ninja ps2web under NFS lock (no Hitman tree)
+[2026-11-07 18:58:01] W-NFS-2 implement done; rebuild pid=11016 in flight; checkbox left open
+[2026-11-07 18:58:04] W-NFS-2 incremental failed (cache points at -next); switching to windows_port --web-only NFS
+[2026-11-07 18:58:20] W-NFS-2 found live cmake rebuild on web-60c82-next pid=29716; will NOT kill; monitoring
+[2026-11-07 18:58:35] W-NFS-2 wrote W-NFS-stream-fix evidence; monitoring in-flight NFS -next rebuild

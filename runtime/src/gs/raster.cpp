@@ -457,7 +457,9 @@ void reset() {}
 
 void draw(const State &st, const Vertex *v, int count) {
     const Setup s = make_setup(st);
-    switch (st.prim & 7u) {
+    std::uint32_t kind = static_cast<std::uint32_t>(st.prim) & 7u;
+    if (kind == 7u) kind = 0u; // undefined → point (sprite mapping wiped the FB)
+    switch (kind) {
     case 0: {
         const Attr a = attr_of(s, v[0]);
         plot(s, static_cast<int>((static_cast<float>(v[0].x) - static_cast<float>(s.ofx)) / 16.0f),

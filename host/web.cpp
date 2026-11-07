@@ -177,7 +177,13 @@ namespace {
 
 constexpr std::size_t kChunk = 256u << 10;
 constexpr std::uint32_t kSlots = 256;
-constexpr std::uint64_t kReadAhead = 16;
+// Defaults: deeper than the old 16-chunk / 8-min / uncapped-start path so
+// post-seek FILEIO (NFS FMV/level) does not serialize the EE on cold HTTP
+// ranges. Env overrides below keep tunables without a rebuild.
+// 48 * 256 KiB ≈ 12 MiB ahead; min 24 after seek; 16 concurrent Range fetches.
+constexpr std::uint64_t kReadAheadDefault = 48;
+constexpr std::uint64_t kPrefetchMinDefault = 24;
+constexpr std::uint32_t kMaxFetchesDefault = 16;
 constexpr std::uint32_t kAudioFrames = 1u << 14;
 
 enum : std::uint32_t { kEmpty, kWanted, kLoading, kReady, kFailed };
@@ -202,6 +208,28 @@ std::uint64_t g_disc_size = 0, g_use_clock = 0, g_last_chunk = ~0ull, g_run = 0;
 char *g_disc_url = nullptr;
 char *g_state_url = nullptr;
 
+std::uint64_t disc_env_u64(const char *name, std::uint64_t fallback, std::uint64_t lo, std::uint64_t hi) {
+    if (const char *raw = std::getenv(name)) {
+        char *end = nullptr;
+        const unsigned long long parsed = std::strtoull(raw, &end, 10);
+        if (end != raw && *end == '\0' && parsed >= lo && parsed <= hi)
+            return static_cast<std::uint64_t>(parsed);
+    }
+    return fallback;
+}
+
+std::uint64_t disc_readahead_max() {
+    return disc_env_u64("PS2_DISC_READAHEAD", kReadAheadDefault, 4, 64);
+}
+
+std::uint64_t disc_prefetch_min() {
+    return disc_env_u64("PS2_DISC_PREFETCH_MIN", kPrefetchMinDefault, 1, 64);
+}
+
+std::uint32_t disc_max_fetches() {
+    return static_cast<std::uint32_t>(disc_env_u64("PS2_DISC_MAX_FETCHES", kMaxFetchesDefault, 1, 64));
+}
+
 Slot *find_slot(std::uint64_t index) {
     for (Slot &s : g_slots)
         if (s.state.load(std::memory_order_acquire) != kEmpty && s.index == index) return &s;
@@ -212,6 +240,8 @@ Slot *want(std::uint64_t index) {
     if (index * kChunk >= g_disc_size) return nullptr;
     if (Slot *s = find_slot(index)) return s;
     Slot *victim = nullptr;
+    Slot *steal = nullptr;
+    const std::uint64_t steal_radius = disc_readahead_max() * 2;
     for (Slot &s : g_slots) {
         const std::uint32_t state = s.state.load(std::memory_order_acquire);
         if (state == kEmpty) {
@@ -219,7 +249,15 @@ Slot *want(std::uint64_t index) {
             break;
         }
         if ((state == kReady || state == kFailed) && (!victim || s.used < victim->used)) victim = &s;
+        // After a seek, slots still marked Wanted for the old run would otherwise
+        // block new prefetch (Loading cannot be cancelled mid-HTTP). Reclaim far
+        // not-yet-started Wanted entries so the new focus can warm immediately.
+        if (state == kWanted) {
+            const std::uint64_t dist = s.index > index ? s.index - index : index - s.index;
+            if (dist > steal_radius && (!steal || s.used < steal->used)) steal = &s;
+        }
     }
+    if (!victim) victim = steal;
     if (!victim) return nullptr;
     if (!victim->data) victim->data = new std::uint8_t[kChunk];
     victim->index = index;
@@ -231,16 +269,19 @@ Slot *want(std::uint64_t index) {
 }
 
 void advance(std::uint64_t index) {
-    if (index <= g_last_chunk && g_last_chunk - index <= kReadAhead * 4) return;
+    const std::uint64_t window = disc_readahead_max() * 4;
+    if (index <= g_last_chunk && g_last_chunk - index <= window) return;
     g_run = index == g_last_chunk + 1 ? g_run + 1 : 0;
     g_last_chunk = index;
 }
 
 void read_ahead(std::uint64_t index) {
-    // After a seek (FMV/level load) g_run resets to 0 and used to prefetch nothing,
-    // so the EE stalled on every chunk and gameplay felt like skipped frames.
-    // Keep a minimum depth so the first sequential reads after a jump stay warm.
-    const std::uint64_t depth = std::max<std::uint64_t>(8, std::min(g_run * 2 + 4, kReadAhead));
+    // After a seek (FMV/level load) g_run resets to 0. Keep a deep minimum so the
+    // first sequential reads stay warm, then grow with run length up to the cap.
+    // PS2_DISC_PREFETCH_MIN / PS2_DISC_READAHEAD gate risky depth without a rebuild.
+    const std::uint64_t max_depth = disc_readahead_max();
+    const std::uint64_t min_depth = std::min(disc_prefetch_min(), max_depth);
+    const std::uint64_t depth = std::max(min_depth, std::min(g_run * 2 + 8, max_depth));
     for (std::uint64_t k = 1; k <= depth; ++k) want(index + k);
 }
 
@@ -263,8 +304,10 @@ const Slot *chunk(std::uint64_t index) {
                 ps2::halt("Disc streaming failed or timed out. Check the server connection and reload the game.");
                 return nullptr;
             }
+            // Shorter quantum keeps discWaiting visible and lets the render loop
+            // re-enter service_disc while a cold range is still in flight.
             ps2web_busy_heartbeat(1);
-            emscripten_futex_wait(&s->state, state, 1000.0);
+            emscripten_futex_wait(&s->state, state, 250.0);
         }
     }
     return nullptr;
@@ -303,10 +346,38 @@ std::size_t read_disc(std::uint64_t offset, void *out, std::size_t size) {
 }
 
 void service_disc() {
+    // Cap in-flight Range fetches so slots stay reclaimable after seeks, and
+    // always start the Wanted chunks closest to the EE focus first.
+    // Override with PS2_DISC_MAX_FETCHES (1..64); default 12.
+    const std::uint32_t max_fetches = disc_max_fetches();
+    std::uint32_t loading = 0;
     for (Slot &s : g_slots) {
+        if (s.state.load(std::memory_order_acquire) == kLoading) ++loading;
+    }
+    if (loading >= max_fetches) return;
+
+    const std::uint64_t focus = g_last_chunk == ~0ull ? 0 : g_last_chunk;
+    while (loading < max_fetches) {
+        Slot *best = nullptr;
+        std::uint64_t best_dist = ~0ull;
+        for (Slot &s : g_slots) {
+            if (s.state.load(std::memory_order_acquire) != kWanted) continue;
+            const std::uint64_t dist = s.index > focus ? s.index - focus : focus - s.index;
+            if (dist < best_dist) {
+                best_dist = dist;
+                best = &s;
+            }
+        }
+        if (!best) break;
         std::uint32_t expected = kWanted;
-        if (s.state.compare_exchange_strong(expected, kLoading, std::memory_order_acq_rel))
-            ps2web_fetch(g_disc_url, static_cast<double>(s.index * kChunk), static_cast<int>(s.size), s.data, &s.state);
+        if (best->state.compare_exchange_strong(expected, kLoading, std::memory_order_acq_rel)) {
+            ps2web_fetch(g_disc_url, static_cast<double>(best->index * kChunk), static_cast<int>(best->size), best->data,
+                         &best->state);
+            ++loading;
+        } else if (expected != kWanted) {
+            // Lost the race or state changed; rescan.
+            continue;
+        }
     }
 }
 

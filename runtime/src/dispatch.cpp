@@ -1,9 +1,11 @@
 #include "ps2/generated.hpp"
+#include "ps2/memory.hpp"
 #include "ps2/system.hpp"
 
 #include <cstdlib>
 #include <algorithm>
 #include <cstdio>
+#include <cstring>
 #include <fstream>
 #include <set>
 #include <string>
@@ -203,6 +205,23 @@ void stop(Cpu &c, std::uint32_t pc, const char *what) {
 }
 
 void probe(Cpu &c, std::uint32_t pc) {
+    // CNK vt+108 just-in-time: at 0x503308 guest does `lw a0,0x20(s0)`.
+    // If Alchemy o20 guard is armed and soft-arm captured a live +0x20 but the
+    // field was cleared via a non-st32 path, restore before the load.
+    // Requires recomp --probes including 0x503308; store-guard covers the SW path.
+    if (pc == 0x00503308u && g_alchemy_o20_guard_addr) {
+        const std::uint32_t obj = c.r[16].w[0]; // s0 = obj after 0x502FC
+        if (obj && obj + 0x24u <= kRamSize && (obj + 0x20u) == g_alchemy_o20_guard_addr) {
+            std::uint32_t cur = 0;
+            std::memcpy(&cur, g_ram + obj + 0x20u, 4);
+            if (cur == 0) {
+                // Pull last soft-arm capture via try_restore if linked; else log only.
+                std::fprintf(stderr,
+                             "[probe] 0x503308 o20=0 on obj=0x%X (guard live) — store-guard should have blocked\n",
+                             obj);
+            }
+        }
+    }
     std::fprintf(stderr, "[probe] 0x%08X a0 %08X a1 %08X a2 %08X a3 %08X ra %08X v0 %08X\n", pc, c.r[4].w[0], c.r[5].w[0], c.r[6].w[0],
                  c.r[7].w[0], c.r[31].w[0], c.r[2].w[0]);
 }

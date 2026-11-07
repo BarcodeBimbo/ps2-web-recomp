@@ -3,3 +3,9 @@
 [2026-11-07 18:54:03] W-CNK ghidra switch=cnk_boot.elf decompiling 5032e0/110100/51c100
 [2026-11-07 18:54:19] W-CNK hunting SW to +0x20; vt108 callers
 [2026-11-07 18:56:30] W-CNK vt108 seq=502d20-then-lw+20; candidate intercept=0x503308
+[2026-11-07 18:56:54] W-CNK-2 start pid=22908 locks=web+native-b49f acquired
+[2026-11-07 18:57:00] W-CNK-2 locks held; reading obj20 fix + ghidra 503308
+[2026-11-07 18:57:08] W-CNK-2 ghidra cnk_boot.elf current; decomp 503308 + search SW +0x20
+[2026-11-07 18:57:28] W-CNK-2 vt108=FUN_005032e0; 502d20 walks vt+0x78; candidate=0x503308 lw+20 gate; hunting clear writers + intercept path
+[2026-11-07 18:57:50] W-CNK done report=W-CNK-fresh-2026-11-07.md next=0x503308 preempt prims=2 locks=release
+[2026-11-07 18:57:58] W-CNK-2 plan=st32 block clear of butanim obj+0x20 (alchemy-gated) + probe restore at 0x503308 if rebuildable

@@ -748,8 +748,12 @@ int prompt_capture_status() { return capture::g_prompt_capture.load(); }
 
 void kick(bool draw) {
     State &s = g_state;
-    const std::uint32_t prim = static_cast<std::uint32_t>(s.prim) & 7u;
-    const int needed = prim == 0 ? 1 : (prim == 1 || prim == 2 || prim == 6) ? 2 : prim == 7 ? 1 : 3;
+    // GS PRIM type 7 is undefined. Hitman emits many 0x07F/0x7FF kicks. Mapping
+    // them to SPRITE (need=2) paired unrelated verts into huge black quads and
+    // worsened present lum; draw as POINT (need=1) so fragments are not dropped.
+    std::uint32_t prim = static_cast<std::uint32_t>(s.prim) & 7u;
+    if (prim == 7u) prim = 0u;
+    const int needed = prim == 0 ? 1 : (prim == 1 || prim == 2 || prim == 6) ? 2 : 3;
     if (s.count < needed) return;
     if (draw) {
         if (cpu_raster()) raster::draw(s, s.queue, needed);
@@ -813,10 +817,15 @@ void write(std::uint32_t reg, std::uint64_t value) {
         if (++n >= start && n < start + 100000) std::fprintf(stderr, "[gs] w %02X %016llX\n", reg, static_cast<unsigned long long>(value));
     }
     switch (reg) {
-    case 0x00:
+    case 0x00: {
+        // Opt-in: strip TME so Hitman textured sprites/meshes use vertex RGBA
+        // (diagnose empty texels + ATE GREATER 2 rejecting A≤2).
+        static const bool no_tme = std::getenv("PS2_GS_NO_TME") != nullptr;
+        if (no_tme) value &= ~(1ull << 4);
         s.prim = value;
         s.count = 0;
         break;
+    }
     case 0x01: {
         s.rgbaq = value;
         const std::uint32_t qbits = static_cast<std::uint32_t>(value >> 32);

@@ -1,0 +1,21 @@
+START build_web 60c82f4a111da300ac23bbec85272788
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/PS2Recomp/build/tools-windows
+ninja: no work to do.
+code 1013194 instructions (3957 KiB), functions 11956, entries 94607, rejected seeds 5111
+1 distinct code window images of 1 captured, code 638 instructions (2 KiB), 0 entry points called from the program
+1067 units written to generated/60c82f4a111da300ac23bbec85272788
+-- Configuring done (1.5s)
+-- Generating done (0.3s)
+-- Build files have been written to: C:/PS2Recomp/build/web-60c82f4a111da300ac23bbec85272788-next
+[0/2] Re-checking globbed directories...
+[1/1106] Generating gs_wgsl.cpp
+[2/1106] Generating blit_wgsl.cpp
+[3/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/memory.cpp.o
+[4/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/dispatch.cpp.o
+[5/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/system.cpp.o
+[6/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/kernel.cpp.o
+[7/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/hw.cpp.o
+[8/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/cop.cpp.o
+[9/1106] Building CXX object CMakeFiles/ps2runtime.dir/runtime/src/disc.cpp.o

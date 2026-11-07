@@ -556,6 +556,7 @@ void poll_butanim_parse_complete() {
     if (g_butanim_saw_ff_clear && o20 != 0 && assemble_holds_butanim()) {
         g_butanim_parsed_ok = true;
         g_ui_igb_parse_attempted = true;
+        alchemy_o20_guard_disarm();
         std::fprintf(stderr,
                      "[igfileio] UI parse complete (butanim obj=0x%X +0xFF +20=0x%X plant ok, release intro)\n",
                      g_butanim_soft_obj, o20);
@@ -1441,6 +1442,10 @@ void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim) {
         // FCE0/vt+108 runs. We restore it so the ingest sticks and prims >> 2.
         g_butanim_soft_o14 = o14;
         g_butanim_soft_o20 = o20;
+        // EE intercept: suppress guest SW-zero of obj+0x20 during the soft-arm
+        // → vt+108 burst so 0x503308 still loads a live attach pointer and
+        // calls 0x51C100. Quarantined — only armed from this butanim path.
+        if (o20) alchemy_o20_guard_arm(obj + 0x20u);
         std::fprintf(stderr,
                      "[igfileio] noted butanim soft-arm obj=0x%X (cleared +0xFF) +8=%u +14=0x%X +20=0x%X "
                      "assemble_butanim=%d\n",
@@ -1468,6 +1473,7 @@ void reset() {
     g_butanim_saw_ff_clear = false;
     g_butanim_parsed_ok = false;
     g_butanim_o20_restore_count = 0;
+    alchemy_o20_guard_disarm();
 }
 
 bool handle(std::uint32_t method, std::uint32_t args, std::uint32_t size, std::uint32_t ret, std::uint32_t ret_size) {

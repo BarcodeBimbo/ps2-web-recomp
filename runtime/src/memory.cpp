@@ -30,6 +30,34 @@ enum class Region { Ram, Scratchpad, Io, Vu, Rom, None };
 bool g_watch_on = false;
 std::uint32_t g_watch_base = 0, g_watch_end = 0;
 
+// CNK/Alchemy butanim obj+0x20 clear suppress (see memory.hpp).
+std::uint32_t g_alchemy_o20_guard_addr = 0;
+int g_alchemy_o20_guard_blocks = 0;
+
+void alchemy_o20_guard_log(std::uint32_t a) {
+    std::fprintf(stderr,
+                 "[alchemy-o20] blocked clear of 0x%08X (kept live for vt+108) pc=0x%08X ra=0x%08X blocks=%d\n",
+                 a, g_cpu.pc, g_cpu.r[31].w[0], g_alchemy_o20_guard_blocks);
+}
+
+void alchemy_o20_guard_arm(std::uint32_t obj_plus_20) {
+    if (!obj_plus_20 || obj_plus_20 + 4u > kRamSize) {
+        g_alchemy_o20_guard_addr = 0;
+        return;
+    }
+    g_alchemy_o20_guard_addr = obj_plus_20;
+    g_alchemy_o20_guard_blocks = 0;
+    std::fprintf(stderr, "[alchemy-o20] guard armed at 0x%08X (suppress SW zero until disarm)\n", obj_plus_20);
+}
+
+void alchemy_o20_guard_disarm() {
+    if (g_alchemy_o20_guard_addr) {
+        std::fprintf(stderr, "[alchemy-o20] guard disarmed (was 0x%08X, blocks=%d)\n",
+                     g_alchemy_o20_guard_addr, g_alchemy_o20_guard_blocks);
+    }
+    g_alchemy_o20_guard_addr = 0;
+}
+
 void init_watch() {
     if (const char *spec = std::getenv("PS2_WATCH")) {
         std::uint32_t base = 0, len = 0;
@@ -134,6 +162,12 @@ void write_slow(std::uint32_t a, T v) {
     const Target t = resolve(a);
     if (t.host) {
         check_span(t, sizeof(T));
+        if constexpr (sizeof(T) == 4) {
+            if (t.region == Region::Ram &&
+                alchemy_o20_guard_blocks(t.address & (kRamSize - 1), static_cast<std::uint32_t>(v))) {
+                return;
+            }
+        }
         if (g_watch_on && t.region == Region::Ram) {
             const std::uint32_t base = t.address & (kRamSize - 1);
             if (base >= g_watch_base && base < g_watch_end) watch_hit(base, static_cast<std::uint32_t>(v), "store-slow");

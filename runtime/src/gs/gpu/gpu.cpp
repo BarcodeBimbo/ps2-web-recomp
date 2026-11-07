@@ -1323,7 +1323,8 @@ void draw(const State &st, const Vertex *v, int count) {
     if (g_image.active && !g_image.pending.empty()) flush_image();
     std::uint64_t attr = st.prim;
     if (!(st.prmodecont & 1u)) attr = (st.prim & 7u) | (st.prmode & ~7ull);
-    const std::uint32_t prim = static_cast<std::uint32_t>(st.prim) & 7u;
+    std::uint32_t prim = static_cast<std::uint32_t>(st.prim) & 7u;
+    if (prim == 7u) prim = 0u; // undefined → point (sprite mapping wiped the FB)
     const Context &c = st.ctx[(attr >> 9) & 1u];
     SetupCache &cache = g_setup_cache;
     if (cache.generation != g_setup_generation || cache.attr != attr || cache.clut != g_clut_slot) {

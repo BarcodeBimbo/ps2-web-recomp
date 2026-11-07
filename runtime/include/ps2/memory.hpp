@@ -20,10 +20,27 @@ void watch_hit(std::uint32_t a, std::uint32_t v, const char *via);
 void watch_span(std::uint32_t a, std::uint32_t n, const char *via);
 void init_watch();
 
+// CNK/Alchemy quarantine: while armed, guest SW of 0 to this EE address is
+// dropped so vt+108 (0x5032E0) still sees *(obj+0x20) for 0x51C100 ingest.
+// Armed only from igfileio butanim soft-arm — Hitman/NFS disc path never sets it.
+extern std::uint32_t g_alchemy_o20_guard_addr;
+extern int g_alchemy_o20_guard_blocks;
+void alchemy_o20_guard_log(std::uint32_t a);
+void alchemy_o20_guard_arm(std::uint32_t obj_plus_20);
+void alchemy_o20_guard_disarm();
+
 template <typename T>
 inline bool watched(std::uint32_t a, std::uint32_t v) {
     if (g_watch_on && a >= g_watch_base && a < g_watch_end) [[unlikely]] watch_hit(a, v, "store");
     return false;
+}
+
+// Returns true when the store must be suppressed (caller skips the write).
+inline bool alchemy_o20_guard_blocks(std::uint32_t a, std::uint32_t v) {
+    if (!g_alchemy_o20_guard_addr || v != 0 || a != g_alchemy_o20_guard_addr) [[likely]] return false;
+    ++g_alchemy_o20_guard_blocks;
+    if (g_alchemy_o20_guard_blocks <= 8) alchemy_o20_guard_log(a);
+    return true;
 }
 
 std::uint8_t slow_ld8(std::uint32_t a);
@@ -92,6 +109,7 @@ inline void st16(std::uint32_t a, std::uint16_t v) {
 }
 
 inline void st32(std::uint32_t a, std::uint32_t v) {
+    if (alchemy_o20_guard_blocks(a, v)) [[unlikely]] return;
     watched<std::uint32_t>(a, v);
     if (auto *p = fast<std::uint32_t>(a)) { store(p, v); return; }
     slow_st32(a, v);
