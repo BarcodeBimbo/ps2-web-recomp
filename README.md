@@ -2,13 +2,13 @@
 
 Cursor is used for research, reverse engineering, and WebAssembly patching. Commits may be authored as **Cursor** (`cursor@users.noreply.github.com`) so that assistance is visible in history.
 
-**Latest runtime fix:** [NFS polling RPC deadlock](NFS_RPC_FIX.md), verified with the uploaded driver snapshot. Broader fixes and test limits: [FIX_REPORT.md](FIX_REPORT.md).
+**Latest runtime fix:** [NFS polling RPC deadlock](docs/NFS_RPC_FIX.md), verified with the uploaded driver snapshot. Broader fixes and test limits: [FIX_REPORT.md](docs/FIX_REPORT.md).
 
 **Start here:** extract to `C:\PS2Recomp` and double-click `Setup.cmd`. It installs the emulator tools, opens the library, and automatically hosts phone access on a private LAN address and free port. The Store now accepts **direct HTTPS file links only**; no browser/solver installation is needed. Existing games must be rebuilt once to receive the Asyncify compatibility runtime and timing fixes. Poster clicks then launch directly and automatically.
 
-This source update is an audit candidate, not a certified all-game release. Read [the current audit, fixes, test results and remaining blockers](RELEASE_AUDIT.md) before updating. Older audit documents below describe earlier work.
+This source update is an audit candidate, not a certified all-game release. Read [the current audit, fixes, test results and remaining blockers](docs/RELEASE_AUDIT.md) before updating. Older audit documents below describe earlier work.
 
-Updating an existing Windows installation? See [Update notes and installation steps](UPDATE_NOTES.md) for the password fix, rebuild recovery, Store downloads and new player interface.
+Updating an existing Windows installation? See [Update notes and installation steps](docs/UPDATE_NOTES.md) for the password fix, rebuild recovery, Store downloads and new player interface.
 
 PlayStation 2 games running in the browser through static recompilation. The game's Emotion Engine machine code is translated ahead of time into C++ and compiled to WebAssembly, so the main CPU is never interpreted; the rest of the console, its operating system and hardware, is emulated by a runtime that draws with WebGPU.
 
@@ -211,6 +211,6 @@ The toolbar now includes Start/Menu in fullscreen, complete dual-stick mobile in
 
 - [Mobile setup and controls](docs/mobile.md)
 - [Input, cheats and compatibility modes](docs/controls-and-cheats.md)
-- [Security review, actual tests and remaining limits](AUDIT_REPORT.md)
+- [Security review, actual tests and remaining limits](docs/AUDIT_REPORT.md)
 
 Windows setup now uses a SHA-256-pinned Python 3.14.10 embed in `tools/python-3.14.10`. Previously installed private Python files can remain; the updated setup selects the new runtime. Browser gameplay does not launch a native game executable. Local preparation/exploration still uses Windows tools.
