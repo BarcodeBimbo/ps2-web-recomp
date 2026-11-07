@@ -78,6 +78,7 @@ class Flow(unittest.TestCase):
   ok=analyze_log('[gs] 99686 primitives drawn\n[ee] stopped after 600 frames, 1 cycles: frame limit reached\n')
   self.assertEqual(ok['status'],'ok')
   folder=self.game('c'*32,'building')
+  # Legacy games/<id>/*.log still works; dedicated tree is logs/games/<id>/.
   (folder/'explore.log').write_text('[gs] 2 primitives drawn\n[ee] stopped after 120 frames: missing code at 0x100000\n')
   report=write_health(folder)
   self.assertEqual(report['status'],'fail')

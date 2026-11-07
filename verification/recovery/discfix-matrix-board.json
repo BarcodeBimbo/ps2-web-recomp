@@ -76,5 +76,15 @@
   },
   "ranked_rewrites_gated": ["R1_SIF_end", "R2_WaitSema_fidelity", "R3_readee", "R4_CdSync", "R5_pad_sound"],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS.",
-  "commit_policy": "No commits until stable build; then commit freely."
+  "commit_policy": "No commits until stable build; then commit freely.",
+  "bios_reference": {
+    "report": "verification/recovery/bios-reference-live-report.md",
+    "source": "2fa08b23-fc60-42ef-8713-1b2571f32b91",
+    "facts_for_R3": [
+      "CDVDFSV byte-identical on SCPH-70012 and SCPH-77001 — one generic complete contract",
+      "Every EE read: payload→dst, preserve readee at eeaddr1, nbytes→curReadPos at eeaddr2, then sif::complete_call(0x80000595)",
+      "Wake IOP sceCdSync / DiskReady / Status in cdvd.cpp; no CNK host_signal bleed"
+    ],
+    "rebuild_note": "Hitman/NFS ninja rebuilds failed (~65s) with clang exit -1 mid-compile — likely parallel build thrash; retry cmake --build -j2 one game at a time after matrix pass"
+  }
 }

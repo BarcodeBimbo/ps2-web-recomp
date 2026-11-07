@@ -27,7 +27,7 @@ def phase(name, action):
     stop = threading.Event()
     def heartbeat():
         while not stop.wait(10):
-            print(f'    {name}: still working ({int(time.monotonic()-started)}s). See tools/setup.log for command output.', flush=True)
+            print(f'    {name}: still working ({int(time.monotonic()-started)}s). See logs/tools/setup.log for command output.', flush=True)
     thread = threading.Thread(target=heartbeat, daemon=True)
     thread.start()
     try:

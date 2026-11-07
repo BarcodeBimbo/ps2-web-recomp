@@ -59,7 +59,9 @@ export EMSDK="${EMSDK:-$ROOT/tools/emsdk}"
 setup=()
 [ "$web" = 1 ] || setup=(--native-only)
 if { [ "$web" = 1 ] && [ ! -f "$EMSDK/emsdk_env.sh" ]; } || [ ! -x "$tools/eerecomp" ] || [ ! -x "$tools/vurecomp" ]; then "$here/setup.sh" "${setup[@]}"; fi
-mkdir -p "$game/disc" "$game/vu1" "$game/shots" "$generated"
+LOGS="${PS2_LOGS:-$ROOT/logs}"
+game_logs="$LOGS/games/$name"
+mkdir -p "$game/disc" "$game/vu1" "$game_logs/shots" "$generated"
 
 echo "== [1/6] disc"
 iso="$game/disc.iso"
@@ -135,12 +137,12 @@ if [ "$explore" = 1 ]; then
     build_native
     rm -f "$game/misses.txt" "$game/explore.ps2" "$game/explore_ram.bin"
     PS2_DUMP="$game/explore_ram.bin" PS2_GPU_LOW_POWER=1 PS2_VU_RECORD="$game/vu1" "$native/ps2run" "$elf" --disc "$iso" --misses "$game/misses.txt" --memcard "$game/explore.ps2" \
-      --frames "$frames" "${presses[@]}" --frames-dir "$game/shots" --frame-every 300 > "$game/explore.log" 2>&1 || true
+      --frames "$frames" "${presses[@]}" --frames-dir "$game_logs/shots" --frame-every 300 > "$game_logs/explore.log" 2>&1 || true
     captured=0
     if [ ${#overlays[@]} -gt 0 ] && [ -f "$game/explore_ram.bin" ]; then
       captured=$(python3 -I "$here/windows.py" capture "$elf" "$game/explore_ram.bin" "$game/overlays" "$game/misses.txt" | grep -c '^captured' || true)
     fi
-    reason=$(sed -n 's/^\[ee\] halted: //p' "$game/explore.log" | head -1)
+    reason=$(sed -n 's/^\[ee\] halted: //p' "$game_logs/explore.log" | head -1)
     added=$(python3 -I - "$game/entries.txt" "$game/misses.txt" <<'EOF'
 import os, sys
 entries, misses = sys.argv[1], sys.argv[2]
@@ -160,7 +162,7 @@ EOF
     [ "$added" -gt 0 ] || [ "$captured" -gt 0 ] || break
     translate
   done
-  echo "frames of the last run are in games/$name/shots, its log in games/$name/explore.log"
+  echo "frames of the last run are in logs/games/$name/shots, its log in logs/games/$name/explore.log"
 else
   echo "skipped"
 fi
