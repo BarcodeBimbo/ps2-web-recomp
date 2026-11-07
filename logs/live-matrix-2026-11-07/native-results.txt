@@ -1,0 +1,12 @@
+
+name      id         exe   iso exit boot past_loader prims    fps_host crash
+----      --         ---   --- ---- ---- ----------- -----    -------- -----
+GoW_USA   695b874b  True  True 0    YES  YES         11600480 107.6         
+GoW_II    34402ee3  True  True 0    YES  YES         4989882  25.9          
+CNK       b49f2e76  True  True 0    YES  YES         2        1,592.1       
+Hitman_BM a2116d2a  True  True 0    YES  YES         261534   250.9         
+NFS_MW    60c82f4a  True  True 0    YES  YES         408728   376.0         
+Sly1      c0c45270 False False      NO                                      
+
+
+

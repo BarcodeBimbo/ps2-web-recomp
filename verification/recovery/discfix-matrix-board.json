@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T23:55:00-05:00",
+  "updated": "2026-11-07T07:32:00-05:00",
   "priority_pair": true,
   "games": {
     "hitman_bm": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -7,7 +7,7 @@
   },
   "protocol": "Disc-fix posts proposed_change + evidence. Matrix runs phases and posts verdict pass|fail. Next patch only after pass. Simple English.",
   "step": 8,
-  "phase": "awaiting_matrix",
+  "phase": "observe_pass_awaiting_next_proposal",
   "prior_cycles": [
     {
       "step": 1,
@@ -45,10 +45,16 @@
       "id": "R4_clear_with_evidence",
       "verdict": "pass",
       "why": "CdSync mode=1 polls; post-R3 green; no wake rewrite needed"
+    },
+    {
+      "step": 8,
+      "id": "R5_pad_sound_observe",
+      "verdict": "pass",
+      "why": "Observe gate only: Hitman+NFS 400f smokes green; modules/pad/SPU2/WaitSema evidence gathered; no R5 apply; allow_discfix_apply remains false"
     }
   ],
   "discfix": {
-    "status": "proposed",
+    "status": "observe_accepted",
     "applied": {
       "R3_readee": {
         "file": "runtime/src/iop/cdvdfsv.cpp",
@@ -73,29 +79,39 @@
       "prior_ownership": "verification/recovery/waitsema-createsema-trace-live-report.md",
       "nfs_rpc_fix": "docs/NFS_RPC_FIX.md (SND Library EE driver poll wake already landed)",
       "sdk_local": "E:/usr/local/sce ee/include/libpad.h libsdr.h; iop/include/libsd.h; iop/modules/padman.irx",
-      "sdk_iso_download": "E:/AI games/...3.03.ISO \u2014 not waiting; flag if needed",
-      "r1_r4": "joint-stable 1e04172"
+      "sdk_iso_download": "E:/AI games/...3.03.ISO — not waiting; flag if needed",
+      "r1_r4": "joint-stable 1e04172",
+      "r5_observe_report": "verification/recovery/discfix-r5-observe-matrix-2026-11-07.md",
+      "r5_observe_logs": [
+        "logs/discfix-r5-observe-hitman-400.err.log",
+        "logs/discfix-r5-observe-nfs-400.err.log",
+        "logs/discfix-r5-observe-hitman-400.merged.log",
+        "logs/discfix-r5-observe-nfs-400.merged.log"
+      ]
     },
     "files_touched": [
       "runtime/src/iop/cdvdfsv.cpp"
     ],
     "ack": {
       "R4_clear_with_evidence": "pass",
+      "R5_pad_sound_observe": "pass",
       "cdvd_wake_code": false,
-      "note": "Disc-fix acknowledges R4 cleared_with_evidence. No finish_read/wake landed. CDVD R1-R4 done. R5 pad/sound still gated (out of CDVD complete path). Asking parent for joint-stable commit when ready \u2014 disc-fix will not commit."
+      "r5_apply": false,
+      "note": "Matrix accepted R5 observe gate 2026-11-07. No pad/sound HLE apply. R5 remains gated. Next legal proposals only: clear_with_evidence OR evidence-named narrow RPC fix — parent decides."
     },
     "next_options": [
+      "R5_pad_sound clear_with_evidence (observe-only close; still no HLE rewrite)",
+      "Narrow evidence-named SIF/pad/sound RPC fix proposal (prove-before-swap; still needs matrix + allow_discfix_apply)",
       "Parent joint-stable commit ask (R3 verified only code change)",
-      "Optional R5_pad_sound clear or proposal (separate track)",
       "Longer soak smokes if parent wants"
     ]
   },
   "matrix": {
-    "status": "pending",
+    "status": "pass",
     "current_phase": null,
-    "verdict": null,
-    "last_completed": "R4_clear_with_evidence",
-    "notes": "Disc-fix cycle 8: R5_pad_sound_observe (no code). Waiting for matrix.",
+    "verdict": "pass",
+    "last_completed": "R5_pad_sound_observe",
+    "notes": "Cycle 8 OBSERVE gate PASS. Short 400f Hitman+NFS smokes with PS2_TRACE_SEMA/PAD/SPU2. R1-R4 regression green (frame limit, prims, SIF 0, no real Alchemy). Leftover WaitSema IDs unchanged. No R5 apply. allow_discfix_apply=false. Mechanical matrix_phase_check.py false-fails Hitman on createsema attr=0x1FFFCE0 (FCE0 substring) — not real Alchemy contamination.",
     "phases": [
       "boot",
       "menu",
@@ -110,12 +126,18 @@
         "first_disc_read": "pass",
         "streaming": "pass",
         "sustained_run": "pass",
-        "log": "logs/discfix-r3-hitman-600.log",
-        "frames": 600,
-        "prims": 127974,
-        "sceCdSync_modes": {
-          "mode1_poll": 1854,
-          "mode0": 10
+        "log": "logs/discfix-r5-observe-hitman-400.merged.log",
+        "frames": 400,
+        "prims": 78933,
+        "observe": {
+          "modules": ["SIO2MAN", "PADMAN", "MCMAN", "MCSERV", "LIBSD", "SCRTCHPD", "SYNTHCD"],
+          "leftover_semas": [2, 7],
+          "pad_trace_lines": 395,
+          "spu2_trace_lines": 128,
+          "cdvd_searches_found": 14,
+          "sif_packets_waiting": 0,
+          "alchemy_real": false,
+          "alchemy_scorer_false_positive": "createsema attr=0x1FFFCE0 matches FCE0 regex"
         }
       },
       "nfs_mw": {
@@ -124,10 +146,18 @@
         "first_disc_read": "pass",
         "streaming": "pass",
         "sustained_run": "pass",
-        "log": "logs/discfix-r3-nfs-600.log",
-        "frames": 600,
-        "prims": 208253,
-        "sceCdSync_modes": {}
+        "log": "logs/discfix-r5-observe-nfs-400.merged.log",
+        "frames": 400,
+        "prims": 73253,
+        "observe": {
+          "modules": ["sio2man", "padman", "mcman", "mcserv", "Sound_Device_Library", "sdr_driver", "SND_Library_EE_Driver"],
+          "leftover_semas": [2, 17, 23, 29, 30, 32],
+          "pad_trace_lines": 440,
+          "spu2_trace_lines": 2237,
+          "sif_packets_waiting": 0,
+          "alchemy_real": false,
+          "note": "NFS short observe logs show fileio + IOP modules + draws; cdvdfsv search strings absent under heavy pad/SPU2 trace (same as prior r5-nfs-pad-sound-400). Prior R3 600f already proved CDVD path."
+        }
       }
     },
     "ranked_rewrite_decision": {
@@ -135,7 +165,7 @@
       "R2_WaitSema_fidelity": "cleared_with_evidence",
       "R3_readee": "verified_apply",
       "R4_CdSync": "cleared_with_evidence",
-      "R5_pad_sound": "proposed_observe"
+      "R5_pad_sound": "observe_pass_still_gated"
     },
     "allow_discfix_apply": false
   },
@@ -151,5 +181,5 @@
     "R3_readee"
   ],
   "quarantine": "Never apply CNK Alchemy host_signal 16/54/55, soft-arm, FCE0 force, virt-LBA, or +24008 hacks to Hitman/NFS. Never host_signal(2).",
-  "commit_policy": "R3 verified; R4 cleared_with_evidence; commit still deferred until parent/matrix call stable (or after R5 gate closes)."
+  "commit_policy": "R3 verified; R4 cleared_with_evidence; R5 observe pass only — apply still gated; commit still deferred until parent/matrix call stable (or after R5 gate closes)."
 }

@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~07:30 local)  
+**Updated:** 2026-11-07 (~07:34 local)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -8,15 +8,21 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **Stasis lifted:** 2026-11-07 ~05:26 — paused workers + SDK audit tracks restarted (research/observe only; no disc-fix/R5/CNK patches). Theme UI folder `jarvis-cursor-ui` removed separately. **Safe to reload Cursor.**
 
-### Standing instructions (agents) — LOCKED 2026-11-07 ~06:05
+### Standing instructions (agents) — LOCKED 2026-11-07 ~07:34 (supersedes ~06:05 observe-only ban)
 
-1. **Execute the next stage now.** Prepare, plan, and **start executing immediately**. Do **not** stop until that stage is **working**. Keep the caller updated on **every move** as it happens.
-2. **Full control / full direction.** Do **not** ask for approval on routine decisions. Bring something up only if it is truly important and needs discussion; after discussion, the **agent still makes the final call**.
-3. **Keep this file current.** Periodically update MASTER-CONTEXT with steps **completed** and **in progress** (workers, audits, downloads, blockers) so a crash or reload can resume without re-asking.
-4. **Safe commits.** When a stage reaches a point where committing to GitHub is appropriate and **will not break** existing stable functionality, **commit** (user standing order). Still no force-push / no hook skips unless explicitly asked.
-5. **Hard bans this stage:** Do **not** patch **disc-fix**, **R5**, or **CNK** (including Alchemy host hacks). Research/observe for those tracks only.
-6. **FPS bar:** **60 FPS minimum** for non-CNK games (higher preferred). **God of War is patient zero** for the FPS track.
-7. **Evidence first.** Prefer `verification/recovery/` + `logs/` over re-deriving. Product browser target remains **Chrome + Edge**.
+**Four targets (God — continuous until 100%):**
+1. **Disc-fix** working and **up to SDK standard** (`E:\usr\local\sce`) — reason the SDK was obtained.
+2. **Test matrix → 100%.**
+3. **Alchemy → 100%** (break CNK `prims=2` / loadgate gate; quarantine pulses from Hitman/NFS).
+4. **Live-test over and over**; all results under `logs/`. Debug → run → verify → repeat. **No stop / no ask.**
+
+Also still true:
+1. Execute immediately until working; live updates; keep this file current.
+2. Full control — agent makes routine calls; discuss only if truly critical.
+3. Safe commits when a stage won’t break Hitman/NFS R1–R4 paths.
+4. **FPS bar:** **≥60 ALL games** (GoW, CNK, Hitman, NFS, Sly, …). Chrome + Edge. Live FPS in IDE/Chrome.
+5. Evidence in `verification/recovery/` + `logs/`. Quarantine: never apply CNK Alchemy host hacks to Hitman/NFS disc path.
+6. **Verify-each-fix (God ~07:35):** Implement → run real game/component → check pass/fail → debug/retry. **No unverified ship** (CNK 2-prims, disc-fix SDK, matrix, Alchemy, Sly Ghidra map, 60 FPS).
 
 ---
 
@@ -26,17 +32,15 @@ This file is the single handoff for humans and agents. Detailed evidence lives u
 
 **Background still true:** (1) GoW USA patient-zero 60 FPS — native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`); browser min60 re-verify still open. (2) Custom PS2 Alchemy dumper Phase 1–3 — **verify 28/28 PASS** exit 0 on CNK (~07:18, includes Ghidra prologue locks); schema 1.1; optical stub (§9). **No** disc-fix/R5/CNK runtime patches.
 
-### G) Continuous loop — CNK 2-prims + disc-fix (2026-11-07 ~07:27) — **PRIMARY RESUME**
+### G) Four-target continuous loop (2026-11-07 ~07:34) — **PRIMARY RESUME**
 
-Five-todo Ghidra/Alchemy chain **closed** (MCP dual-ELF, ISO, VA 6/6, verify **28/28**, MASTER). God (~07:27): **do not idle** — loop continues past closed todos until 100% operational.
-
-| Track | Status | Exact next |
-|-------|--------|------------|
-| **CNK prims=2** | **IN PROGRESS** observe | Soft-arm 20k reconfirm **prims=2** (`logs/cnk-2prims-observe-2026-11-07/`); diagnose note `cnk-2prims-gate-diagnose-2026-11-07.md`. Tid-map / FCE0 stall still open. |
-| **Disc-fix Hitman/NFS** | **IN PROGRESS** observe | Board step 8 `R5_pad_sound_observe`; matrix observe in flight. No R5 apply. |
-| **GoW DLL PATH smoke** | **DONE ~07:30** | 600f exit 0; **6,964,754** prims; ~122 host f/s; no DLL miss. `gow-dll-path-smoke-2026-11-07.md`. |
-| **Ghidra MCP** | **UP** | `http://127.0.0.1:8089` PID 3152; `gow_boot.elf`+`cnk_boot.elf`; `ghidra-mcp-restart-2026-11-07.md`. |
-| Prior §G todos p0–p1 | **DONE** | Alchemy verify 28/28. |
+| Target | Status | Exact next |
+|--------|--------|------------|
+| **1 Disc-fix → SDK** | R1–R4 joint-stable; R5 observe **PASS** (step 8) | Next: SDK-aligned proposal — `sceCdDiskReady` always-2 is top compliance flag; R5 clear_with_evidence or named pad/sound fix; matrix + live Hitman/NFS. |
+| **2 Matrix → 100%** | Cycle 8 observe pass; live matrix running `logs/live-matrix-2026-11-07/` | Expand phases/games; fix false Alchemy FCE0 substring scorer; log every run. |
+| **3 Alchemy → 100%** | Dumper **28/28**; CNK still **prims=2** | Root cause: loadgate `+0x5DD0=1` skips guest FCE0 after one cycle (`cnk-2prims-gate-diagnose-2026-11-07.md`). Implement guest-safe path; quarantine from Hitman/NFS. |
+| **4 Live test → logs/** | GoW USA native 900f in-flight (~11.6M prims @900 earlier slice) | Repeat Chrome+native; capture FPS/boot/stalls under `logs/`. |
+| GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
 
 **DLL restore (~07:18):** wgpu/SDL2/libc++ were **not** deleted by git cleanup (sources still in `third_party/wgpu-native/lib` + `tools/msys64/clang64/bin`). Bare `ps2run` without PATH → `STATUS_DLL_NOT_FOUND` (−1073741515). Copied deps to `runtime-deps\`, repo root, and all `build/native-*/`. Product entry remains **`Setup.cmd`** / `PS2Recomp.cmd` (no in-repo `PS2Recomp.exe`). Verify: `ps2run --help` loads (exit 1 = bad args, not DLL miss).
 

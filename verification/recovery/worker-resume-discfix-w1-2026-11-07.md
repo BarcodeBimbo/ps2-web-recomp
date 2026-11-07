@@ -3,7 +3,7 @@
 **Worker:** w1 / disc-fix Hitman+NFS (was `76656af6`)  
 **Resumed:** 2026-11-07  
 **Branch:** `windows`  
-**Status:** **RESUMED** — idle disc-fix watcher
+**Status:** **ACTIVE run complete** — R5 observe matrix PASS (no apply)
 
 ## Confirmed — R1–R4 joint-stable
 
@@ -13,32 +13,41 @@
 - R2 WaitSema — `cleared_with_evidence` (never `host_signal(2)`)
 - R3 readee — `verified_apply` in `cdvdfsv.cpp`
 - R4 CdSync — `cleared_with_evidence` (no wake code)
-- **R5 pad/sound — still gated** (no apply)
+- **R5 pad/sound — observe PASS; apply still gated**
 
-## Board snapshot (on resume)
+## Board snapshot (after 2026-11-07 observe run)
 
 | Field | Value |
 |-------|--------|
 | File | `verification/recovery/discfix-matrix-board.json` |
-| `updated` | `2026-11-06T23:55:00-05:00` |
+| `updated` | `2026-11-07T07:32:00-05:00` |
 | `step` | **8** |
-| `phase` | `awaiting_matrix` |
-| `discfix.status` | `proposed` |
-| `proposed_change` | **`R5_pad_sound_observe`** (observe-only; `code_change: false`) |
-| `matrix.status` | `pending` |
-| `matrix.last_completed` | `R4_clear_with_evidence` |
+| `phase` | **`observe_pass_awaiting_next_proposal`** |
+| `discfix.status` | `observe_accepted` |
+| `proposed_change` | **`R5_pad_sound_observe`** (observe-only; `code_change: false`) — matrix **pass** |
+| `matrix.status` / `verdict` | **`pass`** |
+| `matrix.last_completed` | `R5_pad_sound_observe` |
 | `allow_discfix_apply` | **false** |
 | `ranked_rewrites_gated` | `R5_pad_sound` |
 | Joint-stable | `1e04172` / R1–R4 |
 
-Note vs pause file (`worker-pause-discfix-76656af6.md`): pause recorded `idle_r4_pass_awaiting_parent` / `proposed_change: null`. Board was later updated (23:55) with cycle-8 `R5_pad_sound_observe` awaiting matrix. **w1 did not post a new proposal on this resume.**
+## Today's run (2026-11-07 ~07:29–07:32 local)
+
+- **Mission:** OBSERVE / MATRIX only for `R5_pad_sound_observe`.
+- **PATH:** `runtime-deps` + clang64 + wgpu; DLLs also beside native builds. No disc-fix code edits.
+- **Smokes:** Hitman + NFS **400f** with `PS2_TRACE_SEMA` / `PS2_TRACE_PAD` / `PS2_TRACE_SPU2` / `PS2_SPU2_COUNT`.
+  - Hitman: 400f / **78933** prims / SIF 0 / leftovers **2,7** / modules SIO2MAN→PADMAN→…→LIBSD
+  - NFS: 400f / **73253** prims / SIF 0 / leftovers **2,17,23,29,30,32** / sio2man→padman→Sound_Device_Library→sdr_driver
+- **Report:** `verification/recovery/discfix-r5-observe-matrix-2026-11-07.md`
+- **Logs:** `logs/discfix-r5-observe-hitman-400.err.log`, `logs/discfix-r5-observe-nfs-400.err.log` (+ `.merged.log` copies)
+- **Did NOT apply R5.** Hard ban held on `cdvdfsv.cpp` / `cdvd.cpp` / `sif.cpp`.
 
 ## Resume posture
 
-- Watching board only; no commits; no runtime edits.
-- **R5 remains gated** — no pad/sound apply, no CDVD behavioral patches, no CNK quarantine leaks.
-- Hard ban held: do not edit `runtime/src/iop/cdvdfsv.cpp`, `cdvd.cpp`, `sif.cpp`, or game code.
+- Watching for **next proposal only** (parent): `clear_with_evidence` **or** evidence-named narrow RPC fix.
+- **R5 remains gated for apply** — no pad/sound HLE, no CDVD behavioral patches, no CNK quarantine leaks.
+- No commits unless explicitly told.
 
 ## Next action
 
-Await parent/user (or matrix verdict on existing `R5_pad_sound_observe` if matrix runs it) before any further disc-fix action. No apply until `allow_discfix_apply` and an explicit unlock — R5 apply still gated.
+Await parent choice among board `discfix.next_options`. Do not invent an apply proposal. No apply until `allow_discfix_apply` and an explicit unlock.

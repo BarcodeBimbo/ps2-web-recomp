@@ -21,8 +21,15 @@ CDVD_N = re.compile(r"\[cdvdfsv\] N 0x", re.I)
 CDVD_STREAM = re.compile(r"\[cdvdfsv\] stream", re.I)
 CURREAD = re.compile(r"curReadPos|eeaddr2|read.?pos", re.I)
 READEE = re.compile(r"readee|eeaddr1|_rd_intr", re.I)
+# Real Alchemy host/guest pulses only. Do NOT use bare "FCE0" — Hitman CreateSema
+# often logs attr=0x1FFFCE0 (hex ending in FCE0) which is not an Alchemy pulse.
 ALCHEMY_PULSE = re.compile(
-    r"host_signal(?:_sema)?\((?:16|54|55)\)|Alchemy|virt.?LBA|\+24008|FCE0|soft-arm",
+    r"host_signal(?:_sema)?\((?:16|54|55)\)|"
+    r"Alchemy|"
+    r"virt.?LBA|"
+    r"\+24008|"
+    r"(?<![0-9A-Fa-f])(?:0x)?0*FCE0(?![0-9A-Fa-f])|"  # standalone FCE0 / 0xFCE0 only
+    r"soft-arm",
     re.I,
 )
 SEMA_END = re.compile(r"\[sema\]\s+(\d+)\s+count\s+(\d+)\s+waiters\s+(\d+)", re.I)
@@ -103,12 +110,25 @@ def score(text: str, game: str) -> dict:
     }
 
 
+def read_log_text(path: Path) -> str:
+    """Read smoke logs; PowerShell Tee-Object often writes UTF-16 LE with BOM."""
+    raw = path.read_bytes()
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        return raw.decode("utf-16", errors="replace")
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return raw.decode("utf-8-sig", errors="replace")
+    # Heuristic: NUL every other byte → UTF-16 LE without relying on BOM alone
+    if len(raw) >= 4 and raw[1:2] == b"\x00" and raw[3:4] == b"\x00":
+        return raw.decode("utf-16-le", errors="replace")
+    return raw.decode("utf-8", errors="replace")
+
+
 def main(argv: list[str]) -> int:
     if len(argv) < 3:
         print("usage: matrix_phase_check.py <hitman|nfs_mw|hitman_bm> <logfile>")
         return 2
     game = "hitman_bm" if argv[1] in ("hitman", "hitman_bm") else "nfs_mw"
-    text = Path(argv[2]).read_text(encoding="utf-8", errors="replace")
+    text = read_log_text(Path(argv[2]))
     print(json.dumps(score(text, game), indent=2))
     return 0
 
