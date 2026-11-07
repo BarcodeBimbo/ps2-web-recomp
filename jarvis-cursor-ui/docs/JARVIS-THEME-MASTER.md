@@ -1,22 +1,21 @@
-# JARVIS Theme Master — Cold Reopen (God)
+# JARVIS Theme Master — Cold Reopen (Joshua)
 
-> ## PAUSED — Safe checkpoint
+> ## IN PROGRESS — Workbench injection installed
 >
-> **Status:** Phases **1–5 done**. Phase **6 scaffold started** (on disk). **PAUSED** here — do **not** implement new inject features; do **not** delete scaffold files.
+> **Status:** Phases **1–5 done**. Phase **6** — inject engine + CSS synced; **Program Files workbench patch APPLIED** (Joshua Admin/UAC enable, Nov 7 2026). Corrupt-install warning accepted — do **not** Fix Checksums.
 >
-> ### Resume after reopen (Joshua)
+> ### After reload (Joshua)
 >
-> 1. Open this workspace: `C:\PS2Recomp` (Recomp-folder IDE — see § Startup scope).
-> 2. Confirm scaffold still present (§ On-disk scaffold inventory).
-> 3. Follow [`GOD-ADMIN-ENABLE.md`](./GOD-ADMIN-ENABLE.md): install/reload from folder → quit → relaunch Cursor **as Administrator** → **JARVIS: Enable Workbench Injection** → Reload.
-> 4. Expect calibrating splash briefly, then navy/cyan chrome; corrupt-install warning is OK (dismiss).
-> 5. Then continue Phase 6 from the **next incomplete sub-phase** (§ Phase 6 status) — typically finish fail-safes polish → boot QA → HUD (Studio YES) → demote → package. Title-bar chrome is **in scope**; Windows taskbar `.ico` stays **OUT OF SCOPE**.
+> 1. **Reload Window** (or full quit/relaunch) on Recomp IDE (`C:\PS2Recomp`) to see calibrating splash → navy/cyan chrome.
+> 2. Dismiss corrupt-install warning if shown — expected; leave checksums alone.
+> 3. Optional: **JARVIS: Injection Status** / **Health Check**.
+> 4. Continue Phase 6 from **next incomplete sub-phase** (§ Phase 6 status) — boot QA → HUD (Studio YES) → demote → package. Title-bar chrome is **in scope** (`window.titleBarStyle: custom` set); Windows taskbar `.ico` stays **OUT OF SCOPE**.
 >
-> Workers never elevate. Enable inject is **God Admin only**.
+> Workers never elevate. Re-enable / Disable inject is **Joshua Admin only** (writes under Program Files).
 
-**Authority:** God · **Date locked:** Nov 7, 2026  
-**Canonical plan:** `jarvis_pro_recreation_a1985356` (if any sibling doc disagrees with plan locks, **the plan wins**; this master consolidates locks + current pause state).  
-**Extension root:** `C:\PS2Recomp\jarvis-cursor-ui` · **v0.5.0** scaffold
+**Authority:** Joshua · **Date locked:** Nov 7, 2026  
+**Canonical plan:** `jarvis_pro_recreation_a1985356` (if any sibling doc disagrees with plan locks, **the plan wins**; this master consolidates locks + current install state).  
+**Extension root:** `C:\PS2Recomp\jarvis-cursor-ui` · **v0.5.0** · installed inject **active on disk**
 
 ---
 
