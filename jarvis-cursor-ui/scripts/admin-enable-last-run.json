@@ -1,0 +1,17 @@
+﻿{
+  "ok": false,
+  "displayName": "Cortana Workstation",
+  "version": "0.5.5",
+  "extRoot": "C:\\Users\\joshy\\.cursor\\extensions\\ps2recomp-local.cortana-cursor-ui-0.5.5",
+  "host": "PoorSkid",
+  "user": "joshy",
+  "enable": {
+    "ok": false,
+    "message": "Inject block would sit outside </body> (scripts/HUD after body) ΓÇö refusing write (Cursor crash guard)"
+  },
+  "hasCssMarker": false,
+  "hasHud": false,
+  "hasWake": false,
+  "hasManhattan": false,
+  "wbBytes": 1824
+}

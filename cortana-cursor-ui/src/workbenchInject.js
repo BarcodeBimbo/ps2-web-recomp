@@ -2163,7 +2163,7 @@ function buildHudInteractScript() {
   return `<script id="cortana-hud-interact-script">${body}</script>`;
 }
 
-/** Crash guard: refuse patches that place HUD markup or scripts after </body>. */
+/** Crash guard: refuse Cortana HUD/scripts after </body>. Cursor itself places workbench.js after </body> — that is allowed. */
 function validateHudPatchPlacement(html) {
   const lower = html.toLowerCase();
   const bodyIdx = lower.lastIndexOf("</body>");
@@ -2172,8 +2172,18 @@ function validateHudPatchPlacement(html) {
   }
   const htmlIdx = lower.lastIndexOf("</html>");
   const tailStart = bodyIdx + "</body>".length;
-  const tail = html.slice(tailStart, htmlIdx === -1 ? undefined : htmlIdx).trim();
-  if (/<script\b/i.test(tail) || /CORTANA-HUD/i.test(tail) || /cortana-cc-hud/i.test(tail)) {
+  let tail = html.slice(tailStart, htmlIdx === -1 ? undefined : htmlIdx).trim();
+  // Strip Cursor's legitimate post-body startup module before inspecting the tail.
+  tail = tail
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<script\b[^>]*\bsrc=["']\.\/workbench\.js["'][^>]*>\s*<\/script>/gi, "")
+    .trim();
+  if (
+    /CORTANA-HUD/i.test(tail) ||
+    /cortana-cc-hud/i.test(tail) ||
+    /id=["']cortana-/i.test(tail) ||
+    /<script\b/i.test(tail)
+  ) {
     throw new Error(
       "Inject block would sit outside </body> (scripts/HUD after body) — refusing write (Cursor crash guard)"
     );
