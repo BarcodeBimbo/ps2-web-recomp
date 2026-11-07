@@ -1,6 +1,6 @@
 # Disc-fix live report — Hitman BM + NFS MW
 
-Updated: 2026-11-06 ~22:59 local
+Updated: 2026-11-06 ~23:15 local
 
 ## Status
 
@@ -49,3 +49,7 @@ Idle watch: board unchanged — proposed_change=null, R5 still_gated, no soak/R5
 ## Heartbeat 22:59
 
 Idle watch: still no parent R5 proposal or soak request on board. R5 gated. No commit. No CdSync wake.
+
+## Heartbeat 23:15
+
+Idle watch: board still idle (no R5/soak proposed_change). DISCFIX-R1-R4-STABLE.md is a marker only — not a soak request. No commit from disc-fix. No CdSync wake.
