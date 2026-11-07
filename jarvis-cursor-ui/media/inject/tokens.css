@@ -176,7 +176,12 @@ body.CORTANA-inject {
   --cortana-rail-w-narrow: 180px;
   --cortana-header-h: 52px;
   --cortana-footer-h: 72px;
+  /* Windows custom-titlebar caption cluster (min/max/close) — keep OC clear */
+  --cortana-caption-w: 138px;
+  --cortana-titlebar-h: 30px;
   --cortana-z-hud: 99990;
+  --cortana-z-titlebar: 99999;
+  --cortana-z-caption: 100000;
   --cortana-z-fab: 99995;
   --cortana-boot-overlay-z: 2147483000;
   --cortana-boot-ui-z: 2147483001;
