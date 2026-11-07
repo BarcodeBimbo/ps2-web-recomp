@@ -29,3 +29,4 @@ See `cnk-nullbind-51ACEC-live-report.md`: forced FCE0 dies because registry **vt
 - `alchemy-sdk-research-report.md` — Intrinsic Alchemy 3.0 / Velocity web+ELF
 - Matrix cycle 1 **FAIL** on bundled R3; disc-fix now proposes **R1 clear with evidence** (board step 2)
 - `sly-gs-vu-live-report.md` — strict VU no building restore; soft vs GPU ~28% differ @1800 but buildings missing in **both**; next shared STQ/texturing (parked 0% claim outdated)
+- `sly-asset-binwalk-report.md` — **DONE**: USA ISO complete; art in hidden encrypted WAL/BRX; explore already loaded Paris (~11.8M prims, health ok). Missing buildings ≠ missing assets → shared GS STQ/PATH3/CLUT (same as GS/VU). Samples under `sly-asset-samples/`
