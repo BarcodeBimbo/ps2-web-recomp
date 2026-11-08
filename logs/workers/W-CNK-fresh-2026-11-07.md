@@ -11,10 +11,10 @@
 
 | Field | Value |
 |-------|--------|
-| **lock status** | **HELD** web+native-b49f (W-CNK-2); Hitman locks not touched |
+| **lock status** | Acquired web+native-b49f at start; by end native lock held by **W-CNK-CRIT** (cascade); Hitman a2116* never touched |
 | **prims result** | **still 2** (6000f smoke ×4) — plan checkbox **NOT** flipped |
 | **crash** | no |
-| **blocked_or_verified** | BREAKTHROUGH on timing diagnosis; prims still blocked |
+| **blocked_or_verified** | BREAKTHROUGH: 51C100 **does run** with live o20; prims still blocked downstream |
 
 ---
 
