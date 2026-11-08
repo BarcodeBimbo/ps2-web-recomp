@@ -1,2 +1,1 @@
-[2026-11-07 19:04:06] W-HITMAN platform: locks owner_pid=20640 DEAD; web-next LIVE cmake=29328 ninja=5044/28772; no competing ninja; advancing (B) sprite/tex
-[2026-11-07 19:08:11] W-HITMAN: implemented type7 clear-FST (gpu+raster); native rebuild; web-next ~monitor only
+﻿[2026-11-07 19:08:53] W-HITMAN owner: Mode B NO_TME 180f smoke pid=32212 out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-notme-20261107T190853; web-next watch live

@@ -1,3 +1,3 @@
-﻿W-STORE heartbeat 2026-11-07 19:08:10
-status=implementing_nightly_pipeline
-locks=respecting Hitman web-a2116 NFS web-60c82 CNK native-b49f2
+﻿W-STORE heartbeat 2026-11-07 19:09:52
+status=nightly_pass_candidate_nfs
+note=skip-build only; not touching web-60c82f cmake lock

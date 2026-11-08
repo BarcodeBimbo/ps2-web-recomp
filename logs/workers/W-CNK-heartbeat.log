@@ -12,3 +12,5 @@
 [2026-11-07 18:59:24] W-CNK-2 implemented st32 o20 guard + soft-arm arm; building native-b49f
 [2026-11-07 19:03:06] W-CNK-2 jit hook at L_00503308 in unit_0100 + m_unit_0100; awaiting native rebuild
 [2026-11-07 19:05:37] W-CNK-2 fix link: export restore_butanim + rebuild memory/igfileio/unit_0100
+[2026-11-07 19:08:56] W-CNK-2 native build OK; starting smoke disc.iso 4000f
+[2026-11-07 19:09:06] W-CNK-2 smoke start frames=6000 log=C:\PS2Recomp\logs\workers\W-CNK-o20-intercept-smoke-2026-11-07.log

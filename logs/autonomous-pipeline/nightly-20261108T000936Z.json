@@ -1,0 +1,102 @@
+{
+  "stamp": "20261108T000936Z",
+  "overall": "fail",
+  "frames": 60,
+  "skip_build": true,
+  "force_build": false,
+  "dry_heal": false,
+  "results": [
+    {
+      "game_id": "f29093e1f939f924fb11cc605b592b11",
+      "title": "f29093e1f939f924fb11cc605b592b11",
+      "started": 1794096576.6228168,
+      "stages": {
+        "download": {
+          "status": "ok",
+          "action": "skipped_present",
+          "path": "games/f29093e1f939f924fb11cc605b592b11/disc.iso",
+          "bytes": 1327792128
+        },
+        "build": {
+          "status": "ok",
+          "action": "skipped_present",
+          "native": true,
+          "web": true
+        },
+        "heal": {
+          "status": "ok",
+          "action": "heal_game",
+          "symptoms": [
+            "missing_code_runtime"
+          ],
+          "actions_taken": 0,
+          "actions_planned": 1,
+          "issues": "games/f29093e1f939f924fb11cc605b592b11/install_issues.json"
+        },
+        "verify": {
+          "status": "fail",
+          "action": "autonomous_verify",
+          "frames": 60,
+          "log": "logs\\autonomous-pipeline\\f29093e1f939f924fb11cc605b592b11-60f-20261108T000936Z.log",
+          "health": "fail",
+          "matrix": {
+            "skipped": true,
+            "reason": "no_matrix_profile"
+          },
+          "fps_metrics": {
+            "fps_samples": 0,
+            "fps_avg": null,
+            "fps_min": null,
+            "fps_max": null,
+            "fps_on_screen_last": null,
+            "native_vblank_frames": 60,
+            "ee_cycles_per_vblank": 4964356.416666667,
+            "source": "native_stopped"
+          },
+          "chrome_metrics": null,
+          "error": null,
+          "raw": {
+            "game_id": "f29093e1f939f924fb11cc605b592b11",
+            "title": "Hot Shots Golf 3 (USA) (v2.00)",
+            "status": "fail",
+            "exit_code": 0,
+            "log": "logs\\autonomous-pipeline\\f29093e1f939f924fb11cc605b592b11-60f-20261108T000936Z.log",
+            "health": {
+              "status": "fail",
+              "reasons": [
+                "near_zero_prims:2"
+              ],
+              "warnings": [],
+              "primitives": 2,
+              "frames": 60,
+              "missing_code": [],
+              "reached_frame_limit": true
+            },
+            "matrix": {
+              "skipped": true,
+              "reason": "no_matrix_profile"
+            },
+            "fps_metrics": {
+              "fps_samples": 0,
+              "fps_avg": null,
+              "fps_min": null,
+              "fps_max": null,
+              "fps_on_screen_last": null,
+              "native_vblank_frames": 60,
+              "ee_cycles_per_vblank": 4964356.416666667,
+              "source": "native_stopped"
+            },
+            "chrome_metrics": null
+          }
+        }
+      },
+      "status": "fail",
+      "failed_stage": "verify",
+      "elapsed_s": 3.11
+    }
+  ],
+  "artifacts": {
+    "json": "logs/autonomous-pipeline/nightly-20261108T000936Z.json",
+    "log": "logs/autonomous-pipeline/nightly-20261108T000936Z.log"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "game_id": "f29093e1f939f924fb11cc605b592b11",
+  "updated": "2026-11-08T00:09:36Z",
+  "symptoms": [
+    "missing_code_runtime"
+  ],
+  "features": [
+    "track:library"
+  ],
+  "actions_planned": [
+    {
+      "fix": "explore_rerun",
+      "auto": false
+    }
+  ],
+  "actions_taken": [],
+  "dry_run": false,
+  "detectors": {
+    "harness_goal_ok": null,
+    "harness_end_lum": null,
+    "matrix_verdict": null,
+    "min_fps_target": 60.0,
+    "min_canvas_lum": 5.0
+  }
+}

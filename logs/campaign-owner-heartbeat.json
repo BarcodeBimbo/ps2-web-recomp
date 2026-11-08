@@ -1,8 +1,12 @@
 {
-    "phase":  "modeB-diag+store-nightly",
-    "utc":  "2026-11-08T00:08:19Z",
-    "pid":  448,
-    "local":  "2026-11-07 19:08:19",
+    "native_a2116_cmake":  31668,
+    "hitman_web_next":  "live",
+    "local":  "2026-11-07 19:09:30",
+    "utc":  "2026-11-08T00:09:30Z",
+    "nfs_web_next":  "live",
     "role":  "campaign-owner",
-    "status":  "permanent-overnight-running"
+    "cnk":  "live",
+    "pid":  30900,
+    "status":  "permanent-overnight-running",
+    "phase":  "modeB-smoke-watch"
 }

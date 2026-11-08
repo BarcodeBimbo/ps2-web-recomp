@@ -1,6 +1,7 @@
 campaign-owner ALIVE
 status=permanent-overnight-running
-pid=448
-local=2026-11-07 19:08:19
-utc=2026-11-08T00:08:19Z
+pid=30900
+local=2026-11-07 19:09:30
+utc=2026-11-08T00:09:30Z
+note=modeB-smoke+watch-builds; native-a2116 cmake race check
 

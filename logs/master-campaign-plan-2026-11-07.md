@@ -24,7 +24,7 @@
 |---------|--------|
 | Theme / vision | CyberArcade panel, custom Windows recompiler, evidence in `logs/` + `verification/recovery/` |
 | Chrome flawless | All games playable in Chrome with visible, correct UI |
-| FPS bar | ≥60 almost every game; 30 only when required |
+| FPS bar | **Solid 60** every game (no skip / no FPS overlay / no sub-60 drops); art-game exceptions only via registry note |
 | Autonomous mode | No stopping, no idling, no routine user waits |
 | Context overflow | New agent + clean context; carry snapshot only (no in-thread trim) |
 | Improvement passes | Optimize + light modernization **inside** existing stack; no wholesale re-architecture (`improvement-pass-policy-2026-11-07.md`) |

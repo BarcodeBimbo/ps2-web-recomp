@@ -1,2 +1,7 @@
 [2026-11-07 19:03:26] W-SLY start | lane=Sly Cooper USA c0c4527037b6168660829a0eb13df1a3 | focus=shared GS STQ/PATH3/CLUT missing buildings | NOT CNK Alchemy
 [2026-11-07 19:03:46] W-SLY map | reading raster STQ divide + load_clut + GIF PATH3; sticky-Q already present in write_packed/vertex
+[2026-11-07T19:08:51Z] W-SLY HEARTBEAT | lane=Sly Cooper USA c0c4527037b6168660829a0eb13df1a3 | status=REPLACEMENT_START | focus=GS STQ/PATH3/CLUT shared buildings | note=prior heartbeat stale ~19:03
+[2026-11-07 19:09:08] W-SLY decision | no code change: Q=0->min not smoking gun (large-batch UVs finite); buildings exist in GIF as huge FST=0 strips; writing RE plan + worker report
+[2026-11-07T19:09:13Z] W-SLY HEARTBEAT | status=MAPPING | reading gs.cpp write_packed/load_clut + raster STQ divide + PATH3; locks ok (no Hitman/NFS/CNK steal)
+[2026-11-07T19:09:39Z] W-SLY HEARTBEAT | status=AUDIT | sticky-Q confirmed write_packed/vertex; triangle lerp S,T,Q then /q in raster+wgsl; next=PATH3/CLUT + reproduce evidence
+[2026-11-07 19:09:44] W-SLY done | code_changed=no | hyp=building strips reach GS but STQ/CLUT/ABE(+FGE) invisible | report=logs/workers/W-SLY-platform-2026-11-07.md
