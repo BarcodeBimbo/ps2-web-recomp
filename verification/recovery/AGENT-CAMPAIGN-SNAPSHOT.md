@@ -1,9 +1,11 @@
 # Agent campaign snapshot (context rollover seed)
 
-**Updated:** 2026-11-07 ~23:55Z (fresh campaign owner)  
+**Updated:** 2026-11-07 ~19:04 local (permanent overnight mode encoded)  
 **Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**  
 **Checkbox campaign plan:** `logs/master-campaign-plan-2026-11-07.md`  
-**Standing orders:** `logs/call-log-2026-11-07.md` — chat-only, no idle.
+**Standing orders:** `logs/call-log-2026-11-07.md` §8 permanent overnight mode.
+
+**Owner OS (permanent until God says stop):** never idle; never wait for permission; never stop on a completed checkbox — next open immediately; test/fix/improve all night; no kill-on-retry; no session-end stalls; platform-wide parallel lanes; **report only on breaks or major greens.**
 
 ## Owner pivot (2026-11-07 night)
 

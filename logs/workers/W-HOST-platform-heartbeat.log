@@ -1,4 +1,4 @@
 ﻿W-HOST platform heartbeat
-ts=2026-11-07 19:03:30
+ts=2026-11-07 19:05:13
 lane=Shared host runtime
-status=starting inventory
+status=fixing windows_port._rmtree_onerror hoist; verifying store_pipeline

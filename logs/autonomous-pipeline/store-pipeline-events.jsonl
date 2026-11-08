@@ -1,3 +1,15 @@
 {"ts": 1794065566.950663, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "full_install": true}
 {"ts": 1794065572.4637063, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "full_install": true}
 {"ts": 1794067515.2760274, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "full_install": true}
+{"ts": 1794096298.3229797, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
+{"ts": 1794096298.3275044, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
+{"ts": 1794096298.6081822, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}
+{"ts": 1794096300.814512, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
+{"ts": 1794096300.818034, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
+{"ts": 1794096300.8700652, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}
+{"ts": 1794096313.1009836, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
+{"ts": 1794096313.1029913, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
+{"ts": 1794096313.1342359, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}
+{"ts": 1794096313.992084, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
+{"ts": 1794096313.9940941, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
+{"ts": 1794096314.0252707, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}

@@ -11,8 +11,14 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import store
 import windows_port
-from store_pipeline_hooks import begin_install_manifest, finalize_post_build, gate_strict_ready
+from store_pipeline_hooks import (
+    begin_install_manifest,
+    finalize_post_build,
+    gate_inline_verify,
+    gate_strict_ready,
+)
 from urllib.error import HTTPError
+
 
 
 class Response(io.BytesIO):
@@ -164,6 +170,42 @@ class PipelineTests(unittest.TestCase):
                 gate_strict_ready(health, full_install=True)
         with patch.dict('os.environ', {}, clear=True):
             gate_strict_ready(health, full_install=True)
+
+    def test_inline_verify_skipped_unless_env(self):
+        with patch.dict('os.environ', {}, clear=True):
+            self.assertIsNone(gate_inline_verify('a' * 32, full_install=True))
+        with patch.dict('os.environ', {'PS2_INLINE_VERIFY': '1'}):
+            self.assertIsNone(gate_inline_verify('a' * 32, full_install=False))
+
+    def test_inline_verify_blocks_fail_status(self):
+        fail_row = {'status': 'fail', 'health': {'status': 'fail', 'reasons': ['near_zero_prims']}}
+        with patch.dict('os.environ', {'PS2_INLINE_VERIFY': '1', 'PS2_INLINE_VERIFY_FRAMES': '60'}):
+            with patch('store_pipeline_hooks.run_inline_autonomous_verify', return_value=fail_row):
+                with self.assertRaisesRegex(RuntimeError, 'Inline autonomous_verify failed'):
+                    gate_inline_verify('b' * 32, full_install=True)
+
+    def test_finalize_runs_inline_verify_and_updates_manifest(self):
+        game_id = 'c' * 32
+        game = self.root / 'games' / game_id
+        game.mkdir(parents=True)
+        iso = self.root / 'incoming.iso'
+        iso.write_bytes(b'ISO fixture')
+        begin_install_manifest(game, game_id=game_id, title='Fixture', source=iso, download_job_id='job1')
+        pass_row = {
+            'status': 'pass',
+            'log': 'logs/autonomous-pipeline/fixture.log',
+            'inline_frames': 60,
+        }
+        health = {'status': 'ok', 'reasons': [], 'warnings': []}
+        with patch('store_pipeline_hooks.ROOT', self.root), patch.dict(
+            'os.environ', {'PS2_INLINE_VERIFY': '1', 'PS2_INLINE_VERIFY_FRAMES': '60'}
+        ), patch('store_pipeline_hooks.run_inline_autonomous_verify', return_value=pass_row) as smoke:
+            finalize_post_build(game_id, health, full_install=True)
+            smoke.assert_called_once_with(game_id)
+        updated = json.loads((game / 'install_manifest.json').read_text(encoding='utf-8'))
+        self.assertTrue(updated['pipeline']['autonomous_verify_inline'])
+        self.assertEqual(updated['pipeline']['autonomous_verify_status'], 'pass')
+        self.assertIsNotNone(updated['timestamps'].get('inline_verify_at'))
 
 
 if __name__ == '__main__': unittest.main(verbosity=2)

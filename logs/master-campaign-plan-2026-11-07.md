@@ -3,7 +3,7 @@
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
 **Updated:** 2026-11-07 ~11:15 local (web rebuild + harness `20261107T161255Z`)  
 
-**Execution mandate (God ~10:28):** This plan runs **without user input, call, or wait** — full agent control. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
+**Execution mandate (God ~10:28 + final ~19:04):** This plan runs **without user input, call, or wait** — full agent control. **Permanent overnight mode** (`logs/campaign-owner-permanent-mode.md`): never idle; never stop on a completed checkbox — next immediately; test/fix/improve until God says stop; report only on breaks or major greens. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  
 **Companion handoff:** `verification/recovery/AGENT-CAMPAIGN-SNAPSHOT.md`, `MASTER-CONTEXT.md`, **`logs/call-log-2026-11-07.md`** (standing orders verbatim)
 
@@ -117,7 +117,7 @@
 - [x] 2026-11-07 — GS XYOFFSET fix in runtime (all new builds inherit)
 - [x] 2026-11-07 — `install_health.py` gates explore/smoke failures
 - [x] 2026-11-07 — Post-build: `self_heal` + `finalize_post_build` (manifest, strict gate); post-download `store-pipeline-events.jsonl` (`scripts/store_pipeline_hooks.py`; `logs/workers/W-STORE-report-2026-11-07.md`)
-- [ ] Inline `autonomous_verify` smoke before `ready` (CLI/nightly only — documented gap)
+- [x] 2026-11-07 — Inline `autonomous_verify` smoke before `ready` via `PS2_INLINE_VERIFY=1` (`gate_inline_verify` in `store_pipeline_hooks.py`; default off; `tests/store_pipeline.py`; `logs/workers/W-STORE-platform-2026-11-07.md`)
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
 - [x] 2026-11-07 — `tests/store_pipeline.py` **14/14** OK (`py -3 tests/store_pipeline.py -v`)
@@ -209,7 +209,7 @@
 | Hitman Chrome gate | 3 | 3 |
 | NFS expansion | 2 | 3 |
 | CNK track | 3 | 3 |
-| Store pipeline | 7 | 4 |
+| Store pipeline | 8 | 3 |
 | Self-heal | 6 | 5 |
 | Chrome FPS sweep | 2 | 5 |
 | Handoff / policy docs | 4 | 2 |

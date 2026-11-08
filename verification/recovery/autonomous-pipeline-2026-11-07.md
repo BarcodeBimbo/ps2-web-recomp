@@ -28,7 +28,7 @@
 | Post-download | `import_game` + `store_pipeline_hooks.note_post_download` | Job id from store transfer id; append `logs/autonomous-pipeline/store-pipeline-events.jsonl` |
 | Manifest stub | `games/<id>/install_manifest.json` | `source.sha256`, `download_job_id`, import/build timestamps, health snapshot |
 | Post-build | `panel.build` → `finalize_post_build` | Updates manifest; `PS2_STRICT_VERIFY=1` blocks `ready` on health **warn** or **fail** (full installs) |
-| **Gap (documented)** | `autonomous_verify.py` inline smoke | **Not wired** on build hot path — too slow; run CLI/nightly per E3/E8 |
+| Inline smoke | `finalize_post_build` → `gate_inline_verify` | **`PS2_INLINE_VERIFY=1`** runs short `autonomous_verify.py` before `ready` (full installs); frames via `PS2_INLINE_VERIFY_FRAMES` (default 200). Default **off** so hot path stays fast. |
 | **Gap** | Nightly download→verify | Log target exists; scheduler not in repo yet |
 | **Gap** | Chrome harness `canvas_lum` at install | Requires web rebuild + browser job; see self-heal T1 |
 
@@ -46,7 +46,7 @@
 |------|--------|---------|
 | E1 | **GS XYOFFSET fix** + rebuild all `native-*` | Hitman PPM/canvas luminance >> 0.11; draw boxes intersect 0..511 |
 | E2 | **`autonomous_verify.py`** on full library | JSON summary; failures queue fix wave |
-| E3 | **Wire panel post-build** to call `autonomous_verify` (or health+) | New install cannot go `ready` on black canvas |
+| E3 | **Wire panel post-build** to call `autonomous_verify` (or health+) | [x] 2026-11-07 — `PS2_INLINE_VERIFY=1` → `gate_inline_verify` before `ready` (opt-in; default off) |
 | E4 | **Hitman Ghidra ELF reimport** @ `0x00100000` | Trust VAs for GS init; fold into registry notes |
 | E5 | **Rebuild web** for titles with `web_rebuild_required_after_runtime` | Harness canvas_lum threshold |
 | E6 | **Matrix → 100%** | CNK + NFS scorer gaps closed (`live-matrix` SUMMARY) |

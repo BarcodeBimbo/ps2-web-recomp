@@ -18,10 +18,18 @@ When the conversation or window context is **too large** (slow turns, truncation
    - `verification/recovery/game-fix-registry.json`, `discfix-matrix-board.json`
 3. **First action in the new agent:** read snapshot + MASTER RESUME POINT; continue executing **without** asking the user to re-explain.
 4. **Full control** inherited: autonomous continuous mode, no idling, no waiting for approval on routine work (same as standing God instructions).
+5. Read `logs/campaign-owner-permanent-mode.md` on every fresh owner start.
+
+## Permanent overnight mode (God final — until God says stop)
+
+- Non-stop test → fix → improve; **never idle**, never wait for permission.
+- Checkbox complete → **immediately** next open item (no stop / no pause).
+- No kill-on-retry; no session-end stalls; single-writer locks; platform-wide parallel lanes.
+- **Report to God only** on breakage or major verified green — not routine progress.
 
 ## Snapshot must include
 
-- Active **campaign mandates** (Chrome-flawless every game; ≥60 FPS, 30 only when required; store→downloader→patch pipeline; self-healing per install; Alchemy → self-heal when proven; verify-each-fix).
+- Active **campaign mandates** (Chrome-flawless every game; ≥60 FPS, 30 only when required; store→downloader→patch pipeline; self-healing per install; Alchemy → self-heal when proven; verify-each-fix; permanent overnight mode).
 - **Latest evidence** from workers (paths under `logs/`, `verification/recovery/`, key metrics).
 - **Current execution plan** and step status (what passed, what’s in flight).
 - **Open leads** only (not full history).
@@ -35,4 +43,7 @@ When the conversation or window context is **too large** (slow turns, truncation
 - Replacing detailed evidence in chat with a long inline summary instead of rollover
 - Deferring master-plan checkbox marks after verification
 - Stopping work because context is full
+- Stopping because a checkbox completed (must continue to next)
+- Routine status chatter to God (breaks + major greens only)
 - Dropping quarantine rules (CNK Alchemy vs Hitman/NFS disc path)
+- Kill-on-retry / Stop-Process of in-flight builds

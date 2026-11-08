@@ -1,0 +1,5 @@
+﻿owner=W-NFS-platform
+pid=29612
+acquired=2026-11-07T19:04:10.8900124-05:00
+purpose=NFS native smoke while web-next rebuild monitored
+note=web-60c82f lock refused (rebuild_pid=11016 live); Hitman/CNK untouched
