@@ -189,12 +189,29 @@ def harness_metrics_by_id() -> dict[str, dict]:
                     by_id[str(gid)] = g
         except (OSError, json.JSONDecodeError):
             pass
+    runs = ROOT / "logs" / "harness-runs"
+    if runs.is_dir():
+        for path in sorted(runs.iterdir(), reverse=True):
+            metrics = path / "metrics.json"
+            if not metrics.is_file():
+                continue
+            try:
+                blob = json.loads(metrics.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            for g in blob.get("games") or []:
+                gid = g.get("game_id")
+                if gid and str(gid) not in by_id:
+                    by_id[str(gid)] = g
     return by_id
 
 
-def measure_library_solid60(*, write: bool = True, path: Path | None = None) -> dict:
+def measure_library_solid60(*, write: bool = True, path: Path | None = None, reg: dict | None = None) -> dict:
     """Solid-60 library sweep measure from registry + existing harness metrics (no cmake)."""
-    reg, exc_problems = load_registry_checked()
+    if reg is None:
+        reg, exc_problems = load_registry_checked()
+    else:
+        exc_problems = validate_exceptions(reg)
     by_id = harness_metrics_by_id()
     rows: list[dict] = []
     counts = {"pass": 0, "fail": 0, "no_metrics": 0, "quarantined": 0}
@@ -234,6 +251,10 @@ def measure_library_solid60(*, write: bool = True, path: Path | None = None) -> 
         out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
         out["written"] = str(out_path.relative_to(ROOT)).replace("\\", "/")
     return out
+
+
+# Alias kept for any peer import of the underscored name.
+measure_library_solid_60 = measure_library_solid60
 
 
 def _fps_block(metrics: dict | None, key: str) -> dict:
@@ -436,64 +457,6 @@ def measure_present_pacing() -> dict:
     return measured
 
 
-def measure_library_solid_60(reg: dict | None = None) -> dict:
-    """Evaluate solid-60 against existing harness metrics only (no Chrome launch)."""
-    reg = reg or load_registry()
-    by_id: dict[str, dict] = {}
-    latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
-    if latest.is_file():
-        try:
-            blob = json.loads(latest.read_text(encoding="utf-8"))
-            for g in blob.get("games") or []:
-                if g.get("game_id"):
-                    by_id[g["game_id"]] = g
-        except (OSError, json.JSONDecodeError):
-            pass
-    runs = ROOT / "logs" / "harness-runs"
-    if runs.is_dir():
-        for path in sorted(runs.iterdir(), reverse=True):
-            metrics = path / "metrics.json"
-            if not metrics.is_file():
-                continue
-            try:
-                blob = json.loads(metrics.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                continue
-            for g in blob.get("games") or []:
-                gid = g.get("game_id")
-                if gid and gid not in by_id:
-                    by_id[gid] = g
-
-    rows: list[dict] = []
-    for gid, meta in sorted((reg.get("per_game") or {}).items()):
-        if meta.get("alchemy_only") or meta.get("disc_fix_quarantine"):
-            rows.append({"game_id": gid, "title": meta.get("title"), "status": "quarantined"})
-            continue
-        cm = by_id.get(gid)
-        if not cm:
-            rows.append({"game_id": gid, "title": meta.get("title"), "status": "no_chrome_metrics"})
-            continue
-        verdict = evaluate_solid_60(gid, chrome_metrics=cm, reg=reg)
-        rows.append(
-            {
-                "game_id": gid,
-                "title": meta.get("title"),
-                "status": "pass" if verdict["pass"] else "fail",
-                "solid_60": verdict,
-            }
-        )
-    return {
-        "schema": "ps2recomp.solid60.library_measure/v1",
-        "exception_problems": validate_exceptions(reg),
-        "titles": len(rows),
-        "pass": sum(1 for r in rows if r.get("status") == "pass"),
-        "fail": sum(1 for r in rows if r.get("status") == "fail"),
-        "no_metrics": sum(1 for r in rows if r.get("status") == "no_chrome_metrics"),
-        "quarantined": sum(1 for r in rows if r.get("status") == "quarantined"),
-        "rows": rows,
-    }
-
-
 def write_measure(path: Path | None = None) -> dict:
     path = path or MEASURE_OUT
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -641,37 +604,22 @@ def main() -> int:
     if args.measure or not asked:
         out["measure"] = write_measure()
 
-    if args.validate_exceptions:
+    if args.validate_exceptions or args.library:
         out["exception_problems"] = validate_exceptions()
 
     if args.library:
-        lib = measure_library_solid_60()
-        LIBRARY_OUT.parent.mkdir(parents=True, exist_ok=True)
-        LIBRARY_OUT.write_text(json.dumps(lib, indent=2) + "\n", encoding="utf-8")
-        lib["written"] = str(LIBRARY_OUT.relative_to(ROOT)).replace("\\", "/")
-        out["library"] = lib
+        out["library"] = measure_library_solid60(write=True)
 
     if args.games:
-        latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
-        by_id: dict[str, dict] = {}
-        if latest.is_file():
-            try:
-                blob = json.loads(latest.read_text(encoding="utf-8"))
-                for g in blob.get("games") or []:
-                    if g.get("game_id"):
-                        by_id[g["game_id"]] = g
-            except (OSError, json.JSONDecodeError):
-                pass
+        by_id = harness_metrics_by_id()
         out["evaluations"] = [
             evaluate_solid_60(gid, chrome_metrics=by_id.get(gid)) for gid in args.games
         ]
 
     if args.self_check:
         rc = _self_check()
-        if args.json_out:
-            # self-check already printed; still allow measure side-write
-            if "measure" in out:
-                args.json_out.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+        if args.json_out and out:
+            args.json_out.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
         return rc
 
     if not out:
@@ -682,7 +630,7 @@ def main() -> int:
     if args.json_out:
         args.json_out.parent.mkdir(parents=True, exist_ok=True)
         args.json_out.write_text(text + "\n", encoding="utf-8")
-    return 0
+    return 0 if not out.get("exception_problems") else 1
 
 
 if __name__ == "__main__":

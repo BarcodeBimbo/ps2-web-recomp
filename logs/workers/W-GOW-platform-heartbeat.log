@@ -66,3 +66,7 @@ jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5
 status=starting_wait_accept_watcher
 script=tools/_gow_min60_wait_accept.ps1
 force_isolate_after_35m=yes
+=== W-GOW heartbeat 2026-11-07 19:15:30 ===
+status=wait_panel_quiet
+busy=1
+jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5

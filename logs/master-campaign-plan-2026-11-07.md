@@ -209,7 +209,7 @@
 | Hitman Chrome gate | 3 | 3 |
 | NFS expansion | 2 | 3 |
 | CNK track | 3 | 3 |
-| Store pipeline | 9 | 2 |
+| Store pipeline | 11 | 0 |
 | Self-heal | 6 | 5 |
 | Chrome FPS sweep | 5 | 2 |
 | Handoff / policy docs | 4 | 2 |

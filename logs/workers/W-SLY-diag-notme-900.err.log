@@ -1,5 +1,58 @@
-usage: ps2run <elf> [--boot path] [--arg text]... [--frames n] [--run n] [--ntsc] [--misses file]
-              [--disc image.iso] [--memcard card.ps2] [--pal | --ntsc] [--trace-syscalls] [--trace-io] [--trace-threads]
-              [--trace-iop] [--trace-iop-hle] [--frames-dir dir] [--frame-every n]
-              [--press frame:button[+button][:frames]]... [--window] [--fullscreen]
-              [--save-state frame:file] [--load-state file] [--widescreen] [--patches file]
+[disc] games/c0c4527037b6168660829a0eb13df1a3/disc.iso: 9 files, 1368320 sectors, layer 1 at 0
+[mc] card in slot 1: logs/sly-diag-notme-card.ps2
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[dma] gif tag id 4 qwc 44 addr 0x002BE1A0 data 0x002BE1A0
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0064C280
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP243.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP243.IMG;1 reports 2430, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP243.IMG;1 reports 2430
+[loadfile] cdrom0:\SIO2MAN.IRX;1
+[loadfile] cdrom0:\PADMAN.IRX;1
+[loadfile] cdrom0:\MCMAN.IRX;1
+[loadfile] cdrom0:\MCSERV.IRX;1
+[loadfile] cdrom0:\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00054B08)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00054B0C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00054B28)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00054B38)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00054B64)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00054B68)
+[loadfile] cdrom0:\989SND.IRX;1
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v2.9.3
+[iop-tty]                         (built Aug 21 2002 at 21:30:44)
+[iop-tty]                                          (pre-release 8)
+[iop-tty]  (build with sce library rev 2.4.3)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 58
+[iop-tty]                         Loading RPC = 59
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty] ==========================================================
+[iop-tty] 
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0xFF00 MASKED — no intc
+[intc] GS handlers csr=0x551B4002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B4002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B4002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B4002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B6002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B6002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B6002 imr=0xFD00 mask=0x1 fn=0x00168698
+[intc] GS handlers csr=0x551B4002 imr=0xFD00 mask=0x1 fn=0x00168698
+[io] write 0x1000F590 = 0x10000 (pc 0x0020ADB0)
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
