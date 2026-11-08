@@ -1,3 +1,4 @@
-﻿W-STORE heartbeat 2026-11-07 19:10:31
-status=claiming_lane
-next=unit_tests+library_nightly+store_pull_dod
+﻿W-STORE heartbeat 2026-11-07 19:10:53
+status=running_nightly_gow
+game=695b874b308a4e5353767bb6df8ba697
+frames=120 skip_build=1 dry_heal=0

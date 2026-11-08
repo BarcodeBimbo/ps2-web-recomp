@@ -1,1 +1,7 @@
-2026-11-08T00:10:36Z ALIVE
+campaign-owner ALIVE
+status=permanent-overnight-running
+pid=28980
+local=2026-11-07 19:10:45
+utc=2026-11-08T00:10:45Z
+note=ModeB NO_TME falsified (~0.1 lum); GoW min60 in HOLD; store nightly landing
+

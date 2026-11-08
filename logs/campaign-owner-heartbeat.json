@@ -1,1 +1,9 @@
-{"hitman_ninja":true,"workers":["nfs-stream-landed","cnk-patch-ready"],"pid":32764,"current_checkbox":"hitman-black-fix","utc":"2026-11-08T00:10:36Z","status":"await-web-next-long"}
+{
+    "phase":  "modeB-falsified-notme;gow-hold;store-nightly",
+    "utc":  "2026-11-08T00:10:45Z",
+    "pid":  28980,
+    "evidence":  "logs/autonomous-pipeline/hitman-modeB-notme-20261107T190853",
+    "local":  "2026-11-07 19:10:45",
+    "role":  "campaign-owner",
+    "status":  "permanent-overnight-running"
+}

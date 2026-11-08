@@ -5,3 +5,6 @@
 2026-11-07 19:08:31 W-CNK-ALCHEMY heartbeat lane=b49f awaiting_ps2run_link cascade_rebuild_active
 2026-11-07 19:10:18 W-CNK-ALCHEMY heartbeat lane=b49f cascade_clang=1 ps2run=True
 2026-11-07 19:10:31 W-CNK-ALCHEMY heartbeat lane=b49f ps2run=READY size=81058304 action=start_smoke_3k
+2026-11-07 19:10:44 W-CNK-ALCHEMY smoke START frames=3000 log=c:\PS2Recomp\logs\autonomous-pipeline\b49f2e769315347e8bda839feb705744-alchemy-smoke-W-CNK-ALCHEMY-20261107T1910Z.log
+2026-11-07 19:10:48 W-CNK-SMOKE heartbeat lane=b49f lock=acquired owner=W-CNK-smoke-o20 pid=30424 ps2run=linked_o20_syms action=start_muted_smoke_5k cmake_inflight=11292
+2026-11-07 19:10:50 W-CNK-ALCHEMY smoke END exit=0

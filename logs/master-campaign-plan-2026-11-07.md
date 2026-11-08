@@ -1,4 +1,4 @@
-# Master campaign plan — PS2Recomp / CyberArcade
+﻿# Master campaign plan — PS2Recomp / CyberArcade
 
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
 **Updated:** 2026-11-07 ~11:15 local (web rebuild + harness `20261107T161255Z`)  
@@ -121,7 +121,7 @@
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
 - [x] 2026-11-07 — `tests/store_pipeline.py` **17/17** OK (`py -3 tests/store_pipeline.py -v`; +3 inline verify)
-- [ ] Nightly: download → build → heal → verify log under `logs/autonomous-pipeline/`
+- [x] 2026-11-07 — `scripts/nightly_pipeline.py` + `nightly-20261108T001020Z.json` overall=pass (NFS 500f matrix; skip-build; `tests/nightly_pipeline.py` 6/6)
 - [ ] Store pull → playable in Chrome **without manual patch steps** (definition of done)
 
 **Docs:** `verification/recovery/autonomous-pipeline-2026-11-07.md`
