@@ -1,3 +1,2 @@
-﻿W-STORE heartbeat 2026-11-07 19:09:52
-status=nightly_pass_candidate_nfs
-note=skip-build only; not touching web-60c82f cmake lock
+﻿W-STORE heartbeat 2026-11-07 19:10:08
+status=nightly_gow_500f_or_pass_candidate
