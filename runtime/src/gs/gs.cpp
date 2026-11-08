@@ -655,7 +655,9 @@ void switch_target(std::uint64_t frame) {
 
 void prim(const State &s, int needed) {
     if (!active()) return;
-    const std::uint64_t prim = (s.prmodecont & 1u) ? s.prim : ((s.prim & 7u) | (s.prmode & ~7ull));
+    std::uint64_t prim = (s.prmodecont & 1u) ? s.prim : ((s.prim & 7u) | (s.prmode & ~7ull));
+    // Match draw path: undefined PRIM 7 drops FST so texel AABB reflects ST/Q sampling.
+    if ((s.prim & 7u) == 7u) prim &= ~0x100ull;
     const int c = static_cast<int>(prim >> 9) & 1;
     const Context &x = s.ctx[c];
     Batch &b = g_batch;
@@ -777,12 +779,10 @@ int prompt_capture_status() { return capture::g_prompt_capture.load(); }
 
 void kick(bool draw) {
     State &s = g_state;
-    // GS PRIM type 7 is undefined. Hitman emits many 0x07F/0x7FF kicks. Mapping
-    // them to SPRITE (need=2) paired unrelated verts into huge black quads and
-    // worsened present lum; draw as POINT (need=1). gpu/raster also clear FST on
-    // type 7 so 0x7FF textured kicks sample sticky ST/Q instead of empty UV.
-    std::uint32_t prim = static_cast<std::uint32_t>(s.prim) & 7u;
-    if (prim == 7u) prim = 0u;
+    // GS PRIM type 7 is undefined. Hitman emits many 0x07F/0x7FF kicks. Default
+    // remap → POINT (PS2_GS_PRIM7 overrides). gpu/raster clear FST on type 7 so
+    // 0x7FF textured kicks sample sticky ST/Q instead of empty UV.
+    std::uint32_t prim = remap_undefined_prim(static_cast<std::uint32_t>(s.prim));
     const int needed = prim == 0 ? 1 : (prim == 1 || prim == 2 || prim == 6) ? 2 : 3;
     if (s.count < needed) return;
     if (draw) {

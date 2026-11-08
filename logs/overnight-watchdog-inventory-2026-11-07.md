@@ -63,3 +63,19 @@
 2. If owner heartbeat age >3min or owner dead → spawn/resume owner
 3. If lane worker finished → spawn replacement for next open checkbox
 4. Never idle — advance docs/registry/self_heal/verify on unlocked lanes
+
+## Tick4 2026-11-08T00:16:29Z
+- Owner OK (permanent-overnight-running, hitman-native done)
+- All 7 lane heartbeats fresh (<180s)
+- Builds live: web-a2116-next, web-60c82f-next, native-b49f2e (x2 cmake?), native-c0c452 (Sly), native rebuild ninja-j4
+- Hitman native COMPLETE per W-HITMAN BUILD_WATCH
+- Registry: 14 titles seeded; FPS allowlist schema added (empty exceptions)
+- Respawns earlier: owner, STORE-next, SLY, HITMAN, HOST, GOW
+
+## Tick4 2026-11-08T00:16:29Z
+- Owner OK (permanent-overnight-running, hitman-native done)
+- All 7 lane heartbeats fresh (<180s)
+- Builds live: web-a2116-next, web-60c82f-next, native-b49f2e (x2 cmake?), native-c0c452 (Sly), native rebuild ninja-j4
+- Hitman native COMPLETE per W-HITMAN BUILD_WATCH
+- Registry: 14 titles seeded; FPS allowlist schema added (empty exceptions)
+- Respawns earlier: owner, STORE-next, SLY, HITMAN, HOST, GOW

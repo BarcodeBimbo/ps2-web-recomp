@@ -82,9 +82,14 @@ def global_patches_in_tree(*, root: Path = ROOT) -> dict:
         checks.append({"id": marker["id"], "path": marker["path"], "present": present})
         if not present:
             ok = False
-    # Registry should list the disc-fix pair as applied.
+    # Registry should list the disc-fix pair as applied (v1 rich list or legacy ids).
+    try:
+        from game_fix_registry import discfix_applied_ids
+    except ImportError:  # pragma: no cover - script dir may already be on path
+        sys.path.insert(0, str(root / "scripts"))
+        from game_fix_registry import discfix_applied_ids
     reg = _read_json(root / "verification" / "recovery" / "game-fix-registry.json")
-    applied = list((reg.get("global_runtime") or {}).get("disc_fix_applied") or [])
+    applied = discfix_applied_ids(reg)
     for expected in ("R3_readee", "R4D1_DiskReady"):
         listed = expected in applied
         checks.append({"id": f"registry_{expected}", "present": listed, "applied": applied})

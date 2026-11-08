@@ -1,0 +1,176 @@
+{
+  "mode": "library_measure",
+  "exception_problems": [],
+  "library": {
+    "schema": "ps2recomp.solid60.library_measure/v1",
+    "exception_problems": [],
+    "registry_schema": "ps2recomp.game_fix_registry/v1",
+    "disc_fix_applied": [
+      "R3_readee",
+      "R4D1_DiskReady"
+    ],
+    "titles": 14,
+    "pass": 0,
+    "fail": 2,
+    "no_metrics": 11,
+    "quarantined": 1,
+    "rows": [
+      {
+        "game_id": "1e5a12a02722175839d88d0301949cd9",
+        "title": "Ratchet & Clank: Going Commando",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "34402ee3c1917272f971028b4fb24868",
+        "title": "God of War II",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "60c82f4a111da300ac23bbec85272788",
+        "title": "NFS Most Wanted",
+        "status": "fail",
+        "solid_60": {
+          "game_id": "60c82f4a111da300ac23bbec85272788",
+          "pass": false,
+          "min_fps_target": 60.0,
+          "target_info": {
+            "game_id": "60c82f4a111da300ac23bbec85272788",
+            "min_fps": 60.0,
+            "source": "min_fps_default",
+            "allowlisted": false,
+            "reason": "",
+            "exception_valid": true,
+            "exception_error": null
+          },
+          "sustained_fps": 21.8,
+          "stats_fps": {
+            "avg": 42.794736842105266,
+            "min": 21.8,
+            "max": 61.0
+          },
+          "fps_overlay_ignored_for_pass": true,
+          "fps_overlay_observed": {
+            "samples": 10,
+            "avg": 42.4,
+            "min": 20.0,
+            "max": 60.0,
+            "maxMs_peak": 553.0,
+            "graph_trend_avg": -0.10136363636363636,
+            "graph_trend_last": -0.097
+          },
+          "frameskip_signals": [],
+          "violations": [
+            "below_target:21.80<60.0"
+          ],
+          "policy": {
+            "no_fps_overlay_pass": true,
+            "no_frameskip_fix": true,
+            "no_vsync_uncap": true,
+            "measure_only_pacing": true
+          }
+        }
+      },
+      {
+        "game_id": "695b874b308a4e5353767bb6df8ba697",
+        "title": "God of War USA",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "76615f9956b13094771e370c883c7170",
+        "title": "Def Jam \u2013 Fight for NY",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+        "title": "Gran Turismo 4 (USA)",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+        "title": "Hitman Blood Money",
+        "status": "fail",
+        "solid_60": {
+          "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+          "pass": false,
+          "min_fps_target": 60.0,
+          "target_info": {
+            "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+            "min_fps": 60.0,
+            "source": "min_fps_default",
+            "allowlisted": false,
+            "reason": "",
+            "exception_valid": true,
+            "exception_error": null
+          },
+          "sustained_fps": 10.6,
+          "stats_fps": {
+            "avg": 57.641666666666666,
+            "min": 10.6,
+            "max": 60.0
+          },
+          "fps_overlay_ignored_for_pass": true,
+          "fps_overlay_observed": {
+            "samples": 25,
+            "avg": 54.8,
+            "min": 0.0,
+            "max": 60.0,
+            "maxMs_peak": 167.0,
+            "graph_trend_avg": -0.05226923076923077,
+            "graph_trend_last": 0.002
+          },
+          "frameskip_signals": [
+            "overlay_hitch_train_maxMs"
+          ],
+          "violations": [
+            "frameskip:overlay_hitch_train_maxMs",
+            "below_target:10.60<60.0"
+          ],
+          "policy": {
+            "no_fps_overlay_pass": true,
+            "no_frameskip_fix": true,
+            "no_vsync_uncap": true,
+            "measure_only_pacing": true
+          }
+        }
+      },
+      {
+        "game_id": "b49f2e769315347e8bda839feb705744",
+        "title": "Crash Nitro Kart",
+        "status": "quarantined"
+      },
+      {
+        "game_id": "c0671389c296be6afe9e5224c97d30df",
+        "title": "Need for Speed - Underground 2 (USA)",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "c0c4527037b6168660829a0eb13df1a3",
+        "title": "Sly Cooper and the Thievius Raccoonus (USA)",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "f141051d9b9fae0fb48deced01311f44",
+        "title": "Hitman 2 \u2013 Silent Assassin",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "f29093e1f939f924fb11cc605b592b11",
+        "title": "Hot Shots Golf 3 (USA) (v2.00)",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "ff676a9829a95d13c3aba981334c0ae8",
+        "title": "Downhill Domination",
+        "status": "no_chrome_metrics"
+      },
+      {
+        "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+        "title": "Resident Evil 4 (USA)",
+        "status": "no_chrome_metrics"
+      }
+    ],
+    "product_changes_applied": false,
+    "note": "measure-only; library Chrome sweep checkbox stays open until pass covers all non-quarantined titles",
+    "written": "logs/workers/W-HOST-solid60-library-measure-2026-11-07.json"
+  }
+}

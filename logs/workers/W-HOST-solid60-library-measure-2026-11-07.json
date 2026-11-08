@@ -1,6 +1,35 @@
 {
   "schema": "ps2recomp.solid60.library_measure/v1",
   "exception_problems": [],
+  "registry_schema": "ps2recomp.game_fix_registry/v1",
+  "registry_schema_version": 1,
+  "disc_fix_applied": [
+    "R3_readee",
+    "R4D1_DiskReady"
+  ],
+  "discfix_applied": [
+    {
+      "id": "R3_readee",
+      "status": "verified_apply",
+      "board": "verification/recovery/discfix-matrix-board.json",
+      "board_path": "discfix.applied.R3_readee",
+      "files": [
+        "runtime/src/iop/cdvdfsv.cpp"
+      ],
+      "verified_date": "2026-11-07"
+    },
+    {
+      "id": "R4D1_DiskReady",
+      "status": "verified_apply",
+      "board": "verification/recovery/discfix-matrix-board.json",
+      "board_path": "discfix.applied.R4D1_DiskReady",
+      "files": [
+        "runtime/src/iop/cdvd.cpp",
+        "runtime/src/iop/cdvdfsv.cpp"
+      ],
+      "verified_date": "2026-11-07"
+    }
+  ],
   "titles": 14,
   "pass": 0,
   "fail": 2,
@@ -160,5 +189,7 @@
       "title": "Resident Evil 4 (USA)",
       "status": "no_chrome_metrics"
     }
-  ]
+  ],
+  "product_changes_applied": false,
+  "note": "measure-only; library Chrome sweep checkbox stays open until pass covers all non-quarantined titles"
 }

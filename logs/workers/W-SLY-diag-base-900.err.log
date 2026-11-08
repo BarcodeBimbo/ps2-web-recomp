@@ -1,0 +1,199 @@
+[disc] games/c0c4527037b6168660829a0eb13df1a3/disc.iso: 9 files, 1368320 sectors, layer 1 at 0
+[mc] card in slot 1: logs/sly-diag-base-card.ps2
+[createsema] id=0 init=1 max=1 attr=0x0 option=0x0 ra=0x001F9DE4 thr=1
+[createsema] id=1 init=1 max=1 attr=0x0 option=0x0 ra=0x001F9DF4 thr=1
+[createsema] id=2 init=0 max=255 attr=0x0 option=0x0 ra=0x001F7128 thr=1
+[waitsema] id=2 count=0 waiters=0 ra=0x001F7068 thr=2 create_ra=0x001F7128 init=0 max=255 will_block
+[createsema] id=3 init=1 max=1 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[vu0] cfc2 28
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[createsema] id=4 init=0 max=1 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[createsema] id=5 init=0 max=1 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[dma] gif tag id 4 qwc 44 addr 0x002BE1A0 data 0x002BE1A0
+[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0064C280
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] SetGsCrt interlace 1 mode 0x2 field 1
+[createsema] id=6 init=0 max=1 attr=0x0 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=6 init=0 max=1 attr=0x80000592 option=0xFFFFFFFF ra=0x001F83DC thr=1
+[createsema] id=6 init=1 max=1 attr=0x250000 option=0x0 ra=0x00202F44 thr=1
+[createsema] id=7 init=1 max=1 attr=0x250000 option=0x0 ra=0x00202F50 thr=1
+[createsema] id=8 init=0 max=1 attr=0x250000 option=0x0 ra=0x00202F60 thr=1
+[createsema] id=9 init=0 max=1 attr=0x1 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x250000 option=0x1 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x1F8418 option=0x0 ra=0x001F83DC thr=1
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP243.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP243.IMG;1 reports 2430, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP243.IMG;1 reports 2430
+[createsema] id=9 init=0 max=1 attr=0x1F8418 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x80000592 option=0xFFFFFFFF ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x1 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x250000 option=0x1 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x1F8418 option=0x0 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x27A600 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x8000059A option=0xFFFFFFFF ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x8000059A option=0xFFFFFFFF ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x80000006 option=0xFFFFFFFF ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\SIO2MAN.IRX;1
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\PADMAN.IRX;1
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\MCMAN.IRX;1
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\MCSERV.IRX;1
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00054B08)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00054B0C)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00054B28)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x00054B38)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00054B64)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00054B68)
+[createsema] id=9 init=0 max=1 attr=0x64C1C0 option=0x0 ra=0x001F83DC thr=1
+[loadfile] cdrom0:\989SND.IRX;1
+[iop-tty] 
+[iop-tty] ==========================================================
+[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America
+[iop-tty]  by Buzz Burrowes                               v2.9.3
+[iop-tty]                         (built Aug 21 2002 at 21:30:44)
+[iop-tty]                                          (pre-release 8)
+[iop-tty]  (build with sce library rev 2.4.3)
+[iop-tty] ==========================================================
+[iop-tty]     Thread Priorities:
+[iop-tty]                          Sound Tick = 9
+[iop-tty]                            Main RPC = 58
+[iop-tty]                         Loading RPC = 59
+[iop-tty]                           Streaming = 60, 61, 62, 63
+[iop-tty] ==========================================================
+[iop-tty] 
+[createsema] id=9 init=0 max=1 attr=0x202030 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x202030 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=9 init=0 max=1 attr=0x20626000 option=0x0 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x20626000 option=0x0 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=1 attr=0x20626000 option=0x0 ra=0x001F83DC thr=1
+[createsema] id=9 init=0 max=2 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[createsema] id=10 init=2 max=2 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)
+[createsema] id=11 init=0 max=1 attr=0x630000 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=11 init=0 max=1 attr=0x630000 option=0x0 ra=0x001F8138 thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=11 init=0 max=1 attr=0x1FA660 option=0x0 ra=0x001F83DC thr=1
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc
+[createsema] id=11 init=1 max=1 attr=0x264824 option=0x0 ra=0x00209438 thr=1
+[createsema] id=12 init=0 max=1 attr=0x26482C option=0x0 ra=0x001F8138 thr=1
+[createsema] id=12 init=0 max=1 attr=0x80000400 option=0xFFFFFFFF ra=0x001F83DC thr=1
+[createsema] id=12 init=1 max=1 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[createsema] id=13 init=0 max=1 attr=0x0 option=0x0 ra=0x001E22A0 thr=1
+[createsema] id=14 init=0 max=1 attr=0x0 option=0x0 ra=0x001F8138 thr=1
+[createsema] id=14 init=0 max=1 attr=0x0 option=0x1 ra=0x001F83DC thr=1
+[createsema] id=14 init=0 max=1 attr=0x4A option=0x0 ra=0x001F83DC thr=1
+[createsema] id=14 init=0 max=1 attr=0x64C2E0 option=0x0 ra=0x001F83DC thr=1
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B4002 imr=0x7D00 mask=0x1 fn=0x00168698
+[createsema] id=14 init=0 max=1 attr=0x269A00 option=0x0 ra=0x001F83DC thr=1
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B4002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B4002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B4002 imr=0x7D00 mask=0x1 fn=0x00168698
+[createsema] id=14 init=0 max=1 attr=0x64C320 option=0x0 ra=0x001F83DC thr=1
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B6002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B6002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B6002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[intc] GS handlers csr=0x551B4002 imr=0x7D00 mask=0x1 fn=0x00168698
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[gs] FINISH raise csr=0x551B4002 imr=0x7D00 pending=0 armed intc
+[io] write 0x1000F590 = 0x10000 (pc 0x0020ADB0)
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[timer] TIM0 compare IRQ count=2720 comp=2720 mode=0x580
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 4 wait 0/14 pc 0x002111C1 ra 0x002111B8
+[thread]   stack: 0020DF40 00211584 0020C0A8 0020FE40 0020C148 0020FF08 0020C168 0020FF08 0020C0A8 0020FE40 0020C148 0020FF08 0020C168 00210A44 002101A0 0020B4F4 0020B5A8 0020B410 0020B094 0018F73C 0018F35C 0018F170 0018583C 001000AC
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x001F6B68 ra 0x001F7068
+[thread]   stack:
+[thread] 3 status 4 prio 2 wait 2/9 pc 0x001F6B68 ra 0x0015EEE8
+[thread]   stack:
+[thread] 4 status 4 prio 2 wait 2/13 pc 0x001F6B68 ra 0x0018E594
+[thread]   stack:
+[sema] 2 count 0 waiters 1 create_ra=0x001F7128 init=0 max=255
+[sema] 9 count 0 waiters 1 create_ra=0x001E22A0 init=0 max=2
+[sema] 13 count 0 waiters 1 create_ra=0x001E22A0 init=0 max=1
+[cnk] skip@0x702BA0=151607305 sema45_id@0x705C18=690563369 sema47_id@0x705C10=4069635397 csr=0x551B400A imr=0x7D00 intc_pend=0x4 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1
+[cnk] gate 705BF0=108149264 705C00=8298209268509518121 6542A0=9248630986488116339 6542D8=2152566688 705BE0=CA067A06 705C20=690563369 654290=2147620726 705DF8=1914045974 705F10=73002C6B
+[cnk] T0 mode=0x580 comp=4657 count=37429 pending=0x4 mask=0x25
+[cnk] TIM0 handler (none registered)
+[cnk] asset STBL@762390=0C182D0C fonts_crc@7B3638=7D9D519D siid@155F940=00000000/00000000 gob+912=00000000 walk flag=204 first=3435973836 cur=3436104908 want=3722304989 cap=3722304989 ptr=0xCCCCCCCC mag5=0x00
+[cnk] loadgate 6F2540=DDDDDDD1 6F35E0=CECCCCCC 6F2538=11111111 6F5AB8=DDDDDDDD 635138=00000000
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00021000
+[iop] module 3 MCMAN at 0x0002AE00
+[iop] module 4 MCSERV at 0x00050500
+[iop] module 5 LIBSD at 0x00053D00
+[iop] module 6 989SND at 0x00058800
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/174900 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/175124 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/342992 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 58 wait 8/1982344 pc 0x00001020
+[iop] thread 12 status 4 prio 59 wait 8/1980296 pc 0x00001020
+[iop] thread 13 status 2 prio 20 wait 0/6 pc 0x00021094
+[iop] thread 14 status 4 prio 46 wait 4/6 pc 0x00021094
+[iop] thread 15 status 4 prio 46 wait 4/7 pc 0x00021094
+[iop] thread 16 status 16 prio 46 wait 0/7 pc 0x00023B14
+[iop] thread 17 status 16 prio 46 wait 0/7 pc 0x00023C50
+[iop] thread 18 status 16 prio 46 wait 0/7 pc 0x00023D88
+[iop] thread 19 status 16 prio 46 wait 0/7 pc 0x00023F28
+[iop] thread 20 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 21 status 4 prio 9 wait 1/0 pc 0x0005F0E8
+[iop] thread 22 status 4 prio 60 wait 3/13 pc 0x0006ACFC
+[iop] thread 23 status 4 prio 62 wait 3/12 pc 0x00068DA0
+[iop] thread 24 status 4 prio 61 wait 3/14 pc 0x0006B0B8
+[iop] thread 25 status 4 prio 63 wait 3/15 pc 0x00069B14
+[sif] 0 packets wait for the EE (processed 1)
+[gs] 802 primitives drawn, register writes: 00:74488 01:34 04:884 05:720 06:138 08:138 14:138 18:142 1A:142 3F:79 40:174 42:138 45:142 46:142 47:316 4C:142 4E:174 50:867 51:74006 52:867 53:74006 61:233
+[ipu] commands: 0:145 2:23312 3:113582 4:444829 5:12 6:1 7:123 9:1 stalls 2231212 out 5866752 qwords, busy 1 decoding 1 cmd 0x700003FF in 128 bytes bit 0 out 0
+[dma] starts: ch0=14 ch1=17 ch2=361 ch3=23435 ch4=459 ch5=0 ch6=0 ch7=0 ch8=0 ch9=66645
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 32 reglist 0 image 0
+[gif] path 3 tags: packed 74598 reglist 0 image 74006
+[vif0] 00:10 14:1 4A:1
+[vif1] 00:98 01:1 02:1 03:1 04:1 05:1 06:1 11:16 14:1 20:1 4A:9 50:32
+[ee] stopped after 900 frames, 4424672391 cycles: frame limit reached

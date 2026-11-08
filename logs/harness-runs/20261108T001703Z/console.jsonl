@@ -1,0 +1,1043 @@
+{"t": 1794097025.6934962, "game": "NFS_MW", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097027.383864, "game": "NFS_MW", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097027.3848653, "game": "NFS_MW", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097027.3863778, "game": "NFS_MW", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097027.390795, "game": "NFS_MW", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097027.3917954, "game": "NFS_MW", "type": "log", "text": "[disc] disc: 25 files, 1807840 sectors, layer 1 at 0"}
+{"t": 1794097027.4000983, "game": "NFS_MW", "type": "log", "text": "[mc] card in slot 1: /memcard-60c82f4a111da300ac23bbec85272788/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097027.4016256, "game": "NFS_MW", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x00495DE8 thr=2"}
+{"t": 1794097027.4062274, "game": "NFS_MW", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097029.2129483, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097029.2139592, "game": "NFS_MW", "type": "log", "text": "[stats] frame 1 0.3 fps (0 on screen) GPU 0% idle emu 1% vu 56% gs 56% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097029.6775289, "game": "NFS_MW", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom:\\NFS\\IOPRP280.IMG\""}
+{"t": 1794097030.1146984, "game": "NFS_MW", "type": "log", "text": "[sif] FILEIO from cdrom:\\NFS\\IOPRP280.IMG reports 2800, asynchronous protocol"}
+{"t": 1794097030.1157308, "game": "NFS_MW", "type": "log", "text": "[sif] LOADFILE from cdrom:\\NFS\\IOPRP280.IMG reports 2800"}
+{"t": 1794097030.1187396, "game": "NFS_MW", "type": "log", "text": "[fileio] open cdrom:\\NFS\\IRX281A.BUN -> 3"}
+{"t": 1794097030.1202488, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x20000, 6641 bytes"}
+{"t": 1794097030.1227674, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x22B00, 43813 bytes"}
+{"t": 1794097030.143988, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x37100, 95909 bytes"}
+{"t": 1794097030.1869984, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x22B00, 7417 bytes"}
+{"t": 1794097030.1885078, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.1898298, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1908417, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1918516, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.1923845, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1933968, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1949103, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.1974354, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1984499, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.1994483, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.2014453, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.2311168, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.2471373, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.2486734, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.2522988, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.2887871, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.303401, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.3578148, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.4218225, "game": "NFS_MW", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097030.4655774, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.4681444, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.4716618, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.4771767, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x37100, 28605 bytes"}
+{"t": 1794097030.4791925, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)"}
+{"t": 1794097030.4852557, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)"}
+{"t": 1794097030.488777, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)"}
+{"t": 1794097030.4907782, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)"}
+{"t": 1794097030.4912891, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)"}
+{"t": 1794097030.4932988, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)"}
+{"t": 1794097030.4932988, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x28000, 9161 bytes"}
+{"t": 1794097030.4958203, "game": "NFS_MW", "type": "log", "text": "[iop-tty] SDR driver version 4.0.1 (C) SCEI"}
+{"t": 1794097030.4968333, "game": "NFS_MW", "type": "log", "text": "[iop-tty]  Exit rsd_main "}
+{"t": 1794097030.5456364, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x75B00, 81600 bytes"}
+{"t": 1794097030.546644, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x43B00, 34969 bytes"}
+{"t": 1794097030.5729768, "game": "NFS_MW", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794097030.5857677, "game": "NFS_MW", "type": "log", "text": "[iop-io] write 0x1F801680 = 0x1 (pc 0x0003A7EC)"}
+{"t": 1794097030.586814, "game": "NFS_MW", "type": "log", "text": "[intc] TIM1 handlers fn=0x00490120"}
+{"t": 1794097030.5898228, "game": "NFS_MW", "type": "log", "text": "[loadfile] buffer at 0x7B500, 52349 bytes"}
+{"t": 1794097030.5917528, "game": "NFS_MW", "type": "log", "text": "[iop-tty] LgDev_tb_rb_Driver Version 1.11.037 ( Wheel ), built on Jun 16 2005 at 16:02:04, thpri=42,43"}
+{"t": 1794097030.5922596, "game": "NFS_MW", "type": "log", "text": "[iop-tty]   fixed memory allocations for 2 devices and 8 effects"}
+{"t": 1794097030.594777, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097030.6485536, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097030.6500726, "game": "NFS_MW", "type": "log", "text": "[stats] frame 14 12.9 fps (13 on screen) GPU 0% idle emu 13% vu 100% gs 98% heap 384 MB audio 0 ms hitch 602.3 ms x3"}
+{"t": 1794097030.6510732, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097030.6525836, "game": "NFS_MW", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097030.6540906, "game": "NFS_MW", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097031.2021341, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B2A0 data 0x0054B5B0"}
+{"t": 1794097031.2046924, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B2B0"}
+{"t": 1794097031.2066941, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097031.2076921, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B390 data 0x01D7B330"}
+{"t": 1794097031.2097027, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B3A0"}
+{"t": 1794097031.211717, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097031.213231, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B480 data 0x01D7B420"}
+{"t": 1794097031.2147524, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B490"}
+{"t": 1794097031.2157679, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097031.217271, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D7B570 data 0x01D7B510"}
+{"t": 1794097031.221858, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D7B580"}
+{"t": 1794097031.2233846, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097031.225394, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01D7B600"}
+{"t": 1794097031.2263944, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690"}
+{"t": 1794097031.2687733, "game": "NFS_MW", "type": "log", "text": "[stats] frame 37 21.4 fps (21 on screen) GPU 0% idle emu 29% vu 97% gs 97% heap 384 MB audio 9 ms hitch 334.4 ms x5"}
+{"t": 1794097031.3789704, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.38098, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3819814, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3834867, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3850043, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.386012, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3875196, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3885283, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3895283, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3900354, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.391044, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097031.3925533, "game": "NFS_MW", "type": "log", "text": "[timer] TIM0 compare IRQ count=32830 comp=32830 mode=0x580"}
+{"t": 1794097032.765706, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FA30 data 0x0054B550"}
+{"t": 1794097032.766704, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FA40"}
+{"t": 1794097032.7690945, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097032.7701032, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FB20 data 0x01C4FAC0"}
+{"t": 1794097032.7721024, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FB30"}
+{"t": 1794097032.7741058, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097032.775109, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FC10 data 0x01C4FBB0"}
+{"t": 1794097032.777104, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FC20"}
+{"t": 1794097032.7776117, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097032.844388, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01C4FD00 data 0x01C4FCA0"}
+{"t": 1794097032.846403, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01C4FD10"}
+{"t": 1794097032.8474164, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004BE870 data 0x004BE870"}
+{"t": 1794097032.8489265, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x00563680 data 0x01C4FD90"}
+{"t": 1794097032.8524592, "game": "NFS_MW", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x00563690"}
+{"t": 1794097032.8863213, "game": "NFS_MW", "type": "log", "text": "[stats] frame 78 41.1 fps (34 on screen) GPU 10% idle emu 16% vu 100% gs 92% heap 384 MB audio 9 ms hitch 152.5 ms x9"}
+{"t": 1794097033.9235659, "game": "NFS_MW", "type": "log", "text": "[stats] frame 104 24.7 fps (22 on screen) GPU 1% idle emu 12% vu 100% gs 97% heap 384 MB audio 5 ms hitch 113.3 ms x12"}
+{"t": 1794097035.2961524, "game": "NFS_MW", "type": "log", "text": "[stats] frame 126 21.1 fps (21 on screen) GPU 1% idle emu 5% vu 100% gs 98% heap 384 MB audio 1 ms hitch 77.2 ms x21"}
+{"t": 1794097035.8349576, "game": "NFS_MW", "type": "log", "text": "[stats] frame 151 24.2 fps (24 on screen) GPU 1% idle emu 6% vu 100% gs 98% heap 384 MB audio 1 ms hitch 63.2 ms x18"}
+{"t": 1794097036.8894966, "game": "NFS_MW", "type": "log", "text": "[stats] frame 179 27.0 fps (27 on screen) GPU 1% idle emu 6% vu 100% gs 97% heap 384 MB audio 4 ms hitch 67.1 ms x16"}
+{"t": 1794097037.4457352, "game": "NFS_MW", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)"}
+{"t": 1794097037.4492521, "game": "NFS_MW", "type": "log", "text": "[stats] frame 214 35.0 fps (32 on screen) GPU 10% idle emu 7% vu 100% gs 95% heap 384 MB audio 77 ms hitch 72.1 ms x9"}
+{"t": 1794097038.5808394, "game": "NFS_MW", "type": "log", "text": "[stats] frame 258 37.5 fps (28 on screen) GPU 15% idle emu 45% vu 99% gs 87% heap 384 MB audio 0 ms hitch 304.4 ms x7"}
+{"t": 1794097039.1216927, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097039.1237037, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097039.1247044, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097039.6485617, "game": "NFS_MW", "type": "log", "text": "[stats] frame 308 54.0 fps (42 on screen) GPU 24% idle emu 27% vu 98% gs 72% heap 384 MB audio 6 ms hitch 200.5 ms x6"}
+{"t": 1794097040.7995763, "game": "NFS_MW", "type": "log", "text": "[stats] frame 363 49.8 fps (46 on screen) GPU 26% idle emu 21% vu 100% gs 87% heap 384 MB audio 59 ms hitch 154.8 ms x5"}
+{"t": 1794097041.858392, "game": "NFS_MW", "type": "log", "text": "[stats] frame 430 69.9 fps (54 on screen) GPU -1% idle emu 50% vu 99% gs 85% heap 384 MB audio 176 ms hitch 57.1 ms x4"}
+{"t": 1794097042.4153154, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097042.4163342, "game": "NFS_MW", "type": "log", "text": "[intc] pending 0x800 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097042.9407954, "game": "NFS_MW", "type": "log", "text": "[stats] frame 492 61.0 fps (54 on screen) GPU 21% idle emu 41% vu 99% gs 88% heap 384 MB audio 177 ms hitch 83.7 ms x3"}
+{"t": 1794097043.1578052, "game": "NFS_MW", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794097044.3715978, "game": "NFS_MW", "type": "log", "text": "[stats] frame 553 59.9 fps (53 on screen) GPU 11% idle emu 44% vu 99% gs 91% heap 384 MB audio 194 ms hitch 58.5 ms x4"}
+{"t": 1794097044.8986673, "game": "NFS_MW", "type": "log", "text": "[stats] frame 613 59.1 fps (56 on screen) GPU 51% idle emu 32% vu 98% gs 90% heap 384 MB audio 187 ms hitch 60.2 ms x2"}
+{"t": 1794097045.4720147, "game": "NFS_MW", "type": "log", "text": "[ee] missing instruction words: 0C11616E 0200202D AE020028 26100014"}
+{"t": 1794097045.4745317, "game": "NFS_MW", "type": "log", "text": "[ee] no translated code at 0x01A5C000 (ra 0x01A5BFFC)"}
+{"t": 1794097045.4765394, "game": "NFS_MW", "type": "log", "text": "[ee]   r1  42FE0000 00000001 00000001 01BA8000"}
+{"t": 1794097045.480622, "game": "NFS_MW", "type": "log", "text": "[ee]   r5  00000000 00000003 00000018 01BA7EFC"}
+{"t": 1794097045.4816298, "game": "NFS_MW", "type": "log", "text": "[ee]   r9  00000001 02000000 005A0000 00000002"}
+{"t": 1794097045.4866652, "game": "NFS_MW", "type": "log", "text": "[ee]   r13 00000002 00000002 005BEA10 01BA8014"}
+{"t": 1794097045.4926982, "game": "NFS_MW", "type": "log", "text": "[ee]   r17 005BF400 005C0000 005BEA10 005C0000"}
+{"t": 1794097045.5017664, "game": "NFS_MW", "type": "log", "text": "[ee]   r21 005C0000 005C0000 005A0000 00000001"}
+{"t": 1794097045.5044756, "game": "NFS_MW", "type": "log", "text": "[ee]   r25 00000000 00000000 00000000 005B3BF0"}
+{"t": 1794097045.5070026, "game": "NFS_MW", "type": "log", "text": "[ee]   r29 005C6F00 005C0000 01A5BFFC 00000000"}
+{"t": 1794097045.5090685, "game": "NFS_MW", "type": "log", "text": "[ee] halted: missing code at 0x01A5C000 (ra 0x01A5BFFC)"}
+{"t": 1794097045.5110781, "game": "NFS_MW", "type": "log", "text": "[thread] 1 status 2 prio 100 wait 0/0 pc 0x00208398 ra 0x0020DA38"}
+{"t": 1794097045.5120769, "game": "NFS_MW", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097045.5135856, "game": "NFS_MW", "type": "log", "text": "[thread] 2 status 4 prio 0 wait 2/2 pc 0x00495528 ra 0x00495DE8"}
+{"t": 1794097045.515593, "game": "NFS_MW", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097045.5176232, "game": "NFS_MW", "type": "log", "text": "[thread] 3 status 4 prio 99 wait 2/17 pc 0x00495528 ra 0x00490308"}
+{"t": 1794097045.5231645, "game": "NFS_MW", "type": "log", "text": "[thread]   stack: 0048CEB4 0049034C 0048CE00"}
+{"t": 1794097045.5246813, "game": "NFS_MW", "type": "log", "text": "[thread] 4 status 4 prio 99 wait 2/23 pc 0x00495528 ra 0x00490308"}
+{"t": 1794097045.5256827, "game": "NFS_MW", "type": "log", "text": "[thread]   stack: 0048CEB4 0049034C 0048CE00 00327AF0"}
+{"t": 1794097045.5266829, "game": "NFS_MW", "type": "log", "text": "[thread] 5 status 1 prio 6 wait 0/29 pc 0x01A5C001 ra 0x01A5BFFC"}
+{"t": 1794097045.5281887, "game": "NFS_MW", "type": "log", "text": "[thread]   stack: 0045A88C 0045F01C 00469E54"}
+{"t": 1794097045.5297036, "game": "NFS_MW", "type": "log", "text": "[thread] 6 status 4 prio 5 wait 2/30 pc 0x00495528 ra 0x0046BD30"}
+{"t": 1794097045.5307128, "game": "NFS_MW", "type": "log", "text": "[thread]   stack: 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B3F8 0031B9D8 0050B398 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8 0050B458 0048C2B8 0050B3F8 0048C2B8"}
+{"t": 1794097045.5352545, "game": "NFS_MW", "type": "log", "text": "[thread] 7 status 4 prio 99 wait 2/32 pc 0x00495528 ra 0x00490308"}
+{"t": 1794097045.537774, "game": "NFS_MW", "type": "log", "text": "[thread]   stack: 0048CEB4 0049034C 0048CE00"}
+{"t": 1794097045.5393975, "game": "NFS_MW", "type": "log", "text": "[sema] 2 count 0 waiters 1"}
+{"t": 1794097045.5409074, "game": "NFS_MW", "type": "log", "text": "[sema] 17 count 0 waiters 1"}
+{"t": 1794097045.541918, "game": "NFS_MW", "type": "log", "text": "[sema] 23 count 0 waiters 1"}
+{"t": 1794097045.543432, "game": "NFS_MW", "type": "log", "text": "[sema] 30 count 0 waiters 1"}
+{"t": 1794097045.56113, "game": "NFS_MW", "type": "log", "text": "[sema] 32 count 0 waiters 1"}
+{"t": 1794097045.5616574, "game": "NFS_MW", "type": "log", "text": "[cnk] skip@0x702BA0=4008636142 sema45_id@0x705C18=4008636142 sema47_id@0x705C10=4008636142 csr=0x551B6008 imr=0x7F00 intc_pend=0x0 cop0.sr=0x70010C01 ie=1 in_handler=0 current=5"}
+{"t": 1794097045.5626683, "game": "NFS_MW", "type": "log", "text": "[cnk] gate 705BF0=4008636142 705C00=17216961135462248174 6542A0=17216961135462248174 6542D8=4008636142 705BE0=EEEEEEEE 705C20=4008636142 654290=4008636142 705DF8=4008636142 705F10=EEEEEEEE"}
+{"t": 1794097045.5651903, "game": "NFS_MW", "type": "log", "text": "[cnk] T0 mode=0x580 comp=44112 count=41723 pending=0x0 mask=0xC24"}
+{"t": 1794097045.566698, "game": "NFS_MW", "type": "log", "text": "[cnk] TIM0 handler (none registered)"}
+{"t": 1794097045.5697956, "game": "NFS_MW", "type": "log", "text": "[cnk] asset STBL@762390=EEEEEEEE fonts_crc@7B3638=EEEEEEEE siid@155F940=EEEEEEEE/EEEEEEEE igctx@7430C0=EEEEEEEE walk flag=238 first=4008636142 cur=4008636142 want=4008636142 cap=4008636142 ptr=0xEEEEEEEE mag5=0x00"}
+{"t": 1794097045.5718188, "game": "NFS_MW", "type": "log", "text": "[cnk] loadgate 6F2540=EEEEEEEE 6F35E0=EEEEEEEE 6F2538=EEEEEEEE 6F5AB8=EEEEEEEE 635138=EEEEEEEE"}
+{"t": 1794097045.5728266, "game": "NFS_MW", "type": "log", "text": "[iop] module 1 sio2man at 0x00021A00"}
+{"t": 1794097045.5813978, "game": "NFS_MW", "type": "log", "text": "[iop] module 2 padman at 0x0002D700"}
+{"t": 1794097045.5870454, "game": "NFS_MW", "type": "log", "text": "[iop] module 3 mcman at 0x0004E800"}
+{"t": 1794097045.5880456, "game": "NFS_MW", "type": "log", "text": "[iop] module 4 mcserv at 0x00024800"}
+{"t": 1794097045.5905704, "game": "NFS_MW", "type": "log", "text": "[iop] module 5 Sound_Device_Library at 0x0003E100"}
+{"t": 1794097045.6041572, "game": "NFS_MW", "type": "log", "text": "[iop] module 6 sdr_driver at 0x0002A400"}
+{"t": 1794097045.6051562, "game": "NFS_MW", "type": "log", "text": "[iop] module 7 SND_Library_EE_Driver at 0x00089A00"}
+{"t": 1794097045.6066644, "game": "NFS_MW", "type": "log", "text": "[iop] module 8 USB_driver at 0x00037100"}
+{"t": 1794097045.6076753, "game": "NFS_MW", "type": "log", "text": "[iop] module 9 LgDev_tb_rb_Driver at 0x00043B00"}
+{"t": 1794097045.6091821, "game": "NFS_MW", "type": "log", "text": "[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6091821, "game": "NFS_MW", "type": "log", "text": "[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x00021DC4"}
+{"t": 1794097045.610691, "game": "NFS_MW", "type": "log", "text": "[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6117027, "game": "NFS_MW", "type": "log", "text": "[iop] thread 4 status 4 prio 46 wait 8/224852 pc 0x00001020"}
+{"t": 1794097045.6132126, "game": "NFS_MW", "type": "log", "text": "[iop] thread 5 status 4 prio 46 wait 8/225076 pc 0x00001020"}
+{"t": 1794097045.6142247, "game": "NFS_MW", "type": "log", "text": "[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6152222, "game": "NFS_MW", "type": "log", "text": "[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6162236, "game": "NFS_MW", "type": "log", "text": "[iop] thread 8 status 4 prio 104 wait 8/163584 pc 0x00001020"}
+{"t": 1794097045.6177313, "game": "NFS_MW", "type": "log", "text": "[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.619751, "game": "NFS_MW", "type": "log", "text": "[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.622259, "game": "NFS_MW", "type": "log", "text": "[iop] thread 11 status 4 prio 24 wait 8/178624 pc 0x00001020"}
+{"t": 1794097045.6237977, "game": "NFS_MW", "type": "log", "text": "[iop] thread 12 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.627337, "game": "NFS_MW", "type": "log", "text": "[iop] thread 13 status 4 prio 15 wait 1/0 pc 0x00093554"}
+{"t": 1794097045.6283371, "game": "NFS_MW", "type": "log", "text": "[iop] thread 14 status 4 prio 9 wait 1/0 pc 0x00093460"}
+{"t": 1794097045.629346, "game": "NFS_MW", "type": "log", "text": "[iop] thread 15 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6313472, "game": "NFS_MW", "type": "log", "text": "[iop] thread 16 status 4 prio 30 wait 4/5 pc 0x0003BB04"}
+{"t": 1794097045.6323457, "game": "NFS_MW", "type": "log", "text": "[iop] thread 17 status 4 prio 36 wait 4/6 pc 0x0003BB64"}
+{"t": 1794097045.6348546, "game": "NFS_MW", "type": "log", "text": "[iop] thread 18 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097045.6364021, "game": "NFS_MW", "type": "log", "text": "[iop] thread 19 status 4 prio 42 wait 8/1891976 pc 0x00001020"}
+{"t": 1794097045.6369348, "game": "NFS_MW", "type": "log", "text": "[iop] thread 20 status 4 prio 43 wait 3/14 pc 0x00048374"}
+{"t": 1794097045.6389449, "game": "NFS_MW", "type": "log", "text": "[iop] thread 21 status 4 prio 20 wait 4/17 pc 0x0002D794"}
+{"t": 1794097045.640462, "game": "NFS_MW", "type": "log", "text": "[iop] thread 22 status 4 prio 46 wait 4/17 pc 0x0002D794"}
+{"t": 1794097045.6414628, "game": "NFS_MW", "type": "log", "text": "[iop] thread 23 status 4 prio 46 wait 4/18 pc 0x0002D794"}
+{"t": 1794097045.6540074, "game": "NFS_MW", "type": "log", "text": "[iop] thread 24 status 16 prio 46 wait 0/18 pc 0x00030168"}
+{"t": 1794097045.6575308, "game": "NFS_MW", "type": "log", "text": "[iop] thread 25 status 16 prio 46 wait 0/18 pc 0x000302A4"}
+{"t": 1794097045.6595376, "game": "NFS_MW", "type": "log", "text": "[iop] thread 26 status 16 prio 46 wait 0/18 pc 0x000303DC"}
+{"t": 1794097045.6616094, "game": "NFS_MW", "type": "log", "text": "[iop] thread 27 status 16 prio 46 wait 0/18 pc 0x0003057C"}
+{"t": 1794097045.6641433, "game": "NFS_MW", "type": "log", "text": "[iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097045.6651413, "game": "NFS_MW", "type": "log", "text": "[iop] thread 29 status 4 prio 46 wait 4/19 pc 0x0002D794"}
+{"t": 1794097045.6676571, "game": "NFS_MW", "type": "log", "text": "[iop] thread 30 status 4 prio 46 wait 4/19 pc 0x0002D794"}
+{"t": 1794097045.6686563, "game": "NFS_MW", "type": "log", "text": "[iop] thread 31 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097045.6711679, "game": "NFS_MW", "type": "log", "text": "[iop] thread 32 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097045.672178, "game": "NFS_MW", "type": "log", "text": "[iop] thread 33 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097045.6731784, "game": "NFS_MW", "type": "log", "text": "[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097045.67484, "game": "NFS_MW", "type": "log", "text": "[sif] 0 packets wait for the EE (processed 1)"}
+{"t": 1794097045.6768882, "game": "NFS_MW", "type": "log", "text": "[gpu] 2149 submits, dispatches: upload 6711 copy_read 0 copy_write 0 load_clut 3130 display 603 raster 3038 resolve 0 snapshot 0 decode 206"}
+{"t": 1794097045.6788993, "game": "NFS_MW", "type": "log", "text": "[gs] 61877 primitives drawn, register writes: 00:17478 01:1187 03:57064 04:65164 05:58590 06:3244 08:3583 09:339 0A:339 14:3244 18:4401 19:3892 1A:339 22:339 34:3244 36:3244 3B:339 3D:339 3F:7221 40:4570 41:3892 42:4092 43:339 45:424 46:339 47:5757 48:3892 49:339 4A:4231 4B:4231 4C:3892 4D:3892 4E:4401 4F:3892 50:6996 51:6996 52:6996 53:6996 7F:1695"}
+{"t": 1794097045.679896, "game": "NFS_MW", "type": "log", "text": "[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0"}
+{"t": 1794097045.6804016, "game": "NFS_MW", "type": "log", "text": "[dma] starts: ch0=0 ch1=340 ch2=339 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0"}
+{"t": 1794097045.6814098, "game": "NFS_MW", "type": "log", "text": "[gif] path 1 tags: packed 6488 reglist 0 image 0"}
+{"t": 1794097045.6824098, "game": "NFS_MW", "type": "log", "text": "[gif] path 2 tags: packed 32088 reglist 0 image 5640"}
+{"t": 1794097045.684919, "game": "NFS_MW", "type": "log", "text": "[gif] path 3 tags: packed 1356 reglist 0 image 1356"}
+{"t": 1794097045.685929, "game": "NFS_MW", "type": "log", "text": "[vif0]"}
+{"t": 1794097045.686927, "game": "NFS_MW", "type": "log", "text": "[vif1] 00:461613 01:1019 02:340 03:340 04:1 05:341 06:3391 07:678 10:9340 13:2034 14:6827 20:680 30:339 4A:2720 50:37728 6C:11373"}
+{"t": 1794097045.688944, "game": "NFS_MW", "type": "log", "text": "[ee] stopped after 639 frames, 3156166164 cycles: missing code at 0x01A5C000 (ra 0x01A5BFFC)"}
+{"t": 1794097047.8305295, "game": "Sly1", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097048.182491, "game": "Sly1", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097048.9422565, "game": "Sly1", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097048.9457755, "game": "Sly1", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097048.948805, "game": "Sly1", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097048.9503531, "game": "Sly1", "type": "log", "text": "[disc] disc: 9 files, 1368320 sectors, layer 1 at 0"}
+{"t": 1794097048.952353, "game": "Sly1", "type": "log", "text": "[mc] card in slot 1: /memcard-c0c4527037b6168660829a0eb13df1a3/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097048.9528599, "game": "Sly1", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097048.9619951, "game": "Sly1", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097048.9640546, "game": "Sly1", "type": "log", "text": "[dma] gif tag id 4 qwc 44 addr 0x002BE1A0 data 0x002BE1A0"}
+{"t": 1794097048.9656012, "game": "Sly1", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0064C280"}
+{"t": 1794097048.9676204, "game": "Sly1", "type": "log", "text": "[stats] frame 1 0.8 fps (0 on screen) GPU 0% idle emu 0% vu 21% gs 21% heap 256 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097048.9681594, "game": "Sly1", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097050.720706, "game": "Sly1", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097050.730101, "game": "Sly1", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP243.IMG;1\""}
+{"t": 1794097051.144406, "game": "Sly1", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP243.IMG;1 reports 2430, asynchronous protocol"}
+{"t": 1794097051.1459267, "game": "Sly1", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP243.IMG;1 reports 2430"}
+{"t": 1794097051.147935, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\SIO2MAN.IRX;1"}
+{"t": 1794097051.150457, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\PADMAN.IRX;1"}
+{"t": 1794097051.1519775, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\MCMAN.IRX;1"}
+{"t": 1794097051.1539772, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\MCSERV.IRX;1"}
+{"t": 1794097051.1554942, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\LIBSD.IRX;1"}
+{"t": 1794097051.1565046, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00054B08)"}
+{"t": 1794097051.157504, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00054B0C)"}
+{"t": 1794097051.1590128, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00054B28)"}
+{"t": 1794097051.1600232, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00054B38)"}
+{"t": 1794097051.1615388, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00054B64)"}
+{"t": 1794097051.1630654, "game": "Sly1", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00054B68)"}
+{"t": 1794097051.165078, "game": "Sly1", "type": "log", "text": "[loadfile] cdrom0:\\989SND.IRX;1"}
+{"t": 1794097051.165588, "game": "Sly1", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097051.1696248, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097051.1706347, "game": "Sly1", "type": "log", "text": "[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America"}
+{"t": 1794097051.172145, "game": "Sly1", "type": "log", "text": "[iop-tty]  by Buzz Burrowes                               v2.9.3"}
+{"t": 1794097051.1736608, "game": "Sly1", "type": "log", "text": "[iop-tty]                         (built Aug 21 2002 at 21:30:44)"}
+{"t": 1794097051.1746743, "game": "Sly1", "type": "log", "text": "[iop-tty]                                          (pre-release 8)"}
+{"t": 1794097051.1766756, "game": "Sly1", "type": "log", "text": "[iop-tty]  (build with sce library rev 2.4.3)"}
+{"t": 1794097051.1787295, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097051.1797395, "game": "Sly1", "type": "log", "text": "[iop-tty]     Thread Priorities:"}
+{"t": 1794097051.1813073, "game": "Sly1", "type": "log", "text": "[iop-tty]                          Sound Tick = 9"}
+{"t": 1794097051.1833165, "game": "Sly1", "type": "log", "text": "[iop-tty]                            Main RPC = 58"}
+{"t": 1794097051.1848261, "game": "Sly1", "type": "log", "text": "[iop-tty]                         Loading RPC = 59"}
+{"t": 1794097051.1882956, "game": "Sly1", "type": "log", "text": "[iop-tty]                           Streaming = 60, 61, 62, 63"}
+{"t": 1794097051.1903126, "game": "Sly1", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097051.1918259, "game": "Sly1", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097051.192835, "game": "Sly1", "type": "log", "text": "[stats] frame 2 0.5 fps (1 on screen) GPU 0% idle emu 2% vu 100% gs 99% heap 256 MB audio 0 ms hitch 1891.7 ms x1"}
+{"t": 1794097051.194836, "game": "Sly1", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)"}
+{"t": 1794097053.0892165, "game": "Sly1", "type": "log", "text": "[stats] frame 29 21.2 fps (21 on screen) GPU 0% idle emu 29% vu 100% gs 97% heap 256 MB audio 4 ms hitch 382.7 ms x5"}
+{"t": 1794097053.103803, "game": "Sly1", "type": "log", "text": "[stats] frame 85 53.5 fps (48 on screen) GPU 2% idle emu 69% vu 100% gs 91% heap 256 MB audio 71 ms hitch 107.2 ms x6"}
+{"t": 1794097054.9701939, "game": "Sly1", "type": "log", "text": "[stats] frame 145 62.0 fps (54 on screen) GPU 9% idle emu 77% vu 99% gs 83% heap 256 MB audio 71 ms hitch 42.3 ms x4"}
+{"t": 1794097055.5027912, "game": "Sly1", "type": "log", "text": "[stats] frame 205 58.0 fps (58 on screen) GPU 9% idle emu 81% vu 100% gs 87% heap 256 MB audio 71 ms hitch 51.1 ms x1"}
+{"t": 1794097056.550021, "game": "Sly1", "type": "log", "text": "[stats] frame 265 60.0 fps (60 on screen) GPU 18% idle emu 88% vu 100% gs 89% heap 256 MB audio 71 ms hitch 19.4 ms x0"}
+{"t": 1794097057.6149838, "game": "Sly1", "type": "log", "text": "[stats] frame 325 60.0 fps (60 on screen) GPU 32% idle emu 88% vu 100% gs 90% heap 256 MB audio 71 ms hitch 18.1 ms x0"}
+{"t": 1794097058.1456974, "game": "Sly1", "type": "log", "text": "[stats] frame 385 60.0 fps (60 on screen) GPU 31% idle emu 88% vu 100% gs 90% heap 256 MB audio 71 ms hitch 19.6 ms x0"}
+{"t": 1794097059.176244, "game": "Sly1", "type": "log", "text": "[stats] frame 446 60.0 fps (60 on screen) GPU 30% idle emu 88% vu 100% gs 89% heap 256 MB audio 69 ms hitch 17.7 ms x0"}
+{"t": 1794097060.2124069, "game": "Sly1", "type": "log", "text": "[stats] frame 507 60.0 fps (60 on screen) GPU 27% idle emu 87% vu 100% gs 89% heap 256 MB audio 75 ms hitch 19.7 ms x0"}
+{"t": 1794097061.2652392, "game": "Sly1", "type": "log", "text": "[stats] frame 568 60.0 fps (60 on screen) GPU 27% idle emu 88% vu 100% gs 90% heap 256 MB audio 62 ms hitch 18.2 ms x0"}
+{"t": 1794097062.3129761, "game": "Sly1", "type": "log", "text": "[stats] frame 628 60.0 fps (60 on screen) GPU 26% idle emu 88% vu 100% gs 89% heap 256 MB audio 70 ms hitch 20.4 ms x0"}
+{"t": 1794097063.4403744, "game": "Sly1", "type": "log", "text": "[stats] frame 688 60.0 fps (60 on screen) GPU 26% idle emu 89% vu 100% gs 90% heap 256 MB audio 62 ms hitch 18.0 ms x0"}
+{"t": 1794097064.477635, "game": "Sly1", "type": "log", "text": "[stats] frame 748 60.0 fps (60 on screen) GPU 27% idle emu 88% vu 100% gs 90% heap 256 MB audio 62 ms hitch 17.6 ms x0"}
+{"t": 1794097065.5231743, "game": "Sly1", "type": "log", "text": "[stats] frame 809 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 88% heap 256 MB audio 79 ms hitch 18.4 ms x0"}
+{"t": 1794097066.5577605, "game": "Sly1", "type": "log", "text": "[stats] frame 869 60.0 fps (60 on screen) GPU 25% idle emu 88% vu 100% gs 88% heap 256 MB audio 69 ms hitch 17.6 ms x0"}
+{"t": 1794097067.6039703, "game": "Sly1", "type": "log", "text": "[stats] frame 929 60.0 fps (60 on screen) GPU 16% idle emu 86% vu 100% gs 89% heap 256 MB audio 68 ms hitch 19.7 ms x0"}
+{"t": 1794097068.6602886, "game": "Sly1", "type": "log", "text": "[stats] frame 989 60.0 fps (60 on screen) GPU 13% idle emu 87% vu 100% gs 89% heap 256 MB audio 68 ms hitch 17.6 ms x0"}
+{"t": 1794097069.1889808, "game": "Sly1", "type": "log", "text": "[stats] frame 1050 60.0 fps (60 on screen) GPU 26% idle emu 88% vu 100% gs 89% heap 256 MB audio 74 ms hitch 18.4 ms x0"}
+{"t": 1794097070.2375147, "game": "Sly1", "type": "log", "text": "[stats] frame 1110 60.0 fps (60 on screen) GPU 26% idle emu 88% vu 100% gs 88% heap 256 MB audio 74 ms hitch 20.1 ms x0"}
+{"t": 1794097071.27834, "game": "Sly1", "type": "log", "text": "[stats] frame 1170 60.0 fps (60 on screen) GPU 26% idle emu 89% vu 100% gs 88% heap 256 MB audio 74 ms hitch 18.1 ms x0"}
+{"t": 1794097072.3149161, "game": "Sly1", "type": "log", "text": "[stats] frame 1231 60.0 fps (60 on screen) GPU 25% idle emu 88% vu 100% gs 89% heap 256 MB audio 72 ms hitch 18.4 ms x0"}
+{"t": 1794097073.3595335, "game": "Sly1", "type": "log", "text": "[stats] frame 1292 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 89% heap 256 MB audio 67 ms hitch 18.2 ms x0"}
+{"t": 1794097074.3917205, "game": "Sly1", "type": "log", "text": "[stats] frame 1352 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 89% heap 256 MB audio 67 ms hitch 19.1 ms x0"}
+{"t": 1794097075.431278, "game": "Sly1", "type": "log", "text": "[stats] frame 1413 60.0 fps (60 on screen) GPU 25% idle emu 88% vu 100% gs 89% heap 256 MB audio 73 ms hitch 18.1 ms x0"}
+{"t": 1794097076.4875612, "game": "Sly1", "type": "log", "text": "[stats] frame 1474 60.0 fps (60 on screen) GPU 26% idle emu 88% vu 100% gs 90% heap 256 MB audio 71 ms hitch 17.7 ms x0"}
+{"t": 1794097077.547069, "game": "Sly1", "type": "log", "text": "[stats] frame 1534 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 88% heap 256 MB audio 71 ms hitch 18.8 ms x0"}
+{"t": 1794097078.580409, "game": "Sly1", "type": "log", "text": "[stats] frame 1595 60.0 fps (60 on screen) GPU 23% idle emu 88% vu 100% gs 90% heap 256 MB audio 67 ms hitch 17.5 ms x0"}
+{"t": 1794097079.6093957, "game": "Sly1", "type": "log", "text": "[stats] frame 1656 60.0 fps (60 on screen) GPU 25% idle emu 88% vu 100% gs 90% heap 256 MB audio 65 ms hitch 17.8 ms x0"}
+{"t": 1794097080.6467283, "game": "Sly1", "type": "log", "text": "[stats] frame 1716 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 90% heap 256 MB audio 65 ms hitch 17.8 ms x0"}
+{"t": 1794097081.6745555, "game": "Sly1", "type": "log", "text": "[stats] frame 1777 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 89% heap 256 MB audio 60 ms hitch 18.3 ms x0"}
+{"t": 1794097082.7109096, "game": "Sly1", "type": "log", "text": "[stats] frame 1837 60.0 fps (60 on screen) GPU 25% idle emu 88% vu 100% gs 90% heap 256 MB audio 60 ms hitch 17.6 ms x0"}
+{"t": 1794097083.3352385, "game": "Sly1", "type": "log", "text": "[stats] frame 1897 60.0 fps (60 on screen) GPU 24% idle emu 88% vu 100% gs 89% heap 256 MB audio 61 ms hitch 18.0 ms x0"}
+{"t": 1794097084.3983135, "game": "GoW2", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097084.7579403, "game": "GoW2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097085.4573925, "game": "GoW2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097085.459416, "game": "GoW2", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097085.4674516, "game": "GoW2", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097085.4684596, "game": "GoW2", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097087.2280586, "game": "GoW2", "type": "log", "text": "[disc] disc: 16 files, 4166832 sectors, layer 1 at 2083872"}
+{"t": 1794097087.6505375, "game": "GoW2", "type": "log", "text": "[mc] card in slot 1: /memcard-34402ee3c1917272f971028b4fb24868/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097087.6518092, "game": "GoW2", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x002D0480 thr=2 in_handler=0"}
+{"t": 1794097087.6528187, "game": "GoW2", "type": "log", "text": "[stats] frame 1 0.3 fps (0 on screen) GPU 0% idle emu 0% vu 70% gs 70% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097087.6548195, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097087.655819, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097087.6568367, "game": "GoW2", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794097087.6578484, "game": "GoW2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097087.658847, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097087.6603577, "game": "GoW2", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP300.IMG;1\""}
+{"t": 1794097087.6613696, "game": "GoW2", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP300.IMG;1 reports 3000, asynchronous protocol"}
+{"t": 1794097087.6623714, "game": "GoW2", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP300.IMG;1 reports 3000"}
+{"t": 1794097087.6633701, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\SIO2MAN.IRX;1"}
+{"t": 1794097087.6648788, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\DBCMAN.IRX;1"}
+{"t": 1794097087.6895504, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\SIO2D.IRX;1"}
+{"t": 1794097087.6925616, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\MC2_D.IRX;1"}
+{"t": 1794097087.6935606, "game": "GoW2", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)"}
+{"t": 1794097087.6955607, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\DS2U_D.IRX;1"}
+{"t": 1794097087.6970701, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\LIBSD.IRX;1"}
+{"t": 1794097088.1269803, "game": "GoW2", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00031B78)"}
+{"t": 1794097088.1385596, "game": "GoW2", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00031B7C)"}
+{"t": 1794097088.1400695, "game": "GoW2", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00031B98)"}
+{"t": 1794097088.1420825, "game": "GoW2", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00031BA8)"}
+{"t": 1794097088.1425908, "game": "GoW2", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00031BD4)"}
+{"t": 1794097088.1456075, "game": "GoW2", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00031BD8)"}
+{"t": 1794097088.1486552, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\989NOMID.IRX;1"}
+{"t": 1794097088.149663, "game": "GoW2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097088.1506648, "game": "GoW2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097088.1531832, "game": "GoW2", "type": "log", "text": "[iop-tty]  989snd (c)2000-2003 Sony Computer Entertainment America"}
+{"t": 1794097088.1531832, "game": "GoW2", "type": "log", "text": "[iop-tty]  by Buzz Burrowes                               v3.1.7"}
+{"t": 1794097088.1557038, "game": "GoW2", "type": "log", "text": "[iop-tty]                         (built Jan 26 2005 at 17:40:57)"}
+{"t": 1794097088.1572163, "game": "GoW2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097088.1582289, "game": "GoW2", "type": "log", "text": "[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds"}
+{"t": 1794097088.1592374, "game": "GoW2", "type": "log", "text": "[iop-tty]                   (banks and streams only)"}
+{"t": 1794097088.1602368, "game": "GoW2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097088.1617463, "game": "GoW2", "type": "log", "text": "[iop-tty]  (build with sce library rev 3.0.1)"}
+{"t": 1794097088.1637573, "game": "GoW2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097088.1647553, "game": "GoW2", "type": "log", "text": "[iop-tty]     Thread Priorities:"}
+{"t": 1794097088.1668015, "game": "GoW2", "type": "log", "text": "[iop-tty]                          Sound Tick = 9"}
+{"t": 1794097088.1688106, "game": "GoW2", "type": "log", "text": "[iop-tty]                            Main RPC = 64"}
+{"t": 1794097088.1708095, "game": "GoW2", "type": "log", "text": "[iop-tty]                         Loading RPC = 65"}
+{"t": 1794097088.1723244, "game": "GoW2", "type": "log", "text": "[iop-tty]                           Streaming = 60, 61, 62, 63"}
+{"t": 1794097088.1733258, "game": "GoW2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097088.174834, "game": "GoW2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097088.1753423, "game": "GoW2", "type": "log", "text": "[loadfile] cdrom0:\\SMPD.IRX;1"}
+{"t": 1794097088.1768653, "game": "GoW2", "type": "log", "text": "[iop-tty] InitialiseMemory(size:10d914 base:cc800 top:1da114)"}
+{"t": 1794097088.177876, "game": "GoW2", "type": "log", "text": "[iop-tty] arg 0 : cdrom0:\\SMPD.IRX;1"}
+{"t": 1794097088.1788747, "game": "GoW2", "type": "log", "text": "[iop-tty] arg 1 : wad/,Z:/GoW2/GameArt/Cinematics/GameData/,Z:/GoW2/GameArt/Sounds/dvd_streams/,sound/"}
+{"t": 1794097088.1813936, "game": "GoW2", "type": "log", "text": "[iop-tty] ========================================================"}
+{"t": 1794097088.190973, "game": "GoW2", "type": "log", "text": "[iop-tty] files   = wad/"}
+{"t": 1794097088.191982, "game": "GoW2", "type": "log", "text": "[iop-tty] movies  = Z:/GoW2/GameArt/Cinematics/GameData/"}
+{"t": 1794097088.1929843, "game": "GoW2", "type": "log", "text": "[iop-tty] streams = Z:/GoW2/GameArt/Sounds/dvd_streams/"}
+{"t": 1794097088.1955104, "game": "GoW2", "type": "log", "text": "[iop-tty] banks   = sound/"}
+{"t": 1794097088.19703, "game": "GoW2", "type": "log", "text": "[loadfile] buffer at 0x69C00, 857 bytes"}
+{"t": 1794097088.19904, "game": "GoW2", "type": "log", "text": "[iop] missing cdvdman #50 called from 0x0005D014"}
+{"t": 1794097088.200043, "game": "GoW2", "type": "log", "text": "[iop-tty] ========================================================"}
+{"t": 1794097088.2015603, "game": "GoW2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097088.2035606, "game": "GoW2", "type": "log", "text": "[iop-tty] Len Ext    Start  DataLen      Recording Date GMT Flg USz IGp Vol             ID"}
+{"t": 1794097088.205072, "game": "GoW2", "type": "log", "text": "[iop-tty] ================================================================================"}
+{"t": 1794097088.208597, "game": "GoW2", "type": "log", "text": "[iop-tty] Sector 261 :"}
+{"t": 1794097088.2216814, "game": "GoW2", "type": "log", "text": "[iop-tty]  48   0      261        992  6/02/07 15:23:15  36   2   0   0   1 ."}
+{"t": 1794097088.2236826, "game": "GoW2", "type": "log", "text": "[iop-tty]  48   0      261        992  6/02/07 15:23:15  36   2   0   0   1 .."}
+{"t": 1794097088.22468, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0      281         57  6/02/07 14:01:41  36   0   0   0   1 SYSTEM.CNF;1"}
+{"t": 1794097088.2256973, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0      282    2125688  6/02/07 14:57:26  36   0   0   0   1 SCUS_974.81;1"}
+{"t": 1794097088.227217, "game": "GoW2", "type": "log", "text": "[iop-tty]  62   0     1320     278305 17/02/06 18:34:52  36   0   0   0   1 IOPRP300.IMG;1"}
+{"t": 1794097088.2282286, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0     1456       6641 17/02/06 18:34:52  36   0   0   0   1 SIO2MAN.IRX;1"}
+{"t": 1794097088.229227, "game": "GoW2", "type": "log", "text": "[iop-tty]  58   0     1460      52140 29/01/07 16:45:26  36   0   0   0   1 SMPD.IRX;1"}
+{"t": 1794097088.2307372, "game": "GoW2", "type": "log", "text": "[iop-tty]  62   0     1486     178984 14/09/06 15:08:17  36   0   0   0   1 989NOMID.IRX;1"}
+{"t": 1794097088.2317474, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0     1574      15653 17/02/06 18:34:51  36   0   0   0   1 DBCMAN.IRX;1"}
+{"t": 1794097088.2327483, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0     1582       9437 17/02/06 18:34:52  36   0   0   0   1 DS1O_S1.IRX;1"}
+{"t": 1794097088.2347472, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0     1587      11725 17/02/06 18:34:52  36   0   0   0   1 DS2U_D.IRX;1"}
+{"t": 1794097088.2352574, "game": "GoW2", "type": "log", "text": "[iop-tty]  58   0     1593      30085 20/01/07 13:02:34  36   0   0   0   1 LIBSD.IRX;1"}
+{"t": 1794097088.2367632, "game": "GoW2", "type": "log", "text": "[iop-tty]  58   0     1608      20221 17/02/06 18:34:52  36   0   0   0   1 MC2_D.IRX;1"}
+{"t": 1794097088.238776, "game": "GoW2", "type": "log", "text": "[iop-tty]  60   0     1618      20165 17/02/06 18:34:52  36   0   0   0   1 MC2_S1.IRX;1"}
+{"t": 1794097088.2402987, "game": "GoW2", "type": "log", "text": "[iop-tty]  58   0     1628      11289 17/02/06 18:34:52  36   0   0   0   1 SIO2D.IRX;1"}
+{"t": 1794097088.2418165, "game": "GoW2", "type": "log", "text": "[iop-tty]  62   0     1634      39000  6/02/07 15:09:46  36   0   0   0   1 GODOFWAR.TOC;1"}
+{"t": 1794097088.242817, "game": "GoW2", "type": "log", "text": "[iop-tty]  58   0     1654 4264382464  6/02/07 15:04:14  36   0   0   0   1 PART1.PAK;1"}
+{"t": 1794097088.2443297, "game": "GoW2", "type": "log", "text": "[iop-tty] cd initialised"}
+{"t": 1794097088.2453427, "game": "GoW2", "type": "log", "text": "[iop-tty] stream initialised"}
+{"t": 1794097088.2554445, "game": "GoW2", "type": "log", "text": "[iop-tty] streamer initialised"}
+{"t": 1794097088.2569573, "game": "GoW2", "type": "log", "text": "[iop-tty] collector initialised"}
+{"t": 1794097088.25797, "game": "GoW2", "type": "log", "text": "[iop-tty] bank loader initialised"}
+{"t": 1794097088.2594821, "game": "GoW2", "type": "log", "text": "[iop-tty] vag bank initialised"}
+{"t": 1794097088.2604957, "game": "GoW2", "type": "log", "text": "[iop-tty] ========================================================"}
+{"t": 1794097088.2620084, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794097088.263527, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794097088.2645257, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794097088.2867022, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794097088.288223, "game": "GoW2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7D00 MASKED — no intc"}
+{"t": 1794097088.496873, "game": "GoW2", "type": "log", "text": "[stats] frame 46 44.9 fps (42 on screen) GPU 0% idle emu 45% vu 100% gs 97% heap 384 MB audio 56 ms hitch 268.6 ms x2"}
+{"t": 1794097089.371518, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097089.3740396, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097089.5106978, "game": "GoW2", "type": "log", "text": "[stats] frame 72 25.5 fps (26 on screen) GPU 8% idle emu 35% vu 99% gs 98% heap 384 MB audio 0 ms hitch 335.1 ms x4"}
+{"t": 1794097090.5694947, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=23541 comp=23541 mode=0x582"}
+{"t": 1794097090.5715034, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=23541 comp=23541 mode=0x582"}
+{"t": 1794097090.572011, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=34806 comp=34806 mode=0x582"}
+{"t": 1794097090.57352, "game": "GoW2", "type": "log", "text": "[stats] frame 88 16.0 fps (16 on screen) GPU -2% idle emu 7% vu 100% gs 97% heap 384 MB audio 1 ms hitch 84.4 ms x16"}
+{"t": 1794097091.1398702, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=34806 comp=34806 mode=0x582"}
+{"t": 1794097091.1429067, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=46070 comp=46070 mode=0x582"}
+{"t": 1794097091.7187092, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=46070 comp=46070 mode=0x582"}
+{"t": 1794097091.7197182, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=57334 comp=57334 mode=0x582"}
+{"t": 1794097091.7217271, "game": "GoW2", "type": "log", "text": "[stats] frame 102 13.4 fps (13 on screen) GPU 1% idle emu 5% vu 100% gs 98% heap 384 MB audio 1 ms hitch 137.2 ms x14"}
+{"t": 1794097092.245691, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=57334 comp=57334 mode=0x582"}
+{"t": 1794097092.2482095, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=3063 comp=3063 mode=0x582"}
+{"t": 1794097092.2497175, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.2527282, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B400A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.2542393, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.2552478, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x5 fn=0x0018A278"}
+{"t": 1794097092.2567825, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.315495, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.3215566, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.3286002, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.3306088, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.3321202, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.3382564, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.3402562, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.3915904, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.3925984, "game": "GoW2", "type": "log", "text": "[intc] GS handlers csr=0x551B600A imr=0x7D00 mask=0x1 fn=0x0018A278"}
+{"t": 1794097092.453121, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.457154, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.4601636, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=3063 comp=3063 mode=0x582"}
+{"t": 1794097092.4616714, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=14327 comp=14327 mode=0x582"}
+{"t": 1794097092.4626796, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.4636803, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.4656794, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.467188, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.4688234, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.469831, "game": "GoW2", "type": "log", "text": "[gs] FINISH raise csr=0x551B400A imr=0x7D00 pending=0 armed intc"}
+{"t": 1794097092.4708383, "game": "GoW2", "type": "log", "text": "[timer] TIM0 compare IRQ count=14327 comp=14327 mode=0x582"}
+{"t": 1794097093.1623044, "game": "GoW2", "type": "log", "text": "[stats] frame 136 24.2 fps (18 on screen) GPU 1% idle emu 17% vu 99% gs 97% heap 384 MB audio 2 ms hitch 544.2 ms x9"}
+{"t": 1794097093.1648173, "game": "GoW2", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097093.1693494, "game": "GoW2", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097093.2282183, "game": "GoW2", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097093.7970219, "game": "GoW2", "type": "log", "text": "[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097093.7990289, "game": "GoW2", "type": "log", "text": "[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097093.8010294, "game": "GoW2", "type": "log", "text": "[intc] pending 0x1 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097094.375571, "game": "GoW2", "type": "log", "text": "[stats] frame 188 49.9 fps (42 on screen) GPU 23% idle emu 7% vu 100% gs 90% heap 384 MB audio 41 ms hitch 83.6 ms x9"}
+{"t": 1794097095.4616497, "game": "GoW2", "type": "log", "text": "[stats] frame 220 32.9 fps (29 on screen) GPU 6% idle emu 3% vu 100% gs 95% heap 384 MB audio 22 ms hitch 313.9 ms x7"}
+{"t": 1794097096.0119398, "game": "GoW2", "type": "log", "text": "[stats] frame 272 52.0 fps (41 on screen) GPU 7% idle emu 13% vu 99% gs 83% heap 384 MB audio 50 ms hitch 89.9 ms x12"}
+{"t": 1794097097.0646348, "game": "GoW2", "type": "log", "text": "[stats] frame 330 53.6 fps (39 on screen) GPU 32% idle emu 18% vu 71% gs 87% heap 384 MB audio 85 ms hitch 139.4 ms x9"}
+{"t": 1794097098.1717687, "game": "GoW2", "type": "log", "text": "[stats] frame 397 67.8 fps (36 on screen) GPU 46% idle emu 26% vu 56% gs 65% heap 384 MB audio 196 ms hitch 95.6 ms x15"}
+{"t": 1794097099.0650377, "game": "GoW2", "type": "log", "text": "[stats] frame 457 58.4 fps (41 on screen) GPU 18% idle emu 19% vu 50% gs 65% heap 384 MB audio 167 ms hitch 65.2 ms x10"}
+{"t": 1794097100.3887599, "game": "GoW2", "type": "log", "text": "[stats] frame 512 54.8 fps (35 on screen) GPU 34% idle emu 13% vu 43% gs 67% heap 384 MB audio 67 ms hitch 72.0 ms x13"}
+{"t": 1794097101.4433427, "game": "GoW2", "type": "log", "text": "[stats] frame 581 66.8 fps (51 on screen) GPU 35% idle emu 14% vu 51% gs 65% heap 384 MB audio 204 ms hitch 43.1 ms x5"}
+{"t": 1794097102.515008, "game": "GoW2", "type": "log", "text": "[stats] frame 639 59.0 fps (48 on screen) GPU 41% idle emu 23% vu 57% gs 67% heap 384 MB audio 163 ms hitch 56.7 ms x7"}
+{"t": 1794097103.56544, "game": "GoW2", "type": "log", "text": "[stats] frame 700 59.5 fps (46 on screen) GPU 32% idle emu 14% vu 49% gs 61% heap 384 MB audio 155 ms hitch 65.8 ms x11"}
+{"t": 1794097104.6040637, "game": "GoW2", "type": "log", "text": "[stats] frame 761 59.7 fps (46 on screen) GPU 31% idle emu 11% vu 52% gs 63% heap 384 MB audio 169 ms hitch 73.1 ms x9"}
+{"t": 1794097105.1484346, "game": "GoW2", "type": "log", "text": "[stats] frame 821 60.8 fps (45 on screen) GPU 23% idle emu 19% vu 53% gs 66% heap 384 MB audio 167 ms hitch 66.4 ms x9"}
+{"t": 1794097106.173393, "game": "GoW2", "type": "log", "text": "[stats] frame 884 60.0 fps (58 on screen) GPU 42% idle emu 36% vu 62% gs 65% heap 384 MB audio 200 ms hitch 39.0 ms x2"}
+{"t": 1794097107.239483, "game": "GoW2", "type": "log", "text": "[stats] frame 945 61.7 fps (54 on screen) GPU 2% idle emu 33% vu 60% gs 67% heap 384 MB audio 209 ms hitch 55.3 ms x5"}
+{"t": 1794097108.313799, "game": "GoW2", "type": "log", "text": "[stats] frame 1005 58.3 fps (52 on screen) GPU 36% idle emu 35% vu 56% gs 67% heap 384 MB audio 188 ms hitch 45.1 ms x5"}
+{"t": 1794097109.3655405, "game": "GoW2", "type": "log", "text": "[stats] frame 1066 60.2 fps (58 on screen) GPU 18% idle emu 46% vu 67% gs 72% heap 384 MB audio 199 ms hitch 37.5 ms x1"}
+{"t": 1794097110.417904, "game": "GoW2", "type": "log", "text": "[stats] frame 1125 60.9 fps (59 on screen) GPU 15% idle emu 40% vu 64% gs 69% heap 384 MB audio 189 ms hitch 38.5 ms x2"}
+{"t": 1794097111.4793005, "game": "GoW2", "type": "log", "text": "[stats] frame 1187 60.0 fps (52 on screen) GPU 25% idle emu 11% vu 48% gs 56% heap 384 MB audio 192 ms hitch 45.0 ms x5"}
+{"t": 1794097112.5437272, "game": "GoW2", "type": "log", "text": "[stats] frame 1247 59.5 fps (53 on screen) GPU 15% idle emu 13% vu 48% gs 57% heap 384 MB audio 171 ms hitch 57.1 ms x5"}
+{"t": 1794097113.611521, "game": "GoW2", "type": "log", "text": "[stats] frame 1308 59.5 fps (54 on screen) GPU 20% idle emu 6% vu 43% gs 52% heap 384 MB audio 169 ms hitch 42.3 ms x3"}
+{"t": 1794097114.6624238, "game": "GoW2", "type": "log", "text": "[stats] frame 1369 60.3 fps (58 on screen) GPU 11% idle emu 32% vu 54% gs 65% heap 384 MB audio 170 ms hitch 44.4 ms x3"}
+{"t": 1794097115.7112546, "game": "GoW2", "type": "log", "text": "[stats] frame 1431 60.6 fps (59 on screen) GPU 22% idle emu 43% vu 67% gs 72% heap 384 MB audio 189 ms hitch 38.6 ms x2"}
+{"t": 1794097116.7615087, "game": "GoW2", "type": "log", "text": "[stats] frame 1492 60.1 fps (60 on screen) GPU 25% idle emu 43% vu 69% gs 72% heap 384 MB audio 185 ms hitch 32.9 ms x0"}
+{"t": 1794097117.8028035, "game": "GoW2", "type": "log", "text": "[stats] frame 1552 61.0 fps (60 on screen) GPU 18% idle emu 48% vu 72% gs 75% heap 384 MB audio 186 ms hitch 37.3 ms x1"}
+{"t": 1794097118.3256683, "game": "GoW2", "type": "log", "text": "[stats] frame 1612 59.0 fps (59 on screen) GPU 10% idle emu 35% vu 63% gs 68% heap 384 MB audio 185 ms hitch 34.9 ms x2"}
+{"t": 1794097119.3700216, "game": "GoW2", "type": "log", "text": "[stats] frame 1673 61.0 fps (59 on screen) GPU 20% idle emu 38% vu 62% gs 70% heap 384 MB audio 201 ms hitch 30.6 ms x0"}
+{"t": 1794097120.4610944, "game": "GoW2", "type": "log", "text": "[stats] frame 1734 59.2 fps (51 on screen) GPU 22% idle emu 36% vu 56% gs 65% heap 384 MB audio 189 ms hitch 134.1 ms x2"}
+{"t": 1794097121.064544, "game": "Ratchet2", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097121.2638683, "game": "Ratchet2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097121.597175, "game": "Ratchet2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097121.6213775, "game": "Ratchet2", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097122.020342, "game": "Ratchet2", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097122.0224547, "game": "Ratchet2", "type": "log", "text": "[disc] disc: 98 files, 1869312 sectors, layer 1 at 0"}
+{"t": 1794097122.045763, "game": "Ratchet2", "type": "log", "text": "[mc] card in slot 1: /memcard-1e5a12a02722175839d88d0301949cd9/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097122.0558567, "game": "Ratchet2", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x0011B770 thr=2"}
+{"t": 1794097122.074464, "game": "Ratchet2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097122.0759823, "game": "Ratchet2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097122.0981677, "game": "Ratchet2", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794097122.10169, "game": "Ratchet2", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP255.IMG;1\""}
+{"t": 1794097122.1178489, "game": "Ratchet2", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP255.IMG;1 reports 2550, asynchronous protocol"}
+{"t": 1794097122.1188493, "game": "Ratchet2", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP255.IMG;1 reports 2550"}
+{"t": 1794097122.120356, "game": "Ratchet2", "type": "log", "text": "[stats] frame 1 1.0 fps (0 on screen) GPU 0% idle emu 0% vu 29% gs 27% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097122.1213682, "game": "Ratchet2", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097123.7732573, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097123.781307, "game": "Ratchet2", "type": "log", "text": "[stats] frame 2 0.6 fps (1 on screen) GPU 0% idle emu 2% vu 100% gs 100% heap 384 MB audio 0 ms hitch 1780.6 ms x1"}
+{"t": 1794097124.235512, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.2380297, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.2395396, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.2415512, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.2435503, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.245072, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.246071, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 28573 bytes"}
+{"t": 1794097124.2596838, "game": "Ratchet2", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00076D88)"}
+{"t": 1794097124.261194, "game": "Ratchet2", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00076D8C)"}
+{"t": 1794097124.262202, "game": "Ratchet2", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00076DA8)"}
+{"t": 1794097124.2632143, "game": "Ratchet2", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00076DB8)"}
+{"t": 1794097124.2647243, "game": "Ratchet2", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00076DE4)"}
+{"t": 1794097124.265736, "game": "Ratchet2", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00076DE8)"}
+{"t": 1794097124.2672489, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 1768 bytes"}
+{"t": 1794097124.2818036, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 6553 bytes"}
+{"t": 1794097124.2828023, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 95517 bytes"}
+{"t": 1794097124.284964, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 7417 bytes"}
+{"t": 1794097124.2859735, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 13373 bytes"}
+{"t": 1794097124.2874782, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 7441 bytes"}
+{"t": 1794097124.289515, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 11205 bytes"}
+{"t": 1794097124.2996304, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 11205 bytes"}
+{"t": 1794097124.30164, "game": "Ratchet2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097124.3031502, "game": "Ratchet2", "type": "log", "text": "[loadfile] buffer at 0x20000, 158304 bytes"}
+{"t": 1794097124.3056972, "game": "Ratchet2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097124.3072097, "game": "Ratchet2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097124.3078222, "game": "Ratchet2", "type": "log", "text": "[iop-tty]  989snd (c)2000, 2001 Sony Computer Entertainment America"}
+{"t": 1794097124.308833, "game": "Ratchet2", "type": "log", "text": "[iop-tty]  by Buzz Burrowes                               v2.9.13"}
+{"t": 1794097124.3103414, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                         (built Sep 21 2003 at 00:23:01)"}
+{"t": 1794097124.3123536, "game": "Ratchet2", "type": "log", "text": "[iop-tty]  Insomniac special version 13"}
+{"t": 1794097124.3128614, "game": "Ratchet2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097124.3148763, "game": "Ratchet2", "type": "log", "text": "[iop-tty]  NO MIDI VERSION! No MIDI, AME, or basic VAG sounds"}
+{"t": 1794097124.3158844, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                   (banks and streams only)"}
+{"t": 1794097124.3173928, "game": "Ratchet2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097124.325931, "game": "Ratchet2", "type": "log", "text": "[iop-tty]  (build with sce library rev 2.5.5)"}
+{"t": 1794097124.3274493, "game": "Ratchet2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097124.3284602, "game": "Ratchet2", "type": "log", "text": "[iop-tty]     Thread Priorities:"}
+{"t": 1794097124.3294606, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                          Sound Tick = 9"}
+{"t": 1794097124.3309767, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                            Main RPC = 58"}
+{"t": 1794097124.3319924, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                         Loading RPC = 59"}
+{"t": 1794097124.3329923, "game": "Ratchet2", "type": "log", "text": "[iop-tty]                           Streaming = 60, 61, 62, 63"}
+{"t": 1794097124.3370693, "game": "Ratchet2", "type": "log", "text": "[iop-tty]    Memory Locations..."}
+{"t": 1794097124.3405902, "game": "Ratchet2", "type": "log", "text": "[iop-tty]        Voice Allocator Owner  : 0x0018c568"}
+{"t": 1794097124.3456151, "game": "Ratchet2", "type": "log", "text": "[iop-tty]        Master Tick Owner List : 0x0018c3e8"}
+{"t": 1794097124.3471272, "game": "Ratchet2", "type": "log", "text": "[iop-tty] =========================================================="}
+{"t": 1794097124.3471272, "game": "Ratchet2", "type": "log", "text": "[iop-tty] "}
+{"t": 1794097124.3593187, "game": "Ratchet2", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794097124.361838, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.365873, "game": "Ratchet2", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x0013BF84)"}
+{"t": 1794097124.3679736, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.3765345, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.3780549, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.3790634, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.8070514, "game": "Ratchet2", "type": "log", "text": "[intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097124.8085697, "game": "Ratchet2", "type": "log", "text": "[stats] frame 37 34.7 fps (35 on screen) GPU 1% idle emu 16% vu 101% gs 93% heap 384 MB audio 14 ms hitch 136.1 ms x9"}
+{"t": 1794097125.029653, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0306516, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0331745, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0346847, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0367002, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0382166, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0402231, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.042226, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0447357, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0457447, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0472555, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.0482678, "game": "Ratchet2", "type": "log", "text": "[timer] TIM0 compare IRQ count=316 comp=316 mode=0x580"}
+{"t": 1794097125.8134184, "game": "Ratchet2", "type": "log", "text": "[stats] frame 82 44.0 fps (44 on screen) GPU 2% idle emu 4% vu 99% gs 92% heap 384 MB audio 1 ms hitch 41.7 ms x2"}
+{"t": 1794097127.254875, "game": "Ratchet2", "type": "log", "text": "[stats] frame 127 44.7 fps (45 on screen) GPU 3% idle emu 2% vu 99% gs 94% heap 384 MB audio 7 ms hitch 36.5 ms x1"}
+{"t": 1794097128.3058136, "game": "Ratchet2", "type": "log", "text": "[stats] frame 169 41.8 fps (42 on screen) GPU 5% idle emu 5% vu 100% gs 96% heap 384 MB audio 1 ms hitch 49.1 ms x3"}
+{"t": 1794097129.3640304, "game": "Ratchet2", "type": "log", "text": "[stats] frame 213 43.1 fps (43 on screen) GPU 5% idle emu 3% vu 100% gs 96% heap 384 MB audio 1 ms hitch 49.6 ms x3"}
+{"t": 1794097129.8907723, "game": "Ratchet2", "type": "log", "text": "[stats] frame 259 45.4 fps (45 on screen) GPU 6% idle emu 3% vu 99% gs 93% heap 384 MB audio 3 ms hitch 45.4 ms x1"}
+{"t": 1794097130.9386454, "game": "Ratchet2", "type": "log", "text": "[stats] frame 300 39.8 fps (40 on screen) GPU 7% idle emu 3% vu 99% gs 95% heap 384 MB audio 1 ms hitch 77.1 ms x6"}
+{"t": 1794097131.9922972, "game": "Ratchet2", "type": "log", "text": "[stats] frame 339 38.4 fps (38 on screen) GPU 4% idle emu 5% vu 100% gs 96% heap 384 MB audio 6 ms hitch 50.1 ms x5"}
+{"t": 1794097132.5184941, "game": "Ratchet2", "type": "log", "text": "[io] write 0x1000F590 = 0x10000 (pc 0x0012F6A0)"}
+{"t": 1794097152.0098615, "game": "Ratchet2", "type": "log", "text": "[stats] frame 351 0.6 fps (1 on screen) GPU 0% idle emu 0% vu 100% gs 100% heap 384 MB audio 3 ms hitch 19731.0 ms x4"}
+{"t": 1794097154.1832917, "game": "Ratchet2", "type": "log", "text": "[stats] frame 361 4.6 fps (5 on screen) GPU 0% idle emu 1% vu 100% gs 100% heap 384 MB audio 2 ms hitch 1889.7 ms x2"}
+{"t": 1794097155.8908854, "game": "Ratchet2", "type": "log", "text": "[stats] frame 376 11.2 fps (11 on screen) GPU 0% idle emu 5% vu 100% gs 99% heap 384 MB audio 3 ms hitch 883.3 ms x6"}
+{"t": 1794097157.764587, "game": "DefJam", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097158.8058271, "game": "DefJam", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097158.8806202, "game": "DefJam", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097159.3067577, "game": "DefJam", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097159.3077717, "game": "DefJam", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097159.3092835, "game": "DefJam", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097159.7950563, "game": "DefJam", "type": "log", "text": "[disc] disc: 138 files, 2292272 sectors, layer 1 at 0"}
+{"t": 1794097160.2353008, "game": "DefJam", "type": "log", "text": "[mc] card in slot 1: /memcard-76615f9956b13094771e370c883c7170/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097160.236811, "game": "DefJam", "type": "log", "text": "[sema2] Wait count=0 waiters=0 ra=0x00354228 thr=2"}
+{"t": 1794097160.3054397, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3069475, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.308518, "game": "DefJam", "type": "log", "text": "[stats] frame 1 0.4 fps (0 on screen) GPU 0% idle emu 0% vu 47% gs 46% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097160.308518, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097160.3112042, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3122132, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3132148, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097160.3132148, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3147292, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.315744, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097160.317251, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.31826, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3192616, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3278332, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097160.3318434, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3353724, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3378916, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097160.3388908, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3424156, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097160.3449223, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097161.184853, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097161.19948, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097161.2004817, "game": "DefJam", "type": "log", "text": "[intc] TIM1 handlers fn=0x00330650"}
+{"t": 1794097161.2040007, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097161.2231264, "game": "DefJam", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097161.2584763, "game": "DefJam", "type": "log", "text": "[stats] frame 11 9.9 fps (7 on screen) GPU 0% idle emu 93% vu 100% gs 99% heap 384 MB audio 0 ms hitch 917.2 ms x1"}
+{"t": 1794097162.2872872, "game": "DefJam", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794097162.2893069, "game": "DefJam", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOP\\IOPRP280.IMG;1\""}
+{"t": 1794097162.713366, "game": "DefJam", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOP\\IOPRP280.IMG;1 reports 2800, asynchronous protocol"}
+{"t": 1794097162.7149065, "game": "DefJam", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOP\\IOPRP280.IMG;1 reports 2800"}
+{"t": 1794097162.7169232, "game": "DefJam", "type": "log", "text": "[stats] frame 53 36.3 fps (36 on screen) GPU 0% idle emu 47% vu 99% gs 97% heap 384 MB audio 0 ms hitch 253.5 ms x3"}
+{"t": 1794097162.718442, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=2381 comp=2381 mode=0x583"}
+{"t": 1794097162.720454, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=4481 comp=4481 mode=0x583"}
+{"t": 1794097162.8326888, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=6581 comp=6581 mode=0x583"}
+{"t": 1794097162.969955, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=8681 comp=8681 mode=0x583"}
+{"t": 1794097163.0829163, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=10781 comp=10781 mode=0x583"}
+{"t": 1794097164.0781853, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=12881 comp=12881 mode=0x583"}
+{"t": 1794097164.0817027, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=14981 comp=14981 mode=0x583"}
+{"t": 1794097164.0827029, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x20000, 6641 bytes"}
+{"t": 1794097164.0873463, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x22B00, 43813 bytes"}
+{"t": 1794097164.0893676, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x22B00, 11013 bytes"}
+{"t": 1794097164.0913682, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x37100, 95909 bytes"}
+{"t": 1794097164.0913682, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x22B00, 7417 bytes"}
+{"t": 1794097164.134767, "game": "DefJam", "type": "log", "text": "[stats] frame 113 58.7 fps (56 on screen) GPU 1% idle emu 91% vu 100% gs 93% heap 384 MB audio 0 ms hitch 81.8 ms x2"}
+{"t": 1794097164.1387923, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=17081 comp=17081 mode=0x583"}
+{"t": 1794097164.1458402, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=19181 comp=19181 mode=0x583"}
+{"t": 1794097164.1478543, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=21281 comp=21281 mode=0x583"}
+{"t": 1794097164.1488636, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=23381 comp=23381 mode=0x583"}
+{"t": 1794097164.1508706, "game": "DefJam", "type": "log", "text": "[timer] TIM0 compare IRQ count=25481 comp=25481 mode=0x583"}
+{"t": 1794097164.4382522, "game": "DefJam", "type": "log", "text": "[stats] frame 173 59.0 fps (59 on screen) GPU 0% idle emu 52% vu 99% gs 93% heap 384 MB audio 0 ms hitch 42.8 ms x1"}
+{"t": 1794097166.1016867, "game": "DefJam", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)"}
+{"t": 1794097166.1057048, "game": "DefJam", "type": "log", "text": "[stats] frame 211 34.4 fps (34 on screen) GPU 0% idle emu 29% vu 101% gs 95% heap 384 MB audio 0 ms hitch 136.3 ms x8"}
+{"t": 1794097166.7074518, "game": "DefJam", "type": "log", "text": "[stats] frame 252 40.4 fps (40 on screen) GPU 1% idle emu 4% vu 100% gs 96% heap 384 MB audio 0 ms hitch 90.5 ms x5"}
+{"t": 1794097167.8275588, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x37100, 28605 bytes"}
+{"t": 1794097167.8285713, "game": "DefJam", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0003F678)"}
+{"t": 1794097167.829582, "game": "DefJam", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0003F67C)"}
+{"t": 1794097167.8305929, "game": "DefJam", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0003F698)"}
+{"t": 1794097167.8315918, "game": "DefJam", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x0003F6A8)"}
+{"t": 1794097167.8341188, "game": "DefJam", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0003F6D4)"}
+{"t": 1794097167.8351178, "game": "DefJam", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0003F6D8)"}
+{"t": 1794097167.8371298, "game": "DefJam", "type": "log", "text": "[loadfile] buffer at 0x75B00, 83408 bytes"}
+{"t": 1794097167.8381457, "game": "DefJam", "type": "log", "text": "[stats] frame 294 41.4 fps (41 on screen) GPU 1% idle emu 6% vu 100% gs 95% heap 384 MB audio 7 ms hitch 107.8 ms x5"}
+{"t": 1794097168.9296436, "game": "DefJam", "type": "log", "text": "[stats] frame 355 60.9 fps (60 on screen) GPU 6% idle emu 37% vu 100% gs 90% heap 384 MB audio 23 ms hitch 47.1 ms x2"}
+{"t": 1794097169.9767733, "game": "DefJam", "type": "log", "text": "[stats] frame 415 60.0 fps (60 on screen) GPU 1% idle emu 49% vu 98% gs 95% heap 384 MB audio 22 ms hitch 18.2 ms x0"}
+{"t": 1794097171.0168955, "game": "DefJam", "type": "log", "text": "[stats] frame 475 59.8 fps (60 on screen) GPU 0% idle emu 44% vu 101% gs 94% heap 384 MB audio 23 ms hitch 32.1 ms x0"}
+{"t": 1794097172.0630229, "game": "DefJam", "type": "log", "text": "[stats] frame 536 59.2 fps (59 on screen) GPU 0% idle emu 44% vu 100% gs 94% heap 384 MB audio 29 ms hitch 41.0 ms x1"}
+{"t": 1794097172.648597, "game": "DefJam", "type": "log", "text": "[stats] frame 598 60.0 fps (60 on screen) GPU 3% idle emu 47% vu 100% gs 94% heap 384 MB audio 51 ms hitch 21.4 ms x0"}
+{"t": 1794097173.7006977, "game": "DefJam", "type": "log", "text": "[stats] frame 657 59.9 fps (60 on screen) GPU 1% idle emu 46% vu 100% gs 94% heap 384 MB audio 41 ms hitch 19.7 ms x0"}
+{"t": 1794097175.1282022, "game": "DefJam", "type": "log", "text": "[stats] frame 718 60.1 fps (60 on screen) GPU 1% idle emu 44% vu 98% gs 94% heap 384 MB audio 33 ms hitch 19.6 ms x0"}
+{"t": 1794097175.7005692, "game": "DefJam", "type": "log", "text": "[stats] frame 776 58.8 fps (55 on screen) GPU 2% idle emu 18% vu 102% gs 92% heap 384 MB audio 72 ms hitch 77.6 ms x1"}
+{"t": 1794097175.7015662, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097175.7046235, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097176.835731, "game": "DefJam", "type": "log", "text": "[stats] frame 839 62.0 fps (59 on screen) GPU 5% idle emu 6% vu 100% gs 92% heap 384 MB audio 101 ms hitch 35.0 ms x1"}
+{"t": 1794097177.929509, "game": "DefJam", "type": "log", "text": "[stats] frame 890 49.8 fps (50 on screen) GPU 3% idle emu 8% vu 100% gs 93% heap 384 MB audio 4 ms hitch 171.1 ms x1"}
+{"t": 1794097179.0149336, "game": "DefJam", "type": "log", "text": "[stats] frame 914 23.9 fps (24 on screen) GPU 1% idle emu 11% vu 100% gs 93% heap 384 MB audio 3 ms hitch 176.3 ms x7"}
+{"t": 1794097180.081034, "game": "DefJam", "type": "log", "text": "[stats] frame 973 56.9 fps (57 on screen) GPU 3% idle emu 1% vu 98% gs 91% heap 384 MB audio 47 ms hitch 47.6 ms x4"}
+{"t": 1794097181.1710103, "game": "DefJam", "type": "log", "text": "[stats] frame 1035 61.2 fps (53 on screen) GPU 4% idle emu 2% vu 101% gs 92% heap 384 MB audio 30 ms hitch 112.8 ms x3"}
+{"t": 1794097181.785806, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097181.788325, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097181.8826861, "game": "DefJam", "type": "log", "text": "[stats] frame 1078 40.5 fps (40 on screen) GPU 2% idle emu 9% vu 99% gs 94% heap 384 MB audio 22 ms hitch 96.4 ms x11"}
+{"t": 1794097182.4059954, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097182.4075012, "game": "DefJam", "type": "log", "text": "[intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=5"}
+{"t": 1794097182.4085112, "game": "DefJam", "type": "log", "text": "[ee] missing instruction words: 27BDFFC0 2407FFEF 7FB00030 24060010"}
+{"t": 1794097182.4125211, "game": "DefJam", "type": "log", "text": "[ee] no translated code at 0x002A9E20 (ra 0x0029C700)"}
+{"t": 1794097182.4160454, "game": "DefJam", "type": "log", "text": "[ee]   r1  3F800000 004B0000 002A9E20 00E440B0"}
+{"t": 1794097182.480551, "game": "DefJam", "type": "log", "text": "[ee]   r5  00000000 00000000 00000000 004B8A60"}
+{"t": 1794097182.4820662, "game": "DefJam", "type": "log", "text": "[ee]   r9  00000000 00000000 FFFFFFF0 000080B0"}
+{"t": 1794097182.4881175, "game": "DefJam", "type": "log", "text": "[ee]   r13 01FFEF30 00C68B85 00000028 00000001"}
+{"t": 1794097182.4901166, "game": "DefJam", "type": "log", "text": "[ee]   r17 00000000 00D690F8 00000000 00D7E570"}
+{"t": 1794097182.4926367, "game": "DefJam", "type": "log", "text": "[ee]   r21 0091F980 0055DFD0 00000000 0000003F"}
+{"t": 1794097182.493637, "game": "DefJam", "type": "log", "text": "[ee]   r25 00000007 00000000 00000000 00405370"}
+{"t": 1794097182.495648, "game": "DefJam", "type": "log", "text": "[ee]   r29 01FFEED0 00370000 0029C700 00000000"}
+{"t": 1794097182.4971757, "game": "DefJam", "type": "log", "text": "[ee] halted: missing code at 0x002A9E20 (ra 0x0029C700)"}
+{"t": 1794097182.4991899, "game": "DefJam", "type": "log", "text": "[thread] 1 status 1 prio 100 wait 0/5 pc 0x002A9E21 ra 0x0029C700"}
+{"t": 1794097182.5006971, "game": "DefJam", "type": "log", "text": "[thread]   stack: 0027309C 002734E8 00273008 0027453C 0029C63C 0027309C 002734E8 00273008 0027453C 0029C63C 00277140 0027309C 002734E8 00273008 00261600 0027453C 0029C63C 0027309C"}
+{"t": 1794097182.542006, "game": "DefJam", "type": "log", "text": "[thread] 2 status 4 prio 0 wait 2/2 pc 0x003537A8 ra 0x00354228"}
+{"t": 1794097182.5570962, "game": "DefJam", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097182.5626252, "game": "DefJam", "type": "log", "text": "[thread] 3 status 4 prio 12 wait 2/15 pc 0x003537A8 ra 0x00325470"}
+{"t": 1794097182.5656633, "game": "DefJam", "type": "log", "text": "[thread]   stack: 002F5354"}
+{"t": 1794097182.5671718, "game": "DefJam", "type": "log", "text": "[thread] 4 status 4 prio 11 wait 2/12 pc 0x003537A8 ra 0x0033BD08"}
+{"t": 1794097182.5691822, "game": "DefJam", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097182.5707, "game": "DefJam", "type": "log", "text": "[thread] 5 status 4 prio 98 wait 2/21 pc 0x003537A8 ra 0x003309B0"}
+{"t": 1794097182.571702, "game": "DefJam", "type": "log", "text": "[thread]   stack: 001E4E58 001E4BB8 003309FC 001E4BA8"}
+{"t": 1794097182.5727007, "game": "DefJam", "type": "log", "text": "[thread] 6 status 4 prio 6 wait 2/24 pc 0x003537A8 ra 0x0023E638"}
+{"t": 1794097182.5747526, "game": "DefJam", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097182.576763, "game": "DefJam", "type": "log", "text": "[thread] 7 status 4 prio 5 wait 2/25 pc 0x003537A8 ra 0x00242FD8"}
+{"t": 1794097182.579793, "game": "DefJam", "type": "log", "text": "[thread]   stack: 00277E48 00277F00"}
+{"t": 1794097182.6096394, "game": "DefJam", "type": "log", "text": "[thread] 8 status 4 prio 100 wait 2/31 pc 0x003537A8 ra 0x003309B0"}
+{"t": 1794097182.6111486, "game": "DefJam", "type": "log", "text": "[thread]   stack: 0017637C 003309FC 00176340"}
+{"t": 1794097182.6121588, "game": "DefJam", "type": "log", "text": "[sema] 2 count 0 waiters 1"}
+{"t": 1794097182.6131585, "game": "DefJam", "type": "log", "text": "[sema] 12 count 0 waiters 1"}
+{"t": 1794097182.61518, "game": "DefJam", "type": "log", "text": "[sema] 15 count 0 waiters 1"}
+{"t": 1794097182.6161902, "game": "DefJam", "type": "log", "text": "[sema] 21 count 0 waiters 1"}
+{"t": 1794097182.6187096, "game": "DefJam", "type": "log", "text": "[sema] 24 count 0 waiters 1"}
+{"t": 1794097182.6212237, "game": "DefJam", "type": "log", "text": "[sema] 25 count 0 waiters 1"}
+{"t": 1794097182.6222236, "game": "DefJam", "type": "log", "text": "[sema] 31 count 0 waiters 1"}
+{"t": 1794097182.6242332, "game": "DefJam", "type": "log", "text": "[cnk] skip@0x702BA0=0 sema45_id@0x705C18=0 sema47_id@0x705C10=0 csr=0x551B6008 imr=0x7F00 intc_pend=0x0 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1"}
+{"t": 1794097182.6257572, "game": "DefJam", "type": "log", "text": "[cnk] gate 705BF0=0 705C00=0 6542A0=0 6542D8=0 705BE0=00000000 705C20=0 654290=0 705DF8=0 705F10=00000000"}
+{"t": 1794097182.658511, "game": "DefJam", "type": "log", "text": "[cnk] T0 mode=0x583 comp=11137 count=12739 pending=0x0 mask=0xC24"}
+{"t": 1794097182.6605074, "game": "DefJam", "type": "log", "text": "[cnk] TIM0 handler (none registered)"}
+{"t": 1794097182.6635332, "game": "DefJam", "type": "log", "text": "[cnk] asset STBL@762390=00000000 fonts_crc@7B3638=00000000 siid@155F940=00000000/00000000 igctx@7430C0=00000000 walk flag=0 first=0 cur=0 want=0 cap=0 ptr=0x0 mag5=0x00"}
+{"t": 1794097182.665048, "game": "DefJam", "type": "log", "text": "[cnk] loadgate 6F2540=00000000 6F35E0=00000000 6F2538=00000000 6F5AB8=00000000 635138=00000000"}
+{"t": 1794097182.667566, "game": "DefJam", "type": "log", "text": "[iop] module 1 sio2man at 0x00021A00"}
+{"t": 1794097182.6710923, "game": "DefJam", "type": "log", "text": "[iop] module 2 padman at 0x0002D700"}
+{"t": 1794097182.673093, "game": "DefJam", "type": "log", "text": "[iop] module 3 multitap_manager at 0x00025700"}
+{"t": 1794097182.674604, "game": "DefJam", "type": "log", "text": "[iop] module 4 mcman at 0x0004E800"}
+{"t": 1794097182.6756132, "game": "DefJam", "type": "log", "text": "[iop] module 5 mcserv at 0x00027700"}
+{"t": 1794097182.6756132, "game": "DefJam", "type": "log", "text": "[iop] module 6 Sound_Device_Library at 0x0003E100"}
+{"t": 1794097182.6771204, "game": "DefJam", "type": "log", "text": "[iop] module 7 SND_Library_EE_Driver at 0x0008A100"}
+{"t": 1794097182.6832516, "game": "DefJam", "type": "log", "text": "[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.6888335, "game": "DefJam", "type": "log", "text": "[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x00021DC4"}
+{"t": 1794097182.689844, "game": "DefJam", "type": "log", "text": "[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.6908438, "game": "DefJam", "type": "log", "text": "[iop] thread 4 status 4 prio 46 wait 8/224852 pc 0x00001020"}
+{"t": 1794097182.6948776, "game": "DefJam", "type": "log", "text": "[iop] thread 5 status 4 prio 46 wait 8/225076 pc 0x00001020"}
+{"t": 1794097182.6958938, "game": "DefJam", "type": "log", "text": "[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.7059278, "game": "DefJam", "type": "log", "text": "[iop] thread 7 status 4 prio 46 wait 8/160688 pc 0x00001020"}
+{"t": 1794097182.7074459, "game": "DefJam", "type": "log", "text": "[iop] thread 8 status 4 prio 46 wait 8/160712 pc 0x00001020"}
+{"t": 1794097182.7084548, "game": "DefJam", "type": "log", "text": "[iop] thread 9 status 4 prio 46 wait 8/160736 pc 0x00001020"}
+{"t": 1794097182.7094593, "game": "DefJam", "type": "log", "text": "[iop] thread 10 status 4 prio 46 wait 8/160760 pc 0x00001020"}
+{"t": 1794097182.710966, "game": "DefJam", "type": "log", "text": "[iop] thread 11 status 4 prio 46 wait 8/160784 pc 0x00001020"}
+{"t": 1794097182.7119753, "game": "DefJam", "type": "log", "text": "[iop] thread 12 status 4 prio 20 wait 4/3 pc 0x00025F10"}
+{"t": 1794097182.712976, "game": "DefJam", "type": "log", "text": "[iop] thread 13 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.7291057, "game": "DefJam", "type": "log", "text": "[iop] thread 14 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.7316155, "game": "DefJam", "type": "log", "text": "[iop] thread 15 status 4 prio 104 wait 8/175616 pc 0x00001020"}
+{"t": 1794097182.7326267, "game": "DefJam", "type": "log", "text": "[iop] thread 16 status 4 prio 20 wait 4/5 pc 0x0002D794"}
+{"t": 1794097182.7361343, "game": "DefJam", "type": "log", "text": "[iop] thread 17 status 4 prio 46 wait 4/5 pc 0x0002D794"}
+{"t": 1794097182.7376518, "game": "DefJam", "type": "log", "text": "[iop] thread 18 status 4 prio 46 wait 4/6 pc 0x0002D794"}
+{"t": 1794097182.739661, "game": "DefJam", "type": "log", "text": "[iop] thread 19 status 16 prio 46 wait 0/6 pc 0x00030168"}
+{"t": 1794097182.7411706, "game": "DefJam", "type": "log", "text": "[iop] thread 20 status 16 prio 46 wait 0/6 pc 0x000302A4"}
+{"t": 1794097182.7431817, "game": "DefJam", "type": "log", "text": "[iop] thread 21 status 16 prio 46 wait 0/6 pc 0x000303DC"}
+{"t": 1794097182.7431817, "game": "DefJam", "type": "log", "text": "[iop] thread 22 status 16 prio 46 wait 0/6 pc 0x0003057C"}
+{"t": 1794097182.7452004, "game": "DefJam", "type": "log", "text": "[iop] thread 23 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7467358, "game": "DefJam", "type": "log", "text": "[iop] thread 24 status 4 prio 46 wait 4/7 pc 0x0002D794"}
+{"t": 1794097182.7477462, "game": "DefJam", "type": "log", "text": "[iop] thread 25 status 4 prio 46 wait 4/7 pc 0x0002D794"}
+{"t": 1794097182.7759757, "game": "DefJam", "type": "log", "text": "[iop] thread 26 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7774842, "game": "DefJam", "type": "log", "text": "[iop] thread 27 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7794955, "game": "DefJam", "type": "log", "text": "[iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7800035, "game": "DefJam", "type": "log", "text": "[iop] thread 29 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7820156, "game": "DefJam", "type": "log", "text": "[iop] thread 30 status 4 prio 46 wait 4/8 pc 0x0002D794"}
+{"t": 1794097182.7855341, "game": "DefJam", "type": "log", "text": "[iop] thread 31 status 4 prio 46 wait 4/8 pc 0x0002D794"}
+{"t": 1794097182.7887993, "game": "DefJam", "type": "log", "text": "[iop] thread 32 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7948687, "game": "DefJam", "type": "log", "text": "[iop] thread 33 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7958827, "game": "DefJam", "type": "log", "text": "[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.797901, "game": "DefJam", "type": "log", "text": "[iop] thread 35 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.7989113, "game": "DefJam", "type": "log", "text": "[iop] thread 36 status 4 prio 46 wait 4/9 pc 0x0002D794"}
+{"t": 1794097182.800912, "game": "DefJam", "type": "log", "text": "[iop] thread 37 status 4 prio 46 wait 4/9 pc 0x0002D794"}
+{"t": 1794097182.8210366, "game": "DefJam", "type": "log", "text": "[iop] thread 38 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8220453, "game": "DefJam", "type": "log", "text": "[iop] thread 39 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8230467, "game": "DefJam", "type": "log", "text": "[iop] thread 40 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8250911, "game": "DefJam", "type": "log", "text": "[iop] thread 41 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8261015, "game": "DefJam", "type": "log", "text": "[iop] thread 42 status 4 prio 46 wait 4/10 pc 0x0002D794"}
+{"t": 1794097182.8276107, "game": "DefJam", "type": "log", "text": "[iop] thread 43 status 4 prio 46 wait 4/10 pc 0x0002D794"}
+{"t": 1794097182.828621, "game": "DefJam", "type": "log", "text": "[iop] thread 44 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8311396, "game": "DefJam", "type": "log", "text": "[iop] thread 45 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8321414, "game": "DefJam", "type": "log", "text": "[iop] thread 46 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.834143, "game": "DefJam", "type": "log", "text": "[iop] thread 47 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8356664, "game": "DefJam", "type": "log", "text": "[iop] thread 48 status 4 prio 46 wait 4/11 pc 0x0002D794"}
+{"t": 1794097182.8388684, "game": "DefJam", "type": "log", "text": "[iop] thread 49 status 4 prio 46 wait 4/11 pc 0x0002D794"}
+{"t": 1794097182.8479795, "game": "DefJam", "type": "log", "text": "[iop] thread 50 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8489914, "game": "DefJam", "type": "log", "text": "[iop] thread 51 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8525038, "game": "DefJam", "type": "log", "text": "[iop] thread 52 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8535144, "game": "DefJam", "type": "log", "text": "[iop] thread 53 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8555264, "game": "DefJam", "type": "log", "text": "[iop] thread 54 status 4 prio 46 wait 4/12 pc 0x0002D794"}
+{"t": 1794097182.8570402, "game": "DefJam", "type": "log", "text": "[iop] thread 55 status 4 prio 46 wait 4/12 pc 0x0002D794"}
+{"t": 1794097182.858054, "game": "DefJam", "type": "log", "text": "[iop] thread 56 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8590565, "game": "DefJam", "type": "log", "text": "[iop] thread 57 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8600564, "game": "DefJam", "type": "log", "text": "[iop] thread 58 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8691263, "game": "DefJam", "type": "log", "text": "[iop] thread 59 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.870635, "game": "DefJam", "type": "log", "text": "[iop] thread 60 status 4 prio 46 wait 4/13 pc 0x0002D794"}
+{"t": 1794097182.8716435, "game": "DefJam", "type": "log", "text": "[iop] thread 61 status 4 prio 46 wait 4/13 pc 0x0002D794"}
+{"t": 1794097182.8726463, "game": "DefJam", "type": "log", "text": "[iop] thread 62 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8736482, "game": "DefJam", "type": "log", "text": "[iop] thread 63 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8751566, "game": "DefJam", "type": "log", "text": "[iop] thread 64 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8761687, "game": "DefJam", "type": "log", "text": "[iop] thread 65 status 16 prio 46 wait 0/0 pc 0x00000000"}
+{"t": 1794097182.8776755, "game": "DefJam", "type": "log", "text": "[iop] thread 66 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.8786871, "game": "DefJam", "type": "log", "text": "[iop] thread 67 status 16 prio 8 wait 0/0 pc 0x00001010"}
+{"t": 1794097182.8801973, "game": "DefJam", "type": "log", "text": "[iop] thread 68 status 4 prio 15 wait 1/0 pc 0x00093104"}
+{"t": 1794097182.8822086, "game": "DefJam", "type": "log", "text": "[iop] thread 69 status 4 prio 9 wait 1/0 pc 0x0009300C"}
+{"t": 1794097182.8832085, "game": "DefJam", "type": "log", "text": "[sif] 0 packets wait for the EE (processed 1)"}
+{"t": 1794097182.8847153, "game": "DefJam", "type": "log", "text": "[gpu] 2099 submits, dispatches: upload 1407 copy_read 0 copy_write 0 load_clut 352 display 1046 raster 1059 resolve 0 snapshot 0 decode 0"}
+{"t": 1794097182.885223, "game": "DefJam", "type": "log", "text": "[gs] 15569 primitives drawn, register writes: 00:8158 01:7454 03:14200 04:1408 05:21262 06:1059 08:1060 09:1 0C:1408 0D:7060 14:1060 15:1 18:712 19:356 1A:355 22:356 34:704 36:704 3B:705 3F:1060 40:1061 41:355 42:1413 43:1 44:1 45:712 46:1 47:1414 48:1 49:354 4A:1058 4B:1 4C:1416 4D:1 4E:2122 4F:356 50:1410 51:1410 52:1410 53:1410"}
+{"t": 1794097182.8867495, "game": "DefJam", "type": "log", "text": "[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0"}
+{"t": 1794097182.88776, "game": "DefJam", "type": "log", "text": "[dma] starts: ch0=0 ch1=355 ch2=1063 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=1260 ch9=1260"}
+{"t": 1794097182.8887606, "game": "DefJam", "type": "log", "text": "[gif] path 1 tags: packed 2816 reglist 0 image 0"}
+{"t": 1794097182.8902686, "game": "DefJam", "type": "log", "text": "[gif] path 2 tags: packed 2474 reglist 7100 image 0"}
+{"t": 1794097182.8912795, "game": "DefJam", "type": "log", "text": "[gif] path 3 tags: packed 2116 reglist 0 image 1410"}
+{"t": 1794097182.8932817, "game": "DefJam", "type": "log", "text": "[vif0]"}
+{"t": 1794097182.8947933, "game": "DefJam", "type": "log", "text": "[vif1] 00:38750 01:7041 02:1 03:1 05:7746 10:355 11:2826 13:704 14:1 17:704 20:7746 4A:2 50:2474 6C:4929 6E:2816"}
+{"t": 1794097182.8968012, "game": "DefJam", "type": "log", "text": "[ee] stopped after 1097 frames, 5443052861 cycles: missing code at 0x002A9E20 (ra 0x0029C700)"}
+{"t": 1794097185.944888, "game": "GT4", "type": "error", "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"t": 1794097186.6871374, "game": "GT4", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097187.531876, "game": "GT4", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097188.044962, "game": "GT4", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097188.045974, "game": "GT4", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097188.047483, "game": "GT4", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097188.4692817, "game": "GT4", "type": "log", "text": "[disc] disc: 146 files, 2594960 sectors, layer 1 at 1317040"}
+{"t": 1794097188.647173, "game": "GT4", "type": "log", "text": "[mc] card in slot 1: /memcard-9ce58de36f3fbe96fb260a3221d91f20/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097188.6658962, "game": "GT4", "type": "log", "text": "[stats] frame 1 0.3 fps (0 on screen) GPU 0% idle emu 0% vu 30% gs 30% heap 256 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097189.9322362, "game": "GT4", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP300.IMG;1\""}
+{"t": 1794097190.0159686, "game": "GT4", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP300.IMG;1 reports 3000, asynchronous protocol"}
+{"t": 1794097190.0174751, "game": "GT4", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP300.IMG;1 reports 3000"}
+{"t": 1794097190.0199926, "game": "GT4", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794097190.032433, "game": "GT4", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097190.063119, "game": "GT4", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097190.086815, "game": "GT4", "type": "log", "text": "[stats] frame 2 0.7 fps (1 on screen) GPU 0% idle emu 3% vu 100% gs 100% heap 256 MB audio 0 ms hitch 1405.9 ms x1"}
+{"t": 1794097190.1347911, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\SIO2MAN.IRX;1"}
+{"t": 1794097190.1408331, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\MCMAN.IRX;1"}
+{"t": 1794097190.1423452, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\MCSERV.IRX;1"}
+{"t": 1794097190.170471, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\SIO2D.IRX;1"}
+{"t": 1794097190.172474, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\DBCMAN.IRX;1"}
+{"t": 1794097190.1734707, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\DS2U_D.IRX;1"}
+{"t": 1794097190.1760044, "game": "GT4", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00020184)"}
+{"t": 1794097190.1916234, "game": "GT4", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x0077EED0 data 0x0077EB20"}
+{"t": 1794097190.1946776, "game": "GT4", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x0077EEE0"}
+{"t": 1794097190.1997297, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\LIBSD.IRX;1"}
+{"t": 1794097190.2017376, "game": "GT4", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00057A78)"}
+{"t": 1794097190.2032475, "game": "GT4", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00057A7C)"}
+{"t": 1794097190.205769, "game": "GT4", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00057A98)"}
+{"t": 1794097190.2072816, "game": "GT4", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00057AA8)"}
+{"t": 1794097190.209305, "game": "GT4", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00057AD4)"}
+{"t": 1794097190.2113185, "game": "GT4", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00057AD8)"}
+{"t": 1794097190.2133336, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\USBD.IRX;1"}
+{"t": 1794097190.215889, "game": "GT4", "type": "log", "text": "[iop-tty] USB Driver (Version 1.4.0)"}
+{"t": 1794097190.2174003, "game": "GT4", "type": "log", "text": "[iop-io] write 0x1F801680 = 0x1 (pc 0x0005F9F0)"}
+{"t": 1794097190.2184114, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\INET.IRX;1"}
+{"t": 1794097190.2199168, "game": "GT4", "type": "log", "text": "[iop-tty] INET (Version 2.25.0) DEBUG REMOVABLE"}
+{"t": 1794097190.2219293, "game": "GT4", "type": "log", "text": "[iop-tty] inet: mem=128KB thpri=48 thstack=8192"}
+{"t": 1794097190.2229304, "game": "GT4", "type": "log", "text": "[iop-tty] inet: debug=0x0 &debug=0008dc50 &free_{size,min}=0008ddd4,0008ddd8"}
+{"t": 1794097190.2244434, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\NETCNF.IRX;1"}
+{"t": 1794097190.2254539, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\INETCTL.IRX;1"}
+{"t": 1794097190.2269645, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\DEV9.IRX;1"}
+{"t": 1794097190.2945566, "game": "GT4", "type": "log", "text": "[iop-io] read 0x1F80146E = 0x0 (pc 0x000C4E78)"}
+{"t": 1794097190.2975905, "game": "GT4", "type": "log", "text": "[iop-tty] dev9: unknown dev9 hardware."}
+{"t": 1794097190.2986028, "game": "GT4", "type": "log", "text": "[fileio] devctl dev9x: 0x4401"}
+{"t": 1794097190.3006003, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\MSIFRPC.IRX;1"}
+{"t": 1794097190.302117, "game": "GT4", "type": "log", "text": "[iop-tty] Multi-thread available sifrpc module..."}
+{"t": 1794097190.3031223, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\LIBPDI.IRX;1"}
+{"t": 1794097190.3052373, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\PDICDVD.IRX;1"}
+{"t": 1794097190.306764, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\PDISPU2.IRX;1"}
+{"t": 1794097190.307775, "game": "GT4", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x006DECE0 data 0x006DEB20"}
+{"t": 1794097190.309775, "game": "GT4", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x006DECF0"}
+{"t": 1794097190.3102844, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\PDISTR.IRX;1"}
+{"t": 1794097190.3122942, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\PDIUSB.IRX;1"}
+{"t": 1794097190.3148053, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\USTORAGE.IRX;1"}
+{"t": 1794097190.317323, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\LGDEV.IRX;1"}
+{"t": 1794097190.4019916, "game": "GT4", "type": "log", "text": "[iop-tty] LgDev_tb_rb_Driver Version 1.11.036 (PDI branch), Rooz special, built on Jan 27 2005 at 19:18:45, thpri=42,43"}
+{"t": 1794097190.4175956, "game": "GT4", "type": "log", "text": "[iop-tty]   dynamic memory allocations"}
+{"t": 1794097190.4256508, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\POWOFF.IRX;1"}
+{"t": 1794097190.427163, "game": "GT4", "type": "log", "text": "[loadfile] cdrom0:\\IRX\\RTINETB.IRX;1"}
+{"t": 1794097190.4286945, "game": "GT4", "type": "log", "text": "[iop-tty] libnetb version: 1.10.0005 (09.22.2004.01.44.53)"}
+{"t": 1794097190.4317172, "game": "GT4", "type": "log", "text": "[iop-tty] libnetb: delay between sends = 3 msecs"}
+{"t": 1794097191.8768308, "game": "GT4", "type": "log", "text": "[stats] frame 55 52.0 fps (43 on screen) GPU 1% idle emu 67% vu 98% gs 93% heap 256 MB audio 73 ms hitch 89.8 ms x6"}
+{"t": 1794097192.3653767, "game": "GT4", "type": "log", "text": "[stats] frame 108 51.2 fps (49 on screen) GPU 1% idle emu 71% vu 101% gs 94% heap 256 MB audio 60 ms hitch 73.0 ms x5"}
+{"t": 1794097194.0987372, "game": "GT4", "type": "log", "text": "[stats] frame 134 26.0 fps (25 on screen) GPU 2% idle emu 27% vu 98% gs 95% heap 256 MB audio 57 ms hitch 207.3 ms x5"}
+{"t": 1794097194.1002464, "game": "GT4", "type": "log", "text": "[fileio] devctl dev9x: 0x4401"}
+{"t": 1794097194.1668956, "game": "GT4", "type": "log", "text": "[stats] frame 161 28.5 fps (28 on screen) GPU 2% idle emu 33% vu 100% gs 94% heap 256 MB audio 25 ms hitch 137.1 ms x11"}
+{"t": 1794097196.2090583, "game": "GT4", "type": "log", "text": "[stats] frame 222 59.3 fps (53 on screen) GPU 7% idle emu 66% vu 101% gs 91% heap 256 MB audio 39 ms hitch 64.7 ms x9"}
+{"t": 1794097196.210624, "game": "GT4", "type": "log", "text": "[stats] frame 267 44.6 fps (41 on screen) GPU 6% idle emu 10% vu 99% gs 94% heap 256 MB audio 61 ms hitch 67.2 ms x7"}
+{"t": 1794097197.3055613, "game": "GT4", "type": "log", "text": "[stats] frame 304 36.3 fps (36 on screen) GPU 7% idle emu 16% vu 100% gs 95% heap 256 MB audio 1 ms hitch 97.1 ms x8"}
+{"t": 1794097198.4428997, "game": "GT4", "type": "log", "text": "[stats] frame 354 48.9 fps (45 on screen) GPU 3% idle emu 46% vu 100% gs 94% heap 256 MB audio 1 ms hitch 85.8 ms x6"}
+{"t": 1794097199.53789, "game": "GT4", "type": "log", "text": "[stats] frame 400 43.7 fps (38 on screen) GPU 3% idle emu 25% vu 99% gs 90% heap 256 MB audio 49 ms hitch 78.1 ms x11"}
+{"t": 1794097200.72073, "game": "GT4", "type": "log", "text": "[stats] frame 453 52.7 fps (45 on screen) GPU 18% idle emu 44% vu 99% gs 86% heap 256 MB audio 45 ms hitch 162.3 ms x8"}
+{"t": 1794097201.2457874, "game": "GT4", "type": "log", "text": "[stats] frame 513 59.8 fps (57 on screen) GPU 19% idle emu 49% vu 99% gs 91% heap 256 MB audio 24 ms hitch 71.2 ms x2"}
+{"t": 1794097202.2951865, "game": "GT4", "type": "log", "text": "[stats] frame 575 60.2 fps (58 on screen) GPU 21% idle emu 42% vu 98% gs 91% heap 256 MB audio 47 ms hitch 36.8 ms x2"}
+{"t": 1794097203.341768, "game": "GT4", "type": "log", "text": "[stats] frame 636 59.0 fps (56 on screen) GPU 15% idle emu 45% vu 98% gs 92% heap 256 MB audio 59 ms hitch 63.3 ms x3"}
+{"t": 1794097204.2887714, "game": "GT4", "type": "log", "text": "[stats] frame 696 60.0 fps (59 on screen) GPU 22% idle emu 44% vu 99% gs 92% heap 256 MB audio 49 ms hitch 34.3 ms x1"}
+{"t": 1794097205.9533093, "game": "GT4", "type": "log", "text": "[stats] frame 758 60.0 fps (57 on screen) GPU 15% idle emu 50% vu 99% gs 90% heap 256 MB audio 63 ms hitch 53.9 ms x1"}
+{"t": 1794097206.5128262, "game": "GT4", "type": "log", "text": "[stats] frame 818 60.0 fps (60 on screen) GPU 2% idle emu 46% vu 98% gs 91% heap 256 MB audio 63 ms hitch 17.4 ms x0"}
+{"t": 1794097207.5802662, "game": "GT4", "type": "log", "text": "[stats] frame 874 58.0 fps (57 on screen) GPU 4% idle emu 45% vu 99% gs 91% heap 256 MB audio 16 ms hitch 51.0 ms x2"}
+{"t": 1794097208.6532578, "game": "GT4", "type": "log", "text": "[stats] frame 938 63.0 fps (59 on screen) GPU 15% idle emu 46% vu 99% gs 91% heap 256 MB audio 61 ms hitch 37.2 ms x1"}
+{"t": 1794097209.7745988, "game": "GT4", "type": "log", "text": "[stats] frame 998 59.0 fps (59 on screen) GPU 16% idle emu 44% vu 98% gs 91% heap 256 MB audio 51 ms hitch 35.7 ms x1"}
+{"t": 1794097210.8489568, "game": "GT4", "type": "log", "text": "[stats] frame 1059 60.0 fps (60 on screen) GPU 20% idle emu 50% vu 99% gs 92% heap 256 MB audio 68 ms hitch 18.2 ms x0"}
+{"t": 1794097211.408937, "game": "GT4", "type": "log", "text": "[stats] frame 1120 60.0 fps (60 on screen) GPU 22% idle emu 49% vu 98% gs 92% heap 256 MB audio 67 ms hitch 20.5 ms x0"}
+{"t": 1794097212.5474029, "game": "GT4", "type": "log", "text": "[stats] frame 1179 60.0 fps (60 on screen) GPU 17% idle emu 44% vu 97% gs 92% heap 256 MB audio 49 ms hitch 27.1 ms x0"}
+{"t": 1794097213.602299, "game": "GT4", "type": "log", "text": "[stats] frame 1239 59.0 fps (59 on screen) GPU 18% idle emu 53% vu 101% gs 91% heap 256 MB audio 50 ms hitch 49.1 ms x1"}
+{"t": 1794097214.664515, "game": "GT4", "type": "log", "text": "[stats] frame 1300 60.0 fps (60 on screen) GPU 18% idle emu 46% vu 100% gs 91% heap 256 MB audio 65 ms hitch 17.2 ms x0"}
+{"t": 1794097215.7769682, "game": "GT4", "type": "log", "text": "[stats] frame 1361 60.0 fps (60 on screen) GPU 23% idle emu 52% vu 98% gs 91% heap 256 MB audio 61 ms hitch 17.3 ms x0"}
+{"t": 1794097216.874022, "game": "GT4", "type": "log", "text": "[stats] frame 1422 60.0 fps (60 on screen) GPU 23% idle emu 51% vu 99% gs 92% heap 256 MB audio 69 ms hitch 17.9 ms x0"}
+{"t": 1794097217.443178, "game": "GT4", "type": "log", "text": "[stats] frame 1482 60.0 fps (60 on screen) GPU 23% idle emu 48% vu 100% gs 91% heap 256 MB audio 69 ms hitch 18.3 ms x0"}
+{"t": 1794097218.4983692, "game": "GT4", "type": "log", "text": "[stats] frame 1542 61.4 fps (59 on screen) GPU 23% idle emu 54% vu 99% gs 91% heap 256 MB audio 48 ms hitch 27.0 ms x0"}
+{"t": 1794097219.5808098, "game": "GT4", "type": "log", "text": "[stats] frame 1603 60.6 fps (59 on screen) GPU 18% idle emu 46% vu 98% gs 92% heap 256 MB audio 54 ms hitch 32.3 ms x0"}
+{"t": 1794097220.6239674, "game": "GT4", "type": "log", "text": "[stats] frame 1663 58.9 fps (59 on screen) GPU 15% idle emu 46% vu 99% gs 91% heap 256 MB audio 54 ms hitch 37.1 ms x1"}
+{"t": 1794097221.7119527, "game": "GT4", "type": "log", "text": "[stats] frame 1724 60.1 fps (60 on screen) GPU 16% idle emu 48% vu 98% gs 92% heap 256 MB audio 63 ms hitch 29.2 ms x0"}
+{"t": 1794097222.8606281, "game": "GT4", "type": "log", "text": "[stats] frame 1784 59.0 fps (59 on screen) GPU 17% idle emu 44% vu 98% gs 92% heap 256 MB audio 63 ms hitch 43.1 ms x1"}
+{"t": 1794097223.4276066, "game": "GT4", "type": "log", "text": "[stats] frame 1844 60.0 fps (60 on screen) GPU 17% idle emu 50% vu 99% gs 92% heap 256 MB audio 71 ms hitch 17.2 ms x0"}
+{"t": 1794097224.4729192, "game": "GT4", "type": "log", "text": "[stats] frame 1904 60.0 fps (60 on screen) GPU 15% idle emu 56% vu 98% gs 92% heap 256 MB audio 63 ms hitch 17.5 ms x0"}
+{"t": 1794097225.6146586, "game": "GT4", "type": "log", "text": "[stats] frame 1963 59.0 fps (59 on screen) GPU 15% idle emu 53% vu 98% gs 92% heap 256 MB audio 47 ms hitch 33.8 ms x1"}
+{"t": 1794097228.1455858, "game": "NFSU2", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097228.6372526, "game": "NFSU2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097229.2627258, "game": "NFSU2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097229.264728, "game": "NFSU2", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097229.2657354, "game": "NFSU2", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097229.2667458, "game": "NFSU2", "type": "log", "text": "[disc] disc: 197 files, 1403616 sectors, layer 1 at 0"}
+{"t": 1794097229.2768087, "game": "NFSU2", "type": "log", "text": "[mc] card in slot 1: /memcard-c0671389c296be6afe9e5224c97d30df/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097229.8208694, "game": "NFSU2", "type": "log", "text": "[stats] frame 1 0.3 fps (0 on screen) GPU 0% idle emu 0% vu 26% gs 25% heap 384 MB audio 0 ms hitch 0.0 ms x0"}
+{"t": 1794097229.8526914, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097229.8678179, "game": "NFSU2", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom:\\NFSUNDER\\DNAS280.IMG\""}
+{"t": 1794097230.0760756, "game": "NFSU2", "type": "log", "text": "[sif] FILEIO from cdrom:\\NFSUNDER\\DNAS280.IMG reports 2800, asynchronous protocol"}
+{"t": 1794097230.077595, "game": "NFSU2", "type": "log", "text": "[sif] LOADFILE from cdrom:\\NFSUNDER\\DNAS280.IMG reports 2800"}
+{"t": 1794097230.080131, "game": "NFSU2", "type": "log", "text": "[fileio] open cdrom:\\NFSUNDER\\IRX281A.BUN -> 3"}
+{"t": 1794097230.084659, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x20000, 6641 bytes"}
+{"t": 1794097230.089227, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x22B00, 43813 bytes"}
+{"t": 1794097230.090226, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x37100, 95909 bytes"}
+{"t": 1794097230.0927467, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x22B00, 7417 bytes"}
+{"t": 1794097230.1270187, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097230.1436224, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097230.1829493, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097230.1844716, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097230.9688377, "game": "NFSU2", "type": "log", "text": "[stats] frame 6 0.9 fps (1 on screen) GPU 0% idle emu 10% vu 97% gs 99% heap 384 MB audio 0 ms hitch 1149.3 ms x1"}
+{"t": 1794097231.0015483, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097231.0228536, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097231.0374732, "game": "NFSU2", "type": "log", "text": "[gs] VSINT raise csr=0x551B4008 imr=0x7F00 MASKED — no intc"}
+{"t": 1794097231.2376904, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x37100, 34969 bytes"}
+{"t": 1794097231.2397006, "game": "NFSU2", "type": "log", "text": "[iop-tty] USB Driver (Version 1.1.0)"}
+{"t": 1794097231.2412167, "game": "NFSU2", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x000430D4)"}
+{"t": 1794097231.243218, "game": "NFSU2", "type": "log", "text": "[iop-io] write 0x1F801680 = 0x1 (pc 0x000430EC)"}
+{"t": 1794097231.2447283, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x37100, 28605 bytes"}
+{"t": 1794097231.2467394, "game": "NFSU2", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00047678)"}
+{"t": 1794097231.247781, "game": "NFSU2", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0004767C)"}
+{"t": 1794097231.2497995, "game": "NFSU2", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00047698)"}
+{"t": 1794097231.2508016, "game": "NFSU2", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x000476D4)"}
+{"t": 1794097231.253801, "game": "NFSU2", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000476D8)"}
+{"t": 1794097231.2583344, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x28000, 9161 bytes"}
+{"t": 1794097231.259846, "game": "NFSU2", "type": "log", "text": "[iop-tty] SDR driver version 4.0.1 (C) SCEI"}
+{"t": 1794097231.2618594, "game": "NFSU2", "type": "log", "text": "[iop-tty]  Exit rsd_main "}
+{"t": 1794097231.2628584, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x84A00, 61989 bytes"}
+{"t": 1794097231.2649176, "game": "NFSU2", "type": "log", "text": "[iop-tty] LgDev_tb_rb_Driver Version 1.11.036 ( Wheel Joystick ), built on Sep  8 2004 at 15:50:49, thpri=42,43"}
+{"t": 1794097231.2659285, "game": "NFSU2", "type": "log", "text": "[iop-tty]   dynamic memory allocations"}
+{"t": 1794097231.2679489, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0xA0100, 81616 bytes"}
+{"t": 1794097231.2689476, "game": "NFSU2", "type": "log", "text": "[loadfile] cdrom:\\NFSUNDER\\DEV9.IRX"}
+{"t": 1794097231.2709627, "game": "NFSU2", "type": "log", "text": "[iop-io] read 0x1F80146E = 0x0 (pc 0x00037508)"}
+{"t": 1794097231.2719572, "game": "NFSU2", "type": "log", "text": "[iop-tty] dev9: unknown dev9 hardware."}
+{"t": 1794097231.2734647, "game": "NFSU2", "type": "log", "text": "[fileio] open cdrom:\\NFSUNDER\\IRX281N.BUN -> 3"}
+{"t": 1794097231.3946323, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0xA0100, 65805 bytes"}
+{"t": 1794097231.3971882, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0xCB900, 141485 bytes"}
+{"t": 1794097231.4768608, "game": "NFSU2", "type": "log", "text": "[iop-tty] INET (Version 2.1.0) DEBUG REMOVABLE"}
+{"t": 1794097231.47887, "game": "NFSU2", "type": "log", "text": "[iop-tty] inet: mem=48KB thpri=48 thstack=8192"}
+{"t": 1794097231.4798696, "game": "NFSU2", "type": "log", "text": "[iop-tty] inet: debug=0x0 &debug=00109330 &free_{size,min}=001094b4,001094b8"}
+{"t": 1794097231.4808843, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x37100, 24765 bytes"}
+{"t": 1794097231.4818957, "game": "NFSU2", "type": "log", "text": "[iop-tty] inetctl: Waiting I/F Event"}
+{"t": 1794097231.4828942, "game": "NFSU2", "type": "log", "text": "[iop-tty] inetctl: Waiting I/F Event"}
+{"t": 1794097231.4849403, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x37100, 17105 bytes"}
+{"t": 1794097231.4869606, "game": "NFSU2", "type": "log", "text": "[iop-tty] SMAP (Version 2.16.0)"}
+{"t": 1794097231.5511403, "game": "NFSU2", "type": "log", "text": "[loadfile] buffer at 0x22B00, 6098 bytes"}
+{"t": 1794097233.7416956, "game": "NFSU2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097233.7477367, "game": "NFSU2", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1"}
+{"t": 1794097233.749245, "game": "NFSU2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097233.8481438, "game": "NFSU2", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097233.850152, "game": "NFSU2", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097233.851661, "game": "NFSU2", "type": "log", "text": "[stats] frame 45 36.0 fps (29 on screen) GPU 0% idle emu 113% vu 102% gs 97% heap 384 MB audio 0 ms hitch 258.4 ms x5"}
+{"t": 1794097233.9347794, "game": "NFSU2", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x00021B84)"}
+{"t": 1794097233.9372933, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8C300 data 0x004C5FF0"}
+{"t": 1794097233.9372933, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8C310"}
+{"t": 1794097233.9388, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9408164, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8C410 data 0x01E8C390"}
+{"t": 1794097233.9418159, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8C420"}
+{"t": 1794097233.9418159, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9433246, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8C520 data 0x01E8C4A0"}
+{"t": 1794097233.9433246, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8C530"}
+{"t": 1794097233.9448655, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.945877, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8C630 data 0x01E8C5B0"}
+{"t": 1794097233.9468777, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8C640"}
+{"t": 1794097233.9478917, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9489, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8C720 data 0x01E8C6C0"}
+{"t": 1794097233.9489, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8C730"}
+{"t": 1794097233.949908, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9509087, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8CB30 data 0x01E8C7B0"}
+{"t": 1794097233.9524186, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CB40"}
+{"t": 1794097233.9534292, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9549387, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8CC20 data 0x01E8CBC0"}
+{"t": 1794097233.9559565, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CC30"}
+{"t": 1794097233.9569519, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097233.9574616, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01E8CD10 data 0x01E8CCB0"}
+{"t": 1794097233.9584703, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CD20"}
+{"t": 1794097233.9584703, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 4 addr 0x01B05A80 data 0x01B05A80"}
+{"t": 1794097233.9594707, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CDA0"}
+{"t": 1794097233.96147, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 32 addr 0x01B06300 data 0x01B06300"}
+{"t": 1794097233.961979, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CE20"}
+{"t": 1794097233.9629862, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B05B00 data 0x01B05B00"}
+{"t": 1794097233.9629862, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CEA0"}
+{"t": 1794097233.9958282, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B0E500 data 0x01B0E500"}
+{"t": 1794097233.9983451, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CF20"}
+{"t": 1794097233.9998522, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B05F00 data 0x01B05F00"}
+{"t": 1794097234.0028605, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01E8CFA0"}
+{"t": 1794097234.0048985, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 2048 addr 0x01B0E900 data 0x01B0E900"}
+{"t": 1794097234.0057156, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 2 addr 0x004E0C90 data 0x01E8D020"}
+{"t": 1794097234.007797, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x004E0CA0"}
+{"t": 1794097234.0093057, "game": "NFSU2", "type": "log", "text": "[stats] frame 56 10.6 fps (11 on screen) GPU 7% idle emu 5% vu 96% gs 98% heap 384 MB audio 6 ms hitch 572.4 ms x7"}
+{"t": 1794097234.0103133, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D60A90 data 0x004C5F90"}
+{"t": 1794097234.0148315, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D60AA0"}
+{"t": 1794097234.1369257, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.1414437, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D60BA0 data 0x01D60B20"}
+{"t": 1794097234.1434515, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D60BB0"}
+{"t": 1794097234.1474884, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.1495063, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D60CB0 data 0x01D60C30"}
+{"t": 1794097234.1525047, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D60CC0"}
+{"t": 1794097234.1550124, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.1570363, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D60DC0 data 0x01D60D40"}
+{"t": 1794097234.1640775, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D60DD0"}
+{"t": 1794097234.167107, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.2590647, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D60EB0 data 0x01D60E50"}
+{"t": 1794097234.2610795, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D60EC0"}
+{"t": 1794097234.3348482, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.3384116, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D612C0 data 0x01D60F40"}
+{"t": 1794097234.3404331, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D612D0"}
+{"t": 1794097234.3414347, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.342437, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D613B0 data 0x01D61350"}
+{"t": 1794097234.344952, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D613C0"}
+{"t": 1794097234.3459666, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 512 addr 0x004565F0 data 0x004565F0"}
+{"t": 1794097234.3474786, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 0 addr 0x01D614A0 data 0x01D61440"}
+{"t": 1794097234.3494904, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D614B0"}
+{"t": 1794097234.3530064, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 4 addr 0x01B05A80 data 0x01B05A80"}
+{"t": 1794097234.354007, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D61530"}
+{"t": 1794097234.3560274, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 32 addr 0x01B06300 data 0x01B06300"}
+{"t": 1794097234.3575506, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D615B0"}
+{"t": 1794097234.35856, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B05B00 data 0x01B05B00"}
+{"t": 1794097234.3595684, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D61630"}
+{"t": 1794097234.447697, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B0E500 data 0x01B0E500"}
+{"t": 1794097234.4492037, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D616B0"}
+{"t": 1794097234.45372, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 64 addr 0x01B05F00 data 0x01B05F00"}
+{"t": 1794097234.4582558, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x01D61730"}
+{"t": 1794097234.463274, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 3 qwc 2048 addr 0x01B0E900 data 0x01B0E900"}
+{"t": 1794097234.4657934, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 2 qwc 2 addr 0x004E0C90 data 0x01D617B0"}
+{"t": 1794097234.5399346, "game": "NFSU2", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x004E0CA0"}
+{"t": 1794097234.5419438, "game": "NFSU2", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794097234.549509, "game": "NFSU2", "type": "log", "text": "[stats] frame 81 23.1 fps (23 on screen) GPU 2% idle emu 9% vu 101% gs 96% heap 384 MB audio 7 ms hitch 87.9 ms x13"}
+{"t": 1794097235.279435, "game": "NFSU2", "type": "log", "text": "[stats] frame 106 25.0 fps (25 on screen) GPU 0% idle emu 8% vu 100% gs 97% heap 384 MB audio 5 ms hitch 92.2 ms x14"}
+{"t": 1794097236.7477162, "game": "NFSU2", "type": "log", "text": "[stats] frame 139 32.6 fps (33 on screen) GPU 3% idle emu 5% vu 100% gs 96% heap 384 MB audio 0 ms hitch 104.8 ms x7"}
+{"t": 1794097238.619453, "game": "NFSU2", "type": "log", "text": "[stats] frame 172 32.8 fps (33 on screen) GPU 5% idle emu 5% vu 99% gs 96% heap 384 MB audio 6 ms hitch 114.2 ms x9"}
+{"t": 1794097238.6204526, "game": "NFSU2", "type": "log", "text": "[stats] frame 209 36.4 fps (36 on screen) GPU 6% idle emu 5% vu 100% gs 96% heap 384 MB audio 0 ms hitch 105.7 ms x6"}
+{"t": 1794097239.6715367, "game": "NFSU2", "type": "log", "text": "[stats] frame 250 40.7 fps (41 on screen) GPU 6% idle emu 11% vu 99% gs 95% heap 384 MB audio 25 ms hitch 49.0 ms x4"}
+{"t": 1794097240.2757893, "game": "NFSU2", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=6"}
+{"t": 1794097240.2778006, "game": "NFSU2", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=6"}
+{"t": 1794097240.2808177, "game": "NFSU2", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=6"}
+{"t": 1794097240.2823274, "game": "NFSU2", "type": "log", "text": "[intc] pending 0x400 dmac 0x0 but SR=0x70000C01 (IE blocked) current=6"}
+{"t": 1794097240.954977, "game": "NFSU2", "type": "log", "text": "[stats] frame 299 39.2 fps (36 on screen) GPU 21% idle emu 16% vu 98% gs 93% heap 384 MB audio 3 ms hitch 161.6 ms x8"}
+{"t": 1794097241.9826775, "game": "NFSU2", "type": "log", "text": "[stats] frame 345 49.1 fps (40 on screen) GPU 20% idle emu 6% vu 100% gs 83% heap 384 MB audio 3 ms hitch 60.1 ms x11"}
+{"t": 1794097242.6070912, "game": "NFSU2", "type": "log", "text": "[stats] frame 386 41.0 fps (38 on screen) GPU 37% idle emu 9% vu 98% gs 92% heap 384 MB audio 67 ms hitch 72.2 ms x10"}
+{"t": 1794097243.6755366, "game": "NFSU2", "type": "log", "text": "[stats] frame 449 61.7 fps (53 on screen) GPU 28% idle emu 26% vu 99% gs 92% heap 384 MB audio 84 ms hitch 66.9 ms x5"}
+{"t": 1794097243.6770625, "game": "NFSU2", "type": "log", "text": "[io] write 0x1000F590 = 0x10000 (pc 0x00434AB0)"}
+{"t": 1794097245.2427754, "game": "NFSU2", "type": "log", "text": "[stats] frame 455 3.6 fps (4 on screen) GPU -1% idle emu 2% vu 100% gs 100% heap 384 MB audio 5 ms hitch 1598.9 ms x1"}
+{"t": 1794097246.5398388, "game": "NFSU2", "type": "log", "text": "[stats] frame 459 3.2 fps (3 on screen) GPU -0% idle emu 1% vu 100% gs 100% heap 384 MB audio 4 ms hitch 1146.0 ms x2"}
+{"t": 1794097248.085417, "game": "NFSU2", "type": "log", "text": "[stats] frame 463 3.3 fps (3 on screen) GPU 0% idle emu 2% vu 100% gs 100% heap 384 MB audio 0 ms hitch 1097.6 ms x2"}
+{"t": 1794097249.156737, "game": "NFSU2", "type": "log", "text": "[stats] frame 467 3.6 fps (4 on screen) GPU 1% idle emu 2% vu 100% gs 100% heap 384 MB audio 2 ms hitch 977.2 ms x2"}
+{"t": 1794097250.2238958, "game": "NFSU2", "type": "log", "text": "[stats] frame 471 3.6 fps (4 on screen) GPU 1% idle emu 3% vu 100% gs 100% heap 384 MB audio 1 ms hitch 979.5 ms x2"}
+{"t": 1794097251.2692792, "game": "NFSU2", "type": "log", "text": "[stats] frame 475 3.4 fps (3 on screen) GPU 2% idle emu 3% vu 100% gs 100% heap 384 MB audio 0 ms hitch 1001.1 ms x4"}
+{"t": 1794097252.3394792, "game": "NFSU2", "type": "log", "text": "[stats] frame 479 3.5 fps (4 on screen) GPU -0% idle emu 2% vu 100% gs 100% heap 384 MB audio 3 ms hitch 1010.1 ms x3"}
+{"t": 1794097253.428848, "game": "NFSU2", "type": "log", "text": "[stats] frame 483 3.9 fps (4 on screen) GPU 2% idle emu 2% vu 100% gs 100% heap 384 MB audio 1 ms hitch 904.7 ms x3"}
+{"t": 1794097254.5121012, "game": "NFSU2", "type": "log", "text": "[stats] frame 487 3.7 fps (4 on screen) GPU -0% idle emu 2% vu 100% gs 100% heap 384 MB audio 3 ms hitch 972.4 ms x2"}
+{"t": 1794097255.578925, "game": "NFSU2", "type": "log", "text": "[stats] frame 492 4.8 fps (5 on screen) GPU -0% idle emu 4% vu 100% gs 100% heap 384 MB audio 3 ms hitch 882.7 ms x3"}
+{"t": 1794097256.6350505, "game": "NFSU2", "type": "log", "text": "[stats] frame 495 2.7 fps (3 on screen) GPU -0% idle emu 0% vu 100% gs 100% heap 384 MB audio 1 ms hitch 1051.2 ms x1"}
+{"t": 1794097257.719057, "game": "NFSU2", "type": "log", "text": "[stats] frame 500 4.8 fps (5 on screen) GPU 2% idle emu 4% vu 100% gs 100% heap 384 MB audio 2 ms hitch 855.1 ms x5"}
+{"t": 1794097258.8054802, "game": "NFSU2", "type": "log", "text": "[stats] frame 503 2.7 fps (3 on screen) GPU -0% idle emu 0% vu 100% gs 100% heap 384 MB audio 3 ms hitch 1039.7 ms x1"}
+{"t": 1794097259.898782, "game": "NFSU2", "type": "log", "text": "[stats] frame 509 5.9 fps (6 on screen) GPU 0% idle emu 4% vu 100% gs 99% heap 384 MB audio 0 ms hitch 831.7 ms x3"}
+{"t": 1794097260.9617395, "game": "NFSU2", "type": "log", "text": "[stats] frame 511 1.9 fps (2 on screen) GPU -0% idle emu 0% vu 100% gs 100% heap 384 MB audio 3 ms hitch 1047.3 ms x1"}
+{"t": 1794097262.044911, "game": "NFSU2", "type": "log", "text": "[stats] frame 516 4.8 fps (5 on screen) GPU -0% idle emu 4% vu 100% gs 100% heap 384 MB audio 0 ms hitch 877.7 ms x4"}

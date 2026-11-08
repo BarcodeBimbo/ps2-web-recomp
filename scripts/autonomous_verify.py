@@ -34,6 +34,22 @@ def load_registry() -> dict:
     return {"per_game": {}, "global_runtime": {}}
 
 
+def registry_exception_audit() -> list[dict]:
+    """Wire solid_60_mandate.validate_exceptions into verify summaries (safe when empty)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from solid_60_mandate import validate_exceptions
+
+    return validate_exceptions(load_registry())
+
+
+def library_solid60_measure(*, write: bool = True) -> dict:
+    """Prep helper for §5 library Chrome sweep — harness metrics only, no cmake."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from solid_60_mandate import measure_library_solid60
+
+    return measure_library_solid60(write=write)
+
+
 def native_exe(game_id: str) -> Path | None:
     p = ROOT / "build" / f"native-{game_id}" / "ps2run.exe"
     return p if p.is_file() else None
@@ -195,10 +211,50 @@ def main() -> int:
     ap.add_argument("--game", action="append", dest="games", help="Game id (hex folder); default all ready titles")
     ap.add_argument("--frames", type=int, default=0, help="Override smoke frame count")
     ap.add_argument("--json", action="store_true", help="Print JSON only")
+    ap.add_argument(
+        "--library-measure",
+        action="store_true",
+        help="Solid-60 library measure from harness metrics only (no native smoke / no cmake)",
+    )
+    ap.add_argument(
+        "--skip-locked",
+        action="store_true",
+        help="Skip game ids that hold logs/locks/native-* or web-* locks (avoid contending Hitman/NFS/CNK)",
+    )
     args = ap.parse_args()
+
+    exception_problems = registry_exception_audit()
+
+    if args.library_measure:
+        lib = library_solid60_measure(write=True)
+        payload = {
+            "mode": "library_measure",
+            "exception_problems": exception_problems,
+            "library": lib,
+        }
+        summary_path = LOG_DIR / f"library-measure-{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}.json"
+        LOG_DIR.mkdir(parents=True, exist_ok=True)
+        summary_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        payload["summary"] = str(summary_path.relative_to(ROOT)).replace("\\", "/")
+        print(json.dumps(payload, indent=2))
+        return 0 if not exception_problems else 1
+
     ids = args.games
     if not ids:
         ids = [p.name for p in GAMES.iterdir() if p.is_dir() and len(p.name) == 32 and native_exe(p.name)]
+    if args.skip_locked:
+        lock_dir = ROOT / "logs" / "locks"
+        locked: set[str] = set()
+        if lock_dir.is_dir():
+            for lock in lock_dir.glob("*.lock"):
+                name = lock.name
+                for prefix in ("native-", "web-"):
+                    if name.startswith(prefix) and name.endswith(".lock"):
+                        rest = name[len(prefix) : -5]
+                        gid = rest.split("-", 1)[0]
+                        if len(gid) == 32:
+                            locked.add(gid)
+        ids = [g for g in ids if g not in locked]
     frames = args.frames or None
     results = []
     for gid in sorted(ids):
@@ -206,16 +262,32 @@ def main() -> int:
             results.append(verify_game(gid, frames, None))
         except OSError as e:
             results.append({"game_id": gid, "status": "error", "error": str(e)})
+    summary = {
+        "exception_problems": exception_problems,
+        "results": results,
+    }
     summary_path = LOG_DIR / f"summary-{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}.json"
     LOG_DIR.mkdir(parents=True, exist_ok=True)
-    summary_path.write_text(json.dumps({"results": results}, indent=2), encoding="utf-8")
+    summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     if args.json:
-        print(json.dumps({"results": results, "summary": str(summary_path.relative_to(ROOT))}, indent=2))
+        print(
+            json.dumps(
+                {
+                    "exception_problems": exception_problems,
+                    "results": results,
+                    "summary": str(summary_path.relative_to(ROOT)),
+                },
+                indent=2,
+            )
+        )
     else:
+        if exception_problems:
+            print(f"registry exception_problems: {exception_problems}")
         for r in results:
             print(f"{r.get('game_id')}: {r.get('status')} log={r.get('log', r.get('error', ''))}")
         print(f"summary -> {summary_path}")
-    return 0 if all(r.get("status") == "pass" for r in results if r.get("status") != "skipped") else 1
+    ok = all(r.get("status") == "pass" for r in results if r.get("status") != "skipped")
+    return 0 if ok and not exception_problems else 1
 
 
 if __name__ == "__main__":

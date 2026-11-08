@@ -4,6 +4,8 @@
 #include "ps2/system.hpp"
 
 #include <cstdint>
+#include <cstdlib>
+#include <cstring>
 #include <functional>
 #include <vector>
 
@@ -28,6 +30,23 @@ enum Psm : std::uint32_t {
 inline int xyoffset_component(std::uint64_t reg, bool ofy) {
     const std::uint32_t v = static_cast<std::uint32_t>(ofy ? (reg >> 32) : reg) & 0xFFFFu;
     return static_cast<std::int16_t>(v);
+}
+
+// GS PRIM type 7 is undefined. Default remap → POINT (0). Opt-in via PS2_GS_PRIM7=
+// point|0, line|1, linestrip|2, tri|3, tristrip|4, trifan|5, sprite|6 for Mode B probes.
+// SPRITE (6) previously paired unrelated Hitman verts into black quads — keep off by default.
+inline std::uint32_t remap_undefined_prim(std::uint32_t prim) {
+    if ((prim & 7u) != 7u) return prim & 7u;
+    static const char *raw = std::getenv("PS2_GS_PRIM7");
+    if (!raw || !*raw) return 0u;
+    if (!std::strcmp(raw, "point") || !std::strcmp(raw, "0")) return 0u;
+    if (!std::strcmp(raw, "line") || !std::strcmp(raw, "1")) return 1u;
+    if (!std::strcmp(raw, "linestrip") || !std::strcmp(raw, "2")) return 2u;
+    if (!std::strcmp(raw, "tri") || !std::strcmp(raw, "3")) return 3u;
+    if (!std::strcmp(raw, "tristrip") || !std::strcmp(raw, "4")) return 4u;
+    if (!std::strcmp(raw, "trifan") || !std::strcmp(raw, "5")) return 5u;
+    if (!std::strcmp(raw, "sprite") || !std::strcmp(raw, "6")) return 6u;
+    return 0u;
 }
 
 struct Vertex {

@@ -1,7 +1,36 @@
 {
-  "updated": "2026-11-07T19:13:15-05:00",
-  "schema": 1,
+  "updated": "2026-11-07T19:22:30-05:00",
+  "schema": "ps2recomp.game_fix_registry/v1",
+  "schema_version": 1,
+  "schema_validators": [
+    "scripts/solid_60_mandate.py:validate_exceptions",
+    "scripts/solid_60_mandate.py:load_registry_checked",
+    "scripts/autonomous_verify.py:registry_exception_audit"
+  ],
   "global_runtime": {
+    "discfix_applied": [
+      {
+        "id": "R3_readee",
+        "status": "verified_apply",
+        "board": "verification/recovery/discfix-matrix-board.json",
+        "board_path": "discfix.applied.R3_readee",
+        "files": [
+          "runtime/src/iop/cdvdfsv.cpp"
+        ],
+        "verified_date": "2026-11-07"
+      },
+      {
+        "id": "R4D1_DiskReady",
+        "status": "verified_apply",
+        "board": "verification/recovery/discfix-matrix-board.json",
+        "board_path": "discfix.applied.R4D1_DiskReady",
+        "files": [
+          "runtime/src/iop/cdvd.cpp",
+          "runtime/src/iop/cdvdfsv.cpp"
+        ],
+        "verified_date": "2026-11-07"
+      }
+    ],
     "disc_fix_applied": [
       "R3_readee",
       "R4D1_DiskReady"
@@ -23,7 +52,13 @@
         "evidence",
         "verified_date"
       ],
-      "note": "true 50/60 Hz exceptions only; solid_60_mandate.validate_exceptions"
+      "helpers": "scripts/solid_60_mandate.py",
+      "wired_into": [
+        "scripts/autonomous_verify.py",
+        "scripts/self_heal.py",
+        "scripts/solid_60_mandate.py --library|--validate-exceptions"
+      ],
+      "note": "true 50/60 Hz exceptions only; validate_exceptions rejects incomplete/legacy rows; empty map is valid"
     },
     "install_gates": [
       "install_health.py",

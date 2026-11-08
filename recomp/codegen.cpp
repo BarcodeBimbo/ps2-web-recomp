@@ -214,6 +214,12 @@ private:
                 out_ << label(a) << ":\n";
             }
             if (options_.probes.count(a)) line(std::format("probe(c, {});", pc(a)));
+            // CNK/Alchemy quarantine: durable hooks so refresh_translation --probes
+            // cannot wipe a hand-patched unit_0100. Harmless no-ops when unarmed.
+            if (a == 0x00503308u)
+                line("alchemy_o20_jit_before_lw(c.r[16].w[0]);");
+            if (a == 0x0050331Cu)
+                line("alchemy_o20_log_post_51c100(c.r[16].w[0]);");
             const Insn i = at(a);
             const Flow fl = flow(i.op);
             if (fl == Flow::None) {

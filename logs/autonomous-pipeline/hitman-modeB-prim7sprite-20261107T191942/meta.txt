@@ -1,0 +1,5 @@
+smoke_pid=32052
+out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-prim7sprite-20261107T191942
+prim7=sprite
+exe=C:\PS2Recomp\build\native-a2116d2ac08a7be4db4e8455ad58d2e5\ps2run.exe
+start=2026-11-07 19:19:42

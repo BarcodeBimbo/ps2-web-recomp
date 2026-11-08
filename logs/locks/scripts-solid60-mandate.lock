@@ -1,5 +1,0 @@
-﻿owner=W-HOST
-pid=19888
-acquired=2026-11-07T19:14:03.6258542-05:00
-purpose=wire validate_exceptions + library_measure helpers; autonomous_verify prep
-note=no cmake; Hitman/NFS/CNK locks untouched

@@ -34,6 +34,16 @@ def load_registry() -> dict:
     return {"per_game": {}, "global_runtime": {}}
 
 
+def _discfix_applied_ids(reg: dict | None) -> list[str]:
+    """Ids from versioned discfix_applied objects or legacy string list."""
+    try:
+        from game_fix_registry import discfix_applied_ids
+    except ImportError:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from game_fix_registry import discfix_applied_ids
+    return discfix_applied_ids(reg or {})
+
+
 def load_registry_checked() -> tuple[dict, list[dict]]:
     """Load registry and audit min_fps_exceptions against policy (safe no-op when empty)."""
     reg = load_registry()
@@ -235,7 +245,9 @@ def measure_library_solid60(*, write: bool = True, path: Path | None = None, reg
         "schema": "ps2recomp.solid60.library_measure/v1",
         "exception_problems": exc_problems,
         "registry_schema": reg.get("schema"),
-        "disc_fix_applied": list((reg.get("global_runtime") or {}).get("disc_fix_applied") or []),
+        "registry_schema_version": reg.get("schema_version"),
+        "disc_fix_applied": _discfix_applied_ids(reg),
+        "discfix_applied": list((reg.get("global_runtime") or {}).get("discfix_applied") or []),
         "titles": len(rows),
         "pass": counts["pass"],
         "fail": counts["fail"],

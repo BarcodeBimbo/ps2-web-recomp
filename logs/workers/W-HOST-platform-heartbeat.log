@@ -6,3 +6,21 @@ next=§5 library Chrome sweep when harness free; pacing apply still God-locked
 quarantine=CNK Alchemy + Hitman DISPFB locks honored
 evidence=logs/workers/W-HOST-present-pacing-measure-2026-11-07.json; W-HOST-solid60-library-measure-2026-11-07.json; tests/solid_60_mandate_test.py; W-HOST-platform-2026-11-07.md
 [2026-11-07T19:13:43-05:00] W-HOST progress — inventory done; next: wire validate_exceptions + library_sweep helpers into autonomous_verify (no cmake)
+W-HOST platform heartbeat
+ts=2026-11-07 19:17:02
+lane=Shared host runtime
+status=solid-60 Chrome library collect START (NFS+Sly+lib ready; skip GoW/HitmanBM/CNK)
+next=harness 30s batch then solid_60 --library
+quarantine=CNK Alchemy + Hitman web-next locks honored; GoW browser lock deferred to W-GOW
+evidence=tools/_cyberarcade_live_harness.py library GAMES; logs/workers/W-HOST-solid60-library-measure-2026-11-07.json
+[2026-11-07T19:18:53-05:00] W-HOST unlocked library smoke start — 9 titles --skip-locked --frames 200
+[2026-11-07T19:19:39-05:00] W-HOST unlocked library smoke done exit=1
+
+W-HOST platform heartbeat
+ts=2026-11-07 19:20:01
+lane=Shared host runtime
+status=validate_exceptions wired + library helpers verified; unlocked smoke 5 pass / 4 fail (200f); solid60 Chrome sweep still open
+next=§5 library Chrome sweep when harness free (no V-Sync uncap); avoid Hitman/NFS/CNK locks
+quarantine=CNK Alchemy + Hitman DISPFB locks honored
+evidence=logs/workers/W-HOST-solid60-library-measure-2026-11-07.json; W-HOST-unlocked-library-verify-summary-2026-11-07.json; W-HOST-platform-2026-11-07.md
+[2026-11-07T19:20:22-05:00] W-HOST turn complete — §5 validate_exceptions+[x]; unlocked smoke baseline written; next=Chrome library sweep when free

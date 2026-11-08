@@ -58,6 +58,14 @@ def load_registry() -> dict:
     return {"per_game": {}, "global_runtime": {}}
 
 
+def registry_exception_problems() -> list[dict]:
+    """Surface solid_60 allowlist schema problems (wired into detectors report)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from solid_60_mandate import validate_exceptions
+
+    return validate_exceptions(load_registry())
+
+
 def min_fps_target(game_id: str) -> float:
     """Delegate to solid_60_mandate (allowlist + default 60; overlay never sets target)."""
     from solid_60_mandate import resolve_min_fps
@@ -75,6 +83,20 @@ def min_canvas_lum(game_id: str) -> float:
 
 
 def find_harness_entry(game_id: str) -> dict | None:
+    # Prefer metrics-latest (has fps / canvas_lum for solid_60) before live summary.
+    metrics_latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
+    if metrics_latest.is_file():
+        try:
+            data = json.loads(metrics_latest.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = None
+        if data:
+            for g in data.get("games") or []:
+                if g.get("game_id") == game_id:
+                    # Normalize id key so canvas/fps detectors see a consistent shape.
+                    out = dict(g)
+                    out.setdefault("id", game_id)
+                    return out
     latest = ROOT / "logs" / "cyberarcade-live-harness-latest.json"
     if latest.is_file():
         try:
@@ -93,6 +115,18 @@ def find_harness_entry(game_id: str) -> dict | None:
         for path in sorted(runs.iterdir(), reverse=True):
             if not path.is_dir():
                 continue
+            metrics = path / "metrics.json"
+            if metrics.is_file():
+                try:
+                    mdata = json.loads(metrics.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    mdata = None
+                if mdata:
+                    for g in mdata.get("games") or []:
+                        if g.get("game_id") == game_id:
+                            out = dict(g)
+                            out.setdefault("id", game_id)
+                            return out
             summary = path / "summary.json"
             if not summary.is_file():
                 continue
@@ -107,12 +141,19 @@ def find_harness_entry(game_id: str) -> dict | None:
 
 
 def harness_observe_end_lum(harness: dict) -> float | None:
-    metrics = harness.get("metrics") or harness.get("shots") or []
+    # metrics-latest rows expose canvas_lum_end directly.
+    for key in ("canvas_lum_end", "end_lum", "canvas_lum"):
+        if harness.get(key) is not None:
+            try:
+                return float(harness[key])
+            except (TypeError, ValueError):
+                pass
+    metrics = harness.get("metrics") or harness.get("shots") or harness.get("analyses") or []
     if isinstance(metrics, list):
         for shot in metrics:
             if not isinstance(shot, dict):
                 continue
-            name = str(shot.get("name") or shot.get("shot") or "")
+            name = str(shot.get("name") or shot.get("shot") or shot.get("tag") or "")
             if "observe_end" in name or name.endswith("04_observe_end"):
                 lum = shot.get("canvas_lum")
                 if lum is not None:
@@ -495,6 +536,9 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
             "min_fps_target": min_fps_target(game_id),
             "min_canvas_lum": min_canvas_lum(game_id),
             "solid_60": solid_60,
+            "exception_problems": registry_exception_problems(),
+            "fbp_triad_mismatch": "fbp_triad_mismatch" in dx.symptoms,
+            "harness_source": "metrics_latest_or_runs" if harness else None,
         },
     }
     out_path = GAMES / game_id / ISSUES_NAME

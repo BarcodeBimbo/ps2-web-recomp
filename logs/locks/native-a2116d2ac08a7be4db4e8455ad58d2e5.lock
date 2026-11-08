@@ -1,6 +1,6 @@
-﻿owner_pid=32048
-start_utc=2026-11-08T00:13:28Z
+﻿owner_pid=30868
+start_utc=2026-11-08T00:19:14Z
 owner=W-HITMAN
-checkbox=hitman-modeB-sprite-tex-type7fst
+checkbox=hitman-modeB-type7-sprite-fst
 target=build/native-a2116d2ac08a7be4db4e8455ad58d2e5
-note=replacement-adopt; prior_owner=31216 still-alive-but-stale-hb; LIVE cmake=31668 ninja=2992 NO_KILL; web-next watch cmake=29328
+note=type7-point-fst falsified; advancing type7→SPRITE+clearFST incremental rebuild; web-next watch LIVE

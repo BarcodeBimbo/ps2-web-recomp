@@ -13,8 +13,8 @@
 - **Alive:** `logs/campaign-owner-alive.txt` + `logs/campaign-owner-heartbeat.json`
 - **Adopted orphan Hitman web-next watch** (cmake/ninja live — no kill). Locks updated to campaign-owner; promote only after build exits.
 - **Mode B:** `PS2_GS_NO_TME` **falsified** — present lum still ~0.05–0.10 (`logs/workers/W-HITMAN-modeB-notme-2026-11-07.md`).
-- **Store nightly:** orchestrator landed + **6/6** unit tests; master-plan nightly checkbox **flipped**.
-- **GoW min60 accept:** **FAIL** hard gate (`pass_all_min60=false`; avg≈60 but dips to 56.8) — `tools/gow-min60-accept.json`; checkbox stays open.
+- **Store §3 closed:** nightly orchestrator (`nightly-20261108T001502Z` chrome+contract) + store_ready_contract 12/12; tests nightly **7/7**, store_ready_contract **4/4**, store_pipeline **17/17**.
+- **GoW min60 accept:** **FAIL** hard gate (`pass_all_min60=false`; avg≈60 but dips to 56.8) — `tools/gow-min60-accept.json`; checkbox stays open. Hitch diag: audio q 241–330ms (PASS was 70–90) under Hitman+NFS+native compile storm (CPU 100%); worst hitch 197.8ms @ t=72. Watcher `tools/_gow_min60_wait_accept.ps1` waiting quieter panel then re-accept (force isolate ~35m).
 - **CNK:** o20/smoke still **`prims=2`** (`W-CNK-ALCHEMY` 19:11).
 
 ## LIVE builds (do not kill)
@@ -33,9 +33,9 @@
 | Hitman | Mode B sprite/tex; NO_TME falsified; type7-fst rebuild; web-next watch |
 | NFS | Chrome ≥60; prefetch in `host/web.cpp` (48/24/16); waiting web-next |
 | Sly | STQ/PATH3/CLUT parse capture |
-| GoW | min60 hard gate FAIL — improve hitch/dips then re-run accept |
+| GoW | hitch=panel contention (audio q↑); wait/isolate re-accept via watcher; checkbox open |
 | Host | PRESENT_FB self_heal landed; heartbeat may need refresh |
-| Store | Nightly script green; next: store→Chrome DoD contract |
+| Store | §3 closed; §8 registry schema v1 + discfix_applied verified; nightly healthy |
 | CNK | `prims=2` still; quarantine intact |
 
 ## Open priorities (master plan)
@@ -45,7 +45,7 @@
 - CNK prims=2 → proven_fixes
 - GoW min60 re-verify
 - Library `autonomous_verify` sweep
-- Store pull → Chrome without manual patches
+- Store §3 + registry schema v1 done; next store/registry: §4 proven_fixes (CNK-blocked)
 
 ## Immediate commands
 

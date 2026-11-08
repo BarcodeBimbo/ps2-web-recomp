@@ -1,0 +1,548 @@
+{
+  "exception_problems": [],
+  "results": [
+    {
+      "game_id": "1e5a12a02722175839d88d0301949cd9",
+      "title": "Ratchet & Clank: Going Commando",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\1e5a12a02722175839d88d0301949cd9-200f-20261108T001854Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 891,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 4920120.01,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "1e5a12a02722175839d88d0301949cd9",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "1e5a12a02722175839d88d0301949cd9",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "34402ee3c1917272f971028b4fb24868",
+      "title": "God of War II",
+      "status": "fail",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\34402ee3c1917272f971028b4fb24868-200f-20261108T001859Z.log",
+      "health": {
+        "status": "fail",
+        "reasons": [
+          "near_zero_prims:0"
+        ],
+        "warnings": [],
+        "primitives": 0,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 4929945.64,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "34402ee3c1917272f971028b4fb24868",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "34402ee3c1917272f971028b4fb24868",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "695b874b308a4e5353767bb6df8ba697",
+      "title": "God of War USA",
+      "status": "fail",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\695b874b308a4e5353767bb6df8ba697-200f-20261108T001902Z.log",
+      "health": {
+        "status": "fail",
+        "reasons": [
+          "near_zero_prims:2"
+        ],
+        "warnings": [],
+        "primitives": 2,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 4929945.66,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "695b874b308a4e5353767bb6df8ba697",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "695b874b308a4e5353767bb6df8ba697",
+          "min_fps": 60.0,
+          "source": "per_game.min_fps_target",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "76615f9956b13094771e370c883c7170",
+      "title": "Def Jam \u2013 Fight for NY",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\76615f9956b13094771e370c883c7170-200f-20261108T001903Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 745,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 5165885.59,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "76615f9956b13094771e370c883c7170",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "76615f9956b13094771e370c883c7170",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+      "title": "Gran Turismo 4 (USA)",
+      "status": "fail",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\9ce58de36f3fbe96fb260a3221d91f20-200f-20261108T001907Z.log",
+      "health": {
+        "status": "fail",
+        "reasons": [
+          "missing_code:01000008",
+          "halted:missing code at 0x01000008 (ra 0x00000000)"
+        ],
+        "warnings": [],
+        "primitives": 0,
+        "frames": 0,
+        "missing_code": [
+          "01000008",
+          "01000008"
+        ],
+        "reached_frame_limit": false
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 0,
+        "ee_cycles_per_vblank": null,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "c0671389c296be6afe9e5224c97d30df",
+      "title": "Need for Speed - Underground 2 (USA)",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\c0671389c296be6afe9e5224c97d30df-200f-20261108T001911Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 772,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 5136482.815,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "c0671389c296be6afe9e5224c97d30df",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "c0671389c296be6afe9e5224c97d30df",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "f141051d9b9fae0fb48deced01311f44",
+      "title": "Hitman 2 \u2013 Silent Assassin",
+      "status": "fail",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\f141051d9b9fae0fb48deced01311f44-200f-20261108T001917Z.log",
+      "health": {
+        "status": "fail",
+        "reasons": [
+          "halted:program asked to run another executable"
+        ],
+        "warnings": [],
+        "primitives": 0,
+        "frames": 0,
+        "missing_code": [],
+        "reached_frame_limit": false
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 0,
+        "ee_cycles_per_vblank": null,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "f141051d9b9fae0fb48deced01311f44",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "f141051d9b9fae0fb48deced01311f44",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "f29093e1f939f924fb11cc605b592b11",
+      "title": "Hot Shots Golf 3 (USA) (v2.00)",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\f29093e1f939f924fb11cc605b592b11-200f-20261108T001921Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 58020,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 4929951.945,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "f29093e1f939f924fb11cc605b592b11",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "f29093e1f939f924fb11cc605b592b11",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    },
+    {
+      "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+      "title": "Resident Evil 4 (USA)",
+      "status": "pass",
+      "exit_code": 0,
+      "log": "logs\\autonomous-pipeline\\ffb47d7e14cf9f5c02425d9158c29b76-200f-20261108T001930Z.log",
+      "health": {
+        "status": "ok",
+        "reasons": [],
+        "warnings": [],
+        "primitives": 7752,
+        "frames": 200,
+        "missing_code": [],
+        "reached_frame_limit": true
+      },
+      "matrix": {
+        "skipped": true,
+        "reason": "no_matrix_profile"
+      },
+      "fps_metrics": {
+        "fps_samples": 0,
+        "fps_avg": null,
+        "fps_min": null,
+        "fps_max": null,
+        "fps_on_screen_last": null,
+        "native_vblank_frames": 200,
+        "ee_cycles_per_vblank": 4920121.95,
+        "source": "native_stopped"
+      },
+      "chrome_metrics": null,
+      "solid_60": {
+        "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": null,
+        "frameskip_signals": [],
+        "violations": [
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
+    }
+  ]
+}

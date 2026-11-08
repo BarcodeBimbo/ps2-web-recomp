@@ -131,6 +131,25 @@ class NightlyPipelineTests(unittest.TestCase):
         self.assertTrue(log_path.is_file())
         self.assertIn("overall=pass", log_path.read_text(encoding="utf-8"))
 
+    def test_chrome_serve_pass(self):
+        class Resp:
+            status = 200
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def getcode(self):
+                return 200
+
+        with patch("urllib.request.urlopen", return_value=Resp()):
+            row = np.stage_chrome_serve(self.game_id, panel_base="http://127.0.0.1:8620")
+        self.assertEqual(row["status"], "pass")
+        self.assertFalse(row["manual_patch_steps"])
+        self.assertEqual(len(row["assets"]), 3)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

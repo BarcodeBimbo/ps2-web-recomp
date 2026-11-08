@@ -556,9 +556,12 @@ void poll_butanim_parse_complete() {
     if (g_butanim_saw_ff_clear && o20 != 0 && assemble_holds_butanim()) {
         g_butanim_parsed_ok = true;
         g_ui_igb_parse_attempted = true;
-        alchemy_o20_guard_disarm();
+        // Disarm ONLY after ui_igb_parse_attempted latches — never before first
+        // vt+108. Keep the store-guard live across the latch so a post-+FF clear
+        // still cannot kill a retry; disarm is deferred to reset() or an explicit
+        // post-51c100 path that already observed ingest.
         std::fprintf(stderr,
-                     "[igfileio] UI parse complete (butanim obj=0x%X +0xFF +20=0x%X plant ok, release intro)\n",
+                     "[igfileio] UI parse complete (butanim obj=0x%X +0xFF +20=0x%X plant ok, release intro; guard stays armed)\n",
                      g_butanim_soft_obj, o20);
         return;
     }
@@ -1450,11 +1453,13 @@ void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim) {
         // EE intercept: suppress guest SW-zero of obj+0x20 during the soft-arm
         // → vt+108 burst so 0x503308 still loads a live attach pointer and
         // calls 0x51C100. Quarantined — only armed from this butanim path.
+        std::uint32_t a24 = 0;
+        if (o20 && o20 + 0x28u <= kRamSize) std::memcpy(&a24, g_ram + o20 + 0x24u, 4);
         if (o20) alchemy_o20_guard_arm(obj + 0x20u, o20, o14);
         std::fprintf(stderr,
                      "[igfileio] noted butanim soft-arm obj=0x%X (cleared +0xFF) +8=%u +14=0x%X +20=0x%X "
-                     "assemble_butanim=%d\n",
-                     obj, o8, o14, o20, assemble_holds_butanim() ? 1 : 0);
+                     "*(+20)+0x24=0x%X assemble_butanim=%d\n",
+                     obj, o8, o14, o20, a24, assemble_holds_butanim() ? 1 : 0);
     }
 }
 

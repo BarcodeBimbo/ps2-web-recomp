@@ -69,18 +69,20 @@ void alchemy_o20_guard_disarm() {
 }
 
 void alchemy_o20_jit_before_lw(std::uint32_t obj) {
-    if (!g_alchemy_o20_guard_addr || !g_alchemy_o20_guard_value || !obj) return;
-    if (obj + 0x24u > kRamSize) return;
+    // Always log first hits — silent early-out hid "never armed / wrong obj" cases.
     static int s_jit = 0;
-    const bool match = (obj + 0x20u) == g_alchemy_o20_guard_addr;
     std::uint32_t cur = 0;
-    std::memcpy(&cur, g_ram + obj + 0x20u, 4);
-    if (s_jit < 12) {
+    if (obj && obj + 0x24u <= kRamSize) std::memcpy(&cur, g_ram + obj + 0x20u, 4);
+    const bool match =
+        g_alchemy_o20_guard_addr && obj && (obj + 0x20u) == g_alchemy_o20_guard_addr;
+    if (s_jit < 16) {
         std::fprintf(stderr,
                      "[alchemy-o20] jit@0x503308 obj=0x%X match=%d cur+20=0x%X guard=0x%X want=0x%X\n",
                      obj, match ? 1 : 0, cur, g_alchemy_o20_guard_addr, g_alchemy_o20_guard_value);
         ++s_jit;
     }
+    if (!g_alchemy_o20_guard_addr || !g_alchemy_o20_guard_value || !obj) return;
+    if (obj + 0x24u > kRamSize) return;
     if (!match) return;
     if (cur != 0) return;
     std::memcpy(g_ram + obj + 0x20u, &g_alchemy_o20_guard_value, 4);
@@ -93,17 +95,16 @@ void alchemy_o20_jit_before_lw(std::uint32_t obj) {
 }
 
 void alchemy_o20_log_post_51c100(std::uint32_t obj) {
-    if (!g_alchemy_o20_guard_addr || !obj || obj + 0x24u > kRamSize) return;
-    if ((obj + 0x20u) != g_alchemy_o20_guard_addr) return;
+    // Log even when guard already disarmed — proves 0x51C100 returned.
     static int s_ing = 0;
-    if (s_ing >= 6) return;
+    if (s_ing >= 8 || !obj || obj + 0x24u > kRamSize) return;
     std::uint32_t o20 = 0, o14 = 0, a24 = 0;
     std::memcpy(&o20, g_ram + obj + 0x20u, 4);
     std::memcpy(&o14, g_ram + obj + 0x14u, 4);
     if (o20 && o20 + 0x28u <= kRamSize) std::memcpy(&a24, g_ram + o20 + 0x24u, 4);
     std::fprintf(stderr,
-                 "[alchemy-o20] post-51c100 obj=0x%X o20=0x%X o14=0x%X *(o20)+0x24=0x%X\n",
-                 obj, o20, o14, a24);
+                 "[alchemy-o20] post-51c100 obj=0x%X o20=0x%X o14=0x%X *(o20)+0x24=0x%X guard=0x%X\n",
+                 obj, o20, o14, a24, g_alchemy_o20_guard_addr);
     ++s_ing;
 }
 

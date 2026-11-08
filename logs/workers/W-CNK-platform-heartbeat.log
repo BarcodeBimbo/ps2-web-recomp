@@ -15,3 +15,4 @@
 2026-11-07 19:12:59 W-CNK-SMOKE heartbeat lane=b49f smoke_pid=27060 status=exited out_bytes=0
 2026-11-07 19:14:50 W-CNK-SMOKE heartbeat lane=b49f smoke=DONE frames=5000 prims=2 probe_503308=ABSENT o20_guard=armed late_hle_restore=yes verdict=RED await_cascade_link
 2026-11-07 19:15:12 W-CNK-SMOKE heartbeat lane=b49f progress_updated=alchemy-runtime-rebuild-progress smoke=RED prims=2 next=await_cascade_relink
+2026-11-07 19:19:16 W-CNK-RESMOKE heartbeat lane=b49f action=await_cascade cmake=11292,29392 ps2run_mtime=2026-11-07T19:11:56 prior_smoke=RED_prims2 status=waiting_hooked_link

@@ -1,0 +1,35 @@
+﻿{
+  "schema": "ps2recomp.game_fix_registry/v1",
+  "schema_version": 1,
+  "registry_path": "C:\\PS2Recomp\\verification\\recovery\\game-fix-registry.json",
+  "ok": true,
+  "problems": [],
+  "discfix_applied_ids": [
+    "R3_readee",
+    "R4D1_DiskReady"
+  ],
+  "discfix_applied": [
+    {
+      "id": "R3_readee",
+      "status": "verified_apply",
+      "board": "verification/recovery/discfix-matrix-board.json",
+      "board_path": "discfix.applied.R3_readee",
+      "files": [
+        "runtime/src/iop/cdvdfsv.cpp"
+      ],
+      "verified_date": "2026-11-07"
+    },
+    {
+      "id": "R4D1_DiskReady",
+      "status": "verified_apply",
+      "board": "verification/recovery/discfix-matrix-board.json",
+      "board_path": "discfix.applied.R4D1_DiskReady",
+      "files": [
+        "runtime/src/iop/cdvd.cpp",
+        "runtime/src/iop/cdvdfsv.cpp"
+      ],
+      "verified_date": "2026-11-07"
+    }
+  ],
+  "per_game_count": 14
+}

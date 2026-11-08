@@ -22,3 +22,11 @@
 [2026-11-07T19:15:07Z] W-SLY HEARTBEAT | status=DIAG_RUN | launching 900f NO_TME software + baseline software for texture isolation
 [2026-11-08T00:15:23Z] W-SLY HEARTBEAT | status=REBUILD | ninja ps2run in native-c0c452 after PS2_GS_DIAG_ABE_CLUT instrumentation
 [2026-11-07T19:15:31Z] W-SLY HEARTBEAT | status=DIAG_RELAUNCH | fixed --memcard; 900f NO_TME software
+[2026-11-08T00:16:33Z] W-SLY HEARTBEAT | status=BUILD_WAIT | full native-c0c452 recompile after cmake glob; diagnostic already in gs.cpp+raster.cpp
+[2026-11-08T00:17:14Z] W-SLY HEARTBEAT | status=SMOKE_START | PS2_GS=software PS2_GS_DIAG_ABE_CLUT=1 frames=1800 out=logs/frames/sly-abe-clut-diag
+[2026-11-07T19:17:31Z] W-SLY HEARTBEAT | status=DIAG_WAIT | notme pid=28732 DEAD | frames=3
+[2026-11-07T19:18:10Z] W-SLY HEARTBEAT | status=DIAG_RESULT | notme 900f done PATH1=0 (FMV/menu); converting frames + launching baseline control
+[2026-11-07T19:18:38Z] W-SLY HEARTBEAT | status=DIAG_BASE_WAIT | baseline 900f running; converting notme ppm?png
+[2026-11-07T19:19:44Z] W-SLY HEARTBEAT | status=DIAG_BASE_WAIT | baseline pid=31708 DEAD frames=3
+[2026-11-08T00:19:51Z] W-SLY HEARTBEAT | status=SMOKE2_START | card=card-soft.ps2 PS2_GS=software DIAG_ABE_CLUT=1 frames=1800
+[2026-11-07T19:20:19Z] W-SLY HEARTBEAT | status=DIAG_1800 | 900f stayed on title PATH1=0; launching full 1800f NO_TME software recipe

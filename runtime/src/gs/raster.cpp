@@ -494,8 +494,7 @@ void reset() {}
 
 void draw(const State &st, const Vertex *v, int count) {
     const Setup s = make_setup(st);
-    std::uint32_t kind = static_cast<std::uint32_t>(st.prim) & 7u;
-    if (kind == 7u) kind = 0u; // undefined → point; FST cleared in make_setup
+    std::uint32_t kind = remap_undefined_prim(static_cast<std::uint32_t>(st.prim)); // type7 → PS2_GS_PRIM7 (default POINT); FST cleared in make_setup
     switch (kind) {
     case 0: {
         const Attr a = attr_of(s, v[0]);

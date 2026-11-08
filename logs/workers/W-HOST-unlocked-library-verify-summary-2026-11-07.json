@@ -1,0 +1,84 @@
+{
+  "schema": "ps2recomp.w_host.unlocked_library_verify/v1",
+  "frames": 200,
+  "exception_problems": [],
+  "titles": 9,
+  "smoke_pass": 5,
+  "smoke_fail": 4,
+  "solid60_pass": 0,
+  "by_title": [
+    {
+      "title": "Ratchet & Clank: Going Commando",
+      "status": "pass",
+      "prims": 891,
+      "solid60": false,
+      "reasons": []
+    },
+    {
+      "title": "God of War II",
+      "status": "fail",
+      "prims": 0,
+      "solid60": false,
+      "reasons": [
+        "near_zero_prims:0"
+      ]
+    },
+    {
+      "title": "God of War USA",
+      "status": "fail",
+      "prims": 2,
+      "solid60": false,
+      "reasons": [
+        "near_zero_prims:2"
+      ]
+    },
+    {
+      "title": "Def Jam \u2013 Fight for NY",
+      "status": "pass",
+      "prims": 745,
+      "solid60": false,
+      "reasons": []
+    },
+    {
+      "title": "Gran Turismo 4 (USA)",
+      "status": "fail",
+      "prims": 0,
+      "solid60": false,
+      "reasons": [
+        "missing_code:01000008",
+        "halted:missing code at 0x01000008 (ra 0x00000000)"
+      ]
+    },
+    {
+      "title": "Need for Speed - Underground 2 (USA)",
+      "status": "pass",
+      "prims": 772,
+      "solid60": false,
+      "reasons": []
+    },
+    {
+      "title": "Hitman 2 \u2013 Silent Assassin",
+      "status": "fail",
+      "prims": 0,
+      "solid60": false,
+      "reasons": [
+        "halted:program asked to run another executable"
+      ]
+    },
+    {
+      "title": "Hot Shots Golf 3 (USA) (v2.00)",
+      "status": "pass",
+      "prims": 58020,
+      "solid60": false,
+      "reasons": []
+    },
+    {
+      "title": "Resident Evil 4 (USA)",
+      "status": "pass",
+      "prims": 7752,
+      "solid60": false,
+      "reasons": []
+    }
+  ],
+  "pipeline_summary": "logs\\autonomous-pipeline\\summary-20261108T001937Z.json"
+}

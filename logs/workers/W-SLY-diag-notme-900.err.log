@@ -56,3 +56,57 @@
 [intc] pending 0x0 dmac 0x20 but SR=0x70000C01 (IE blocked) current=1
 [intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
 [intc] pending 0x4 dmac 0x0 but SR=0x70000C01 (IE blocked) current=1
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 4 wait 0/14 pc 0x00211649 ra 0x0020A280
+[thread]   stack: 0020FF08 0020C168 00210A44 0020A52C 0018F910 0018F798 0018F35C 0018F170 0018583C 001000AC
+[thread] 2 status 4 prio 0 wait 2/2 pc 0x001F6B68 ra 0x001F7068
+[thread]   stack:
+[thread] 3 status 4 prio 2 wait 2/9 pc 0x001F6B68 ra 0x0015EEE8
+[thread]   stack:
+[thread] 4 status 4 prio 2 wait 2/4 pc 0x001F6B68 ra 0x001683D8
+[thread]   stack: 00168404 0018E5DC
+[sema] 2 count 0 waiters 1
+[sema] 4 count 0 waiters 1
+[sema] 9 count 0 waiters 1
+[cnk] skip@0x702BA0=151607305 sema45_id@0x705C18=690563369 csr=0x551B400A imr=0xFD00 intc_pend=0x4 cop0.sr=0x70010C01 ie=1 in_handler=0 current=1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 PADMAN at 0x00021000
+[iop] module 3 MCMAN at 0x0002AE00
+[iop] module 4 MCSERV at 0x00050500
+[iop] module 5 LIBSD at 0x00053D00
+[iop] module 6 989SND at 0x00058800
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203C4
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 4 status 4 prio 46 wait 8/174900 pc 0x00001020
+[iop] thread 5 status 4 prio 46 wait 8/175124 pc 0x00001020
+[iop] thread 6 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 7 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 8 status 4 prio 104 wait 8/342992 pc 0x00001020
+[iop] thread 9 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010
+[iop] thread 11 status 4 prio 58 wait 8/1982344 pc 0x00001020
+[iop] thread 12 status 4 prio 59 wait 8/1980296 pc 0x00001020
+[iop] thread 13 status 2 prio 20 wait 0/6 pc 0x00021094
+[iop] thread 14 status 4 prio 46 wait 4/6 pc 0x00021094
+[iop] thread 15 status 4 prio 46 wait 4/7 pc 0x00021094
+[iop] thread 16 status 16 prio 46 wait 0/7 pc 0x00023B14
+[iop] thread 17 status 16 prio 46 wait 0/7 pc 0x00023C50
+[iop] thread 18 status 16 prio 46 wait 0/7 pc 0x00023D88
+[iop] thread 19 status 16 prio 46 wait 0/7 pc 0x00023F28
+[iop] thread 20 status 16 prio 46 wait 0/0 pc 0x00000000
+[iop] thread 21 status 4 prio 9 wait 1/0 pc 0x0005F0E8
+[iop] thread 22 status 4 prio 60 wait 3/13 pc 0x0006ACFC
+[iop] thread 23 status 4 prio 62 wait 3/12 pc 0x00068DA0
+[iop] thread 24 status 4 prio 61 wait 3/14 pc 0x0006B0B8
+[iop] thread 25 status 4 prio 63 wait 3/15 pc 0x00069B14
+[sif] 0 packets wait for the EE (processed 1)
+[gs] 1484 primitives drawn, register writes: 00:485734 01:34 04:2248 05:720 06:820 08:820 14:820 18:823 1A:823 3F:420 40:855 42:820 45:823 46:823 47:1679 4C:823 4E:855 50:1208 51:483206 52:1208 53:483206 61:1256
+[ipu] commands: 0:920 2:229473 3:1059324 4:1992520 5:58 6:1 7:806 9:1 stalls 2052 out 41965104 qwords, busy 0 decoding 0 cmd 0x00000016 in 128 bytes bit 22 out 0
+[dma] starts: ch0=14 ch1=17 ch2=2065 ch3=230279 ch4=2970 ch5=0 ch6=0 ch7=0 ch8=0 ch9=435879
+[gif] path 1 tags: packed 0 reglist 0 image 0
+[gif] path 2 tags: packed 32 reglist 0 image 0
+[gif] path 3 tags: packed 486525 reglist 0 image 483206
+[vif0] 00:10 14:1 4A:1
+[vif1] 00:98 01:1 02:1 03:1 04:1 05:1 06:1 11:16 14:1 20:1 4A:9 50:32
+[ee] stopped after 900 frames, 4424785330 cycles: frame limit reached

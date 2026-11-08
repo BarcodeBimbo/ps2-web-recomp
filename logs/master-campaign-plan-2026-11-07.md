@@ -121,7 +121,7 @@
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
 - [x] 2026-11-07 — `tests/store_pipeline.py` **17/17** OK (`py -3 tests/store_pipeline.py -v`; +3 inline verify)
-- [x] 2026-11-07 — `scripts/nightly_pipeline.py` + `nightly-20261108T001020Z.json` / `nightly-20261108T001112Z.json` overall=pass (NFS 500f matrix; skip-build; `tests/nightly_pipeline.py` 6/6; `run_nightly_pipeline.ps1`)
+- [x] 2026-11-07 — `scripts/nightly_pipeline.py` + `nightly-20261108T001020Z.json` / `nightly-20261108T001502Z.json` overall=pass (NFS 500f matrix; skip-build; chrome-serve+store_contract; `tests/nightly_pipeline.py` 7/7; `run_nightly_pipeline.ps1`)
 - [x] 2026-11-07 — Store pull → Chrome playable **without manual patch steps**: `scripts/store_ready_contract.py` DoD (ready+web+global patches+hooks; no `patches.pending`); NFS `/play/` HTTP 200; library **12/12** pass (`store-ready-contract-20261108T001302Z.json`; HTTP proof `…T001250Z.json`; `tests/store_ready_contract.py` 4/4)
 
 **Docs:** `verification/recovery/autonomous-pipeline-2026-11-07.md`
@@ -156,7 +156,8 @@
 - [x] 2026-11-07 — `autonomous_verify` summary includes `fps_metrics` + `chrome_metrics` (native vblank/cycles + harness FPS)
 - [x] 2026-11-07 — Harness `metrics.json` v1: `canvas_lum`, FPS, BOOTMENU regex (`20261107T140555Z/metrics.json`)
 - [x] 2026-11-07 — Per-game 30/50 allowlist hook in registry + `scripts/solid_60_mandate.py` (empty exceptions; policy verified)
-- [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window
+- [x] 2026-11-07 — `validate_exceptions` wired into registry/`autonomous_verify`/`self_heal` + `--library` / `--library-measure` helpers (`logs/workers/W-HOST-solid60-library-measure-2026-11-07.json`; self-check OK)
+- [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window — Chrome measure 0/2/11/1; unlocked native 200f smoke 5 pass / 4 fail (`logs/workers/W-HOST-unlocked-library-verify-summary-2026-11-07.json`)
 - [ ] Final optimization pass: WebGPU path, present pacing (additive only; no new product shell) — measure done `logs/workers/W-HOST-present-pacing-measure-2026-11-07.json`; apply still God-locked
 
 ---
@@ -197,7 +198,7 @@
 - [x] 2026-11-07 — Documented: `verification/recovery/improvement-pass-policy-2026-11-07.md`
 - [x] 2026-11-07 — `verification/recovery/gs-invariant-catalog.json` (XYOFFSET, DISPFB2, frame split)
 - [ ] Harness metrics + golden capture for Hitman draws
-- [ ] Versioned registry schema + machine-readable disc-fix applied list
+- [x] 2026-11-07 — Versioned registry schema + machine-readable disc-fix applied list (`ps2recomp.game_fix_registry/v1`; `discfix_applied[]` objects synced to board; `scripts/game_fix_registry.py` audit ok; `tests/game_fix_registry.py` 4/4; `logs/workers/W-STORE-registry-schema-2026-11-07.md`)
 
 ---
 
@@ -210,10 +211,10 @@
 | NFS expansion | 2 | 3 |
 | CNK track | 3 | 3 |
 | Store pipeline | 11 | 0 |
-| Self-heal | 6 | 5 |
-| Chrome FPS sweep | 5 | 2 |
+| Self-heal | 8 | 2 |
+| Chrome FPS sweep | 6 | 2 |
 | Handoff / policy docs | 4 | 2 |
-| Improvement-pass extras | 1 | 3 |
+| Improvement-pass extras | 3 | 1 |
 
 **Parallel workers (2026-11-07):** `logs/worker-roster-2026-11-07.md` — reports under `logs/workers/W-*-report-2026-11-07.md`; each updates this plan on verify.
 

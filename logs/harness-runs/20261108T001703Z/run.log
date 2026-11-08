@@ -1,0 +1,124 @@
+19:17:03 harness run=20261108T001703Z observe=30s games=['NFS_MW', 'Sly1', 'GoW2', 'Ratchet2', 'DefJam', 'GT4', 'NFSU2', 'Hitman2', 'HSG3', 'RE4'] mute=1 mash=0
+19:17:04 GOTO NFS_MW (60c82f4a) observe=30s mute=1 mash=0 cursor=none
+19:17:06 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\00_goto.png
+19:17:07 FPS NFS_MW 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:17:11 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\00b_loading.png
+19:17:12 FPS NFS_MW 00b_loading overlay=13 frameMs=77.7 maxMs=602 class=bad graph_trend=-0.602 graph_peak=1
+19:17:13 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\01_boot.png
+19:17:13 FPS NFS_MW 01_boot overlay=13 frameMs=77.7 maxMs=602 class=bad graph_trend=-0.602 graph_peak=1
+19:17:13 NFS_MW BOOT OK prims=164 renderer=gpu boot=
+19:17:14 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\02_observe_start.png
+19:17:14 FPS NFS_MW 02_observe_start overlay=25 frameMs=40.6 maxMs=113 class=bad graph_trend=0.173 graph_peak=1
+19:17:14 NFS_MW t=  0.0 stats_fps=24.7 overlay_fps=25 maxMs=113 graph_trend=0.173 prims=164 renderer=gpu
+19:17:21 NFS_MW t=  7.4 stats_fps=49.8 overlay_fps=50 maxMs=155 graph_trend=0.167 prims=12842 renderer=gpu
+19:17:23 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\03_observe_mid.png
+19:17:23 FPS NFS_MW 03_observe_mid overlay=61 frameMs=16.4 maxMs=84 class=bad graph_trend=0.008 graph_peak=1
+19:17:26 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\issue_halt_18.png
+19:17:26 FPS NFS_MW issue_halt_18 overlay=59 frameMs=16.9 maxMs=60 class=bad graph_trend=-0.053 graph_peak=1
+19:17:26 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfs_mw\04_observe_end.png
+19:17:27 FPS NFS_MW 04_observe_end overlay=59 frameMs=16.9 maxMs=60 class=bad graph_trend=-0.053 graph_peak=1
+19:17:27 GOTO Sly1 (c0c45270) observe=30s mute=1 mash=0 cursor=none
+19:17:28 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\sly1\00_goto.png
+19:17:28 FPS Sly1 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:17:31 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\sly1\01_boot.png
+19:17:33 FPS Sly1 01_boot overlay=1 frameMs=1891.7 maxMs=1892 class=bad graph_trend=-0.318 graph_peak=1
+19:17:33 Sly1 BOOT OK prims=640 renderer=gpu boot=
+19:17:33 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\sly1\02_observe_start.png
+19:17:34 FPS Sly1 02_observe_start overlay=53 frameMs=18.7 maxMs=107 class=bad graph_trend=0.053 graph_peak=1
+19:17:34 Sly1 t=  0.0 stats_fps=53.5 overlay_fps=53 maxMs=107 graph_trend=0.053 prims=720 renderer=gpu
+19:17:40 Sly1 t=  7.7 stats_fps=60.0 overlay_fps=60 maxMs=20 graph_trend=-0.008 prims=80924 renderer=gpu
+19:17:42 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\sly1\03_observe_mid.png
+19:17:42 FPS Sly1 03_observe_mid overlay=60 frameMs=16.7 maxMs=20 class=ok graph_trend=-0.008 graph_peak=0.436
+19:17:47 Sly1 t= 14.5 stats_fps=60.0 overlay_fps=60 maxMs=20 graph_trend=-0.008 prims=153848 renderer=gpu
+19:17:53 Sly1 t= 20.8 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=-0.006 prims=220400 renderer=gpu
+19:18:00 Sly1 t= 27.0 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=0.002 prims=286775 renderer=gpu
+19:18:03 SHOT Sly1 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\sly1\04_observe_end.png
+19:18:03 FPS Sly1 04_observe_end overlay=60 frameMs=16.7 maxMs=18 class=ok graph_trend=0.002 graph_peak=0.385
+19:18:04 GOTO GoW2 (34402ee3) observe=30s mute=1 mash=0 cursor=none
+19:18:05 SHOT GoW2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gow2\00_goto.png
+19:18:05 FPS GoW2 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:18:08 SHOT GoW2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gow2\01_boot.png
+19:18:09 FPS GoW2 01_boot overlay=0 frameMs=3227.2 maxMs=0 class=bad graph_trend=-0.28 graph_peak=1
+19:18:09 GoW2 BOOT OK prims=0 renderer=gpu boot=Starting game…
+19:18:09 SHOT GoW2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gow2\02_observe_start.png
+19:18:10 FPS GoW2 02_observe_start overlay=45 frameMs=22.3 maxMs=269 class=bad graph_trend=0.004 graph_peak=1
+19:18:10 GoW2 t=  0.0 stats_fps=44.9 overlay_fps=45 maxMs=269 graph_trend=0.004 prims=2 renderer=gpu
+19:18:17 GoW2 t=  7.7 stats_fps=53.6 overlay_fps=54 maxMs=139 graph_trend=0.169 prims=59954 renderer=gpu
+19:18:19 SHOT GoW2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gow2\03_observe_mid.png
+19:18:19 FPS GoW2 03_observe_mid overlay=68 frameMs=14.8 maxMs=96 class=bad graph_trend=0.008 graph_peak=1
+19:18:24 GoW2 t= 15.3 stats_fps=59.7 overlay_fps=60 maxMs=73 graph_trend=0.063 prims=1852134 renderer=gpu
+19:18:30 GoW2 t= 21.6 stats_fps=60.9 overlay_fps=61 maxMs=39 graph_trend=-0.008 prims=3445768 renderer=gpu
+19:18:37 GoW2 t= 27.9 stats_fps=60.1 overlay_fps=60 maxMs=33 graph_trend=0.097 prims=5106591 renderer=gpu
+19:18:40 SHOT GoW2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gow2\04_observe_end.png
+19:18:40 FPS GoW2 04_observe_end overlay=59 frameMs=17 maxMs=35 class=warn graph_trend=-0.069 graph_peak=0.718
+19:18:40 GOTO Ratchet2 (1e5a12a0) observe=30s mute=1 mash=0 cursor=none
+19:18:41 SHOT Ratchet2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\ratchet2\00_goto.png
+19:18:42 FPS Ratchet2 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:18:45 SHOT Ratchet2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\ratchet2\01_boot.png
+19:18:45 FPS Ratchet2 01_boot overlay=35 frameMs=28.8 maxMs=136 class=bad graph_trend=-0.702 graph_peak=1
+19:18:45 Ratchet2 BOOT OK prims=924 renderer=gpu boot=
+19:18:45 SHOT Ratchet2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\ratchet2\02_observe_start.png
+19:18:46 FPS Ratchet2 02_observe_start overlay=35 frameMs=28.8 maxMs=136 class=bad graph_trend=-0.191 graph_peak=1
+19:18:46 Ratchet2 t=  0.0 stats_fps=34.7 overlay_fps=35 maxMs=136 graph_trend=-0.191 prims=957 renderer=gpu
+19:18:52 Ratchet2 t=  7.0 stats_fps=38.4 overlay_fps=38 maxMs=50 graph_trend=0.107 prims=6354 renderer=gpu
+19:18:54 SHOT Ratchet2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\ratchet2\03_observe_mid.png
+19:18:54 FPS Ratchet2 03_observe_mid overlay=38 frameMs=26 maxMs=50 class=bad graph_trend=0.107 graph_peak=1
+19:18:59 Ratchet2 t= 14.1 stats_fps=38.4 overlay_fps=38 maxMs=50 graph_trend=0.107 prims=6354 renderer=gpu
+19:19:05 Ratchet2 t= 20.4 stats_fps=38.4 overlay_fps=38 maxMs=50 graph_trend=0.107 prims=6354 renderer=gpu
+19:19:12 Ratchet2 t= 27.0 stats_fps=0.6 overlay_fps=1 maxMs=19731 graph_trend=0.172 prims=6354 renderer=gpu
+19:19:16 SHOT Ratchet2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\ratchet2\04_observe_end.png
+19:19:16 FPS Ratchet2 04_observe_end overlay=5 frameMs=218.8 maxMs=1890 class=bad graph_trend=0.114 graph_peak=1
+19:19:17 GOTO DefJam (76615f99) observe=30s mute=1 mash=0 cursor=none
+19:19:18 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\00_goto.png
+19:19:18 FPS DefJam 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:19:21 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\00b_loading.png
+19:19:22 FPS DefJam 00b_loading overlay=0 frameMs=2593.6 maxMs=0 class=bad graph_trend=0 graph_peak=0
+19:19:23 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\01_boot.png
+19:19:24 FPS DefJam 01_boot overlay=36 frameMs=27.6 maxMs=253 class=bad graph_trend=0.006 graph_peak=1
+19:19:24 DefJam BOOT OK prims=349 renderer=gpu boot=
+19:19:24 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\02_observe_start.png
+19:19:25 FPS DefJam 02_observe_start overlay=59 frameMs=17 maxMs=82 class=bad graph_trend=-0.061 graph_peak=0.846
+19:19:25 DefJam t=  0.1 stats_fps=58.7 overlay_fps=59 maxMs=82 graph_trend=-0.061 prims=393 renderer=gpu
+19:19:32 DefJam t=  7.9 stats_fps=59.2 overlay_fps=59 maxMs=41 graph_trend=-0.069 prims=1009 renderer=gpu
+19:19:34 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\03_observe_mid.png
+19:19:34 FPS DefJam 03_observe_mid overlay=60 frameMs=16.7 maxMs=20 class=ok graph_trend=-0.004 graph_peak=0.436
+19:19:39 DefJam t= 15.4 stats_fps=23.9 overlay_fps=24 maxMs=176 graph_trend=-0.185 prims=9853 renderer=gpu
+19:19:43 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\issue_halt_29.png
+19:19:43 FPS DefJam issue_halt_29 overlay=40 frameMs=24.7 maxMs=96 class=bad graph_trend=-0.118 graph_peak=1
+19:19:44 SHOT DefJam C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\defjam\04_observe_end.png
+19:19:44 FPS DefJam 04_observe_end overlay=40 frameMs=24.7 maxMs=96 class=bad graph_trend=-0.118 graph_peak=1
+19:19:45 GOTO GT4 (9ce58de3) observe=30s mute=1 mash=0 cursor=none
+19:19:46 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\00_goto.png
+19:19:46 FPS GT4 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:19:50 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\00b_loading.png
+19:19:51 FPS GT4 00b_loading overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:19:52 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\01_boot.png
+19:19:54 FPS GT4 01_boot overlay=51 frameMs=19.5 maxMs=73 class=bad graph_trend=0.087 graph_peak=1
+19:19:54 GT4 BOOT OK prims=654 renderer=gpu boot=
+19:19:54 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\02_observe_start.png
+19:19:55 FPS GT4 02_observe_start overlay=29 frameMs=35.1 maxMs=137 class=bad graph_trend=0.087 graph_peak=1
+19:19:55 GT4 t=  0.1 stats_fps=28.5 overlay_fps=29 maxMs=137 graph_trend=0.087 prims=775 renderer=gpu
+19:20:02 GT4 t=  8.1 stats_fps=60.2 overlay_fps=60 maxMs=37 graph_trend=-0.097 prims=77564 renderer=gpu
+19:20:04 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\03_observe_mid.png
+19:20:05 FPS GT4 03_observe_mid overlay=59 frameMs=16.9 maxMs=63 class=bad graph_trend=-0.063 graph_peak=1
+19:20:10 GT4 t= 16.1 stats_fps=59.0 overlay_fps=59 maxMs=36 graph_trend=-0.002 prims=268040 renderer=gpu
+19:20:16 GT4 t= 22.7 stats_fps=60.0 overlay_fps=60 maxMs=18 graph_trend=0 prims=424460 renderer=gpu
+19:20:23 GT4 t= 29.2 stats_fps=60.0 overlay_fps=60 maxMs=17 graph_trend=0 prims=578900 renderer=gpu
+19:20:24 SHOT GT4 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\gt4\04_observe_end.png
+19:20:25 FPS GT4 04_observe_end overlay=60 frameMs=16.7 maxMs=17 class=ok graph_trend=0 graph_peak=0.359
+19:20:26 GOTO NFSU2 (c0671389) observe=30s mute=1 mash=0 cursor=none
+19:20:26 SHOT NFSU2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfsu2\00_goto.png
+19:20:28 FPS NFSU2 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:20:31 SHOT NFSU2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfsu2\00b_loading.png
+19:20:33 FPS NFSU2 00b_loading overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:20:35 SHOT NFSU2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfsu2\01_boot.png
+19:20:36 FPS NFSU2 01_boot overlay=23 frameMs=43.2 maxMs=88 class=bad graph_trend=0.089 graph_peak=1
+19:20:36 NFSU2 BOOT OK prims=492 renderer=gpu boot=
+19:20:37 SHOT NFSU2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfsu2\02_observe_start.png
+19:20:38 FPS NFSU2 02_observe_start overlay=33 frameMs=30.7 maxMs=105 class=bad graph_trend=-0.103 graph_peak=1
+19:20:38 NFSU2 t=  0.0 stats_fps=32.6 overlay_fps=33 maxMs=105 graph_trend=-0.103 prims=492 renderer=gpu
+19:20:44 NFSU2 t=  8.0 stats_fps=61.7 overlay_fps=62 maxMs=67 graph_trend=-0.095 prims=43913 renderer=gpu
+19:20:46 SHOT NFSU2 C:\PS2Recomp\logs\screenshots\harness-20261108T001703Z\nfsu2\03_observe_mid.png
+19:20:47 FPS NFSU2 03_observe_mid overlay=4 frameMs=279.5 maxMs=1599 class=bad graph_trend=-0.004 graph_peak=1
+19:20:52 NFSU2 t= 15.6 stats_fps=3.5 overlay_fps=4 maxMs=1010 graph_trend=0.353 prims=44833 renderer=gpu
+19:20:58 NFSU2 t= 22.1 stats_fps=2.7 overlay_fps=3 maxMs=1040 graph_trend=0.235 prims=45063 renderer=gpu
