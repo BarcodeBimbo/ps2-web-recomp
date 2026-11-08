@@ -49,3 +49,6 @@
 {"ts": 1794096784.7368941, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
 {"ts": 1794096784.7409668, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
 {"ts": 1794096784.8538635, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}
+{"ts": 1794096902.806878, "kind": "nightly_start", "game_id": "60c82f4a111da300ac23bbec85272788", "frames": 500}
+{"ts": 1794096907.774878, "kind": "nightly_game", "game_id": "60c82f4a111da300ac23bbec85272788", "status": "pass", "frames": 500, "verify_log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261108T001503Z.log", "chrome_serve": "pass", "elapsed_s": 4.97}
+{"ts": 1794096907.7854486, "kind": "nightly_complete", "stamp": "20261108T001502Z", "overall": "pass", "games": 1, "json": "logs/autonomous-pipeline/nightly-20261108T001502Z.json", "log": "logs/autonomous-pipeline/nightly-20261108T001502Z.log"}

@@ -1,6 +1,6 @@
-owner_pid=30424
-start_utc=2026-11-08T00:10:47Z
+owner_pid=29396
+start_utc=2026-11-08T00:15:12Z
 owner=W-CNK-smoke-o20
 checkbox=t3-alchemy
 target=build/native-b49f2e769315347e8bda839feb705744
-note=respecting inflight cmake=11292; smoke on linked ps2run copy; Hitman untouched
+note=smoke_done_5k prims=2 probe_absent; respecting cmake=11292 cascade; Hitman untouched; next=re-smoke after hooked unit_0100 link

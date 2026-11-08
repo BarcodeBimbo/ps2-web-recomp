@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
 
 namespace ps2::gs::raster {
@@ -160,6 +162,7 @@ void plot(const Setup &s, int x, int y, const Attr &at) {
         }
         const std::uint32_t t = sample(s, u, v);
         const int tr = static_cast<int>(t & 0xFFu), tg = static_cast<int>((t >> 8) & 0xFFu), tb = static_cast<int>((t >> 16) & 0xFFu), ta = static_cast<int>(t >> 24);
+        const int vert_a = a;
         switch (s.tfx) {
         case 0:
             r = clamp255((tr * r) >> 7);
@@ -183,6 +186,38 @@ void plot(const Setup &s, int x, int y, const Attr &at) {
             b = clamp255(((tb * b) >> 7) + a);
             a = s.tcc ? ta : a;
             break;
+        }
+        // Opt-in: classify whether CLUT A or post-TFX As makes ABE a no-op on Sly building TBPs.
+        // PS2_GS_DIAG_ABE_CLUT=1|force_as — force_as ORs As to 0x80 after TFX for the probe TBPs.
+        static const char *diag = std::getenv("PS2_GS_DIAG_ABE_CLUT");
+        if (diag && s.abe) [[unlikely]] {
+            const bool hot = s.tbp == 0x1480u || s.tbp == 0x15A0u || s.tbp == 0x1580u || s.tbp == 0x2DCCu;
+            if (hot) {
+                static std::uint32_t reports = 0;
+                if (reports < 24u) {
+                    std::uint32_t clut_a_zero = 0, clut_n = 16u;
+                    if (s.tpsm == PSMT8 || s.tpsm == PSMT8H) {
+                        clut_n = 256u;
+                        for (std::uint32_t i = 0; i < clut_n; ++i)
+                            if ((s.clut[i] >> 24) == 0) ++clut_a_zero;
+                    } else {
+                        const std::uint32_t base = (s.csa & 15u) * 16u;
+                        for (std::uint32_t i = 0; i < 16u; ++i)
+                            if ((s.clut[(base + i) & 511u] >> 24) == 0) ++clut_a_zero;
+                    }
+                    const char *kill = "ABE_OK";
+                    if (clut_a_zero == clut_n) kill = "CLUT_A_ALL_ZERO";
+                    else if (a == 0) kill = (ta == 0) ? "CLUT_SAMPLE_A0" : "VERTEX_OR_TFX_AS0";
+                    else if (r == 0 && g == 0 && b == 0) kill = "CS_RGB0";
+                    std::fprintf(stderr,
+                                 "[gs-diag-abe-clut] plot tbp=%04X psm=%u csa=%u tcc=%d tfx=%d ta=%d vert_a=%d as=%d "
+                                 "rgb=%d,%d,%d clut_a_zero=%u/%u q=%g kill=%s\n",
+                                 s.tbp, s.tpsm, s.csa, s.tcc ? 1 : 0, s.tfx, ta, vert_a, a, r, g, b, clut_a_zero, clut_n,
+                                 s.fst ? 1.0 : static_cast<double>(at.q), kill);
+                    ++reports;
+                }
+                if (std::strcmp(diag, "force_as") == 0 && a == 0) a = 0x80;
+            }
         }
     }
     if (s.fge) {

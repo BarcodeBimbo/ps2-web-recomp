@@ -306,3 +306,15 @@ code 1013194 instructions (3957 KiB), functions 11956, entries 94607, rejected s
 [294/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_00FF.cpp.o
 [295/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0100.cpp.o
 [296/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0101.cpp.o
+[297/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0102.cpp.o
+[298/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0103.cpp.o
+[299/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0104.cpp.o
+[300/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0105.cpp.o
+[301/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0106.cpp.o
+[302/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0107.cpp.o
+[303/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0108.cpp.o
+[304/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_0109.cpp.o
+[305/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_010A.cpp.o
+[306/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_010B.cpp.o
+[307/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_010C.cpp.o
+[308/1106] Building CXX object CMakeFiles/ps2game.dir/generated/60c82f4a111da300ac23bbec85272788/unit_010D.cpp.o

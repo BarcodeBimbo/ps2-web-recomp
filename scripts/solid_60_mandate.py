@@ -544,13 +544,32 @@ def _self_check() -> int:
     if skip["pass"] or not any(v.startswith("frameskip:") for v in skip["violations"]):
         errors.append("frameskip keyword must fail")
 
-    # Allowlist schema: 30 with reason OK to resolve; bare 45 invalid.
+    # Allowlist schema: full policy row OK; bare 45 / missing evidence invalid.
     reg = {
         "global_runtime": {
             "min_fps_default": 60,
+            "min_fps_exception_policy": {
+                "allowed_values": [30, 50],
+                "required_fields": ["reason", "evidence", "verified_date"],
+            },
             "min_fps_exceptions": {
-                "good30": {"min_fps": 30, "reason": "true 30 Hz title"},
-                "bad45": {"min_fps": 45, "reason": "fake"},
+                "good30": {
+                    "min_fps": 30,
+                    "reason": "true 30 Hz title",
+                    "evidence": "logs/synthetic-30hz.md",
+                    "verified_date": "2026-11-07",
+                },
+                "bad45": {
+                    "min_fps": 45,
+                    "reason": "fake",
+                    "evidence": "x",
+                    "verified_date": "2026-11-07",
+                },
+                "noev": {
+                    "min_fps": 30,
+                    "reason": "true 30 Hz",
+                    "verified_date": "2026-11-07",
+                },
             },
         },
         "per_game": {},
@@ -561,9 +580,23 @@ def _self_check() -> int:
     bad = resolve_min_fps("bad45", reg)
     if bad["exception_valid"]:
         errors.append("bad45 should be exception_valid=False")
+    noev = resolve_min_fps("noev", reg)
+    if noev["exception_valid"] or noev["allowlisted"]:
+        errors.append("noev missing evidence must not allowlist")
     problems = validate_exceptions(reg)
     if not any(p.get("game_id") == "bad45" for p in problems):
         errors.append("validate_exceptions missed bad45")
+    if not any(p.get("game_id") == "noev" and p.get("error") == "missing_evidence" for p in problems):
+        errors.append("validate_exceptions missed noev missing_evidence")
+    # Live registry must validate clean (empty exceptions OK).
+    live_problems = validate_exceptions()
+    if live_problems:
+        errors.append(f"live registry exception problems: {live_problems}")
+    lib = measure_library_solid60(write=False)
+    if lib.get("titles", 0) < 1:
+        errors.append("library measure returned no titles")
+    if "exception_problems" not in lib:
+        errors.append("library measure missing exception_problems")
 
     # Live Hitman harness metrics if present — expect fail on min dip (measure only).
     latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"

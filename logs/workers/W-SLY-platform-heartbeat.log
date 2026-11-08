@@ -19,3 +19,4 @@
 [2026-11-08T00:14:06Z] W-SLY HEARTBEAT | status=IMPLEMENT | adding PS2_GS_DIAG_ABE_CLUT env gate in load_clut+plot; sly native lock held
 [2026-11-07T19:14:14Z] W-SLY HEARTBEAT | status=VISUAL | inspecting sly-gameplay frame_01800 + qfix* for building void evidence
 [2026-11-07T19:14:48Z] W-SLY HEARTBEAT | status=DIAG_LAUNCH | starting PS2_GS_NO_TME software smoke @900f vs baseline to isolate texture vs fog/ABE
+[2026-11-07T19:15:07Z] W-SLY HEARTBEAT | status=DIAG_RUN | launching 900f NO_TME software + baseline software for texture isolation

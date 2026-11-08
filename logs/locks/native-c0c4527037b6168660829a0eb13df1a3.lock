@@ -1,6 +1,7 @@
-owner_pid=31404
-start_utc=2026-11-08T00:14:45Z
+owner_pid=26920
+start_utc=2026-11-08T00:15:07Z
 owner=W-SLY
-checkbox=sly-buildings-abe-clut
+checkbox=sly-stq-path3-clut
 target=build/native-c0c4527037b6168660829a0eb13df1a3
-note=reclaimed dead 31304; PS2_GS_DIAG_ABE_CLUT + fix if proven; Hitman/CNK untouched
+note=diag PS2_GS_NO_TME software 900f; no cmake; no Hitman/NFS/CNK steal
+diag_pid=26920

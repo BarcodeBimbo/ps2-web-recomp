@@ -1,4 +1,2 @@
-﻿W-STORE heartbeat 2026-11-07 19:14:44
-status=verifying_section3_both_checked
-nightly=nightly-20261108T001020Z.json
-store_contract=checking artifacts
+﻿W-STORE heartbeat 2026-11-07 19:15:02
+status=integrated_nightly_chrome_contract

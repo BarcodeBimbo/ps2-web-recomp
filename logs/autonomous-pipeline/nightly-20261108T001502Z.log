@@ -1,0 +1,5 @@
+nightly_pipeline 20261108T001502Z
+games=1 overall=pass
+frames=500 skip_build=True dry_heal=True
+
+60c82f4a111da300ac23bbec85272788: pass dl=skipped_present build=skipped_present heal=dry_run verify=pass log=logs\autonomous-pipeline\60c82f4a111da300ac23bbec85272788-500f-20261108T001503Z.log
