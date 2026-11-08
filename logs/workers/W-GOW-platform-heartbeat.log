@@ -18,3 +18,9 @@ next=chrome_min60_accept mash90 hold200 stable70
 status=min60_harness_start
 log=C:\PS2Recomp\logs\autonomous-pipeline\gow-min60-W-GOW-platform-20261107T190534.log
 cmd=python tools/_gow_min60_accept.py 90 200 70
+=== W-GOW heartbeat 2026-11-07 19:11:14 ===
+status=min60_FAIL
+pass_all_min60=false
+avg_fps=59.9996 min_fps=56.8 below60=15
+on_min=43 audio_queued~300ms hitch_spikes=yes
+log=logs/autonomous-pipeline/gow-min60-W-GOW-platform-20261107T190534.log

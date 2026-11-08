@@ -1,0 +1,102 @@
+{
+  "stamp": "20261108T001054Z",
+  "overall": "fail",
+  "frames": 120,
+  "skip_build": true,
+  "force_build": false,
+  "dry_heal": false,
+  "results": [
+    {
+      "game_id": "695b874b308a4e5353767bb6df8ba697",
+      "title": "695b874b308a4e5353767bb6df8ba697",
+      "started": 1794096654.4536335,
+      "stages": {
+        "download": {
+          "status": "ok",
+          "action": "skipped_present",
+          "path": "games/695b874b308a4e5353767bb6df8ba697/disc.iso",
+          "bytes": 8522792960
+        },
+        "build": {
+          "status": "ok",
+          "action": "skipped_present",
+          "native": true,
+          "web": true
+        },
+        "heal": {
+          "status": "ok",
+          "action": "heal_game",
+          "symptoms": [
+            "low_fps"
+          ],
+          "actions_taken": 0,
+          "actions_planned": 1,
+          "issues": "games/695b874b308a4e5353767bb6df8ba697/install_issues.json"
+        },
+        "verify": {
+          "status": "fail",
+          "action": "autonomous_verify",
+          "frames": 120,
+          "log": "logs\\autonomous-pipeline\\695b874b308a4e5353767bb6df8ba697-120f-20261108T001054Z.log",
+          "health": "fail",
+          "matrix": {
+            "skipped": true,
+            "reason": "no_matrix_profile"
+          },
+          "fps_metrics": {
+            "fps_samples": 0,
+            "fps_avg": null,
+            "fps_min": null,
+            "fps_max": null,
+            "fps_on_screen_last": null,
+            "native_vblank_frames": 120,
+            "ee_cycles_per_vblank": 4939776.1,
+            "source": "native_stopped"
+          },
+          "chrome_metrics": null,
+          "error": null,
+          "raw": {
+            "game_id": "695b874b308a4e5353767bb6df8ba697",
+            "title": "God of War USA",
+            "status": "fail",
+            "exit_code": 0,
+            "log": "logs\\autonomous-pipeline\\695b874b308a4e5353767bb6df8ba697-120f-20261108T001054Z.log",
+            "health": {
+              "status": "fail",
+              "reasons": [
+                "near_zero_prims:2"
+              ],
+              "warnings": [],
+              "primitives": 2,
+              "frames": 120,
+              "missing_code": [],
+              "reached_frame_limit": true
+            },
+            "matrix": {
+              "skipped": true,
+              "reason": "no_matrix_profile"
+            },
+            "fps_metrics": {
+              "fps_samples": 0,
+              "fps_avg": null,
+              "fps_min": null,
+              "fps_max": null,
+              "fps_on_screen_last": null,
+              "native_vblank_frames": 120,
+              "ee_cycles_per_vblank": 4939776.1,
+              "source": "native_stopped"
+            },
+            "chrome_metrics": null
+          }
+        }
+      },
+      "status": "fail",
+      "failed_stage": "verify",
+      "elapsed_s": 2.51
+    }
+  ],
+  "artifacts": {
+    "json": "logs/autonomous-pipeline/nightly-20261108T001054Z.json",
+    "log": "logs/autonomous-pipeline/nightly-20261108T001054Z.log"
+  }
+}

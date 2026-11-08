@@ -29,8 +29,8 @@
 | Manifest stub | `games/<id>/install_manifest.json` | `source.sha256`, `download_job_id`, import/build timestamps, health snapshot |
 | Post-build | `panel.build` → `finalize_post_build` | Updates manifest; `PS2_STRICT_VERIFY=1` blocks `ready` on health **warn** or **fail** (full installs) |
 | Inline smoke | `finalize_post_build` → `gate_inline_verify` | **`PS2_INLINE_VERIFY=1`** runs short `autonomous_verify.py` before `ready` (full installs); frames via `PS2_INLINE_VERIFY_FRAMES` (default 200). Default **off** so hot path stays fast. |
-| **Gap** | Nightly download→verify | Log target exists; scheduler not in repo yet |
-| **Gap** | Chrome harness `canvas_lum` at install | Requires web rebuild + browser job; see self-heal T1 |
+| Nightly | `scripts/nightly_pipeline.py` + `run_nightly_pipeline.ps1` | download (ISO present) → build (skip if native / lock) → heal → `autonomous_verify`; artifacts `logs/autonomous-pipeline/nightly-*.{json,log}`; lock-aware (never steal Hitman `web-a2116*`, NFS `web-60c82f*`, CNK `native-b49f2e*`) |
+| **Gap** | Chrome harness `canvas_lum` at install | Requires web rebuild + browser job; see self-heal T1 / store→Chrome DoD |
 
 ## Patch layers (every new install)
 

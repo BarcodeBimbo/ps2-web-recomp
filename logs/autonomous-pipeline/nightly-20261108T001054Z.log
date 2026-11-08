@@ -1,0 +1,5 @@
+nightly_pipeline 20261108T001054Z
+games=1 overall=fail
+frames=120 skip_build=True dry_heal=False
+
+695b874b308a4e5353767bb6df8ba697: fail dl=skipped_present build=skipped_present heal=heal_game verify=fail log=logs\autonomous-pipeline\695b874b308a4e5353767bb6df8ba697-120f-20261108T001054Z.log

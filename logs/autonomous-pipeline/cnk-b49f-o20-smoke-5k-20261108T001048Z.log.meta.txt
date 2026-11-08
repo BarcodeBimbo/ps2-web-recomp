@@ -1,0 +1,6 @@
+game=b49f2e769315347e8bda839feb705744
+frames=5000
+smoke_pid=27060
+ps2run_copy=c:\PS2Recomp\logs\autonomous-pipeline\cnk-smoke-bin-20261108T001048Z\ps2run.exe
+started=11/07/2026 19:11:05.ToUniversalTime().ToString('o')
+look_for=[alchemy-o20] [probe] 0x503308 prims>>2

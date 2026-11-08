@@ -59,14 +59,10 @@ def load_registry() -> dict:
 
 
 def min_fps_target(game_id: str) -> float:
-    reg = load_registry()
-    meta = reg.get("per_game", {}).get(game_id, {})
-    exc = (reg.get("global_runtime") or {}).get("min_fps_exceptions") or {}
-    if game_id in exc:
-        return float(exc[game_id])
-    if meta.get("min_fps_target") is not None:
-        return float(meta["min_fps_target"])
-    return float((reg.get("global_runtime") or {}).get("min_fps_default", 60))
+    """Delegate to solid_60_mandate (allowlist + default 60; overlay never sets target)."""
+    from solid_60_mandate import resolve_min_fps
+
+    return float(resolve_min_fps(game_id, load_registry())["min_fps"])
 
 
 def min_canvas_lum(game_id: str) -> float:
@@ -141,6 +137,7 @@ def detect_canvas_black_harness(game_id: str, harness: dict | None) -> bool:
 
 
 def detect_low_fps(game_id: str, text: str, harness: dict | None) -> bool:
+    """Low-FPS symptom from stats/harness FPS only — never fps_overlay (solid-60 mandate)."""
     target = min_fps_target(game_id)
     samples: list[float] = [float(m.group(1)) for m in STATS_FPS.finditer(text)]
     if harness:
@@ -148,9 +145,7 @@ def detect_low_fps(game_id: str, text: str, harness: dict | None) -> bool:
         for key in ("min", "avg"):
             if fps.get(key) is not None:
                 samples.append(float(fps[key]))
-        overlay = harness.get("fps_overlay") or {}
-        if overlay.get("min") is not None:
-            samples.append(float(overlay["min"]))
+        # fps_overlay is diagnostic-only; do not use for low_fps / solid-60 gates.
     if not samples:
         return False
     tail = samples[-25:] if len(samples) > 25 else samples

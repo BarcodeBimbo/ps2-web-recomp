@@ -1,0 +1,27 @@
+{
+  "game_id": "695b874b308a4e5353767bb6df8ba697",
+  "updated": "2026-11-08T00:10:54Z",
+  "symptoms": [
+    "low_fps"
+  ],
+  "features": [
+    "high_prim_throughput",
+    "track:fps_patient_zero"
+  ],
+  "actions_planned": [
+    {
+      "fix": "fps_optimize_pass",
+      "auto": false,
+      "note": "stub \u2014 measure only"
+    }
+  ],
+  "actions_taken": [],
+  "dry_run": false,
+  "detectors": {
+    "harness_goal_ok": false,
+    "harness_end_lum": 36.18280677290761,
+    "matrix_verdict": null,
+    "min_fps_target": 60.0,
+    "min_canvas_lum": 5.0
+  }
+}

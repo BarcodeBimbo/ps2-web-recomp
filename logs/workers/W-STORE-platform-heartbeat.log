@@ -1,4 +1,4 @@
-﻿W-STORE heartbeat 2026-11-07 19:10:53
-status=running_nightly_gow
-game=695b874b308a4e5353767bb6df8ba697
-frames=120 skip_build=1 dry_heal=0
+﻿W-STORE heartbeat 2026-11-07 19:11:11
+status=running_nightly_nfs500
+game=60c82f4a111da300ac23bbec85272788
+frames=500 skip_build=1
