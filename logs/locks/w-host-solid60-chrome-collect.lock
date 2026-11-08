@@ -1,0 +1,5 @@
+﻿owner=W-HOST
+pid=31068
+acquired=2026-11-07T19:25:27.2248134-05:00
+purpose=solid-60 Chrome library remeasure + unlocked verify helpers (skip live locks)
+note=reclaimed stale lock pid8800; no Hitman/NFS/CNK cmake contend; measure only no V-Sync uncap

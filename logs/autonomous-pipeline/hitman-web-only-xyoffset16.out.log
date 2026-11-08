@@ -542,3 +542,7 @@ code 908116 instructions (3547 KiB), functions 7346, entries 100372, rejected se
 [531/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01EF.cpp.o
 [532/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F0.cpp.o
 [533/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F1.cpp.o
+[534/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F2.cpp.o
+[535/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F3.cpp.o
+[536/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F4.cpp.o
+[537/931] Building CXX object CMakeFiles/ps2game.dir/generated/a2116d2ac08a7be4db4e8455ad58d2e5/unit_01F5.cpp.o

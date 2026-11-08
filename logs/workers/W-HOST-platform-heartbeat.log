@@ -32,3 +32,10 @@ next=§5 library sweep open; GoW USA deferred W-GOW; Hitman BM after web-next; p
 quarantine=CNK Alchemy + Hitman web-next untouched
 evidence=logs/harness-runs/20261108T001703Z/metrics.json; W-HOST-solid60-library-measure-2026-11-07.json
 [2026-11-07 19:24:58] GOD PAUSE — suspend lane; no further work
+W-HOST platform heartbeat
+ts=2026-11-07 19:25:27
+lane=Shared host runtime
+status=reclaim chrome-collect lock (pid8800 dead); remeasure solid60 from harness 20261108T001703Z; advance unlocked library paths
+next=library-measure + longer observe near-pass (RE4/Sly); no cmake; skip Hitman/NFS/CNK/Sly-native locks
+quarantine=CNK Alchemy + Hitman DISPFB locks honored
+evidence=logs/harness-runs/20261108T001703Z/metrics.json; logs/workers/W-HOST-platform-2026-11-07.md
