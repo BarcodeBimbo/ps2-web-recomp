@@ -7,3 +7,14 @@ status=starting
 === W-GOW heartbeat 2026-11-07 19:03:49 ===
 status=panel_8620_up http=200
 next=readiness+min60_harness
+=== W-GOW heartbeat 2026-11-07 19:05:34 ===
+status=ready_confirmed
+panel=8620_http200
+gow_api=ready
+play_url=200
+native_smoke=3600f_19189130_prims
+next=chrome_min60_accept mash90 hold200 stable70
+=== W-GOW heartbeat 2026-11-07 19:05:47 ===
+status=min60_harness_start
+log=C:\PS2Recomp\logs\autonomous-pipeline\gow-min60-W-GOW-platform-20261107T190534.log
+cmd=python tools/_gow_min60_accept.py 90 200 70

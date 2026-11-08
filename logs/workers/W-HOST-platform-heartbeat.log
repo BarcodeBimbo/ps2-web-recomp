@@ -1,4 +1,4 @@
 ﻿W-HOST platform heartbeat
-ts=2026-11-07 19:05:13
+ts=2026-11-07 19:06:01
 lane=Shared host runtime
-status=fixing windows_port._rmtree_onerror hoist; verifying store_pipeline
+status=verified self_heal PRESENT_FB detector + copy_frame shown_lines; writing report

@@ -21,3 +21,5 @@
 [2026-11-07 18:58:20] W-NFS-2 found live cmake rebuild on web-60c82-next pid=29716; will NOT kill; monitoring
 [2026-11-07 18:58:35] W-NFS-2 wrote W-NFS-stream-fix evidence; monitoring in-flight NFS -next rebuild
 [2026-11-07 19:00:46] W-NFS-2 monitor: still waiting on NFS -next rebuild
+[2026-11-07 19:06:12] W-NFS-2 monitor tick after 5m sleep
+[2026-11-07 19:06:34] W-NFS-2 NFS -next at generated units (~120 lines / 1064 cpp); not killing

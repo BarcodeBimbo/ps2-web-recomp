@@ -489,10 +489,6 @@ bool assemble_holds_butanim() {
 // Restore obj+0x20 if it was cleared since soft-arm. vt+108 needs *(+0x20)+0x24≠0
 // to run the 0x51C100 ingest path. Must be called BEFORE vt+108 runs.
 // Returns true if restoration happened.
-bool try_restore_butanim_o20();
-
-bool restore_butanim_attach_if_cleared() { return try_restore_butanim_o20(); }
-
 bool try_restore_butanim_o20() {
     if (!g_butanim_soft_obj || g_butanim_soft_obj + 0x100u > kRamSize) return false;
     if (!g_butanim_soft_o20 || g_butanim_soft_o20 >= kRamSize) return false;
@@ -640,6 +636,11 @@ void rearm_alchemy_timer_intc() {
 }
 
 } // namespace
+
+bool restore_butanim_attach_if_cleared() {
+    // Public EE/probe/preempt entry — forwards to internal soft-arm restore.
+    return try_restore_butanim_o20();
+}
 
 void kick_finish_gate_once() {
     // Delay helper at 0x422FA0 does tgt++ then WaitSema(45) until ctr+offset >= tgt

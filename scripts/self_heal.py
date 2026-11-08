@@ -18,9 +18,15 @@ ACTIONS_LOG = ROOT / "logs" / "self-heal"
 
 BLACK_HINT = re.compile(r"near_zero_prims|prims=\d\b|canvas.*black", re.I)
 STATS_FPS = re.compile(r"\[stats\].*?\b(\d+(?:\.\d+)?)\s+fps\b", re.I)
+# Default DISPFB present path (PS2_TRACE_DISPLAY): page split without FRAME follow.
+PRESENT_FB = re.compile(
+    r"\[gs\]\s+present fb:\s*dispfb=(\d+)\s+frame0=(\d+)\s+frame1=(\d+)\s+last_ctx=(-?\d+)",
+    re.I,
+)
+# Opt-in FRAME follow logs only (PS2_PRESENT_FRAME=1) — keep for experiments.
 FBP_TRIAD = re.compile(
-    r"dispfb_fbp=(\d+).*?frame_ctx0_fbp=(\d+)|"
-    r"mode-B present:\s*dispfb_fbp=(\d+)\s*->\s*frame_ctx0_fbp=(\d+)",
+    r"dispfb_fbp=(\d+).*?frame_ctx(\d)_fbp=(\d+)|"
+    r"mode-B present:\s*dispfb_fbp=(\d+)\s*->\s*frame_ctx(\d)_fbp=(\d+)",
     re.I,
 )
 HARNESS_RUN_ID = re.compile(r"(\d{8}T\d{6}Z)")
@@ -152,10 +158,20 @@ def detect_low_fps(game_id: str, text: str, harness: dict | None) -> bool:
 
 
 def detect_fbp_triad_mismatch(text: str) -> bool:
+    """True when DISPFB page != last draw FRAME page (shared GS present hygiene).
+
+    Does **not** recommend flipping default present to FRAME — Hitman quarantine
+    keeps DISPFB; this is audit/plan-only for multi-title page-split detection.
+    """
+    for m in PRESENT_FB.finditer(text):
+        dispfb, f0, f1, last_ctx = (int(m.group(i)) for i in range(1, 5))
+        draw = f1 if last_ctx == 1 else f0
+        if dispfb != draw:
+            return True
     for m in FBP_TRIAD.finditer(text):
-        a = m.group(1) or m.group(3)
-        b = m.group(2) or m.group(4)
-        if a and b and a != b:
+        a = m.group(1) or m.group(4)
+        b = m.group(3) or m.group(6)
+        if a is not None and b is not None and a != b:
             return True
     return False
 
@@ -437,7 +453,11 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
 
     if "fbp_triad_mismatch" in dx.symptoms:
         dx.actions_planned.append(
-            {"fix": "gs_framebuffer_triad_audit", "auto": False, "note": "stub — DISPFB vs FRAME FBP"}
+            {
+                "fix": "gs_framebuffer_triad_audit",
+                "auto": False,
+                "note": "DISPFB != last FRAME page; keep DISPFB default (Hitman quarantine); PS2_PRESENT_FRAME=1 experiments only",
+            }
         )
 
     if "alchemy_pulse_on_non_cnk" in dx.symptoms:

@@ -1,1 +1,2 @@
 [2026-11-07 19:04:06] W-HITMAN platform: locks owner_pid=20640 DEAD; web-next LIVE cmake=29328 ninja=5044/28772; no competing ninja; advancing (B) sprite/tex
+[2026-11-07 19:08:11] W-HITMAN: implemented type7 clear-FST (gpu+raster); native rebuild; web-next ~monitor only

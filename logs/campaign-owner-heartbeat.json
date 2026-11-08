@@ -1,1 +1,8 @@
-{"status":"await-web-next-mid","pid":27916,"current_checkbox":"hitman-black-fix","note":"NO_TME+NO_ATE no lum change; web-next still compiling","utc":"2026-11-08T00:05:20Z"}
+{
+    "phase":  "modeB-diag+store-nightly",
+    "utc":  "2026-11-08T00:08:19Z",
+    "pid":  448,
+    "local":  "2026-11-07 19:08:19",
+    "role":  "campaign-owner",
+    "status":  "permanent-overnight-running"
+}

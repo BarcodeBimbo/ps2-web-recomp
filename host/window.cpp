@@ -466,8 +466,12 @@ bool open_window(bool fullscreen, std::string_view boot) {
     want.samples = 1024;
     g_audio = SDL_OpenAudioDevice(nullptr, 0, &want, &have, 0);
     if (g_audio) {
-        SDL_PauseAudioDevice(g_audio, 0);
-        ps2::set_audio_sink(queue_audio);
+        // Host mute (God): keep device paused unless PS2_UNMUTE=1. Runtime only.
+        const bool unmute = std::getenv("PS2_UNMUTE") != nullptr;
+        SDL_PauseAudioDevice(g_audio, unmute ? 0 : 1);
+        if (unmute) ps2::set_audio_sink(queue_audio);
+        else ps2::set_audio_sink([](const std::int16_t *, std::size_t) {});
+        std::fprintf(stderr, "[window] audio %s\n", unmute ? "unmuted (PS2_UNMUTE)" : "muted (gain/output zero)");
     }
     for (int i = 0; i < SDL_NumJoysticks(); ++i)
         if (SDL_IsGameController(i)) open_pad(i);

@@ -280,6 +280,8 @@ Setup make_setup(const State &st) {
     Setup s{};
     std::uint64_t attr = st.prim;
     if (!(st.prmodecont & 1u)) attr = (st.prim & 7u) | (st.prmode & ~7ull);
+    // Match gpu::draw: undefined PRIM 7 → drop FST so textured kicks use ST/Q.
+    if ((st.prim & 7u) == 7u) attr &= ~0x100ull;
     s.iip = attr & 0x8u;
     s.tme = attr & 0x10u;
     s.fge = attr & 0x20u;
@@ -458,7 +460,7 @@ void reset() {}
 void draw(const State &st, const Vertex *v, int count) {
     const Setup s = make_setup(st);
     std::uint32_t kind = static_cast<std::uint32_t>(st.prim) & 7u;
-    if (kind == 7u) kind = 0u; // undefined → point (sprite mapping wiped the FB)
+    if (kind == 7u) kind = 0u; // undefined → point; FST cleared in make_setup
     switch (kind) {
     case 0: {
         const Attr a = attr_of(s, v[0]);

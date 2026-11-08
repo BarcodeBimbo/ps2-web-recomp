@@ -102,7 +102,7 @@
 ### 2d) Remaining library (after Hitman + NFS patterns)
 
 - [ ] `autonomous_verify.py --library` green for all `native-*` + `disc.iso`
-- [ ] Per-title registry entries in `game-fix-registry.json`
+- [x] 2026-11-07 — Per-title registry: all 14 `games/*/library.json` seeded in `game-fix-registry.json` (`logs/overnight-watchdog-registry-seed-2026-11-07.json`; CNK `proven_fixes=[]` observe placeholder)
 - [ ] GoW USA min60 browser re-verify (`695b874b…`)
 - [ ] Sly / Def Jam / others from live-matrix lane
 
@@ -120,7 +120,7 @@
 - [x] 2026-11-07 — Inline `autonomous_verify` smoke before `ready` via `PS2_INLINE_VERIFY=1` (`gate_inline_verify` in `store_pipeline_hooks.py`; default off; `tests/store_pipeline.py`; `logs/workers/W-STORE-platform-2026-11-07.md`)
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
-- [x] 2026-11-07 — `tests/store_pipeline.py` **14/14** OK (`py -3 tests/store_pipeline.py -v`)
+- [x] 2026-11-07 — `tests/store_pipeline.py` **17/17** OK (`py -3 tests/store_pipeline.py -v`; +3 inline verify)
 - [ ] Nightly: download → build → heal → verify log under `logs/autonomous-pipeline/`
 - [ ] Store pull → playable in Chrome **without manual patch steps** (definition of done)
 

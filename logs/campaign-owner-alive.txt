@@ -1,1 +1,6 @@
-2026-11-08T00:05:20Z ALIVE
+campaign-owner ALIVE
+status=permanent-overnight-running
+pid=448
+local=2026-11-07 19:08:19
+utc=2026-11-08T00:08:19Z
+

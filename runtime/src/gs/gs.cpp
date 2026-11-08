@@ -750,7 +750,8 @@ void kick(bool draw) {
     State &s = g_state;
     // GS PRIM type 7 is undefined. Hitman emits many 0x07F/0x7FF kicks. Mapping
     // them to SPRITE (need=2) paired unrelated verts into huge black quads and
-    // worsened present lum; draw as POINT (need=1) so fragments are not dropped.
+    // worsened present lum; draw as POINT (need=1). gpu/raster also clear FST on
+    // type 7 so 0x7FF textured kicks sample sticky ST/Q instead of empty UV.
     std::uint32_t prim = static_cast<std::uint32_t>(s.prim) & 7u;
     if (prim == 7u) prim = 0u;
     const int needed = prim == 0 ? 1 : (prim == 1 || prim == 2 || prim == 6) ? 2 : 3;
@@ -1367,7 +1368,10 @@ bool copy_frame(const DisplayRegs &r, std::vector<std::uint32_t> &rgba, std::uin
         if (circuit < 0) return false;
         const std::uint64_t fb = r.dispfb[circuit], disp = r.display[circuit];
         const std::uint32_t magh = (static_cast<std::uint32_t>(disp >> 23) & 0xFu) + 1, magv = (static_cast<std::uint32_t>(disp >> 27) & 3u) + 1;
-        const std::uint32_t w = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh, h = ((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1) / magv;
+        // Match present()/display(): CRT-visible height via shown_lines (not raw DH).
+        const std::uint32_t w = ((static_cast<std::uint32_t>(disp >> 32) & 0xFFFu) + 1) / magh;
+        const std::uint32_t h = shown_lines((static_cast<std::uint32_t>(disp >> 44) & 0x7FFu) + 1,
+                                           static_cast<std::uint32_t>(disp >> 12) & 0x7FFu, r.smode2) / magv;
         if (!w || !h || w > 2048 || h > 2048) return false;
         const PresentSource srcfb = resolve_present_source(fb);
         const gpu::DisplaySource src{srcfb.bp, srcfb.bw, srcfb.psm, srcfb.dbx, srcfb.dby, w, h, (r.smode2 & 3u) == 3u};

@@ -1324,7 +1324,13 @@ void draw(const State &st, const Vertex *v, int count) {
     std::uint64_t attr = st.prim;
     if (!(st.prmodecont & 1u)) attr = (st.prim & 7u) | (st.prmode & ~7ull);
     std::uint32_t prim = static_cast<std::uint32_t>(st.prim) & 7u;
-    if (prim == 7u) prim = 0u; // undefined → point (sprite mapping wiped the FB)
+    // PRIM 7 is undefined. Hitman fires 0x7FF (type7+FST+TME): UV stays 0 while ST/Q
+    // hold coords — FST sampling yields empty texels. Remap → POINT and clear FST so
+    // the sticky STQ path is used. (7→SPRITE paired unrelated verts into black quads.)
+    if (prim == 7u) {
+        prim = 0u;
+        attr &= ~0x100ull;
+    }
     const Context &c = st.ctx[(attr >> 9) & 1u];
     SetupCache &cache = g_setup_cache;
     if (cache.generation != g_setup_generation || cache.attr != attr || cache.clut != g_clut_slot) {

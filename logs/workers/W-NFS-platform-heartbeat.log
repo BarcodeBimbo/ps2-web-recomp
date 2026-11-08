@@ -2,3 +2,9 @@
 [2026-11-07 19:04:11] W-NFS acquired native-60c82f lock pid=29612; web lock refuse (rebuild live); starting 300f native smoke
 [2026-11-07 19:04:25] W-NFS native smoke start frames=300 log=C:\PS2Recomp\logs\autonomous-pipeline\60c82f4a111da300ac23bbec85272788-smoke-W-NFS-platform-20261107T190425Z.log
 [2026-11-07 19:04:37] W-NFS native smoke exit=0; tail metrics pending
+[2026-11-07 19:05:58] W-NFS rebuild poll: alive=True wasm_next=False
+[2026-11-07 19:06:21] W-NFS native smoke OK 300f prims=12895 exit=0; released native-60c82f lock; rebuild ~146/1106 still live; web lock still refused
+[2026-11-07 19:07:02] W-NFS waiting rebuild ~161/1106 (refuse web lock; Hitman untouched)
+[2026-11-07 19:07:22] W-NFS waiting rebuild ~167/1106 (refuse web lock; Hitman untouched)
+[2026-11-07 19:08:02] W-NFS waiting rebuild ~176/1106 (refuse web lock; Hitman untouched)
+[2026-11-07 19:08:22] W-NFS waiting rebuild ~181/1106 (refuse web lock; Hitman untouched)

@@ -17,7 +17,7 @@ Additive post-download / post-build hooks for the store → import → build cha
 | Build | `panel.build` | `finalize_post_build` after `install_health` + `self_heal` |
 | Download | `store.download` / `store.py` | Passes `download_job_id` into importer payload |
 | Gaps doc | `verification/recovery/autonomous-pipeline-2026-11-07.md` | Store hooks table + documented non-goals |
-| Tests | `tests/store_pipeline.py` | **14/14 OK** (manifest, strict verify, job id; provider mode expectation fixed) |
+| Tests | `tests/store_pipeline.py` | **17/17 OK** (manifest, strict verify, job id, inline verify) |
 
 ## Manifest stub (`games/<id>/install_manifest.json`)
 
@@ -25,34 +25,35 @@ Additive post-download / post-build hooks for the store → import → build cha
 - `source`: `sha256`, `bytes`, `path_basename`
 - `timestamps`: `import_queued_at`, `build_completed_at`
 - `health_status` / reasons / warnings after build
-- `pipeline.autonomous_verify_inline: false` (explicit gap)
+- `pipeline.autonomous_verify_inline`: set **true** when `PS2_INLINE_VERIFY=1` ran on a full install
 
 ## Environment
 
 - `PS2_STRICT_VERIFY=1` (or `true`/`yes`/`on`): full installs fail on health **fail** (existing `gate_ready`) or **warn** (`gate_strict_ready`).
+- `PS2_INLINE_VERIFY=1`: full installs run `autonomous_verify.py` smoke before `ready` (`PS2_INLINE_VERIFY_FRAMES`, default 200).
 
-## Documented gaps (not wired on hot path)
+## Documented gaps (remaining)
 
-1. **`autonomous_verify.py` inline smoke** — would add minutes per install; use CLI or future nightly job (`logs/autonomous-pipeline/`).
-2. **Nightly download → build → heal → verify** — event log exists (`store-pipeline-events.jsonl`); no scheduler in repo.
-3. **Chrome harness `canvas_lum` at install** — still self-heal / web rebuild lane.
-4. **Store pull → Chrome flawless without manual steps** — depends on Hitman/web matrix campaign (§1–§2).
+1. **Nightly download → build → heal → verify** — event log exists (`store-pipeline-events.jsonl`); no scheduler in repo.
+2. **Chrome harness `canvas_lum` at install** — still self-heal / web rebuild lane.
+3. **Store pull → Chrome flawless without manual steps** — depends on Hitman/web matrix campaign (§1–§2).
 
-## Master plan §3 checkboxes (this turn)
+## Master plan §3 checkboxes
 
-- [x] Post-build hooks + post-download events (split from inline autonomous_verify; that item stays open)
+- [x] Post-build hooks + post-download events
 - [x] `install_manifest.json`
 - [x] `PS2_STRICT_VERIFY`
-- [ ] Inline autonomous_verify before ready
+- [x] Inline autonomous_verify before ready (`PS2_INLINE_VERIFY=1`; see `logs/workers/W-STORE-platform-2026-11-07.md`)
 - [ ] Nightly pipeline
 - [ ] Store → Chrome definition of done
 
 ## Test command / evidence
 
 ```text
-python c:\PS2Recomp\tests\store_pipeline.py
-Ran 14 tests in 0.157s — OK
+py -3 c:\PS2Recomp\tests\store_pipeline.py -v
+Ran 17 tests in 0.238s — OK
 ```
+
 
 ## Files touched
 

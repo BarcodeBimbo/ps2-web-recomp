@@ -1,6 +1,7 @@
 ﻿owner=W-NFS-2
-pid=30532
-rebuild_pid=11016
-acquired=2026-11-07T18:58:01.8244426-05:00
-purpose=NFS web prefetch implement + rebuild
-note=Hitman web-a2116* untouched; building build/web-60c82f4a…-next only
+pid=31124
+rebuild_monitor=29716
+acquired=2026-11-07T19:06:34.6925954-05:00
+purpose=NFS web prefetch deepen + monitor in-flight -next rebuild
+note=Hitman web-a2116 untouched; shared host/web.cpp still needs Hitman owner rebuild
+source=host/web.cpp defaults 48/24/16

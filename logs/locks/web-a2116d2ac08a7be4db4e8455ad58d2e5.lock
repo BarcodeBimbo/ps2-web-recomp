@@ -1,5 +1,6 @@
-﻿owner_pid=20640
-start_utc=2026-11-07T23:56:03Z
-owner=campaign-owner-fresh
-checkbox=hitman-black-fix
+﻿owner_pid=31216
+start_utc=2026-11-08T00:08:11Z
+owner=W-HITMAN
+checkbox=hitman-black-fix-type7-fst
 target=build/web-a2116d2ac08a7be4db4e8455ad58d2e5
+note=not-building-web; monitoring live -next cmake=29328 ninja=5044; source edit type7-FST pending next web rebuild

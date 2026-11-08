@@ -433,7 +433,7 @@
   <button id="touch-toggle" type="button" aria-pressed="false">Touch controls</button>
   <button id="mouse-capture" type="button">Capture mouse</button>
   <button id="open-pc-controls" type="button">Settings</button>
-  <label id="volume-control"><span class="sr-only">Volume</span><input aria-label="Game volume" id="game-volume" type="range" min="0" max="100" value="100"></label>
+  <label id="volume-control"><span class="sr-only">Volume</span><input aria-label="Game volume" id="game-volume" type="range" min="0" max="100" value="0"></label>
   <button id="fullscreen" type="button">Fullscreen</button>
   <button id="exit-fullscreen" type="button">Exit fullscreen</button>
 </div></div>
@@ -1516,11 +1516,14 @@ registerProcessor('ps2-output', Output);`;
 let audio = null, node = null, volumeGain = null;
 const volume = document.getElementById('game-volume');
 const volumeStorage = 'ps2web-volume:' + (libraryGame?.[1] || location.pathname);
-try { volume.value = localStorage.getItem(volumeStorage) ?? 100; } catch (e) {}
+// God host mute: default + force output gain to zero (runtime web layer only).
+volume.value = '0';
+try { localStorage.setItem(volumeStorage, '0'); } catch (e) {}
 function applyVolume() {
   const level = Number(volume.value) / 100;
-  if (volumeGain) volumeGain.gain.setTargetAtTime(level, audio.currentTime, 0.015);
-  document.getElementById('remote').volume = level;
+  if (volumeGain && audio) volumeGain.gain.setTargetAtTime(level, audio.currentTime, 0.015);
+  const remote = document.getElementById('remote');
+  if (remote) remote.volume = level;
 }
 volume.addEventListener('input', () => {
   applyVolume();
