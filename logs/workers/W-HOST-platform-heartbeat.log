@@ -1,8 +1,7 @@
 ﻿W-HOST platform heartbeat
-ts=2026-11-07 19:06:01
+ts=2026-11-07 19:12:51
 lane=Shared host runtime
-status=verified self_heal PRESENT_FB detector + copy_frame shown_lines; writing report
-ts=2026-11-07 19:12:17
-lane=Shared host runtime
-status=owner_pulse PRESENT_FB done; next=watch Hitman/NFS web share host/web.cpp after NFS -next lands; no runtime edit while 3 builds compile shared objs
-[2026-11-07T19:12:55-05:00] W-HOST START replacement — prior heartbeat stale; reading report + solid_60_mandate; picking next unlocked §5/registry work
+status=solid_60 helpers + present-pacing measure verified; allowlist checkbox flipped; library measure 0 pass / 2 fail / 11 no_metrics / 1 quarantined
+next=§5 library Chrome sweep when harness free (no V-Sync uncap); avoid Hitman/NFS/CNK locks
+quarantine=CNK Alchemy + Hitman DISPFB locks honored
+evidence=logs/workers/W-HOST-present-pacing-measure-2026-11-07.json; W-HOST-solid60-library-measure-2026-11-07.json; W-HOST-platform-2026-11-07.md

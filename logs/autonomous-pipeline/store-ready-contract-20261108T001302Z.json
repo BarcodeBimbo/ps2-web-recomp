@@ -1,0 +1,740 @@
+{
+  "stamp": "20261108T001302Z",
+  "overall": "pass",
+  "require_http": false,
+  "results": [
+    {
+      "game_id": "1e5a12a02722175839d88d0301949cd9",
+      "title": "Ratchet & Clank: Going Commando",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/1e5a12a02722175839d88d0301949cd9/library.json",
+        "web": "build/web-1e5a12a02722175839d88d0301949cd9/ps2web.html",
+        "iso": "games/1e5a12a02722175839d88d0301949cd9/disc.iso"
+      }
+    },
+    {
+      "game_id": "34402ee3c1917272f971028b4fb24868",
+      "title": "God of War II",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/34402ee3c1917272f971028b4fb24868/library.json",
+        "web": "build/web-34402ee3c1917272f971028b4fb24868/ps2web.html",
+        "iso": "games/34402ee3c1917272f971028b4fb24868/disc.iso"
+      }
+    },
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "title": "Need for Speed - Most Wanted",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/60c82f4a111da300ac23bbec85272788/library.json",
+        "web": "build/web-60c82f4a111da300ac23bbec85272788/ps2web.html",
+        "iso": "games/60c82f4a111da300ac23bbec85272788/disc.iso"
+      }
+    },
+    {
+      "game_id": "695b874b308a4e5353767bb6df8ba697",
+      "title": "God of War (USA)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/695b874b308a4e5353767bb6df8ba697/library.json",
+        "web": "build/web-695b874b308a4e5353767bb6df8ba697/ps2web.html",
+        "iso": "games/695b874b308a4e5353767bb6df8ba697/disc.iso"
+      }
+    },
+    {
+      "game_id": "76615f9956b13094771e370c883c7170",
+      "title": "Def Jam \u2013 Fight for NY",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/76615f9956b13094771e370c883c7170/library.json",
+        "web": "build/web-76615f9956b13094771e370c883c7170/ps2web.html",
+        "iso": "games/76615f9956b13094771e370c883c7170/disc.iso"
+      }
+    },
+    {
+      "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+      "title": "Gran Turismo 4 (USA)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/9ce58de36f3fbe96fb260a3221d91f20/library.json",
+        "web": "build/web-9ce58de36f3fbe96fb260a3221d91f20/ps2web.html",
+        "iso": "games/9ce58de36f3fbe96fb260a3221d91f20/disc.iso"
+      }
+    },
+    {
+      "game_id": "b49f2e769315347e8bda839feb705744",
+      "title": "Crash Nitro Kart",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/b49f2e769315347e8bda839feb705744/library.json",
+        "web": "build/web-b49f2e769315347e8bda839feb705744/ps2web.html",
+        "iso": "games/b49f2e769315347e8bda839feb705744/disc.iso"
+      }
+    },
+    {
+      "game_id": "c0671389c296be6afe9e5224c97d30df",
+      "title": "Need for Speed - Underground 2 (USA)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/c0671389c296be6afe9e5224c97d30df/library.json",
+        "web": "build/web-c0671389c296be6afe9e5224c97d30df/ps2web.html",
+        "iso": "games/c0671389c296be6afe9e5224c97d30df/disc.iso"
+      }
+    },
+    {
+      "game_id": "c0c4527037b6168660829a0eb13df1a3",
+      "title": "Sly Cooper and the Thievius Raccoonus (USA)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/c0c4527037b6168660829a0eb13df1a3/library.json",
+        "web": "build/web-c0c4527037b6168660829a0eb13df1a3/ps2web.html",
+        "iso": "games/c0c4527037b6168660829a0eb13df1a3/disc.iso"
+      }
+    },
+    {
+      "game_id": "f141051d9b9fae0fb48deced01311f44",
+      "title": "Hitman 2 \u2013 Silent Assassin",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/f141051d9b9fae0fb48deced01311f44/library.json",
+        "web": "build/web-f141051d9b9fae0fb48deced01311f44/ps2web.html",
+        "iso": "games/f141051d9b9fae0fb48deced01311f44/disc.iso"
+      }
+    },
+    {
+      "game_id": "f29093e1f939f924fb11cc605b592b11",
+      "title": "Hot Shots Golf 3 (USA) (v2.00)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/f29093e1f939f924fb11cc605b592b11/library.json",
+        "web": "build/web-f29093e1f939f924fb11cc605b592b11/ps2web.html",
+        "iso": "games/f29093e1f939f924fb11cc605b592b11/disc.iso"
+      }
+    },
+    {
+      "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+      "title": "Resident Evil 4 (USA)",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": null,
+      "paths": {
+        "library": "games/ffb47d7e14cf9f5c02425d9158c29b76/library.json",
+        "web": "build/web-ffb47d7e14cf9f5c02425d9158c29b76/ps2web.html",
+        "iso": "games/ffb47d7e14cf9f5c02425d9158c29b76/disc.iso"
+      }
+    }
+  ],
+  "definition": "Store pull \u2192 ready web player with global patches pre-applied; no per-game manual patch files; panel hooks on install path."
+}

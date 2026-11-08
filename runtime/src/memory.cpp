@@ -92,6 +92,21 @@ void alchemy_o20_jit_before_lw(std::uint32_t obj) {
                  obj, g_alchemy_o20_guard_value);
 }
 
+void alchemy_o20_log_post_51c100(std::uint32_t obj) {
+    if (!g_alchemy_o20_guard_addr || !obj || obj + 0x24u > kRamSize) return;
+    if ((obj + 0x20u) != g_alchemy_o20_guard_addr) return;
+    static int s_ing = 0;
+    if (s_ing >= 6) return;
+    std::uint32_t o20 = 0, o14 = 0, a24 = 0;
+    std::memcpy(&o20, g_ram + obj + 0x20u, 4);
+    std::memcpy(&o14, g_ram + obj + 0x14u, 4);
+    if (o20 && o20 + 0x28u <= kRamSize) std::memcpy(&a24, g_ram + o20 + 0x24u, 4);
+    std::fprintf(stderr,
+                 "[alchemy-o20] post-51c100 obj=0x%X o20=0x%X o14=0x%X *(o20)+0x24=0x%X\n",
+                 obj, o20, o14, a24);
+    ++s_ing;
+}
+
 void init_watch() {
     if (const char *spec = std::getenv("PS2_WATCH")) {
         std::uint32_t base = 0, len = 0;

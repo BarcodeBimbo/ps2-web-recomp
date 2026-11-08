@@ -1,0 +1,13 @@
+{
+  "default": 60,
+  "allowed_values": [
+    30,
+    50
+  ],
+  "required_fields": [
+    "reason",
+    "evidence",
+    "verified_date"
+  ],
+  "note": "true 50/60 Hz exceptions only; solid_60_mandate.validate_exceptions"
+}

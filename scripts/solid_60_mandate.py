@@ -19,8 +19,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "verification" / "recovery" / "game-fix-registry.json"
 WEB_CPP = ROOT / "host" / "web.cpp"
+WINDOW_CPP = ROOT / "host" / "window.cpp"
 GS_CPP = ROOT / "runtime" / "src" / "gs" / "gs.cpp"
 MEASURE_OUT = ROOT / "logs" / "workers" / "W-HOST-present-pacing-measure-2026-11-07.json"
+LIBRARY_OUT = ROOT / "logs" / "workers" / "W-HOST-solid60-library-measure-2026-11-07.json"
 
 # True 50/60 Hz art/timing exceptions only — never "we can't hit 60".
 ALLOWED_EXCEPTION_FPS = {30.0, 50.0}

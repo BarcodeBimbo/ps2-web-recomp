@@ -32,6 +32,8 @@ void alchemy_o20_guard_arm(std::uint32_t obj_plus_20, std::uint32_t o20_value, s
 void alchemy_o20_guard_disarm();
 // Just-in-time restore at vt+108 `lw a0,0x20(s0)` (PC 0x503308). Safe no-op if unarmed.
 void alchemy_o20_jit_before_lw(std::uint32_t obj);
+// Log attach state after 0x51C100 returns (PC 0x50331C).
+void alchemy_o20_log_post_51c100(std::uint32_t obj);
 
 template <typename T>
 inline bool watched(std::uint32_t a, std::uint32_t v) {

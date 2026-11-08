@@ -14,3 +14,4 @@
 [2026-11-07T19:11:31Z] W-SLY HEARTBEAT | status=PARSE_FIX | TME=0 on all rows — inspect raw draw line format
 [2026-11-07T19:12:04Z] W-SLY HEARTBEAT | status=PARSE_RETRY | fixed column offset for capture flush format
 [2026-11-07T19:12:23Z] W-SLY HEARTBEAT | status=PARSE_NEGBOX | fixed negative box area regex; remeasure building strips
+[2026-11-07T19:13:14Z] W-SLY HEARTBEAT | status=HYPOTHESIS | building TBP1480 area=5.56M FST=0 UV=376..1960; Q=0->min bypasses /q==0 guard; checking safe shared fix + locks

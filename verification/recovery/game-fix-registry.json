@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T19:12:00-05:00",
+  "updated": "2026-11-07T19:13:15-05:00",
   "schema": 1,
   "global_runtime": {
     "disc_fix_applied": [
@@ -13,19 +13,17 @@
     "min_fps_default": 60,
     "min_fps_exceptions": {},
     "min_fps_exception_policy": {
-      "allowed_fps": [30, 50],
-      "entry_shape": {
-        "min_fps": 30,
-        "reason": "true 30/50 Hz title timing — not a soft 60 miss",
-        "approved": true
-      },
-      "helpers": "scripts/solid_60_mandate.py",
-      "rules": [
-        "default_solid_60",
-        "no_fps_overlay_pass",
-        "no_frameskip_fix",
-        "no_vsync_uncap_without_god_unlock"
-      ]
+      "default": 60,
+      "allowed_values": [
+        30,
+        50
+      ],
+      "required_fields": [
+        "reason",
+        "evidence",
+        "verified_date"
+      ],
+      "note": "true 50/60 Hz exceptions only; solid_60_mandate.validate_exceptions"
     },
     "install_gates": [
       "install_health.py",
@@ -92,7 +90,9 @@
         "fps_patient_zero"
       ],
       "min_fps_target": 60,
-      "smoke_frames": 3600
+      "smoke_frames": 3600,
+      "min60_last_attempt": "logs/workers/W-GOW-platform-2026-11-07.md",
+      "min60_verdict": "fail_not_sustained"
     },
     "b49f2e769315347e8bda839feb705744": {
       "title": "Crash Nitro Kart",
