@@ -1,6 +1,7 @@
 #include "ps2/generated.hpp"
 #include "ps2/memory.hpp"
 #include "ps2/system.hpp"
+#include "iop/igfileio.hpp"
 
 #include <cstdlib>
 #include <algorithm>
@@ -205,20 +206,23 @@ void stop(Cpu &c, std::uint32_t pc, const char *what) {
 }
 
 void probe(Cpu &c, std::uint32_t pc) {
-    // CNK vt+108 just-in-time: at 0x503308 guest does `lw a0,0x20(s0)`.
-    // If Alchemy o20 guard is armed and soft-arm captured a live +0x20 but the
-    // field was cleared via a non-st32 path, restore before the load.
-    // Requires recomp --probes including 0x503308; store-guard covers the SW path.
-    if (pc == 0x00503308u && g_alchemy_o20_guard_addr) {
-        const std::uint32_t obj = c.r[16].w[0]; // s0 = obj after 0x502FC
-        if (obj && obj + 0x24u <= kRamSize && (obj + 0x20u) == g_alchemy_o20_guard_addr) {
+    // CNK vt+108 just-in-time restore (Alchemy quarantine).
+    // Sequence: 0x5032E0 entry → child walk 0x502D20 → lw a0,0x20(s0) @ 0x503308.
+    // Child vt+0x78 (or stream cleanup) can clear +0x20 before the load; HLE restore
+    // after finalize is too late. Replant attach before entry and before the load.
+    if (pc == 0x005032E0u || pc == 0x00503300u || pc == 0x00503308u) {
+        // Replant memory before the guest `lw a0,0x20(s0)` so ingest sees attach.
+        const bool restored = iop::igfileio::restore_butanim_attach_if_cleared();
+        if (pc == 0x00503308u) {
+            const std::uint32_t obj = c.r[16].w[0]; // s0
             std::uint32_t cur = 0;
-            std::memcpy(&cur, g_ram + obj + 0x20u, 4);
-            if (cur == 0) {
-                // Pull last soft-arm capture via try_restore if linked; else log only.
+            if (obj && obj + 0x24u <= kRamSize) std::memcpy(&cur, g_ram + obj + 0x20u, 4);
+            static int s_jit = 0;
+            if (s_jit < 8) {
                 std::fprintf(stderr,
-                             "[probe] 0x503308 o20=0 on obj=0x%X (guard live) — store-guard should have blocked\n",
-                             obj);
+                             "[probe] 0x503308 pre-lw o20=0x%X restored=%d blocks=%d obj=0x%X\n",
+                             cur, restored ? 1 : 0, g_alchemy_o20_guard_blocks, obj);
+                ++s_jit;
             }
         }
     }

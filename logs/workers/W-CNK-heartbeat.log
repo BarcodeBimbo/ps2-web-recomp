@@ -9,3 +9,5 @@
 [2026-11-07 18:57:28] W-CNK-2 vt108=FUN_005032e0; 502d20 walks vt+0x78; candidate=0x503308 lw+20 gate; hunting clear writers + intercept path
 [2026-11-07 18:57:50] W-CNK done report=W-CNK-fresh-2026-11-07.md next=0x503308 preempt prims=2 locks=release
 [2026-11-07 18:57:58] W-CNK-2 plan=st32 block clear of butanim obj+0x20 (alchemy-gated) + probe restore at 0x503308 if rebuildable
+[2026-11-07 18:59:24] W-CNK-2 implemented st32 o20 guard + soft-arm arm; building native-b49f
+[2026-11-07 19:03:06] W-CNK-2 jit hook at L_00503308 in unit_0100 + m_unit_0100; awaiting native rebuild

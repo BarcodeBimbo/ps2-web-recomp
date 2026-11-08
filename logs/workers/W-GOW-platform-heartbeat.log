@@ -1,0 +1,9 @@
+﻿=== W-GOW heartbeat 2026-11-07 19:03:29 ===
+lane=God of War USA
+id=695b874b308a4e5353767bb6df8ba697
+task=browser min60 re-verify
+hard_ban=no disc-fix/R5/CNK Alchemy patches
+status=starting
+=== W-GOW heartbeat 2026-11-07 19:03:49 ===
+status=panel_8620_up http=200
+next=readiness+min60_harness

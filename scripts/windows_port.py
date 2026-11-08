@@ -107,6 +107,8 @@ def refresh_translation(game_id, elf, env):
     command=[tools/'eerecomp.exe',relative(elf),'--entries',relative(entries)]
     for option,name in [('--modules','modules'),('--overlays','overlays')]:
         if (game/name).is_dir():command.extend([option,relative(game/name)])
+    probes=game/'probes.txt'
+    if probes.is_file():command.extend(['--probes',relative(probes)])
     command.extend(['--unit-bits','12','--out',relative(ROOT/'generated'/game_id)])
     subprocess.run(command,check=True,cwd=ROOT,env=env,timeout=600)
 

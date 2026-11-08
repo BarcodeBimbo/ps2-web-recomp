@@ -273,6 +273,10 @@ bool preempt(Cpu &c) {
     // must make the loop predicate fail and return false (goto continues).
     {
         const std::uint32_t pc = c.pc & ~kUnwind;
+        // CNK butanim: opportunistic restore if budget interrupt lands in vt+108.
+        // Primary path is recomp --probes @ 0x503308; this is a belt-and-suspenders.
+        if (pc == 0x005032E0u || pc == 0x00503300u || pc == 0x00503308u)
+            iop::igfileio::restore_butanim_attach_if_cleared();
         static std::uint32_t s_fl_hits = 0;
         if (pc == 0x00239A80u || pc == 0x002399D8u) {
             if (++s_fl_hits >= 32u) {

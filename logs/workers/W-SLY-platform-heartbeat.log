@@ -1,0 +1,2 @@
+[2026-11-07 19:03:26] W-SLY start | lane=Sly Cooper USA c0c4527037b6168660829a0eb13df1a3 | focus=shared GS STQ/PATH3/CLUT missing buildings | NOT CNK Alchemy
+[2026-11-07 19:03:46] W-SLY map | reading raster STQ divide + load_clut + GIF PATH3; sticky-Q already present in write_packed/vertex

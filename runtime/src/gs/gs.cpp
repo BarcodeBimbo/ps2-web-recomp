@@ -858,7 +858,12 @@ void write(std::uint32_t reg, std::uint64_t value) {
     }
     case 0x18: case 0x19: s.ctx[reg - 0x18].xyoffset = value; break;
     case 0x1A: s.prmodecont = value; break;
-    case 0x1B: s.prmode = value; break;
+    case 0x1B: {
+        static const bool no_tme = std::getenv("PS2_GS_NO_TME") != nullptr;
+        if (no_tme) value &= ~(1ull << 4);
+        s.prmode = value;
+        break;
+    }
     case 0x1C: s.texclut = value; break;
     case 0x22: s.scanmsk = value; break;
     case 0x34: case 0x35: s.ctx[reg - 0x34].miptbp1 = value; break;

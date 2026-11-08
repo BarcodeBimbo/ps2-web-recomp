@@ -20,3 +20,4 @@
 [2026-11-07 18:58:04] W-NFS-2 incremental failed (cache points at -next); switching to windows_port --web-only NFS
 [2026-11-07 18:58:20] W-NFS-2 found live cmake rebuild on web-60c82-next pid=29716; will NOT kill; monitoring
 [2026-11-07 18:58:35] W-NFS-2 wrote W-NFS-stream-fix evidence; monitoring in-flight NFS -next rebuild
+[2026-11-07 19:00:46] W-NFS-2 monitor: still waiting on NFS -next rebuild

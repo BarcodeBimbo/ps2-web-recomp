@@ -24,10 +24,14 @@ void init_watch();
 // dropped so vt+108 (0x5032E0) still sees *(obj+0x20) for 0x51C100 ingest.
 // Armed only from igfileio butanim soft-arm — Hitman/NFS disc path never sets it.
 extern std::uint32_t g_alchemy_o20_guard_addr;
+extern std::uint32_t g_alchemy_o20_guard_value;
+extern std::uint32_t g_alchemy_o14_guard_value;
 extern int g_alchemy_o20_guard_blocks;
 void alchemy_o20_guard_log(std::uint32_t a);
-void alchemy_o20_guard_arm(std::uint32_t obj_plus_20);
+void alchemy_o20_guard_arm(std::uint32_t obj_plus_20, std::uint32_t o20_value, std::uint32_t o14_value = 0);
 void alchemy_o20_guard_disarm();
+// Just-in-time restore at vt+108 `lw a0,0x20(s0)` (PC 0x503308). Safe no-op if unarmed.
+void alchemy_o20_jit_before_lw(std::uint32_t obj);
 
 template <typename T>
 inline bool watched(std::uint32_t a, std::uint32_t v) {
@@ -37,9 +41,27 @@ inline bool watched(std::uint32_t a, std::uint32_t v) {
 
 // Returns true when the store must be suppressed (caller skips the write).
 inline bool alchemy_o20_guard_blocks(std::uint32_t a, std::uint32_t v) {
-    if (!g_alchemy_o20_guard_addr || v != 0 || a != g_alchemy_o20_guard_addr) [[likely]] return false;
+    if (!g_alchemy_o20_guard_addr || v != 0) [[likely]] return false;
+    // Guest may use KSEG0/KSEG1 mirrors; guard is armed with low phys addr.
+    const std::uint32_t phys = a & (kRamSize - 1);
+    if (phys != g_alchemy_o20_guard_addr) return false;
     ++g_alchemy_o20_guard_blocks;
-    if (g_alchemy_o20_guard_blocks <= 8) alchemy_o20_guard_log(a);
+    if (g_alchemy_o20_guard_blocks <= 8) alchemy_o20_guard_log(phys);
+    return true;
+}
+
+// True when a multi-word store would write zeros over the guarded +0x20 word.
+inline bool alchemy_o20_guard_blocks_span(std::uint32_t a, std::size_t n, const std::uint8_t *bytes) {
+    if (!g_alchemy_o20_guard_addr || !bytes || n < 4) [[likely]] return false;
+    const std::uint32_t phys = a & (kRamSize - 1);
+    const std::uint32_t g = g_alchemy_o20_guard_addr;
+    if (phys + n <= g || phys >= g + 4u) return false;
+    const std::size_t off = g - phys;
+    std::uint32_t word = 0;
+    std::memcpy(&word, bytes + off, 4);
+    if (word != 0) return false;
+    ++g_alchemy_o20_guard_blocks;
+    if (g_alchemy_o20_guard_blocks <= 8) alchemy_o20_guard_log(g);
     return true;
 }
 
@@ -116,12 +138,18 @@ inline void st32(std::uint32_t a, std::uint32_t v) {
 }
 
 inline void st64(std::uint32_t a, std::uint64_t v) {
+    std::uint8_t raw[8];
+    std::memcpy(raw, &v, 8);
+    if (alchemy_o20_guard_blocks_span(a, 8, raw)) [[unlikely]] return;
     watched<std::uint32_t>(a, static_cast<std::uint32_t>(v));
     if (auto *p = fast<std::uint64_t>(a)) { store(p, v); return; }
     slow_st64(a, v);
 }
 
 inline void st128(std::uint32_t a, const Reg128 &v) {
+    std::uint8_t raw[16];
+    std::memcpy(raw, &v, 16);
+    if (alchemy_o20_guard_blocks_span(a, 16, raw)) [[unlikely]] return;
     watched<std::uint32_t>(a, v.w[0]);
     if (auto *p = fast<Reg128>(a)) { std::memcpy(p, &v, 16); return; }
     slow_st128(a, v);

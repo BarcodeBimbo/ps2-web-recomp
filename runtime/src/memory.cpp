@@ -32,6 +32,8 @@ std::uint32_t g_watch_base = 0, g_watch_end = 0;
 
 // CNK/Alchemy butanim obj+0x20 clear suppress (see memory.hpp).
 std::uint32_t g_alchemy_o20_guard_addr = 0;
+std::uint32_t g_alchemy_o20_guard_value = 0;
+std::uint32_t g_alchemy_o14_guard_value = 0;
 int g_alchemy_o20_guard_blocks = 0;
 
 void alchemy_o20_guard_log(std::uint32_t a) {
@@ -40,14 +42,20 @@ void alchemy_o20_guard_log(std::uint32_t a) {
                  a, g_cpu.pc, g_cpu.r[31].w[0], g_alchemy_o20_guard_blocks);
 }
 
-void alchemy_o20_guard_arm(std::uint32_t obj_plus_20) {
-    if (!obj_plus_20 || obj_plus_20 + 4u > kRamSize) {
+void alchemy_o20_guard_arm(std::uint32_t obj_plus_20, std::uint32_t o20_value, std::uint32_t o14_value) {
+    if (!obj_plus_20 || obj_plus_20 + 4u > kRamSize || !o20_value) {
         g_alchemy_o20_guard_addr = 0;
+        g_alchemy_o20_guard_value = 0;
+        g_alchemy_o14_guard_value = 0;
         return;
     }
     g_alchemy_o20_guard_addr = obj_plus_20;
+    g_alchemy_o20_guard_value = o20_value;
+    g_alchemy_o14_guard_value = o14_value;
     g_alchemy_o20_guard_blocks = 0;
-    std::fprintf(stderr, "[alchemy-o20] guard armed at 0x%08X (suppress SW zero until disarm)\n", obj_plus_20);
+    std::fprintf(stderr,
+                 "[alchemy-o20] guard armed at 0x%08X value=0x%08X o14=0x%08X (suppress SW zero until disarm)\n",
+                 obj_plus_20, o20_value, o14_value);
 }
 
 void alchemy_o20_guard_disarm() {
@@ -56,6 +64,28 @@ void alchemy_o20_guard_disarm() {
                      g_alchemy_o20_guard_addr, g_alchemy_o20_guard_blocks);
     }
     g_alchemy_o20_guard_addr = 0;
+    g_alchemy_o20_guard_value = 0;
+    g_alchemy_o14_guard_value = 0;
+}
+
+void alchemy_o20_jit_before_lw(std::uint32_t obj) {
+    if (!g_alchemy_o20_guard_addr || !g_alchemy_o20_guard_value || !obj) return;
+    if (obj + 0x24u > kRamSize) return;
+    if ((obj + 0x20u) != g_alchemy_o20_guard_addr) return;
+    std::uint32_t cur = 0;
+    std::memcpy(&cur, g_ram + obj + 0x20u, 4);
+    if (cur != 0) return;
+    std::memcpy(g_ram + obj + 0x20u, &g_alchemy_o20_guard_value, 4);
+    if (g_alchemy_o14_guard_value && g_alchemy_o14_guard_value < kRamSize) {
+        std::memcpy(g_ram + obj + 0x14u, &g_alchemy_o14_guard_value, 4);
+    }
+    static int s_jit = 0;
+    if (s_jit < 8) {
+        std::fprintf(stderr,
+                     "[alchemy-o20] jit-restore at 0x503308 obj=0x%X +20=0x%X (was 0)\n",
+                     obj, g_alchemy_o20_guard_value);
+        ++s_jit;
+    }
 }
 
 void init_watch() {

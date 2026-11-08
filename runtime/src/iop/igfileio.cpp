@@ -489,6 +489,10 @@ bool assemble_holds_butanim() {
 // Restore obj+0x20 if it was cleared since soft-arm. vt+108 needs *(+0x20)+0x24≠0
 // to run the 0x51C100 ingest path. Must be called BEFORE vt+108 runs.
 // Returns true if restoration happened.
+bool try_restore_butanim_o20();
+
+bool restore_butanim_attach_if_cleared() { return try_restore_butanim_o20(); }
+
 bool try_restore_butanim_o20() {
     if (!g_butanim_soft_obj || g_butanim_soft_obj + 0x100u > kRamSize) return false;
     if (!g_butanim_soft_o20 || g_butanim_soft_o20 >= kRamSize) return false;
@@ -1445,7 +1449,7 @@ void note_ui_igb_soft_arm(std::uint32_t obj, bool butanim) {
         // EE intercept: suppress guest SW-zero of obj+0x20 during the soft-arm
         // → vt+108 burst so 0x503308 still loads a live attach pointer and
         // calls 0x51C100. Quarantined — only armed from this butanim path.
-        if (o20) alchemy_o20_guard_arm(obj + 0x20u);
+        if (o20) alchemy_o20_guard_arm(obj + 0x20u, o20, o14);
         std::fprintf(stderr,
                      "[igfileio] noted butanim soft-arm obj=0x%X (cleared +0xFF) +8=%u +14=0x%X +20=0x%X "
                      "assemble_butanim=%d\n",
