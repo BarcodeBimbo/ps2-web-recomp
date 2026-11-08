@@ -22,14 +22,15 @@
 
 Prior theory: guest clears `obj+0x20` **before** vt+108 `lw` @ `0x503308`, so `0x51C100` is skipped.
 
-**Measured (smoke3/4):** JIT probe at `L_00503308` (overlay `m_00100000_271E1240_unit_0100`):
+**Measured (smoke3 + smoke4):** JIT + post-call at overlay `m_00100000_271E1240_unit_0100`:
 
 ```
 [alchemy-o20] jit@0x503308 obj=0x975498 match=1 cur+20=0x7462F8 guard=0x9754B8 want=0x7462F8
+[alchemy-o20] post-51c100 obj=0x975498 o20=0x7462F8 o14=0x16B06E8 *(o20)+0x24=0x1
 ```
 
-`obj+0x20` is **LIVE** at the ingest gate. Guest **does** take the `jal 0x51C100` path.  
-HLE `restored butanim … (was 0, +0xFF=1→0)` is a **post**-vt+108 clear — too late to explain skipped ingest.
+`obj+0x20` is **LIVE** at the ingest gate **and still live after `0x51C100` returns**. Guest **does** take the ingest path with `*(attach)+0x24=1`.  
+HLE `restored butanim … (was 0, +0xFF=1→0)` is a **later** clear — not the reason ingest was “skipped.”
 
 Ghidra: `FUN_005032e0` (vt+108) → `ingest_51c100` when `*(obj+0x20)≠0` and `*(attach+0x24)≠0` (attach `+0x24=1` confirmed).  
 `igAlchemy_bind_cleanup_clear_o20` @ `0x51AC80` clears **alchemy ctx** `+0x20` (at `0x725D48`), not butanim obj — separate path.
@@ -67,7 +68,7 @@ Ghidra: `FUN_005032e0` (vt+108) → `ingest_51c100` when `*(obj+0x20)≠0` and `
 | smoke1 | `W-CNK-o20-intercept-smoke-2026-11-07.log` | 2 | guard armed; no jit (overlay not rebuilt) |
 | smoke2 | `…-smoke2-…` | 2 | overlay rebuilt; still no jit log (silent live path) |
 | smoke3 | `…-smoke3-…` | 2 | **jit proves +20 LIVE** |
-| smoke4 | `…-smoke4-…` | (pending/same) | post-51c100 log |
+| smoke4 | `W-CNK-o20-intercept-smoke4-2026-11-07.log` | 2 | **post-51c100 o20 still live, +24=1** |
 
 All: `--disc games/b49f…/disc.iso --frames 6000`, native `build/native-b49f…/ps2run.exe`.
 

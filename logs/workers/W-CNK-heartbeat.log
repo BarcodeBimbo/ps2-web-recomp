@@ -19,3 +19,4 @@
 [2026-11-07 19:11:57] W-CNK-2 smoke3 with jit diagnostics
 [2026-11-07 19:12:23] W-CNK-2 BREAKTHROUGH: jit@503308 cur+20=LIVE 0x7462F8 — 51C100 should run; clear is AFTER vt108; prims=2 means ingest/bind failure not o20-clear
 [2026-11-07 19:25:32] W-CNK-2 smoke4 done prims=2; writing fresh report; checkbox NOT flipped; locks held
+[2026-11-07 19:25:48] W-CNK-2 DONE: prims=2 (checkbox not flipped); 51C100 confirmed live; report=logs/workers/W-CNK-fresh-2026-11-07.md; next=51a620/loadgate+5DD0
