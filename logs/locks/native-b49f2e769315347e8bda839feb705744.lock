@@ -1,6 +1,6 @@
-owner_pid=29396
-start_utc=2026-11-08T00:15:12Z
-owner=W-CNK-smoke-o20
-checkbox=t3-alchemy
+﻿owner_pid=31080
+start_utc=2026-11-08T00:22:06Z
+owner=W-CNK-CRIT
+checkbox=cnk-alchemy-o20
 target=build/native-b49f2e769315347e8bda839feb705744
-note=smoke_done_5k prims=2 probe_absent; respecting cmake=11292 cascade; Hitman untouched; next=re-smoke after hooked unit_0100 link
+note=await cascade cmake=11292,29392 then refresh_translation --probes + single-writer rebuild + 4-8k smoke; disarm deferred; eerecomp hooks baked

@@ -1041,3 +1041,237 @@
 {"t": 1794097259.898782, "game": "NFSU2", "type": "log", "text": "[stats] frame 509 5.9 fps (6 on screen) GPU 0% idle emu 4% vu 100% gs 99% heap 384 MB audio 0 ms hitch 831.7 ms x3"}
 {"t": 1794097260.9617395, "game": "NFSU2", "type": "log", "text": "[stats] frame 511 1.9 fps (2 on screen) GPU -0% idle emu 0% vu 100% gs 100% heap 384 MB audio 3 ms hitch 1047.3 ms x1"}
 {"t": 1794097262.044911, "game": "NFSU2", "type": "log", "text": "[stats] frame 516 4.8 fps (5 on screen) GPU -0% idle emu 4% vu 100% gs 100% heap 384 MB audio 0 ms hitch 877.7 ms x4"}
+{"t": 1794097263.692672, "game": "NFSU2", "type": "log", "text": "[stats] frame 523 3.8 fps (4 on screen) GPU -0% idle emu 1% vu 100% gs 100% heap 384 MB audio 0 ms hitch 835.3 ms x4"}
+{"t": 1794097264.844882, "game": "NFSU2", "type": "log", "text": "[stats] frame 527 3.1 fps (3 on screen) GPU -0% idle emu 1% vu 100% gs 100% heap 384 MB audio 3 ms hitch 1175.5 ms x2"}
+{"t": 1794097265.8947134, "game": "NFSU2", "type": "log", "text": "[stats] frame 531 3.8 fps (4 on screen) GPU 2% idle emu 2% vu 100% gs 100% heap 384 MB audio 5 ms hitch 934.5 ms x2"}
+{"t": 1794097266.9524736, "game": "NFSU2", "type": "log", "text": "[stats] frame 535 4.0 fps (4 on screen) GPU 0% idle emu 2% vu 100% gs 99% heap 384 MB audio 5 ms hitch 868.3 ms x4"}
+{"t": 1794097268.0115733, "game": "NFSU2", "type": "log", "text": "[stats] frame 539 3.6 fps (4 on screen) GPU -0% idle emu 3% vu 100% gs 100% heap 384 MB audio 5 ms hitch 958.3 ms x3"}
+{"t": 1794097269.8634298, "game": "Hitman2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097269.8649666, "game": "Hitman2", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097269.8669798, "game": "Hitman2", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097269.8679957, "game": "Hitman2", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097269.9356344, "game": "Hitman2", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097270.3795168, "game": "Hitman2", "type": "log", "text": "[disc] disc: 331 files, 1017744 sectors, layer 1 at 0"}
+{"t": 1794097270.3815186, "game": "Hitman2", "type": "log", "text": "[mc] card in slot 1: /memcard-f141051d9b9fae0fb48deced01311f44/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097270.3830404, "game": "Hitman2", "type": "log", "text": "[io] write 0x1000F180 = 0x23 (pc 0x00104178)"}
+{"t": 1794097270.387079, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.3890893, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4017437, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.402742, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.40586, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4088726, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4108832, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4118826, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4133918, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4149284, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4159396, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4174485, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4194658, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4204643, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.421464, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.444584, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.445593, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4506462, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4526558, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.453654, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.455165, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4566798, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4581974, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4591982, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4607165, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4617164, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4759092, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4774156, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4784255, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4794235, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.4804282, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5217652, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5232794, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5248296, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5258443, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.527863, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5288758, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5308754, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5328858, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.534396, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5369487, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5394676, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5813587, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.582881, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5838792, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5848846, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.585894, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.5909514, "game": "Hitman2", "type": "log", "text": "[sys] unhandled syscall 0x56 from 0x00105904"}
+{"t": 1794097270.592962, "game": "Hitman2", "type": "log", "text": "[ee] halted: program asked to run another executable"}
+{"t": 1794097270.593961, "game": "Hitman2", "type": "log", "text": "[thread] 1 status 1 prio 1 wait 0/0 pc 0x001000EC ra 0x001000EC"}
+{"t": 1794097270.5959778, "game": "Hitman2", "type": "log", "text": "[thread]   stack: 001000AC"}
+{"t": 1794097270.5974917, "game": "Hitman2", "type": "log", "text": "[thread] 2 status 4 prio 0 wait 2/2 pc 0x00103368 ra 0x001051E0"}
+{"t": 1794097270.5985045, "game": "Hitman2", "type": "log", "text": "[thread]   stack:"}
+{"t": 1794097270.5995152, "game": "Hitman2", "type": "log", "text": "[sema] 2 count 0 waiters 1"}
+{"t": 1794097270.6397147, "game": "Hitman2", "type": "log", "text": "[sif] 0 packets wait for the EE (processed 1)"}
+{"t": 1794097270.6407235, "game": "Hitman2", "type": "log", "text": "[gpu] 0 submits, dispatches: upload 0 copy_read 0 copy_write 0 load_clut 0 display 0 raster 0 resolve 0 snapshot 0 decode 0"}
+{"t": 1794097270.64323, "game": "Hitman2", "type": "log", "text": "[gs] 0 primitives drawn, register writes:"}
+{"t": 1794097270.6467748, "game": "Hitman2", "type": "log", "text": "[ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0"}
+{"t": 1794097270.6477888, "game": "Hitman2", "type": "log", "text": "[dma] starts: ch0=0 ch1=0 ch2=0 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0"}
+{"t": 1794097270.6498063, "game": "Hitman2", "type": "log", "text": "[gif] path 1 tags: packed 0 reglist 0 image 0"}
+{"t": 1794097270.6508079, "game": "Hitman2", "type": "log", "text": "[gif] path 2 tags: packed 0 reglist 0 image 0"}
+{"t": 1794097270.6523154, "game": "Hitman2", "type": "log", "text": "[gif] path 3 tags: packed 0 reglist 0 image 0"}
+{"t": 1794097270.7088695, "game": "Hitman2", "type": "log", "text": "[vif0]"}
+{"t": 1794097270.7113833, "game": "Hitman2", "type": "log", "text": "[vif1]"}
+{"t": 1794097270.7123907, "game": "Hitman2", "type": "log", "text": "[ee] stopped after 0 frames, 48285 cycles: program asked to run another executable"}
+{"t": 1794097278.288875, "game": "HSG3", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097278.2913868, "game": "HSG3", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097278.7420447, "game": "HSG3", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097278.7440546, "game": "HSG3", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097278.7450566, "game": "HSG3", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097278.8014705, "game": "HSG3", "type": "log", "text": "[disc] disc: 1912 files, 648336 sectors, layer 1 at 0"}
+{"t": 1794097279.22494, "game": "HSG3", "type": "log", "text": "[mc] card in slot 1: /memcard-f29093e1f939f924fb11cc605b592b11/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097279.2269492, "game": "HSG3", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\MODULES\\IOPRP23.IMG;1\""}
+{"t": 1794097279.2284684, "game": "HSG3", "type": "log", "text": "[sif] FILEIO from cdrom0:\\MODULES\\IOPRP23.IMG;1 reports 2300, asynchronous protocol"}
+{"t": 1794097279.2294729, "game": "HSG3", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\MODULES\\IOPRP23.IMG;1 reports 2300"}
+{"t": 1794097279.2314806, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\SIO2MAN.IRX;1"}
+{"t": 1794097279.2314806, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\LIBSD.IRX;1"}
+{"t": 1794097279.2329905, "game": "HSG3", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00021DF4)"}
+{"t": 1794097279.2355177, "game": "HSG3", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00021DF8)"}
+{"t": 1794097279.3203275, "game": "HSG3", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00021DFC)"}
+{"t": 1794097279.3223295, "game": "HSG3", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00021E0C)"}
+{"t": 1794097279.323332, "game": "HSG3", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00021E1C)"}
+{"t": 1794097279.3258595, "game": "HSG3", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x000210D0)"}
+{"t": 1794097279.3268597, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\SDRDRV.IRX;1"}
+{"t": 1794097279.3273714, "game": "HSG3", "type": "log", "text": "[iop-tty] SDR driver version 4.0.1 (C) SCEI"}
+{"t": 1794097279.32939, "game": "HSG3", "type": "log", "text": "[iop-tty]  Exit rsd_main "}
+{"t": 1794097279.4196928, "game": "HSG3", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097279.4212165, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MTAPMAN.IRX;1"}
+{"t": 1794097279.4222171, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\PADMAN.IRX;1"}
+{"t": 1794097279.4242146, "game": "HSG3", "type": "log", "text": "[iop-tty] padman: thread priority: high=33, low=46"}
+{"t": 1794097279.4247234, "game": "HSG3", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x0002019C)"}
+{"t": 1794097279.425735, "game": "HSG3", "type": "log", "text": "[stats] frame 1 0.4 fps (0 on screen) GPU 0% idle emu 0% vu 36% gs 35% heap 256 MB audio 3 ms hitch 0.0 ms x0"}
+{"t": 1794097279.8494508, "game": "HSG3", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097279.8504612, "game": "HSG3", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097279.85146, "game": "HSG3", "type": "log", "text": "[dma] gif tag id 1 qwc 11 addr 0x00000000 data 0x01FFAA80"}
+{"t": 1794097279.8524597, "game": "HSG3", "type": "log", "text": "[dma] gif tag id 7 qwc 0 addr 0x00000000 data 0x01FFAB40"}
+{"t": 1794097279.8539693, "game": "HSG3", "type": "log", "text": "[cdvdfsv] search \\FNT.XB;1 -> found"}
+{"t": 1794097280.620647, "game": "HSG3", "type": "log", "text": "[stats] frame 6 0.8 fps (1 on screen) GPU 0% idle emu 3% vu 99% gs 100% heap 256 MB audio 0 ms hitch 1211.1 ms x1"}
+{"t": 1794097280.7371423, "game": "HSG3", "type": "log", "text": "[fileio] open rom0:ROMVER -> 3"}
+{"t": 1794097280.7397134, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\SNDN2DRV.IRX;1"}
+{"t": 1794097281.865856, "game": "HSG3", "type": "log", "text": "[stats] frame 63 56.9 fps (57 on screen) GPU 11% idle emu 104% vu 101% gs 93% heap 256 MB audio 73 ms hitch 67.3 ms x1"}
+{"t": 1794097283.6992955, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MCMAN.IRX;1"}
+{"t": 1794097283.7013056, "game": "HSG3", "type": "log", "text": "[loadfile] cdrom0:\\MODULES\\MCSERV.IRX;1"}
+{"t": 1794097283.7028158, "game": "HSG3", "type": "log", "text": "[stats] frame 106 46.0 fps (46 on screen) GPU 1% idle emu 55% vu 99% gs 94% heap 256 MB audio 25 ms hitch 112.1 ms x3"}
+{"t": 1794097283.7048326, "game": "HSG3", "type": "log", "text": "[stats] frame 144 38.1 fps (38 on screen) GPU 2% idle emu 4% vu 101% gs 95% heap 256 MB audio 6 ms hitch 81.3 ms x7"}
+{"t": 1794097285.8530955, "game": "HSG3", "type": "log", "text": "[stats] frame 183 38.4 fps (38 on screen) GPU 3% idle emu 5% vu 100% gs 92% heap 256 MB audio 2 ms hitch 73.2 ms x5"}
+{"t": 1794097285.8551419, "game": "HSG3", "type": "log", "text": "[stats] frame 225 40.6 fps (41 on screen) GPU 2% idle emu 5% vu 100% gs 93% heap 256 MB audio 5 ms hitch 56.0 ms x8"}
+{"t": 1794097286.9524539, "game": "HSG3", "type": "log", "text": "[stats] frame 264 38.4 fps (38 on screen) GPU 4% idle emu 25% vu 85% gs 93% heap 256 MB audio 0 ms hitch 152.5 ms x4"}
+{"t": 1794097288.0031147, "game": "HSG3", "type": "log", "text": "[stats] frame 296 31.9 fps (32 on screen) GPU 7% idle emu 10% vu 99% gs 93% heap 256 MB audio 4 ms hitch 62.7 ms x10"}
+{"t": 1794097289.0967534, "game": "HSG3", "type": "log", "text": "[stats] frame 339 42.6 fps (43 on screen) GPU 12% idle emu 4% vu 99% gs 94% heap 256 MB audio 4 ms hitch 69.7 ms x3"}
+{"t": 1794097290.1571734, "game": "HSG3", "type": "log", "text": "[stats] frame 381 40.8 fps (41 on screen) GPU 12% idle emu 6% vu 99% gs 95% heap 256 MB audio 1 ms hitch 58.6 ms x7"}
+{"t": 1794097291.2377021, "game": "HSG3", "type": "log", "text": "[stats] frame 421 40.0 fps (40 on screen) GPU 10% idle emu 3% vu 99% gs 95% heap 256 MB audio 3 ms hitch 46.7 ms x5"}
+{"t": 1794097291.7772799, "game": "HSG3", "type": "log", "text": "[stats] frame 468 46.7 fps (47 on screen) GPU 11% idle emu 2% vu 99% gs 94% heap 256 MB audio 9 ms hitch 46.1 ms x1"}
+{"t": 1794097292.8398008, "game": "HSG3", "type": "log", "text": "[stats] frame 512 39.5 fps (40 on screen) GPU 1% idle emu 12% vu 99% gs 96% heap 256 MB audio 81 ms hitch 60.2 ms x8"}
+{"t": 1794097293.3934808, "game": "HSG3", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097293.39499, "game": "HSG3", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 1"}
+{"t": 1794097293.3959994, "game": "HSG3", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097293.3970027, "game": "HSG3", "type": "log", "text": "[io] write 0x1000F590 = 0x10000 (pc 0x0010C880)"}
+{"t": 1794097293.3985221, "game": "HSG3", "type": "log", "text": "[cdvdfsv] search \\DATA\\MOVIE\\HANZ.PSS;1 -> found"}
+{"t": 1794097294.8553932, "game": "HSG3", "type": "log", "text": "[stats] frame 533 24.0 fps (24 on screen) GPU 2% idle emu 15% vu 100% gs 97% heap 256 MB audio 1 ms hitch 103.0 ms x12"}
+{"t": 1794097294.8569007, "game": "HSG3", "type": "log", "text": "[stats] frame 553 19.3 fps (19 on screen) GPU 11% idle emu 7% vu 56% gs 29% heap 307 MB audio 0 ms hitch 92.8 ms x19"}
+{"t": 1794097295.9126384, "game": "HSG3", "type": "log", "text": "[stats] frame 573 19.1 fps (19 on screen) GPU 16% idle emu 7% vu 41% gs 9% heap 307 MB audio 5 ms hitch 92.5 ms x20"}
+{"t": 1794097296.9709885, "game": "HSG3", "type": "log", "text": "[stats] frame 592 18.9 fps (19 on screen) GPU 15% idle emu 10% vu 44% gs 13% heap 307 MB audio 0 ms hitch 114.8 ms x19"}
+{"t": 1794097298.0585485, "game": "HSG3", "type": "log", "text": "[stats] frame 614 21.6 fps (22 on screen) GPU 14% idle emu 8% vu 31% gs 2% heap 307 MB audio 4 ms hitch 63.7 ms x22"}
+{"t": 1794097299.190767, "game": "HSG3", "type": "log", "text": "[stats] frame 637 21.5 fps (21 on screen) GPU 7% idle emu 7% vu 35% gs 0% heap 307 MB audio 1 ms hitch 52.1 ms x22"}
+{"t": 1794097300.3007946, "game": "HSG3", "type": "log", "text": "[stats] frame 655 18.2 fps (18 on screen) GPU 12% idle emu 10% vu 43% gs 15% heap 307 MB audio 0 ms hitch 112.9 ms x19"}
+{"t": 1794097301.378742, "game": "HSG3", "type": "log", "text": "[stats] frame 677 20.8 fps (21 on screen) GPU 14% idle emu 6% vu 34% gs 5% heap 307 MB audio 0 ms hitch 69.7 ms x21"}
+{"t": 1794097302.4921215, "game": "HSG3", "type": "log", "text": "[stats] frame 697 20.2 fps (20 on screen) GPU 17% idle emu 9% vu 38% gs 7% heap 307 MB audio 0 ms hitch 67.7 ms x21"}
+{"t": 1794097303.5451534, "game": "HSG3", "type": "log", "text": "[stats] frame 717 19.2 fps (19 on screen) GPU 11% idle emu 7% vu 41% gs 11% heap 307 MB audio 0 ms hitch 66.9 ms x20"}
+{"t": 1794097304.1187012, "game": "HSG3", "type": "log", "text": "[stats] frame 736 18.8 fps (19 on screen) GPU 6% idle emu 10% vu 43% gs 14% heap 307 MB audio 0 ms hitch 84.5 ms x19"}
+{"t": 1794097305.2519658, "game": "HSG3", "type": "log", "text": "[stats] frame 755 18.0 fps (18 on screen) GPU 12% idle emu 7% vu 43% gs 17% heap 307 MB audio 0 ms hitch 71.9 ms x19"}
+{"t": 1794097306.3868108, "game": "HSG3", "type": "log", "text": "[stats] frame 775 19.2 fps (19 on screen) GPU 15% idle emu 7% vu 44% gs 13% heap 307 MB audio 1 ms hitch 74.2 ms x20"}
+{"t": 1794097307.530715, "game": "HSG3", "type": "log", "text": "[stats] frame 794 18.7 fps (19 on screen) GPU 15% idle emu 11% vu 42% gs 15% heap 307 MB audio 1 ms hitch 88.7 ms x19"}
+{"t": 1794097308.6792746, "game": "HSG3", "type": "log", "text": "[stats] frame 815 20.6 fps (21 on screen) GPU 13% idle emu 8% vu 35% gs 5% heap 307 MB audio 3 ms hitch 71.8 ms x21"}
+{"t": 1794097309.230248, "game": "HSG3", "type": "log", "text": "[stats] frame 836 20.9 fps (21 on screen) GPU 7% idle emu 8% vu 34% gs 3% heap 307 MB audio 1 ms hitch 69.2 ms x21"}
+{"t": 1794097310.3134575, "game": "HSG3", "type": "log", "text": "[stats] frame 857 19.9 fps (20 on screen) GPU 10% idle emu 9% vu 45% gs 6% heap 307 MB audio 0 ms hitch 75.6 ms x21"}
+{"t": 1794097311.410208, "game": "HSG3", "type": "log", "text": "[stats] frame 875 17.1 fps (17 on screen) GPU 13% idle emu 6% vu 46% gs 22% heap 307 MB audio 0 ms hitch 124.3 ms x18"}
+{"t": 1794097312.4682586, "game": "HSG3", "type": "log", "text": "[stats] frame 897 21.1 fps (21 on screen) GPU 16% idle emu 6% vu 28% gs 3% heap 307 MB audio 0 ms hitch 62.8 ms x22"}
+{"t": 1794097313.5971053, "game": "HSG3", "type": "log", "text": "[stats] frame 918 20.6 fps (21 on screen) GPU 9% idle emu 7% vu 31% gs 5% heap 307 MB audio 1 ms hitch 67.2 ms x21"}
+{"t": 1794097314.4279578, "game": "HSG3", "type": "log", "text": "[stats] frame 938 19.5 fps (19 on screen) GPU 6% idle emu 7% vu 41% gs 9% heap 307 MB audio 0 ms hitch 79.9 ms x20"}
+{"t": 1794097317.0087416, "game": "RE4", "type": "warning", "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"}
+{"t": 1794097317.6697862, "game": "RE4", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097318.098523, "game": "RE4", "type": "warning", "text": "The powerPreference option is currently ignored when calling requestAdapter() on Windows. See https://crbug.com/369219127"}
+{"t": 1794097318.1000311, "game": "RE4", "type": "log", "text": "[gpu]  ()"}
+{"t": 1794097318.1030428, "game": "RE4", "type": "log", "text": "[web] presenting through WebGPU"}
+{"t": 1794097318.5712187, "game": "RE4", "type": "log", "text": "[disc] disc: 9 files, 2165936 sectors, layer 1 at 0"}
+{"t": 1794097318.5732188, "game": "RE4", "type": "log", "text": "[mc] card in slot 1: /memcard-ffb47d7e14cf9f5c02425d9158c29b76/Mcd001.ps2 (new, unformatted)"}
+{"t": 1794097318.6206088, "game": "RE4", "type": "log", "text": "[sif] IOP reboot requested with \"rom0:UDNL cdrom0:\\IOPRP.IMG;1\""}
+{"t": 1794097318.8333507, "game": "RE4", "type": "log", "text": "[sif] FILEIO from cdrom0:\\IOPRP.IMG;1 reports 3000, asynchronous protocol"}
+{"t": 1794097318.8348637, "game": "RE4", "type": "log", "text": "[sif] LOADFILE from cdrom0:\\IOPRP.IMG;1 reports 3000"}
+{"t": 1794097318.8409033, "game": "RE4", "type": "log", "text": "[fileio] open cdrom0:\\MODULES.DAT;1 -> 3"}
+{"t": 1794097318.8732607, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x20000, 5217 bytes"}
+{"t": 1794097318.8757813, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x21464, 45925 bytes"}
+{"t": 1794097318.877292, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x2C7CC, 30085 bytes"}
+{"t": 1794097318.8793104, "game": "RE4", "type": "log", "text": "[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x00078C78)"}
+{"t": 1794097318.880309, "game": "RE4", "type": "log", "text": "[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x00078C7C)"}
+{"t": 1794097318.8828297, "game": "RE4", "type": "log", "text": "[iop-io] read 0x1F8010F0 = 0x0 (pc 0x00078C98)"}
+{"t": 1794097318.88383, "game": "RE4", "type": "log", "text": "[iop-io] read 0x1F801570 = 0x0 (pc 0x00078CA8)"}
+{"t": 1794097318.8858418, "game": "RE4", "type": "log", "text": "[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x00078CD4)"}
+{"t": 1794097318.88735, "game": "RE4", "type": "log", "text": "[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x00078CD8)"}
+{"t": 1794097318.8893588, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x33D54, 45896 bytes"}
+{"t": 1794097318.890361, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)===== CAPCOM Sound Engine Ver.0.13(Jul 18 2005 13:15:18) ====="}
+{"t": 1794097318.891871, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] Spu init switch  = 1"}
+{"t": 1794097318.8928843, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] Using spudma ch  = 0"}
+{"t": 1794097318.8948865, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] Base thread prio = 30"}
+{"t": 1794097318.895895, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)=============================================================="}
+{"t": 1794097318.8974159, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] sceSdInit(SD_INIT_COLD) call."}
+{"t": 1794097318.8994389, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x3F09C, 75173 bytes"}
+{"t": 1794097318.9004407, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver Ver.9.42(Feb  8 2005 17:53:57)"}
+{"t": 1794097318.9024396, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver : sceSdInit Call = 0"}
+{"t": 1794097318.9029481, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver : Main Thread Priority = 39"}
+{"t": 1794097318.9049573, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver : PSM Thread Priority  = 39"}
+{"t": 1794097318.9059668, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver : DTX Thread Priority  = 48"}
+{"t": 1794097318.9296005, "game": "RE4", "type": "log", "text": "[iop-tty] CRI ADX Driver : SPU CORE Number = 1"}
+{"t": 1794097318.9305985, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x51644, 103677 bytes"}
+{"t": 1794097319.0223808, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] Set spudma ch=0 interrupt handler."}
+{"t": 1794097319.0249026, "game": "RE4", "type": "log", "text": "[iop-tty] [IOP](SYS)[CSE] Set spudma ch=1 interrupt handler."}
+{"t": 1794097319.026912, "game": "RE4", "type": "log", "text": "[loadfile] buffer at 0x6AB44, 7713 bytes"}
+{"t": 1794097319.0299459, "game": "RE4", "type": "log", "text": "[vu0] cfc2 28"}
+{"t": 1794097319.0324686, "game": "RE4", "type": "log", "text": "[gs] SetGsCrt interlace 1 mode 0x2 field 0"}
+{"t": 1794097319.0334837, "game": "RE4", "type": "log", "text": "[stats] frame 1 0.3 fps (0 on screen) GPU 0% idle emu 0% vu 28% gs 27% heap 256 MB audio 7 ms hitch 0.0 ms x0"}
+{"t": 1794097319.0370142, "game": "RE4", "type": "log", "text": "[cdvdfsv] search \\DATA\\0FLIST.DIR;1 -> found"}
+{"t": 1794097319.038031, "game": "RE4", "type": "log", "text": "[cdvdfsv] search \\DATA\\BIO4DAT.AFS;1 -> found"}
+{"t": 1794097319.040047, "game": "RE4", "type": "log", "text": "[cdvdfsv] search \\DATA\\BIO4MOV.AFS;1 -> found"}
+{"t": 1794097319.0435653, "game": "RE4", "type": "log", "text": "[cdvdfsv] search \\DATA\\BIO4MOV2.AFS;1 -> found"}
+{"t": 1794097320.3219037, "game": "RE4", "type": "log", "text": "[stats] frame 4 0.7 fps (1 on screen) GPU 0% idle emu 92% vu 100% gs 100% heap 256 MB audio 1 ms hitch 1408.2 ms x1"}
+{"t": 1794097321.5776901, "game": "RE4", "type": "log", "text": "[iop-io] read 0x1F808280 = 0x0 (pc 0x0006CD98)"}
+{"t": 1794097321.5812204, "game": "RE4", "type": "log", "text": "[io] write 0x1000F590 = 0x10000 (pc 0x002E7318)"}
+{"t": 1794097321.5822322, "game": "RE4", "type": "log", "text": "[stats] frame 63 61.0 fps (56 on screen) GPU 10% idle emu 16% vu 99% gs 94% heap 256 MB audio 19 ms hitch 57.3 ms x3"}
+{"t": 1794097322.321874, "game": "RE4", "type": "log", "text": "[stats] frame 125 59.0 fps (54 on screen) GPU 1% idle emu 17% vu 100% gs 94% heap 256 MB audio 73 ms hitch 70.5 ms x3"}
+{"t": 1794097324.730034, "game": "RE4", "type": "log", "text": "[stats] frame 185 59.9 fps (60 on screen) GPU 1% idle emu 53% vu 100% gs 95% heap 256 MB audio 74 ms hitch 19.6 ms x0"}
+{"t": 1794097324.7310367, "game": "RE4", "type": "log", "text": "[stats] frame 246 62.7 fps (58 on screen) GPU 6% idle emu 67% vu 100% gs 94% heap 256 MB audio 90 ms hitch 63.7 ms x1"}
+{"t": 1794097325.8079584, "game": "RE4", "type": "log", "text": "[stats] frame 306 57.1 fps (57 on screen) GPU 8% idle emu 88% vu 99% gs 93% heap 256 MB audio 40 ms hitch 56.1 ms x1"}
+{"t": 1794097326.864579, "game": "RE4", "type": "log", "text": "[stats] frame 369 60.4 fps (60 on screen) GPU 4% idle emu 89% vu 98% gs 94% heap 256 MB audio 81 ms hitch 17.8 ms x0"}
+{"t": 1794097327.4098353, "game": "RE4", "type": "log", "text": "[stats] frame 430 60.0 fps (60 on screen) GPU 6% idle emu 90% vu 101% gs 94% heap 256 MB audio 77 ms hitch 17.5 ms x0"}
+{"t": 1794097328.4657345, "game": "RE4", "type": "log", "text": "[stats] frame 491 60.0 fps (60 on screen) GPU 3% idle emu 90% vu 98% gs 94% heap 256 MB audio 75 ms hitch 17.3 ms x0"}
+{"t": 1794097329.5249565, "game": "RE4", "type": "log", "text": "[stats] frame 552 60.0 fps (60 on screen) GPU 3% idle emu 90% vu 99% gs 94% heap 256 MB audio 81 ms hitch 18.2 ms x0"}
+{"t": 1794097330.5985518, "game": "RE4", "type": "log", "text": "[stats] frame 612 60.0 fps (60 on screen) GPU 2% idle emu 92% vu 99% gs 95% heap 256 MB audio 81 ms hitch 19.4 ms x0"}
+{"t": 1794097331.6720936, "game": "RE4", "type": "log", "text": "[stats] frame 673 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 101% gs 95% heap 256 MB audio 76 ms hitch 17.5 ms x0"}
+{"t": 1794097332.4557645, "game": "RE4", "type": "log", "text": "[stats] frame 733 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 100% gs 95% heap 256 MB audio 76 ms hitch 17.6 ms x0"}
+{"t": 1794097333.9960964, "game": "RE4", "type": "log", "text": "[stats] frame 794 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 94% heap 256 MB audio 75 ms hitch 19.4 ms x0"}
+{"t": 1794097334.542917, "game": "RE4", "type": "log", "text": "[stats] frame 854 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 95% heap 256 MB audio 74 ms hitch 18.0 ms x0"}
+{"t": 1794097335.6153636, "game": "RE4", "type": "log", "text": "[stats] frame 915 60.0 fps (60 on screen) GPU 0% idle emu 91% vu 99% gs 95% heap 256 MB audio 80 ms hitch 18.7 ms x0"}
+{"t": 1794097336.6745417, "game": "RE4", "type": "log", "text": "[stats] frame 976 60.0 fps (60 on screen) GPU 0% idle emu 90% vu 99% gs 95% heap 256 MB audio 78 ms hitch 17.6 ms x0"}
+{"t": 1794097337.7448409, "game": "RE4", "type": "log", "text": "[stats] frame 1037 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 95% heap 256 MB audio 73 ms hitch 17.4 ms x0"}
+{"t": 1794097338.8130312, "game": "RE4", "type": "log", "text": "[stats] frame 1098 60.0 fps (60 on screen) GPU 0% idle emu 92% vu 99% gs 95% heap 256 MB audio 79 ms hitch 17.8 ms x0"}
+{"t": 1794097339.877032, "game": "RE4", "type": "log", "text": "[stats] frame 1158 60.0 fps (60 on screen) GPU 3% idle emu 92% vu 99% gs 95% heap 256 MB audio 79 ms hitch 17.9 ms x0"}
+{"t": 1794097340.947375, "game": "RE4", "type": "log", "text": "[stats] frame 1218 60.0 fps (60 on screen) GPU 1% idle emu 85% vu 99% gs 95% heap 256 MB audio 79 ms hitch 17.3 ms x0"}
+{"t": 1794097342.0015647, "game": "RE4", "type": "log", "text": "[stats] frame 1278 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 95% heap 256 MB audio 79 ms hitch 18.5 ms x0"}
+{"t": 1794097343.0533638, "game": "RE4", "type": "log", "text": "[stats] frame 1339 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 99% gs 95% heap 256 MB audio 77 ms hitch 17.3 ms x0"}
+{"t": 1794097343.655826, "game": "RE4", "type": "log", "text": "[stats] frame 1399 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 98% gs 95% heap 256 MB audio 77 ms hitch 29.9 ms x0"}
+{"t": 1794097344.7476056, "game": "RE4", "type": "log", "text": "[stats] frame 1460 60.0 fps (60 on screen) GPU 1% idle emu 89% vu 101% gs 95% heap 256 MB audio 73 ms hitch 18.4 ms x0"}
+{"t": 1794097345.8149066, "game": "RE4", "type": "log", "text": "[stats] frame 1520 60.0 fps (60 on screen) GPU 1% idle emu 91% vu 99% gs 95% heap 256 MB audio 73 ms hitch 19.3 ms x0"}
+{"t": 1794097346.8609402, "game": "RE4", "type": "log", "text": "[stats] frame 1581 60.0 fps (60 on screen) GPU 1% idle emu 87% vu 98% gs 95% heap 256 MB audio 81 ms hitch 17.6 ms x0"}
+{"t": 1794097347.9665563, "game": "RE4", "type": "log", "text": "[stats] frame 1642 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 100% gs 95% heap 256 MB audio 77 ms hitch 17.5 ms x0"}
+{"t": 1794097349.0429406, "game": "RE4", "type": "log", "text": "[stats] frame 1702 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 101% gs 95% heap 256 MB audio 67 ms hitch 18.3 ms x0"}
+{"t": 1794097350.0969641, "game": "RE4", "type": "log", "text": "[stats] frame 1762 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 99% gs 94% heap 256 MB audio 67 ms hitch 17.7 ms x0"}
+{"t": 1794097350.6258786, "game": "RE4", "type": "log", "text": "[stats] frame 1823 60.1 fps (60 on screen) GPU 3% idle emu 86% vu 98% gs 95% heap 256 MB audio 83 ms hitch 17.8 ms x0"}
+{"t": 1794097351.7435188, "game": "RE4", "type": "log", "text": "[stats] frame 1883 60.0 fps (60 on screen) GPU 1% idle emu 90% vu 100% gs 95% heap 256 MB audio 83 ms hitch 18.8 ms x0"}
+{"t": 1794097352.813708, "game": "RE4", "type": "log", "text": "[stats] frame 1943 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 94% heap 256 MB audio 83 ms hitch 17.9 ms x0"}
+{"t": 1794097353.627189, "game": "RE4", "type": "log", "text": "[stats] frame 2003 60.0 fps (60 on screen) GPU 1% idle emu 92% vu 99% gs 95% heap 256 MB audio 75 ms hitch 18.3 ms x0"}

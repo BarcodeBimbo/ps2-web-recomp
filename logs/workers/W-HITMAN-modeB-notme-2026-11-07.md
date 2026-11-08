@@ -48,7 +48,14 @@ Example type7 box after OFX: `x≈-0.5..256` (plausible) but `y≈-1824..325` (O
 3. **Re-verify XYOFFSET in TRACE boxes** — many `-1792…` boxes remain in named xyoffset16 capture; confirm with fresh TRACE after W-HITMAN native lands.
 4. Host compose blit remains **deferred** until a draw page is non-empty.
 
+## Follow-up smokes (same night)
+
+| Probe | Present lum @180 | Notes |
+|-------|-----------------:|-------|
+| type7-fst native default | identical to NO_TME (~0.05/0.10) | `hitman-modeB-type7fst-20261107T191649` |
+| `PS2_GS_PRIM7` env helper | rebuild in flight | `remap_undefined_prim` in `gs.hpp`; default still POINT |
+
 ## Locks
 
 - Did not touch Hitman `web-*-next` (cmake/ninja live).
-- Native lock briefly held for smoke; W-HITMAN reclaimed for type7-fst rebuild (`owner_pid=31216`).
+- Native lock held for PRIM7 helper rebuild (gs.hpp include storm → full native relink).

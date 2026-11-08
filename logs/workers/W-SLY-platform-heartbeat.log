@@ -30,3 +30,6 @@
 [2026-11-07T19:19:44Z] W-SLY HEARTBEAT | status=DIAG_BASE_WAIT | baseline pid=31708 DEAD frames=3
 [2026-11-08T00:19:51Z] W-SLY HEARTBEAT | status=SMOKE2_START | card=card-soft.ps2 PS2_GS=software DIAG_ABE_CLUT=1 frames=1800
 [2026-11-07T19:20:19Z] W-SLY HEARTBEAT | status=DIAG_1800 | 900f stayed on title PATH1=0; launching full 1800f NO_TME software recipe
+[2026-11-08T00:21:29Z] W-SLY HEARTBEAT | status=BASELINE_GPU | no DIAG; default GS; verify 4.8M prims path still works on new binary
+[2026-11-07T19:22:22Z] W-SLY HEARTBEAT | status=DIAG_1800_WAIT | pid=31004 DEAD frames=6
+[2026-11-07T19:22:41Z] W-SLY HEARTBEAT | status=DIAG_1800_FAIL | PATH1 still 0 @1800 with formatted card — presses not entering Paris; checking live cards + gif path1 in err log

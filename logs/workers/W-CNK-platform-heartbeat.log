@@ -16,3 +16,7 @@
 2026-11-07 19:14:50 W-CNK-SMOKE heartbeat lane=b49f smoke=DONE frames=5000 prims=2 probe_503308=ABSENT o20_guard=armed late_hle_restore=yes verdict=RED await_cascade_link
 2026-11-07 19:15:12 W-CNK-SMOKE heartbeat lane=b49f progress_updated=alchemy-runtime-rebuild-progress smoke=RED prims=2 next=await_cascade_relink
 2026-11-07 19:19:16 W-CNK-RESMOKE heartbeat lane=b49f action=await_cascade cmake=11292,29392 ps2run_mtime=2026-11-07T19:11:56 prior_smoke=RED_prims2 status=waiting_hooked_link
+2026-11-07 19:21:10 W-CNK-RESMOKE heartbeat lane=b49f action=await_cascade tick=1 cmake=11292,29392 ps2run_mtime=2026-11-07 19:11:56 fresh_link=False clang_b49f~0
+2026-11-07 19:21:24 W-CNK-CRIT follow-up: disarm deferred until after parse latch; jit always-logs; eerecomp codegen emits jit@503308+post-51c100; ghidra 51c100 gates on BYTE attach+0x24 (0x1 passes); awaiting cascade writers then refresh --probes + single-writer rebuild + 4-8k smoke
+2026-11-07 19:22:19 W-CNK-RESMOKE heartbeat lane=b49f action=await_cascade tick=2 cmake=11292,29392 ps2run_mtime=2026-11-07 19:11:56 fresh_link=False clang_b49f~0
+2026-11-07 19:23:25 W-CNK-RESMOKE heartbeat lane=b49f action=await_cascade tick=3 cmake=11292,29392 ps2run_mtime=2026-11-07 19:11:56 fresh_link=False clang_b49f~0

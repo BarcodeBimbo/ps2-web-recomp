@@ -1,7 +1,1 @@
-﻿campaign-owner ALIVE
-status=permanent-overnight-running
-pid=15764
-local=2026-11-07 19:20:46
-utc=2026-11-08T00:20:46Z
-watcher=build-complete
-
+﻿2026-11-08T00:23:13Z ALIVE overnight-watchdog-armed tick5

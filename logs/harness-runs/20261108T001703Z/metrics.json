@@ -1,0 +1,407 @@
+{
+  "schema": "ps2recomp.harness.metrics/v1",
+  "run_id": "20261108T001703Z",
+  "observe_s": 30,
+  "harness": "cyberarcade_live",
+  "games": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "name": "NFS_MW",
+      "label": "NFS",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2505,
+        "00b_loading": 19.2984,
+        "01_boot": 20.4385,
+        "02_observe_start": 20.4681,
+        "03_observe_mid": 0.1382,
+        "issue_halt_18": 8.3823,
+        "04_observe_end": 8.3823
+      },
+      "canvas_lum_end": 8.3823,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 44.87894736842105,
+        "min": 21.1,
+        "max": 69.9
+      },
+      "fps_overlay": {
+        "samples": 11,
+        "avg": 39.09090909090909,
+        "min": 13.0,
+        "max": 61.0,
+        "maxMs_peak": 602.0,
+        "graph_trend_avg": -0.08008333333333333,
+        "graph_trend_last": -0.053
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 57277,
+      "booted": true
+    },
+    {
+      "game_id": "c0c4527037b6168660829a0eb13df1a3",
+      "name": "Sly1",
+      "label": "Sly",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.3198,
+        "01_boot": 0.1135,
+        "02_observe_start": 11.8991,
+        "03_observe_mid": 14.7103,
+        "04_observe_end": 14.7351
+      },
+      "canvas_lum_end": 14.7351,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 59.842592592592595,
+        "min": 53.5,
+        "max": 62.0
+      },
+      "fps_overlay": {
+        "samples": 18,
+        "avg": 55.94444444444444,
+        "min": 1.0,
+        "max": 60.0,
+        "maxMs_peak": 1892.0,
+        "graph_trend_avg": -0.012210526315789475,
+        "graph_trend_last": 0.002
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 314210,
+      "booted": true
+    },
+    {
+      "game_id": "34402ee3c1917272f971028b4fb24868",
+      "name": "GoW2",
+      "label": "GoW2",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.1407,
+        "01_boot": 6.1905,
+        "02_observe_start": 7.1155,
+        "03_observe_mid": 40.5086,
+        "04_observe_end": 40.2739
+      },
+      "canvas_lum_end": 40.2739,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 53.736538461538466,
+        "min": 13.4,
+        "max": 67.8
+      },
+      "fps_overlay": {
+        "samples": 17,
+        "avg": 51.0,
+        "min": 0.0,
+        "max": 68.0,
+        "maxMs_peak": 269.0,
+        "graph_trend_avg": 0.00027777777777777957,
+        "graph_trend_last": -0.069
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 5443056,
+      "booted": true
+    },
+    {
+      "game_id": "1e5a12a02722175839d88d0301949cd9",
+      "name": "Ratchet2",
+      "label": "Ratchet2",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2467,
+        "01_boot": 0.3059,
+        "02_observe_start": 0.9971,
+        "03_observe_mid": 0.1483,
+        "04_observe_end": 0.1506
+      },
+      "canvas_lum_end": 0.1506,
+      "canvas_black_end": true,
+      "fps": {
+        "avg": 34.514814814814834,
+        "min": 0.6,
+        "max": 45.4
+      },
+      "fps_overlay": {
+        "samples": 18,
+        "avg": 32.388888888888886,
+        "min": 1.0,
+        "max": 45.0,
+        "maxMs_peak": 19731.0,
+        "graph_trend_avg": 0.024684210526315777,
+        "graph_trend_last": 0.114
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 6386,
+      "booted": true
+    },
+    {
+      "game_id": "76615f9956b13094771e370c883c7170",
+      "name": "DefJam",
+      "label": "DefJam",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2489,
+        "00b_loading": 6.2183,
+        "01_boot": 2.0988,
+        "02_observe_start": 1.3215,
+        "03_observe_mid": 2.0486,
+        "issue_halt_29": 8.3511,
+        "04_observe_end": 8.3511
+      },
+      "canvas_lum_end": 8.3511,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 52.076666666666675,
+        "min": 23.9,
+        "max": 62.0
+      },
+      "fps_overlay": {
+        "samples": 14,
+        "avg": 45.714285714285715,
+        "min": 0.0,
+        "max": 62.0,
+        "maxMs_peak": 253.0,
+        "graph_trend_avg": -0.022266666666666664,
+        "graph_trend_last": -0.118
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 15133,
+      "booted": true
+    },
+    {
+      "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+      "name": "GT4",
+      "label": "GT4",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2574,
+        "00b_loading": 6.2145,
+        "01_boot": 2.6523,
+        "02_observe_start": 3.9519,
+        "03_observe_mid": 145.3168,
+        "04_observe_end": 145.2076
+      },
+      "canvas_lum_end": 145.2076,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 56.504,
+        "min": 28.5,
+        "max": 63.0
+      },
+      "fps_overlay": {
+        "samples": 17,
+        "avg": 53.23529411764706,
+        "min": 29.0,
+        "max": 61.0,
+        "maxMs_peak": 137.0,
+        "graph_trend_avg": -0.007947368421052632,
+        "graph_trend_last": 0.0
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 591176,
+      "booted": true
+    },
+    {
+      "game_id": "c0671389c296be6afe9e5224c97d30df",
+      "name": "NFSU2",
+      "label": "NFSU2",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2759,
+        "00b_loading": 6.2033,
+        "01_boot": 14.5608,
+        "02_observe_start": 14.6934,
+        "03_observe_mid": 79.8929,
+        "04_observe_end": 10.8855
+      },
+      "canvas_lum_end": 10.8855,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 14.188235294117643,
+        "min": 1.9,
+        "max": 61.7
+      },
+      "fps_overlay": {
+        "samples": 17,
+        "avg": 16.0,
+        "min": 2.0,
+        "max": 62.0,
+        "maxMs_peak": 1599.0,
+        "graph_trend_avg": 0.082,
+        "graph_trend_last": 0.002
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 45293,
+      "booted": true
+    },
+    {
+      "game_id": "f141051d9b9fae0fb48deced01311f44",
+      "name": "Hitman2",
+      "label": "Hitman2",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2485,
+        "00_halt": 8.341,
+        "01_boot": 8.341,
+        "issue_halt_0": 8.341,
+        "04_observe_end": 8.341
+      },
+      "canvas_lum_end": 8.341,
+      "canvas_black_end": false,
+      "fps": null,
+      "fps_overlay": {
+        "samples": 0,
+        "avg": null,
+        "min": null,
+        "max": null,
+        "maxMs_peak": null,
+        "graph_trend_avg": 0.0,
+        "graph_trend_last": 0.0
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 0,
+      "booted": false
+    },
+    {
+      "game_id": "f29093e1f939f924fb11cc605b592b11",
+      "name": "HSG3",
+      "label": "HSG3",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2508,
+        "00b_loading": 0.1135,
+        "01_boot": 0.1382,
+        "02_observe_start": 0.1381,
+        "03_observe_mid": 0.1562,
+        "04_observe_end": 22.9448
+      },
+      "canvas_lum_end": 22.9448,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 26.001960784313727,
+        "min": 17.1,
+        "max": 46.7
+      },
+      "fps_overlay": {
+        "samples": 18,
+        "avg": 27.72222222222222,
+        "min": 0.0,
+        "max": 57.0,
+        "maxMs_peak": 152.0,
+        "graph_trend_avg": 0.021473684210526315,
+        "graph_trend_last": -0.008
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 66306283,
+      "booted": true
+    },
+    {
+      "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+      "name": "RE4",
+      "label": "RE4",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.2407,
+        "00b_loading": 0.1135,
+        "01_boot": 0.1386,
+        "02_observe_start": 0.1382,
+        "03_observe_mid": 2.9321,
+        "04_observe_end": 2.9277
+      },
+      "canvas_lum_end": 2.9277,
+      "canvas_black_end": true,
+      "fps": {
+        "avg": 59.98461538461538,
+        "min": 57.1,
+        "max": 62.7
+      },
+      "fps_overlay": {
+        "samples": 17,
+        "avg": 59.76470588235294,
+        "min": 57.0,
+        "max": 61.0,
+        "maxMs_peak": 71.0,
+        "graph_trend_avg": -0.016526315789473684,
+        "graph_trend_last": -0.002
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 128305,
+      "booted": true
+    }
+  ],
+  "paths": {
+    "summary": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001703Z\\summary.json",
+    "console": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001703Z\\console.jsonl",
+    "fps_overlay": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001703Z\\fps-overlay.jsonl"
+  }
+}

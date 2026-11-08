@@ -7,3 +7,4 @@
 [2026-11-07 19:19:07] W-HITMAN done-slice: type7-FST shipped native; web-next ~455/931; NO checkbox flip; report written
 [2026-11-07 19:19:14] W-HITMAN: type7-POINT+clearFST FALSIFIED — present lum identical to NO_TME (nz=404/439); FBP288 capture empty; next=type7→SPRITE+clearFST; web-next cmake=29328 LIVE NO_KILL
 [2026-11-07 19:19:42] W-HITMAN: starting Mode B PS2_GS_PRIM7=sprite 180f frames-dir out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-prim7sprite-20261107T191942 exe_mtime=11/07/2026 19:14:39
+[2026-11-07 19:22:06] W-HITMAN: NO_ATE+CAPTURE 180f for FBP288 (prior NO_ATE only measured present/400); out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-noate-20261107T1922 cap=C:\PS2Recomp\logs\hitman-capture-noate-fbp288-20261107
