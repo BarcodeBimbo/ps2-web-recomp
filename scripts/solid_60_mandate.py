@@ -80,16 +80,31 @@ def resolve_min_fps(game_id: str, reg: dict | None = None) -> dict:
         if entry and entry.get("approved", True):
             target = float(entry["min_fps"])
             ok = target in ALLOWED_EXCEPTION_FPS
+            err = None
+            if not ok:
+                err = f"allowlist fps must be one of {sorted(ALLOWED_EXCEPTION_FPS)}"
+            else:
+                # Reject incomplete policy rows so consumers never silently accept bad allowlists.
+                for problem in validate_exceptions(
+                    {
+                        "global_runtime": {
+                            "min_fps_exceptions": {game_id: exc_map[game_id]},
+                            "min_fps_exception_policy": global_rt.get("min_fps_exception_policy")
+                            or {},
+                        }
+                    }
+                ):
+                    err = problem.get("error") or "invalid_exception"
+                    ok = False
+                    break
             return {
                 "game_id": game_id,
-                "min_fps": target,
-                "source": "min_fps_exceptions",
-                "allowlisted": True,
+                "min_fps": target if ok else float(global_rt.get("min_fps_default", 60)),
+                "source": "min_fps_exceptions" if ok else "min_fps_default_invalid_exception",
+                "allowlisted": ok,
                 "reason": entry.get("reason") or "",
                 "exception_valid": ok,
-                "exception_error": None
-                if ok
-                else f"allowlist fps must be one of {sorted(ALLOWED_EXCEPTION_FPS)}",
+                "exception_error": err,
             }
 
     if meta.get("min_fps_target") is not None:
@@ -115,9 +130,16 @@ def resolve_min_fps(game_id: str, reg: dict | None = None) -> dict:
 
 
 def validate_exceptions(reg: dict | None = None) -> list[dict]:
-    """Audit registry allowlist entries (schema + allowed fps set)."""
+    """Audit registry allowlist entries (schema + allowed fps set + policy fields)."""
     reg = reg or load_registry()
-    exc_map = (reg.get("global_runtime") or {}).get("min_fps_exceptions") or {}
+    global_rt = reg.get("global_runtime") or {}
+    exc_map = global_rt.get("min_fps_exceptions") or {}
+    policy = global_rt.get("min_fps_exception_policy") or {}
+    required = list(policy.get("required_fields") or ["reason"])
+    # Always enforce reason; honor registry policy extras (evidence, verified_date).
+    for field in ("reason",):
+        if field not in required:
+            required.append(field)
     problems: list[dict] = []
     for gid, raw in exc_map.items():
         entry = _exception_entry(raw)
@@ -133,23 +155,85 @@ def validate_exceptions(reg: dict | None = None) -> list[dict]:
                     "allowed": sorted(ALLOWED_EXCEPTION_FPS),
                 }
             )
-        if not entry.get("reason"):
-            problems.append(
-                {
-                    "game_id": gid,
-                    "error": "missing_reason",
-                    "note": "true 30/50 Hz exceptions require a registry reason",
-                }
-            )
+        for field in required:
+            if not str(entry.get(field) or "").strip():
+                problems.append(
+                    {
+                        "game_id": gid,
+                        "error": f"missing_{field}",
+                        "note": "true 30/50 Hz exceptions require registry policy fields",
+                        "required_fields": required,
+                    }
+                )
         if entry.get("legacy_scalar"):
             problems.append(
                 {
                     "game_id": gid,
                     "error": "legacy_scalar",
-                    "note": 'prefer {"min_fps": 30, "reason": "..."}',
+                    "note": 'prefer {"min_fps": 30, "reason": "...", "evidence": "...", "verified_date": "..."}',
                 }
             )
     return problems
+
+
+def harness_metrics_by_id() -> dict[str, dict]:
+    """Index Chrome harness metrics by game_id (measure-only; no rebuild)."""
+    by_id: dict[str, dict] = {}
+    latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
+    if latest.is_file():
+        try:
+            blob = json.loads(latest.read_text(encoding="utf-8"))
+            for g in blob.get("games") or []:
+                gid = g.get("game_id")
+                if gid:
+                    by_id[str(gid)] = g
+        except (OSError, json.JSONDecodeError):
+            pass
+    return by_id
+
+
+def measure_library_solid60(*, write: bool = True, path: Path | None = None) -> dict:
+    """Solid-60 library sweep measure from registry + existing harness metrics (no cmake)."""
+    reg, exc_problems = load_registry_checked()
+    by_id = harness_metrics_by_id()
+    rows: list[dict] = []
+    counts = {"pass": 0, "fail": 0, "no_metrics": 0, "quarantined": 0}
+    for gid, meta in sorted((reg.get("per_game") or {}).items()):
+        title = meta.get("title") or gid
+        if meta.get("disc_fix_quarantine") or meta.get("alchemy_only"):
+            rows.append({"game_id": gid, "title": title, "status": "quarantined"})
+            counts["quarantined"] += 1
+            continue
+        chrome = by_id.get(gid)
+        if not chrome:
+            rows.append({"game_id": gid, "title": title, "status": "no_chrome_metrics"})
+            counts["no_metrics"] += 1
+            continue
+        verdict = evaluate_solid_60(gid, chrome_metrics=chrome, reg=reg)
+        status = "pass" if verdict.get("pass") else "fail"
+        counts[status] += 1
+        rows.append({"game_id": gid, "title": title, "status": status, "solid_60": verdict})
+
+    out = {
+        "schema": "ps2recomp.solid60.library_measure/v1",
+        "exception_problems": exc_problems,
+        "registry_schema": reg.get("schema"),
+        "disc_fix_applied": list((reg.get("global_runtime") or {}).get("disc_fix_applied") or []),
+        "titles": len(rows),
+        "pass": counts["pass"],
+        "fail": counts["fail"],
+        "no_metrics": counts["no_metrics"],
+        "quarantined": counts["quarantined"],
+        "rows": rows,
+        "product_changes_applied": False,
+        "note": "measure-only; library Chrome sweep checkbox stays open until pass covers all non-quarantined titles",
+    }
+    if write:
+        out_path = path or LIBRARY_OUT
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+        out["written"] = str(out_path.relative_to(ROOT)).replace("\\", "/")
+    return out
 
 
 def _fps_block(metrics: dict | None, key: str) -> dict:

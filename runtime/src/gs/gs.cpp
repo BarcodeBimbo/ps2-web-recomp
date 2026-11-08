@@ -372,6 +372,35 @@ void load_clut(std::uint64_t tex0) {
         const std::uint32_t slot = eight ? i : ((csa & 15u) * 16u + i) & 255u;
         g_state.clut[slot] = c;
     }
+    // Opt-in Sly building probe: dump CLUT alpha stats for hotspot CBPs once each.
+    // PS2_GS_DIAG_ABE_CLUT — proves whether palette A is already 0 before ABE.
+    static const char *diag = std::getenv("PS2_GS_DIAG_ABE_CLUT");
+    if (diag) [[unlikely]] {
+        const bool hot = cbp == 0x1400u || cbp == 0x1401u || cbp == 0x1402u || cbp == 0x1F82u || cbp == 0x1F83u ||
+                         cbp == 0x1F84u;
+        if (hot) {
+            static std::uint32_t seen_mask = 0;
+            const std::uint32_t bit = 1u << (cbp & 31u);
+            if ((seen_mask & bit) == 0u) {
+                seen_mask |= bit;
+                std::uint32_t a_zero = 0, rgb_zero = 0, a_min = 255, a_max = 0, a_sum = 0;
+                const std::uint32_t base = eight ? 0u : ((csa & 15u) * 16u);
+                for (std::uint32_t i = 0; i < entries; ++i) {
+                    const std::uint32_t c = g_state.clut[(base + i) & (eight ? 255u : 511u)];
+                    const std::uint32_t a = c >> 24;
+                    if (a == 0) ++a_zero;
+                    if ((c & 0xFFFFFFu) == 0) ++rgb_zero;
+                    a_min = std::min(a_min, a);
+                    a_max = std::max(a_max, a);
+                    a_sum += a;
+                }
+                std::fprintf(stderr,
+                             "[gs-diag-abe-clut] load_clut cbp=%04X csa=%u csm=%u cpsm=%u n=%u a_zero=%u rgb_zero=%u "
+                             "a_min=%u a_max=%u a_mean=%u\n",
+                             cbp, csa, csm, cpsm, entries, a_zero, rgb_zero, a_min, a_max, a_sum / entries);
+            }
+        }
+    }
 }
 
 }

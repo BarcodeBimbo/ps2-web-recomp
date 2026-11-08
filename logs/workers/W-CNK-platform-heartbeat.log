@@ -13,3 +13,4 @@
 2026-11-07 19:11:18 W-CNK-ALCHEMY smoke DONE frames=3000 prims=2 guard=armed restore_late=yes blocked_clear=0 jit_restore=0 probe_503308=absent
 2026-11-07 19:12:32 W-CNK-ALCHEMY DONE build=READY smoke=exit0 prims=2 guard=armed blocked=0 jit=0 probe503308=absent ghidra_doc=alchemy-o20-clear-ghidra-2026-11-07.md
 2026-11-07 19:12:59 W-CNK-SMOKE heartbeat lane=b49f smoke_pid=27060 status=exited out_bytes=0
+2026-11-07 19:14:50 W-CNK-SMOKE heartbeat lane=b49f smoke=DONE frames=5000 prims=2 probe_503308=ABSENT o20_guard=armed late_hle_restore=yes verdict=RED await_cascade_link

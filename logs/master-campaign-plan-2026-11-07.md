@@ -1,7 +1,7 @@
 ﻿# Master campaign plan — PS2Recomp / CyberArcade
 
 **File:** `logs/master-campaign-plan-2026-11-07.md`  
-**Updated:** 2026-11-07 ~11:15 local (web rebuild + harness `20261107T161255Z`)  
+**Updated:** 2026-11-07 ~19:14 local (owner overnight: Mode B NO_TME falsified; nightly checkbox; GoW min60 FAIL)  
 
 **Execution mandate (God ~10:28 + final ~19:04):** This plan runs **without user input, call, or wait** — full agent control. **Permanent overnight mode** (`logs/campaign-owner-permanent-mode.md`): never idle; never stop on a completed checkbox — next immediately; test/fix/improve until God says stop; report only on breaks or major greens. On context overflow → fresh agent + snapshot; keep executing checkboxes.  
 **Repo:** `C:\PS2Recomp`  

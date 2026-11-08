@@ -1,0 +1,13 @@
+﻿CNK muted smoke result 2026-11-07 ~19:12 local
+gid=b49f2e769315347e8bda839feb705744
+frames=5000
+log=logs/autonomous-pipeline/cnk-b49f-o20-smoke-5k-20261108T001048Z.log(.err)
+bin_copy=logs/autonomous-pipeline/cnk-smoke-bin-20261108T001048Z/ps2run.exe
+lock=native-b49f acquired as W-CNK-smoke-o20 (respected cmake 11292; Hitman untouched)
+
+[alchemy-o20] guard armed: YES (0x009754B8 value=0x007462F8)
+[probe] 0x503308: ABSENT (0 probe lines)
+[alchemy-o20] jit@/jit-restore: ABSENT
+late HLE restore: YES (was 0, +0xFF=1→0) — too late after vt108 skip
+prims: 2 (NOT >> 2)
+verdict: GATE STILL RED; soft-arm+guard work; JIT/probe path not observed on this linked image; cascade rebuild still compiling m_* units (~168/573) — re-smoke after unit_0100 with alchemy_o20_jit_before_lw is in the linked ps2run
