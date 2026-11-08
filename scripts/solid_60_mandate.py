@@ -186,6 +186,23 @@ def validate_exceptions(reg: dict | None = None) -> list[dict]:
     return problems
 
 
+def locked_game_ids() -> dict[str, list[str]]:
+    """Map game_id → lock basenames under logs/locks (native-/web-*). Never clears locks."""
+    out: dict[str, list[str]] = {}
+    lock_dir = ROOT / "logs" / "locks"
+    if not lock_dir.is_dir():
+        return out
+    for lock in lock_dir.glob("*.lock"):
+        name = lock.name
+        for prefix in ("native-", "web-"):
+            if name.startswith(prefix) and name.endswith(".lock"):
+                rest = name[len(prefix) : -5]
+                gid = rest.split("-", 1)[0]
+                if len(gid) == 32:
+                    out.setdefault(gid, []).append(name)
+    return out
+
+
 def harness_metrics_by_id() -> dict[str, dict]:
     """Index Chrome harness metrics by game_id (measure-only; no rebuild)."""
     by_id: dict[str, dict] = {}
@@ -223,8 +240,16 @@ def measure_library_solid60(*, write: bool = True, path: Path | None = None, reg
     else:
         exc_problems = validate_exceptions(reg)
     by_id = harness_metrics_by_id()
+    locked = locked_game_ids()
     rows: list[dict] = []
-    counts = {"pass": 0, "fail": 0, "no_metrics": 0, "quarantined": 0}
+    counts = {
+        "pass": 0,
+        "fail": 0,
+        "no_metrics": 0,
+        "deferred_locked": 0,
+        "quarantined": 0,
+    }
+    near_pass: list[dict] = []
     for gid, meta in sorted((reg.get("per_game") or {}).items()):
         title = meta.get("title") or gid
         if meta.get("disc_fix_quarantine") or meta.get("alchemy_only"):
@@ -233,13 +258,44 @@ def measure_library_solid60(*, write: bool = True, path: Path | None = None, reg
             continue
         chrome = by_id.get(gid)
         if not chrome:
-            rows.append({"game_id": gid, "title": title, "status": "no_chrome_metrics"})
-            counts["no_metrics"] += 1
+            status = "deferred_locked" if gid in locked else "no_chrome_metrics"
+            row = {
+                "game_id": gid,
+                "title": title,
+                "status": status,
+                "locks": locked.get(gid, []),
+            }
+            rows.append(row)
+            counts["deferred_locked" if status == "deferred_locked" else "no_metrics"] += 1
             continue
         verdict = evaluate_solid_60(gid, chrome_metrics=chrome, reg=reg)
         status = "pass" if verdict.get("pass") else "fail"
         counts[status] += 1
-        rows.append({"game_id": gid, "title": title, "status": status, "solid_60": verdict})
+        row = {
+            "game_id": gid,
+            "title": title,
+            "status": status,
+            "solid_60": verdict,
+            "locks": locked.get(gid, []),
+        }
+        rows.append(row)
+        fps = (verdict.get("stats_fps") or {}) if isinstance(verdict, dict) else {}
+        try:
+            avg = float(fps["avg"]) if fps.get("avg") is not None else None
+            mn = float(fps["min"]) if fps.get("min") is not None else None
+        except (TypeError, ValueError):
+            avg, mn = None, None
+        if status == "fail" and avg is not None and avg >= 55.0 and mn is not None and mn >= 50.0:
+            near_pass.append(
+                {
+                    "game_id": gid,
+                    "title": title,
+                    "avg": avg,
+                    "min": mn,
+                    "sustained_fps": verdict.get("sustained_fps"),
+                    "violations": verdict.get("violations") or [],
+                }
+            )
 
     out = {
         "schema": "ps2recomp.solid60.library_measure/v1",
@@ -252,7 +308,10 @@ def measure_library_solid60(*, write: bool = True, path: Path | None = None, reg
         "pass": counts["pass"],
         "fail": counts["fail"],
         "no_metrics": counts["no_metrics"],
+        "deferred_locked": counts["deferred_locked"],
         "quarantined": counts["quarantined"],
+        "near_pass": near_pass,
+        "locked_game_ids": sorted(locked.keys()),
         "rows": rows,
         "product_changes_applied": False,
         "note": "measure-only; library Chrome sweep checkbox stays open until pass covers all non-quarantined titles",

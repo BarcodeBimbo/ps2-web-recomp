@@ -911,10 +911,12 @@ void write(std::uint32_t reg, std::uint64_t value) {
     case 0x45: s.dthe = value; break;
     case 0x46: s.colclamp = value; break;
     case 0x47: case 0x48: {
-        // Hitman live TEST often 0x5002D (ATE=1, ATST=GREATER, AREF=2). Opt-in: clear ATE
-        // to see whether alpha reject is emptying the draw page.
+        // Hitman live TEST often 0x5002D (ATE=1, ATST=GREATER, AREF=2, ZTE=1). Opt-in probes:
+        // clear ATE and/or ZTE to see whether reject is emptying the draw page.
         static const bool no_ate = std::getenv("PS2_GS_NO_ATE") != nullptr;
+        static const bool no_zte = std::getenv("PS2_GS_NO_ZTE") != nullptr;
         if (no_ate) value &= ~1ull;
+        if (no_zte) value &= ~(1ull << 16);
         s.ctx[reg - 0x47].test = value;
         break;
     }
