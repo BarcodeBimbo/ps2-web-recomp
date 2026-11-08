@@ -1,0 +1,12 @@
+{
+  "schema": "ps2recomp.harness.metrics/v1",
+  "run_id": "20261108T001150Z",
+  "observe_s": 60,
+  "harness": "cyberarcade_live",
+  "games": [],
+  "paths": {
+    "summary": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\summary.json",
+    "console": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\console.jsonl",
+    "fps_overlay": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\fps-overlay.jsonl"
+  }
+}

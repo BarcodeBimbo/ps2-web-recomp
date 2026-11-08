@@ -444,7 +444,13 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
         dx.actions_planned.append({"fix": "matrix_phase_reprobe", "auto": False})
 
     if "low_fps" in dx.symptoms:
-        dx.actions_planned.append({"fix": "fps_optimize_pass", "auto": False, "note": "stub — measure only"})
+        dx.actions_planned.append(
+            {
+                "fix": "fps_optimize_pass",
+                "auto": False,
+                "note": "solid_60_mandate measure only — no FPS overlay pass, no frameskip, no V-Sync uncap",
+            }
+        )
 
     if "fbp_triad_mismatch" in dx.symptoms:
         dx.actions_planned.append(
@@ -471,6 +477,9 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
     if not dry_run and auto and dx.actions_taken:
         dx.actions_taken.append(run_smoke(game_id, 200))
 
+    from solid_60_mandate import evaluate_solid_60
+
+    solid_60 = evaluate_solid_60(game_id, chrome_metrics=harness, log_text=text)
     report = {
         "game_id": game_id,
         "updated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -485,6 +494,7 @@ def heal_game(game_id: str, *, dry_run: bool = False, auto: bool = True) -> dict
             "matrix_verdict": matrix.get("verdict") if matrix else None,
             "min_fps_target": min_fps_target(game_id),
             "min_canvas_lum": min_canvas_lum(game_id),
+            "solid_60": solid_60,
         },
     }
     out_path = GAMES / game_id / ISSUES_NAME

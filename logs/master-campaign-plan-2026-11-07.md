@@ -155,9 +155,9 @@
 - [x] 2026-11-07 — GoW native 3600f smoke ~19.2M prims (`logs/gow-patientzero-smoke/`)
 - [x] 2026-11-07 — `autonomous_verify` summary includes `fps_metrics` + `chrome_metrics` (native vblank/cycles + harness FPS)
 - [x] 2026-11-07 — Harness `metrics.json` v1: `canvas_lum`, FPS, BOOTMENU regex (`20261107T140555Z/metrics.json`)
-- [ ] Per-game **30 FPS allowlist** in registry (true 50/60 Hz exceptions only)
+- [x] 2026-11-07 — Per-game 30/50 allowlist hook in registry + `scripts/solid_60_mandate.py` (empty exceptions; policy verified)
 - [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window
-- [ ] Final optimization pass: WebGPU path, present pacing (additive only; no new product shell)
+- [ ] Final optimization pass: WebGPU path, present pacing (additive only; no new product shell) — measure done `logs/workers/W-HOST-present-pacing-measure-2026-11-07.json`; apply still God-locked
 
 ---
 
