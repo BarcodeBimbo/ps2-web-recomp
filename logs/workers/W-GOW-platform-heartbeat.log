@@ -151,3 +151,10 @@ jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5
 status=waiting
 poll=12 cpu=100 ninja=6 hitman=building
 [2026-11-07 19:24:58] GOD PAUSE — suspend lane; no further work
+=== W-GOW heartbeat 2026-11-07 19:25:15 ===
+status=waiting
+poll=13 cpu=100 ninja=5 hitman=building
+=== W-GOW heartbeat 2026-11-07 19:25:15 ===
+status=wait_panel_quiet
+busy=1
+jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5
