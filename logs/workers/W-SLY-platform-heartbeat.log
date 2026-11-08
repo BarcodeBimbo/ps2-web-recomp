@@ -11,3 +11,4 @@
 [2026-11-07T19:10:54Z] W-SLY HEARTBEAT | status=STEP_A_CONT | reading draws.tsv + gs load_clut/ABE for smallest shared fix vs env diagnostic
 [2026-11-07T19:10:57Z] W-SLY HEARTBEAT | status=PARSE_CAP | decoding last-frame draws.tsv building batches TEX0/TEST/ALPHA/ABE
 [2026-11-07T19:11:20Z] W-SLY HEARTBEAT | status=PARSE_RUN | executing _w_sly_parse_cap.py
+[2026-11-07T19:11:31Z] W-SLY HEARTBEAT | status=PARSE_FIX | TME=0 on all rows — inspect raw draw line format

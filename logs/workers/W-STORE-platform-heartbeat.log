@@ -1,4 +1,3 @@
-﻿W-STORE heartbeat 2026-11-07 19:11:11
-status=running_nightly_nfs500
-game=60c82f4a111da300ac23bbec85272788
-frames=500 skip_build=1
+﻿W-STORE heartbeat 2026-11-07 19:11:37
+status=building_store_ready_contract
+nightly_pass=logs/autonomous-pipeline/nightly-20261108T001112Z.json

@@ -1,9 +1,8 @@
 {
-    "phase":  "modeB-falsified-notme;gow-hold;store-nightly",
-    "utc":  "2026-11-08T00:10:45Z",
-    "pid":  28980,
-    "evidence":  "logs/autonomous-pipeline/hitman-modeB-notme-20261107T190853",
-    "local":  "2026-11-07 19:10:45",
+    "phase":  "gow-accept-review+modeB-evidence+store-nightly",
+    "utc":  "2026-11-08T00:11:23Z",
+    "pid":  28640,
+    "local":  "2026-11-07 19:11:23",
     "role":  "campaign-owner",
     "status":  "permanent-overnight-running"
 }

@@ -1,0 +1,77 @@
+{
+  "measure": {
+    "schema": "ps2recomp.present_pacing.measure/v1",
+    "god_lock": "no_vsync_uncap_without_unlock",
+    "sources": {
+      "host_web": "host/web.cpp",
+      "gs": "runtime/src/gs/gs.cpp"
+    },
+    "constants": {
+      "kMaxBehind_emscripten": 4,
+      "kMaxBehind_native": 3,
+      "raf_skip_when_presents_queued_gt": 2,
+      "render_pending_budget_ms": 10.0,
+      "pace_spin_tail_ms": 1.5,
+      "g_vsync_default": true,
+      "g_frame_period_ms_expr": "1000.0 / 60.0",
+      "vsync_on_fps_cap_60": true,
+      "uncap_forbidden_under_vsync": true
+    },
+    "interpretation": {
+      "steady_play": "depth 0\u20131 \u2192 hard RAF wait every present",
+      "hitch_recovery": "depth >2 \u2192 skip RAF wait only (not a frameskip product)",
+      "ee_backpressure": "post_present stalls EE beyond kMaxBehind",
+      "mandate": "solid 60 via stats FPS; overlay/diagnostic only; no V-Sync uncap apply"
+    },
+    "product_changes_applied": false,
+    "measure_complete": true,
+    "missing_fields": [],
+    "written": "logs/workers/W-HOST-present-pacing-measure-2026-11-07.json"
+  },
+  "exception_problems": [],
+  "evaluations": [
+    {
+      "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+      "pass": false,
+      "min_fps_target": 60.0,
+      "target_info": {
+        "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
+        "min_fps": 60.0,
+        "source": "min_fps_default",
+        "allowlisted": false,
+        "reason": "",
+        "exception_valid": true,
+        "exception_error": null
+      },
+      "sustained_fps": 10.6,
+      "stats_fps": {
+        "avg": 57.641666666666666,
+        "min": 10.6,
+        "max": 60.0
+      },
+      "fps_overlay_ignored_for_pass": true,
+      "fps_overlay_observed": {
+        "samples": 25,
+        "avg": 54.8,
+        "min": 0.0,
+        "max": 60.0,
+        "maxMs_peak": 167.0,
+        "graph_trend_avg": -0.05226923076923077,
+        "graph_trend_last": 0.002
+      },
+      "frameskip_signals": [
+        "overlay_hitch_train_maxMs"
+      ],
+      "violations": [
+        "frameskip:overlay_hitch_train_maxMs",
+        "below_target:10.60<60.0"
+      ],
+      "policy": {
+        "no_fps_overlay_pass": true,
+        "no_frameskip_fix": true,
+        "no_vsync_uncap": true,
+        "measure_only_pacing": true
+      }
+    }
+  ]
+}

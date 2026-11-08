@@ -12,6 +12,21 @@
     ],
     "min_fps_default": 60,
     "min_fps_exceptions": {},
+    "min_fps_exception_policy": {
+      "allowed_fps": [30, 50],
+      "entry_shape": {
+        "min_fps": 30,
+        "reason": "true 30/50 Hz title timing — not a soft 60 miss",
+        "approved": true
+      },
+      "helpers": "scripts/solid_60_mandate.py",
+      "rules": [
+        "default_solid_60",
+        "no_fps_overlay_pass",
+        "no_frameskip_fix",
+        "no_vsync_uncap_without_god_unlock"
+      ]
+    },
     "install_gates": [
       "install_health.py",
       "matrix_phase_check.py",

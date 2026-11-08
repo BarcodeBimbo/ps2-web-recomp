@@ -71,21 +71,25 @@ void alchemy_o20_guard_disarm() {
 void alchemy_o20_jit_before_lw(std::uint32_t obj) {
     if (!g_alchemy_o20_guard_addr || !g_alchemy_o20_guard_value || !obj) return;
     if (obj + 0x24u > kRamSize) return;
-    if ((obj + 0x20u) != g_alchemy_o20_guard_addr) return;
+    static int s_jit = 0;
+    const bool match = (obj + 0x20u) == g_alchemy_o20_guard_addr;
     std::uint32_t cur = 0;
     std::memcpy(&cur, g_ram + obj + 0x20u, 4);
+    if (s_jit < 12) {
+        std::fprintf(stderr,
+                     "[alchemy-o20] jit@0x503308 obj=0x%X match=%d cur+20=0x%X guard=0x%X want=0x%X\n",
+                     obj, match ? 1 : 0, cur, g_alchemy_o20_guard_addr, g_alchemy_o20_guard_value);
+        ++s_jit;
+    }
+    if (!match) return;
     if (cur != 0) return;
     std::memcpy(g_ram + obj + 0x20u, &g_alchemy_o20_guard_value, 4);
     if (g_alchemy_o14_guard_value && g_alchemy_o14_guard_value < kRamSize) {
         std::memcpy(g_ram + obj + 0x14u, &g_alchemy_o14_guard_value, 4);
     }
-    static int s_jit = 0;
-    if (s_jit < 8) {
-        std::fprintf(stderr,
-                     "[alchemy-o20] jit-restore at 0x503308 obj=0x%X +20=0x%X (was 0)\n",
-                     obj, g_alchemy_o20_guard_value);
-        ++s_jit;
-    }
+    std::fprintf(stderr,
+                 "[alchemy-o20] jit-restore at 0x503308 obj=0x%X +20=0x%X (was 0)\n",
+                 obj, g_alchemy_o20_guard_value);
 }
 
 void init_watch() {

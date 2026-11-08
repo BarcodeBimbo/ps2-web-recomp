@@ -1,0 +1,28 @@
+{
+  "schema": "ps2recomp.present_pacing.measure/v1",
+  "god_lock": "no_vsync_uncap_without_unlock",
+  "sources": {
+    "host_web": "host/web.cpp",
+    "gs": "runtime/src/gs/gs.cpp"
+  },
+  "constants": {
+    "kMaxBehind_emscripten": 4,
+    "kMaxBehind_native": 3,
+    "raf_skip_when_presents_queued_gt": 2,
+    "render_pending_budget_ms": 10.0,
+    "pace_spin_tail_ms": 1.5,
+    "g_vsync_default": true,
+    "g_frame_period_ms_expr": "1000.0 / 60.0",
+    "vsync_on_fps_cap_60": true,
+    "uncap_forbidden_under_vsync": true
+  },
+  "interpretation": {
+    "steady_play": "depth 0\u20131 \u2192 hard RAF wait every present",
+    "hitch_recovery": "depth >2 \u2192 skip RAF wait only (not a frameskip product)",
+    "ee_backpressure": "post_present stalls EE beyond kMaxBehind",
+    "mandate": "solid 60 via stats FPS; overlay/diagnostic only; no V-Sync uncap apply"
+  },
+  "product_changes_applied": false,
+  "measure_complete": true,
+  "missing_fields": []
+}

@@ -1,0 +1,4 @@
+draws=1117 textured=0 big10k=0
+fst0=0 fst1=0
+ATST=Counter()
+big_keys=[]

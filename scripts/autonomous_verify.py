@@ -162,6 +162,17 @@ def verify_game(game_id: str, frames: int | None, env: dict | None) -> dict:
     fps_metrics = parse_fps_from_log(log_text)
     chrome_metrics = harness_chrome_metrics(game_id)
     matrix = score_matrix(game_id, log_path, meta)
+    # Solid-60: measure/report only here — does not flip smoke status (Chrome gate owns that).
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from solid_60_mandate import evaluate_solid_60
+
+    solid_60 = evaluate_solid_60(
+        game_id,
+        chrome_metrics=chrome_metrics,
+        fps_metrics=fps_metrics,
+        log_text=log_text,
+        reg=reg,
+    )
     status = "pass" if code == 0 and health.get("status") != "fail" else "fail"
     if matrix and not matrix.get("skipped") and matrix.get("verdict") == "fail":
         status = "fail"
@@ -175,6 +186,7 @@ def verify_game(game_id: str, frames: int | None, env: dict | None) -> dict:
         "matrix": matrix,
         "fps_metrics": fps_metrics,
         "chrome_metrics": chrome_metrics,
+        "solid_60": solid_60,
     }
 
 
