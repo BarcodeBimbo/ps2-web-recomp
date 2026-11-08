@@ -157,7 +157,7 @@
 - [x] 2026-11-07 — Harness `metrics.json` v1: `canvas_lum`, FPS, BOOTMENU regex (`20261107T140555Z/metrics.json`)
 - [x] 2026-11-07 — Per-game 30/50 allowlist hook in registry + `scripts/solid_60_mandate.py` (empty exceptions; policy verified)
 - [x] 2026-11-07 — `validate_exceptions` wired into registry/`autonomous_verify`/`self_heal` + `--library` / `--library-measure` helpers (`logs/workers/W-HOST-solid60-library-measure-2026-11-07.json`; self-check OK)
-- [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window — Chrome measure 0/2/11/1; unlocked native 200f smoke 5 pass / 4 fail (`logs/workers/W-HOST-unlocked-library-verify-summary-2026-11-07.json`)
+- [ ] Library sweep: every title ≥60 in Chrome (or allowlisted 30) for sustained window — Chrome collect `20261108T001703Z`: **0 pass / 11 fail / 2 no_metrics / 1 q** (9 titles newly metered; closest RE4 sus=57.1, Sly sus=53.5; GoW USA deferred W-GOW; Hitman BM `/play/` 404); evidence `W-HOST-solid60-library-measure-2026-11-07.json`
 - [ ] Final optimization pass: WebGPU path, present pacing (additive only; no new product shell) — measure done `logs/workers/W-HOST-present-pacing-measure-2026-11-07.json`; apply still God-locked
 
 ---

@@ -1,11 +1,7 @@
 ﻿{
-    "done":  [
-                 "hitman-native"
-             ],
-    "utc":  "2026-11-08T00:23:03Z",
-    "pid":  15764,
-    "local":  "2026-11-07 19:23:03",
-    "role":  "campaign-owner",
-    "status":  "permanent-overnight-running",
-    "watcher":  "build-complete"
+    "local":  "2026-11-07 19:24:58",
+    "utc":  "2026-11-08T00:24:58.9404767Z",
+    "note":  "Entire campaign on hold",
+    "status":  "god-pause",
+    "role":  "campaign-owner"
 }

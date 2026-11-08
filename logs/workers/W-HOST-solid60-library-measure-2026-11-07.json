@@ -32,19 +32,99 @@
   ],
   "titles": 14,
   "pass": 0,
-  "fail": 2,
-  "no_metrics": 11,
+  "fail": 11,
+  "no_metrics": 2,
   "quarantined": 1,
   "rows": [
     {
       "game_id": "1e5a12a02722175839d88d0301949cd9",
       "title": "Ratchet & Clank: Going Commando",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "1e5a12a02722175839d88d0301949cd9",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "1e5a12a02722175839d88d0301949cd9",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 0.6,
+        "stats_fps": {
+          "avg": 34.514814814814834,
+          "min": 0.6,
+          "max": 45.4
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 18,
+          "avg": 32.388888888888886,
+          "min": 1.0,
+          "max": 45.0,
+          "maxMs_peak": 19731.0,
+          "graph_trend_avg": 0.024684210526315777,
+          "graph_trend_last": 0.114
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:0.60<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "34402ee3c1917272f971028b4fb24868",
       "title": "God of War II",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "34402ee3c1917272f971028b4fb24868",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "34402ee3c1917272f971028b4fb24868",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 13.4,
+        "stats_fps": {
+          "avg": 53.736538461538466,
+          "min": 13.4,
+          "max": 67.8
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 17,
+          "avg": 51.0,
+          "min": 0.0,
+          "max": 68.0,
+          "maxMs_peak": 269.0,
+          "graph_trend_avg": 0.00027777777777777957,
+          "graph_trend_last": -0.069
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:13.40<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "60c82f4a111da300ac23bbec85272788",
@@ -63,25 +143,25 @@
           "exception_valid": true,
           "exception_error": null
         },
-        "sustained_fps": 21.8,
+        "sustained_fps": 21.1,
         "stats_fps": {
-          "avg": 42.794736842105266,
-          "min": 21.8,
-          "max": 61.0
+          "avg": 44.87894736842105,
+          "min": 21.1,
+          "max": 69.9
         },
         "fps_overlay_ignored_for_pass": true,
         "fps_overlay_observed": {
-          "samples": 10,
-          "avg": 42.4,
-          "min": 20.0,
-          "max": 60.0,
-          "maxMs_peak": 553.0,
-          "graph_trend_avg": -0.10136363636363636,
-          "graph_trend_last": -0.097
+          "samples": 11,
+          "avg": 39.09090909090909,
+          "min": 13.0,
+          "max": 61.0,
+          "maxMs_peak": 602.0,
+          "graph_trend_avg": -0.08008333333333333,
+          "graph_trend_last": -0.053
         },
         "frameskip_signals": [],
         "violations": [
-          "below_target:21.80<60.0"
+          "below_target:21.10<60.0"
         ],
         "policy": {
           "no_fps_overlay_pass": true,
@@ -99,12 +179,92 @@
     {
       "game_id": "76615f9956b13094771e370c883c7170",
       "title": "Def Jam \u2013 Fight for NY",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "76615f9956b13094771e370c883c7170",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "76615f9956b13094771e370c883c7170",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 23.9,
+        "stats_fps": {
+          "avg": 52.076666666666675,
+          "min": 23.9,
+          "max": 62.0
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 14,
+          "avg": 45.714285714285715,
+          "min": 0.0,
+          "max": 62.0,
+          "maxMs_peak": 253.0,
+          "graph_trend_avg": -0.022266666666666664,
+          "graph_trend_last": -0.118
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:23.90<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
       "title": "Gran Turismo 4 (USA)",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "9ce58de36f3fbe96fb260a3221d91f20",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 28.5,
+        "stats_fps": {
+          "avg": 56.504,
+          "min": 28.5,
+          "max": 63.0
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 17,
+          "avg": 53.23529411764706,
+          "min": 29.0,
+          "max": 61.0,
+          "maxMs_peak": 137.0,
+          "graph_trend_avg": -0.007947368421052632,
+          "graph_trend_last": 0.0
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:28.50<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "a2116d2ac08a7be4db4e8455ad58d2e5",
@@ -162,22 +322,182 @@
     {
       "game_id": "c0671389c296be6afe9e5224c97d30df",
       "title": "Need for Speed - Underground 2 (USA)",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "c0671389c296be6afe9e5224c97d30df",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "c0671389c296be6afe9e5224c97d30df",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 1.9,
+        "stats_fps": {
+          "avg": 14.188235294117643,
+          "min": 1.9,
+          "max": 61.7
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 17,
+          "avg": 16.0,
+          "min": 2.0,
+          "max": 62.0,
+          "maxMs_peak": 1599.0,
+          "graph_trend_avg": 0.082,
+          "graph_trend_last": 0.002
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:1.90<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "c0c4527037b6168660829a0eb13df1a3",
       "title": "Sly Cooper and the Thievius Raccoonus (USA)",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "c0c4527037b6168660829a0eb13df1a3",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "c0c4527037b6168660829a0eb13df1a3",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 53.5,
+        "stats_fps": {
+          "avg": 59.842592592592595,
+          "min": 53.5,
+          "max": 62.0
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 18,
+          "avg": 55.94444444444444,
+          "min": 1.0,
+          "max": 60.0,
+          "maxMs_peak": 1892.0,
+          "graph_trend_avg": -0.012210526315789475,
+          "graph_trend_last": 0.002
+        },
+        "frameskip_signals": [
+          "overlay_hitch_train_maxMs"
+        ],
+        "violations": [
+          "frameskip:overlay_hitch_train_maxMs",
+          "below_target:53.50<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "f141051d9b9fae0fb48deced01311f44",
       "title": "Hitman 2 \u2013 Silent Assassin",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "f141051d9b9fae0fb48deced01311f44",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "f141051d9b9fae0fb48deced01311f44",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": null,
+        "stats_fps": null,
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 0,
+          "avg": null,
+          "min": null,
+          "max": null,
+          "maxMs_peak": null,
+          "graph_trend_avg": 0.0,
+          "graph_trend_last": 0.0
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "fps_overlay_only_rejected",
+          "no_stats_fps_samples"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "f29093e1f939f924fb11cc605b592b11",
       "title": "Hot Shots Golf 3 (USA) (v2.00)",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "f29093e1f939f924fb11cc605b592b11",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "f29093e1f939f924fb11cc605b592b11",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 17.1,
+        "stats_fps": {
+          "avg": 26.001960784313727,
+          "min": 17.1,
+          "max": 46.7
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 18,
+          "avg": 27.72222222222222,
+          "min": 0.0,
+          "max": 57.0,
+          "maxMs_peak": 152.0,
+          "graph_trend_avg": 0.021473684210526315,
+          "graph_trend_last": -0.008
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:17.10<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     },
     {
       "game_id": "ff676a9829a95d13c3aba981334c0ae8",
@@ -187,7 +507,47 @@
     {
       "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
       "title": "Resident Evil 4 (USA)",
-      "status": "no_chrome_metrics"
+      "status": "fail",
+      "solid_60": {
+        "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+        "pass": false,
+        "min_fps_target": 60.0,
+        "target_info": {
+          "game_id": "ffb47d7e14cf9f5c02425d9158c29b76",
+          "min_fps": 60.0,
+          "source": "min_fps_default",
+          "allowlisted": false,
+          "reason": "",
+          "exception_valid": true,
+          "exception_error": null
+        },
+        "sustained_fps": 57.1,
+        "stats_fps": {
+          "avg": 59.98461538461538,
+          "min": 57.1,
+          "max": 62.7
+        },
+        "fps_overlay_ignored_for_pass": true,
+        "fps_overlay_observed": {
+          "samples": 17,
+          "avg": 59.76470588235294,
+          "min": 57.0,
+          "max": 61.0,
+          "maxMs_peak": 71.0,
+          "graph_trend_avg": -0.016526315789473684,
+          "graph_trend_last": -0.002
+        },
+        "frameskip_signals": [],
+        "violations": [
+          "below_target:57.10<60.0"
+        ],
+        "policy": {
+          "no_fps_overlay_pass": true,
+          "no_frameskip_fix": true,
+          "no_vsync_uncap": true,
+          "measure_only_pacing": true
+        }
+      }
     }
   ],
   "product_changes_applied": false,

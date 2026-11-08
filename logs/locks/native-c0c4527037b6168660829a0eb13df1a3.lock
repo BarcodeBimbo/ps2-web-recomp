@@ -1,7 +1,7 @@
-owner_pid=15736
-start_utc=2026-11-08T00:20:19Z
+owner_pid=26680
+start_utc=2026-11-08T00:23:48Z
 owner=W-SLY
 checkbox=sly-stq-path3-clut
 target=build/native-c0c4527037b6168660829a0eb13df1a3
-note=diag NO_TME software 1800f full press recipe
-diag_pid=31004
+note=diag GPU 1800f validate presses / PATH1
+diag_pid=7264

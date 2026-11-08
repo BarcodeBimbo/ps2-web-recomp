@@ -92,7 +92,36 @@ self_heal --game GoW2 --dry-run → detectors.exception_problems []
 
 Evidence: `logs/workers/W-HOST-unlocked-library-verify-summary-2026-11-07.json`
 
+## Chrome solid-60 library collect (continuation)
+
+**Run:** `20261108T001703Z` — observe 30s; expanded harness GAMES for library paths.  
+**Skipped:** GoW USA (`gow-min60-browser.lock` W-GOW); Hitman BM (`/play/` 404 while web-next builds); CNK quarantine.  
+**Policy:** V-Sync default on; no product uncap; overlay scraped for diagnostics only (never pass); no frameskip.
+
+| Title | Prior | After | sustained_fps | solid-60 |
+|-------|-------|-------|---------------|----------|
+| Sly 1 | no_metrics | **gained** | 53.5 | FAIL (min + hitch-train) |
+| GoW II | no_metrics | **gained** | 13.4 | FAIL |
+| Ratchet 2 | no_metrics | **gained** | 0.6 | FAIL |
+| Def Jam | no_metrics | **gained** | 23.9 | FAIL |
+| GT4 | no_metrics | **gained** | 28.5 | FAIL |
+| NFS UG2 | no_metrics | **gained** | 1.9 | FAIL |
+| Hitman 2 | no_metrics | **gained** | n/a (abort LoadExec) | FAIL |
+| Hot Shots 3 | no_metrics | **gained** | 17.1 | FAIL |
+| RE4 | no_metrics | **gained** | 57.1 | FAIL (closest) |
+| NFS MW | fail | fail (re-measure) | 21.1 | FAIL |
+| Hitman BM | fail | fail (stale metrics) | 10.6 | FAIL |
+| GoW USA | no_metrics | no_metrics | — | deferred W-GOW |
+| Downhill | no_metrics | no_metrics | — | `/play/` 404 |
+| CNK | quarantined | quarantined | — | — |
+
+**Library totals:** **0 pass / 11 fail / 2 no_metrics / 1 quarantined**. **No solid-60 PASS.**
+
+Evidence: `logs/harness-runs/20261108T001703Z/metrics.json`, `logs/workers/W-HOST-solid60-library-measure-2026-11-07.json`, `logs/workers/W-HOST-solid60-chrome-collect-2026-11-07.log`.
+
+§5 library sweep checkbox **not** flipped.
+
 ## Return
 
-**Changed:** validate_exceptions wired into registry/verify/heal; library measure helpers; self_heal harness metrics polish; unlocked library smoke baseline.  
-**Top remaining shared gap:** §5 library Chrome ≥60 sweep (need harness coverage); pacing apply still God-locked after measure.
+**Changed:** Chrome solid-60 library collect for 10 ready harness paths; 9 titles newly gained metrics; still 0 PASS.  
+**Top remaining shared gap:** §5 library Chrome ≥60 sweep; pacing apply still God-locked; GoW USA + Hitman BM re-measure when free.
