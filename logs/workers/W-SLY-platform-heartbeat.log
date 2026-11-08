@@ -37,3 +37,4 @@
 [2026-11-08T00:23:56Z] W-SLY HEARTBEAT | status=REPLICA | exact gameplay-final style relative paths
 [2026-11-07T19:24:15Z] W-SLY HEARTBEAT | status=GPU1800_WAIT | pid=7264; note=ps2run rebuilt 19:16 without latest gs.cpp probe 19:18
 [2026-11-07 19:24:58] GOD PAUSE — suspend lane; no further work
+[2026-11-08T00:25:50Z] W-SLY HEARTBEAT | status=SKIPFMV | aggressive start/cross holds to escape intro on new binary

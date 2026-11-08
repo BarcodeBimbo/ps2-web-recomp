@@ -1,6 +1,6 @@
 # MASTER-CONTEXT — CyberArcade / PS2Recomp handoff
 
-**Updated:** 2026-11-07 (~10:20 local)  
+**Updated:** 2026-11-07 (~19:26 local — evening Chrome library sweep + **GOD PAUSE**)  
 **Repo root:** `C:\PS2Recomp`  
 **Branch posture:** `windows` branch — keep it clean. No commits until a stable build; then commit freely. **When a stage is proven safe (won’t break Hitman/NFS R1–R4 or other stable paths), commit to GitHub.**
 
@@ -43,7 +43,7 @@ Also still true:
 | **1 Disc-fix → SDK** | R4-D1 DiskReady **verified** + live 900f green; **R5 `cleared_with_evidence` PASS** (step 10; no HLE rewrite) | Joint-stable commit (R3+R4D1+R5 clear) when asked. |
 | **2 Matrix → 100%** | **~90%** live lane (`logs/live-matrix-2026-11-07/`); scorer FCE0 false-Alchemy **fixed**; Sly native added | Close gap: CNK `prims=2` + NFS five-phase; keep logging. |
 | **3 Alchemy → 100%** | Dumper **28/28**; guest FCE0/+5DD0 **fixed**; `obj+0x20` restore **implemented** but still **prims=2** | Blocker: guest clears `+0x20` + runs vt+108 in one EE burst before HLE can restore (`cnk-alchemy-obj20-fix-2026-11-07.md`). Next = EE clear intercept / AlignReadBuffer wiring. Quarantine Hitman/NFS. |
-| **4 Live test → logs/** | Hitman js serve abort **fixed** (ACL): rebuilt `ps2web.js` had Admin/SYSTEM-only DACL → panel could stat but not read → CL 244503 / body 3160. `icacls /reset` + publish `ensure_web_build_readable`. Harness `20261107T140555Z`: booted, ~865k prims, 60 FPS, **no abort**; canvas still **black**. | Fix log: `logs/hitman-web-js-content-length-fix-2026-11-07.md`. Next: Hitman UI/black; then post-NTS. |
+| **4 Live test → logs/** | **Evening (~19:17):** `cyberarcade_live` harness `20261108T001703Z` — Chromium **muted**, **stats=1 fps=1**, 30s observe × **10** titles → full per-title stats/crashes in **§H** + `logs/harness-runs/20261108T001703Z/` + `logs/workers/W-HOST-solid60-library-measure-2026-11-07.json` (**0 pass / 11 fail / 2 no_metrics / 1 quarantined**). **GOD PAUSE @ 19:24:58** — all lanes suspended (`logs/workers/GOD-PAUSE`). Morning Hitman ACL fix still true (`20261107T140555Z`). | **Resume only after GOD unpause.** Then: Hitman BM web build + `/play/`; NFS MW `0x01A5C000`; NFSU2 post-load FPS collapse; matrix logging. |
 | GoW DLL smoke / Ghidra MCP / dumper | **DONE** | `gow-dll-path-smoke-2026-11-07.md`; MCP `:8089`; verify 28/28. |
 
 **QUEUED / DEFERRED (God ~07:39) — do not work until God calls for it:**
@@ -56,6 +56,59 @@ Also still true:
 **Abort/resume note (same morning):** user abort killed MCP pid 18316 + watchers; then “do not abort / resume”; then “stop screen share only”; then autonomous resume of all five todos. Do **not** treat abort as final state — MCP is back up.
 
 **Silent pipeline evidence:** `logs/ghidra-ps2/silent-pipeline.log` (PIPELINE COMPLETE ~06:42); restart `mcp-restart` / `resume-todos.log`; ELF dir `C:\Users\joshy\ghidra_exports\ps2-elves\` (`gow_boot.elf`, `cnk_boot.elf`).
+
+### H) Evening Chromium browser library sweep (2026-11-07 ~19:17–19:24) — evidence record
+
+**Harness:** `tools/_cyberarcade_live_harness.py` → run id **`20261108T001703Z`** (local ~19:17:03–~19:24). **Muted Chrome**, `statslog=1` + on-screen FPS overlay (`fps=1`), 30s observe, no boot mash, no visible mouse. Artifacts: `logs/harness-runs/20261108T001703Z/{summary.json,run.log,metrics.json,fps-overlay.jsonl,console.jsonl,dom-status.jsonl}`; mirror `logs/cyberarcade-live-harness-latest.json`; shots `logs/screenshots/harness-20261108T001703Z/SHOT_MANIFEST.md`.
+
+**Solid-60 rollup** (stats channel = pass gate; overlay logged but **not** pass): `logs/workers/W-HOST-solid60-library-measure-2026-11-07.json` — **14** titles: **0 pass**, **11 fail**, **2 no_chrome_metrics**, **1 quarantined** (CNK). Measure-only; no product pacing commits.
+
+**Shared / recurring issues (all or most titles):**
+- Browser console **HTTP 404** on a load resource (appears on most harness games).
+- **black_screen** heuristic on early shots (goto/loading/boot) — `canvas_lum` often &lt;~1–7 before gameplay; not always fatal to `goal_ok`.
+- Policy: sustained FPS uses **stats** samples; violations like `below_target` / `frameskip:overlay_hitch_train_maxMs`.
+
+**Per-title harness summary (`summary.json` → games[]) — stats_fps avg (min–max), max prims, abort, notable errors:**
+
+| Key | goal_ok | stats_fps avg (min–max) | max prims | abort | Crashes / halts / problems |
+|-----|---------|-------------------------|-----------|-------|---------------------------|
+| **NFS_MW** | fail | 44.9 (21.1–69.9) | 57277 | **yes** | **Halt t≈11.7s** — `[ee] stopped after 639 frames`: **missing code @ 0x01A5C000 (ra 0x01A5BFFC)**; black mid-observe (`canvas_lum≈0.14`); overlay hitch `maxMs≈602`; solid60 **sustained 21.1**. |
+| **NFSU2** | pass* | 14.2 (1.9–61.7) | 45293 | no | **FPS cliff after load:** t=8s **stats≈61.7**, by t≈29s **stats≈3.1** (overlay 3, `maxMs≈1175`); solid60 **fail sustained 1.9**; only loading black_screen warnings. *Harness `goal_ok` = draw booted; still **below 60 bar**. |
+| **Sly1** | pass | 59.8 (53.5–62.0) | 314210 | no | Boot black_screen shot; overlay hitch `maxMs≈1892`; solid60 **fail** `below_target:53.5` + `frameskip:overlay_hitch_train_maxMs`. |
+| **GoW2** | pass | 53.7 (13.4–67.8) | 5 443 056 | no | Early black_screen shots; solid60 **fail** sustained **13.4**. |
+| **GoW USA** | — | *(not in this sweep)* | — | — | solid60 **no_chrome_metrics** (deferred **W-GOW** lane). |
+| **GT4** | pass | 56.5 (28.5–63.0) | 591176 | no | Black early shots; solid60 **fail** sustained **28.5**. |
+| **RE4** | fail | 60.0 (57.1–62.7) | 128305 | no | Near-60 but solid60 **fail** sustained **57.1**; black shots through observe. |
+| **HSG3** | pass | 26.0 (17.1–46.7) | 66 306 283 | no | Heavy black_screen shots; solid60 **fail** sustained **17.1**. |
+| **Ratchet2** | fail | 34.5 (0.6–45.4) | 6386 | no | **Catastrophic hitch** overlay `maxMs≈19731` @ t≈27 **stats≈0.6**; black end observe; solid60 **fail** sustained **0.6**. |
+| **DefJam** | fail | 52.1 (23.9–62.0) | 15133 | **yes** | Ran to **~59 fps** then **halt @ issue_halt_29** — **missing code @ 0x002A9E20 (ra 0x0029C700)** (~1097 EE frames in console); solid60 **fail** sustained **23.9**. |
+| **Hitman2** | fail | *(no stats)* | 0 | **yes** | **Boot never succeeded** — `program asked to run another executable` (halt @0s); solid60 **no_stats_fps_samples**. |
+| **Hitman BM** | — | *(prior partial metrics in measure file)* | — | — | **Not in 10-game sweep** (panel **building** web); measure row: avg **57.6** sustained **10.6**, `frameskip:overlay_hitch_train_maxMs`; `/play/` issues noted in campaign plan. |
+| **CNK** | — | quarantined | — | — | Excluded from solid60 pass counting. |
+| **Downhill Domination** | — | — | — | — | solid60 **no_chrome_metrics** (not harnessed tonight). |
+
+**Representative frame ticks (run.log, stats=1 / overlay):**
+- **NFSU2:** 19:20:38 stats=32.6 → 19:20:44 **61.7** → 19:20:52 **3.5** → 19:21:05 **3.1** prims=45293.
+- **NFS_MW:** to **49.8** @7.4s then halt @11.7s with missing code.
+- **Ratchet2:** 19:19:12 stats=**0.6** overlay=1 maxMs=19731.
+- **DefJam:** 19:19:25–32 ~59 fps then 19:19:39 **23.9** before missing-code abort.
+
+### I) Worker lanes — pause / stop @ 2026-11-07 19:24:58 (God)
+
+**Authority:** `logs/workers/GOD-PAUSE` and `logs/workers/GOD-STOP` — **entire campaign on hold; do not start new work.**
+
+| Lane | Last state before pause | Evidence |
+|------|-------------------------|----------|
+| **W-HOST** | Chrome library sweep **written**; §5 measure done | `W-HOST-platform-heartbeat.log` |
+| **W-HITMAN** | type7-FST native shipped; **Mode B NO_TME falsified**; web-next build ~455/931 | `W-HITMAN-platform-heartbeat.log` |
+| **W-NFS** | Platform lane active → **PAUSE** | `W-NFS-platform-heartbeat.log` |
+| **W-GOW** | **waiting** — panel quiet; Hitman BM build busy | `W-GOW-platform-heartbeat.log` |
+| **W-CNK** | obj+0x20 intercept smokes; **prims=2** persists; await cascade rebuild | `W-CNK-platform-heartbeat.log`, `W-CNK-heartbeat.log` |
+| **W-SLY** | Paused | `W-SLY-platform-heartbeat.log` |
+| **W-STORE** | Paused | `W-STORE-platform-heartbeat.log` |
+| **W-OWNER** | Overnight watchdog paused | `W-OWNER-overnight-watchdog.log` |
+
+**Pre-pause CNK note (~19:12):** JIT @ `0x503308` shows live `obj+0x20`; breakthrough interpretation — clear runs **after** vt+108; **prims=2** = ingest/bind failure not o20-clear alone.
 
 ### A) R1–R5 official SDK audit (research only)
 
