@@ -9,33 +9,37 @@
 | Item | Was | Now |
 |------|-----|-----|
 | Inline `autonomous_verify` smoke before `ready` | open (CLI/nightly gap only) | **[x]** opt-in gate on hot path |
+| Nightly download → build → heal → verify | open | **[x]** orchestrator + live pass log |
+| Store pull → playable without manual patches | open | **[x]** contract DoD + library evidence |
 
-**Evidence:** `scripts/store_pipeline_hooks.py` (`inline_verify_enabled`, `run_inline_autonomous_verify`, `gate_inline_verify` → called from `finalize_post_build`); `tests/store_pipeline.py` (3 new cases); plan mark in `logs/master-campaign-plan-2026-11-07.md`; architecture note in `verification/recovery/autonomous-pipeline-2026-11-07.md`.
+**Evidence (inline):** `scripts/store_pipeline_hooks.py`; `tests/store_pipeline.py` 17/17.
+
+**Evidence (nightly):** `scripts/nightly_pipeline.py`, `scripts/run_nightly_pipeline.ps1`, `tests/nightly_pipeline.py` 6/6; live `logs/autonomous-pipeline/nightly-20261108T001112Z.json` (and sibling `…T001020Z.json`) **overall=pass** — NFS MW 500f matrix all phases pass, skip-build / dry-heal, lock-aware.
+
+**Evidence (store→Chrome DoD):** `scripts/store_ready_contract.py` + `tests/store_ready_contract.py` 4/4; NFS `--http` → `/play/60c82f…/` **200** (`store-ready-contract-20261108T001250Z.json`); library ready titles **12/12** pass (`…T001302Z.json`). No Hitman/CNK GS edits.
 
 ## Behavior
 
+### Inline verify (prior)
 - Default: unchanged — no smoke on every install.
-- `PS2_INLINE_VERIFY=1` (full installs only): runs `scripts/autonomous_verify.py --game <id> --frames N --json` before panel sets `ready`.
-- Frames: `PS2_INLINE_VERIFY_FRAMES` (default **200**, min 30).
-- Fail / error statuses raise `RuntimeError` → install does not become ready; manifest records `pipeline.autonomous_verify_inline` + status/error; event on `logs/autonomous-pipeline/store-pipeline-events.jsonl` (`kind=inline_verify`).
-- Pass / skipped: manifest timestamps `inline_verify_at`, status + log path.
+- `PS2_INLINE_VERIFY=1` (full installs only): runs `scripts/autonomous_verify.py` before `ready`.
+
+### Nightly
+- Stages: download (ISO present) → build (skip if native / protected lock) → heal → verify.
+- Optional `--store-contract` attaches DoD evaluation per game.
+- Artifacts under `logs/autonomous-pipeline/nightly-*.{json,log}` + `store-pipeline-events.jsonl`.
+
+### Store-ready contract (DoD)
+Requires: `library.json` ready, `disc.iso`, published `ps2web.html`, global patches in tree (R3/R4-D1/XYOFFSET + registry), panel hooks wired, no `patches.pending` / `MANUAL_PATCHES*`. Optional `--http` for panel play URL.
 
 ## Tests
 
 ```text
-py -3 tests/store_pipeline.py -v
-Ran 17 tests in 0.238s — OK
+py -3 tests/store_pipeline.py -v          → 17/17 OK
+py -3 tests/nightly_pipeline.py -v        → 6/6 OK
+py -3 tests/store_ready_contract.py -v    → 4/4 OK
 ```
-
-New: `test_inline_verify_skipped_unless_env`, `test_inline_verify_blocks_fail_status`, `test_finalize_runs_inline_verify_and_updates_manifest`.
-
-Incidental fix (unblocks existing web publish test): hoist `_rmtree_onerror` in `windows_port.build_web` so backup cleanup always has the handler in scope.
-
-## Still open (§3)
-
-- [ ] Nightly: download → build → heal → verify log under `logs/autonomous-pipeline/`
-- [ ] Store pull → playable in Chrome without manual patch steps
 
 ## Non-goals this turn
 
-No Alchemy / Hitman GS / game-specific registry edits.
+No Alchemy / Hitman GS / game-specific registry edits. Canvas_lum flawless remains §1–§2 / self-heal T1 — contract proves **no manual patch steps** on the install→play path, not per-title visual perfection.

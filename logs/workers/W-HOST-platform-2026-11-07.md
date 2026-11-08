@@ -35,8 +35,10 @@ Also noted (already closed by peer / not re-touched): `PS2_INLINE_VERIFY` + `gat
 
 ```text
 solid_60_mandate --self-check → self_check_ok true
+tests/solid_60_mandate_test.py → 6/6 OK
 constants: kMaxBehind 4/3, RAF skip >2, budget 10ms, spin 1.5ms, g_vsync true, uncap guard true
 overlay-only synthetic → fail; frameskip keyword → fail; stats 60 → pass
+library --library baseline: 0 pass / 2 fail (Hitman+NFS) / 11 no_metrics / 1 quarantined (CNK)
 Hitman live metrics → fail (min 10.6 + hitch-train maxMs) — expected, measure only
 ```
 

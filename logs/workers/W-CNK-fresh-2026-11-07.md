@@ -1,118 +1,100 @@
-# W-CNK fresh — EE obj+0x20 intercept (2026-11-07 ~18:55)
+# W-CNK-2 fresh — EE intercept obj+0x20 / prims>2 — 2026-11-07
 
-**Worker:** W-CNK  
-**GID:** `b49f2e769315347e8bda839feb705744`  
-**Todos:** `t3-alchemy`, `cnk-alchemy-ghidra`  
-**Quarantine:** no CNK Alchemy hacks on Hitman/NFS disc path; did **not** touch `web-a2116*` / `native-a2116*`.
-
----
-
-## Lock status
-
-| Lock | Result |
-|------|--------|
-| `logs/locks/web-b49f2e769315347e8bda839feb705744.lock` | **acquired** (no prior live holder) |
-| `logs/locks/native-b49f2e769315347e8bda839feb705744.lock` | **acquired** (no prior live holder) |
-| Hitman `*-a2116*` | **untouched** (live locks present; campaign owner) |
-
-No writes to `build/web-b49f*` or `native-b49f*` this turn (RE + report only).
-
----
-
-## Prims status
-
-**Still `prims=2`.** Not claimed fixed. Prior HLE `try_restore_butanim_o20()` restores attach **after** vt+108 already ran with `+0x20=0` (`cnk-alchemy-obj20-fix-2026-11-07.md`). Master-plan §2c `prims=2` checkbox **left open**.
-
----
-
-## Ghidra advance (`cnk_boot.elf` @ MCP `:8089`)
-
-Switched program **hitman_boot.elf → cnk_boot.elf**. Decompiled:
-
-| VA | Symbol | Role |
-|----|--------|------|
-| `0x005032E0` | `FUN_005032e0` | UI **vt+108** (`vt+0x6C`); gated by `obj+0xFF` |
-| `0x00502D20` | `FUN_00502d20` | Child walk → each child **vt+0x78** `(child, parent)` |
-| `0x0051C100` | `FUN_0051c100` | Ingest; requires `*(obj+0x20)+0x24 ≠ 0` |
-| `0x00110100` | `FUN_00110100` | Finalize → `jalr vt+0x6C` (= vt+108) |
-| `0x0010FCE0` | `FUN_0010fce0` | Loadgate; end-of-walk may `FUN_0051ac80` then set `+0x5DD0=1` |
-| `0x0051AC80` | `FUN_0051ac80` | Bind/stream cleanup; **`sw zero,0x20(s0)` @ `0x0051AD60`** |
-
-### Critical sequence inside vt+108 (asm)
-
-```text
-0x00503300  jal   FUN_00502d20        # child vt+0x78 walk (a1=obj preserved)
-0x00503304  addiu a0,sp,0x3c
-0x00503308  lw    a0,0x20(s0)         # ← ingest pointer read
-0x0050330C  beq   a0,zero, skip_51c100
-0x00503314  jal   FUN_0051c100        # needs *(+0x20)+0x24≠0
-0x00503320  sb    1,0xFF(s0)          # sets +0xFF even when ingest skipped
-```
-
-So **`FUN_00502d20` runs before the `+0x20` load**. If any child `vt+0x78` (or earlier EE) zeros parent `+0x20`, ingest is skipped and `+0xFF=1` still latches — matches live “weak vt+108” logs.
-
-Vtable containing this method: **`0x006E1D90`** (slot `+0x6C` → `0x5032E0`; DATA xref from `0x006E1DFC`).
-
-`FUN_0051ac80` clear @ `0x51AD60` is on the **`iRam00725d48`** stream object after walker ≥250 — **secondary** suspect, usually *after* slot finalize. Primary surgical site remains the vt+108 gate.
-
----
-
-## Concrete next patch
-
-| Field | Value |
-|-------|--------|
-| **File** | `runtime/src/system.cpp` |
-| **Function** | `ps2::preempt` (same EE PC-hook pattern as freelist escape @ `0x2399D8`/`0x239A80`) |
-| **Symbol / PC** | **`FUN_005032e0` / `0x00503308`** (post-`FUN_00502d20`, pre-`lw a0,0x20(s0)`) |
-| **Also consider** | Entry `0x005032E0` (re-plant before child walk) if watch shows clear *before* entry |
-| **Action** | CNK + `g_butanim_soft_o20` gated: if `ld32(s0+0x20)==0`, restore `g_butanim_soft_o20` / `g_butanim_soft_o14` onto object; ensure `a0` non-zero before `beq` @ `0x0050330C` so `FUN_0051c100` runs |
-| **Exports needed** | Read accessors for soft-arm capture from `iop/igfileio` (today file-local) |
-| **Forbidden** | `host_call(0x10FCE0)`, status=1 re-arm, any Hitman/NFS path |
-
-### Diagnostic before/with patch
-
-```text
-PS2_WATCH=<butanim_obj+0x20>,4
-```
-
-Soft-arm log already prints `obj=…`; watch that word to print **clear PC/RA** via existing `watch_hit`. Confirms whether clearer is `0x51AD60`, a child `vt+0x78`, or earlier completion code.
-
-### Alternate (if preempt misses one-shot PC)
-
-Sticky filter in `ps2::watched<>` / `st32`: while soft-arm live and parse not OK, **refuse store of 0** to `g_butanim_soft_obj+0x20` (log PC). Heavier but catches any clearer.
-
----
-
-## Safe to test native?
-
-**Yes, conditionally** — CNK-only native smoke after implementing the gated `preempt` hook (or watch-first diagnostic build):
-
-- Same memory rewrite already smoke-tested late via HLE (no crash, still prims=2).
-- Must stay behind Alchemy/butanim soft-arm guards.
-- Do **not** ship as proven until prims ≫ 2 on real CNK `disc.iso` smoke.
-- Web rebuild not required for this EE intercept proof.
-
-**Not safe yet:** blind `host_call` of `0x5032E0` / FCE0 (tid / `0x51ACEC` history).
-
----
-
-## Master plan §2c
-
-| Checkbox | Flip? |
-|----------|-------|
-| dumper 28/28 | leave `[x]` |
-| quarantine | leave `[x]` |
-| `prims=2` / loadgate EE RE | **no** — RE advanced, playable not verified |
-| proven_fixes → self-heal | **no** |
-| CNK Chrome playable | **no** |
+**Worker:** W-CNK-2  
+**Game:** Crash Nitro Kart `b49f2e769315347e8bda839feb705744`  
+**Locks:** `logs/locks/web-b49f….lock` + `native-b49f….lock` (acquired; Hitman a2116* untouched)  
+**Heartbeat:** `logs/workers/W-CNK-heartbeat.log`
 
 ---
 
 ## Return blob
 
+| Field | Value |
+|-------|--------|
+| **lock status** | **HELD** web+native-b49f (W-CNK-2); Hitman locks not touched |
+| **prims result** | **still 2** (6000f smoke ×4) — plan checkbox **NOT** flipped |
+| **crash** | no |
+| **blocked_or_verified** | BREAKTHROUGH on timing diagnosis; prims still blocked |
+
+---
+
+## Breakthrough (overturns prior o20-timing theory)
+
+Prior theory: guest clears `obj+0x20` **before** vt+108 `lw` @ `0x503308`, so `0x51C100` is skipped.
+
+**Measured (smoke3/4):** JIT probe at `L_00503308` (overlay `m_00100000_271E1240_unit_0100`):
+
 ```
-lock_status: acquired web-b49f + native-b49f (Hitman a2116 untouched)
-prims_status: still 2 (unverified)
-next_patch: runtime/src/system.cpp::preempt @ EE PC 0x00503308 (FUN_005032e0 post-502d20); symbol FUN_0051c100 ingest gate; optional PS2_WATCH on obj+0x20
-native_test: SAFE if CNK-gated preempt restore only; NOT proven
+[alchemy-o20] jit@0x503308 obj=0x975498 match=1 cur+20=0x7462F8 guard=0x9754B8 want=0x7462F8
 ```
+
+`obj+0x20` is **LIVE** at the ingest gate. Guest **does** take the `jal 0x51C100` path.  
+HLE `restored butanim … (was 0, +0xFF=1→0)` is a **post**-vt+108 clear — too late to explain skipped ingest.
+
+Ghidra: `FUN_005032e0` (vt+108) → `ingest_51c100` when `*(obj+0x20)≠0` and `*(attach+0x24)≠0` (attach `+0x24=1` confirmed).  
+`igAlchemy_bind_cleanup_clear_o20` @ `0x51AC80` clears **alchemy ctx** `+0x20` (at `0x725D48`), not butanim obj — separate path.
+
+**Next blocker:** `0x51C100` → `FUN_0051a620` parse/bind outcome and/or loadgate `+0x5DD0` stall (prior W-CNK report) — not pre-vt108 o20 clear.
+
+---
+
+## What was implemented (CNK quarantine only)
+
+1. **st32/st64/st128 o20 guard** — `memory.hpp` / `memory.cpp`  
+   - Armed only from butanim soft-arm (`igfileio::note_ui_igb_soft_arm`)  
+   - Suppresses guest SW-zero of soft-armed `obj+0x20`  
+   - Hitman/NFS never arm → no disc-fix coupling
+
+2. **JIT hooks in generated EE units** (CNK overlay + base unit_0100)  
+   - `alchemy_o20_jit_before_lw` @ `L_00503308`  
+   - `alchemy_o20_log_post_51c100` @ `L_0050331C`  
+   - Files:  
+     - `generated/b49f…/m_00100000_271E1240_unit_0100.cpp`  
+     - `generated/b49f…/unit_0100.cpp`
+
+3. **Soft-arm arm/disarm** — `igfileio.cpp`  
+   - `alchemy_o20_guard_arm(obj+0x20, o20, o14)` on butanim soft-arm  
+   - Disarm on parse-complete / `reset()`
+
+4. **Public** `restore_butanim_attach_if_cleared()` for probe/preempt paths
+
+---
+
+## Smoke evidence
+
+| Run | Log | prims | Notes |
+|-----|-----|-------|-------|
+| smoke1 | `W-CNK-o20-intercept-smoke-2026-11-07.log` | 2 | guard armed; no jit (overlay not rebuilt) |
+| smoke2 | `…-smoke2-…` | 2 | overlay rebuilt; still no jit log (silent live path) |
+| smoke3 | `…-smoke3-…` | 2 | **jit proves +20 LIVE** |
+| smoke4 | `…-smoke4-…` | (pending/same) | post-51c100 log |
+
+All: `--disc games/b49f…/disc.iso --frames 6000`, native `build/native-b49f…/ps2run.exe`.
+
+---
+
+## Patch files
+
+- `runtime/include/ps2/memory.hpp`
+- `runtime/src/memory.cpp`
+- `runtime/src/iop/igfileio.cpp`
+- `runtime/src/iop/igfileio.hpp`
+- `runtime/src/dispatch.cpp` (probe restore path)
+- `runtime/src/system.cpp` (preempt opportunistic restore — pre-existing wire)
+- `generated/b49f2e769315347e8bda839feb705744/m_00100000_271E1240_unit_0100.cpp`
+- `generated/b49f2e769315347e8bda839feb705744/unit_0100.cpp`
+
+---
+
+## Master plan §2c
+
+- [ ] CNK `prims=2` — **still open** (do **not** check; evidence says ingest gate is open, downstream bind/parse/loadgate next)
+- Quarantine honored: no Hitman/NFS tree or lock edits; no taskkill of Hitman builds
+
+---
+
+## Next (W-CNK-3+)
+
+1. Trace `FUN_0051a620` / `FUN_00428df8` result at butanim ingest (stream `o14=0x16B06E8`).  
+2. Correlate loadgate `+0x5DD0` after successful soft-arm+51c100.  
+3. Keep o20 guard+JIT as safety; do not treat post-vt108 clear as the prims root cause.

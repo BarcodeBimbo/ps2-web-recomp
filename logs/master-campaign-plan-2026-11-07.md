@@ -121,8 +121,8 @@
 - [x] 2026-11-07 — `install_manifest.json` per game (sha256, job id, timestamps; `tests/store_pipeline.py::test_install_manifest_round_trip`)
 - [x] 2026-11-07 — `PS2_STRICT_VERIFY=1` blocks full install on health warn/fail (`gate_strict_verify`; `tests/store_pipeline.py::test_strict_verify_blocks_warn_status`)
 - [x] 2026-11-07 — `tests/store_pipeline.py` **17/17** OK (`py -3 tests/store_pipeline.py -v`; +3 inline verify)
-- [x] 2026-11-07 — `scripts/nightly_pipeline.py` + `nightly-20261108T001020Z.json` overall=pass (NFS 500f matrix; skip-build; `tests/nightly_pipeline.py` 6/6)
-- [ ] Store pull → playable in Chrome **without manual patch steps** (definition of done)
+- [x] 2026-11-07 — `scripts/nightly_pipeline.py` + `nightly-20261108T001020Z.json` / `nightly-20261108T001112Z.json` overall=pass (NFS 500f matrix; skip-build; `tests/nightly_pipeline.py` 6/6; `run_nightly_pipeline.ps1`)
+- [x] 2026-11-07 — Store pull → Chrome playable **without manual patch steps**: `scripts/store_ready_contract.py` DoD (ready+web+global patches+hooks; no `patches.pending`); NFS `/play/` HTTP 200; library **12/12** pass (`store-ready-contract-20261108T001302Z.json`; HTTP proof `…T001250Z.json`; `tests/store_ready_contract.py` 4/4)
 
 **Docs:** `verification/recovery/autonomous-pipeline-2026-11-07.md`
 

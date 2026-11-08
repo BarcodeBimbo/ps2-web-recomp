@@ -1,6 +1,6 @@
-﻿owner_pid=31216
-start_utc=2026-11-08T00:08:11Z
+﻿owner_pid=32048
+start_utc=2026-11-08T00:13:28Z
 owner=W-HITMAN
-checkbox=hitman-black-fix-type7-fst
+checkbox=hitman-modeB-sprite-tex-type7fst
 target=build/native-a2116d2ac08a7be4db4e8455ad58d2e5
-note=stale-owner-20640-dead; web-next left to live cmake 29328
+note=replacement-adopt; prior_owner=31216 still-alive-but-stale-hb; LIVE cmake=31668 ninja=2992 NO_KILL; web-next watch cmake=29328

@@ -51,3 +51,7 @@ This run: audio queue ~241–330 ms (prior PASS ~70–90 ms); Hitman Blood Money
 ## Heartbeat
 
 `logs/workers/W-GOW-platform-heartbeat.log`
+
+## Hitch diagnosis (19:14)
+See `logs/workers/W-GOW-hitch-diagnosis-2026-11-07.md`.
+Root cause: **CPU 100% / Hitman+NFS+native cmake-ninja storm** inflated audio queue to 241�330ms and caused hitch dips (worst 197.8ms @ t=72). Not flipping checkbox; waiting quieter panel then re-accept.

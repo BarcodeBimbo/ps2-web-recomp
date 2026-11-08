@@ -34,12 +34,24 @@ def load_registry() -> dict:
     return {"per_game": {}, "global_runtime": {}}
 
 
+def load_registry_checked() -> tuple[dict, list[dict]]:
+    """Load registry and audit min_fps_exceptions against policy (safe no-op when empty)."""
+    reg = load_registry()
+    return reg, validate_exceptions(reg)
+
+
 def _exception_entry(raw: Any) -> dict | None:
     """Normalize min_fps_exceptions value to {min_fps, reason, ...}."""
     if raw is None:
         return None
     if isinstance(raw, (int, float)):
-        return {"min_fps": float(raw), "reason": "", "legacy_scalar": True}
+        return {
+            "min_fps": float(raw),
+            "reason": "",
+            "evidence": "",
+            "verified_date": "",
+            "legacy_scalar": True,
+        }
     if isinstance(raw, dict):
         fps = raw.get("min_fps", raw.get("fps", raw.get("target")))
         if fps is None:
@@ -47,6 +59,8 @@ def _exception_entry(raw: Any) -> dict | None:
         return {
             "min_fps": float(fps),
             "reason": str(raw.get("reason") or raw.get("note") or ""),
+            "evidence": str(raw.get("evidence") or ""),
+            "verified_date": str(raw.get("verified_date") or raw.get("date") or ""),
             "legacy_scalar": False,
             "approved": bool(raw.get("approved", True)),
         }
@@ -271,6 +285,7 @@ def _search(src: str, pattern: str, flags: int = 0) -> str | None:
 def measure_present_pacing() -> dict:
     """Static measure of WebGPU/present pacing constants (no runtime / no V-Sync change)."""
     web = WEB_CPP.read_text(encoding="utf-8", errors="replace") if WEB_CPP.is_file() else ""
+    win = WINDOW_CPP.read_text(encoding="utf-8", errors="replace") if WINDOW_CPP.is_file() else ""
     gs = GS_CPP.read_text(encoding="utf-8", errors="replace") if GS_CPP.is_file() else ""
 
     kmax_em = _search(
@@ -292,12 +307,15 @@ def measure_present_pacing() -> dict:
     )
     vsync_clamp = "fps > 60.5" in web and "g_vsync" in web
     uncap_guard = "Uncapped is only legal with V-Sync off" in web
+    native_has_pace = "void pace()" in win
+    native_calls_post = "post_present()" in win
 
     measured = {
         "schema": "ps2recomp.present_pacing.measure/v1",
         "god_lock": "no_vsync_uncap_without_unlock",
         "sources": {
             "host_web": str(WEB_CPP.relative_to(ROOT)).replace("\\", "/"),
+            "host_window": str(WINDOW_CPP.relative_to(ROOT)).replace("\\", "/"),
             "gs": str(GS_CPP.relative_to(ROOT)).replace("\\", "/"),
         },
         "constants": {
@@ -310,19 +328,86 @@ def measure_present_pacing() -> dict:
             "g_frame_period_ms_expr": period_default,
             "vsync_on_fps_cap_60": vsync_clamp,
             "uncap_forbidden_under_vsync": uncap_guard,
+            "native_window_has_pace": native_has_pace,
+            "native_window_calls_post_present": native_calls_post,
         },
         "interpretation": {
             "steady_play": "depth 0–1 → hard RAF wait every present",
             "hitch_recovery": "depth >2 → skip RAF wait only (not a frameskip product)",
             "ee_backpressure": "post_present stalls EE beyond kMaxBehind",
             "mandate": "solid 60 via stats FPS; overlay/diagnostic only; no V-Sync uncap apply",
+            "native_note": "host/window.cpp has its own pace()+post_present; shared kMaxBehind from gs.cpp",
         },
         "product_changes_applied": False,
     }
-    missing = [k for k, v in measured["constants"].items() if v is None]
+    # Native pace flags are informational; do not fail measure if absent.
+    required = {
+        k: v
+        for k, v in measured["constants"].items()
+        if not k.startswith("native_window_")
+    }
+    missing = [k for k, v in required.items() if v is None]
     measured["measure_complete"] = not missing
     measured["missing_fields"] = missing
     return measured
+
+
+def measure_library_solid_60(reg: dict | None = None) -> dict:
+    """Evaluate solid-60 against existing harness metrics only (no Chrome launch)."""
+    reg = reg or load_registry()
+    by_id: dict[str, dict] = {}
+    latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"
+    if latest.is_file():
+        try:
+            blob = json.loads(latest.read_text(encoding="utf-8"))
+            for g in blob.get("games") or []:
+                if g.get("game_id"):
+                    by_id[g["game_id"]] = g
+        except (OSError, json.JSONDecodeError):
+            pass
+    runs = ROOT / "logs" / "harness-runs"
+    if runs.is_dir():
+        for path in sorted(runs.iterdir(), reverse=True):
+            metrics = path / "metrics.json"
+            if not metrics.is_file():
+                continue
+            try:
+                blob = json.loads(metrics.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            for g in blob.get("games") or []:
+                gid = g.get("game_id")
+                if gid and gid not in by_id:
+                    by_id[gid] = g
+
+    rows: list[dict] = []
+    for gid, meta in sorted((reg.get("per_game") or {}).items()):
+        if meta.get("alchemy_only") or meta.get("disc_fix_quarantine"):
+            rows.append({"game_id": gid, "title": meta.get("title"), "status": "quarantined"})
+            continue
+        cm = by_id.get(gid)
+        if not cm:
+            rows.append({"game_id": gid, "title": meta.get("title"), "status": "no_chrome_metrics"})
+            continue
+        verdict = evaluate_solid_60(gid, chrome_metrics=cm, reg=reg)
+        rows.append(
+            {
+                "game_id": gid,
+                "title": meta.get("title"),
+                "status": "pass" if verdict["pass"] else "fail",
+                "solid_60": verdict,
+            }
+        )
+    return {
+        "schema": "ps2recomp.solid60.library_measure/v1",
+        "exception_problems": validate_exceptions(reg),
+        "titles": len(rows),
+        "pass": sum(1 for r in rows if r.get("status") == "pass"),
+        "fail": sum(1 for r in rows if r.get("status") == "fail"),
+        "no_metrics": sum(1 for r in rows if r.get("status") == "no_chrome_metrics"),
+        "quarantined": sum(1 for r in rows if r.get("status") == "quarantined"),
+        "rows": rows,
+    }
 
 
 def write_measure(path: Path | None = None) -> dict:
@@ -427,6 +512,7 @@ def _self_check() -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--measure", action="store_true", help="Write pacing measure JSON under logs/workers/")
+    ap.add_argument("--library", action="store_true", help="Measure solid-60 across registry from existing harness metrics")
     ap.add_argument("--self-check", action="store_true", help="Offline mandate + measure checks")
     ap.add_argument("--game", action="append", dest="games", help="Evaluate solid-60 for game id(s)")
     ap.add_argument("--validate-exceptions", action="store_true", help="Audit registry allowlist")
@@ -434,13 +520,19 @@ def main() -> int:
     args = ap.parse_args()
 
     out: dict[str, Any] = {}
-    if args.measure or not any([args.self_check, args.games, args.validate_exceptions]):
-        # Default action when bare invoke: measure.
-        if args.measure or not any([args.self_check, args.games, args.validate_exceptions]):
-            out["measure"] = write_measure()
+    asked = any([args.self_check, args.games, args.validate_exceptions, args.library])
+    if args.measure or not asked:
+        out["measure"] = write_measure()
 
     if args.validate_exceptions:
         out["exception_problems"] = validate_exceptions()
+
+    if args.library:
+        lib = measure_library_solid_60()
+        LIBRARY_OUT.parent.mkdir(parents=True, exist_ok=True)
+        LIBRARY_OUT.write_text(json.dumps(lib, indent=2) + "\n", encoding="utf-8")
+        lib["written"] = str(LIBRARY_OUT.relative_to(ROOT)).replace("\\", "/")
+        out["library"] = lib
 
     if args.games:
         latest = ROOT / "logs" / "cyberarcade-harness-metrics-latest.json"

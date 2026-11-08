@@ -3,6 +3,7 @@
   "god_lock": "no_vsync_uncap_without_unlock",
   "sources": {
     "host_web": "host/web.cpp",
+    "host_window": "host/window.cpp",
     "gs": "runtime/src/gs/gs.cpp"
   },
   "constants": {
@@ -14,13 +15,16 @@
     "g_vsync_default": true,
     "g_frame_period_ms_expr": "1000.0 / 60.0",
     "vsync_on_fps_cap_60": true,
-    "uncap_forbidden_under_vsync": true
+    "uncap_forbidden_under_vsync": true,
+    "native_window_has_pace": true,
+    "native_window_calls_post_present": true
   },
   "interpretation": {
     "steady_play": "depth 0\u20131 \u2192 hard RAF wait every present",
     "hitch_recovery": "depth >2 \u2192 skip RAF wait only (not a frameskip product)",
     "ee_backpressure": "post_present stalls EE beyond kMaxBehind",
-    "mandate": "solid 60 via stats FPS; overlay/diagnostic only; no V-Sync uncap apply"
+    "mandate": "solid 60 via stats FPS; overlay/diagnostic only; no V-Sync uncap apply",
+    "native_note": "host/window.cpp has its own pace()+post_present; shared kMaxBehind from gs.cpp"
   },
   "product_changes_applied": false,
   "measure_complete": true,

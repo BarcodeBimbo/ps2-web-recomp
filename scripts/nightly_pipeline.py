@@ -245,6 +245,58 @@ def stage_verify(game_id: str, frames: int) -> dict:
     }
 
 
+def stage_chrome_serve(
+    game_id: str,
+    *,
+    panel_base: str = "http://127.0.0.1:8620",
+) -> dict:
+    """Store→Chrome serve gate: panel must publish play assets without manual steps.
+
+    Does not run the Playwright harness (that is a separate heavier check). Passes when
+    ``/play/<id>/``, ``ps2web.js``, and ``ps2web.wasm`` all return HTTP 200.
+    """
+    import urllib.error
+    import urllib.request
+
+    paths = [
+        f"/play/{game_id}/",
+        f"/play/{game_id}/ps2web.js",
+        f"/play/{game_id}/ps2web.wasm",
+    ]
+    results = []
+    ok = True
+    for path in paths:
+        url = panel_base.rstrip("/") + path
+        code = None
+        err = None
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                code = getattr(resp, "status", None) or resp.getcode()
+        except urllib.error.HTTPError as exc:
+            code = exc.code
+            err = str(exc.reason)[:120]
+        except Exception as exc:  # noqa: BLE001
+            # Some servers reject HEAD — retry GET.
+            try:
+                with urllib.request.urlopen(url, timeout=20) as resp:
+                    code = getattr(resp, "status", None) or resp.getcode()
+            except Exception as exc2:  # noqa: BLE001
+                err = str(exc2)[:160]
+                ok = False
+        if code != 200:
+            ok = False
+        results.append({"path": path, "status": code, "error": err})
+    return {
+        "status": "pass" if ok else "fail",
+        "action": "panel_play_assets",
+        "panel_base": panel_base,
+        "assets": results,
+        "manual_patch_steps": False,
+        "note": "Global runtime patches (R3/R4/XYOFFSET) ship in-tree; serve path needs no manual discfix apply",
+    }
+
+
 def run_game(
     game_id: str,
     *,
@@ -252,6 +304,8 @@ def run_game(
     skip_build: bool,
     force_build: bool,
     dry_heal: bool,
+    chrome_serve: bool = False,
+    panel_base: str = "http://127.0.0.1:8620",
 ) -> dict:
     from store_pipeline_hooks import log_pipeline_event
 
@@ -312,6 +366,13 @@ def run_game(
         result["status"] = "fail"
         result["failed_stage"] = "verify"
 
+    if chrome_serve and result["status"] in ("pass", "skipped"):
+        chrome = stage_chrome_serve(game_id, panel_base=panel_base)
+        result["stages"]["chrome_serve"] = chrome
+        if chrome.get("status") != "pass":
+            result["status"] = "fail"
+            result["failed_stage"] = "chrome_serve"
+
     result["elapsed_s"] = round(time.time() - started, 2)
     log_pipeline_event(
         "nightly_game",
@@ -319,6 +380,7 @@ def run_game(
         status=result["status"],
         frames=frames,
         verify_log=verify.get("log"),
+        chrome_serve=(result.get("stages") or {}).get("chrome_serve", {}).get("status"),
         elapsed_s=result["elapsed_s"],
     )
     return result
@@ -359,6 +421,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--force-build", action="store_true", help="Rebuild even when native exists")
     ap.add_argument("--dry-heal", action="store_true", help="self_heal dry-run only")
     ap.add_argument(
+        "--chrome-serve",
+        action="store_true",
+        help="After verify pass, HEAD panel /play/<id>/ assets (store→Chrome serve gate)",
+    )
+    ap.add_argument(
+        "--panel-base",
+        default=os.environ.get("PS2_PANEL_BASE", "http://127.0.0.1:8620"),
+        help="CyberArcade panel base URL for --chrome-serve",
+    )
+    ap.add_argument(
         "--store-contract",
         action="store_true",
         help="After each game, also evaluate store_ready_contract (no HTTP)",
@@ -379,6 +451,8 @@ def main(argv: list[str] | None = None) -> int:
             skip_build=bool(args.skip_build),
             force_build=bool(args.force_build),
             dry_heal=bool(args.dry_heal),
+            chrome_serve=bool(args.chrome_serve),
+            panel_base=str(args.panel_base),
         )
         if args.store_contract:
             try:
@@ -408,6 +482,9 @@ def main(argv: list[str] | None = None) -> int:
         "skip_build": bool(args.skip_build),
         "force_build": bool(args.force_build),
         "dry_heal": bool(args.dry_heal),
+        "chrome_serve": bool(args.chrome_serve),
+        "panel_base": str(args.panel_base),
+        "store_contract": bool(args.store_contract),
         "results": results,
     }
     json_path, log_path = write_artifacts(summary)

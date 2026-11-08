@@ -1,0 +1,6 @@
+owner=W-GOW
+pid=22652
+acquired=2026-11-07T19:14:15.7495465-05:00
+purpose=GoW USA min60 browser re-verify isolation
+game=695b874b308a4e5353767bb6df8ba697
+note=do-not-kill Hitman/NFS/CNK cmake/ninja; wait quieter CPU then accept

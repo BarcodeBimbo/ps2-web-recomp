@@ -1,2 +1,4 @@
 ﻿[2026-11-07 19:08:53] W-HITMAN owner: Mode B NO_TME 180f smoke pid=32212 out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-notme-20261107T190853; web-next watch live
 [2026-11-07 19:12:17] W-HITMAN owner: Mode B NO_TME FALSIFIED lum~0.05-0.10; evidence logs/workers/W-HITMAN-modeB-notme-2026-11-07.md; web-next still watched; native type7-fst under W-HITMAN lock
+[2026-11-07 19:13:28] W-HITMAN replacement: adopt lane (prior platform heartbeat stale >3min); my_shell=32048; LIVE native cmake=31668 ninja=2992 (~685/914 type7-fst); web-next cmake=29328 NO_KILL; Mode B NO_TME falsified; next=monitor builds then re-smoke disc.iso + advance sprite/tex until FBP288 non-empty
+[2026-11-07 19:14:41] BUILD_WATCH hitman-native COMPLETE

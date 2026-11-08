@@ -1,1 +1,7 @@
-﻿2026-11-08T00:12:56Z ALIVE overnight-watchdog-armed tick3-respawns
+﻿campaign-owner ALIVE
+status=permanent-overnight-running
+pid=15764
+local=2026-11-07 19:14:41
+utc=2026-11-08T00:14:41Z
+watcher=build-complete
+

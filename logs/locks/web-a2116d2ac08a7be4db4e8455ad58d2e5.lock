@@ -1,6 +1,6 @@
-﻿owner_pid=31216
-start_utc=2026-11-08T00:08:11Z
+﻿owner_pid=32048
+start_utc=2026-11-08T00:13:28Z
 owner=W-HITMAN
-checkbox=hitman-black-fix-type7-fst
+checkbox=hitman-modeB-sprite-tex
 target=build/web-a2116d2ac08a7be4db4e8455ad58d2e5
-note=not-building-web; monitoring live -next cmake=29328 ninja=5044; source edit type7-FST pending next web rebuild
+note=replacement-adopt monitoring; not-building published web; LIVE -next cmake=29328 NO_KILL; promote after exit

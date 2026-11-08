@@ -15,3 +15,7 @@
 [2026-11-07T19:12:04Z] W-SLY HEARTBEAT | status=PARSE_RETRY | fixed column offset for capture flush format
 [2026-11-07T19:12:23Z] W-SLY HEARTBEAT | status=PARSE_NEGBOX | fixed negative box area regex; remeasure building strips
 [2026-11-07T19:13:14Z] W-SLY HEARTBEAT | status=HYPOTHESIS | building TBP1480 area=5.56M FST=0 UV=376..1960; Q=0->min bypasses /q==0 guard; checking safe shared fix + locks
+[2026-11-07T19:13:50Z] W-SLY HEARTBEAT | status=LOCK_ACQUIRE | native-c0c452 lock for diagnostic repro (no cmake)
+[2026-11-08T00:14:06Z] W-SLY HEARTBEAT | status=IMPLEMENT | adding PS2_GS_DIAG_ABE_CLUT env gate in load_clut+plot; sly native lock held
+[2026-11-07T19:14:14Z] W-SLY HEARTBEAT | status=VISUAL | inspecting sly-gameplay frame_01800 + qfix* for building void evidence
+[2026-11-07T19:14:48Z] W-SLY HEARTBEAT | status=DIAG_LAUNCH | starting PS2_GS_NO_TME software smoke @900f vs baseline to isolate texture vs fog/ABE

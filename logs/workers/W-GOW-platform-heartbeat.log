@@ -47,3 +47,18 @@ prior_fail=avg60 min56.8 below60=15 audio_q=241-330ms
 panel_Hitman=building
 cmake_ninja_live=yes
 plan=correlate dips vs audio_q; wait/isolate then re-accept
+=== W-GOW heartbeat 2026-11-07 19:14:00 ===
+status=wait_panel_quiet
+busy=1
+jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5
+=== W-GOW heartbeat 2026-11-07 19:14:16 ===
+status=waiting_quieter_panel
+cpu=100pct
+hitman_panel=building
+ninja_live=5
+diag=logs/workers/W-GOW-hitch-diagnosis-2026-11-07.md
+lock=logs/locks/gow-min60-browser.lock
+=== W-GOW heartbeat 2026-11-07 19:14:45 ===
+status=wait_panel_quiet
+busy=1
+jobs=Hitman - Blood Money (USA)|building|a2116d2ac08a7be4db4e8455ad58d2e5

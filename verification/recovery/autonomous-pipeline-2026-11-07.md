@@ -29,13 +29,14 @@
 | Manifest stub | `games/<id>/install_manifest.json` | `source.sha256`, `download_job_id`, import/build timestamps, health snapshot |
 | Post-build | `panel.build` → `finalize_post_build` | Updates manifest; `PS2_STRICT_VERIFY=1` blocks `ready` on health **warn** or **fail** (full installs) |
 | Inline smoke | `finalize_post_build` → `gate_inline_verify` | **`PS2_INLINE_VERIFY=1`** runs short `autonomous_verify.py` before `ready` (full installs); frames via `PS2_INLINE_VERIFY_FRAMES` (default 200). Default **off** so hot path stays fast. |
-| Nightly | `scripts/nightly_pipeline.py` + `run_nightly_pipeline.ps1` | download (ISO present) → build (skip if native / lock) → heal → `autonomous_verify`; artifacts `logs/autonomous-pipeline/nightly-*.{json,log}`; lock-aware (never steal Hitman `web-a2116*`, NFS `web-60c82f*`, CNK `native-b49f2e*`) |
-| **Gap** | Chrome harness `canvas_lum` at install | Requires web rebuild + browser job; see self-heal T1 / store→Chrome DoD |
+| Nightly | `scripts/nightly_pipeline.py` + `run_nightly_pipeline.ps1` | download (ISO present) → build (skip if native / lock) → heal → `autonomous_verify`; optional `--store-contract`; artifacts `logs/autonomous-pipeline/nightly-*.{json,log}`; lock-aware (never steal Hitman `web-a2116*`, NFS `web-60c82f*`, CNK `native-b49f2e*`) |
+| Store→Chrome DoD | `scripts/store_ready_contract.py` | ready + web player + global patches pre-applied + panel hooks + no manual patch files; `--http` checks `/play/<id>/`; evidence `logs/autonomous-pipeline/store-ready-contract-*.json` |
+| **Gap** | Chrome harness `canvas_lum` gate at install | Visual luminance still self-heal T1 / per-title §1–§2 (contract does not claim canvas_lum) |
 
 ## Patch layers (every new install)
 
 1. **Runtime (global):** R3 readee, R4-D1 DiskReady (`cdvdfsv.cpp` / `cdvd.cpp`) — already `verified_apply`; never CNK Alchemy on Hitman/NFS.
-2. **GS (global):** XYOFFSET 11-bit OFX/OFY (`runtime/src/gs/*`) — **applied 2026-11-07** for Hitman negative draw boxes.
+2. **GS (global):** XYOFFSET via `xyoffset_component` in `runtime/src/gs/gs.hpp` (manual 16-bit 12.4) — inherited by every new build; no per-game manual patch step.
 3. **Web publish:** `ensure_web_build_readable` / ACL on `ps2web.js` (Hitman js serve fix).
 4. **Per-game env (experiments):** `PS2_PRESENT_FRAME`, `PS2_GS_NO_ATE`, `PS2_TRACE_DISPLAY` — prefer detection in registry, not defaults.
 5. **Quarantine:** CNK Alchemy paths in `igfileio.cpp` gated; matrix scorer ignores false `FCE0` in CreateSema attrs.
@@ -51,7 +52,7 @@
 | E5 | **Rebuild web** for titles with `web_rebuild_required_after_runtime` | Harness canvas_lum threshold |
 | E6 | **Matrix → 100%** | CNK + NFS scorer gaps closed (`live-matrix` SUMMARY) |
 | E7 | **FPS lane** | GoW 3600f min60 browser; extend `autonomous_verify` with frame timing |
-| E8 | **Store automation test** | [x] 2026-11-07 — `tests/store_pipeline.py` 14/14; nightly catalog pull still optional |
+| E8 | **Store automation test** | [x] 2026-11-07 — `tests/store_pipeline.py` 17/17; nightly + store_ready_contract green |
 
 **Loop rule:** after each step passes evidence gate, promote fixes to `game-fix-registry.json` + `discfix-matrix-board.json` (if behavioral), then pick next failing game from `autonomous_verify` summary.
 
