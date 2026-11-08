@@ -28,3 +28,7 @@ log=logs/autonomous-pipeline/gow-min60-W-GOW-platform-20261107T190534.log
 status=complete_FAIL
 checkbox=NOT_flipped
 report=logs/workers/W-GOW-platform-2026-11-07.md
+=== W-GOW heartbeat 2026-11-07 19:12:17 ===
+status=complete_FAIL confirmed by owner
+next=hitch-dip investigation then re-accept
+

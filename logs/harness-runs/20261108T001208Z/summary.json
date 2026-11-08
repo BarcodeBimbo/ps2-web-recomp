@@ -1,0 +1,439 @@
+{
+  "summary": {
+    "run_id": "20261108T001208Z",
+    "harness": "cyberarcade_live",
+    "screenshot_to_file_to_analysis": true,
+    "fps_overlay_graph_reading": true,
+    "console_to_logs": true,
+    "muted_chrome": true,
+    "no_visible_mouse": true,
+    "direct_input_pad_wake": true,
+    "no_bootmash": true,
+    "observe_s": 35,
+    "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001208Z",
+    "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z",
+    "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\SHOT_MANIFEST.md",
+    "games": [
+      {
+        "name": "NFS_MW",
+        "label": "NFS",
+        "ok": false,
+        "goal_ok": false,
+        "goal_note": "expect=gpu_boot booted=True max_prims=29164 end_lum=9.579089060427014 software=False abort=True",
+        "booted": true,
+        "max_prims": 29164,
+        "software": false,
+        "abort_seen": true,
+        "fps": {
+          "avg": 42.794736842105266,
+          "min": 21.8,
+          "max": 61.0
+        },
+        "fps_overlay": {
+          "samples": 10,
+          "avg": 42.4,
+          "min": 20.0,
+          "max": 60.0,
+          "maxMs_peak": 553.0,
+          "graph_trend_avg": -0.10136363636363636,
+          "graph_trend_last": -0.097
+        },
+        "errors": [
+          "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "black_screen 00_goto canvas_lum=6.240951441830992 lum=7.857798389776273",
+          "black_screen 03_observe_mid canvas_lum=0.1598559827643355 lum=3.1237271746347237",
+          "halt_or_abort t=13.6",
+          "abort_ui issue_halt_18: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+          "abort_ui 04_observe_end: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
+        ],
+        "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw",
+        "agent_shots": [
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png",
+          "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png"
+        ]
+      }
+    ],
+    "all_ok": false
+  },
+  "results": [
+    {
+      "name": "NFS_MW",
+      "label": "NFS",
+      "id": "60c82f4a111da300ac23bbec85272788",
+      "expect": "gpu_boot",
+      "booted": true,
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=gpu_boot booted=True max_prims=29164 end_lum=9.579089060427014 software=False abort=True",
+      "boot_snap": {
+        "frames": 110,
+        "prims": 164,
+        "presentCopy": false,
+        "gpu": "GPU nvidia ampere (high performance)",
+        "renderer": "gpu",
+        "running": true,
+        "halted": false,
+        "boot": "",
+        "help": "",
+        "fpsOverlay": {
+          "visible": true,
+          "className": "bad",
+          "fps": 25,
+          "frameMs": 40.5,
+          "maxMs": 132,
+          "fpsText": "25",
+          "msText": "40.5 ms",
+          "maxText": "132 ms",
+          "graph": {
+            "w": 156,
+            "h": 40,
+            "ink": 4231,
+            "series": [
+              0.308,
+              0.692,
+              0.564,
+              1,
+              0.872,
+              1,
+              0.718,
+              1,
+              0.744,
+              1,
+              1,
+              0.436,
+              0.974,
+              1,
+              1,
+              1,
+              1,
+              0.308,
+              0.641,
+              0.821,
+              1,
+              1,
+              1,
+              1,
+              0.974,
+              1
+            ],
+            "trend": 0.11,
+            "peak": 1,
+            "mean": 0.848
+          }
+        }
+      },
+      "max_prims": 29164,
+      "fps": {
+        "avg": 42.794736842105266,
+        "min": 21.8,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 10,
+        "avg": 42.4,
+        "min": 20.0,
+        "max": 60.0,
+        "maxMs_peak": 553.0,
+        "graph_trend_avg": -0.10136363636363636,
+        "graph_trend_last": -0.097
+      },
+      "software": false,
+      "abort_seen": true,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 00_goto canvas_lum=6.240951441830992 lum=7.857798389776273",
+        "black_screen 03_observe_mid canvas_lum=0.1598559827643355 lum=3.1237271746347237",
+        "halt_or_abort t=13.6",
+        "abort_ui issue_halt_18: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 04_observe_end: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
+      ],
+      "page_errors": [],
+      "console_tail": [
+        "log: [iop] thread 26 status 16 prio 46 wait 0/18 pc 0x000303DC",
+        "log: [iop] thread 27 status 16 prio 46 wait 0/18 pc 0x0003057C",
+        "log: [iop] thread 28 status 16 prio 46 wait 0/0 pc 0x00000000",
+        "log: [iop] thread 29 status 4 prio 46 wait 4/19 pc 0x0002D794",
+        "log: [iop] thread 30 status 4 prio 46 wait 4/19 pc 0x0002D794",
+        "log: [iop] thread 31 status 16 prio 46 wait 0/0 pc 0x00000000",
+        "log: [iop] thread 32 status 16 prio 46 wait 0/0 pc 0x00000000",
+        "log: [iop] thread 33 status 16 prio 46 wait 0/0 pc 0x00000000",
+        "log: [iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000",
+        "log: [sif] 0 packets wait for the EE (processed 1)",
+        "log: [gpu] 2226 submits, dispatches: upload 6393 copy_read 0 copy_write 0 load_clut 2947 display 680 raster 2915 resolve 0 snapshot 0 decode 84",
+        "log: [gs] 42995 primitives drawn, register writes: 00:12289 01:1149 03:39928 04:44560 05:41430 06:3058 08:3411 09:353 0A:353 14:3058 18:4110 19:3667 1A:353 22:353 34:3058 36:3058 3B:353 3D:353 3F:6770 40:4373 41:3667 42:3854 43:353 45:398 46:353 47:5522 48:3667 49:353 4A:4020 4B:4020 4C:3667 4D:3667 4E:4110 4F:3667 50:6732 51:6732 52:6732 53:6732 7F:1765",
+        "log: [ipu] commands: stalls 0 out 0 qwords, busy 0 decoding 0 cmd 0x00000000 in 0 bytes bit 0 out 0",
+        "log: [dma] starts: ch0=0 ch1=354 ch2=353 ch3=0 ch4=0 ch5=0 ch6=0 ch7=0 ch8=0 ch9=0",
+        "log: [gif] path 1 tags: packed 6116 reglist 0 image 0",
+        "log: [gif] path 2 tags: packed 26265 reglist 0 image 5320",
+        "log: [gif] path 3 tags: packed 1412 reglist 0 image 1412",
+        "log: [vif0]",
+        "log: [vif1] 00:453484 01:1061 02:354 03:354 04:1 05:355 06:3531 07:706 10:8933 13:2118 14:6469 20:708 30:353 4A:2832 50:31585 6C:11224",
+        "log: [ee] stopped after 712 frames, 3514762466 cycles: missing code at 0x01A5C000 (ra 0x01A5BFFC)"
+      ],
+      "shots": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png",
+          "lum": 6.240951441830992
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png",
+          "lum": 20.438058667550546
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png",
+          "lum": 20.433125455750744
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png",
+          "lum": 0.1598559827643355
+        },
+        {
+          "tag": "issue_halt_18",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png",
+          "lum": 8.355123218430505
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png",
+          "lum": 8.355123218430505
+        }
+      ],
+      "analyses": [
+        {
+          "tag": "00_goto",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png",
+          "lum": 7.857798389776273,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto_canvas.png",
+          "canvas_lum": 6.240951441830992,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": null,
+            "frameMs": null,
+            "maxMs": null,
+            "className": "",
+            "visible": true,
+            "graph_trend": 0,
+            "graph_peak": 0,
+            "graph_mean": 0,
+            "graph_ink": 0
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.0319,
+            "upper_ink": 0.0538,
+            "graph_ink": 0.01,
+            "tint": "neutral",
+            "overlay_present": false
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=6.24; graph_trend=0; boot=Preparing game\u2026",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png"
+        },
+        {
+          "tag": "01_boot",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png",
+          "lum": 16.677560424966945,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot_canvas.png",
+          "canvas_lum": 20.438058667550546,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 20,
+            "frameMs": 49.3,
+            "maxMs": 553,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.533,
+            "graph_peak": 1,
+            "graph_mean": 0.469,
+            "graph_ink": 1964
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1769,
+            "upper_ink": 0.0732,
+            "graph_ink": 0.2806,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=20.44; overlay_fps=20; overlay_maxMs=553; graph_trend=-0.533; shot_fps_tint=warn_bad graph_ink=0.2806",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png"
+        },
+        {
+          "tag": "02_observe_start",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png",
+          "lum": 16.69857121513958,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start_canvas.png",
+          "canvas_lum": 20.433125455750744,
+          "black": false,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 25,
+            "frameMs": 40.5,
+            "maxMs": 132,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.051,
+            "graph_peak": 1,
+            "graph_mean": 0.894,
+            "graph_ink": 4457
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1969,
+            "upper_ink": 0.0704,
+            "graph_ink": 0.3234,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "ok",
+          "note": "canvas_lum=20.43; overlay_fps=25; overlay_maxMs=132; graph_trend=-0.051; shot_fps_tint=warn_bad graph_ink=0.3234",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png"
+        },
+        {
+          "tag": "03_observe_mid",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png",
+          "lum": 3.1237271746347237,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid_canvas.png",
+          "canvas_lum": 0.1598559827643355,
+          "black": true,
+          "abort_ui": false,
+          "fps_overlay_dom": {
+            "fps": 60,
+            "frameMs": 16.5,
+            "maxMs": 124,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.091,
+            "graph_peak": 1,
+            "graph_mean": 0.507,
+            "graph_ink": 2545
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1361,
+            "upper_ink": 0.0748,
+            "graph_ink": 0.1974,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "black_screen",
+          "note": "canvas_lum=0.16; overlay_fps=60; overlay_maxMs=124; graph_trend=-0.091; shot_fps_tint=warn_bad graph_ink=0.1974",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png"
+        },
+        {
+          "tag": "issue_halt_18",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png",
+          "lum": 9.579089060427014,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18_canvas.png",
+          "canvas_lum": 8.355123218430505,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": 59,
+            "frameMs": 17,
+            "maxMs": 71,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.097,
+            "graph_peak": 1,
+            "graph_mean": 0.496,
+            "graph_ink": 2613
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1371,
+            "upper_ink": 0.0746,
+            "graph_ink": 0.1996,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.36; overlay_fps=59; overlay_maxMs=71; graph_trend=-0.097; shot_fps_tint=warn_bad graph_ink=0.1996; boot=Game stopped \u2014 crash log saved; help=missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png"
+        },
+        {
+          "tag": "04_observe_end",
+          "path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png",
+          "lum": 9.579089060427014,
+          "canvas_path": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end_canvas.png",
+          "canvas_lum": 8.355123218430505,
+          "black": false,
+          "abort_ui": true,
+          "fps_overlay_dom": {
+            "fps": 59,
+            "frameMs": 17,
+            "maxMs": 71,
+            "className": "bad",
+            "visible": true,
+            "graph_trend": -0.097,
+            "graph_peak": 1,
+            "graph_mean": 0.496,
+            "graph_ink": 2613
+          },
+          "fps_overlay_shot": {
+            "crop_box": [
+              8,
+              56,
+              220,
+              200
+            ],
+            "ink_frac": 0.1371,
+            "upper_ink": 0.0746,
+            "graph_ink": 0.1996,
+            "tint": "warn_bad",
+            "overlay_present": true
+          },
+          "verdict": "abort_ui",
+          "note": "canvas_lum=8.36; overlay_fps=59; overlay_maxMs=71; graph_trend=-0.097; shot_fps_tint=warn_bad graph_ink=0.1996; boot=Game stopped \u2014 crash log saved; help=missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying",
+          "agent_read": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png"
+        }
+      ],
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png"
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw",
+      "rows_n": 19
+    }
+  ]
+}

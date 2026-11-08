@@ -1,1 +1,2 @@
 ﻿[2026-11-07 19:08:53] W-HITMAN owner: Mode B NO_TME 180f smoke pid=32212 out=C:\PS2Recomp\logs\autonomous-pipeline\hitman-modeB-notme-20261107T190853; web-next watch live
+[2026-11-07 19:12:17] W-HITMAN owner: Mode B NO_TME FALSIFIED lum~0.05-0.10; evidence logs/workers/W-HITMAN-modeB-notme-2026-11-07.md; web-next still watched; native type7-fst under W-HITMAN lock

@@ -1,6 +1,1 @@
-campaign-owner ALIVE
-status=permanent-overnight-running
-pid=28640
-local=2026-11-07 19:11:23
-utc=2026-11-08T00:11:23Z
-
+﻿2026-11-08T00:12:56Z ALIVE overnight-watchdog-armed tick3-respawns

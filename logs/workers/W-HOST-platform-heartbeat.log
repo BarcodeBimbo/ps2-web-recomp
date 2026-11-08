@@ -2,3 +2,7 @@
 ts=2026-11-07 19:06:01
 lane=Shared host runtime
 status=verified self_heal PRESENT_FB detector + copy_frame shown_lines; writing report
+ts=2026-11-07 19:12:17
+lane=Shared host runtime
+status=owner_pulse PRESENT_FB done; next=watch Hitman/NFS web share host/web.cpp after NFS -next lands; no runtime edit while 3 builds compile shared objs
+[2026-11-07T19:12:55-05:00] W-HOST START replacement — prior heartbeat stale; reading report + solid_60_mandate; picking next unlocked §5/registry work

@@ -1,3 +1,5 @@
-﻿W-STORE heartbeat 2026-11-07 19:11:37
-status=building_store_ready_contract
-nightly_pass=logs/autonomous-pipeline/nightly-20261108T001112Z.json
+﻿W-STORE heartbeat 2026-11-07 19:12:52
+status=store_chrome_blocked_stale_web
+nightly=PASS logs/autonomous-pipeline/nightly-20261108T001020Z.json
+chrome_nfs=FAIL harness-20261108T001208Z missing_code_0x01A5C000 stale_web_Nov6
+action=wait_for_W-NFS_web_publish_then_reharness; not stealing lock

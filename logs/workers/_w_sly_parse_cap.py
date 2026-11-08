@@ -8,9 +8,16 @@ print("lines", len(lines))
 
 def area(box: str):
     try:
-        a, b = box.split("-")
-        x0, y0 = map(float, a.split(","))
-        x1, y1 = map(float, b.split(","))
+        # boxes can be negative: "-1157.1,-523.1-1797.1,1360.3"
+        import re
+
+        m = re.match(
+            r"^\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\s*-\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\s*$",
+            box,
+        )
+        if not m:
+            return 0.0, None
+        x0, y0, x1, y1 = map(float, m.groups())
         return max(0.0, (x1 - x0)) * max(0.0, (y1 - y0)), (x0, y0, x1, y1)
     except Exception:
         return 0.0, None
@@ -19,7 +26,7 @@ def area(box: str):
 draws = []
 transfers = []
 for ln in lines[1:]:
-    if ln.startswith("vblank"):
+    if ln.startswith("vblank") or ln.startswith("image"):
         continue
     if ln.startswith("transfer"):
         transfers.append(ln)
@@ -27,24 +34,34 @@ for ln in lines[1:]:
     parts = ln.split("\t")
     if parts and parts[0] == "draw":
         parts = parts[1:]
+    # capture flush format: [idx] prims first ctx prim frame zbuf tex0 tex1 clamp alpha test box texels
+    if len(parts) >= 13 and parts[4] in ("07C", "07c", "316", "246", "006", "001", "0C1"):
+        # idx present
+        pass
     if len(parts) < 12:
         continue
+    # Detect whether column0 is a draw index (decimal) vs prims by checking prim hex field position.
     try:
-        prims = int(parts[0])
-        first = int(parts[1])
-        ctx = int(parts[2])
-        prim = int(parts[3], 16)
-        frame = int(parts[4], 16)
-        zbuf = int(parts[5], 16)
-        tex0 = int(parts[6], 16)
-        tex1 = int(parts[7], 16)
-        clamp = int(parts[8], 16)
-        alpha = int(parts[9], 16)
-        test = int(parts[10], 16)
-        box = parts[11]
-        texels = parts[12] if len(parts) > 12 else ""
+        if len(parts) >= 13 and all(c in "0123456789ABCDEFabcdef" for c in parts[4]) and len(parts[4]) <= 3:
+            # idx, prims, first, ctx, prim, ...
+            base = 1
+        else:
+            base = 0
+        prims = int(parts[base + 0])
+        first = int(parts[base + 1])
+        ctx = int(parts[base + 2])
+        prim = int(parts[base + 3], 16)
+        frame = int(parts[base + 4], 16)
+        zbuf = int(parts[base + 5], 16)
+        tex0 = int(parts[base + 6], 16)
+        tex1 = int(parts[base + 7], 16)
+        clamp = int(parts[base + 8], 16)
+        alpha = int(parts[base + 9], 16)
+        test = int(parts[base + 10], 16)
+        box = parts[base + 11]
+        texels = parts[base + 12] if len(parts) > base + 12 else ""
     except Exception as e:
-        print("parse fail", e, parts[:6])
+        print("parse fail", e, parts[:8])
         continue
     ar, bb = area(box)
     tbp = tex0 & 0x3FFF

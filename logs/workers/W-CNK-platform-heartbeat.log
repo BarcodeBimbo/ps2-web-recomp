@@ -11,3 +11,4 @@
 2026-11-07 19:11:05 W-CNK-SMOKE heartbeat lane=b49f action=launch_smoke frames=5000 log=c:\PS2Recomp\logs\autonomous-pipeline\cnk-b49f-o20-smoke-5k-20261108T001048Z.log bin_copy=c:\PS2Recomp\logs\autonomous-pipeline\cnk-smoke-bin-20261108T001048Z
 2026-11-07 19:11:05 W-CNK-SMOKE heartbeat lane=b49f smoke_pid=27060 frames=5000 status=running
 2026-11-07 19:11:18 W-CNK-ALCHEMY smoke DONE frames=3000 prims=2 guard=armed restore_late=yes blocked_clear=0 jit_restore=0 probe_503308=absent
+2026-11-07 19:12:32 W-CNK-ALCHEMY DONE build=READY smoke=exit0 prims=2 guard=armed blocked=0 jit=0 probe503308=absent ghidra_doc=alchemy-o20-clear-ghidra-2026-11-07.md

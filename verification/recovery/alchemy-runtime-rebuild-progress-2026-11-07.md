@@ -1,7 +1,7 @@
 # Alchemy runtime rebuild — progress log
 
 **Started:** 2026-11-07 ~19:00 local (God mandate: build Alchemy operational)  
-**Updated:** 2026-11-07 ~19:08 local (W-CNK-ALCHEMY)  
+**Updated:** 2026-11-07 ~19:12 local (W-CNK-ALCHEMY)  
 **Game:** CNK `b49f2e769315347e8bda839feb705744`  
 **Mode:** Implement + verify (CNK quarantined; Hitman/NFS untouched)
 
@@ -18,29 +18,45 @@
 
 Critical gate asm: `jal child_walk` → `lw a0,0x20(s0)` @ **`0x503308`**.
 
-**Clear-site map:** `verification/recovery/alchemy-o20-clear-ghidra-2026-11-07.md` (W-CNK-ALCHEMY).
+**Clear-site map:** `verification/recovery/alchemy-o20-clear-ghidra-2026-11-07.md`.
 
 ## Runtime changes (this session)
 
 1. Export `restore_butanim_attach_if_cleared()` from `igfileio`.
 2. Widen Alchemy o20 store-guard to **st64/st128** spans that zero the guarded word.
-3. JIT `probe()` restore at `0x5032E0` / `0x503300` / `0x503308`.
-4. Opportunistic `preempt()` restore at those PCs.
-5. `games/<cnk>/probes.txt` + `windows_port.refresh_translation` passes `--probes` when present.
-6. `alchemy_o20_jit_before_lw` / `alchemy_o20_guard_arm(…,o14)` in `memory.cpp`.
+3. JIT `alchemy_o20_jit_before_lw` injected at `L_00503308` in generated `unit_0100.cpp`.
+4. `probe()` restore hooks in `dispatch.cpp` for `0x5032E0` / `0x503300` / `0x503308`.
+5. `games/<cnk>/probes.txt` present — **but generated units have zero `probe()` calls** (refresh_translation --probes not reflected in current `generated/…/unit_*.cpp`).
 
-## Build status (W-CNK-ALCHEMY)
+## Build status
 
 | Item | State |
 |------|-------|
-| Lock | `logs/locks/native-b49f….lock` — owner `alchemy-rebuild-parent` (pid 26656 gone; cooperated, no second writer) |
-| First link (~702/703) | **FAILED** — raced stale `memory.cpp.obj` / `libps2runtime.a` missing `alchemy_o20_*` + `restore_butanim_attach_if_cleared` |
-| Archive after recompile | `libps2runtime.a` **has** `alchemy_o20_guard_armEjjj`, `alchemy_o20_jit_before_lw`, `restore_butanim_attach_if_cleared` (mtime ~19:05) |
-| In flight | Two cmake/ninja (`-j8` + `-j1`) still compiling generated units after header churn; **ps2run.exe absent** pending successful link |
-| Smoke | **PENDING** — `--disc games/b49f…/disc.iso` ~2–4k frames; look for probe `0x503308` + prims ≫ 2 |
+| Lock | Cooperated with `native-b49f….lock` (no second writer started by this worker) |
+| First link | FAILED — raced stale `memory.cpp.obj` / archive missing o20 + restore symbols |
+| Recovery | Recompile refreshed `libps2runtime.a`; symbols present in final `ps2run.exe` |
+| **ps2run** | **READY** — `build/native-b49f…/ps2run.exe` (~81 MB); nm has `alchemy_o20_guard_armEjjj`, `alchemy_o20_jit_before_lw`, `restore_butanim_attach_if_cleared` |
 
-## Next
+## Smoke (W-CNK-ALCHEMY)
 
-- Await single successful `ps2run` link (do not kill in-flight ninjas).
-- Smoke with disc; capture probe/prims.
-- If gate still fails: RE child vt+0x78 impls that may clear parent+0x20 during `igAlchemy_vt108_child_walk`.
+```
+ps2run games/b49f…/disc/boot.elf --disc games/b49f…/disc.iso --frames 3000
+log: logs/autonomous-pipeline/b49f2e769315347e8bda839feb705744-alchemy-smoke-W-CNK-ALCHEMY-20261107T1910Z.log
+exit: 0
+```
+
+| Check | Result |
+|-------|--------|
+| Crash | no |
+| `[alchemy-o20] guard armed` | **yes** — `0x009754B8` value=`0x7462F8` o14=`0x16B06E8` |
+| `[alchemy-o20] blocked clear` | **0** (clear bypassed or never hit guarded `st32`) |
+| `[alchemy-o20] jit-restore` | **0** |
+| `[probe] 0x503308` | **absent** (probes not compiled into units) |
+| HLE `restored butanim … (was 0, +0xFF=1→0)` | **yes** — classic late restore after vt+108 finalized |
+| **prims** | **2** (gate still closed) |
+
+## Next leads (do not claim fixed)
+
+1. Re-run `refresh_translation --probes` so `[probe] 0x503308` lines appear; confirm whether `L_00503308` / ingest is entered.
+2. Why store-guard never logged a block while HLE later saw `+0x20=0` — find actual clearer (child vt+0x78 vs `0x51AD60` vs bulk/path outside `st32`/`st64`/`st128`).
+3. If clear is `st32` @ `0x51AD60` with matching s0, instrument unconditional log on stores to `g_alchemy_o20_guard_addr` (any value).

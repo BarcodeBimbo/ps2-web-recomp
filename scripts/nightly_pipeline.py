@@ -358,6 +358,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--skip-build", action="store_true", help="Never invoke windows_port (native must exist)")
     ap.add_argument("--force-build", action="store_true", help="Rebuild even when native exists")
     ap.add_argument("--dry-heal", action="store_true", help="self_heal dry-run only")
+    ap.add_argument(
+        "--store-contract",
+        action="store_true",
+        help="After each game, also evaluate store_ready_contract (no HTTP)",
+    )
     ap.add_argument("--json", action="store_true", help="Print summary JSON to stdout")
     args = ap.parse_args(argv)
 
@@ -368,15 +373,25 @@ def main(argv: list[str] | None = None) -> int:
     stamp = _stamp()
     results = []
     for gid in ids:
-        results.append(
-            run_game(
-                gid,
-                frames=max(30, int(args.frames)),
-                skip_build=bool(args.skip_build),
-                force_build=bool(args.force_build),
-                dry_heal=bool(args.dry_heal),
-            )
+        row = run_game(
+            gid,
+            frames=max(30, int(args.frames)),
+            skip_build=bool(args.skip_build),
+            force_build=bool(args.force_build),
+            dry_heal=bool(args.dry_heal),
         )
+        if args.store_contract:
+            try:
+                from store_ready_contract import evaluate_game
+
+                contract = evaluate_game(gid, require_http=False)
+            except Exception as exc:  # noqa: BLE001
+                contract = {"status": "error", "error": str(exc)[:400]}
+            row["stages"]["store_contract"] = contract
+            if contract.get("status") not in ("pass", "skipped") and row.get("status") == "pass":
+                row["status"] = "fail"
+                row["failed_stage"] = "store_contract"
+        results.append(row)
 
     statuses = [r.get("status") for r in results]
     if any(s == "fail" for s in statuses):

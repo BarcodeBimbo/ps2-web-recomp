@@ -1,12 +1,53 @@
 {
   "schema": "ps2recomp.harness.metrics/v1",
-  "run_id": "20261108T001150Z",
-  "observe_s": 60,
+  "run_id": "20261108T001208Z",
+  "observe_s": 35,
   "harness": "cyberarcade_live",
-  "games": [],
+  "games": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "name": "NFS_MW",
+      "label": "NFS",
+      "canvas_lum_by_tag": {
+        "00_goto": 6.241,
+        "01_boot": 20.4381,
+        "02_observe_start": 20.4331,
+        "03_observe_mid": 0.1599,
+        "issue_halt_18": 8.3551,
+        "04_observe_end": 8.3551
+      },
+      "canvas_lum_end": 8.3551,
+      "canvas_black_end": false,
+      "fps": {
+        "avg": 42.794736842105266,
+        "min": 21.8,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 10,
+        "avg": 42.4,
+        "min": 20.0,
+        "max": 60.0,
+        "maxMs_peak": 553.0,
+        "graph_trend_avg": -0.10136363636363636,
+        "graph_trend_last": -0.097
+      },
+      "bootmenu": {
+        "bootmenu_found": false,
+        "bootmenu_assets": {
+          "ZIP": false,
+          "WHD": false,
+          "WAV": false
+        },
+        "console_hits": 0
+      },
+      "max_prims": 29164,
+      "booted": true
+    }
+  ],
   "paths": {
-    "summary": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\summary.json",
-    "console": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\console.jsonl",
-    "fps_overlay": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001150Z\\fps-overlay.jsonl"
+    "summary": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001208Z\\summary.json",
+    "console": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001208Z\\console.jsonl",
+    "fps_overlay": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001208Z\\fps-overlay.jsonl"
   }
 }

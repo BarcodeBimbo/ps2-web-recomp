@@ -1,47 +1,57 @@
 # Agent campaign snapshot (context rollover seed)
 
-**Updated:** 2026-11-07 ~19:06 local (overnight watchdog armed + owner respawn)  
+**Updated:** 2026-11-07 ~19:12 local (campaign-owner permanent overnight resume)  
 **Read this + `MASTER-CONTEXT.md` RESUME POINT on every fresh agent start.**  
 **Checkbox campaign plan:** `logs/master-campaign-plan-2026-11-07.md`  
-**Standing orders:** `logs/call-log-2026-11-07.md` §8 permanent overnight mode.  
-**Watchdog:** `logs/overnight-watchdog-inventory-2026-11-07.md` — refreshes alive/heartbeat; respawns owner if dead/>3min.
+**Standing orders:** `logs/call-log-2026-11-07.md` §8 + `logs/campaign-owner-permanent-mode.md`
 
 **Owner OS (permanent until God says stop):** never idle; never wait for permission; never stop on a completed checkbox — next open immediately; test/fix/improve all night; no kill-on-retry; no session-end stalls; platform-wide parallel lanes; **report only on breaks or major greens.**
 
-## Owner pivot (2026-11-07 night)
+## Owner resume (watchdog ~19:05 → owner ~19:06+)
 
-- **Alive:** `logs/campaign-owner-alive.txt` + `logs/campaign-owner-heartbeat.json` (watchdog armed; fresh owner Task spawned after pid 18916 death)
-- **Locks (stale pids, builds LIVE — do not clear/kill):** Hitman `web-a2116…-next` cmake/ninja; NFS `web-60c82f` + `W-NFS-rebuild-web.py`; CNK `native-b49f2e` ps2run
-- **XYOFFSET:** reverted 11-bit→**16-bit 12.4** (`gs.hpp`); GS manual confirmed. Clears land `0..512×448` on FBP288 but present still ~0.1 lum.
-- **Compose research ([W-HITMAN-compose](f858f950-e5e1-410c-9cef-3161ee7cb882)):** recommend **(B)** sprite/tex write path — defer host 288→400 blit until FBP288 non-empty. Report `logs/workers/W-HITMAN-compose-research-2026-11-07.md`.
-- **NFS ([W-NFS](d687f486-1771-4f45-8cd9-0605050a2363)):** id `60c82f4a…`; Chrome hitch = web disc `chunk`/`read_ahead` EE stall (not SW GS). Follow-up W-NFS-2 prefetch implementer spawned.
-- **Registry:** all 14 library titles seeded (`overnight-watchdog-registry-seed-2026-11-07.json`).
-- **Still open:** Hitman mesh fill after correct clear; NFS Chrome ≥60; CNK Alchemy; GoW min60; Sly STQ.
-- **Workers:** campaign-owner fresh; W-STORE-next; platform lanes Hitman/NFS/Sly/GoW/host/CNK; builds protected
+- Prior owner pid **DEAD**; watchdog armed; this owner wrote `status=permanent-overnight-running`.
+- **Alive:** `logs/campaign-owner-alive.txt` + `logs/campaign-owner-heartbeat.json`
+- **Adopted orphan Hitman web-next watch** (cmake/ninja live — no kill). Locks updated to campaign-owner; promote only after build exits.
+- **Mode B:** `PS2_GS_NO_TME` **falsified** — present lum still ~0.05–0.10 (`logs/workers/W-HITMAN-modeB-notme-2026-11-07.md`).
+- **Store nightly:** orchestrator landed + **6/6** unit tests; master-plan nightly checkbox **flipped**.
+- **GoW min60 accept:** **FAIL** hard gate (`pass_all_min60=false`; avg≈60 but dips to 56.8) — `tools/gow-min60-accept.json`; checkbox stays open.
+- **CNK:** o20/smoke still **`prims=2`** (`W-CNK-ALCHEMY` 19:11).
 
-## Worker merge (2026-11-07)
+## LIVE builds (do not kill)
 
-| Worker | Id | Landed in repo |
-|--------|-----|----------------|
-| W-HITMAN | `b5fcf52a-e184-46a6-92a7-2c7ce8fe9273` | Layer 3 capture, ELF Phase 0, Layer 1 Ghidra clears |
-| W-NFS | `c86fe5bd-c641-41f0-a412-1422aaa9eee4` | 500f pass, `matrix_phase_check` fileio fix, A–H report |
-| W-STORE | `9cf97173-9502-488b-827c-3c2ba6db2e20` | `store_pipeline_hooks.py`, strict verify, manifest |
-| W-HEAL | `721aeabc-e3b3-4c70-8bc0-6d62431e00a6` | Detectors + poll; coordinator fixed matrix log scope + XYOFFSET stale neg |
-| W-CHROME60 | `e933d45d-90f7-4506-95b0-dacaaaf345b5` | Harness `metrics.json`, `autonomous_verify` fps/chrome_metrics |
-| W-RES | `49970e90-bc53-4ac8-8e0e-b053b060986a` | Resource probe; binwalk → structural CNK scripts |
-| W-CNK | `9e5dc949-0175-4854-bac9-df87926f1c0f` | Loadgate RE observe; `prims=2` still open |
+| Tree | Job |
+|------|-----|
+| `build/web-a2116…-next` | cmake/ninja -j1 `ps2web` (Hitman) |
+| `build/web-60c82f…-next` | cmake/ninja -j1 `ps2web` + `W-NFS-rebuild-web.py` |
+| `build/native-a2116…` | W-HITMAN type7-fst cmake/ninja -j4 `ps2run` |
+| `build/native-b49f2e…` | CNK native (dual cmake seen earlier; smoke used bin copy) |
 
-## Current pointer
+## Lanes (7)
 
-- **Hitman web:** `ps2web.wasm` **11:09**; `library.json` **ready**; harness `20261107T161255Z` → **845k** prims, **~58 FPS**, **`canvas_lum≈0.14`** (fail).
-- **Blocking:** DISPFB **400** present vs FRAME **288** draws (`gs.cpp` `resolve_present_source`).
-- **NFS:** native matrix pass; Chrome FPS/lum open per W-NFS report.
-- **Verify smoke:** always `--disc games/<id>/disc.iso`.
+| Lane | Status / next |
+|------|----------------|
+| Hitman | Mode B sprite/tex; NO_TME falsified; type7-fst rebuild; web-next watch |
+| NFS | Chrome ≥60; prefetch in `host/web.cpp` (48/24/16); waiting web-next |
+| Sly | STQ/PATH3/CLUT parse capture |
+| GoW | min60 hard gate FAIL — improve hitch/dips then re-run accept |
+| Host | PRESENT_FB self_heal landed; heartbeat may need refresh |
+| Store | Nightly script green; next: store→Chrome DoD contract |
+| CNK | `prims=2` still; quarantine intact |
+
+## Open priorities (master plan)
+
+- Hitman canvas_lum / Chrome flawless / DISPFB compose (B) after non-empty raster
+- NFS Chrome ≥60
+- CNK prims=2 → proven_fixes
+- GoW min60 re-verify
+- Library `autonomous_verify` sweep
+- Store pull → Chrome without manual patches
 
 ## Immediate commands
 
 ```powershell
 $env:PATH = "C:\PS2Recomp\runtime-deps;C:\PS2Recomp\tools\msys64\clang64\bin;C:\PS2Recomp\third_party\wgpu-native\lib;" + $env:PATH
-python C:\PS2Recomp\scripts\self_heal.py --game a2116d2ac08a7be4db4e8455ad58d2e5
+# After Hitman web-next exits: promote -next → published, harness Hitman_BM
+# After native type7-fst: 180f frames-dir lum compare vs modeB-notme
 py -3 -u C:\PS2Recomp\tools\_cyberarcade_live_harness.py 45 Hitman_BM
 ```

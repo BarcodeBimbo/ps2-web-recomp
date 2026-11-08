@@ -211,7 +211,7 @@
 | CNK track | 3 | 3 |
 | Store pipeline | 9 | 2 |
 | Self-heal | 6 | 5 |
-| Chrome FPS sweep | 2 | 5 |
+| Chrome FPS sweep | 5 | 2 |
 | Handoff / policy docs | 4 | 2 |
 | Improvement-pass extras | 1 | 3 |
 

@@ -1,0 +1,79 @@
+19:12:08 harness run=20261108T001208Z observe=35s games=['NFS_MW'] mute=1 mash=0
+19:12:10 GOTO NFS_MW (60c82f4a) observe=35s mute=1 mash=0 cursor=none
+19:12:11 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\00_goto.png
+19:12:16 FPS NFS_MW 00_goto overlay=None frameMs=None maxMs=None class= graph_trend=0 graph_peak=0
+19:12:17 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\01_boot.png
+19:12:18 FPS NFS_MW 01_boot overlay=20 frameMs=49.3 maxMs=553 class=bad graph_trend=-0.533 graph_peak=1
+19:12:18 NFS_MW BOOT OK prims=164 renderer=gpu boot=
+19:12:19 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\02_observe_start.png
+19:12:19 FPS NFS_MW 02_observe_start overlay=25 frameMs=40.5 maxMs=132 class=bad graph_trend=-0.051 graph_peak=1
+19:12:19 NFS_MW t=  0.0 stats_fps=24.7 overlay_fps=25 maxMs=132 graph_trend=-0.051 prims=164 renderer=gpu
+19:12:26 NFS_MW t=  7.6 stats_fps=48.7 overlay_fps=49 maxMs=224 graph_trend=-0.059 prims=10854 renderer=gpu
+19:12:30 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\03_observe_mid.png
+19:12:31 FPS NFS_MW 03_observe_mid overlay=60 frameMs=16.5 maxMs=124 class=bad graph_trend=-0.091 graph_peak=1
+19:12:32 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\issue_halt_18.png
+19:12:33 FPS NFS_MW issue_halt_18 overlay=59 frameMs=17 maxMs=71 class=bad graph_trend=-0.097 graph_peak=1
+19:12:33 SHOT NFS_MW C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\nfs_mw\04_observe_end.png
+19:12:33 FPS NFS_MW 04_observe_end overlay=59 frameMs=17 maxMs=71 class=bad graph_trend=-0.097 graph_peak=1
+19:12:35 MANIFEST C:\PS2Recomp\logs\screenshots\harness-20261108T001208Z\SHOT_MANIFEST.md
+19:12:35 METRICS C:\PS2Recomp\logs\harness-runs\20261108T001208Z\metrics.json
+19:12:35 SUMMARY {
+  "run_id": "20261108T001208Z",
+  "harness": "cyberarcade_live",
+  "screenshot_to_file_to_analysis": true,
+  "fps_overlay_graph_reading": true,
+  "console_to_logs": true,
+  "muted_chrome": true,
+  "no_visible_mouse": true,
+  "direct_input_pad_wake": true,
+  "no_bootmash": true,
+  "observe_s": 35,
+  "run_dir": "C:\\PS2Recomp\\logs\\harness-runs\\20261108T001208Z",
+  "shots_root": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z",
+  "manifest": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\SHOT_MANIFEST.md",
+  "games": [
+    {
+      "name": "NFS_MW",
+      "label": "NFS",
+      "ok": false,
+      "goal_ok": false,
+      "goal_note": "expect=gpu_boot booted=True max_prims=29164 end_lum=9.579089060427014 software=False abort=True",
+      "booted": true,
+      "max_prims": 29164,
+      "software": false,
+      "abort_seen": true,
+      "fps": {
+        "avg": 42.794736842105266,
+        "min": 21.8,
+        "max": 61.0
+      },
+      "fps_overlay": {
+        "samples": 10,
+        "avg": 42.4,
+        "min": 20.0,
+        "max": 60.0,
+        "maxMs_peak": 553.0,
+        "graph_trend_avg": -0.10136363636363636,
+        "graph_trend_last": -0.097
+      },
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "black_screen 00_goto canvas_lum=6.240951441830992 lum=7.857798389776273",
+        "black_screen 03_observe_mid canvas_lum=0.1598559827643355 lum=3.1237271746347237",
+        "halt_or_abort t=13.6",
+        "abort_ui issue_halt_18: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again.",
+        "abort_ui 04_observe_end: missing code at 0x01A5C000 (ra 0x01A5BFFC) A crash log was saved automatically. The runtime cannot safely restart in this page \u2014 reload the player before trying again."
+      ],
+      "shots_dir": "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw",
+      "agent_shots": [
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\00_goto.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\01_boot.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\02_observe_start.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\03_observe_mid.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\issue_halt_18.png",
+        "C:\\PS2Recomp\\logs\\screenshots\\harness-20261108T001208Z\\nfs_mw\\04_observe_end.png"
+      ]
+    }
+  ],
+  "all_ok": false
+}

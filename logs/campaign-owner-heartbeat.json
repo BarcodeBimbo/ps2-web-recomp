@@ -1,8 +1,9 @@
 {
-    "phase":  "gow-accept-review+modeB-evidence+store-nightly",
-    "utc":  "2026-11-08T00:11:23Z",
-    "pid":  28640,
-    "local":  "2026-11-07 19:11:23",
+    "nfs_web_ninja":  269,
+    "utc":  "2026-11-08T00:12:54Z",
+    "hit_web_ninja":  397,
+    "pid":  28020,
+    "local":  "2026-11-07 19:12:54",
     "role":  "campaign-owner",
     "status":  "permanent-overnight-running"
 }

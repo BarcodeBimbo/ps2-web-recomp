@@ -1,0 +1,75 @@
+{
+  "stamp": "20261108T001250Z",
+  "overall": "pass",
+  "require_http": true,
+  "results": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "title": "Need for Speed - Most Wanted",
+      "status": "pass",
+      "checks": {
+        "library_ready": true,
+        "disc_iso": true,
+        "web_player": true,
+        "native_optional": true,
+        "no_manual_patch_files": true,
+        "global_patches_preapplied": true,
+        "panel_hooks_wired": true,
+        "chrome_play_http": true
+      },
+      "manual_patch_leftovers": [],
+      "patches": {
+        "ok": true,
+        "checks": [
+          {
+            "id": "R3_readee",
+            "path": "runtime/src/iop/cdvdfsv.cpp",
+            "present": true
+          },
+          {
+            "id": "R4D1_DiskReady",
+            "path": "runtime/src/iop/cdvd.cpp",
+            "present": true
+          },
+          {
+            "id": "GS_XYOFFSET",
+            "path": "runtime/src/gs/gs.hpp",
+            "present": true
+          },
+          {
+            "id": "registry_R3_readee",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          },
+          {
+            "id": "registry_R4D1_DiskReady",
+            "present": true,
+            "applied": [
+              "R3_readee",
+              "R4D1_DiskReady"
+            ]
+          }
+        ]
+      },
+      "hooks": {
+        "ok": true,
+        "issues": []
+      },
+      "http": {
+        "ok": true,
+        "status": 200,
+        "url": "http://127.0.0.1:8620/play/60c82f4a111da300ac23bbec85272788/",
+        "bytes_sample": 64
+      },
+      "paths": {
+        "library": "games/60c82f4a111da300ac23bbec85272788/library.json",
+        "web": "build/web-60c82f4a111da300ac23bbec85272788/ps2web.html",
+        "iso": "games/60c82f4a111da300ac23bbec85272788/disc.iso"
+      }
+    }
+  ],
+  "definition": "Store pull \u2192 ready web player with global patches pre-applied; no per-game manual patch files; panel hooks on install path."
+}
