@@ -1,0 +1,199 @@
+{
+  "stamp": "20261108T001020Z",
+  "overall": "pass",
+  "frames": 500,
+  "skip_build": true,
+  "force_build": false,
+  "dry_heal": true,
+  "results": [
+    {
+      "game_id": "60c82f4a111da300ac23bbec85272788",
+      "title": "60c82f4a111da300ac23bbec85272788",
+      "started": 1794096620.6518989,
+      "stages": {
+        "download": {
+          "status": "ok",
+          "action": "skipped_present",
+          "path": "games/60c82f4a111da300ac23bbec85272788/disc.iso",
+          "bytes": 3702456320
+        },
+        "build": {
+          "status": "ok",
+          "action": "skipped_present",
+          "native": true,
+          "web": true
+        },
+        "heal": {
+          "status": "ok",
+          "action": "dry_run",
+          "symptoms": [
+            "web_build_stale",
+            "low_fps",
+            "matrix_fail"
+          ],
+          "actions_taken": 0,
+          "actions_planned": 3,
+          "issues": null
+        },
+        "verify": {
+          "status": "pass",
+          "action": "autonomous_verify",
+          "frames": 500,
+          "log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261108T001021Z.log",
+          "health": "ok",
+          "matrix": {
+            "game": "nfs_mw",
+            "frames": 500,
+            "primitives": 140753,
+            "cdvd_searches_found": 0,
+            "fileio_disc_opens": 1,
+            "disc_read_signals": 1,
+            "alchemy_contamination": false,
+            "missing_code": [],
+            "halt": null,
+            "sif_packets_waiting": 0,
+            "leftover_semas": [
+              {
+                "id": 2,
+                "count": 0,
+                "waiters": 1
+              },
+              {
+                "id": 17,
+                "count": 0,
+                "waiters": 1
+              },
+              {
+                "id": 23,
+                "count": 0,
+                "waiters": 1
+              },
+              {
+                "id": 29,
+                "count": 0,
+                "waiters": 1
+              },
+              {
+                "id": 30,
+                "count": 0,
+                "waiters": 1
+              },
+              {
+                "id": 32,
+                "count": 0,
+                "waiters": 1
+              }
+            ],
+            "phases": {
+              "boot": "pass",
+              "menu": "pass",
+              "first_disc_read": "pass",
+              "streaming": "pass",
+              "sustained_run": "pass"
+            },
+            "verdict": "pass",
+            "first_fail_phase": null
+          },
+          "fps_metrics": {
+            "fps_samples": 0,
+            "fps_avg": null,
+            "fps_min": null,
+            "fps_max": null,
+            "fps_on_screen_last": null,
+            "native_vblank_frames": 500,
+            "ee_cycles_per_vblank": 4944742.488,
+            "source": "native_stopped"
+          },
+          "chrome_metrics": null,
+          "error": null,
+          "raw": {
+            "game_id": "60c82f4a111da300ac23bbec85272788",
+            "title": "NFS Most Wanted",
+            "status": "pass",
+            "exit_code": 0,
+            "log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261108T001021Z.log",
+            "health": {
+              "status": "ok",
+              "reasons": [],
+              "warnings": [],
+              "primitives": 140753,
+              "frames": 500,
+              "missing_code": [],
+              "reached_frame_limit": true
+            },
+            "matrix": {
+              "game": "nfs_mw",
+              "frames": 500,
+              "primitives": 140753,
+              "cdvd_searches_found": 0,
+              "fileio_disc_opens": 1,
+              "disc_read_signals": 1,
+              "alchemy_contamination": false,
+              "missing_code": [],
+              "halt": null,
+              "sif_packets_waiting": 0,
+              "leftover_semas": [
+                {
+                  "id": 2,
+                  "count": 0,
+                  "waiters": 1
+                },
+                {
+                  "id": 17,
+                  "count": 0,
+                  "waiters": 1
+                },
+                {
+                  "id": 23,
+                  "count": 0,
+                  "waiters": 1
+                },
+                {
+                  "id": 29,
+                  "count": 0,
+                  "waiters": 1
+                },
+                {
+                  "id": 30,
+                  "count": 0,
+                  "waiters": 1
+                },
+                {
+                  "id": 32,
+                  "count": 0,
+                  "waiters": 1
+                }
+              ],
+              "phases": {
+                "boot": "pass",
+                "menu": "pass",
+                "first_disc_read": "pass",
+                "streaming": "pass",
+                "sustained_run": "pass"
+              },
+              "verdict": "pass",
+              "first_fail_phase": null
+            },
+            "fps_metrics": {
+              "fps_samples": 0,
+              "fps_avg": null,
+              "fps_min": null,
+              "fps_max": null,
+              "fps_on_screen_last": null,
+              "native_vblank_frames": 500,
+              "ee_cycles_per_vblank": 4944742.488,
+              "source": "native_stopped"
+            },
+            "chrome_metrics": null
+          }
+        }
+      },
+      "status": "pass",
+      "elapsed_s": 5.61
+    }
+  ],
+  "artifacts": {
+    "json": "logs/autonomous-pipeline/nightly-20261108T001020Z.json",
+    "log": "logs/autonomous-pipeline/nightly-20261108T001020Z.log"
+  }
+}

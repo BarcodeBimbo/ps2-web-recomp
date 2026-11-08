@@ -15,3 +15,4 @@
 [2026-11-07 19:08:56] W-CNK-2 native build OK; starting smoke disc.iso 4000f
 [2026-11-07 19:09:06] W-CNK-2 smoke start frames=6000 log=C:\PS2Recomp\logs\workers\W-CNK-o20-intercept-smoke-2026-11-07.log
 [2026-11-07 19:10:04] W-CNK-2 rebuilding overlay m_unit_0100 + st64/st128 guard
+[2026-11-07 19:10:27] W-CNK-2 smoke2 start frames=6000 (overlay JIT rebuilt)

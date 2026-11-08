@@ -1,12 +1,1 @@
-{
-    "native_a2116_cmake":  31668,
-    "hitman_web_next":  "live",
-    "local":  "2026-11-07 19:09:30",
-    "utc":  "2026-11-08T00:09:30Z",
-    "nfs_web_next":  "live",
-    "role":  "campaign-owner",
-    "cnk":  "live",
-    "pid":  30900,
-    "status":  "permanent-overnight-running",
-    "phase":  "modeB-smoke-watch"
-}
+{"hitman_ninja":true,"workers":["nfs-stream-landed","cnk-patch-ready"],"pid":32764,"current_checkbox":"hitman-black-fix","utc":"2026-11-08T00:10:36Z","status":"await-web-next-long"}

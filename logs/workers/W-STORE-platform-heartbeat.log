@@ -1,2 +1,3 @@
-﻿W-STORE heartbeat 2026-11-07 19:10:08
-status=nightly_gow_500f_or_pass_candidate
+﻿W-STORE heartbeat 2026-11-07 19:10:31
+status=claiming_lane
+next=unit_tests+library_nightly+store_pull_dod

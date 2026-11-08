@@ -7,3 +7,4 @@
 [2026-11-07 19:09:44] W-SLY done | code_changed=no | hyp=building strips reach GS but STQ/CLUT/ABE(+FGE) invisible | report=logs/workers/W-SLY-platform-2026-11-07.md
 [2026-11-07T19:09:57Z] W-SLY HEARTBEAT | status=REPRO_PREP | checking capture Q hist + native binary + locks for c0c452
 [2026-11-07T19:10:13Z] W-SLY HEARTBEAT | status=MERGE_PEER | reading peer W-SLY-platform-2026-11-07.md then diverge to concrete STQ/PATH3 fix or repro
+[2026-11-07T19:10:33Z] W-SLY HEARTBEAT | status=STEP_A | peer parked no-patch; advancing RE Step A offline on sly-cap1800 draws.tsv

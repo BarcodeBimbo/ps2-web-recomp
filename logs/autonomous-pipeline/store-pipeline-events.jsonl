@@ -28,3 +28,9 @@
 {"ts": 1794096608.9677486, "kind": "nightly_start", "game_id": "695b874b308a4e5353767bb6df8ba697", "frames": 200}
 {"ts": 1794096611.4240606, "kind": "nightly_game", "game_id": "695b874b308a4e5353767bb6df8ba697", "status": "fail", "frames": 200, "verify_log": "logs\\autonomous-pipeline\\695b874b308a4e5353767bb6df8ba697-200f-20261108T001009Z.log", "elapsed_s": 2.46}
 {"ts": 1794096611.4300952, "kind": "nightly_complete", "stamp": "20261108T001008Z", "overall": "fail", "games": 1, "json": "logs/autonomous-pipeline/nightly-20261108T001008Z.json", "log": "logs/autonomous-pipeline/nightly-20261108T001008Z.log"}
+{"ts": 1794096620.6524065, "kind": "nightly_start", "game_id": "60c82f4a111da300ac23bbec85272788", "frames": 500}
+{"ts": 1794096626.2670279, "kind": "nightly_game", "game_id": "60c82f4a111da300ac23bbec85272788", "status": "pass", "frames": 500, "verify_log": "logs\\autonomous-pipeline\\60c82f4a111da300ac23bbec85272788-500f-20261108T001021Z.log", "elapsed_s": 5.61}
+{"ts": 1794096626.2715635, "kind": "nightly_complete", "stamp": "20261108T001020Z", "overall": "pass", "games": 1, "json": "logs/autonomous-pipeline/nightly-20261108T001020Z.json", "log": "logs/autonomous-pipeline/nightly-20261108T001020Z.log"}
+{"ts": 1794096635.0864594, "kind": "inline_verify", "game_id": "cccccccccccccccccccccccccccccccc", "status": "pass", "log": "logs/autonomous-pipeline/fixture.log", "frames": 60, "full_install": true}
+{"ts": 1794096635.0884693, "kind": "post_build", "game_id": "cccccccccccccccccccccccccccccccc", "health": "ok", "strict": false, "inline_verify": true, "full_install": true}
+{"ts": 1794096635.1367154, "kind": "post_build", "game_id": "ffffffffffffffffffffffffffffffff", "health": "ok", "strict": false, "inline_verify": false, "full_install": true}
